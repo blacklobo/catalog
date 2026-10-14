@@ -3,23 +3,23 @@
 image: dhi.io/pkg-authservice
 variant: runtime
 tags:
-  - 1.1.8-alpine3.24
-  - 1.1.8-r6-alpine3.24
+  - 1.1.9-alpine3.24
+  - 1.1.9-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2024-03-26"
 vars:
-  COMMIT_SHA: 0abe8a67c41626e204fe6c9c91193a67d47dbc70
-  GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.8-r1
+  COMMIT_SHA: eae5348711cd82523c79d6e83a401be6ac54ffc1
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.1-r1
   PACKAGE_NAME: authservice
-  REL: "6"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.1"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.1.8
-  VERSION: 1.1.8
+  SEMVER_VERSION: 1.1.9
+  VERSION: 1.1.9
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -42,18 +42,18 @@ contents:
           - bash
           - ca-certificates-bundle
           - coreutils
-          - golang-1.26=1.26.8-r1
-          - golang-1.26-oci-config=1.26.8-r1
+          - golang-1.27=1.27.1-r1
+          - golang-1.27-oci-config=1.27.1-r1
         files:
-          - url: git+https://github.com/istio-ecosystem/authservice.git#v1.1.8
-            checksum: 0abe8a67c41626e204fe6c9c91193a67d47dbc70
+          - url: git+https://github.com/istio-ecosystem/authservice.git#v1.1.9
+            checksum: eae5348711cd82523c79d6e83a401be6ac54ffc1
             path: /go/src/github.com/istio-ecosystem/authservice
             spdx:
               name: authservice
-              version: 1.1.8
+              version: 1.1.9
               packages:
                 - name: authservice
-                  purl: pkg:golang/github.com/istio-ecosystem/authservice@1.1.8
+                  purl: pkg:golang/github.com/istio-ecosystem/authservice@1.1.9
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -76,7 +76,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/tetratelabs/run/pkg/version.build=1.1.8-0-g0abe8a67c41626e204fe6c9c91193a67d47dbc70-main
+              - -X github.com/tetratelabs/run/pkg/version.build=1.1.9-0-geae5348711cd82523c79d6e83a401be6ac54ffc1-main
             output: ${target.dir}/usr/bin/authservice
             packages: ./cmd
             strip: true
@@ -85,7 +85,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/tetratelabs/run/pkg/version.build=1.1.8-0-g0abe8a67c41626e204fe6c9c91193a67d47dbc70-main
+              - -X github.com/tetratelabs/run/pkg/version.build=1.1.9-0-geae5348711cd82523c79d6e83a401be6ac54ffc1-main
             output: ${target.dir}/usr/bin/authservice-dev
             packages: ./cmd
             strip: false
@@ -96,14 +96,14 @@ contents:
               - usr/bin/authservice
             license: Apache-2.0
             name: authservice
-            rel: 6
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/authservice
                     source: usr/bin/authservice-dev
                 name: authservice-dev
             url: https://github.com/istio-ecosystem/authservice
-            version: 1.1.8
+            version: 1.1.9
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
