@@ -4,11 +4,8 @@ name: csi-provisioner 6.3.x
 image: dhi.io/csi-provisioner
 variant: runtime
 tags:
-  - "6"
   - "6.3"
   - 6.3.0
-  - 6-debian
-  - 6-debian13
   - 6.3-debian
   - 6.3-debian13
   - 6.3.0-debian

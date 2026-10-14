@@ -4,11 +4,8 @@ name: csi-provisioner 6.3.x (dev)
 image: dhi.io/csi-provisioner
 variant: dev
 tags:
-  - 6-dev
   - 6.3-dev
   - 6.3.0-dev
-  - 6-debian-dev
-  - 6-debian13-dev
   - 6.3-debian-dev
   - 6.3-debian13-dev
   - 6.3.0-debian-dev
