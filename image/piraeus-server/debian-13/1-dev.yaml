@@ -31,7 +31,7 @@ vars:
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.35.2
   SUFFIX: -dev
-  VERSION: 1.35.2-5
+  VERSION: 1.35.2-7
 contents:
   repositories:
     - deb http://deb.debian.org/debian trixie contrib
@@ -91,7 +91,7 @@ contents:
     - netcat-traditional
     - nvme-cli
     - perl-base
-    - piraeus-server=1.35.2-5
+    - piraeus-server=1.35.2-7
     - procps
     - python-3.13-minimal=3.13.16-0
     - python-3.13=3.13.16-0
