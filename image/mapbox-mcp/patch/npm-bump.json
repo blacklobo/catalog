@@ -1,16 +1,18 @@
 [
     {
         "package": "@opentelemetry/sdk-node",
-        "version": "0.217.0",
+        "version": "0.223.0",
         "cves": [
-            "CVE-2026-44902"
+            "CVE-2026-44902",
+            "CVE-2026-104872"
         ]
     },
     {
         "package": "@opentelemetry/auto-instrumentations-node",
-        "version": "0.75.0",
+        "version": "0.81.0",
         "cves": [
-            "CVE-2026-44902"
+            "CVE-2026-44902",
+            "CVE-2026-104872"
         ]
     },
     {
@@ -34,7 +36,7 @@
     },
     {
         "package": "hono",
-        "version": "4.13.5",
+        "version": "4.13.7",
         "cves": [
             "CVE-2026-44455",
             "CVE-2026-44456",
@@ -57,7 +59,8 @@
             "CVE-2026-69207",
             "CVE-2026-84363",
             "CVE-2026-84364",
-            "CVE-2026-84365"
+            "CVE-2026-84365",
+            "CVE-2026-93981"
         ],
         "overridePath": [
             "hono"
@@ -65,9 +68,10 @@
     },
     {
         "package": "@opentelemetry/exporter-prometheus",
-        "version": "0.217.0",
+        "version": "0.223.0",
         "cves": [
-            "CVE-2026-44902"
+            "CVE-2026-44902",
+            "CVE-2026-104872"
         ],
         "overridePath": [
             "@opentelemetry/exporter-prometheus"
@@ -75,9 +79,10 @@
     },
     {
         "package": "@opentelemetry/core",
-        "version": "2.8.0",
+        "version": "2.12.0",
         "cves": [
-            "CVE-2026-54285"
+            "CVE-2026-54285",
+            "CVE-2026-104872"
         ],
         "overridePath": [
             "@opentelemetry/core"
@@ -138,9 +143,10 @@
     },
     {
         "package": "@opentelemetry/propagator-jaeger",
-        "version": "2.9.0",
+        "version": "2.12.0",
         "cves": [
-            "CVE-2026-59892"
+            "CVE-2026-59892",
+            "CVE-2026-104872"
         ],
         "overridePath": [
             "@opentelemetry/propagator-jaeger"
@@ -165,6 +171,23 @@
         ],
         "overridePath": [
             "body-parser"
+        ]
+    },
+    {
+        "package": "proxy-addr",
+        "version": "2.0.8",
+        "cves": [
+            "CVE-2026-90711"
+        ],
+        "overridePath": [
+            "proxy-addr"
+        ]
+    },
+    {
+        "package": "@modelcontextprotocol/sdk",
+        "version": "1.31.0",
+        "cves": [
+            "CVE-2026-104850"
         ]
     }
 ]
