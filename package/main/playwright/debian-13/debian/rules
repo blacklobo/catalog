@@ -125,7 +125,7 @@ override_dh_auto_install:
 	# Same fail-closed idea for the libraries the ffmpeg bundle links
 	# statically: their SBOM entries would otherwise drift silently when a
 	# revision bump changes the underlying builds.
-	grep -aqF 'WebM Project VP8 Encoder v$(LIBVPX_VERSION)' \
+	grep -aqF 'WebM Project VP9 Encoder v$(LIBVPX_VERSION)' \
 		$(BROWSERS)/ffmpeg-$(FFMPEG_REVISION)/ffmpeg-linux
 	grep -aqF 'deflate $(ZLIB_VERSION)' \
 		$(BROWSERS)/ffmpeg-$(FFMPEG_REVISION)/ffmpeg-linux
