@@ -1,0 +1,7 @@
+metadata:
+  display-name: AWS EFS CSI Driver Helm chart
+  short-description: The AWS EFS CSI Driver lets Kubernetes workloads use Amazon EFS file systems as persistent volumes, with static and dynamic provisioning.
+  featured: false
+  home-url: https://github.com/kubernetes-sigs/aws-efs-csi-driver
+  categories:
+    - databases-and-storage

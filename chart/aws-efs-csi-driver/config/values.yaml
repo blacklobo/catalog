@@ -1,0 +1,37 @@
+image:
+  repository: ${aws-efs-csi-driver.registry}/${aws-efs-csi-driver.repository}
+  tag: ${aws-efs-csi-driver.tag}@${aws-efs-csi-driver.digest}
+
+# The controller and node pods keep upstream's root, privileged efs-plugin container: it mounts NFS and manages
+# access point directories. The sidecars only talk to the CSI socket and the kubelet registration directory.
+sidecars:
+  livenessProbe:
+    image:
+      repository: ${livenessprobe.registry}/${livenessprobe.repository}
+      tag: ${livenessprobe.tag}@${livenessprobe.digest}
+    securityContext:
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
+  nodeDriverRegistrar:
+    image:
+      repository: ${csi-node-driver-registrar.registry}/${csi-node-driver-registrar.repository}
+      tag: ${csi-node-driver-registrar.tag}@${csi-node-driver-registrar.digest}
+    securityContext:
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
+  csiProvisioner:
+    image:
+      repository: ${csi-provisioner.registry}/${csi-provisioner.repository}
+      tag: ${csi-provisioner.tag}@${csi-provisioner.digest}
+    securityContext:
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
