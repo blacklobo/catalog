@@ -3,10 +3,10 @@
 image: dhi.io/pkg-haproxy
 variant: runtime
 tags:
-  - 2.8.30
-  - 2.8.30-r0
-  - 2.8.30-debian13
-  - 2.8.30-r0-debian13
+  - 2.8.31
+  - 2.8.31-r0
+  - 2.8.31-debian13
+  - 2.8.31-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,14 +15,14 @@ dates:
   end-of-life: "2028-04-01"
 vars:
   OPENSSL_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
-  OPENSSL_FIPS_VERSION: 3.5.7-1~deb13u2+fips+dhi0
+  OPENSSL_FIPS_VERSION: 3.5.7-1~deb13u3+fips+dhi0
   PACKAGE_NAME: haproxy-2.8
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.8"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.8.30
-  SHA256: sha256:0fc891c8609474d460750a31947a103635653e3bf8d618222df8aff78c3e30d9
-  VERSION: 2.8.30
+  SEMVER_VERSION: 2.8.31
+  SHA256: sha256:8f2dd09cfdfe42bdc982c8615e7acb858e1815b10f296dfe5560e7f314dc6c80
+  VERSION: 2.8.31
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -52,15 +52,15 @@ contents:
           - openssl
           - tar
         files:
-          - url: https://www.haproxy.org/download/2.8/src/haproxy-2.8.30.tar.gz
-            checksum: sha256:0fc891c8609474d460750a31947a103635653e3bf8d618222df8aff78c3e30d9
+          - url: https://www.haproxy.org/download/2.8/src/haproxy-2.8.31.tar.gz
+            checksum: sha256:8f2dd09cfdfe42bdc982c8615e7acb858e1815b10f296dfe5560e7f314dc6c80
             path: ${source.dir}/haproxy.tar.gz
             spdx:
               name: haproxy
-              version: 2.8.30
+              version: 2.8.31
               packages:
                 - name: haproxy
-                  purl: pkg:dhi/haproxy@2.8.30
+                  purl: pkg:dhi/haproxy@2.8.31
                   license: GPL-2.0-only
             uid: 0
             gid: 0
@@ -75,7 +75,7 @@ contents:
             set -eux -o pipefail
 
             nproc="$(nproc)"
-            make -C "haproxy-2.8.30" -j "$nproc" \
+            make -C "haproxy-2.8.31" -j "$nproc" \
               TARGET=linux-glibc \
               CC=gcc \
               \
@@ -92,7 +92,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            make -C "haproxy-2.8.30" \
+            make -C "haproxy-2.8.31" \
               \
               PREFIX="${target.dir}/usr" \
               SBINDIR="${target.dir}/usr/sbin" \
@@ -115,7 +115,7 @@ contents:
             name: haproxy-2.8
             rel: 0
             url: https://www.haproxy.org/
-            version: 2.8.30
+            version: 2.8.31
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
