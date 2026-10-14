@@ -4,24 +4,24 @@ name: Temporal UI 2.x
 image: dhi.io/temporalio-ui
 variant: runtime
 tags:
-  - "2.55"
-  - 2.55.0
-  - 2.55-debian
-  - 2.55-debian13
-  - 2.55.0-debian
-  - 2.55.0-debian13
+  - "2.56"
+  - 2.56.0
+  - 2.56-debian
+  - 2.56-debian13
+  - 2.56.0-debian
+  - 2.56.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 932c811af7e2a377abe2373a48294eff95e1e2ea
+  COMMIT_SHA: 9356e3dd05746c2966436d45f7fef09438b9250c
   DEBIAN_VERSION: "13"
   DOCKERIZE_COMMIT_SHA: 90dbb4fc2ef9098acd41e8c3ca98d2f730c741d6
   DOCKERIZE_VERSION: 0.9.5
-  SEMVER_MAJOR_MINOR_VERSION: "2.55"
+  SEMVER_MAJOR_MINOR_VERSION: "2.56"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.55.0
-  VERSION: 2.55.0
+  SEMVER_VERSION: 2.56.0
+  VERSION: 2.56.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -58,15 +58,15 @@ contents:
           - sed
           - yarn-classic
         files:
-          - url: git+https://github.com/temporalio/ui.git#v2.55.0
-            checksum: 932c811af7e2a377abe2373a48294eff95e1e2ea
+          - url: git+https://github.com/temporalio/ui.git#v2.56.0
+            checksum: 9356e3dd05746c2966436d45f7fef09438b9250c
             path: ${source.dir}/ui
             spdx:
               name: temporalio-ui
-              version: 2.55.0
+              version: 2.56.0
               packages:
                 - name: temporalio-ui
-                  purl: pkg:dhi/temporalio-ui@2.55.0
+                  purl: pkg:dhi/temporalio-ui@2.56.0
                   license: MIT
             uid: 0
             gid: 0
@@ -76,7 +76,6 @@ contents:
           work-dir: ${source.dir}/ui/server
           with:
             deps:
-              - golang.org/x/crypto@v0.56.0
               - golang.org/x/net@v0.60.0
               - github.com/gomarkdown/markdown@v0.0.0-20260411013819-759bbc3e3207
               - google.golang.org/grpc@v1.83.2
