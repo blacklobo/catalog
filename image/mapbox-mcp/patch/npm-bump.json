@@ -14,17 +14,6 @@
         ]
     },
     {
-        "package": "@grpc/grpc-js",
-        "version": "1.14.5",
-        "cves": [
-            "CVE-2026-48068",
-            "CVE-2026-48069"
-        ],
-        "overridePath": [
-            "@grpc/grpc-js"
-        ]
-    },
-    {
         "package": "fast-uri",
         "version": "3.1.8",
         "cves": [
