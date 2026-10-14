@@ -3,10 +3,10 @@
 image: dhi.io/pkg-elasticsearch
 variant: runtime
 tags:
-  - 9.5.4
-  - 9.5.4-r2
-  - 9.5.4-debian13
-  - 9.5.4-r2-debian13
+  - 9.5.5
+  - 9.5.5-r0
+  - 9.5.5-debian13
+  - 9.5.5-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   ARCH: '#{ target.arch == "amd64" ? "x64" : "aarch64" }'
   BUILD_JDK_MAJOR_VERSION: "17"
   BUILD_JDK_VERSION: 1:17.0.20.1+1-4
-  COMMIT_SHA: 9170df19cae1adb107b7b489b4d82dec66d7a337
+  COMMIT_SHA: 48acba663b09e70b115dd879329141506c377890
   ELASTICSEARCH_HOME: /usr/share/elasticsearch
   ELASTICSEARCH_OUTPUT_ARCHIVE_DIR: '#{ target.arch == "amd64" ? "linux-tar" : "linux-aarch64-tar" }'
   EXTRA_JDK19_ADOPTIUM_VERSION: jdk-19.0.2+7
@@ -54,12 +54,12 @@ vars:
   JDK_MAJOR_VERSION: "21"
   JDK_VERSION: 1:21.0.12.1+1-4
   PACKAGE_NAME: elasticsearch-9.5
-  REL: "2"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "9.5"
   SEMVER_MAJOR_VERSION: "9"
-  SEMVER_VERSION: 9.5.4
-  VERSION: 9.5.4
-  X_PACK_CORE_SHA256: sha256:43684de8a6e5c8f859b9c4026ad182d478a1f7edffd4ae856f7d69c9f5e413d2
+  SEMVER_VERSION: 9.5.5
+  VERSION: 9.5.5
+  X_PACK_CORE_SHA256: sha256:34d0558fc5c64dc104599227d70fcbd94d1b277e2f0cb9e40b09a32b552c560f
 contents:
   packages:
     - base-files
@@ -89,21 +89,21 @@ contents:
           - eclipse-temurin-25-jdk=1:25.0.4.1+1-4
           - eclipse-temurin-26-jdk=1:26.0.2.1+1-4
         files:
-          - url: git+https://github.com/elastic/elasticsearch.git#v9.5.4
-            checksum: 9170df19cae1adb107b7b489b4d82dec66d7a337
+          - url: git+https://github.com/elastic/elasticsearch.git#v9.5.5
+            checksum: 48acba663b09e70b115dd879329141506c377890
             path: ${source.dir}/elasticsearch
             spdx:
               name: elasticsearch
-              version: 9.5.4
+              version: 9.5.5
               packages:
                 - name: elasticsearch
-                  purl: pkg:dhi/elasticsearch@9.5.4
+                  purl: pkg:dhi/elasticsearch@9.5.5
                   license: Elastic-License-2.0
             uid: 0
             gid: 0
-          - url: https://repo1.maven.org/maven2/org/elasticsearch/plugin/x-pack-core/9.5.4/x-pack-core-9.5.4.jar
-            checksum: sha256:43684de8a6e5c8f859b9c4026ad182d478a1f7edffd4ae856f7d69c9f5e413d2
-            path: ${source.dir}/x-pack-core/x-pack-core-9.5.4.jar
+          - url: https://repo1.maven.org/maven2/org/elasticsearch/plugin/x-pack-core/9.5.5/x-pack-core-9.5.5.jar
+            checksum: sha256:34d0558fc5c64dc104599227d70fcbd94d1b277e2f0cb9e40b09a32b552c560f
+            path: ${source.dir}/x-pack-core/x-pack-core-9.5.5.jar
             uid: 0
             gid: 0
           - url: https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2+7/OpenJDK19U-jdk_${ARCH}_linux_hotspot_19.0.2_7.tar.gz
@@ -165,7 +165,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            jar xf x-pack-core-9.5.4.jar public.key
+            jar xf x-pack-core-9.5.5.jar public.key
         - name: build
           privileged: true
           runs: |
@@ -202,10 +202,10 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            rm -r "${source.dir}/elasticsearch/distribution/archives/${ELASTICSEARCH_OUTPUT_ARCHIVE_DIR}/build/install/elasticsearch-9.5.4/jdk"
+            rm -r "${source.dir}/elasticsearch/distribution/archives/${ELASTICSEARCH_OUTPUT_ARCHIVE_DIR}/build/install/elasticsearch-9.5.5/jdk"
 
             install -d "${target.dir}/usr/share/elasticsearch"
-            cp -r "${source.dir}/elasticsearch/distribution/archives/${ELASTICSEARCH_OUTPUT_ARCHIVE_DIR}/build/install/elasticsearch-9.5.4/." \
+            cp -r "${source.dir}/elasticsearch/distribution/archives/${ELASTICSEARCH_OUTPUT_ARCHIVE_DIR}/build/install/elasticsearch-9.5.5/." \
               "${target.dir}/usr/share/elasticsearch"
 
             cp "${target.dir}/usr/share/elasticsearch/config/log4j2.properties" \
@@ -226,9 +226,9 @@ contents:
               - deb
             license: Elastic-License-2.0
             name: elasticsearch-9.5
-            rel: 2
+            rel: 0
             url: https://www.elastic.co/elasticsearch/
-            version: 9.5.4
+            version: 9.5.5
       paths:
         - type: file
           path: ${source.dir}/patch/docker-entrypoint-fips-keystore.patch
