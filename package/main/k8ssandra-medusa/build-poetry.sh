@@ -26,9 +26,9 @@ grep -E '^setuptools = ' pyproject.toml
 
 # Transitive dependency CVE pins mirrored from image/k8ssandra-medusa.
 if grep -q '^urllib3 = ' pyproject.toml; then
-  sed -i 's/^urllib3 = "[^"]*"$/urllib3 = ">=2.7.0"/' pyproject.toml
+  sed -i 's/^urllib3 = "[^"]*"$/urllib3 = ">=2.8.0"/' pyproject.toml
 else
-  sed -i '/^\[tool\.poetry\.dependencies\]/a urllib3 = ">=2.7.0"' pyproject.toml
+  sed -i '/^\[tool\.poetry\.dependencies\]/a urllib3 = ">=2.8.0"' pyproject.toml
 fi
 
 if grep -q '^idna = ' pyproject.toml; then
@@ -50,9 +50,9 @@ else
 fi
 
 if grep -q '^pyjwt = ' pyproject.toml; then
-  sed -i 's/^pyjwt = "[^"]*"$/pyjwt = ">=2.13.0"/' pyproject.toml
+  sed -i 's/^pyjwt = "[^"]*"$/pyjwt = ">=2.15.0"/' pyproject.toml
 else
-  sed -i '/^\[tool\.poetry\.dependencies\]/a pyjwt = ">=2.13.0"' pyproject.toml
+  sed -i '/^\[tool\.poetry\.dependencies\]/a pyjwt = ">=2.15.0"' pyproject.toml
 fi
 
 if grep -q '^aiohttp = ' pyproject.toml; then
@@ -105,15 +105,18 @@ poetry install --without test --with grpc --with grpc-runtime
 
 VENV="${SRC}/.venv"
 SITE_PACKAGES="$("${VENV}/bin/python" -c 'import site; print(site.getsitepackages()[0])')"
-"${VENV}/bin/python" -m pip install --upgrade 'urllib3>=2.7.0'       # CVE-2025-66471, CVE-2025-66418, CVE-2026-21441, CVE-2026-44431
+"${VENV}/bin/python" -m pip install --upgrade 'urllib3>=2.8.0'       # CVE-2025-66471, CVE-2025-66418, CVE-2026-21441, CVE-2026-44431, CVE-2026-97687, CVE-2026-97689
 "${VENV}/bin/python" -m pip install --upgrade 'requests>=2.33.0'     # CVE-2026-25645
 "${VENV}/bin/python" -m pip install --upgrade 'idna>=3.15'           # CVE-2026-45409
+"${VENV}/bin/python" -m pip install --upgrade 'PyJWT>=2.15.0'        # CVE-2026-101918, CVE-2026-102275
 "${VENV}/bin/python" -m pip install --upgrade 'setuptools>=83.0.0'   # CVE-2026-59890
 "${VENV}/bin/python" -m pip install --upgrade 'pygments>=2.20.0'     # CVE-2026-4539
 "${VENV}/bin/python" -m pip uninstall -y pip
+rm -rf "${SITE_PACKAGES}/pip"
 rm -rf "${SITE_PACKAGES}/botocore/vendored"
-find "${SITE_PACKAGES}/virtualenv/seed/wheels/embed" -name 'pip-26.0*.whl' -delete 2>/dev/null || true
-find "${SITE_PACKAGES}/virtualenv/seed/wheels/embed" -name 'pip-26.1*.whl' -delete 2>/dev/null || true
+find "${VENV}" -path '*/virtualenv/seed/wheels/embed/pip-26.0*.whl' -delete 2>/dev/null || true
+find "${VENV}" -path '*/virtualenv/seed/wheels/embed/pip-26.1*.whl' -delete 2>/dev/null || true
+find "${SITE_PACKAGES}" -type d -path '*/dist-info/sboms' -prune -exec rm -rf {} +
 
 cp -a .venv "${PKG_ROOT}/.venv"
 cp pyproject.toml "${PKG_ROOT}/pyproject.toml"
