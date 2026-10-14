@@ -77,6 +77,7 @@ contents:
           - libcephfs-dev
           - librados-dev
           - librbd-dev
+          - libcap2-bin
           - make
           - pkg-config
           - bash
@@ -102,7 +103,6 @@ contents:
       pipeline:
         - name: Update go dependencies
           uses: go/bump@v2
-          work-dir: /go/src/github.com/ceph/ceph-csi
           with:
             deps:
               - golang.org/x/net@v0.60.0
@@ -111,7 +111,6 @@ contents:
               - google.golang.org/grpc@v1.83.2
             download: true
         - name: run targeted go tests
-          work-dir: /go/src/github.com/ceph/ceph-csi
           environment:
             GOFLAGS: -mod=vendor -buildvcs=false
           runs: |
@@ -120,7 +119,6 @@ contents:
             go test -tags=reef,ceph_preview ./cmd/...
         - name: build
           uses: go/build@v1
-          work-dir: /go/src/github.com/ceph/ceph-csi
           environment:
             GOFLAGS: -buildvcs=false
           with:
@@ -131,6 +129,11 @@ contents:
             output: ${target.dir}/usr/local/bin/cephcsi
             packages: ./cmd
             tags: reef,ceph_preview
+        - name: set linux cap
+          runs: |
+            set -eux -o pipefail
+
+            setcap 'cap_sys_admin+p' ${target.dir}/usr/local/bin/cephcsi
       outputs:
         - source: ${target.dir}/usr/local/bin/cephcsi
           target: /usr/local/bin/cephcsi
