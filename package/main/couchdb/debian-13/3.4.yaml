@@ -5,10 +5,10 @@ variant: runtime
 tags:
   - "3.4"
   - 3.4.3
-  - 3.4.3-r18
+  - 3.4.3-r19
   - 3.4-debian13
   - 3.4.3-debian13
-  - 3.4.3-r18-debian13
+  - 3.4.3-r19-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,8 +22,8 @@ vars:
   COUCHDB_DOCKER_VM_ARGS_CHECKSUM: sha256:5f84c4bfc47f16f404443dc1437829372ab9ee126d30fc819a2927a4cd333da7
   ELIXIR_COMMIT_SHA: 759443e724f55bf58e71c0603644e99058918d52
   ELIXIR_VERSION: 1.20.4
-  ERLANG_OTP_COMMIT_SHA: df7b3567d850b811e893a4d349631d7d2dd7cebb
-  ERLANG_OTP_VERSION: 27.3.4.18
+  ERLANG_OTP_COMMIT_SHA: fc7e10af595f3ffd2c25c84c253a4d042734cfed
+  ERLANG_OTP_VERSION: 27.3.4.19
   ERLFMT_COMMIT_SHA: 2005d2581fede02e47791cf081dfa66be8d30acb
   ERLFMT_VERSION: 1.8.0
   GOSU_VERSION: 1.19-12
@@ -34,7 +34,7 @@ vars:
   PYTHON_VERSION: 3.13.16-0
   REBAR_COMMIT_SHA: 8723cb44fddb7ed66809d4dfbfc1da1ba6841456
   REBAR_VERSION: 3.27.3
-  REL: "18"
+  REL: "19"
   SEMVER_MAJOR_MINOR_VERSION: "3.4"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.4.3
@@ -104,15 +104,15 @@ contents:
           - gawk
           - grep
         files:
-          - url: git+https://github.com/erlang/otp.git#OTP-27.3.4.18
-            checksum: df7b3567d850b811e893a4d349631d7d2dd7cebb
+          - url: git+https://github.com/erlang/otp.git#OTP-27.3.4.19
+            checksum: fc7e10af595f3ffd2c25c84c253a4d042734cfed
             path: ${source.dir}/otp
             spdx:
               name: erlang-otp
-              version: 27.3.4.18
+              version: 27.3.4.19
               packages:
                 - name: erlang-otp
-                  purl: pkg:erlang/github.com/erlang/otp@27.3.4.18
+                  purl: pkg:erlang/github.com/erlang/otp@27.3.4.19
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -331,7 +331,7 @@ contents:
               - deb
             license: Apache-2.0
             name: couchdb-3.4
-            rel: 18
+            rel: 19
             url: https://couchdb.apache.org/
             version: 3.4.3
 os-release:
