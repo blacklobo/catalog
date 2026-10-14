@@ -61,7 +61,7 @@ contents:
             gid: 0
       pipeline:
         - name: patch vulnerable Go dependencies
-          uses: go/bump@v1
+          uses: go/bump@v2
           work-dir: /go/src/kubevirt.io/containerized-data-importer
           environment:
             GOWORK: "off"
