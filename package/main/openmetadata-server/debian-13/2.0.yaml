@@ -3,10 +3,10 @@
 image: dhi.io/pkg-openmetadata-server
 variant: runtime
 tags:
-  - 2.0.4
-  - 2.0.4-r1
-  - 2.0.4-debian13
-  - 2.0.4-r1-debian13
+  - 2.0.5
+  - 2.0.5-r0
+  - 2.0.5-debian13
+  - 2.0.5-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,17 +14,17 @@ dates:
   release: "2026-08-22"
 vars:
   ANTLR_VERSION: 4.9.2
-  COMMIT_SHA: 42ddc290aaba9fe9a353ecb6743c35e8355f6fbf
+  COMMIT_SHA: 34b871b13336ac801c24245439c51b9fefd97688
   JDK_MAJOR_VERSION: "21"
   JDK_VERSION: 1:21.0.12.1+1-4
   MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:b427443494e23e141541cf217be2fc0d615e91ce8573b51cdf0bf8b67c1cc0b4
   MAVEN_VERSION: 3.10.0
   PACKAGE_NAME: openmetadata-server-2.0
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.0"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.0.4
-  VERSION: 2.0.4
+  SEMVER_VERSION: 2.0.5
+  VERSION: 2.0.5
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -57,15 +57,15 @@ contents:
           - tar
           - yq
         files:
-          - url: git+https://github.com/open-metadata/OpenMetadata.git#2.0.4-release
-            checksum: 42ddc290aaba9fe9a353ecb6743c35e8355f6fbf
+          - url: git+https://github.com/open-metadata/OpenMetadata.git#2.0.5-release
+            checksum: 34b871b13336ac801c24245439c51b9fefd97688
             path: ${source.dir}/OpenMetadata
             spdx:
               name: openmetadata
-              version: 2.0.4
+              version: 2.0.5
               packages:
                 - name: openmetadata
-                  purl: pkg:github/open-metadata/OpenMetadata@2.0.4
+                  purl: pkg:github/open-metadata/OpenMetadata@2.0.5
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -150,9 +150,9 @@ contents:
               - usr/bin/openmetadata-start
             license: Apache-2.0
             name: openmetadata-server-2.0
-            rel: 1
+            rel: 0
             url: https://open-metadata.org/
-            version: 2.0.4
+            version: 2.0.5
       paths:
         - type: file
           path: ${source.dir}/maven-settings.xml
