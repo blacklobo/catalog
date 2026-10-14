@@ -4,9 +4,9 @@ image: dhi.io/pkg-ollama
 variant: runtime
 tags:
   - 0.40.4
-  - 0.40.4-r0
+  - 0.40.4-r1
   - 0.40.4-debian13
-  - 0.40.4-r0-debian13
+  - 0.40.4-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -23,7 +23,7 @@ vars:
   LLAMA_CPP_VERSION: b11521
   NVIDIA_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "sbsa" }'
   PACKAGE_NAME: ollama
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "0.40"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.40.4
@@ -83,10 +83,10 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - github.com/buger/jsonparser@v1.1.2
-              - golang.org/x/crypto@v0.56.0
               - golang.org/x/image@v0.45.0
               - golang.org/x/mod@v0.40.0
+              - golang.org/x/net@v0.60.0
+              - github.com/buger/jsonparser@v1.1.2
               - github.com/klauspost/compress@v1.18.7
         - uses: go/hermetic@v1
         - name: test
@@ -150,7 +150,7 @@ contents:
               - deb
             license: MIT
             name: ollama
-            rel: 0
+            rel: 1
             subpackages:
               - depends:
                   - libc6
@@ -250,7 +250,7 @@ contents:
               - deb
             license: MIT
             name: ollama-cuda-backend
-            rel: 0
+            rel: 1
             url: https://ollama.com
             version: 0.40.4
 os-release:
