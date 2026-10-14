@@ -3,8 +3,8 @@
 image: dhi.io/pkg-qdrant
 variant: runtime
 tags:
-  - 1.19.1-5
-  - 1.19.1-5-debian13
+  - 1.19.1-6
+  - 1.19.1-6-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,8 +13,8 @@ dates:
 vars:
   CARGO_VERSION: 1.97.1-0
   COMMIT_SHA: 6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de
-  DHI_REL: "5"
-  DHI_VERSION: 1.19.1-5
+  DHI_REL: "6"
+  DHI_VERSION: 1.19.1-6
   GCC_VERSION: 14.2.0-19+dhi5
   NODEJS_VERSION: 24.21.0-1
   RUSTC_VERSION: 1.97.1-0
@@ -128,6 +128,17 @@ contents:
             cargo update --package rustls --precise 0.23.45
             cargo update --package xxhash-rust@0.8.15 --precise 0.8.16
             cargo update --package quinn-proto@0.11.16 --precise 0.11.18
+
+            cargo fetch
+            pyroscope_src="$(find "${CARGO_HOME:-/root/.cargo}/registry/src" -type d -name pyroscope-2.1.1 | head -1)"
+            cp -a "${pyroscope_src}" "${source.dir}/pyroscope-patched"
+            sed -i 's/version = "0.39"/version = "=0.40.0"/' \
+              "${source.dir}/pyroscope-patched/Cargo.toml"
+            sed -i "/branch = \"v0.14.6-qdrant\" }/a pyroscope = { path = \"${source.dir}/pyroscope-patched\" }" Cargo.toml
+
+            cargo update --package pyroscope
+            cargo update --package object@0.40.0 --precise 0.40.0
+            cargo update --package ruzstd --precise 0.9.1
         - name: build
           work-dir: ${source.dir}/qdrant-src
           privileged: true
@@ -157,11 +168,8 @@ contents:
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - |-
-                Bump Cargo quinn-proto to 0.11.18 for GHSA-3g6h-r5qx-f6hq,
-                GHSA-qfwj-vfxf-92j2, GHSA-2hv7-gw8g-gpq5, GHSA-465w-v9q3-7j98,
-                and GHSA-hmxj-32vh-65vr.
-            version: 1.19.1-5
+              - Bump Cargo object to 0.40.0 and ruzstd to 0.9.1 for RUSTSEC-2026-0344.
+            version: 1.19.1-6
         - uses: dpkg/build@v1
           privileged: true
           with:
