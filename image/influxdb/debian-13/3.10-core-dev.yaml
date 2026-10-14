@@ -116,9 +116,32 @@ contents:
             print('patched: (no changes needed, upstream already updated)')
             EOF
 
-            # GHSA-4w2j-m93h-cj5j: quinn-proto 0.11.14 -> 0.11.15 (patch bump,
-            # stays within the existing 0.11.x requirement).
-            cargo update --package quinn-proto --precise 0.11.15
+            # GHSA-4w2j-m93h-cj5j, GHSA-qfwj-vfxf-92j2, GHSA-3g6h-r5qx-f6hq:
+            # quinn-proto 0.11.14 -> 0.11.18. Patch Cargo.lock directly so
+            # cargo update does not drag wasmtime 48.x (breaks datafusion-udf-wasm).
+            python3 - << 'EOF'
+            import pathlib
+            lock = pathlib.Path('Cargo.lock')
+            c = lock.read_text()
+            targets = [
+                (
+                    'name = "quinn-proto"\nversion = "0.11.14"\nsource = "registry+https://github.com/rust-lang/crates.io-index"\nchecksum = "434b42fec591c96ef50e21e886936e66d3cc3f737104fdb9b737c40ffb94c098"',
+                    'name = "quinn-proto"\nversion = "0.11.18"\nsource = "registry+https://github.com/rust-lang/crates.io-index"\nchecksum = "a9746dbde176634f4f2f1faf2404e30a31b2bc1e9cafb5329c95d8177a18c9fc"',
+                ),
+                (
+                    'name = "quinn-proto"\nversion = "0.11.15"\nsource = "registry+https://github.com/rust-lang/crates.io-index"\nchecksum = "4fcb935c5bec503c2f0e306bdd3e58bb9029dcb14fa8d9ac76e3a5256ac0763e"',
+                    'name = "quinn-proto"\nversion = "0.11.18"\nsource = "registry+https://github.com/rust-lang/crates.io-index"\nchecksum = "a9746dbde176634f4f2f1faf2404e30a31b2bc1e9cafb5329c95d8177a18c9fc"',
+                ),
+            ]
+            for old, new in targets:
+                if old in c:
+                    c = c.replace(old, new, 1)
+                    lock.write_text(c)
+                    print('patched: quinn-proto -> 0.11.18')
+                    break
+            else:
+                raise SystemExit('quinn-proto lock block not found')
+            EOF
 
             # GHSA-36hh-v3qg-5jq4, GHSA-chgr-c6px-7xpp: pyo3 -> 0.29.0.
             # pyo3 0.x minor releases are semver-incompatible, so relax the
@@ -153,8 +176,26 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            # RUSTSEC-2026-0221: event-listener 5.4.1 -> 5.4.2
-            cargo update --package event-listener --precise 5.4.2
+            # RUSTSEC-2026-0221: event-listener 5.4.1 -> 5.4.2 (lockfile only).
+            python3 - << 'EOF'
+            import pathlib
+            lock = pathlib.Path('Cargo.lock')
+            c = lock.read_text()
+            old = (
+                'name = "event-listener"\nversion = "5.4.1"\n'
+                'source = "registry+https://github.com/rust-lang/crates.io-index"\n'
+                'checksum = "e13b66accf52311f30a0db42147dadea9850cb48cd070028831ae5f5d4b856ab"'
+            )
+            new = (
+                'name = "event-listener"\nversion = "5.4.2"\n'
+                'source = "registry+https://github.com/rust-lang/crates.io-index"\n'
+                'checksum = "5a23add41df1562121a9393cb065eab5146a1242410f23a644851e90cfd669d2"'
+            )
+            if old not in c:
+                raise SystemExit('event-listener lock block not found')
+            lock.write_text(c.replace(old, new, 1))
+            print('patched: event-listener -> 5.4.2')
+            EOF
         - name: cargo sbom
           uses: sbom@v1
           with:
