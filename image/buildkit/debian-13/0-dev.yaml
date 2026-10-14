@@ -88,6 +88,8 @@ contents:
           with:
             deps:
               - github.com/moby/go-archive@v0.3.0
+              - golang.org/x/net@v0.60.0
+              - github.com/moby/sys/user@v0.4.1
             download: true
         - name: build buildkitd
           uses: go/build@v1
@@ -230,7 +232,8 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/net@v0.56.0
+              - golang.org/x/net@v0.60.0
+              - github.com/moby/sys/user@v0.4.1
               - github.com/cilium/ebpf@v0.22.0
               - github.com/opencontainers/cgroups@v0.1.0
             download: true
