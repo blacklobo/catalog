@@ -3,21 +3,21 @@
 image: dhi.io/pkg-golang-msft-fips
 variant: runtime
 tags:
-  - 1.27.2-1-dhi0
-  - 1.27.2-1-dhi0-debian13
+  - 1.27.2-1-dhi1
+  - 1.27.2-1-dhi1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   CHECKSUM: sha256:27580d425397dfc97160fce68407dbfd5aa7a1d3af07cf8cb61a770ab08291ee
   COMMIT: aff203d598bb472fbb64f2f7b716e02552e22bfb
-  DHI_REL: "0"
-  DHI_VERSION: 1.27.2-1+dhi0
+  DHI_REL: "1"
+  DHI_VERSION: 1.27.2-1+dhi1
   GOLANG_VERSION: 1.27.2
   PACKAGE_NAME: golang-msft-fips-1.27
   RELEASE_ID: "408248109"
   SEMVER_MAJOR_MINOR_VERSION: "1.27"
-  TAG_VERSION: 1.27.2-1-dhi0
+  TAG_VERSION: 1.27.2-1-dhi1
   URL: https://github.com/microsoft/go/releases/download/v1.27.2-1/go1.27.2-20261008.10.src.tar.gz
   VERSION: 1.27.2-1
 contents:
@@ -101,15 +101,19 @@ contents:
 
             (
               cd src
-              go get golang.org/x/net@v0.56.0
+              go get golang.org/x/net@v0.60.0
+              go get golang.org/x/text@v0.42.0
               if [ "1.27" = "1.26" ]; then
                 go get github.com/microsoft/go-crypto-openssl@v0.2.9
               fi
+              go get golang.org/x/crypto@v0.57.0
               sed -i -E 's/^go ([0-9]+\.[0-9]+)\.[0-9]+$/go \1/' go.mod
             )
             (
               cd src/cmd
               go get golang.org/x/mod@v0.40.0
+              go get golang.org/x/text@v0.42.0
+              go get golang.org/x/crypto@v0.57.0
               sed -i -E 's/^go ([0-9]+\.[0-9]+)\.[0-9]+$/go \1/' go.mod
             )
 
@@ -166,8 +170,8 @@ contents:
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Bump bootstrap golang.org/x modules to patched releases
-            version: 1.27.2-1+dhi0
+              - Bump bootstrap golang.org/x modules to patched releases (CVE-2026-56852, CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
+            version: 1.27.2-1+dhi1
         - uses: dpkg/build@v1
           environment:
             DHI_GOROOT_BOOTSTRAP: /usr/lib/go-1.27
@@ -257,15 +261,19 @@ contents:
 
             (
               cd src
-              go get golang.org/x/net@v0.56.0
+              go get golang.org/x/net@v0.60.0
+              go get golang.org/x/text@v0.42.0
               if [ "1.27" = "1.26" ]; then
                 go get github.com/microsoft/go-crypto-openssl@v0.2.9
               fi
+              go get golang.org/x/crypto@v0.57.0
               sed -i -E 's/^go ([0-9]+\.[0-9]+)\.[0-9]+$/go \1/' go.mod
             )
             (
               cd src/cmd
               go get golang.org/x/mod@v0.40.0
+              go get golang.org/x/text@v0.42.0
+              go get golang.org/x/crypto@v0.57.0
               sed -i -E 's/^go ([0-9]+\.[0-9]+)\.[0-9]+$/go \1/' go.mod
             )
 
@@ -322,8 +330,8 @@ contents:
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Bump bootstrap golang.org/x modules to patched releases
-            version: 1.27.2-1+dhi0
+              - Bump bootstrap golang.org/x modules to patched releases (CVE-2026-56852, CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
+            version: 1.27.2-1+dhi1
         - uses: dpkg/build@v1
           environment:
             DHI_GOROOT_BOOTSTRAP: /usr/lib/go-1.27
