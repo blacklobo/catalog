@@ -3,8 +3,8 @@
 image: dhi.io/pkg-qdrant
 variant: runtime
 tags:
-  - 1.19.1-6
-  - 1.19.1-6-debian13
+  - 1.19.1-7
+  - 1.19.1-7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,8 +13,8 @@ dates:
 vars:
   CARGO_VERSION: 1.97.1-0
   COMMIT_SHA: 6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de
-  DHI_REL: "6"
-  DHI_VERSION: 1.19.1-6
+  DHI_REL: "7"
+  DHI_VERSION: 1.19.1-7
   GCC_VERSION: 14.2.0-19+dhi5
   NODEJS_VERSION: 24.21.0-1
   RUSTC_VERSION: 1.97.1-0
@@ -125,7 +125,7 @@ contents:
             cargo update --package rand@0.8.5 --precise 0.8.6
             cargo update --package rand@0.9.2 --precise 0.9.3
             cargo update --package h2@0.4.14 --precise 0.4.16
-            cargo update --package rustls --precise 0.23.45
+            cargo update --package rustls --precise 0.23.46
             cargo update --package xxhash-rust@0.8.15 --precise 0.8.16
             cargo update --package quinn-proto@0.11.16 --precise 0.11.18
 
@@ -168,8 +168,8 @@ contents:
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Bump Cargo object to 0.40.0 and ruzstd to 0.9.1 for RUSTSEC-2026-0344.
-            version: 1.19.1-6
+              - Bump Cargo rustls to 0.23.46; keep object 0.40.0 and ruzstd 0.9.1 for RUSTSEC-2026-0344.
+            version: 1.19.1-7
         - uses: dpkg/build@v1
           privileged: true
           with:
