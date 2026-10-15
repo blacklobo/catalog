@@ -4,9 +4,9 @@ image: dhi.io/pkg-grist
 variant: runtime
 tags:
   - 1.7.21
-  - 1.7.21-r1
+  - 1.7.21-r2
   - 1.7.21-debian13
-  - 1.7.21-r1-debian13
+  - 1.7.21-r2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,10 +14,10 @@ dates:
   release: "2026-07-29"
 vars:
   COMMIT_SHA: 6dfae2fa33af6ef057b5de676afc85e6f3026fc6
-  NODEJS_VERSION: 24.21.0-1
+  NODEJS_VERSION: 24.22.0-0
   PYTHON_MAJOR_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "1.7"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.7.21
@@ -243,7 +243,7 @@ contents:
               - deb
             license: Apache-2.0
             name: grist
-            rel: 1
+            rel: 2
             url: https://www.getgrist.com/
             version: 1.7.21
       paths:
