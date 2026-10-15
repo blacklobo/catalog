@@ -4,9 +4,9 @@ image: dhi.io/pkg-supabase-studio
 variant: runtime
 tags:
   - 2026.09.07
-  - 2026.09.07-r5
+  - 2026.09.07-r6
   - 2026.09.07-debian13
-  - 2026.09.07-r5-debian13
+  - 2026.09.07-r6-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,7 +18,7 @@ vars:
   NODEJS_VERSION: 22.23.3-0
   PACKAGE_NAME: supabase-studio
   PNPM_VERSION: 11.13.1
-  REL: "5"
+  REL: "6"
   SEMVER_MAJOR_MINOR_VERSION: "2026.09"
   SEMVER_MAJOR_VERSION: "2026"
   SEMVER_VERSION: 2026.09.07
@@ -127,7 +127,9 @@ contents:
             yq -Y -i '.overrides."@modelcontextprotocol/sdk" = "1.31.0"' pnpm-workspace.yaml
             yq -Y -i '.overrides."markdown-it" = "14.3.1"' pnpm-workspace.yaml
             yq -Y -i '.overrides."katex" = "0.18.2"' pnpm-workspace.yaml
-            yq -Y -i '.minimumReleaseAgeExclude = ((.minimumReleaseAgeExclude // []) + ["next", "sharp", "fast-uri", "qs", "mermaid", "dompurify", "@hono/node-server", "@modelcontextprotocol/sdk", "markdown-it", "katex"])' pnpm-workspace.yaml
+            yq -Y -i '.overrides."simple-git" = "4.0.1"' pnpm-workspace.yaml
+            yq -Y -i '.overrides."@simple-git/argv-parser" = "2.0.1"' pnpm-workspace.yaml
+            yq -Y -i '.minimumReleaseAgeExclude = ((.minimumReleaseAgeExclude // []) + ["next", "sharp", "fast-uri", "qs", "mermaid", "dompurify", "@hono/node-server", "@modelcontextprotocol/sdk", "markdown-it", "katex", "simple-git", "@simple-git/argv-parser"])' pnpm-workspace.yaml
 
             pnpm install --lockfile-only
             pnpm install --frozen-lockfile
@@ -236,7 +238,7 @@ contents:
             license: Apache-2.0
             name: supabase-studio
             priority: optional
-            rel: 5
+            rel: 6
             section: misc
             url: https://github.com/supabase/supabase
             version: 2026.09.07
