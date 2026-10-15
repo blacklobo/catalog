@@ -38,8 +38,8 @@ node -e '
     // CVE-2026-42033, CVE-2026-42034, CVE-2026-42035, CVE-2026-42036, CVE-2026-42038,
     // CVE-2026-42039, CVE-2026-42040, CVE-2026-42041, CVE-2026-42042, CVE-2026-42043,
     // CVE-2026-44486, CVE-2026-44487, CVE-2026-44490, CVE-2026-44492, CVE-2026-44495,
-    // CVE-2026-44496, CVE-2026-67316, CVE-2026-67319
-    "axios": "0.33.0",
+    // CVE-2026-44496, CVE-2026-67316, CVE-2026-67319, CVE-2026-101909, CVE-2026-101902
+    "axios": "0.34.0",
     // CVE-2024-29041, CVE-2024-43796 and, through its send, serve-static and cookie,
     // CVE-2024-43799, CVE-2024-43800, CVE-2024-47764
     "express": "4.22.2",
@@ -66,8 +66,10 @@ node -e '
     "cipher-base": "1.0.7",
     // CVE-2025-9288
     "sha.js": "2.4.12",
-    // CVE-2025-6545, CVE-2025-6547
-    "pbkdf2": "3.1.6",
+    // CVE-2025-6545, CVE-2025-6547, CVE-2026-102414
+    "pbkdf2": "3.1.7",
+    // CVE-2026-90711 (express ~2.0.7 allows 2.0.8)
+    "proxy-addr": "2.0.8",
     // CVE-2024-42459, CVE-2024-42460, CVE-2024-42461, CVE-2024-48948, CVE-2024-48949
     "elliptic": "6.6.1",
     // CVE-2023-46234
@@ -89,7 +91,7 @@ node -e '
     "@tootallnate/once": "2.0.1",
     // CVE-2017-16137: the vulnerable 4.x debug copies are under the proxy agents and retry-request; yarn v1 scoped keys do not reach them, so bump all debug to 4.4.3 (the express-family 2.6.9 copies are already fixed and move up harmlessly).
     "debug": "4.4.3",
-    // build only: the 4.0.3 upstream resolves cannot parse the axios 0.33 typings
+    // build only: the 4.0.3 upstream resolves cannot parse the axios 0.34 typings
     "typescript": "4.7.4"
   });
   fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
@@ -123,7 +125,7 @@ for bad in bn.js@4.12.0 debug@4.2.0; do
   test -z "$(find . -path "*/node_modules/${n}/package.json" -exec node -p "require(process.argv[1]).version" {} \; | grep -x "${v}")"
 done
 
-for pin in axios@0.33.0 express@4.22.2 body-parser@1.20.8 path-to-regexp@0.1.13 qs@6.16.0 form-data@4.0.6 node-forge@1.4.0 lodash@4.18.1 fast-xml-parser@4.5.7 async@3.2.6 cipher-base@1.0.7 sha.js@2.4.12 pbkdf2@3.1.6 elliptic@6.6.1 browserify-sign@4.2.6 follow-redirects@1.16.0 universal-github-app-jwt@1.2.0 jsonwebtoken@9.0.3 jws@4.0.1 @octokit/rest@20.1.2 @octokit/auth-app@6.1.4 @octokit/request@8.4.1 @octokit/plugin-paginate-rest@11.4.4-cjs.2 @tootallnate/once@2.0.1 decode-uri-component@0.5.0; do
+for pin in axios@0.34.0 express@4.22.2 body-parser@1.20.8 path-to-regexp@0.1.13 qs@6.16.0 form-data@4.0.6 node-forge@1.4.0 lodash@4.18.1 fast-xml-parser@4.5.7 async@3.2.6 cipher-base@1.0.7 sha.js@2.4.12 pbkdf2@3.1.7 proxy-addr@2.0.8 elliptic@6.6.1 browserify-sign@4.2.6 follow-redirects@1.16.0 universal-github-app-jwt@1.2.0 jsonwebtoken@9.0.3 jws@4.0.1 @octokit/rest@20.1.2 @octokit/auth-app@6.1.4 @octokit/request@8.4.1 @octokit/plugin-paginate-rest@11.4.4-cjs.2 @tootallnate/once@2.0.1 decode-uri-component@0.5.0; do
   name="${pin%@*}"
   want="${pin##*@}"
   found="$(find . -path "*/node_modules/${name}/package.json" -exec node -p "require(process.argv[1]).version" {} \; | sort -u | tr '\n' ' ')"
