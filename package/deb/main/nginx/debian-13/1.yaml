@@ -3,8 +3,8 @@
 image: dhi.io/pkg-nginx
 variant: runtime
 tags:
-  - 1.26.3-3-deb13u9-dhi0
-  - 1.26.3-3-deb13u9-dhi0-debian13
+  - 1.26.3-3-deb13u9-dhi1
+  - 1.26.3-3-deb13u9-dhi1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,9 +22,9 @@ vars:
   DEBIAN_ORIG_FILENAME: nginx_1.26.3.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3.orig.tar.gz
   DEBIAN_VERSION: 1.26.3-3+deb13u9
-  DHI_REL: "0"
-  DHI_VERSION: 1.26.3-3+deb13u9+dhi0
-  TAG_VERSION: 1.26.3-3-deb13u9-dhi0
+  DHI_REL: "1"
+  DHI_VERSION: 1.26.3-3+deb13u9+dhi1
+  TAG_VERSION: 1.26.3-3-deb13u9-dhi1
   UPSTREAM_VERSION: 1.26.3
 contents:
   packages:
@@ -75,12 +75,50 @@ contents:
           with:
             file: nginx_1.26.3-3+deb13u9.dsc
             path: nginx
+        - uses: dpkg/patch@v1
+          with:
+            apply: true
+            patches:
+              - ${source.dir}/patch/quilt-cve-93479-map-script.patch
+              - ${source.dir}/patch/CVE-2026-15176.patch
+              - ${source.dir}/patch/CVE-2026-97629.patch
+              - ${source.dir}/patch/CVE-2026-95101.patch
+              - ${source.dir}/patch/CVE-2026-97205.patch
         - uses: dpkg/bump@v1
           with:
-            version: 1.26.3-3+deb13u9+dhi0
+            changelog:
+              - Backport upstream nginx fixes for CVE-2026-15176, CVE-2026-93479, CVE-2026-97629, and CVE-2026-95101
+              - Backport upstream nginx fix for CVE-2026-97205, limiting pending operations counted in r->main->blocked
+            version: 1.26.3-3+deb13u9+dhi1
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
+      paths:
+        - type: file
+          path: ${source.dir}/patch/quilt-cve-93479-map-script.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/nginx/patch/quilt-cve-93479-map-script.patch
+        - type: file
+          path: ${source.dir}/patch/CVE-2026-15176.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/nginx/patch/CVE-2026-15176.patch
+        - type: file
+          path: ${source.dir}/patch/CVE-2026-97629.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/nginx/patch/CVE-2026-97629.patch
+        - type: file
+          path: ${source.dir}/patch/CVE-2026-95101.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/nginx/patch/CVE-2026-95101.patch
+        - type: file
+          path: ${source.dir}/patch/CVE-2026-97205.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/nginx/patch/CVE-2026-97205.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
