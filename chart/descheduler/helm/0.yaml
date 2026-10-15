@@ -10,7 +10,7 @@ platforms:
 vars:
   CHART_COMMIT_SHA: fa0663c68b100a6093a976bb860cdbcb15dfc7f2
   CHART_HELM_NAME: descheduler-chart
-  DESCHEDULER_REFERENCE: dhi/descheduler:0.36.0-debian13@sha256:d9d3cc1bac7fd17e5fc92a61183a64ea326202157ec5e17feef2db6032ea308d
+  DESCHEDULER_REFERENCE: dhi/descheduler:0.36.0-debian13@sha256:3ce3a06b935a788e34bac98a1e03d05ba945d6e4e5a9b5b193c35751b3c06a54
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Descheduler
               images:
                 - name: descheduler
-                  ref: dhi/descheduler:0.36.0-debian13@sha256:d9d3cc1bac7fd17e5fc92a61183a64ea326202157ec5e17feef2db6032ea308d
+                  ref: dhi/descheduler:0.36.0-debian13@sha256:3ce3a06b935a788e34bac98a1e03d05ba945d6e4e5a9b5b193c35751b3c06a54
               name: descheduler-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kubernetes-sigs/descheduler
