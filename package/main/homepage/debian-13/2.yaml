@@ -4,9 +4,9 @@ image: dhi.io/pkg-homepage
 variant: runtime
 tags:
   - 2.5.0
-  - 2.5.0-r0
+  - 2.5.0-r1
   - 2.5.0-debian13
-  - 2.5.0-r0-debian13
+  - 2.5.0-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,8 +15,8 @@ dates:
 vars:
   COMMIT_SHA: 347d34c08c4441857b1ff3f9a0cc30e946411d4b
   DHI_TEST_DEB_EXPECTED_FILES: /usr/lib/homepage/server.js
-  NODEJS_VERSION: 24.21.0-1
-  REL: "0"
+  NODEJS_VERSION: 24.22.0-0
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2.5"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.5.0
@@ -45,7 +45,7 @@ contents:
           - libc6
           - libstdc++6
           - mawk
-          - nodejs-24=24.21.0-1
+          - nodejs-24=24.22.0-0
           - node-corepack
           - npm
           - sed
@@ -151,7 +151,7 @@ contents:
               - deb
             license: GPL-3.0
             name: homepage
-            rel: 0
+            rel: 1
             url: https://github.com/gethomepage/homepage
             version: 2.5.0
 os-release:
