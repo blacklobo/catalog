@@ -19,8 +19,8 @@ vars:
   KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:7.8.1@sha256:d0cfb1794e5da70429b19974b2624e6bbf406dec34e950f15d2c25694fc7fb8a
   NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.60.0@sha256:7816ddcf1b93868c2473d833dbd52613fab4c8c33fd7ce30aade9fb2c3fbc554
   PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
-  PROMETHEUS_REFERENCE: dhi/prometheus:3.15.0-debian13@sha256:ed3df16598046425e2d0b6e476e83e05501bb4ae7105099eb9cf177ea97771e3
-  PUSHGATEWAY_CHART_REFERENCE: dhi/pushgateway-chart:3.9.1@sha256:85fc190bf8a53b9e424c2f98b020ccd4c46fc7c07d8489c126918af5bbaea402
+  PROMETHEUS_REFERENCE: dhi/prometheus:3.15.0-debian13@sha256:698b06b6b1f4317d8a01ddf16070cb61229196857c80db1a5e35d585fa844733
+  PUSHGATEWAY_CHART_REFERENCE: dhi/pushgateway-chart:3.9.1@sha256:95c3b4cdb8c43cb5ebd385ef5b7d5b1a3088568f76d561a8247ef0b07d5008e5
   SEMVER_MAJOR_MINOR_VERSION: "28.16"
   SEMVER_MAJOR_VERSION: "28"
   SEMVER_VERSION: 28.16.0
@@ -67,11 +67,11 @@ contents:
                 - alias: prometheus-pushgateway
                   condition: prometheus-pushgateway.enabled
                   name: prometheus-pushgateway
-                  ref: dhi/pushgateway-chart:3.9.1@sha256:85fc190bf8a53b9e424c2f98b020ccd4c46fc7c07d8489c126918af5bbaea402
+                  ref: dhi/pushgateway-chart:3.9.1@sha256:95c3b4cdb8c43cb5ebd385ef5b7d5b1a3088568f76d561a8247ef0b07d5008e5
               description: Docker Hardened Images Helm chart for Prometheus
               images:
                 - name: prometheus
-                  ref: dhi/prometheus:3.15.0-debian13@sha256:ed3df16598046425e2d0b6e476e83e05501bb4ae7105099eb9cf177ea97771e3
+                  ref: dhi/prometheus:3.15.0-debian13@sha256:698b06b6b1f4317d8a01ddf16070cb61229196857c80db1a5e35d585fa844733
                 - name: prometheus-config-reloader
                   ref: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
               name: prometheus-chart
