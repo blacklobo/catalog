@@ -18,12 +18,12 @@ platforms:
 dates:
   release: "2021-10-26"
 vars:
-  DOTNET_10_VERSION: 10.0.401-1
-  DOTNET_RUNTIME_VERSION: 10.0.12
+  DOTNET_10_VERSION: 10.0.402-0
+  DOTNET_RUNTIME_VERSION: 10.0.13
   SEMVER_MAJOR_MINOR_VERSION: "4.1055"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.1055.100
-  VERSION: 4.1055.100-0
+  VERSION: 4.1055.100-2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -34,7 +34,7 @@ contents:
     - '!libelogind0'
     - '!original-awk'
     - apt
-    - azure-functions-base-4=4.1055.100-0
+    - azure-functions-base-4=4.1055.100-2
     - base-files
     - bash
     - ca-certificates
@@ -69,15 +69,15 @@ contents:
           with:
             license: MIT
             name: microsoft.netcore.app.runtime.linux-x64
-            purl: pkg:nuget/microsoft.netcore.app.runtime.linux-x64@10.0.12
-            version: 10.0.12
+            purl: pkg:nuget/microsoft.netcore.app.runtime.linux-x64@10.0.13
+            version: 10.0.13
         - name: spdx aspnetcore runtime
           uses: spdx@v1
           with:
             license: MIT
             name: microsoft.aspnetcore.app.runtime.linux-x64
-            purl: pkg:nuget/microsoft.aspnetcore.app.runtime.linux-x64@10.0.12
-            version: 10.0.12
+            purl: pkg:nuget/microsoft.aspnetcore.app.runtime.linux-x64@10.0.13
+            version: 10.0.13
       outputs:
         - source: /opt/docker/sbom/microsoft.netcore.app.runtime.linux-x64
           target: /opt/docker/sbom/microsoft.netcore.app.runtime.linux-x64
