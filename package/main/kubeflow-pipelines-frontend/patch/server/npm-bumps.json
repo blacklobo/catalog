@@ -5,7 +5,7 @@
   },
   {
     "package": "js-yaml",
-    "version": "4.3.1"
+    "version": "4.3.2"
   },
   {
     "package": "http-proxy-middleware",
@@ -53,14 +53,35 @@
   },
   {
     "package": "axios",
-    "version": "1.18.0"
+    "version": "1.20.0"
   },
   {
     "package": "ip-address",
-    "version": "10.3.1"
+    "version": "10.7.1"
+  },
+  {
+    "package": "proxy-addr",
+    "version": "2.0.8"
+  },
+  {
+    "package": "decode-uri-component",
+    "version": "0.5.0"
+  },
+  {
+    "package": "decode-uri-component",
+    "version": "0.5.0",
+    "overridePath": [
+      "query-string"
+    ],
+    "removeLockfileEntries": [
+      "node_modules/query-string/node_modules/decode-uri-component"
+    ]
   },
   {
     "package": "qs",
-    "version": "6.16.0"
+    "version": "6.16.0",
+    "overridePath": [
+      "qs"
+    ]
   }
 ]
