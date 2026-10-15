@@ -5,17 +5,17 @@ image: dhi.io/node
 variant: runtime
 tags:
   - 24-debian12
-  - 24.21-debian12
-  - 24.21.0-debian12
+  - 24.22-debian12
+  - 24.22.0-debian12
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DIGEST: sha256:b8c0acc93c2485755809f6733da78ba0fb8e7e63134a7bdb6b8731b50cc3d2d0
+  DIGEST: sha256:ea5fbe22ce69b5573fd82625196939d3925a24caea554af69799dc605e8a9c3b
   NODEJS_VERSION_MAJOR: "24"
-  NODEJS_VERSION_MAJOR_MINOR: "24.21"
-  NODEJS_VERSION_MAJOR_MINOR_PATCH: 24.21.0
-  VERSION: 24.21.0
+  NODEJS_VERSION_MAJOR_MINOR: "24.22"
+  NODEJS_VERSION_MAJOR_MINOR_PATCH: 24.22.0
+  VERSION: 24.22.0
 contents:
   packages:
     - '!acl'
@@ -73,30 +73,30 @@ contents:
           - bash
           - coreutils
         artifacts:
-          - name: dhi.io/pkg-node:24.21.0-debian12@sha256:b8c0acc93c2485755809f6733da78ba0fb8e7e63134a7bdb6b8731b50cc3d2d0
+          - name: dhi.io/pkg-node:24.22.0-debian12@sha256:ea5fbe22ce69b5573fd82625196939d3925a24caea554af69799dc605e8a9c3b
             includes:
               - opt/docker
               - opt/nodejs
               - usr/local/bin/node
             excludes:
               - opt/docker/sbom/yarn
-              - opt/nodejs/node-v24.21.0/bin/corepack
-              - opt/nodejs/node-v24.21.0/bin/npm
-              - opt/nodejs/node-v24.21.0/bin/npx
-              - opt/nodejs/node-v24.21.0/bin/pnpm
-              - opt/nodejs/node-v24.21.0/bin/pnpx
-              - opt/nodejs/node-v24.21.0/bin/yarn
-              - opt/nodejs/node-v24.21.0/bin/yarnpkg
-              - opt/nodejs/node-v24.21.0/include
-              - opt/nodejs/node-v24.21.0/lib
-              - opt/nodejs/node-v24.21.0/share
+              - opt/nodejs/node-v24.22.0/bin/corepack
+              - opt/nodejs/node-v24.22.0/bin/npm
+              - opt/nodejs/node-v24.22.0/bin/npx
+              - opt/nodejs/node-v24.22.0/bin/pnpm
+              - opt/nodejs/node-v24.22.0/bin/pnpx
+              - opt/nodejs/node-v24.22.0/bin/yarn
+              - opt/nodejs/node-v24.22.0/bin/yarnpkg
+              - opt/nodejs/node-v24.22.0/include
+              - opt/nodejs/node-v24.22.0/lib
+              - opt/nodejs/node-v24.22.0/share
             uid: 0
             gid: 0
       pipeline:
         - name: strip
           uses: strip@v1
           with:
-            dir: /opt/nodejs/node-v24.21.0
+            dir: /opt/nodejs/node-v24.22.0
       outputs:
         - source: /opt/nodejs
           target: /opt/nodejs
@@ -132,7 +132,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /app
 environment:
-  NODE_VERSION: 24.21.0
+  NODE_VERSION: 24.22.0
 paths:
   - type: directory
     path: /app
