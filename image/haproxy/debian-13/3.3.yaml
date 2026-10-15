@@ -5,11 +5,11 @@ image: dhi.io/haproxy
 variant: runtime
 tags:
   - "3.3"
-  - 3.3.16
+  - 3.3.17
   - 3.3-debian
   - 3.3-debian13
-  - 3.3.16-debian
-  - 3.3.16-debian13
+  - 3.3.17-debian
+  - 3.3.17-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -19,9 +19,9 @@ dates:
 vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.3"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.3.16
-  SHA256: sha256:14be7fc8208b4730fb38d864d90c659189414678b13d9e756ea28adfd9f24641
-  VERSION: 3.3.16
+  SEMVER_VERSION: 3.3.17
+  SHA256: sha256:cf221e18e1d2d8155c40485b4389af4c7bcdfc774d806dcf391f9d247e4c1b63
+  VERSION: 3.3.17
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -55,15 +55,15 @@ contents:
           - make
           - tar
         files:
-          - url: https://www.haproxy.org/download/3.3/src/haproxy-3.3.16.tar.gz
-            checksum: sha256:14be7fc8208b4730fb38d864d90c659189414678b13d9e756ea28adfd9f24641
+          - url: https://www.haproxy.org/download/3.3/src/haproxy-3.3.17.tar.gz
+            checksum: sha256:cf221e18e1d2d8155c40485b4389af4c7bcdfc774d806dcf391f9d247e4c1b63
             path: ${source.dir}/haproxy.tar.gz
             spdx:
               name: haproxy
-              version: 3.3.16
+              version: 3.3.17
               packages:
                 - name: haproxy
-                  purl: pkg:dhi/haproxy@3.3.16
+                  purl: pkg:dhi/haproxy@3.3.17
                   license: GPL-2.0-only
             uid: 0
             gid: 0
@@ -78,7 +78,7 @@ contents:
             set -eux -o pipefail
 
             nproc="$(nproc)"
-            make -C 'haproxy-3.3.16' -j "$nproc" \
+            make -C 'haproxy-3.3.17' -j "$nproc" \
               TARGET=linux-glibc \
               CC=gcc \
               \
@@ -95,7 +95,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            make -C 'haproxy-3.3.16' \
+            make -C 'haproxy-3.3.17' \
               \
               PREFIX='${target.dir}/opt/haproxy' \
               SBINDIR='${target.dir}/opt/haproxy/bin' \
@@ -130,7 +130,7 @@ os-release:
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
 environment:
-  HAPROXY_VERSION: 3.3.16
+  HAPROXY_VERSION: 3.3.17
   PATH: /opt/haproxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 annotations:
   org.opencontainers.image.description: A minimal HAProxy image
