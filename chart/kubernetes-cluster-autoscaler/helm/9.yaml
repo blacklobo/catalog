@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBERNETES_CLUSTER_AUTOSCALER_REFERENCE: dhi/kubernetes-cluster-autoscaler:1.34.5-debian13@sha256:06ac151e53a8fa734479f1d2bd405183f2ebd584d274fdb560fa9b4a657e15f5
+  KUBERNETES_CLUSTER_AUTOSCALER_REFERENCE: dhi/kubernetes-cluster-autoscaler:1.34.5-debian13@sha256:92daababbcb350183025dd7b906d2f529ddca17a53dbba7a3dab56c71718e098
   SEMVER_MAJOR_MINOR_VERSION: "9.59"
   SEMVER_MAJOR_VERSION: "9"
   SEMVER_VERSION: 9.59.0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for kubernetes-cluster-autoscaler
               images:
                 - name: kubernetes-cluster-autoscaler
-                  ref: dhi/kubernetes-cluster-autoscaler:1.34.5-debian13@sha256:06ac151e53a8fa734479f1d2bd405183f2ebd584d274fdb560fa9b4a657e15f5
+                  ref: dhi/kubernetes-cluster-autoscaler:1.34.5-debian13@sha256:92daababbcb350183025dd7b906d2f529ddca17a53dbba7a3dab56c71718e098
               name: kubernetes-cluster-autoscaler-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kubernetes/autoscaler
