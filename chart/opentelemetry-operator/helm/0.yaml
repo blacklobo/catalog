@@ -4,13 +4,13 @@ name: OpenTelemetry Operator Helm chart 0.x
 image: dhi.io/opentelemetry-operator-chart
 variant: helm
 tags:
-  - 0.125.0
+  - 0.126.0
 platforms:
   - linux/amd64
 vars:
-  APPVERSION: 0.160.0
+  APPVERSION: 0.161.0
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:b3620c618e4622e1037675820c89a34ef3091fbd2e31552daaae1408a6fa1ee7
-  CHART_COMMIT_SHA: 1b601eeecb819116119f1dd6edf8dd8196f1cb17
+  CHART_COMMIT_SHA: 053f80df06baffb6530ece5f4084547fbb94e8cc
   CHART_HELM_NAME: opentelemetry-operator-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -18,12 +18,12 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   OPENTELEMETRY_AUTOINSTRUMENTATION_GO_REFERENCE: dhi/opentelemetry-autoinstrumentation-go:0.24.0-debian13@sha256:328eb4add59bfe074d5bc340583385ea782aee448813b5871f168355f3e24bd6
-  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.160.0-debian13@sha256:de5a837704c231ea433eb72c55919dc2feaeed45cbf71fbd0f0cf6be0430d8c1
-  OPENTELEMETRY_OPERATOR_REFERENCE: dhi/opentelemetry-operator:0.160.0-debian13@sha256:9a2e8f317d607a5f88a30a0c973f8a346075c5c05b709514e6cc1fb94c6a9c6e
-  SEMVER_MAJOR_MINOR_VERSION: "0.125"
+  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.161.0-debian13@sha256:e0c74e212bcf8f38bd6ac5a100bb92396bd2e485ddac1aec657f5c8627738a3a
+  OPENTELEMETRY_OPERATOR_REFERENCE: dhi/opentelemetry-operator:0.161.0-debian13@sha256:ed923644686640ce650845fcd835d49df8cdaa753f96bdf404d789fde06ee319
+  SEMVER_MAJOR_MINOR_VERSION: "0.126"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.125.0
-  VERSION: 0.125.0
+  SEMVER_VERSION: 0.126.0
+  VERSION: 0.126.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -39,8 +39,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/open-telemetry/opentelemetry-helm-charts.git#opentelemetry-operator-0.125.0
-            checksum: 1b601eeecb819116119f1dd6edf8dd8196f1cb17
+          - url: git+https://github.com/open-telemetry/opentelemetry-helm-charts.git#opentelemetry-operator-0.126.0
+            checksum: 053f80df06baffb6530ece5f4084547fbb94e8cc
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -53,9 +53,9 @@ contents:
               description: Docker Hardened Images Helm chart for OpenTelemetry Operator
               images:
                 - name: opentelemetry-operator
-                  ref: dhi/opentelemetry-operator:0.160.0-debian13@sha256:9a2e8f317d607a5f88a30a0c973f8a346075c5c05b709514e6cc1fb94c6a9c6e
+                  ref: dhi/opentelemetry-operator:0.161.0-debian13@sha256:ed923644686640ce650845fcd835d49df8cdaa753f96bdf404d789fde06ee319
                 - name: opentelemetry-collector
-                  ref: dhi/opentelemetry-collector:0.160.0-debian13@sha256:de5a837704c231ea433eb72c55919dc2feaeed45cbf71fbd0f0cf6be0430d8c1
+                  ref: dhi/opentelemetry-collector:0.161.0-debian13@sha256:e0c74e212bcf8f38bd6ac5a100bb92396bd2e485ddac1aec657f5c8627738a3a
                 - name: busybox
                   ref: dhi/busybox:1.37.0-debian13@sha256:b3620c618e4622e1037675820c89a34ef3091fbd2e31552daaae1408a6fa1ee7
                 - name: opentelemetry-autoinstrumentation-go
