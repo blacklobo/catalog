@@ -4,9 +4,9 @@ image: dhi.io/pkg-piraeus-server
 variant: runtime
 tags:
   - 1.35.2
-  - 1.35.2-r7
+  - 1.35.2-r8
   - 1.35.2-debian13
-  - 1.35.2-r7-debian13
+  - 1.35.2-r8-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -37,7 +37,7 @@ vars:
   PYTHON_LINSTOR_VERSION: 1.27.1
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "7"
+  REL: "8"
   RUSTC_VERSION: 1.97.1-0
   SEMVER_MAJOR_MINOR_VERSION: "1.35"
   SEMVER_MAJOR_VERSION: "1"
@@ -323,7 +323,6 @@ contents:
             git fetch --tags --unshallow 2> /dev/null || git fetch --tags || true
             git submodule init
             git submodule update
-        - uses: gradle/mirror@v1
         - name: upgrade vulnerable dependencies
           work-dir: ${source.dir}/linstor-server
           runs: |
@@ -346,7 +345,9 @@ contents:
                 configurations.all {
                     resolutionStrategy.force(
                         "com.google.guava:guava:32.0.1-jre",
-                        "com.fasterxml.jackson.core:jackson-databind:2.22.1",
+                        "com.fasterxml.jackson.core:jackson-core:2.22.3",
+                        "com.fasterxml.jackson.core:jackson-databind:2.22.3",
+                        "com.h2database:h2:2.4.240",
                         "io.vertx:vertx-core:4.5.27",
                         "io.vertx:vertx-auth-common:4.5.27",
                         "io.vertx:vertx-web-client:4.5.27",
@@ -402,8 +403,11 @@ contents:
             chmod +x "${PROTOC_DIR}/bin/protoc"
             "${PROTOC_DIR}/bin/protoc" --version
 
-            gradle dependencies --write-locks --no-daemon -PversionOverride=v1.35.2 || true
-            gradle install --no-daemon -x test -PversionOverride=v1.35.2
+            INIT_SCRIPT="${source.dir}/scripts/dhi-gradle-mirror.init.gradle"
+            gradle dependencies --write-locks --no-daemon -PversionOverride=v1.35.2 \
+              --init-script "${INIT_SCRIPT}" || true
+            gradle install --no-daemon -x test -PversionOverride=v1.35.2 \
+              --init-script "${INIT_SCRIPT}"
         - name: install LINSTOR artifacts
           work-dir: ${source.dir}/linstor-server
           runs: |
@@ -460,10 +464,16 @@ contents:
               - deb
             license: Apache-2.0
             name: piraeus-server
-            rel: 7
+            rel: 8
             url: https://github.com/piraeusdatastore/piraeus
             version: 1.35.2
       paths:
+        - type: file
+          path: ${source.dir}/scripts/dhi-gradle-mirror.init.gradle
+          uid: 0
+          gid: 0
+          mode: "0644"
+          source: package/main/piraeus-server/files/dhi-gradle-mirror.init.gradle
         - type: file
           path: ${source.dir}/scripts/sed_bump.sh
           uid: 0
