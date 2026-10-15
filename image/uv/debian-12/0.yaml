@@ -69,6 +69,8 @@ contents:
 
             # GHSA-q83h-524g-xf6h → h2 ≥0.4.16
             cargo update --package h2 --precise 0.4.16
+
+            cargo update --package rustls --precise 0.23.46
         - name: build
           work-dir: ${source.dir}/uv-62faed3351cfee2121b3c28b937b1f4b93233a93
           privileged: true
