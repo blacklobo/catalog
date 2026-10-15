@@ -3,10 +3,10 @@
 image: dhi.io/pkg-nextcloud
 variant: runtime
 tags:
-  - 34.0.4
-  - 34.0.4-r0
-  - 34.0.4-debian13
-  - 34.0.4-r0-debian13
+  - 34.0.5
+  - 34.0.5-r0
+  - 34.0.5-debian13
+  - 34.0.5-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,8 +18,8 @@ vars:
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "34.0"
   SEMVER_MAJOR_VERSION: "34"
-  SEMVER_VERSION: 34.0.4
-  VERSION: 34.0.4
+  SEMVER_VERSION: 34.0.5
+  VERSION: 34.0.5
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -40,23 +40,23 @@ contents:
           - findutils
           - tar
         files:
-          - url: https://github.com/nextcloud-releases/server/releases/download/v34.0.4/nextcloud-34.0.4.tar.bz2
+          - url: https://github.com/nextcloud-releases/server/releases/download/v34.0.5/nextcloud-34.0.5.tar.bz2
             path: ${source.dir}/nextcloud.tar.bz2
             spdx:
               name: nextcloud
-              version: 34.0.4
+              version: 34.0.5
               packages:
                 - name: nextcloud
-                  purl: pkg:github/nextcloud/server@34.0.4
+                  purl: pkg:github/nextcloud/server@34.0.5
                   license: AGPL-3.0-or-later
             uid: 0
             gid: 0
-          - url: https://github.com/nextcloud-releases/server/releases/download/v34.0.4/nextcloud-34.0.4.tar.bz2.asc
+          - url: https://github.com/nextcloud-releases/server/releases/download/v34.0.5/nextcloud-34.0.5.tar.bz2.asc
             path: ${source.dir}/nextcloud.tar.bz2.asc
             uid: 0
             gid: 0
       pipeline:
-        - name: verify nextcloud-34.0.4.tar.bz2
+        - name: verify nextcloud-34.0.5.tar.bz2
           uses: gpg/verify@v1
           with:
             file: ${source.dir}/nextcloud.tar.bz2
@@ -100,7 +100,7 @@ contents:
             name: nextcloud-34
             rel: 0
             url: https://nextcloud.com/
-            version: 34.0.4
+            version: 34.0.5
       paths:
         - type: file
           path: ${source.dir}/keys.asc
