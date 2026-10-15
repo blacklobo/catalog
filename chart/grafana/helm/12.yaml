@@ -18,7 +18,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   GRAFANA_IMAGE_RENDERER_REFERENCE: dhi/grafana-image-renderer:5.12.7-debian13@sha256:fef6151a2539f3c685cc22c3808444a4106b8bfb95e113f46facc98e8a362f2a
-  GRAFANA_REFERENCE: dhi/grafana:12.4.12-debian13@sha256:b91c069d72bf05147b9c2b769cf80cca3564992f1b6ea31f00c8f8044ecac071
+  GRAFANA_REFERENCE: dhi/grafana:12.4.12-debian13@sha256:57427250425004dc51af0d3a4003ad39e2a2b85fcecc8f17f517c2813765a7a5
   HELM_VERSION: 4.1.4-2
   K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:460bb2ff54a20c2f094feb98a44958559788b463d7b029ec4d88c944533ce2d4
   SEMVER_MAJOR_MINOR_VERSION: "12.11"
@@ -54,7 +54,7 @@ contents:
               description: Docker Hardened Images Helm chart for Grafana
               images:
                 - name: grafana
-                  ref: dhi/grafana:12.4.12-debian13@sha256:b91c069d72bf05147b9c2b769cf80cca3564992f1b6ea31f00c8f8044ecac071
+                  ref: dhi/grafana:12.4.12-debian13@sha256:57427250425004dc51af0d3a4003ad39e2a2b85fcecc8f17f517c2813765a7a5
                 - name: grafana-image-renderer
                   ref: dhi/grafana-image-renderer:5.12.7-debian13@sha256:fef6151a2539f3c685cc22c3808444a4106b8bfb95e113f46facc98e8a362f2a
                 - name: bats
