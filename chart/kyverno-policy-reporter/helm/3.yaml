@@ -4,11 +4,11 @@ name: Kyverno Policy Reporter Helm chart 3.x
 image: dhi.io/kyverno-policy-reporter-chart
 variant: helm
 tags:
-  - 3.11.0
+  - 3.11.1
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: e47b57b4058143542a35f44123b74bd98a8c5a5a
+  CHART_COMMIT_SHA: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
   CHART_HELM_NAME: kyverno-policy-reporter-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -21,10 +21,10 @@ vars:
   POLICY_REPORTER_UI_IMAGE_TAG: 2.9.0
   SEMVER_MAJOR_MINOR_VERSION: "3.11"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.11.0
+  SEMVER_VERSION: 3.11.1
   TRIVY_IMAGE_TAG: 0.74.0
   TRIVY_REFERENCE: dhi/trivy:0.74.0-debian13@sha256:68177db393fb74d2af7be455d160cc2ea7b17c2010816196af483244f381d74d
-  VERSION: 3.11.0
+  VERSION: 3.11.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -40,8 +40,8 @@ contents:
           - sed
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/kyverno/policy-reporter.git#policy-reporter-3.11.0
-            checksum: e47b57b4058143542a35f44123b74bd98a8c5a5a
+          - url: git+https://github.com/kyverno/policy-reporter.git#policy-reporter-3.11.1
+            checksum: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
             path: ${source.dir}/policy-reporter
             uid: 0
             gid: 0
