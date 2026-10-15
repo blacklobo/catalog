@@ -4,23 +4,23 @@ name: Grafana Tempo Helm chart 3.x
 image: dhi.io/tempo-chart
 variant: helm
 tags:
-  - 3.1.0
+  - 3.2.0
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 5572808b898779a9b0abdbf09f5b947229d9a9eb
+  CHART_COMMIT_SHA: 26245a9a9e3963b56cbb0c11873dc1bb319f29d6
   CHART_HELM_NAME: tempo-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  SEMVER_MAJOR_MINOR_VERSION: "3.1"
+  SEMVER_MAJOR_MINOR_VERSION: "3.2"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.1.0
+  SEMVER_VERSION: 3.2.0
   TEMPO_QUERY_REFERENCE: dhi/tempo-query:3.1.0-debian13@sha256:6a210ad6d857104db68af9c8e4bbdff464f59b41f170bb4e143a6445e80411e3
   TEMPO_REFERENCE: dhi/tempo:3.1.0-debian13@sha256:4377fde0c121d34288dd530f7fbdfd0ca3c6c1c7f29986bd54f1988b5b24b28e
-  VERSION: 3.1.0
+  VERSION: 3.2.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/grafana-community/helm-charts.git#tempo-3.1.0
-            checksum: 5572808b898779a9b0abdbf09f5b947229d9a9eb
+          - url: git+https://github.com/grafana-community/helm-charts.git#tempo-3.2.0
+            checksum: 26245a9a9e3963b56cbb0c11873dc1bb319f29d6
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
