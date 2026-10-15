@@ -20,7 +20,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "1.2"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.2.0
-  STRIMZI_KAFKA_REFERENCE: dhi/strimzi-kafka:1.2.0-debian13-kafka-4.2.1@sha256:51510d376b15a6c6a0742c9a5135a85c32a2244c53c5d7718cccef1117393f48
+  STRIMZI_KAFKA_REFERENCE: dhi/strimzi-kafka:1.2.0-debian13-kafka-4.2.1@sha256:60ab4cbe9c69b79b15e3a53bee1999340f6a16dd99905fddcd53783fa50c9744
   STRIMZI_KAFKA_VERSION_MATCH: 1.2.0
   STRIMZI_OPERATOR_REFERENCE: dhi/strimzi-operator:1.2.0-debian13@sha256:f37d301a0e8125938a9cacf58d2e6bf8c247f1c004fffa42a57d559559791806
   VERSION: 1.2.0
@@ -75,7 +75,7 @@ contents:
                 - name: strimzi-operator
                   ref: dhi/strimzi-operator:1.2.0-debian13@sha256:f37d301a0e8125938a9cacf58d2e6bf8c247f1c004fffa42a57d559559791806
                 - name: strimzi-kafka
-                  ref: dhi/strimzi-kafka:1.2.0-debian13-kafka-4.2.1@sha256:51510d376b15a6c6a0742c9a5135a85c32a2244c53c5d7718cccef1117393f48
+                  ref: dhi/strimzi-kafka:1.2.0-debian13-kafka-4.2.1@sha256:60ab4cbe9c69b79b15e3a53bee1999340f6a16dd99905fddcd53783fa50c9744
               name: strimzi-kafka-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/strimzi/strimzi-kafka-operator
