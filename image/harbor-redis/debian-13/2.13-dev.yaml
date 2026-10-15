@@ -16,6 +16,9 @@ platforms:
 dates:
   release: "2025-03-17"
 vars:
+  CACHE_SERVER_BINARY: redis-server
+  CACHE_SERVER_PRODUCT: Redis
+  CACHE_SERVER_VERSION_PREFIX: 7.2.
   REDIS_VERSION: 6:7.2.16-1rl1~trixie1
   SEMVER_MAJOR_MINOR_VERSION: "2.13"
   SEMVER_MAJOR_VERSION: "2"
@@ -26,11 +29,11 @@ vars:
   redis-tools: pkg:deb/redis/redis-tools@6:7.2.16-1rl1~trixie1?os_name=debian&os_version=13
 contents:
   repositories:
-    - deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb trixie main
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+    - deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb trixie main
   keyring:
-    - https://packages.redis.io/gpg
     - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+    - https://packages.redis.io/gpg
   packages:
     - '!gawk'
     - '!libelogind0'
