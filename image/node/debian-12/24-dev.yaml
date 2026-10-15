@@ -5,17 +5,17 @@ image: dhi.io/node
 variant: dev
 tags:
   - 24-debian12-dev
-  - 24.21-debian12-dev
-  - 24.21.0-debian12-dev
+  - 24.22-debian12-dev
+  - 24.22.0-debian12-dev
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DIGEST: sha256:b8c0acc93c2485755809f6733da78ba0fb8e7e63134a7bdb6b8731b50cc3d2d0
+  DIGEST: sha256:ea5fbe22ce69b5573fd82625196939d3925a24caea554af69799dc605e8a9c3b
   NODEJS_VERSION_MAJOR: "24"
-  NODEJS_VERSION_MAJOR_MINOR: "24.21"
-  NODEJS_VERSION_MAJOR_MINOR_PATCH: 24.21.0
-  VERSION: 24.21.0
+  NODEJS_VERSION_MAJOR_MINOR: "24.22"
+  NODEJS_VERSION_MAJOR_MINOR_PATCH: 24.22.0
+  VERSION: 24.22.0
 contents:
   packages:
     - '!gawk'
@@ -39,7 +39,7 @@ contents:
     - sed
     - util-linux
   artifacts:
-    - name: dhi.io/pkg-node:24.21.0-debian12@sha256:b8c0acc93c2485755809f6733da78ba0fb8e7e63134a7bdb6b8731b50cc3d2d0
+    - name: dhi.io/pkg-node:24.22.0-debian12@sha256:ea5fbe22ce69b5573fd82625196939d3925a24caea554af69799dc605e8a9c3b
       includes:
         - opt/docker
         - opt/nodejs
@@ -73,7 +73,7 @@ os-release:
 work-dir: /app
 environment:
   DEBIAN_FRONTEND: noninteractive
-  NODE_VERSION: 24.21.0
+  NODE_VERSION: 24.22.0
   NPM_CONFIG_UPDATE_NOTIFIER: "false"
 paths:
   - type: directory
