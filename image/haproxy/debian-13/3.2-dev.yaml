@@ -5,11 +5,11 @@ image: dhi.io/haproxy
 variant: dev
 tags:
   - 3.2-dev
-  - 3.2.25-dev
+  - 3.2.26-dev
   - 3.2-debian-dev
   - 3.2-debian13-dev
-  - 3.2.25-debian-dev
-  - 3.2.25-debian13-dev
+  - 3.2.26-debian-dev
+  - 3.2.26-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -19,9 +19,9 @@ dates:
 vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.2"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.2.25
-  SHA256: sha256:d59a68d0daef7b5c596b019b742089788ff1748513ef96e71fe7b3943577866e
-  VERSION: 3.2.25
+  SEMVER_VERSION: 3.2.26
+  SHA256: sha256:760ef35fafc1e05844e73ad07e138e9e96fddbf5de02f606249c027f754827da
+  VERSION: 3.2.26
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -72,15 +72,15 @@ contents:
           - make
           - tar
         files:
-          - url: https://www.haproxy.org/download/3.2/src/haproxy-3.2.25.tar.gz
-            checksum: sha256:d59a68d0daef7b5c596b019b742089788ff1748513ef96e71fe7b3943577866e
+          - url: https://www.haproxy.org/download/3.2/src/haproxy-3.2.26.tar.gz
+            checksum: sha256:760ef35fafc1e05844e73ad07e138e9e96fddbf5de02f606249c027f754827da
             path: ${source.dir}/haproxy.tar.gz
             spdx:
               name: haproxy
-              version: 3.2.25
+              version: 3.2.26
               packages:
                 - name: haproxy
-                  purl: pkg:dhi/haproxy@3.2.25
+                  purl: pkg:dhi/haproxy@3.2.26
                   license: GPL-2.0-only
             uid: 0
             gid: 0
@@ -95,7 +95,7 @@ contents:
             set -eux -o pipefail
 
             nproc="$(nproc)"
-            make -C 'haproxy-3.2.25' -j "$nproc" \
+            make -C 'haproxy-3.2.26' -j "$nproc" \
               TARGET=linux-glibc \
               CC=gcc \
               \
@@ -112,7 +112,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            make -C 'haproxy-3.2.25' \
+            make -C 'haproxy-3.2.26' \
               \
               PREFIX='${target.dir}/opt/haproxy' \
               SBINDIR='${target.dir}/opt/haproxy/bin' \
@@ -152,7 +152,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 environment:
   DEBIAN_FRONTEND: noninteractive
-  HAPROXY_VERSION: 3.2.25
+  HAPROXY_VERSION: 3.2.26
   PATH: /opt/haproxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 paths:
   - type: file
