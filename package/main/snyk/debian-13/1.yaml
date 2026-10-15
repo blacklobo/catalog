@@ -3,24 +3,24 @@
 image: dhi.io/pkg-snyk
 variant: runtime
 tags:
-  - 1.1308.0-0
-  - 1.1308.0-0-debian13
+  - 1.1308.1-0
+  - 1.1308.1-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   DHI_REL: "0"
-  DHI_VERSION: 1.1308.0-0
+  DHI_VERSION: 1.1308.1-0
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.1308.0
-  SNYK_AMD64_CHECKSUM: sha256:a916d3ec9e6c27d56cf67664459885512758a1ae94418ba430fcb92e86c32ae1
-  SNYK_ARM64_CHECKSUM: sha256:059d33ea4fa3d53c26ade2b6f69ab61dcf567dc8cbc2225ef3060db6fcfe8664
+  SEMVER_VERSION: 1.1308.1
+  SNYK_AMD64_CHECKSUM: sha256:a8b2e420af6d8e61bf1d367c064475ccf699d767fc8763efb0072b9cac250f9a
+  SNYK_ARM64_CHECKSUM: sha256:bc80903433d94036698ac695d67e3fbbf49cae318adda970c3db23e95cd22d56
   SNYK_ASSET: '#{ target.arch == "arm64" ? "snyk-linux-arm64" : "snyk-linux" }'
-  SNYK_CHECKSUM: '#{ target.arch == "arm64" ? "sha256:059d33ea4fa3d53c26ade2b6f69ab61dcf567dc8cbc2225ef3060db6fcfe8664" : "sha256:a916d3ec9e6c27d56cf67664459885512758a1ae94418ba430fcb92e86c32ae1" }'
-  SNYK_FIPS_AMD64_CHECKSUM: sha256:1d5d28c426efd8d170efbaeec2f186d16401580fd4f6583d651ce2b907f8c255
-  SNYK_FIPS_ARM64_CHECKSUM: sha256:87385e8e619083ed83c3a29392c1a471cee995ddf9690125f9440888a390081b
-  SNYK_FIPS_CHECKSUM: '#{ target.arch == "arm64" ? "sha256:87385e8e619083ed83c3a29392c1a471cee995ddf9690125f9440888a390081b" : "sha256:1d5d28c426efd8d170efbaeec2f186d16401580fd4f6583d651ce2b907f8c255" }'
-  VERSION: 1.1308.0
+  SNYK_CHECKSUM: '#{ target.arch == "arm64" ? "sha256:bc80903433d94036698ac695d67e3fbbf49cae318adda970c3db23e95cd22d56" : "sha256:a8b2e420af6d8e61bf1d367c064475ccf699d767fc8763efb0072b9cac250f9a" }'
+  SNYK_FIPS_AMD64_CHECKSUM: sha256:5e3b0467b8dad05d76db14744511c0b7c2036e73b2bb7d6822d341e6a39d9f74
+  SNYK_FIPS_ARM64_CHECKSUM: sha256:a3f96a8d878eeb97e68de60be28c8100bec940d37900d8e0ce61bd54fc46087f
+  SNYK_FIPS_CHECKSUM: '#{ target.arch == "arm64" ? "sha256:a3f96a8d878eeb97e68de60be28c8100bec940d37900d8e0ce61bd54fc46087f" : "sha256:5e3b0467b8dad05d76db14744511c0b7c2036e73b2bb7d6822d341e6a39d9f74" }'
+  VERSION: 1.1308.1
 contents:
   packages:
     - '!base-files'
@@ -33,7 +33,7 @@ contents:
           - dpkg-dev
           - make
         files:
-          - url: https://github.com/snyk/cli/releases/download/v1.1308.0/${SNYK_ASSET}
+          - url: https://github.com/snyk/cli/releases/download/v1.1308.1/${SNYK_ASSET}
             checksum: ${SNYK_CHECKSUM}
             path: ${source.dir}/snyk/${SNYK_ASSET}
             uid: 0
@@ -49,7 +49,7 @@ contents:
           with:
             changelog:
               - DHI Build
-            version: 1.1308.0-0
+            version: 1.1308.1-0
         - uses: dpkg/build@v1
           with:
             args: -b -uc -us -d
