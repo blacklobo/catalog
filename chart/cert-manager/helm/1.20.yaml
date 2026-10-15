@@ -8,14 +8,14 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  CERT_MANAGER_ACMESOLVER_REFERENCE: dhi/cert-manager-acmesolver:1.20.4-debian13@sha256:127c2b2bfa323ec2aee37500d311d6b1304ee9645e59acea3dffb96af99de109
-  CERT_MANAGER_CAINJECTOR_REFERENCE: dhi/cert-manager-cainjector:1.20.4-debian13@sha256:21f972db90c20b38ceeaffda3a5ebe713efb9dc471a6b321e41fd56e924622c8
+  CERT_MANAGER_ACMESOLVER_REFERENCE: dhi/cert-manager-acmesolver:1.20.4-debian13@sha256:42797e0c3a967f123c0ff160d8b3dedaaadb6a48f51f8a49f13a74ef86fb8073
+  CERT_MANAGER_CAINJECTOR_REFERENCE: dhi/cert-manager-cainjector:1.20.4-debian13@sha256:2db1d7343343f817d1ebb30aa2130f33fb09eb24bf6c5d42c3dd69379d3709a6
   CERT_MANAGER_COMMIT_SHA: 0b9448974868c5669d4f3e7499f5afd393889e22
-  CERT_MANAGER_CONTROLLER_REFERENCE: dhi/cert-manager-controller:1.20.4-debian13@sha256:b6d4db2175ec3aafec912ed2e053f39082a455a61acf90e23c459f6480c40300
+  CERT_MANAGER_CONTROLLER_REFERENCE: dhi/cert-manager-controller:1.20.4-debian13@sha256:3a0fde3989b2f80f58976b0180096f8a291d36d0b93385d5d16bb448b2c2f4e9
   CERT_MANAGER_MAJOR_MINOR_VERSION: "1.20"
-  CERT_MANAGER_STARTUPAPICHECK_REFERENCE: dhi/cert-manager-startupapicheck:1.20.4-debian13@sha256:4f7f1f6db60d749c74687e16b88e6f1397f8d668b5cd48abefaf69676509117d
+  CERT_MANAGER_STARTUPAPICHECK_REFERENCE: dhi/cert-manager-startupapicheck:1.20.4-debian13@sha256:87c087622cb8e0b0c1f89ece6a4ffa746ef1842a6f128e8cb6803b9499d0d211
   CERT_MANAGER_VERSION: 1.20.4
-  CERT_MANAGER_WEBHOOK_REFERENCE: dhi/cert-manager-webhook:1.20.4-debian13@sha256:b67ccb013aee339bbf460404e65821116476df437bb0b0bab44ac185b5732661
+  CERT_MANAGER_WEBHOOK_REFERENCE: dhi/cert-manager-webhook:1.20.4-debian13@sha256:68cc27a2c6106d65b9544f6db314b8929d60929c53340f9f2f274f75b4fce5d7
   CHART_HELM_NAME: cert-manager-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -66,15 +66,15 @@ contents:
               description: Docker Hardened Images Helm chart for Cert-Manager
               images:
                 - name: cert-manager-controller
-                  ref: dhi/cert-manager-controller:1.20.4-debian13@sha256:b6d4db2175ec3aafec912ed2e053f39082a455a61acf90e23c459f6480c40300
+                  ref: dhi/cert-manager-controller:1.20.4-debian13@sha256:3a0fde3989b2f80f58976b0180096f8a291d36d0b93385d5d16bb448b2c2f4e9
                 - name: cert-manager-cainjector
-                  ref: dhi/cert-manager-cainjector:1.20.4-debian13@sha256:21f972db90c20b38ceeaffda3a5ebe713efb9dc471a6b321e41fd56e924622c8
+                  ref: dhi/cert-manager-cainjector:1.20.4-debian13@sha256:2db1d7343343f817d1ebb30aa2130f33fb09eb24bf6c5d42c3dd69379d3709a6
                 - name: cert-manager-acmesolver
-                  ref: dhi/cert-manager-acmesolver:1.20.4-debian13@sha256:127c2b2bfa323ec2aee37500d311d6b1304ee9645e59acea3dffb96af99de109
+                  ref: dhi/cert-manager-acmesolver:1.20.4-debian13@sha256:42797e0c3a967f123c0ff160d8b3dedaaadb6a48f51f8a49f13a74ef86fb8073
                 - name: cert-manager-startupapicheck
-                  ref: dhi/cert-manager-startupapicheck:1.20.4-debian13@sha256:4f7f1f6db60d749c74687e16b88e6f1397f8d668b5cd48abefaf69676509117d
+                  ref: dhi/cert-manager-startupapicheck:1.20.4-debian13@sha256:87c087622cb8e0b0c1f89ece6a4ffa746ef1842a6f128e8cb6803b9499d0d211
                 - name: cert-manager-webhook
-                  ref: dhi/cert-manager-webhook:1.20.4-debian13@sha256:b67ccb013aee339bbf460404e65821116476df437bb0b0bab44ac185b5732661
+                  ref: dhi/cert-manager-webhook:1.20.4-debian13@sha256:68cc27a2c6106d65b9544f6db314b8929d60929c53340f9f2f274f75b4fce5d7
               name: cert-manager-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/cert-manager/cert-manager
