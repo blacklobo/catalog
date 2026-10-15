@@ -19,7 +19,7 @@ platforms:
 dates:
   release: "2025-07-31"
 vars:
-  COMMIT_SHA: b7f5c5291868afbebe7ebc1c6b8865b65c4eb2fa
+  COMMIT_SHA: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
   SEMVER_MAJOR_MINOR_VERSION: "3.11"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.11.1
@@ -64,7 +64,7 @@ contents:
           - sed
         files:
           - url: git+https://github.com/kyverno/policy-reporter.git#v3.11.1
-            checksum: b7f5c5291868afbebe7ebc1c6b8865b65c4eb2fa
+            checksum: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
             path: /go/src/github.com/kyverno/policy-reporter
             spdx:
               name: kyverno-policy-reporter
