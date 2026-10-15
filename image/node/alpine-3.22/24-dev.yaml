@@ -5,8 +5,8 @@ image: dhi.io/node
 variant: dev
 tags:
   - 24-alpine3.22-dev
-  - 24.21-alpine3.22-dev
-  - 24.21.0-alpine3.22-dev
+  - 24.22-alpine3.22-dev
+  - 24.22.0-alpine3.22-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,11 +14,11 @@ dates:
   release: "2025-05-06"
   end-of-life: "2028-04-30"
 vars:
-  DIGEST: sha256:2880d765cee928650376ba06b9b7dfc63f13f583b160c1a142d84a208272c25d
+  DIGEST: sha256:5738e4b071aa2444368279e32f714e4288bc75dc6b705b98f61482adb0b8e7ac
   NODEJS_VERSION_MAJOR: "24"
-  NODEJS_VERSION_MAJOR_MINOR: "24.21"
-  NODEJS_VERSION_MAJOR_MINOR_PATCH: 24.21.0
-  VERSION: 24.21.0
+  NODEJS_VERSION_MAJOR_MINOR: "24.22"
+  NODEJS_VERSION_MAJOR_MINOR_PATCH: 24.22.0
+  VERSION: 24.22.0
 contents:
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/v3.22/main
@@ -34,7 +34,7 @@ contents:
     - libstdc++
     - musl
   artifacts:
-    - name: dhi.io/pkg-node:24.21.0-alpine3.22@sha256:2880d765cee928650376ba06b9b7dfc63f13f583b160c1a142d84a208272c25d
+    - name: dhi.io/pkg-node:24.22.0-alpine3.22@sha256:5738e4b071aa2444368279e32f714e4288bc75dc6b705b98f61482adb0b8e7ac
       includes:
         - opt/docker
         - opt/nodejs
@@ -63,7 +63,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /app
 environment:
-  NODE_VERSION: 24.21.0
+  NODE_VERSION: 24.22.0
   NPM_CONFIG_UPDATE_NOTIFIER: "false"
 paths:
   - type: directory
