@@ -3,8 +3,8 @@
 image: dhi.io/pkg-gitlab-runner-helper
 variant: runtime
 tags:
-  - 19.4.1-alpine3.24
-  - 19.4.1-r2-alpine3.24
+  - 19.5.0-alpine3.24
+  - 19.5.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,14 +12,14 @@ dates:
   release: "2026-09-17"
   end-of-life: "2026-12-17"
 vars:
-  COMMIT_SHA: 3c39fcebf73d01d464db3dee8a5267155273a6c5
+  COMMIT_SHA: 70f5c12dad80bfd8ab426843f38cae72fddc4e75
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: gitlab-runner-helper-19
-  REL: "2"
-  SEMVER_MAJOR_MINOR_VERSION: "19.4"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "19.5"
   SEMVER_MAJOR_VERSION: "19"
-  SEMVER_VERSION: 19.4.1
-  VERSION: 19.4.1
+  SEMVER_VERSION: 19.5.0
+  VERSION: 19.5.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -47,15 +47,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://gitlab.com/gitlab-org/gitlab-runner.git#v19.4.1
-            checksum: 3c39fcebf73d01d464db3dee8a5267155273a6c5
+          - url: git+https://gitlab.com/gitlab-org/gitlab-runner.git#v19.5.0
+            checksum: 70f5c12dad80bfd8ab426843f38cae72fddc4e75
             path: /go/src/gitlab.com/gitlab-org/gitlab-runner
             spdx:
               name: gitlab-runner-helper
-              version: 19.4.1
+              version: 19.5.0
               packages:
                 - name: gitlab-runner-helper
-                  purl: pkg:golang/gitlab.com/gitlab-org/gitlab-runner@19.4.1
+                  purl: pkg:golang/gitlab.com/gitlab-org/gitlab-runner@19.5.0
                   license: MIT
             uid: 0
             gid: 0
@@ -92,7 +92,7 @@ contents:
             fips: false
             ldflags:
               - -X gitlab.com/gitlab-org/gitlab-runner/common.NAME=gitlab-runner-helper
-              - -X gitlab.com/gitlab-org/gitlab-runner/common.VERSION=19.4.1
+              - -X gitlab.com/gitlab-org/gitlab-runner/common.VERSION=19.5.0
               - -w
             output: ${target.dir}/usr/bin/gitlab-runner-helper
             packages: ./apps/gitlab-runner-helper
@@ -102,7 +102,7 @@ contents:
             fips: false
             ldflags:
               - -X gitlab.com/gitlab-org/gitlab-runner/common.NAME=gitlab-runner-helper
-              - -X gitlab.com/gitlab-org/gitlab-runner/common.VERSION=19.4.1
+              - -X gitlab.com/gitlab-org/gitlab-runner/common.VERSION=19.5.0
               - -w
             output: ${target.dir}/usr/bin/gitlab-runner-helper-dev
             packages: ./apps/gitlab-runner-helper
@@ -114,14 +114,14 @@ contents:
               - usr/bin/gitlab-runner-helper
             license: MIT
             name: gitlab-runner-helper-19
-            rel: 2
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/gitlab-runner-helper
                     source: usr/bin/gitlab-runner-helper-dev
                 name: gitlab-runner-helper-19-dev
             url: https://gitlab.com/gitlab-org/gitlab-runner
-            version: 19.4.1
+            version: 19.5.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
