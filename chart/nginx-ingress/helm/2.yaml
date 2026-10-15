@@ -4,23 +4,23 @@ name: NGINX Ingress Helm chart 2.x
 image: dhi.io/nginx-ingress-chart
 variant: helm
 tags:
-  - 2.7.3
+  - 2.8.0
 platforms:
   - linux/amd64
 vars:
-  APP_VERSION: 5.6.3
-  CHART_COMMIT_SHA: 795560851534267b30d65a0713c687256b666333
+  APP_VERSION: 5.7.0
+  CHART_COMMIT_SHA: 205828534dd07f1a73440dce23a25a7feefcc395
   CHART_HELM_NAME: nginx-ingress-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  NGINX_INGRESS_REFERENCE: dhi/nginx-ingress:5.6.3-debian13@sha256:c244e0137405c7555f8bea7e5492ccc5d5a0f8f9d9c020173777cd675ac21a47
-  SEMVER_MAJOR_MINOR_VERSION: "2.7"
+  NGINX_INGRESS_REFERENCE: dhi/nginx-ingress:5.7.0-debian13@sha256:7f561348a7032ff243bb448e5317ef36d5e10fe733f433304cd179a7b8118bc9
+  SEMVER_MAJOR_MINOR_VERSION: "2.8"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.7.3
-  VERSION: 2.7.3
+  SEMVER_VERSION: 2.8.0
+  VERSION: 2.8.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/nginx/kubernetes-ingress.git#v5.6.3
-            checksum: 795560851534267b30d65a0713c687256b666333
+          - url: git+https://github.com/nginx/kubernetes-ingress.git#v5.7.0
+            checksum: 205828534dd07f1a73440dce23a25a7feefcc395
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for NGINX Ingress Controller
               images:
                 - name: nginx-ingress
-                  ref: dhi/nginx-ingress:5.6.3-debian13@sha256:c244e0137405c7555f8bea7e5492ccc5d5a0f8f9d9c020173777cd675ac21a47
+                  ref: dhi/nginx-ingress:5.7.0-debian13@sha256:7f561348a7032ff243bb448e5317ef36d5e10fe733f433304cd179a7b8118bc9
               name: nginx-ingress-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/nginx/kubernetes-ingress
