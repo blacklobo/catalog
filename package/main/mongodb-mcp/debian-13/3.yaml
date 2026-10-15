@@ -3,22 +3,22 @@
 image: dhi.io/pkg-mongodb-mcp
 variant: runtime
 tags:
-  - 3.0.5
-  - 3.0.5-r0
-  - 3.0.5-debian13
-  - 3.0.5-r0-debian13
+  - 3.1.0
+  - 3.1.0-r0
+  - 3.1.0-debian13
+  - 3.1.0-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-09-17"
 vars:
-  COMMIT_SHA: bc926c98ceb8e371530151db92f9a8d631efbe44
+  COMMIT_SHA: f369482783bdef116c35d352fd9d92f6c984242f
   REL: "0"
-  SEMVER_MAJOR_MINOR_VERSION: "3.0"
+  SEMVER_MAJOR_MINOR_VERSION: "3.1"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.0.5
-  VERSION: 3.0.5
+  SEMVER_VERSION: 3.1.0
+  VERSION: 3.1.0
 contents:
   packages:
     - base-files
@@ -50,15 +50,15 @@ contents:
           - yarn-classic
           - yq
         files:
-          - url: git+https://github.com/mongodb-js/mongodb-mcp-server.git#v3.0.5
-            checksum: bc926c98ceb8e371530151db92f9a8d631efbe44
+          - url: git+https://github.com/mongodb-js/mongodb-mcp-server.git#v3.1.0
+            checksum: f369482783bdef116c35d352fd9d92f6c984242f
             path: ${source.dir}/mongodb-mcp-server
             spdx:
               name: mongodb-mcp-server
-              version: 3.0.5
+              version: 3.1.0
               packages:
                 - name: mongodb-mcp-server
-                  purl: pkg:dhi/mongodb-mcp@3.0.5
+                  purl: pkg:dhi/mongodb-mcp@3.1.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -95,7 +95,7 @@ contents:
 
             rm -f "${target.dir}/usr/lib/mongodb-mcp/node_modules/.pnpm/node_modules/mongodb-mcp-server"
 
-            node "${target.dir}/usr/lib/mongodb-mcp/dist/esm/index.js" --version | grep -Fx "3.0.5"
+            node "${target.dir}/usr/lib/mongodb-mcp/dist/esm/index.js" --version | grep -Fx "3.1.0"
 
             mkdir -p "${target.dir}/usr/bin"
             printf '#!/bin/sh\nexec node /usr/lib/mongodb-mcp/dist/esm/index.js "$@"\n' > "${target.dir}/usr/bin/mongodb-mcp-server"
@@ -114,7 +114,7 @@ contents:
             name: mongodb-mcp
             rel: 0
             url: https://github.com/mongodb-js/mongodb-mcp-server
-            version: 3.0.5
+            version: 3.1.0
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
