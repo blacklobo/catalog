@@ -3,8 +3,8 @@
 image: dhi.io/pkg-nginx
 variant: runtime
 tags:
-  - 1.30.5-alpine3.24
-  - 1.30.5-r4-alpine3.24
+  - 1.30.6-alpine3.24
+  - 1.30.6-r4-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -52,12 +52,12 @@ vars:
   RTMP_VERSION: 1.2.2
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.5
+  SEMVER_VERSION: 1.30.6
   STREAM_GEOIP2_VERSION: "3.4"
   STREAM_KEYVAL_VERSION: 0.5.0
   TESTS_REVISION: 4d1de3f357afeb91865d024b27516d6b67aad86e
   TRAIN: stable
-  VERSION: 1.30.5
+  VERSION: 1.30.6
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -104,8 +104,8 @@ contents:
             path: ${source.dir}/aports
             uid: 0
             gid: 0
-          - url: https://nginx.org/download/nginx-1.30.5.tar.gz
-            path: /var/cache/distfiles/nginx-1.30.5.tar.gz
+          - url: https://nginx.org/download/nginx-1.30.6.tar.gz
+            path: /var/cache/distfiles/nginx-1.30.6.tar.gz
             uid: 0
             gid: 0
           - url: https://github.com/nginx/nginx-tests/archive/4d1de3f357afeb91865d024b27516d6b67aad86e.tar.gz
@@ -281,7 +281,7 @@ contents:
         - uses: abuild/bump@v1
           with:
             rel: 4
-            version: 1.30.5
+            version: 1.30.6
         - uses: abuild/build@v1
           with:
             command: checksum
