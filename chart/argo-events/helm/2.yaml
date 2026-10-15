@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ARGO_EVENTS_REFERENCE: dhi/argo-events:1.9.11-debian13@sha256:050b5e7476d8a657c822f813fec1f9ff8b24a8005bacd7545519b6d4e13dd585
+  ARGO_EVENTS_REFERENCE: dhi/argo-events:1.9.11-debian13@sha256:a66953aa66a4ca051da9a1e37381852b47684b674aca073b53e9469c6c43951c
   CHART_COMMIT_SHA: f60d55861d0ed6052f807d981343bd84b9a5de06
   CHART_HELM_NAME: argo-events-chart
   DHI_NAMESPACE: dhi
@@ -53,7 +53,7 @@ contents:
               description: Docker Hardened Images Helm chart for Argo Events
               images:
                 - name: argo-events
-                  ref: dhi/argo-events:1.9.11-debian13@sha256:050b5e7476d8a657c822f813fec1f9ff8b24a8005bacd7545519b6d4e13dd585
+                  ref: dhi/argo-events:1.9.11-debian13@sha256:a66953aa66a4ca051da9a1e37381852b47684b674aca073b53e9469c6c43951c
                 - name: nats
                   ref: dhi/nats:2.15.1-debian13@sha256:6ef8431af84ea35e73374b931574096dc3289213701c1a3c44d0a4138120cbaf
                 - name: prometheus-nats-exporter
