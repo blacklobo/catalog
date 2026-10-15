@@ -18,8 +18,8 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "1.104"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.104.1
-  TAILSCALE_OPERATOR_REFERENCE: dhi/tailscale-operator:1.104.1-debian13@sha256:8e2c982a3a60ea340a7b96477e67f50ae5c703939186d0b94f51fafdb5f7b87f
-  TAILSCALE_REFERENCE: dhi/tailscale:1.104.1-debian13@sha256:58cc2b1322fd1f18ea1c5cf1be89fdad1482cfebf4984e55f8d436ceba8e88f9
+  TAILSCALE_OPERATOR_REFERENCE: dhi/tailscale-operator:1.104.1-debian13@sha256:09675b880a2272a369e14bfaad2dcee8ce524984418d13ad21af3851d5462ca3
+  TAILSCALE_REFERENCE: dhi/tailscale:1.104.1-debian13@sha256:ae09cd504ef7213dc0d09f608e062f8f522ab0e7891f3729ce2b43bfd15bcb70
   VERSION: 1.104.1
 contents:
   repositories:
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Tailscale Operator
               images:
                 - name: tailscale-operator
-                  ref: dhi/tailscale-operator:1.104.1-debian13@sha256:8e2c982a3a60ea340a7b96477e67f50ae5c703939186d0b94f51fafdb5f7b87f
+                  ref: dhi/tailscale-operator:1.104.1-debian13@sha256:09675b880a2272a369e14bfaad2dcee8ce524984418d13ad21af3851d5462ca3
                 - name: tailscale
-                  ref: dhi/tailscale:1.104.1-debian13@sha256:58cc2b1322fd1f18ea1c5cf1be89fdad1482cfebf4984e55f8d436ceba8e88f9
+                  ref: dhi/tailscale:1.104.1-debian13@sha256:ae09cd504ef7213dc0d09f608e062f8f522ab0e7891f3729ce2b43bfd15bcb70
               name: tailscale-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/tailscale/tailscale
