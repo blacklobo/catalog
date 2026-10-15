@@ -16,7 +16,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   ENVOY_GATEWAY_REFERENCE: dhi/envoy-gateway:1.9.2-debian13@sha256:db64e7659b712a9d24304aea1ca4815e15be3a0966c4c2081283d77aad7c674c
   ENVOY_RATELIMIT_REFERENCE: dhi/envoy-ratelimit:1631871c92e531b5a0c19f1e5661887c0d9bd8f0-debian13@sha256:f0f58a0ea131c19caa1cdd4a4ea568dce36e7755ecc211e48e2031e5bb6a7c81
-  ENVOY_REFERENCE: dhi/envoy:1.39.4-debian13@sha256:92bce71ba697e49eb4d10fa7f06ddec48a91de198e09f440d6cf98a30438fd35
+  ENVOY_REFERENCE: dhi/envoy:1.39.4-debian13@sha256:7f70552f9903e630ba18cf975ffc09bad87b37129933c775826125d6c357c8d3
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "1.9"
   SEMVER_MAJOR_VERSION: "1"
@@ -56,7 +56,7 @@ contents:
                 - name: envoy-ratelimit
                   ref: dhi/envoy-ratelimit:1631871c92e531b5a0c19f1e5661887c0d9bd8f0-debian13@sha256:f0f58a0ea131c19caa1cdd4a4ea568dce36e7755ecc211e48e2031e5bb6a7c81
                 - name: envoy
-                  ref: dhi/envoy:1.39.4-debian13@sha256:92bce71ba697e49eb4d10fa7f06ddec48a91de198e09f440d6cf98a30438fd35
+                  ref: dhi/envoy:1.39.4-debian13@sha256:7f70552f9903e630ba18cf975ffc09bad87b37129933c775826125d6c357c8d3
               name: envoy-gateway-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/envoyproxy/gateway
