@@ -4,7 +4,7 @@ image: dhi.io/pkg-valkey-operator
 variant: runtime
 tags:
   - 0.7.1-alpine3.24
-  - 0.7.1-r8-alpine3.24
+  - 0.7.1-r9-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,8 +13,8 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: valkey-operator
-  REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.93.0-debian13@sha256:7f878301b235082d5d97ec9ab9ae562933a3ceca185c562c9ff440d55241a25d
-  REL: "8"
+  REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.93.0-debian13@sha256:86acb3aa59f8133350b98bef21097350a75a4673d82e76b7e0a6f2b4763f0e0c
+  REL: "9"
   SEMVER_MAJOR_MINOR_VERSION: "0.7"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.7.1
@@ -69,7 +69,7 @@ contents:
             set -eux -o pipefail
 
             export VALKEY_REFERENCE="dhi/valkey:9.1.2-debian13@sha256:e8d06d6e14feb2574e36b3400c89e4ae091cf5c075c790351372ad344efbf05a"
-            export REDIS_EXPORTER_REFERENCE="dhi/redis-exporter:1.93.0-debian13@sha256:7f878301b235082d5d97ec9ab9ae562933a3ceca185c562c9ff440d55241a25d"
+            export REDIS_EXPORTER_REFERENCE="dhi/redis-exporter:1.93.0-debian13@sha256:86acb3aa59f8133350b98bef21097350a75a4673d82e76b7e0a6f2b4763f0e0c"
 
             file=internal/controller/valkeycluster_controller.go
             envsubst '$VALKEY_REFERENCE $REDIS_EXPORTER_REFERENCE' < "$file" > "$file.tmp"
@@ -118,7 +118,7 @@ contents:
               - usr/bin/manager
             license: Apache-2.0
             name: valkey-operator
-            rel: 8
+            rel: 9
             subpackages:
               - files:
                   - path: usr/bin/manager
