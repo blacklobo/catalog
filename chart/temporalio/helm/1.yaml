@@ -18,9 +18,9 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "1.7"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.7.0
-  TEMPORALIO_ADMIN_TOOLS_REFERENCE: dhi/temporalio-admin-tools:1.32.1-cli-1.9.1-debian13@sha256:6cf06f34a2be5d8e2be5e61f0049eb706bbf8088792c1dee4bb5e2ad73fa6292
-  TEMPORALIO_SERVER_REFERENCE: dhi/temporalio-server:1.32.1-debian13@sha256:9026d2834edaa98db801ec8dcae0aa3c3097964bcba2a1733f14317c76b0577f
-  TEMPORALIO_UI_REFERENCE: dhi/temporalio-ui:2.56.0-debian13@sha256:f35c0549722bc7c64d05c29384d3d57e01e12eabe2616ff709ec0a6d45e4bfaa
+  TEMPORALIO_ADMIN_TOOLS_REFERENCE: dhi/temporalio-admin-tools:1.32.1-cli-1.9.1-debian13@sha256:d5b6e814502ec70235037af144a937862f83829a2ab8af97285c76f22a09d9e7
+  TEMPORALIO_SERVER_REFERENCE: dhi/temporalio-server:1.32.1-debian13@sha256:dccc830e1b90e7e365db12f5eb1628ec7ae710f141358442a32f680b157ec0e2
+  TEMPORALIO_UI_REFERENCE: dhi/temporalio-ui:2.56.0-debian13@sha256:559559f7de419ca0dd9925426eb5d96a1a4d7da068486df7554cf73ce8fee400
   VERSION: 1.7.0
 contents:
   repositories:
@@ -51,11 +51,11 @@ contents:
               description: Docker Hardened Images Helm chart for TemporalIO
               images:
                 - name: temporalio-server
-                  ref: dhi/temporalio-server:1.32.1-debian13@sha256:9026d2834edaa98db801ec8dcae0aa3c3097964bcba2a1733f14317c76b0577f
+                  ref: dhi/temporalio-server:1.32.1-debian13@sha256:dccc830e1b90e7e365db12f5eb1628ec7ae710f141358442a32f680b157ec0e2
                 - name: temporalio-admin-tools
-                  ref: dhi/temporalio-admin-tools:1.32.1-cli-1.9.1-debian13@sha256:6cf06f34a2be5d8e2be5e61f0049eb706bbf8088792c1dee4bb5e2ad73fa6292
+                  ref: dhi/temporalio-admin-tools:1.32.1-cli-1.9.1-debian13@sha256:d5b6e814502ec70235037af144a937862f83829a2ab8af97285c76f22a09d9e7
                 - name: temporalio-ui
-                  ref: dhi/temporalio-ui:2.56.0-debian13@sha256:f35c0549722bc7c64d05c29384d3d57e01e12eabe2616ff709ec0a6d45e4bfaa
+                  ref: dhi/temporalio-ui:2.56.0-debian13@sha256:559559f7de419ca0dd9925426eb5d96a1a4d7da068486df7554cf73ce8fee400
               name: temporalio-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/temporalio/helm-charts
