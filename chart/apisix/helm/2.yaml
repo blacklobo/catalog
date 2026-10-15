@@ -4,14 +4,14 @@ name: APISIX Helm chart 2.x
 image: dhi.io/apisix-chart
 variant: helm
 tags:
-  - 2.18.0
+  - 2.18.2
 platforms:
   - linux/amd64
 vars:
   APISIX_INGRESS_CONTROLLER_CHART_REFERENCE: dhi/apisix-ingress-controller-chart:1.4.0@sha256:e3f06bf10ff3d9b628f73a829c7aa182e393339a95ff60d5c35f2957b455581e
-  APISIX_REFERENCE: dhi/apisix:3.19.0-debian13@sha256:cdbc06f6ac5a580c331a8884b93e9c1e52fcb232b174e27e1e2e4325ee3d5b39
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:b3620c618e4622e1037675820c89a34ef3091fbd2e31552daaae1408a6fa1ee7
-  CHART_COMMIT_SHA: c511268dd216589e44a7b99ac3f686c0c2e68d1d
+  APISIX_REFERENCE: dhi/apisix:3.19.0-debian13@sha256:88578f3daff7eeab16e4b44ddb084fa23fdb24f8c090edc37b0a46e058766460
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:cbf608bac227b555568030a804f7666bb60524ea25c626db8b9b93789748784e
+  CHART_COMMIT_SHA: 53115d6ab51e14eec55d0689ad7e70c28b6ce11f
   CHART_HELM_NAME: apisix-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -20,8 +20,8 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "2.18"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.18.0
-  VERSION: 2.18.0
+  SEMVER_VERSION: 2.18.2
+  VERSION: 2.18.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -38,8 +38,8 @@ contents:
           - yq-go
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/apache/apisix-helm-chart.git#apisix-2.18.0
-            checksum: c511268dd216589e44a7b99ac3f686c0c2e68d1d
+          - url: git+https://github.com/apache/apisix-helm-chart.git#apisix-2.18.2
+            checksum: 53115d6ab51e14eec55d0689ad7e70c28b6ce11f
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -58,9 +58,9 @@ contents:
               description: Docker Hardened Images Helm chart for APISIX
               images:
                 - name: apisix
-                  ref: dhi/apisix:3.19.0-debian13@sha256:cdbc06f6ac5a580c331a8884b93e9c1e52fcb232b174e27e1e2e4325ee3d5b39
+                  ref: dhi/apisix:3.19.0-debian13@sha256:88578f3daff7eeab16e4b44ddb084fa23fdb24f8c090edc37b0a46e058766460
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-debian13@sha256:b3620c618e4622e1037675820c89a34ef3091fbd2e31552daaae1408a6fa1ee7
+                  ref: dhi/busybox:1.37.0-debian13@sha256:cbf608bac227b555568030a804f7666bb60524ea25c626db8b9b93789748784e
               name: apisix-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/apache/apisix
