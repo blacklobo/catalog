@@ -27,9 +27,9 @@ vars:
   JAVA_VARIANT: jre
   JAVA_VERSION: 21.0.12.1.1
   JDK_MAJOR_VERSION: "21"
-  JMX_EXPORTER_REFERENCE: dhi/jmx-exporter:1.7.0-debian13@sha256:43977c134f4b975b23bb12161531d1faab52fb0033a81c4c2bffef824b721079
+  JMX_EXPORTER_REFERENCE: dhi/jmx-exporter:1.7.0-debian13@sha256:97840702003402b68289c41b4a1468a60f04eff11dd576d5cb1711c7e38899fc
   JMX_EXPORTER_VERSION: 1.7.0
-  KAFKA_EXPORTER_REFERENCE: dhi/kafka-exporter:1.10.0-debian13@sha256:f26fe17b1e280612f696dd863c508fe7401d7481aff2f8b7305e6564eaa11676
+  KAFKA_EXPORTER_REFERENCE: dhi/kafka-exporter:1.10.0-debian13@sha256:8c27839d7dd566c0378e8da01863b7da4f97448d082f77f56748c21f4e29c7f3
   KAFKA_EXPORTER_VERSION: 1.10.0
   KAFKA_LIB_PATH: 4.3.x
   KAFKA_MAJOR_MINOR_VERSION: "4.3"
@@ -269,13 +269,13 @@ contents:
         - opt/kafka
       uid: 0
       gid: 0
-    - name: dhi.io/kafka-exporter:1.10.0-debian13@sha256:f26fe17b1e280612f696dd863c508fe7401d7481aff2f8b7305e6564eaa11676
+    - name: dhi.io/kafka-exporter:1.10.0-debian13@sha256:8c27839d7dd566c0378e8da01863b7da4f97448d082f77f56748c21f4e29c7f3
       includes:
         - usr/bin
         - usr/local/bin
       uid: 0
       gid: 0
-    - name: dhi.io/jmx-exporter:1.7.0-debian13@sha256:43977c134f4b975b23bb12161531d1faab52fb0033a81c4c2bffef824b721079
+    - name: dhi.io/jmx-exporter:1.7.0-debian13@sha256:97840702003402b68289c41b4a1468a60f04eff11dd576d5cb1711c7e38899fc
       includes:
         - usr/share/jmx-exporter/jmx_prometheus_javaagent.jar
       uid: 0
