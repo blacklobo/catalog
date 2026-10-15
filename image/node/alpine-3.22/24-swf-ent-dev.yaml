@@ -6,8 +6,8 @@ variant: dev
 flavor: sfw-ent
 tags:
   - 24-alpine3.22-sfw-ent-dev
-  - 24.21-alpine3.22-sfw-ent-dev
-  - 24.21.0-alpine3.22-sfw-ent-dev
+  - 24.22-alpine3.22-sfw-ent-dev
+  - 24.22.0-alpine3.22-sfw-ent-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,12 +16,12 @@ dates:
   end-of-life: "2028-04-30"
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
-  DIGEST: sha256:2880d765cee928650376ba06b9b7dfc63f13f583b160c1a142d84a208272c25d
+  DIGEST: sha256:5738e4b071aa2444368279e32f714e4288bc75dc6b705b98f61482adb0b8e7ac
   NODEJS_VERSION_MAJOR: "24"
-  NODEJS_VERSION_MAJOR_MINOR: "24.21"
-  NODEJS_VERSION_MAJOR_MINOR_PATCH: 24.21.0
+  NODEJS_VERSION_MAJOR_MINOR: "24.22"
+  NODEJS_VERSION_MAJOR_MINOR_PATCH: 24.22.0
   SFW_VERSION: 1.15.4
-  VERSION: 24.21.0
+  VERSION: 24.22.0
 contents:
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/v3.22/main
@@ -51,7 +51,7 @@ contents:
             gid: 0
             mode: "0755"
         artifacts:
-          - name: dhi.io/pkg-node:24.21.0-alpine3.22@sha256:2880d765cee928650376ba06b9b7dfc63f13f583b160c1a142d84a208272c25d
+          - name: dhi.io/pkg-node:24.22.0-alpine3.22@sha256:5738e4b071aa2444368279e32f714e4288bc75dc6b705b98f61482adb0b8e7ac
             includes:
               - opt/docker
               - opt/nodejs
@@ -71,9 +71,9 @@ contents:
 
             # if DHI_NO_SFW is set to true, run the command without sfw, otherwise run with sfw
             if [ "${DHI_NO_SFW}" = "true" ]; then
-              /opt/nodejs/node-v24.21.0/bin/npm "$@"
+              /opt/nodejs/node-v24.22.0/bin/npm "$@"
             else
-              sfw /opt/nodejs/node-v24.21.0/bin/npm "$@"
+              sfw /opt/nodejs/node-v24.22.0/bin/npm "$@"
             fi
             EOF
 
@@ -138,7 +138,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /app
 environment:
-  NODE_VERSION: 24.21.0
+  NODE_VERSION: 24.22.0
   NPM_CONFIG_UPDATE_NOTIFIER: "false"
   PATH: /opt/socket/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 paths:
