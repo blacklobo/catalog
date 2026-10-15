@@ -131,9 +131,10 @@ contents:
                             details.because("CVE remediation: CVE-2025-67030")
                         }
                         if (grp == "at.yawk.lz4" && name == "lz4-java" &&
-                                (ver == "1.10.1" || ver == "1.10.2" || ver == "1.11.1")) {
-                            details.useVersion("1.11.1")
-                            details.because("CVE remediation: CVE-2026-59949")
+                                (ver == "1.10.1" || ver == "1.10.2" || ver == "1.11.1" || ver == "1.11.2" ||
+                                 ver == "1.11.3")) {
+                            details.useVersion("1.11.4")
+                            details.because("CVE remediation: CVE-2026-59949, CVE-2026-106449, CVE-2026-106450, CVE-2026-106451, CVE-2026-106452, CVE-2026-106453")
                         }
                         if (grp == "com.github.luben" && name == "zstd-jni" &&
                                 (ver == "1.5.6-4" || ver == "1.5.6-10" || ver == "1.5.7-20")) {
@@ -213,7 +214,7 @@ contents:
             test -z "${dups}"
 
             expect plexus-utils 3.6.1 'plexus-utils-*.jar'
-            expect lz4-java 1.11.1 'lz4-java-*.jar'
+            expect lz4-java 1.11.4 'lz4-java-*.jar'
             expect zstd-jni 1.5.7-20 'zstd-jni-*.jar'
             expect slf4j-api 1.7.36 'slf4j-*.jar'
             expect jaxb-api 2.3.1 'jaxb-api-*.jar'
