@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ARGOCD_REFERENCE: dhi/argocd:3.5.5-debian13@sha256:c819082e1d6c4816fac98bc9ea5785e4682218de6fb90da5a7f354d8bf42bc99
+  ARGOCD_REFERENCE: dhi/argocd:3.5.5-debian13@sha256:e4963b7546325962f902b822e758e1b22d716bf73df461e6f49f74243e9d5ece
   CHART_COMMIT_SHA: d0666d153c7363583cd783b4983a43550332c186
   CHART_HELM_NAME: argocd-chart
   DEX_REFERENCE: dhi/dex:2.46.0-debian13@sha256:39cac2a010e9922e3916ded65ea4b6ad0cc4c8c7230b9c13df052a57f341e41e
@@ -65,7 +65,7 @@ contents:
               description: Docker Hardened Images Helm chart for Argo CD
               images:
                 - name: argocd
-                  ref: dhi/argocd:3.5.5-debian13@sha256:c819082e1d6c4816fac98bc9ea5785e4682218de6fb90da5a7f354d8bf42bc99
+                  ref: dhi/argocd:3.5.5-debian13@sha256:e4963b7546325962f902b822e758e1b22d716bf73df461e6f49f74243e9d5ece
                 - name: dex
                   ref: dhi/dex:2.46.0-debian13@sha256:39cac2a010e9922e3916ded65ea4b6ad0cc4c8c7230b9c13df052a57f341e41e
                 - name: redis
