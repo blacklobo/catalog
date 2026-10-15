@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBE_VIP_REFERENCE: dhi/kube-vip:1.2.4-debian13@sha256:31fb70bb97b1c5c8c6084dcd12d59ad74cc0b7ffff8f54ea7274589e8a70f484
+  KUBE_VIP_REFERENCE: dhi/kube-vip:1.2.4-debian13@sha256:adffb1beceb0df9c46f08ea03c26c7219d76598645347c732a7193ec885245ac
   SEMVER_MAJOR_MINOR_VERSION: "0.11"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.11.1
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for kube-vip
               images:
                 - name: kube-vip
-                  ref: dhi/kube-vip:1.2.4-debian13@sha256:31fb70bb97b1c5c8c6084dcd12d59ad74cc0b7ffff8f54ea7274589e8a70f484
+                  ref: dhi/kube-vip:1.2.4-debian13@sha256:adffb1beceb0df9c46f08ea03c26c7219d76598645347c732a7193ec885245ac
               name: kube-vip-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kube-vip/helm-charts
