@@ -8,10 +8,10 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  CALICO_CALICO_REFERENCE: dhi/calico-calico:3.33.0-debian13@sha256:075fdc97fe8dbf0fa563435cc4a13f274dc2fbfe736be975b5f9560c87846614
-  CALICO_NODE_REFERENCE: dhi/calico-node:3.33.0-debian13@sha256:6fbb3746203db65d7f9bb5f549b585c571244cf3190626600fa028aa85fd84d4
-  CALICO_THIRD_PARTY_CNI_PLUGINS_REFERENCE: dhi/calico-third-party-cni-plugins:3.33.0-debian13@sha256:8a8a3c9646dd535d9e4c0b7cc436420b5ba7ddec247c67e751712b838cabd7bc
-  CALICO_WHISKER_REFERENCE: dhi/calico-whisker:3.33.0-debian13@sha256:db354b0128b27cc88f49db3fcf6ef4a45c0f4c3912e1682d05169e170092eb35
+  CALICO_CALICO_REFERENCE: dhi/calico-calico:3.33.0-debian13@sha256:fcdad40055c9314301fd8f3899de36825375cd8d55ce1c04106665b75f0e199f
+  CALICO_NODE_REFERENCE: dhi/calico-node:3.33.0-debian13@sha256:e4b22abf711ef60f4231b393fa1dc659f0126f4005516f1ea56ece6cf2822395
+  CALICO_THIRD_PARTY_CNI_PLUGINS_REFERENCE: dhi/calico-third-party-cni-plugins:3.33.0-debian13@sha256:955757f79cca74af573bf0f678a1f9dd9c3f79bbca92db1ff1aca0c03ad9577d
+  CALICO_WHISKER_REFERENCE: dhi/calico-whisker:3.33.0-debian13@sha256:2862bc6e4d8b720cbb04527bbb5c0d0d375e0c3620a6e6783362bf2b4c8247b8
   CHART_COMMIT_SHA: fbaa371111636a37ecc82625fce8453064a7fff2
   CHART_HELM_NAME: tigera-operator-chart
   DHI_NAMESPACE: dhi
@@ -23,7 +23,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.33"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.33.0
-  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.44.0-debian13@sha256:19caaee0e0e953863f63c84d4d6ad19071a41c36982f9e2aacf80f2f6eff4ae8
+  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.44.0-debian13@sha256:1340371213f9e796e3fa577d17d6f48db764312e2015a8219aa701d61b9ab0cb
   VERSION: 3.33.0
 contents:
   repositories:
@@ -55,15 +55,15 @@ contents:
               description: Docker Hardened Images Helm chart for the Tigera operator (installs Calico)
               images:
                 - name: tigera-operator
-                  ref: dhi/tigera-operator:1.44.0-debian13@sha256:19caaee0e0e953863f63c84d4d6ad19071a41c36982f9e2aacf80f2f6eff4ae8
+                  ref: dhi/tigera-operator:1.44.0-debian13@sha256:1340371213f9e796e3fa577d17d6f48db764312e2015a8219aa701d61b9ab0cb
                 - name: calico-calico
-                  ref: dhi/calico-calico:3.33.0-debian13@sha256:075fdc97fe8dbf0fa563435cc4a13f274dc2fbfe736be975b5f9560c87846614
+                  ref: dhi/calico-calico:3.33.0-debian13@sha256:fcdad40055c9314301fd8f3899de36825375cd8d55ce1c04106665b75f0e199f
                 - name: calico-node
-                  ref: dhi/calico-node:3.33.0-debian13@sha256:6fbb3746203db65d7f9bb5f549b585c571244cf3190626600fa028aa85fd84d4
+                  ref: dhi/calico-node:3.33.0-debian13@sha256:e4b22abf711ef60f4231b393fa1dc659f0126f4005516f1ea56ece6cf2822395
                 - name: calico-whisker
-                  ref: dhi/calico-whisker:3.33.0-debian13@sha256:db354b0128b27cc88f49db3fcf6ef4a45c0f4c3912e1682d05169e170092eb35
+                  ref: dhi/calico-whisker:3.33.0-debian13@sha256:2862bc6e4d8b720cbb04527bbb5c0d0d375e0c3620a6e6783362bf2b4c8247b8
                 - name: calico-third-party-cni-plugins
-                  ref: dhi/calico-third-party-cni-plugins:3.33.0-debian13@sha256:8a8a3c9646dd535d9e4c0b7cc436420b5ba7ddec247c67e751712b838cabd7bc
+                  ref: dhi/calico-third-party-cni-plugins:3.33.0-debian13@sha256:955757f79cca74af573bf0f678a1f9dd9c3f79bbca92db1ff1aca0c03ad9577d
               name: tigera-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/projectcalico/calico
