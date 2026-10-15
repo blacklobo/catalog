@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  AIRFLOW_REFERENCE: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:9fb1d63656453dfae8fa474f25c4521102d5d08d00919b56ccd33738805b387d
+  AIRFLOW_REFERENCE: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:00c8a1901b106e9f57a6eec3346b46d4f2aeb38ca6f376798824124b7279a0e6
   APPVERSION: 3.3.2
   APPVERSION_MATCH: 3.3.2
   CHART_COMMIT_SHA: aa19d2dbb9ed187ec01957a92848d9b005e9ba9d
@@ -17,12 +17,12 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GIT_SYNC_REFERENCE: dhi/git-sync:4.7.1-debian13@sha256:64f5cba082856488cdb25405c79d0b7a3b6c24f4dcafa385234796a39e4aeff0
+  GIT_SYNC_REFERENCE: dhi/git-sync:4.7.1-debian13@sha256:c224dde6a14487330129c31a8e00641e42885cc265ee8f1591abfef9020bd1ef
   HELM_VERSION: 4.1.4-2
-  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:d118b6f26abec9f82333f538dc7d13042a8030e3d3d3d80d30a657bd7bbfe4e6
-  PGBOUNCER_EXPORTER_REFERENCE: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:6df64310e117c19327f4c2dc7e1e1f34236635799f34a366b6195b9da28bd5f0
+  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:48889c5306b06b2517501ec3605e1b923200aabc21131e9c8818df60c13f1498
+  PGBOUNCER_EXPORTER_REFERENCE: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:ed53cf156c4c93d0d76801fcc942d5f20029292a04976cac5bf447ded6702bfb
   PGBOUNCER_REFERENCE: dhi/pgbouncer:1.25.2-debian13@sha256:39a136f73bc1587ef719c1ea59024a7c54ded91efc5e0991826bb5369994a622
-  PROMETHEUS_STATSD_EXPORTER_REFERENCE: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:0b043cbc8d73244103caa068f05b17d7b4b3f31184d31badca9453f52340e2ab
+  PROMETHEUS_STATSD_EXPORTER_REFERENCE: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:87797da1dab679a1de5f5173db66088c725910d1627d8adebe0210fe4125a876
   REDIS_REFERENCE: dhi/redis:8.10.2-debian13-compat@sha256:8477e3456e63d1777b0df44658d8bb93b40ca0d0442df89222bd0ca4612b662f
   SEMVER_MAJOR_MINOR_VERSION: "2.0"
   SEMVER_MAJOR_VERSION: "2"
@@ -65,19 +65,19 @@ contents:
               description: Docker Hardened Images Helm chart for Apache Airflow
               images:
                 - name: airflow
-                  ref: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:9fb1d63656453dfae8fa474f25c4521102d5d08d00919b56ccd33738805b387d
+                  ref: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:00c8a1901b106e9f57a6eec3346b46d4f2aeb38ca6f376798824124b7279a0e6
                 - name: prometheus-statsd-exporter
-                  ref: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:0b043cbc8d73244103caa068f05b17d7b4b3f31184d31badca9453f52340e2ab
+                  ref: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:87797da1dab679a1de5f5173db66088c725910d1627d8adebe0210fe4125a876
                 - name: pgbouncer
                   ref: dhi/pgbouncer:1.25.2-debian13@sha256:39a136f73bc1587ef719c1ea59024a7c54ded91efc5e0991826bb5369994a622
                 - name: airflow-pgbouncer-exporter
-                  ref: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:6df64310e117c19327f4c2dc7e1e1f34236635799f34a366b6195b9da28bd5f0
+                  ref: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:ed53cf156c4c93d0d76801fcc942d5f20029292a04976cac5bf447ded6702bfb
                 - name: git-sync
-                  ref: dhi/git-sync:4.7.1-debian13@sha256:64f5cba082856488cdb25405c79d0b7a3b6c24f4dcafa385234796a39e4aeff0
+                  ref: dhi/git-sync:4.7.1-debian13@sha256:c224dde6a14487330129c31a8e00641e42885cc265ee8f1591abfef9020bd1ef
                 - name: redis
                   ref: dhi/redis:8.10.2-debian13-compat@sha256:8477e3456e63d1777b0df44658d8bb93b40ca0d0442df89222bd0ca4612b662f
                 - name: opentelemetry-collector
-                  ref: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:d118b6f26abec9f82333f538dc7d13042a8030e3d3d3d80d30a657bd7bbfe4e6
+                  ref: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:48889c5306b06b2517501ec3605e1b923200aabc21131e9c8818df60c13f1498
               name: airflow-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/apache/airflow
