@@ -20,7 +20,7 @@ vars:
   SEMVER_VERSION: 1.7.0
   TEMPORALIO_ADMIN_TOOLS_REFERENCE: dhi/temporalio-admin-tools:1.32.1-cli-1.9.1-debian13@sha256:6cf06f34a2be5d8e2be5e61f0049eb706bbf8088792c1dee4bb5e2ad73fa6292
   TEMPORALIO_SERVER_REFERENCE: dhi/temporalio-server:1.32.1-debian13@sha256:9026d2834edaa98db801ec8dcae0aa3c3097964bcba2a1733f14317c76b0577f
-  TEMPORALIO_UI_REFERENCE: dhi/temporalio-ui:2.55.0-debian13@sha256:973b6d89e285c3b0ae06d72cac2745b20a0e5df3eeb5b1ede79c03cedc4c03b7
+  TEMPORALIO_UI_REFERENCE: dhi/temporalio-ui:2.56.0-debian13@sha256:f35c0549722bc7c64d05c29384d3d57e01e12eabe2616ff709ec0a6d45e4bfaa
   VERSION: 1.7.0
 contents:
   repositories:
@@ -55,7 +55,7 @@ contents:
                 - name: temporalio-admin-tools
                   ref: dhi/temporalio-admin-tools:1.32.1-cli-1.9.1-debian13@sha256:6cf06f34a2be5d8e2be5e61f0049eb706bbf8088792c1dee4bb5e2ad73fa6292
                 - name: temporalio-ui
-                  ref: dhi/temporalio-ui:2.55.0-debian13@sha256:973b6d89e285c3b0ae06d72cac2745b20a0e5df3eeb5b1ede79c03cedc4c03b7
+                  ref: dhi/temporalio-ui:2.56.0-debian13@sha256:f35c0549722bc7c64d05c29384d3d57e01e12eabe2616ff709ec0a6d45e4bfaa
               name: temporalio-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/temporalio/helm-charts
