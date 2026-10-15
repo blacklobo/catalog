@@ -15,7 +15,7 @@ vars:
   CHART_HELM_NAME: cilium-chart
   CILIUM_CERTGEN_REFERENCE: dhi/cilium-certgen:0.4.11-debian13@sha256:430a5306748d7b11b9c44352f97207910365f450f758d22ae49c7549e032e2ca
   CILIUM_CLUSTERMESH_APISERVER_REFERENCE: dhi/cilium-clustermesh-apiserver:1.19.8-debian13@sha256:dd58675011f59c47330df60977d1b953b64c03f1039646da99bf6a8ad8b79871
-  CILIUM_DNSPROXY_REFERENCE: dhi/cilium-dnsproxy:1.19.8-debian13@sha256:91236b36b71d3a34dfb3b7136819b1fdfc32fee9b72dffb6ddb0852fc900b3ee
+  CILIUM_DNSPROXY_REFERENCE: dhi/cilium-dnsproxy:1.19.8-debian13@sha256:abd5560f8c5b1dec28d38af1f9da9a2502e8df9807710377c240766c8b19e23e
   CILIUM_ENVOY_REFERENCE: dhi/cilium-envoy:1.19.8-debian13-compat@sha256:7b6398c33574a6914faafc5978f069b96f32a4299f4e888579fab6b58fd39080
   CILIUM_OPERATOR_REFERENCE: dhi/cilium-operator:1.19.8-debian13@sha256:3fa15b6850bcd7cc8835e14a3bc234081e9c3a68aaf1ef6a2b5ddf7b51f9e13e
   CILIUM_REFERENCE: dhi/cilium:1.19.8-debian13@sha256:5f8e99f3f7495e2d6203c66350d629b0ff5ba956354ff0db1cd63345878c4551
@@ -83,7 +83,7 @@ contents:
                 - name: cilium-startup-script
                   ref: dhi/cilium-startup-script:0.20261002-debian13@sha256:317246a33f742f709cc3580730c6278353b2b3b915cbeddf0f8c900f50f8f0df
                 - name: cilium-dnsproxy
-                  ref: dhi/cilium-dnsproxy:1.19.8-debian13@sha256:91236b36b71d3a34dfb3b7136819b1fdfc32fee9b72dffb6ddb0852fc900b3ee
+                  ref: dhi/cilium-dnsproxy:1.19.8-debian13@sha256:abd5560f8c5b1dec28d38af1f9da9a2502e8df9807710377c240766c8b19e23e
                 - name: ztunnel
                   ref: dhi/ztunnel:1.31.1-debian13@sha256:7beedc39ebdc9e9cd4338848e39a7c4ce0894442073de18abc0b7eb374f68f35
                 - name: spire-agent
