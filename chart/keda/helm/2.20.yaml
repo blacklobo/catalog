@@ -15,9 +15,9 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KEDA_ADMISSION_WEBHOOKS_REFERENCE: dhi/keda-admission-webhooks:2.20.2-debian13@sha256:da0740c1eb6857c33784fecac59f8fe3090a169d4f5311cac48bb96d6c9e92a6
-  KEDA_METRICS_APISERVER_REFERENCE: dhi/keda-metrics-apiserver:2.20.2-debian13@sha256:8fa4ef2f9c3f8c342061786410a849e992a921c04fa43cb59c8f7a2e60797c11
-  KEDA_REFERENCE: dhi/keda:2.20.2-debian13@sha256:c306275c205e245f9213b6505512c8184cb9a757fe345aedc733f45a16c9f1b5
+  KEDA_ADMISSION_WEBHOOKS_REFERENCE: dhi/keda-admission-webhooks:2.20.2-debian13@sha256:daf7bfbf020a9660baa355d07afc8cf5cd707249d08a7a1d286e34c637243e28
+  KEDA_METRICS_APISERVER_REFERENCE: dhi/keda-metrics-apiserver:2.20.2-debian13@sha256:1b3e5bda5bd5ecc052746a97117e9a30d7f5ff68be6e4a7111b0a4d968e9a34e
+  KEDA_REFERENCE: dhi/keda:2.20.2-debian13@sha256:95c6101488d304a0b4a2b40e64314b24c2247d1102bb9fead6cae7b0e0ce3a55
   SEMVER_MAJOR_MINOR_VERSION: "2.20"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.20.2
@@ -51,11 +51,11 @@ contents:
               description: Docker Hardened Images Helm chart for KEDA
               images:
                 - name: keda
-                  ref: dhi/keda:2.20.2-debian13@sha256:c306275c205e245f9213b6505512c8184cb9a757fe345aedc733f45a16c9f1b5
+                  ref: dhi/keda:2.20.2-debian13@sha256:95c6101488d304a0b4a2b40e64314b24c2247d1102bb9fead6cae7b0e0ce3a55
                 - name: keda-admission-webhooks
-                  ref: dhi/keda-admission-webhooks:2.20.2-debian13@sha256:da0740c1eb6857c33784fecac59f8fe3090a169d4f5311cac48bb96d6c9e92a6
+                  ref: dhi/keda-admission-webhooks:2.20.2-debian13@sha256:daf7bfbf020a9660baa355d07afc8cf5cd707249d08a7a1d286e34c637243e28
                 - name: keda-metrics-apiserver
-                  ref: dhi/keda-metrics-apiserver:2.20.2-debian13@sha256:8fa4ef2f9c3f8c342061786410a849e992a921c04fa43cb59c8f7a2e60797c11
+                  ref: dhi/keda-metrics-apiserver:2.20.2-debian13@sha256:1b3e5bda5bd5ecc052746a97117e9a30d7f5ff68be6e4a7111b0a4d968e9a34e
               name: keda-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kedacore/charts
