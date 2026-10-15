@@ -21,7 +21,7 @@ vars:
   FLUXCD_KUSTOMIZE_CONTROLLER_REFERENCE: dhi/fluxcd-kustomize-controller:1.9.6-debian13@sha256:33adcc4b69dd83d68d3010b87186fd0c1eefeb6ee0e24e4a6e86ba7c629a817a
   FLUXCD_NOTIFICATION_CONTROLLER_REFERENCE: dhi/fluxcd-notification-controller:1.9.4-debian13@sha256:a249bbbcb754e0d5fe229c4c61d17dddc2adf1c869c1d6e9a637425e85549033
   FLUXCD_SOURCE_CONTROLLER_REFERENCE: dhi/fluxcd-source-controller:1.9.6-debian13@sha256:2bee9fa4b72cf3fa3cfcae2abfee0dd1fcc17d1be490472b4634e6f0f5da20ce
-  FLUXCD_SOURCE_WATCHER_REFERENCE: dhi/fluxcd-source-watcher:2.2.4-debian13@sha256:41ff313b2de70c807bb35762c20d03486873e6d7b89a979357a08f16ed459689
+  FLUXCD_SOURCE_WATCHER_REFERENCE: dhi/fluxcd-source-watcher:2.2.4-debian13@sha256:a183fa88b3f3e0c50caabf66b3684a5046a28b4bffe2e1c9cb32e7e7e5598ff3
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "2.19"
   SEMVER_MAJOR_VERSION: "2"
@@ -70,7 +70,7 @@ contents:
                 - name: fluxcd-source-controller
                   ref: dhi/fluxcd-source-controller:1.9.6-debian13@sha256:2bee9fa4b72cf3fa3cfcae2abfee0dd1fcc17d1be490472b4634e6f0f5da20ce
                 - name: fluxcd-source-watcher
-                  ref: dhi/fluxcd-source-watcher:2.2.4-debian13@sha256:41ff313b2de70c807bb35762c20d03486873e6d7b89a979357a08f16ed459689
+                  ref: dhi/fluxcd-source-watcher:2.2.4-debian13@sha256:a183fa88b3f3e0c50caabf66b3684a5046a28b4bffe2e1c9cb32e7e7e5598ff3
               name: flux-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/fluxcd/flux2
