@@ -11,7 +11,7 @@ platforms:
 dates:
   release: "2026-10-12"
 vars:
-  COMMIT_SHA: ea22784498c1c157d08c826de3c9d0872caf03f5
+  COMMIT_SHA: 9bcf339ca511ff03e39031f2d7af30a1d2e00579
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: vsphere-csi-driver-3.8
   REL: "0"
@@ -41,7 +41,7 @@ contents:
           - golang-1.26-oci-config
         files:
           - url: git+https://github.com/kubernetes-sigs/vsphere-csi-driver.git#v3.8.0
-            checksum: ea22784498c1c157d08c826de3c9d0872caf03f5
+            checksum: 9bcf339ca511ff03e39031f2d7af30a1d2e00579
             path: /go/src/github.com/kubernetes-sigs/vsphere-csi-driver
             spdx:
               name: vsphere-csi-driver
