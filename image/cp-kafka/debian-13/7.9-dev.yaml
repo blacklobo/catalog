@@ -22,12 +22,12 @@ vars:
   COMMIT_SHA: ffd841688b14b1cbf5f3b1c2873ebb53098b172f
   COMMON_DOCKER_COMMIT_SHA: bdae688c8d580c6860a0cf427d9be1cb4b13ed73
   COMMON_DOCKER_VERSION: 7.9.10
-  DUB_VERSION: 0.0.172-11
+  DUB_VERSION: 0.0.172-12
   JAVA_FIPS_SUFFIX: ""
   JAVA_VERSION: 1:17.0.20.1+1-4
   JDK_MAJOR_VERSION: "17"
   KAFKA_PACKAGE: kafka-3.9
-  KAFKA_VERSION: 3.9.2-1
+  KAFKA_VERSION: 3.9.2-2
   PACKAGE_FIPS_SUFFIX: ""
   SEMVER_MAJOR_MINOR_VERSION: "7.9"
   SEMVER_MAJOR_VERSION: "7"
@@ -48,7 +48,7 @@ contents:
     - bash
     - ca-certificates
     - ca-certificates-bundle
-    - confluent-docker-utils=0.0.172-11
+    - confluent-docker-utils=0.0.172-12
     - coreutils
     - diffutils
     - dpkg
@@ -57,7 +57,7 @@ contents:
     - findutils
     - grep
     - hostname
-    - kafka-3.9=3.9.2-1
+    - kafka-3.9=3.9.2-2
     - libasound2t64
     - libc-bin
     - libgcc-s1
@@ -173,7 +173,7 @@ contents:
         packages:
           - bash
           - coreutils
-          - kafka-3.9=3.9.2-1
+          - kafka-3.9=3.9.2-2
       pipeline:
         - name: generate bare-name wrappers
           runs: |
