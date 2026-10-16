@@ -4,7 +4,7 @@ image: dhi.io/pkg-cloudnative-pg
 variant: runtime
 tags:
   - 1.29.3-alpine3.24
-  - 1.29.3-r2-alpine3.24
+  - 1.29.3-r3-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: cloudnative-pg-1.29
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "1.29"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.29.3
@@ -64,6 +64,7 @@ contents:
           uses: go/bump@v2
           with:
             deps:
+              - golang.org/x/net@v0.60.0
               - github.com/moby/spdystream@v0.5.1
             tidy: true
         - name: test
@@ -129,7 +130,7 @@ contents:
             name: cloudnative-pg-1.29
             priority: "200"
             provides: cloudnative-pg=$pkg_full_version
-            rel: 2
+            rel: 3
             replaces: cloudnative-pg
             subpackages:
               - files:
