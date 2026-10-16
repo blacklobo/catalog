@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KIALI_REFERENCE: dhi/kiali:2.33.0-debian13@sha256:5057b59a672b51a4485167655152312c42a2d34022b893abc3c85805c4638b65
+  KIALI_REFERENCE: dhi/kiali:2.33.0-debian13@sha256:0d2daca9d454d82fa57e237f9d21b2aaa807ba7525ca6880251ee0c75fd97121
   SEMVER_MAJOR_MINOR_VERSION: "2.33"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.33.0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Kiali Server
               images:
                 - name: kiali
-                  ref: dhi/kiali:2.33.0-debian13@sha256:5057b59a672b51a4485167655152312c42a2d34022b893abc3c85805c4638b65
+                  ref: dhi/kiali:2.33.0-debian13@sha256:0d2daca9d454d82fa57e237f9d21b2aaa807ba7525ca6880251ee0c75fd97121
               name: kiali-server-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kiali/helm-charts
