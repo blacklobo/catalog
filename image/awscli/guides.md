@@ -165,20 +165,25 @@ docker run --rm -it --pid container:my-awscli-container \
 
 Docker Hardened Images come in different variants depending on their intended use.
 
-**Runtime variants** are designed to run your application in production. The AWS CLI image only provides runtime
-variants. These images:
+**Runtime variants** are designed to run your application in production. These images:
 
 - Run as the nonroot user
 - Do not include a shell or a package manager
 - Contain only the minimal set of libraries needed to run AWS CLI
 - Are tagged without any suffix (e.g., `2.31.1`, `2.31`, `2`)
 
-**Note**: Unlike some other DHI images, AWS CLI does not provide separate dev variants. For building or scripting that
-requires shell access, use Docker Debug or create custom images based on the runtime variant.
+**Development variants** include `dev` in the tag and are intended for scripting, package installation, and intermediate
+stages of multi-stage Dockerfiles. These images:
+
+- Run as the root user
+- Include a shell and package manager
+- Include standard command-line utilities
+- Are tagged with the `-dev` suffix (e.g., `2-dev`)
 
 **FIPS variants** include `fips` in the variant name and tag. These variants use cryptographic modules that have been
 validated under FIPS 140, a U.S. government standard for secure cryptographic operations. For example, usage of MD5
-fails in FIPS variants. FIPS variants are tagged with the `-fips` suffix (e.g., `1.44.12-fips`, `2.32.29-fips`).
+fails in FIPS variants. FIPS variants are available as both runtime and development variants, tagged with the `-fips`
+and `-fips-dev` suffixes (e.g., `2-fips`, `2-fips-dev`).
 
 ## Migrate to a Docker Hardened Image
 
@@ -209,8 +214,8 @@ The following steps outline the general migration process.
 
 1. **Update the base image in your Dockerfile.**
 
-   Update the base image in your application's Dockerfile to the hardened image you found in the previous step. Since
-   AWS CLI DHI only provides runtime variants, you'll use the same image for both development and production workflows.
+   Update the base image in your application's Dockerfile to the hardened image you found in the previous step. Use a
+   `-dev` or `-fips-dev` tag when you need a shell and package manager, and the matching runtime variant for production.
 
 1. **For multi-stage Dockerfiles, update the runtime image in your Dockerfile.**
 
@@ -219,9 +224,9 @@ The following steps outline the general migration process.
 
 1. **Install additional packages**
 
-   Docker Hardened Images contain minimal packages in order to reduce the potential attack surface. Since AWS CLI DHI
-   only provides runtime variants without package managers, you'll need to use other DHI images with dev variants if you
-   need to install additional packages alongside AWS CLI functionality.
+   Docker Hardened Images contain minimal packages in order to reduce the potential attack surface. Use the matching AWS
+   CLI development variant when you need to install additional packages. In a multi-stage build, copy only the required
+   output into the matching runtime variant.
 
 ## Troubleshooting migration
 
