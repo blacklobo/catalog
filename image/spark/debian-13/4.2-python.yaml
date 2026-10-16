@@ -25,7 +25,7 @@ vars:
   JAVA_FIPS_SUFFIX: ""
   JAVA_MAJOR_VERSION: "21"
   JDK_MAJOR_VERSION: "21"
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:b427443494e23e141541cf217be2fc0d615e91ce8573b51cdf0bf8b67c1cc0b4
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:656c9e4b0253d864c3b1a1db680e7ee899c3743540f64c95db017a5fbcf2ea21
   MAVEN_VERSION: 3.10.0
   NAME_DETAIL: Scala 2.13.x, Java 21.x, Python 3.13.x
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
@@ -89,7 +89,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:b427443494e23e141541cf217be2fc0d615e91ce8573b51cdf0bf8b67c1cc0b4
+          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:656c9e4b0253d864c3b1a1db680e7ee899c3743540f64c95db017a5fbcf2ea21
             includes:
               - opt/java/**
               - usr/lib/jvm/temurin-21/**
