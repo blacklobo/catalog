@@ -1,11 +1,11 @@
 [
   {
     "package": "js-yaml",
-    "version": "4.3.1"
+    "version": "4.3.2"
   },
   {
     "package": "@modelcontextprotocol/sdk",
-    "version": "1.29.0"
+    "version": "1.31.0"
   },
   {
     "package": "@genql/cli",
@@ -17,15 +17,15 @@
   },
   {
     "package": "qs",
-    "version": "6.15.2"
+    "version": "6.16.1"
   },
   {
     "package": "undici",
-    "version": "6.28.0"
+    "version": "6.28.1"
   },
   {
     "package": "undici",
-    "version": "6.28.0",
+    "version": "6.28.1",
     "overridePath": [
       "@genql/cli"
     ]
@@ -40,7 +40,7 @@
   },
   {
     "package": "brace-expansion",
-    "version": "5.0.9"
+    "version": "5.0.12"
   },
   {
     "package": "path-to-regexp",
@@ -48,24 +48,10 @@
   },
   {
     "package": "fast-uri",
-    "version": "3.1.5"
+    "version": "3.1.8"
   },
   {
     "package": "body-parser",
     "version": "2.3.0"
-  },
-  {
-    "package": "@hono/node-server",
-    "version": "2.0.10",
-    "overridePath": [
-      "@hono/node-server"
-    ]
-  },
-  {
-    "package": "@hono/node-server",
-    "version": "2.0.10",
-    "overridePath": [
-      "@modelcontextprotocol/sdk"
-    ]
   }
 ]
