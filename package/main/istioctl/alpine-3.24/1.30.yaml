@@ -3,23 +3,23 @@
 image: dhi.io/pkg-istioctl
 variant: runtime
 tags:
-  - 1.30.5-alpine3.24
-  - 1.30.5-r2-alpine3.24
+  - 1.30.6-alpine3.24
+  - 1.30.6-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-05-18"
 vars:
-  COMMIT_SHA: 55b832fad2bc55f47e658b68cd1a7abf9540dbc9
+  COMMIT_SHA: b85dac9587f2f997151d205e069e4f4ff091c7c5
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: istioctl-1.30
-  REL: "2"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.5
-  VERSION: 1.30.5
+  SEMVER_VERSION: 1.30.6
+  VERSION: 1.30.6
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -46,15 +46,15 @@ contents:
           - golang-1.26=1.26.9-r0
           - golang-1.26-oci-config=1.26.9-r0
         files:
-          - url: git+https://github.com/istio/istio.git#1.30.5
-            checksum: 55b832fad2bc55f47e658b68cd1a7abf9540dbc9
+          - url: git+https://github.com/istio/istio.git#1.30.6
+            checksum: b85dac9587f2f997151d205e069e4f4ff091c7c5
             path: /go/src/github.com/istio/istio
             spdx:
               name: istioctl
-              version: 1.30.5
+              version: 1.30.6
               packages:
                 - name: istio
-                  purl: pkg:golang/istio.io/istio@1.30.5
+                  purl: pkg:golang/istio.io/istio@1.30.6
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -63,10 +63,8 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/net@v0.60.0
               - github.com/google/cel-go@v0.31.0
               - github.com/moby/spdystream@v0.5.1
-              - google.golang.org/grpc@v1.83.2
               - github.com/prometheus/prometheus@v0.311.3
             download: true
             tidy: true
@@ -83,10 +81,10 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X istio.io/istio/pkg/version.buildVersion=1.30.5
-              - -X istio.io/istio/pkg/version.buildGitRevision=55b832fad2bc55f47e658b68cd1a7abf9540dbc9
+              - -X istio.io/istio/pkg/version.buildVersion=1.30.6
+              - -X istio.io/istio/pkg/version.buildGitRevision=b85dac9587f2f997151d205e069e4f4ff091c7c5
               - -X istio.io/istio/pkg/version.buildStatus=Clean
-              - -X istio.io/istio/pkg/version.buildTag=1.30.5
+              - -X istio.io/istio/pkg/version.buildTag=1.30.6
               - -X istio.io/istio/pkg/version.buildHub=docker.io/dhi
               - -X istio.io/istio/pkg/version.buildOS=$(go env GOOS)
               - -X istio.io/istio/pkg/version.buildArch=$(go env GOARCH)
@@ -100,10 +98,10 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X istio.io/istio/pkg/version.buildVersion=1.30.5
-              - -X istio.io/istio/pkg/version.buildGitRevision=55b832fad2bc55f47e658b68cd1a7abf9540dbc9
+              - -X istio.io/istio/pkg/version.buildVersion=1.30.6
+              - -X istio.io/istio/pkg/version.buildGitRevision=b85dac9587f2f997151d205e069e4f4ff091c7c5
               - -X istio.io/istio/pkg/version.buildStatus=Clean
-              - -X istio.io/istio/pkg/version.buildTag=1.30.5
+              - -X istio.io/istio/pkg/version.buildTag=1.30.6
               - -X istio.io/istio/pkg/version.buildHub=docker.io/dhi
               - -X istio.io/istio/pkg/version.buildOS=$(go env GOOS)
               - -X istio.io/istio/pkg/version.buildArch=$(go env GOARCH)
@@ -118,14 +116,14 @@ contents:
               - usr/bin/istioctl
             license: Apache-2.0
             name: istioctl-1.30
-            rel: 2
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/istioctl
                     source: usr/bin/istioctl-dev
                 name: istioctl-1.30-dev
             url: https://github.com/istio/istio
-            version: 1.30.5
+            version: 1.30.6
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
