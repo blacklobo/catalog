@@ -17,7 +17,7 @@ dates:
   release: "2025-11-24"
 vars:
   COMMIT_SHA: 2e883bc76b4b84409f2ebe57468401d2a416a346
-  NGINX_REFERENCE: dhi/nginx:1.31.6-alpine3.23@sha256:a7cc98c1fee4eaa993189c6a56b795fe2662ae1ad2fd28f2f6715c62b7b05a2a
+  NGINX_REFERENCE: dhi/nginx:1.31.7-alpine3.23@sha256:fe21010a84185c19940a40d598cbae9a91f78eae802a6fc2c72076cf5e3ecb64
   SEMVER_MAJOR_MINOR_VERSION: "3.22"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.22.2
@@ -116,7 +116,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/nginx:1.31.6-alpine3.23@sha256:a7cc98c1fee4eaa993189c6a56b795fe2662ae1ad2fd28f2f6715c62b7b05a2a
+    - name: dhi.io/nginx:1.31.7-alpine3.23@sha256:fe21010a84185c19940a40d598cbae9a91f78eae802a6fc2c72076cf5e3ecb64
       includes:
         - '**'
       excludes:
