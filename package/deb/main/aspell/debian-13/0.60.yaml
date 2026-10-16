@@ -3,8 +3,8 @@
 image: dhi.io/pkg-aspell
 variant: runtime
 tags:
-  - 0.60.8.1-4-dhi0
-  - 0.60.8.1-4-dhi0-debian13
+  - 0.60.8.1-4-dhi1
+  - 0.60.8.1-4-dhi1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,9 +22,9 @@ vars:
   DEBIAN_ORIG_FILENAME: aspell_0.60.8.1.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/a/aspell/aspell_0.60.8.1.orig.tar.gz
   DEBIAN_VERSION: 0.60.8.1-4
-  DHI_REL: "0"
-  DHI_VERSION: 0.60.8.1-4+dhi0
-  TAG_VERSION: 0.60.8.1-4-dhi0
+  DHI_REL: "1"
+  DHI_VERSION: 0.60.8.1-4+dhi1
+  TAG_VERSION: 0.60.8.1-4-dhi1
   UPSTREAM_VERSION: 0.60.8.1
 contents:
   packages:
@@ -40,6 +40,7 @@ contents:
           - dpkg-dev
           - libncurses-dev
           - quilt
+          - util-linux
           - texinfo
           - w3m
         files:
@@ -69,14 +70,37 @@ contents:
           with:
             file: aspell_0.60.8.1-4.dsc
             path: aspell
+        - uses: dpkg/patch@v1
+          with:
+            apply: true
+            patches:
+              - ${source.dir}/patch/dhi-cve-2026-75818-prezip-bad-input.patch
+              - ${source.dir}/patch/dhi-cve-2026-75819-readonly-dict-header-offsets.patch
+              - ${source.dir}/patch/dhi-cve-2026-75820-writable-word-length.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - DHI Rebuild
-            version: 0.60.8.1-4+dhi0
+              - Backport upstream fixes for CVE-2026-75818, CVE-2026-75819, and CVE-2026-75820
+            version: 0.60.8.1-4+dhi1
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
+      paths:
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2026-75818-prezip-bad-input.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/aspell/patch/dhi-cve-2026-75818-prezip-bad-input.patch
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2026-75819-readonly-dict-header-offsets.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/aspell/patch/dhi-cve-2026-75819-readonly-dict-header-offsets.patch
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2026-75820-writable-word-length.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/aspell/patch/dhi-cve-2026-75820-writable-word-length.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
