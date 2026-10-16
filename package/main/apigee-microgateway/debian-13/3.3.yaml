@@ -4,21 +4,25 @@ image: dhi.io/pkg-apigee-microgateway
 variant: runtime
 tags:
   - 3.3.11
-  - 3.3.11-r6
+  - 3.3.11-r7
   - 3.3.11-debian13
-  - 3.3.11-r6-debian13
+  - 3.3.11-r7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   COMMIT_SHA: f2817cbceab4dd0f84df49d9d9bd6d687ca3a233
   NODEJS_VERSION: 24.22.0-0
-  REL: "6"
+  REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "3.3"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.3.11
   VERSION: 3.3.11
 contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
     - base-files
   builds:
@@ -57,9 +61,9 @@ contents:
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/qs/-/qs-6.15.2.tgz
-            checksum: sha256:e699d4b3ac62181f5bcd29c1d15224054c20d81aab67f7b2e75b7f7a2185b897
-            path: ${source.dir}/qs-6.15.2.tgz
+          - url: https://registry.npmjs.org/qs/-/qs-6.16.0.tgz
+            checksum: sha256:f7a1bfc96c3a0c1172f1f3ef3c280f5ce8054841922e715f0d686da62d7beba4
+            path: ${source.dir}/qs-6.16.0.tgz
             uid: 0
             gid: 0
           - url: https://registry.npmjs.org/diff/-/diff-8.0.3.tgz
@@ -87,14 +91,14 @@ contents:
             path: ${source.dir}/jsrsasign-11.1.1.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz
-            checksum: sha256:5d06001fddd25cbee90c96db4dc5b7b57711b984c3141e28d10f143deb52dbaf
-            path: ${source.dir}/brace-expansion-5.0.9.tgz
+          - url: https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz
+            checksum: sha256:ef8448ec78f20b692f04fa6d01f39b5ab34c66404bea3429f5a39c6c9e0be8b4
+            path: ${source.dir}/brace-expansion-5.0.12.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/ip-address/-/ip-address-10.3.1.tgz
-            checksum: sha256:ad1790063beea11a312c801df30d58e147de762f4f77787552376eb7424623e5
-            path: ${source.dir}/ip-address-10.3.1.tgz
+          - url: https://registry.npmjs.org/ip-address/-/ip-address-10.7.1.tgz
+            checksum: sha256:7f99ac7abda701afe1fd1e36de462236fb4d1eb8c595d7ae0267bba7d8ee55f8
+            path: ${source.dir}/ip-address-10.7.1.tgz
             uid: 0
             gid: 0
           - url: https://registry.npmjs.org/uuid/-/uuid-11.1.1.tgz
@@ -107,9 +111,9 @@ contents:
             path: ${source.dir}/tmp-0.2.7.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/js-yaml/-/js-yaml-4.3.1.tgz
-            checksum: sha256:08d6282b77a3e7242061f6dd5516c019b25c53041ad267bca3b790d79ddd5f34
-            path: ${source.dir}/js-yaml-4.3.1.tgz
+          - url: https://registry.npmjs.org/js-yaml/-/js-yaml-4.3.2.tgz
+            checksum: sha256:c7b241d2224cf9253ff53854aa4cee87da91bd889c4d0fa3a3ffd1041ecee5b1
+            path: ${source.dir}/js-yaml-4.3.2.tgz
             uid: 0
             gid: 0
           - url: https://registry.npmjs.org/body-parser/-/body-parser-1.20.6.tgz
@@ -136,7 +140,7 @@ contents:
             set -eux -o pipefail
 
             mkdir -p /tmp/qs-fix
-            tar -xzf ${source.dir}/qs-6.15.2.tgz -C /tmp/qs-fix
+            tar -xzf ${source.dir}/qs-6.16.0.tgz -C /tmp/qs-fix
 
             find node_modules -type d -name "qs" -print0 | while IFS= read -r -d '' qs_dir; do
               echo "Replacing $qs_dir"
@@ -223,7 +227,7 @@ contents:
             set -eux -o pipefail
 
             mkdir -p /tmp/brace-expansion-fix
-            tar -xzf ${source.dir}/brace-expansion-5.0.9.tgz -C /tmp/brace-expansion-fix
+            tar -xzf ${source.dir}/brace-expansion-5.0.12.tgz -C /tmp/brace-expansion-fix
             find node_modules -type d -name "brace-expansion" -exec test -f {}/package.json \; -print0 | while IFS= read -r -d '' be_dir; do
               echo "Replacing $be_dir"
               rm -rf "$be_dir"
@@ -237,7 +241,7 @@ contents:
             set -eux -o pipefail
 
             mkdir -p /tmp/ip-address-fix
-            tar -xzf ${source.dir}/ip-address-10.3.1.tgz -C /tmp/ip-address-fix
+            tar -xzf ${source.dir}/ip-address-10.7.1.tgz -C /tmp/ip-address-fix
             find node_modules -type d -name "ip-address" -exec test -f {}/package.json \; -print0 | while IFS= read -r -d '' ip_dir; do
               echo "Replacing $ip_dir"
               rm -rf "$ip_dir"
@@ -279,7 +283,7 @@ contents:
             set -eux -o pipefail
 
             mkdir -p /tmp/js-yaml-fix
-            tar -xzf ${source.dir}/js-yaml-4.3.1.tgz -C /tmp/js-yaml-fix
+            tar -xzf ${source.dir}/js-yaml-4.3.2.tgz -C /tmp/js-yaml-fix
             find node_modules -type d -name "js-yaml" -exec test -f {}/package.json \; -print0 | while IFS= read -r -d '' js_yaml_dir; do
               echo "Replacing $js_yaml_dir"
               rm -rf "$js_yaml_dir"
@@ -341,7 +345,7 @@ contents:
               - deb
             license: Apache-2.0
             name: apigee-microgateway
-            rel: 6
+            rel: 7
             url: https://github.com/apigee-internal/microgateway
             version: 3.3.11
       paths:
