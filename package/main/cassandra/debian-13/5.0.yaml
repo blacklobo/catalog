@@ -4,25 +4,21 @@ image: dhi.io/pkg-cassandra
 variant: runtime
 tags:
   - 5.0.9
-  - 5.0.9-r10
+  - 5.0.9-r11
   - 5.0.9-debian13
-  - 5.0.9-r10-debian13
+  - 5.0.9-r11-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2024-09-05"
 vars:
-  BCFIPS_VERSION: 2.1.3
-  BCPKIXFIPS_VERSION: 2.1.13
-  BCRNGJENT_VERSION: 1.3.6
-  BCTLSFIPS_VERSION: 2.1.25
-  BCUTILFIPS_VERSION: 2.1.8
+  BUILD_ENTITLEMENT: ""
   COMMIT_SHA: b5f2a54210d541339c2e7c17a794195cac0e67c2
   ECLIPSE_TEMURIN_VERSION: 1:17.0.20.1+1-4
   JDK_MAJOR_VERSION: "17"
   PACKAGE_NAME: cassandra-5.0
-  REL: "10"
+  REL: "11"
   SEMVER_MAJOR_MINOR_VERSION: "5.0"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.0.9
@@ -180,7 +176,7 @@ contents:
               - deb
             license: Apache-2.0
             name: cassandra-5.0
-            rel: 10
+            rel: 11
             subpackages:
               - files:
                   - path: usr/share/cassandra
