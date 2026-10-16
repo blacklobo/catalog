@@ -5,7 +5,7 @@ variant: runtime
 tags:
   - 1.11-alpine3.24
   - 1.11.8-alpine3.24
-  - 1.11.8-r1-alpine3.24
+  - 1.11.8-r2-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,9 @@ dates:
 vars:
   COMMIT_SHA: 3fb04e79b57711c3649c03c1580d3c746cd1a490
   GOLANG_VERSION: 1.27.2-r0
+  GRPC_GO_VERSION: v1.83.2
   HELM_COMMIT_SHA: 144ca65f8501953fa8b41cd1d37c7223051c85b7
+  HELM_GO_VERSION: v3.20.2
   HELM_SPDX_VERSION: 3.22.0
   HELM_VERSION: v3.22.0
   K8S_UTILS_VERSION: v0.0.0-20250604170112-4c0f3b243397
@@ -26,7 +28,7 @@ vars:
   NPM_VERSION: 12.2.0-r0
   PACKAGE_NAME: kargo-1.11
   PNPM_VERSION: 9.0.3
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "1.11"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.11.8
@@ -230,7 +232,7 @@ contents:
               - usr/bin/helm
             license: Apache-2.0
             name: kargo-1.11
-            rel: 1
+            rel: 2
             subpackages:
               - files:
                   - path: usr/bin/kargo
