@@ -4,18 +4,18 @@ name: Harbor Helm chart 1.x
 image: dhi.io/harbor-chart
 variant: helm
 tags:
-  - 1.19.2
+  - 1.19.4
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 1b95eb091f73a692634797b3ea15766a6d454d57
+  CHART_COMMIT_SHA: 321159f4129ef8ccd4476047d4c96f582e2e036e
   CHART_HELM_NAME: harbor-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HARBOR_CORE_REFERENCE: dhi/harbor-core:2.15.4-debian13@sha256:bcb70cec7eda0e15f5c6c12765bd8011179da41fdbee23a37d8a10de19165d39
-  HARBOR_DB_REFERENCE: dhi/harbor-db:2.15.4-debian13@sha256:8b861c5070aeb1d6b8f32a4dc39f887c61d25c19da7d324c14cdaa0ab26cb746
+  HARBOR_DB_REFERENCE: dhi/harbor-db:2.15.4-debian13@sha256:8283384525b266779388c79e2bbe59ee49f7d70506d45f96952635c812490400
   HARBOR_EXPORTER_REFERENCE: dhi/harbor-exporter:2.15.4-debian13@sha256:ab01b6d48f799947b48f8a1647155bd605e557684f6c4a9161a86c415832c4a6
   HARBOR_JOBSERVICE_REFERENCE: dhi/harbor-jobservice:2.15.4-debian13@sha256:56a44d5b037ca38e376595477e138e10d3afb9b993062daa9b640c5d7aab8f1b
   HARBOR_PORTAL_REFERENCE: dhi/harbor-portal:2.15.4-debian13@sha256:3f07f25fd4e68eae7d803f4407e2b1a7b366d09f2febc5a2619bb6729683597c
@@ -27,8 +27,8 @@ vars:
   NGINX_REFERENCE: dhi/nginx:1.31.7-debian13@sha256:0f59fb1684b6e9b32a532f7769fb255d4bb7106ce4354ca413b59369b63a71df
   SEMVER_MAJOR_MINOR_VERSION: "1.19"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.19.2
-  VERSION: 1.19.2
+  SEMVER_VERSION: 1.19.4
+  VERSION: 1.19.4
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -45,8 +45,8 @@ contents:
           - perl
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/goharbor/harbor-helm.git#v1.19.2
-            checksum: 1b95eb091f73a692634797b3ea15766a6d454d57
+          - url: git+https://github.com/goharbor/harbor-helm.git#v1.19.4
+            checksum: 321159f4129ef8ccd4476047d4c96f582e2e036e
             path: ${source.dir}/harbor-helm
             uid: 0
             gid: 0
@@ -73,7 +73,7 @@ contents:
                 - name: harbor-portal
                   ref: dhi/harbor-portal:2.15.4-debian13@sha256:3f07f25fd4e68eae7d803f4407e2b1a7b366d09f2febc5a2619bb6729683597c
                 - name: harbor-db
-                  ref: dhi/harbor-db:2.15.4-debian13@sha256:8b861c5070aeb1d6b8f32a4dc39f887c61d25c19da7d324c14cdaa0ab26cb746
+                  ref: dhi/harbor-db:2.15.4-debian13@sha256:8283384525b266779388c79e2bbe59ee49f7d70506d45f96952635c812490400
                 - name: harbor-redis
                   ref: dhi/harbor-redis:2.15.4-debian13@sha256:09d01d9f96f28704e00f017bf734d4867c6c1fbddcdea88bb6f16a52e51c21d4
                 - name: nginx
