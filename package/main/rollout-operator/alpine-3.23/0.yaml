@@ -3,22 +3,22 @@
 image: dhi.io/pkg-rollout-operator
 variant: runtime
 tags:
-  - 0.40.0-alpine3.23
-  - 0.40.0-r4-alpine3.23
+  - 0.41.0-alpine3.23
+  - 0.41.0-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-01-05"
 vars:
-  COMMIT_SHA: 02265a4a0c315e1c5f5f7b06b9c7f7e42c3f00b3
+  COMMIT_SHA: 0d34defc49febc3f27752b1f1535e3f8cc6b2207
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
-  REL: "4"
-  SEMVER_MAJOR_MINOR_VERSION: "0.40"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "0.41"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.40.0
-  VERSION: 0.40.0
+  SEMVER_VERSION: 0.41.0
+  VERSION: 0.41.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -43,15 +43,15 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/grafana/rollout-operator.git#v0.40.0
-            checksum: 02265a4a0c315e1c5f5f7b06b9c7f7e42c3f00b3
+          - url: git+https://github.com/grafana/rollout-operator.git#v0.41.0
+            checksum: 0d34defc49febc3f27752b1f1535e3f8cc6b2207
             path: /go/src/github.com/grafana/rollout-operator
             spdx:
               name: grafana-rollout-operator
-              version: 0.40.0
+              version: 0.41.0
               packages:
                 - name: grafana-rollout-operator
-                  purl: pkg:golang/github.com/grafana/rollout-operator/v5@0.40.0
+                  purl: pkg:golang/github.com/grafana/rollout-operator/v5@0.41.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -68,7 +68,6 @@ contents:
               - go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp@v1.45.0
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.45.0
               - google.golang.org/grpc@v1.85.0-dev.0.20260825072537-93e31b48545e
-              - golang.org/x/net@v0.60.0
             download: true
         - name: test
           runs: |
@@ -97,14 +96,14 @@ contents:
                 source: usr/bin/grafana-rollout-operator
             license: Apache-2.0
             name: rollout-operator
-            rel: 4
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/rollout-operator
                     source: usr/bin/rollout-operator-dev
                 name: rollout-operator-dev
             url: https://github.com/grafana/rollout-operator
-            version: 0.40.0
+            version: 0.41.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
