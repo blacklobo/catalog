@@ -71,6 +71,7 @@ contents:
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0
               - github.com/distribution/distribution/v3@v3.1.2
               - oras.land/oras-go/v2@v2.6.2
+              - github.com/distribution/distribution/v3@v3.1.2
             download: true
             tidy: true
         - name: test
