@@ -4,7 +4,7 @@ image: dhi.io/pkg-atlantis
 variant: runtime
 tags:
   - 0.48.1-alpine3.24
-  - 0.48.1-r1-alpine3.24
+  - 0.48.1-r2-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: abbc696d84d937fa153493306e40fe6cabcf0902
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "0.48"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.48.1
@@ -64,6 +64,7 @@ contents:
             deps:
               - github.com/klauspost/compress@v1.18.7
               - golang.org/x/crypto@v0.56.0
+              - golang.org/x/net@v0.60.0
             download: true
         - name: test
           runs: |
@@ -101,7 +102,7 @@ contents:
               - usr/bin/atlantis
             license: Apache-2.0
             name: atlantis
-            rel: 1
+            rel: 2
             subpackages:
               - files:
                   - path: usr/bin/atlantis
