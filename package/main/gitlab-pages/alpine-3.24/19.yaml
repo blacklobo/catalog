@@ -3,20 +3,20 @@
 image: dhi.io/pkg-gitlab-pages
 variant: runtime
 tags:
-  - 19.4.2-alpine3.24
-  - 19.4.2-r0-alpine3.24
+  - 19.5.0-alpine3.24
+  - 19.5.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: dc95f7acf6fdda0c1e279c8d02e5e65ee3603b5e
+  COMMIT_SHA: adb4248dd56c2decfb9d87c71d112c3eaed0f1ef
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: gitlab-pages
   REL: "0"
-  SEMVER_MAJOR_MINOR_VERSION: "19.4"
+  SEMVER_MAJOR_MINOR_VERSION: "19.5"
   SEMVER_MAJOR_VERSION: "19"
-  SEMVER_VERSION: 19.4.2
-  VERSION: 19.4.2
+  SEMVER_VERSION: 19.5.0
+  VERSION: 19.5.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -38,15 +38,15 @@ contents:
           - golang-1.26=1.26.9-r0
           - golang-1.26-oci-config=1.26.9-r0
         files:
-          - url: git+https://gitlab.com/gitlab-org/gitlab-pages.git#v19.4.2
-            checksum: dc95f7acf6fdda0c1e279c8d02e5e65ee3603b5e
+          - url: git+https://gitlab.com/gitlab-org/gitlab-pages.git#v19.5.0
+            checksum: adb4248dd56c2decfb9d87c71d112c3eaed0f1ef
             path: /go/src/gitlab.com/gitlab-org/gitlab-pages
             spdx:
               name: gitlab-pages
-              version: 19.4.2
+              version: 19.5.0
               packages:
                 - name: gitlab-pages
-                  purl: pkg:golang/gitlab.com/gitlab-org/gitlab-pages@19.4.2
+                  purl: pkg:golang/gitlab.com/gitlab-org/gitlab-pages@19.5.0
                   license: MIT
             uid: 0
             gid: 0
@@ -55,27 +55,22 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/crypto@v0.56.0
               - google.golang.org/grpc@v1.83.2
             download: true
         - uses: go/hermetic@v1
-        - name: fix IPv6 request test for Go 1.26
-          uses: git/patch@v1
-          with:
-            patch: go126-ipv6-request-test.patch
         - name: test
           runs: |
             set -eux -o pipefail
 
-            CGO_ENABLED=0 go test -short $(go list ./internal/... | grep -Ev '/internal/(httprange|logging/slowlogs|request|source/gitlab/cache)$')
+            CGO_ENABLED=0 go test -short $(go list ./internal/... | grep -Ev '/internal/(httprange|logging/slowlogs|source/gitlab/cache)$')
         - name: build
           uses: go/build@v1
           with:
             cgo_enabled: 0
             fips: false
             ldflags:
-              - -X main.VERSION=19.4.2
-              - -X main.REVISION=dc95f7acf6fdda0c1e279c8d02e5e65ee3603b5e
+              - -X main.VERSION=19.5.0
+              - -X main.REVISION=adb4248dd56c2decfb9d87c71d112c3eaed0f1ef
             output: ${target.dir}/usr/bin/gitlab-pages
             packages: .
             strip: false
@@ -90,13 +85,7 @@ contents:
             name: gitlab-pages
             rel: 0
             url: https://gitlab.com/gitlab-org/gitlab-pages
-            version: 19.4.2
-      paths:
-        - type: file
-          path: /go/src/gitlab.com/gitlab-org/gitlab-pages/go126-ipv6-request-test.patch
-          uid: 0
-          gid: 0
-          source: package/main/gitlab-pages/patch/go126-ipv6-request-test.patch
+            version: 19.5.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
