@@ -14,7 +14,7 @@ vars:
   BINUTILS_REFERENCE: dhi/pkg-binutils:2.46-debian13@sha256:069179316afd8be7ba10ffb968dce13db5f4a349516553a98d77bfb85051f31d
   COMMIT_SHA: 0954dea2d09b7f218373653fa0af9f846eedae73
   DHI_TAGS_OVERWRITE: "true"
-  GOLANG_REFERENCE: dhi/golang:1.26.9-debian13-dev@sha256:1bb3cde8e7f11f03eb98d55d9c1b96ce8e58dd01e4254e6860d4a7e12667a925
+  GOLANG_REFERENCE: dhi/golang:1.26.9-debian13-dev@sha256:29fcff4424c069df3b76161fec95f4512f176a42209b5017787daec437e9a292
   SEMVER_MAJOR_MINOR_VERSION: "2.26"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.26.1
@@ -75,7 +75,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/golang:1.26.9-debian13-dev@sha256:1bb3cde8e7f11f03eb98d55d9c1b96ce8e58dd01e4254e6860d4a7e12667a925
+          - name: dhi.io/golang:1.26.9-debian13-dev@sha256:29fcff4424c069df3b76161fec95f4512f176a42209b5017787daec437e9a292
             includes:
               - usr/lib/go
             uid: 0
