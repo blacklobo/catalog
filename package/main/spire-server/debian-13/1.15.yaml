@@ -3,25 +3,25 @@
 image: dhi.io/pkg-spire-server
 variant: runtime
 tags:
-  - 1.15.3
-  - 1.15.3-r6
-  - 1.15.3-debian13
-  - 1.15.3-r6-debian13
+  - 1.15.4
+  - 1.15.4-r0
+  - 1.15.4-debian13
+  - 1.15.4-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-05-19"
 vars:
-  COMMIT_SHA: 2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
+  COMMIT_SHA: 4a21c1b319ca76c4144d583edd78fdb41507e893
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-0
   PACKAGE_NAME: spire-server-1.15
-  REL: "6"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.15"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.15.3
-  VERSION: 1.15.3
+  SEMVER_VERSION: 1.15.4
+  VERSION: 1.15.4
 contents:
   packages:
     - base-files
@@ -46,15 +46,15 @@ contents:
           - golang-1.26=1.26.9-0
           - golang-1.26-oci-config=1.26.9-0
         files:
-          - url: git+https://github.com/spiffe/spire.git#2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
-            checksum: 2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
+          - url: git+https://github.com/spiffe/spire.git#4a21c1b319ca76c4144d583edd78fdb41507e893
+            checksum: 4a21c1b319ca76c4144d583edd78fdb41507e893
             path: /go/src/github.com/spiffe/spire
             spdx:
               name: spire-server
-              version: 1.15.3
+              version: 1.15.4
               packages:
                 - name: spire-server
-                  purl: pkg:golang/github.com/spiffe/spire@1.15.3
+                  purl: pkg:golang/github.com/spiffe/spire@1.15.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -62,11 +62,7 @@ contents:
         - name: update go dependencies (1.15 only)
           uses: go/bump@v2
           with:
-            deps:
-              - golang.org/x/crypto@v0.56.0
-              - go.opentelemetry.io/otel@v1.44.0
-              - go.opentelemetry.io/otel/sdk@v1.45.0
-              - google.golang.org/grpc@v1.83.2
+            deps: []
             tidy: true
         - uses: go/hermetic@v1
         - name: test
@@ -84,8 +80,8 @@ contents:
             cgo_enabled: 1
             fips: false
             ldflags:
-              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.15.3
-              - -X github.com/spiffe/spire/pkg/common/version.githash=2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
+              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.15.4
+              - -X github.com/spiffe/spire/pkg/common/version.githash=4a21c1b319ca76c4144d583edd78fdb41507e893
             output: ${target.dir}/usr/bin/spire-server
             packages: ./cmd/spire-server
             tags: libsqlite3
@@ -97,8 +93,8 @@ contents:
             cgo_enabled: 1
             fips: false
             ldflags:
-              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.15.3
-              - -X github.com/spiffe/spire/pkg/common/version.githash=2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
+              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.15.4
+              - -X github.com/spiffe/spire/pkg/common/version.githash=4a21c1b319ca76c4144d583edd78fdb41507e893
             output: ${target.dir}/usr/bin/spire-server-dev
             packages: ./cmd/spire-server
             strip: false
@@ -115,14 +111,14 @@ contents:
               - deb
             license: Apache-2.0
             name: spire-server-1.15
-            rel: 6
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/spire-server
                     source: usr/bin/spire-server-dev
                 name: spire-server-1.15-dev
             url: https://github.com/spiffe/spire
-            version: 1.15.3
+            version: 1.15.4
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
