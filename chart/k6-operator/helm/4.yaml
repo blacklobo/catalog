@@ -4,11 +4,11 @@ name: Grafana k6-operator Helm chart 4.x
 image: dhi.io/k6-operator-chart
 variant: helm
 tags:
-  - 4.6.0
+  - 4.7.0
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: cf0ae21f4e26b0dd0f99d763ae72e063b4384f2a
+  CHART_COMMIT_SHA: 657f605a6fd16cd65efbd599615869485b85ea0c
   CHART_HELM_NAME: k6-operator-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -17,10 +17,10 @@ vars:
   HELM_VERSION: 4.1.4-2
   K6_OPERATOR_REFERENCE: dhi/k6-operator:1.6.0-debian13@sha256:ddcdbed7f59f3bd987efc66dbe8ecba49782a6d36893ab9a61781acfc8441c31
   K6_REFERENCE: dhi/k6:1.8.2-debian13-compat@sha256:ffd6af4a9ffe1b0876e2f5e328f8f9487371515843a9793a5fe135c6054f0739
-  SEMVER_MAJOR_MINOR_VERSION: "4.6"
+  SEMVER_MAJOR_MINOR_VERSION: "4.7"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.6.0
-  VERSION: 4.6.0
+  SEMVER_VERSION: 4.7.0
+  VERSION: 4.7.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/grafana/k6-operator.git#helm-k6-operator-4.6.0
-            checksum: cf0ae21f4e26b0dd0f99d763ae72e063b4384f2a
+          - url: git+https://github.com/grafana/k6-operator.git#helm-k6-operator-4.7.0
+            checksum: 657f605a6fd16cd65efbd599615869485b85ea0c
             path: /src/go/github.com/grafana/k6-operator
             uid: 0
             gid: 0
