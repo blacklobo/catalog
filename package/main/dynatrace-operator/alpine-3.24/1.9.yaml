@@ -3,7 +3,7 @@
 image: dhi.io/pkg-dynatrace-operator
 variant: runtime
 tags:
-  - 1.9.0-r2-alpine3.24
+  - 1.9.0-r3-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: dynatrace-operator-1.9
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "1.9"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.9.0
@@ -59,7 +59,6 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - github.com/klauspost/compress@v1.19.1
               - golang.org/x/crypto@v0.57.0
               - golang.org/x/mod@v0.41.0
               - google.golang.org/grpc@v1.83.2
@@ -75,6 +74,12 @@ contents:
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.45.0
               - go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp@v1.45.0
+            download: true
+        - name: keep compress on the fixed release for older lines
+          uses: go/bump@v2
+          with:
+            deps:
+              - github.com/klauspost/compress@v1.19.1
             download: true
         - name: keep grpc on the fixed release
           uses: go/bump@v2
@@ -146,7 +151,7 @@ contents:
               - usr/bin/dynatrace-operator
             license: Apache-2.0
             name: dynatrace-operator-1.9
-            rel: 2
+            rel: 3
             subpackages:
               - files:
                   - path: usr/bin/dynatrace-operator
