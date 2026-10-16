@@ -4,7 +4,7 @@ image: dhi.io/pkg-hubble-ui
 variant: runtime
 tags:
   - 0.13.6-alpine3.24
-  - 0.13.6-r4-alpine3.24
+  - 0.13.6-r5-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,7 +12,7 @@ vars:
   COMMIT_SHA: d6eb0dd9ff8e684a6a6bd6da7b6cb304497a2e26
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
-  REL: "4"
+  REL: "5"
   SEMVER_MAJOR_MINOR_VERSION: "0.13"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.13.6
@@ -59,7 +59,8 @@ contents:
           uses: go/bump@v2
           work-dir: /go/src/github.com/cilium/hubble-ui/backend
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
             download: true
         - name: test
           work-dir: /go/src/github.com/cilium/hubble-ui/backend
@@ -89,7 +90,7 @@ contents:
               - usr/bin/backend
             license: Apache-2.0
             name: hubble-ui
-            rel: 4
+            rel: 5
             subpackages:
               - files:
                   - path: usr/bin/backend
