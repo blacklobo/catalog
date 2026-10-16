@@ -4,30 +4,30 @@ name: Zero to JupyterHub Helm chart 4.x
 image: dhi.io/zero-to-jupyterhub-k8s-chart
 variant: helm
 tags:
-  - 4.4.2
+  - 4.4.3
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: ec77affd8cf847ad95b2bbcdb57aa17fb5c23c8b
+  CHART_COMMIT_SHA: 90bb972f4f0644378a0f065e620e7af2e49c2ca1
   CHART_HELM_NAME: zero-to-jupyterhub-k8s-chart
-  CONFIGURABLE_HTTP_PROXY_REFERENCE: dhi/configurable-http-proxy:5.3.0-debian13@sha256:1161bdbd09bb2e318e17a8035c178ee42a1041f596d061b61a90bfd10d34497d
+  CONFIGURABLE_HTTP_PROXY_REFERENCE: dhi/configurable-http-proxy:5.3.0-debian13@sha256:b748aeb81ba0fbd3bd9f9f28a20d08d2ee35949c10ab59f6e751670a93fe1c88
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  JUPYTERHUB_K8S_HUB_REFERENCE: dhi/jupyterhub-k8s-hub:4.4.2-debian13@sha256:76fa3d561c7d3198ca3d5e2bc27398269fb4130cd060478130f4268c31dcbca1
+  JUPYTERHUB_K8S_HUB_REFERENCE: dhi/jupyterhub-k8s-hub:4.4.2-debian13@sha256:36633f09638c1f50260e576af4d59f8fb5d306437729a5c846ec4fd4899c1cee
   JUPYTERHUB_K8S_IMAGE_AWAITER_REFERENCE: dhi/jupyterhub-k8s-image-awaiter:4.4.2-alpine3.24@sha256:37d6d7adbecf7ad167d3eeac7a025632e238dcba3a28f1c9199df88809024dfa
-  JUPYTERHUB_K8S_NETWORK_TOOLS_REFERENCE: dhi/jupyterhub-k8s-network-tools:4.4.2-alpine3.24@sha256:0e29789dc9aaa5e26c2b7bae704690ca2ce64e61f4e2e0252f17cc7802fc1ec8
-  JUPYTERHUB_K8S_SECRET_SYNC_REFERENCE: dhi/jupyterhub-k8s-secret-sync:4.4.2-debian13@sha256:da9ed61a99335c6f39d17856ef8eeacbe413425fb93959dbd44117e6359543e8
-  JUPYTERHUB_K8S_SINGLEUSER_SAMPLE_REFERENCE: dhi/jupyterhub-k8s-singleuser-sample:4.4.2-debian13-compat@sha256:ed2b82dc5404d0f239f8052e24157d952bc796b5e73f17def7e6cf3f8f4a26e7
+  JUPYTERHUB_K8S_NETWORK_TOOLS_REFERENCE: dhi/jupyterhub-k8s-network-tools:4.4.3-alpine3.24@sha256:d9261522d69a5cdc6d7f97d0505477bd6a42856e8bea5067dddda41dd020df18
+  JUPYTERHUB_K8S_SECRET_SYNC_REFERENCE: dhi/jupyterhub-k8s-secret-sync:4.4.3-debian13@sha256:ad3c61e6e98c2c0b0dddc50b194bd5c1b4e6685c59ff9aa3501990e4d7a5cac7
+  JUPYTERHUB_K8S_SINGLEUSER_SAMPLE_REFERENCE: dhi/jupyterhub-k8s-singleuser-sample:4.4.3-debian13-compat@sha256:f76456b7738d6696b1a56bbca221bcfddaa828bda0acd546aaacf00a72684e7f
   KUBE_SCHEDULER_REFERENCE: dhi/kube-scheduler:1.37.1-debian13@sha256:7d31f412a5fd7863415222783f09471332575e0856fcd23fc92e28a3ba40e63f
   KUBERNETES_PAUSE_REFERENCE: dhi/kubernetes-pause:3.10.2-debian13@sha256:9e70ba8ae339c08553112fca6f1bb233f38eabf76e30d10cf1de0cace4084e17
   SEMVER_MAJOR_MINOR_VERSION: "4.4"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.4.2
-  TRAEFIK_REFERENCE: dhi/traefik:3.7.14-debian13@sha256:c4603d597dbee2de21132e784e49ea5ee8f8a6a87d7e8ddc6f41d70d435bffd5
-  VERSION: 4.4.2
+  SEMVER_VERSION: 4.4.3
+  TRAEFIK_REFERENCE: dhi/traefik:3.7.15-debian13@sha256:e4a8980654bc0d7bf683d9c495c4e94313d282ac7eeac51da6713e6fd9aa8b6e
+  VERSION: 4.4.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -43,8 +43,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/jupyterhub/zero-to-jupyterhub-k8s.git#4.4.2
-            checksum: ec77affd8cf847ad95b2bbcdb57aa17fb5c23c8b
+          - url: git+https://github.com/jupyterhub/zero-to-jupyterhub-k8s.git#4.4.3
+            checksum: 90bb972f4f0644378a0f065e620e7af2e49c2ca1
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -57,15 +57,15 @@ contents:
               description: Docker Hardened Images Helm chart for Zero to JupyterHub on Kubernetes
               images:
                 - name: hub
-                  ref: dhi/jupyterhub-k8s-hub:4.4.2-debian13@sha256:76fa3d561c7d3198ca3d5e2bc27398269fb4130cd060478130f4268c31dcbca1
+                  ref: dhi/jupyterhub-k8s-hub:4.4.2-debian13@sha256:36633f09638c1f50260e576af4d59f8fb5d306437729a5c846ec4fd4899c1cee
                 - name: chp
-                  ref: dhi/configurable-http-proxy:5.3.0-debian13@sha256:1161bdbd09bb2e318e17a8035c178ee42a1041f596d061b61a90bfd10d34497d
+                  ref: dhi/configurable-http-proxy:5.3.0-debian13@sha256:b748aeb81ba0fbd3bd9f9f28a20d08d2ee35949c10ab59f6e751670a93fe1c88
                 - name: secret-sync
-                  ref: dhi/jupyterhub-k8s-secret-sync:4.4.2-debian13@sha256:da9ed61a99335c6f39d17856ef8eeacbe413425fb93959dbd44117e6359543e8
+                  ref: dhi/jupyterhub-k8s-secret-sync:4.4.3-debian13@sha256:ad3c61e6e98c2c0b0dddc50b194bd5c1b4e6685c59ff9aa3501990e4d7a5cac7
                 - name: network-tools
-                  ref: dhi/jupyterhub-k8s-network-tools:4.4.2-alpine3.24@sha256:0e29789dc9aaa5e26c2b7bae704690ca2ce64e61f4e2e0252f17cc7802fc1ec8
+                  ref: dhi/jupyterhub-k8s-network-tools:4.4.3-alpine3.24@sha256:d9261522d69a5cdc6d7f97d0505477bd6a42856e8bea5067dddda41dd020df18
                 - name: singleuser
-                  ref: dhi/jupyterhub-k8s-singleuser-sample:4.4.2-debian13-compat@sha256:ed2b82dc5404d0f239f8052e24157d952bc796b5e73f17def7e6cf3f8f4a26e7
+                  ref: dhi/jupyterhub-k8s-singleuser-sample:4.4.3-debian13-compat@sha256:f76456b7738d6696b1a56bbca221bcfddaa828bda0acd546aaacf00a72684e7f
                 - name: image-awaiter
                   ref: dhi/jupyterhub-k8s-image-awaiter:4.4.2-alpine3.24@sha256:37d6d7adbecf7ad167d3eeac7a025632e238dcba3a28f1c9199df88809024dfa
                 - name: pause
@@ -73,7 +73,7 @@ contents:
                 - name: kube-scheduler
                   ref: dhi/kube-scheduler:1.37.1-debian13@sha256:7d31f412a5fd7863415222783f09471332575e0856fcd23fc92e28a3ba40e63f
                 - name: traefik
-                  ref: dhi/traefik:3.7.14-debian13@sha256:c4603d597dbee2de21132e784e49ea5ee8f8a6a87d7e8ddc6f41d70d435bffd5
+                  ref: dhi/traefik:3.7.15-debian13@sha256:e4a8980654bc0d7bf683d9c495c4e94313d282ac7eeac51da6713e6fd9aa8b6e
               name: zero-to-jupyterhub-k8s-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/jupyterhub/zero-to-jupyterhub-k8s
