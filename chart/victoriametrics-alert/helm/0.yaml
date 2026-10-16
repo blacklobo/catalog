@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:05ee9e344be36d0f71e1390989320ee36757749f53e509a113efc83a50071551
+  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:01dd89cce4737ec7e44704681b5d6ee561e9b7880f632b4413b0e547e4dabfda
   CHART_COMMIT_SHA: 4ccbee8b0069b15b963491e80fc382ec28912436
   CHART_HELM_NAME: victoriametrics-alert-chart
   DHI_NAMESPACE: dhi
@@ -52,7 +52,7 @@ contents:
                 - name: victoriametrics-vmalert
                   ref: dhi/victoriametrics-vmalert:1.153.0-debian13@sha256:fe5d1eb08975f783f827eaf76983046f613bc0c83d18c23ccaf6526dfac59526
                 - name: alertmanager
-                  ref: dhi/alertmanager:0.34.1-debian13@sha256:05ee9e344be36d0f71e1390989320ee36757749f53e509a113efc83a50071551
+                  ref: dhi/alertmanager:0.34.1-debian13@sha256:01dd89cce4737ec7e44704681b5d6ee561e9b7880f632b4413b0e547e4dabfda
               name: victoriametrics-alert-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/VictoriaMetrics/helm-charts
