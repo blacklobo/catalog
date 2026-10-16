@@ -5,31 +5,31 @@ image: dhi.io/influxdb
 variant: runtime
 tags:
   - "2"
-  - "2.9"
-  - 2.9.1
+  - "2.10"
+  - 2.10.0
   - 2-debian
   - 2-debian13
-  - 2.9-debian
-  - 2.9-debian13
-  - 2.9.1-debian
-  - 2.9.1-debian13
+  - 2.10-debian
+  - 2.10-debian13
+  - 2.10.0-debian
+  - 2.10.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2020-11-09"
 vars:
-  COMMIT_SHA: d4fa1941fd4adb29a556e774de426dfbab72f346
+  COMMIT_SHA: 01c64e96a87f0912f2550dd7e72745e70ef5a4fe
   GO_TAGS: libsqlite3,sqlite_foreign_keys,sqlite_json,assets,noasm
   GOLANG_VERSION: 1.26.9-0
   OPENAPI_COMMIT_SHA: 8b5f1bbb2cd388eb454dc9da19e3d2c4061cdf5f
   PROTOC_GEN_GO_VERSION: v1.36.5
-  SEMVER_MAJOR_MINOR_VERSION: "2.9"
+  SEMVER_MAJOR_MINOR_VERSION: "2.10"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.9.1
+  SEMVER_VERSION: 2.10.0
   UI_COMMIT_SHA: fdb6b600f5daa380b268276f72301dfdb4a6027a
   UI_VERSION: 2.10.0
-  VERSION: 2.9.1
+  VERSION: 2.10.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -89,15 +89,15 @@ contents:
             path: ${source.dir}/ui
             uid: 0
             gid: 0
-          - url: git+https://github.com/influxdata/influxdb.git#v2.9.1
-            checksum: d4fa1941fd4adb29a556e774de426dfbab72f346
+          - url: git+https://github.com/influxdata/influxdb.git#v2.10.0
+            checksum: 01c64e96a87f0912f2550dd7e72745e70ef5a4fe
             path: /go/src/github.com/influxdata/influxdb
             spdx:
               name: influxdb
-              version: 2.9.1
+              version: 2.10.0
               packages:
                 - name: influxdb
-                  purl: pkg:golang/github.com/influxdata/influxdb@2.9.1
+                  purl: pkg:golang/github.com/influxdata/influxdb@2.10.0
                   license: MIT
             uid: 0
             gid: 0
@@ -159,7 +159,6 @@ contents:
               - github.com/hashicorp/go-retryablehttp@v0.7.7
               - github.com/hashicorp/vault/api@v1.9.2
               - github.com/klauspost/compress@v1.18.7
-              - go.opentelemetry.io/otel@v1.44.0
               - go.opentelemetry.io/otel/sdk@v1.45.0
               - google.golang.org/grpc@v1.83.2
             download: true
@@ -191,8 +190,8 @@ contents:
             cgo_enabled: 1
             extra_env: CARGO=${source.dir}/helpers/bin/cargo-wrapper.sh PKG_CONFIG=/go/bin/pkg-config
             ldflags:
-              - -X main.commit=d4fa1941fd4adb29a556e774de426dfbab72f346
-              - -X main.version=v2.9.1
+              - -X main.commit=01c64e96a87f0912f2550dd7e72745e70ef5a4fe
+              - -X main.version=v2.10.0
               - -X main.date=$(date -u -d @${SOURCE_DATE_EPOCH} +'%FT%TZ')
             output: ${target.dir}/usr/local/bin/influxd
             packages: ./cmd/influxd
