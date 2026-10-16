@@ -3,19 +3,19 @@
 image: dhi.io/pkg-go-kube-downscaler
 variant: runtime
 tags:
-  - 1.4.1-alpine3.24
-  - 1.4.1-r0-alpine3.24
+  - 1.4.2-alpine3.24
+  - 1.4.2-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: f24dcab89a578ad8c99236d57013648daebbcdce
+  COMMIT_SHA: 00510b00514550d221a0743fdc2bf484e167fc86
   GOLANG_VERSION: 1.26.9-r0
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.4"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.4.1
-  VERSION: 1.4.1
+  SEMVER_VERSION: 1.4.2
+  VERSION: 1.4.2
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -41,15 +41,15 @@ contents:
           - golang-1.26=1.26.9-r0
           - golang-1.26-oci-config=1.26.9-r0
         files:
-          - url: git+https://github.com/caas-team/GoKubeDownscaler.git#v1.4.1
-            checksum: f24dcab89a578ad8c99236d57013648daebbcdce
+          - url: git+https://github.com/caas-team/GoKubeDownscaler.git#v1.4.2
+            checksum: 00510b00514550d221a0743fdc2bf484e167fc86
             path: /go/src/github.com/caas-team/gokubedownscaler
             spdx:
               name: gokubedownscaler
-              version: 1.4.1
+              version: 1.4.2
               packages:
                 - name: gokubedownscaler
-                  purl: pkg:golang/github.com/caas-team/gokubedownscaler@1.4.1
+                  purl: pkg:golang/github.com/caas-team/gokubedownscaler@1.4.2
                   license: GPL-3.0-only
             uid: 0
             gid: 0
@@ -75,10 +75,10 @@ contents:
             cd /go/src/dhi-gokubedownscaler-build
             go mod init dhi.build.gokubedownscaler
             go mod edit -go="$go_line"
-            go mod edit -require=github.com/caas-team/gokubedownscaler@v1.4.1
+            go mod edit -require=github.com/caas-team/gokubedownscaler@v1.4.2
             go mod edit -replace=github.com/caas-team/gokubedownscaler="$src"
             cp "$src/go.sum" go.sum
-            grep -q 'github.com/caas-team/gokubedownscaler v1.4.1' go.mod
+            grep -q 'github.com/caas-team/gokubedownscaler v1.4.2' go.mod
         - name: build
           uses: go/build@v1
           work-dir: /go/src/dhi-gokubedownscaler-build
@@ -112,12 +112,12 @@ contents:
             test -x "$runtime"
             test -x "$devbin"
 
-            go version -m "$runtime" | grep -F "$(printf 'mod\tgithub.com/caas-team/gokubedownscaler\tv%s' '1.4.1')"
+            go version -m "$runtime" | grep -F "$(printf 'mod\tgithub.com/caas-team/gokubedownscaler\tv%s' '1.4.2')"
             go version -m "$runtime" | grep -F -- '-s'
             go version -m "$runtime" | grep -F -- '-w'
             go version -m "$runtime" | grep -F -- '-trimpath'
 
-            go version -m "$devbin" | grep -F "$(printf 'mod\tgithub.com/caas-team/gokubedownscaler\tv%s' '1.4.1')"
+            go version -m "$devbin" | grep -F "$(printf 'mod\tgithub.com/caas-team/gokubedownscaler\tv%s' '1.4.2')"
             if go version -m "$devbin" | grep -E -- '-ldflags=.*-s|-ldflags=.*-w'; then
               echo "dev binary must not be built with -s or -w" >&2
               exit 1
@@ -127,8 +127,8 @@ contents:
           with:
             license: GPL-3.0-only
             name: gokubedownscaler
-            purl: pkg:golang/github.com/caas-team/gokubedownscaler@1.4.1
-            version: 1.4.1
+            purl: pkg:golang/github.com/caas-team/gokubedownscaler@1.4.2
+            version: 1.4.2
         - name: stage sbom
           runs: |
             set -eux -o pipefail
@@ -172,7 +172,7 @@ contents:
                     source: usr/share/licenses/go-kube-downscaler-dev/LICENSE
                 name: go-kube-downscaler-1-dev
             url: https://github.com/caas-team/GoKubeDownscaler
-            version: 1.4.1
+            version: 1.4.2
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
