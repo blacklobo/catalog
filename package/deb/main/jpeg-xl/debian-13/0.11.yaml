@@ -3,26 +3,26 @@
 image: dhi.io/pkg-jpeg-xl
 variant: runtime
 tags:
-  - 0.11.2-0.1-deb13u2-dhi2
-  - 0.11.2-0.1-deb13u2-dhi2-debian13
+  - 0.11.2-0.1-deb13u3-dhi0
+  - 0.11.2-0.1-deb13u3-dhi0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DEBIAN_DEBIAN_CHECKSUM: sha256:54192375c3ff271f395b815a8ea111a5f632f5db8966baeda9dabedbc86ea2d4
-  DEBIAN_DEBIAN_FILENAME: jpeg-xl_0.11.2-0.1~deb13u2.debian.tar.xz
-  DEBIAN_DEBIAN_URL: https://deb.debian.org/debian/pool/main/j/jpeg-xl/jpeg-xl_0.11.2-0.1~deb13u2.debian.tar.xz
-  DEBIAN_DSC_CHECKSUM: sha256:b978be4319975d73759f0737ba6935fad4f4330802835d6d9298a455c2581363
-  DEBIAN_DSC_FILENAME: jpeg-xl_0.11.2-0.1~deb13u2.dsc
-  DEBIAN_DSC_URL: https://deb.debian.org/debian/pool/main/j/jpeg-xl/jpeg-xl_0.11.2-0.1~deb13u2.dsc
-  DEBIAN_FILENAME_VERSION: 0.11.2-0.1~deb13u2
+  DEBIAN_DEBIAN_CHECKSUM: sha256:0129d4b2a901a7a4fb1f862abe96bb32cb5a998443d93f5cbaaa50f41b0ca91a
+  DEBIAN_DEBIAN_FILENAME: jpeg-xl_0.11.2-0.1~deb13u3.debian.tar.xz
+  DEBIAN_DEBIAN_URL: https://deb.debian.org/debian-security/pool/updates/main/j/jpeg-xl/jpeg-xl_0.11.2-0.1~deb13u3.debian.tar.xz
+  DEBIAN_DSC_CHECKSUM: sha256:08099aa4ebf1530cd9bccda1161059b232cb8f3a415830070655f548752d7127
+  DEBIAN_DSC_FILENAME: jpeg-xl_0.11.2-0.1~deb13u3.dsc
+  DEBIAN_DSC_URL: https://deb.debian.org/debian-security/pool/updates/main/j/jpeg-xl/jpeg-xl_0.11.2-0.1~deb13u3.dsc
+  DEBIAN_FILENAME_VERSION: 0.11.2-0.1~deb13u3
   DEBIAN_ORIG_CHECKSUM: sha256:ab38928f7f6248e2a98cc184956021acb927b16a0dee71b4d260dc040a4320ea
   DEBIAN_ORIG_FILENAME: jpeg-xl_0.11.2.orig.tar.gz
-  DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/j/jpeg-xl/jpeg-xl_0.11.2.orig.tar.gz
-  DEBIAN_VERSION: 0.11.2-0.1~deb13u2
-  DHI_REL: "2"
-  DHI_VERSION: 0.11.2-0.1~deb13u2+dhi2
-  TAG_VERSION: 0.11.2-0.1-deb13u2-dhi2
+  DEBIAN_ORIG_URL: https://deb.debian.org/debian-security/pool/updates/main/j/jpeg-xl/jpeg-xl_0.11.2.orig.tar.gz
+  DEBIAN_VERSION: 0.11.2-0.1~deb13u3
+  DHI_REL: "0"
+  DHI_VERSION: 0.11.2-0.1~deb13u3+dhi0
+  TAG_VERSION: 0.11.2-0.1-deb13u3-dhi0
   UPSTREAM_VERSION: 0.11.2
 contents:
   packages:
@@ -61,38 +61,38 @@ contents:
           - quilt
           - util-linux
         files:
-          - url: https://deb.debian.org/debian/pool/main/j/jpeg-xl/jpeg-xl_0.11.2-0.1~deb13u2.dsc
-            checksum: sha256:b978be4319975d73759f0737ba6935fad4f4330802835d6d9298a455c2581363
-            path: ${source.dir}/jpeg-xl_0.11.2-0.1~deb13u2.dsc
+          - url: https://deb.debian.org/debian-security/pool/updates/main/j/jpeg-xl/jpeg-xl_0.11.2-0.1~deb13u3.dsc
+            checksum: sha256:08099aa4ebf1530cd9bccda1161059b232cb8f3a415830070655f548752d7127
+            path: ${source.dir}/jpeg-xl_0.11.2-0.1~deb13u3.dsc
             uid: 0
             gid: 0
-          - url: https://deb.debian.org/debian/pool/main/j/jpeg-xl/jpeg-xl_0.11.2.orig.tar.gz
+          - url: https://deb.debian.org/debian-security/pool/updates/main/j/jpeg-xl/jpeg-xl_0.11.2.orig.tar.gz
             checksum: sha256:ab38928f7f6248e2a98cc184956021acb927b16a0dee71b4d260dc040a4320ea
             path: ${source.dir}/jpeg-xl_0.11.2.orig.tar.gz
             uid: 0
             gid: 0
-          - url: https://deb.debian.org/debian/pool/main/j/jpeg-xl/jpeg-xl_0.11.2-0.1~deb13u2.debian.tar.xz
-            checksum: sha256:54192375c3ff271f395b815a8ea111a5f632f5db8966baeda9dabedbc86ea2d4
-            path: ${source.dir}/jpeg-xl_0.11.2-0.1~deb13u2.debian.tar.xz
+          - url: https://deb.debian.org/debian-security/pool/updates/main/j/jpeg-xl/jpeg-xl_0.11.2-0.1~deb13u3.debian.tar.xz
+            checksum: sha256:0129d4b2a901a7a4fb1f862abe96bb32cb5a998443d93f5cbaaa50f41b0ca91a
+            path: ${source.dir}/jpeg-xl_0.11.2-0.1~deb13u3.debian.tar.xz
             uid: 0
             gid: 0
       pipeline:
         - uses: dpkg/source@v1
           work-dir: ${source.dir}
           with:
-            file: jpeg-xl_0.11.2-0.1~deb13u2.dsc
+            file: jpeg-xl_0.11.2-0.1~deb13u3.dsc
             path: jpeg-xl
         - uses: dpkg/patch@v1
           with:
             apply: true
             patches:
-              - ${source.dir}/patch/CVE-2026-52584.patch
               - ${source.dir}/patch/CVE-2026-82522.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Backport upstream libjxl fixes for CVE-2026-52584 and CVE-2026-82522
-            version: 0.11.2-0.1~deb13u2+dhi2
+              - Track Debian security update 0.11.2-0.1~deb13u3 (DSA-6564-1, CVE-2026-52584)
+              - Backport upstream libjxl fix for CVE-2026-82522
+            version: 0.11.2-0.1~deb13u3+dhi0
         - name: bootstrap xml catalogs for offline docbook
           runs: |
             set -eux -o pipefail
@@ -111,11 +111,6 @@ contents:
           with:
             args: --build=source,any -uc -us -d
       paths:
-        - type: file
-          path: ${source.dir}/patch/CVE-2026-52584.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/jpeg-xl/patch/CVE-2026-52584.patch
         - type: file
           path: ${source.dir}/patch/CVE-2026-82522.patch
           uid: 0
