@@ -8,9 +8,9 @@ tags:
   - 34-alpine-php8.5-fpm
   - 34.0-alpine-php8.5-fpm
   - 34-alpine3.24-php8.5-fpm
-  - 34.0.4-alpine-php8.5-fpm
+  - 34.0.5-alpine-php8.5-fpm
   - 34.0-alpine3.24-php8.5-fpm
-  - 34.0.4-alpine3.24-php8.5-fpm
+  - 34.0.5-alpine3.24-php8.5-fpm
 platforms:
   - linux/amd64
   - linux/arm64
@@ -38,8 +38,8 @@ vars:
   REDIS_VERSION: 6.3.0
   SEMVER_MAJOR_MINOR_VERSION: "34.0"
   SEMVER_MAJOR_VERSION: "34"
-  SEMVER_VERSION: 34.0.4
-  VERSION: 34.0.4-r0
+  SEMVER_VERSION: 34.0.5
+  VERSION: 34.0.5-r0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -74,7 +74,7 @@ contents:
     - libwebp
     - libxml2
     - libzip
-    - nextcloud-34=34.0.4-r0
+    - nextcloud-34=34.0.5-r0
     - oniguruma
     - openjpeg
     - pcre2
@@ -561,7 +561,7 @@ stop-signal: SIGQUIT
 environment:
   LD_LIBRARY_PATH: /opt/imagemagick/lib
   MAGICK_HOME: /opt/imagemagick
-  NEXTCLOUD_VERSION: 34.0.4
+  NEXTCLOUD_VERSION: 34.0.5
   PATH: /opt/imagemagick/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
   PHP_INI_DIR: /etc/php-8.5
   PHP_MEMORY_LIMIT: 512M
