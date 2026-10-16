@@ -81,11 +81,6 @@ contents:
             "${target.dir}/opt/java/gradle/gradle-9.8.1/bin/gradle" --version
       paths:
         - type: file
-          path: ${source.dir}/patch/0002-Update-org.eclipse.jgit-org.eclipse.jgit-6.10.1.2025.patch
-          uid: 0
-          gid: 0
-          source: package/gradle/patch/0002-Update-org.eclipse.jgit-org.eclipse.jgit-6.10.1.2025.patch
-        - type: file
           path: ${source.dir}/patch/0004-Disable-deprecation-warnings.patch
           uid: 0
           gid: 0
