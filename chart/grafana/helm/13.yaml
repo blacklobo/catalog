@@ -9,18 +9,18 @@ platforms:
   - linux/amd64
 vars:
   BATS_REFERENCE: dhi/bats:1.14.0-debian13@sha256:e863aa79e2a9c4e9894e2ab543a3842c996609e8d4258396163b35bbc0840293
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:b3620c618e4622e1037675820c89a34ef3091fbd2e31552daaae1408a6fa1ee7
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:cbf608bac227b555568030a804f7666bb60524ea25c626db8b9b93789748784e
   CHART_COMMIT_SHA: 949411f1ab129e1423c519d26b8e912fb420ea06
   CHART_HELM_NAME: grafana-chart
-  CURL_REFERENCE: dhi/curl:8.14.1-debian13@sha256:941ad5150dee5c1662176761f36aee068cacfc75c299455b9e10c41b197e706c
+  CURL_REFERENCE: dhi/curl:8.14.1-debian13@sha256:cc369571fe818fa246b86cbf143b53bec8d37d76b5affc41533b05fbe0eb608e
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_IMAGE_RENDERER_REFERENCE: dhi/grafana-image-renderer:5.12.7-debian13@sha256:fef6151a2539f3c685cc22c3808444a4106b8bfb95e113f46facc98e8a362f2a
+  GRAFANA_IMAGE_RENDERER_REFERENCE: dhi/grafana-image-renderer:5.12.7-debian13@sha256:8dab654b079ef459730538916b2efeee7d55f3d36ea60c43c91f50802cae41db
   GRAFANA_REFERENCE: dhi/grafana:13.2.3-debian13@sha256:e93c891f2f6b37e11621cb76554cd1d9dab330e192d98d410b22589df2bb4acf
   HELM_VERSION: 4.1.4-2
-  K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:460bb2ff54a20c2f094feb98a44958559788b463d7b029ec4d88c944533ce2d4
+  K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:4f16fe7e430cdf24308449624521d6adbc4cacd2483dc04a510360d839f163c9
   SEMVER_MAJOR_MINOR_VERSION: "13.7"
   SEMVER_MAJOR_VERSION: "13"
   SEMVER_VERSION: 13.7.0
@@ -56,15 +56,15 @@ contents:
                 - name: grafana
                   ref: dhi/grafana:13.2.3-debian13@sha256:e93c891f2f6b37e11621cb76554cd1d9dab330e192d98d410b22589df2bb4acf
                 - name: grafana-image-renderer
-                  ref: dhi/grafana-image-renderer:5.12.7-debian13@sha256:fef6151a2539f3c685cc22c3808444a4106b8bfb95e113f46facc98e8a362f2a
+                  ref: dhi/grafana-image-renderer:5.12.7-debian13@sha256:8dab654b079ef459730538916b2efeee7d55f3d36ea60c43c91f50802cae41db
                 - name: bats
                   ref: dhi/bats:1.14.0-debian13@sha256:e863aa79e2a9c4e9894e2ab543a3842c996609e8d4258396163b35bbc0840293
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-debian13@sha256:b3620c618e4622e1037675820c89a34ef3091fbd2e31552daaae1408a6fa1ee7
+                  ref: dhi/busybox:1.37.0-debian13@sha256:cbf608bac227b555568030a804f7666bb60524ea25c626db8b9b93789748784e
                 - name: curl
-                  ref: dhi/curl:8.14.1-debian13@sha256:941ad5150dee5c1662176761f36aee068cacfc75c299455b9e10c41b197e706c
+                  ref: dhi/curl:8.14.1-debian13@sha256:cc369571fe818fa246b86cbf143b53bec8d37d76b5affc41533b05fbe0eb608e
                 - name: k8s-sidecar
-                  ref: dhi/k8s-sidecar:2.14.1-debian13@sha256:460bb2ff54a20c2f094feb98a44958559788b463d7b029ec4d88c944533ce2d4
+                  ref: dhi/k8s-sidecar:2.14.1-debian13@sha256:4f16fe7e430cdf24308449624521d6adbc4cacd2483dc04a510360d839f163c9
               name: grafana-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana-community/helm-charts
