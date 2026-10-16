@@ -4,7 +4,7 @@ image: dhi.io/pkg-metabase
 variant: runtime
 tags:
   - 0.63.19.2-alpine3.24
-  - 0.63.19.2-r0-alpine3.24
+  - 0.63.19.2-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,7 +18,7 @@ vars:
   COMMIT_SHA: 2098e2271e69eaa3ba809ac392efb07b0676f29f
   JAVA_MAJOR_VERSION: "25"
   PACKAGE_NAME: metabase
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "0.63"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.63.19.2
@@ -160,12 +160,14 @@ contents:
 
             grep -q '"csv-parse": "\^5.5.6"' package.json
             grep -q '"qs": "6.15.2"' package.json
+            grep -q '"@tiptap/core": "\^3.2.0"' package.json
             grep -q '"fflate": "\^0.8.1"' bun.lock
             grep -q '"uuid": "\^3.4.0"' bun.lock
-            bun pm pkg set 'dependencies.csv-parse=^7.0.2'              # CVE-2026-85063
-            bun pm pkg set dependencies.qs=6.16.0 resolutions.qs=6.16.0 # CVE-2026-82417, CVE-2026-82562
-            bun pm pkg set resolutions.fflate=0.8.3                     # CVE-2026-45820
-            bun pm pkg set resolutions.uuid=11.1.1                      # CVE-2026-41907
+            bun pm pkg set 'dependencies.csv-parse=^7.0.2'                                                                                                 # CVE-2026-85063
+            bun pm pkg set dependencies.qs=6.16.0 resolutions.qs=6.16.0                                                                                    # CVE-2026-82417, CVE-2026-82562
+            bun pm pkg set dependencies.@tiptap/core=^3.30.5 dependencies.@tiptap/pm=^3.30.5 resolutions.@tiptap/core=3.30.5 resolutions.@tiptap/pm=3.30.5 # GHSA-cp6q-959q-f8rh, GHSA-j95f-988m-3j2f
+            bun pm pkg set resolutions.fflate=0.8.3                                                                                                        # CVE-2026-45820
+            bun pm pkg set resolutions.uuid=11.1.1                                                                                                         # CVE-2026-41907
             bun install --lockfile-only
             bun install --frozen-lockfile
             INTERACTIVE=false CI=true MB_EDITION=oss \
@@ -290,7 +292,7 @@ contents:
               - usr/share/metabase/metabase.jar
             license: AGPL-3.0-only
             name: metabase
-            rel: 0
+            rel: 1
             url: https://www.metabase.com
             version: 0.63.19.2
       paths:
