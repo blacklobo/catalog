@@ -2,20 +2,20 @@
   {
     "groupId": "com.fasterxml.jackson.core",
     "artifactId": "jackson-core",
-    "version": "2.22.2",
-    "comment": "GHSA-r7wm-3cxj-wff9; src/server/pom.xml pins jackson-core directly"
+    "version": "2.22.3",
+    "comment": "CVE-2026-89425, CVE-2026-89407; src/server/pom.xml pins jackson-core directly"
   },
   {
     "groupId": "com.fasterxml.jackson.core",
     "artifactId": "jackson-annotations",
     "version": "2.22",
-    "comment": "Align with jackson-databind 2.22.2; src/server/pom.xml pins jackson-annotations directly"
+    "comment": "Align with jackson-databind 2.22.3; src/server/pom.xml pins jackson-annotations directly"
   },
   {
     "groupId": "com.fasterxml.jackson.core",
     "artifactId": "jackson-databind",
-    "version": "2.22.2",
-    "comment": "CVE-2026-54515, CVE-2026-59889, CVE-2026-68497, CVE-2026-83557, CVE-2026-19032; src/server/pom.xml pins jackson-databind directly"
+    "version": "2.22.3",
+    "comment": "CVE-2026-54515, CVE-2026-59889, CVE-2026-68497, CVE-2026-83557, CVE-2026-19032, CVE-2026-91777, CVE-2026-91776; src/server/pom.xml pins jackson-databind directly"
   },
   {
     "groupId": "io.netty",
@@ -26,8 +26,8 @@
   {
     "groupId": "com.rabbitmq",
     "artifactId": "amqp-client",
-    "version": "5.34.0",
-    "comment": "CVE-2026-69220, CVE-2026-69219, CVE-2026-63337, CVE-2026-63335, CVE-2026-63336, CVE-2026-61634, CVE-2026-75516"
+    "version": "5.37.0",
+    "comment": "CVE-2026-69220, CVE-2026-69219, CVE-2026-63337, CVE-2026-63335, CVE-2026-63336, CVE-2026-61634, CVE-2026-75516, CVE-2026-106121, CVE-2026-106122, CVE-2026-106123"
   },
   {
     "groupId": "org.apache.httpcomponents.core5",
