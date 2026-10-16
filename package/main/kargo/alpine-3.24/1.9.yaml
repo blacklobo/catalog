@@ -27,7 +27,7 @@ vars:
   KUBECTL_VERSION: v0.34.2
   NODEJS_SERIES: "24"
   NODEJS_VERSION: 24.22.0-r0
-  NPM_VERSION: 12.2.0-r0
+  NPM_VERSION: 12.2.1-r0
   PACKAGE_NAME: kargo-1.9
   PNPM_VERSION: 9.0.3
   REL: "2"
@@ -63,7 +63,7 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
           - nodejs-24=24.22.0-r0
-          - npm-12=12.2.0-r0
+          - npm-12=12.2.1-r0
         files:
           - url: git+https://github.com/akuity/kargo.git#v1.9.15
             checksum: b7c1dffc45fb36558853292479630701d2a9d3a9
