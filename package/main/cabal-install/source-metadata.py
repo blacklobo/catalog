@@ -125,12 +125,20 @@ def source_metadata(source: Path, dep: dict) -> dict[str, str]:
     return info
 
 
-def write_sbom(source: Path, plan: dict, compiler_root: Path, compiler_version: str, output: Path, version: str) -> None:
+def git_source(commit: str) -> str:
+    # The release tarball named for this version can carry a later component
+    # tree. The build checks out the release tag at this commit instead.
+    if not re.fullmatch(r"[0-9a-f]{40}", commit or ""):
+        raise ValueError(f"Invalid git revision: {commit}")
+    return f"git+https://github.com/haskell/cabal.git@{commit}"
+
+
+def write_sbom(source: Path, plan: dict, compiler_root: Path, compiler_version: str, output: Path, version: str, commit: str) -> None:
     # Where each component was obtained. The hackage archives are the ones this
     # script downloads and checksums above; the local units come out of the
-    # cabal source release, and the builtin libraries out of the compiler's.
+    # pinned cabal commit, and the builtin libraries out of the compiler's.
     # The key cannot collide with a manifest field, which is never underscored.
-    cabal_src = f"https://downloads.haskell.org/~cabal/cabal-install-{version}/cabal-{version}-src.tar.gz"
+    cabal_src = git_source(commit)
     ghc_src = f"https://downloads.haskell.org/ghc/{compiler_version}/ghc-{compiler_version}-src.tar.xz"
 
     components = {}
@@ -207,12 +215,13 @@ def main() -> None:
     sbom.add_argument("--compiler-version", required=True)
     sbom.add_argument("--output", type=Path, required=True)
     sbom.add_argument("--version", required=True)
+    sbom.add_argument("--commit", required=True)
     args = parser.parse_args()
     plan = load_plan(args.source, args.plan)
     if args.command == "fetch":
         fetch_dependencies(args.source, plan)
     else:
-        write_sbom(args.source, plan, args.compiler_root, args.compiler_version, args.output, args.version)
+        write_sbom(args.source, plan, args.compiler_root, args.compiler_version, args.output, args.version, args.commit)
 
 
 if __name__ == "__main__":

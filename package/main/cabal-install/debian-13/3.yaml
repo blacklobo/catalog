@@ -3,21 +3,21 @@
 image: dhi.io/pkg-cabal-install
 variant: runtime
 tags:
-  - 3.18.1.0
-  - 3.18.1.0-r0
-  - 3.18.1.0-debian13
-  - 3.18.1.0-r0-debian13
+  - 3.18.2.0
+  - 3.18.2.0-r0
+  - 3.18.2.0-debian13
+  - 3.18.2.0-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   BOOTSTRAP_GHC_NAME: ghc-9.12
   BOOTSTRAP_GHC_SEMVER: 9.12.4
-  BOOTSTRAP_GHC_VERSION: 9.12.4-0
+  BOOTSTRAP_GHC_VERSION: 9.12.4-2
   BOOTSTRAP_PLAN: linux-9.12.4.json
-  CABAL_SRC_CHECKSUM: sha256:5ad45c874c9698f28228b0c15a6933d7ec0dd7dcf50800b7b17e281fadf924b7
+  COMMIT_SHA: 45f982c12ef78ea8ec5beb43cb8c71c8e8f237c1
   REL: "0"
-  VERSION: 3.18.1.0
+  VERSION: 3.18.2.0
 contents:
   packages:
     - '!base-files'
@@ -30,7 +30,7 @@ contents:
         keyring:
           - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
         packages:
-          - ghc-9.12=9.12.4-0
+          - ghc-9.12=9.12.4-2
           - bash
           - binutils
           - ca-certificates
@@ -55,58 +55,17 @@ contents:
           - xz-utils
           - zlib1g-dev
         files:
-          - url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xe9ec5616017c3ee26b33468cce1ed8ae0b011d8c
-            path: ${source.dir}/keys/cabal/mikolaj-konarski.asc
-            uid: 0
-            gid: 0
-          - url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xdafb4d8af684143518d5051fa9af0aaa6b87ec51
-            path: ${source.dir}/keys/cabal/francesco-ariis.asc
-            uid: 0
-            gid: 0
-          - url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x665b13a7c42cc972cccc0717a31c1bfa09b1f47d
-            path: ${source.dir}/keys/cabal/artem-pelenitsyn.asc
-            uid: 0
-            gid: 0
-          - url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x1e07c9a1a3088bad47f74a3e227ee1942b0bdb95
-            path: ${source.dir}/keys/cabal/brandon-allbery.asc
-            uid: 0
-            gid: 0
-          - url: https://downloads.haskell.org/~cabal/cabal-install-3.18.1.0/SHA256SUMS
-            path: ${source.dir}/SHA256SUMS
-            uid: 0
-            gid: 0
-          - url: https://downloads.haskell.org/~cabal/cabal-install-3.18.1.0/SHA256SUMS.sig
-            path: ${source.dir}/SHA256SUMS.sig
-            uid: 0
-            gid: 0
-          - url: https://downloads.haskell.org/~cabal/cabal-install-3.18.1.0/cabal-3.18.1.0-src.tar.gz
-            checksum: sha256:5ad45c874c9698f28228b0c15a6933d7ec0dd7dcf50800b7b17e281fadf924b7
-            path: ${source.dir}/cabal-src.tar.gz
+          - url: git+https://github.com/haskell/cabal.git#cabal-install-v3.18.2.0
+            checksum: 45f982c12ef78ea8ec5beb43cb8c71c8e8f237c1
+            path: ${source.dir}/cabal
             uid: 0
             gid: 0
       pipeline:
-        - name: prepare Cabal release keyring
-          runs: |
-            set -eux -o pipefail
-
-            cat \
-              "${source.dir}/keys/cabal/mikolaj-konarski.asc" \
-              "${source.dir}/keys/cabal/francesco-ariis.asc" \
-              "${source.dir}/keys/cabal/artem-pelenitsyn.asc" \
-              "${source.dir}/keys/cabal/brandon-allbery.asc" \
-              > /tmp/cabal-release-keys.asc
-        - name: verify SHA256SUMS
-          uses: gpg/verify@v1
-          with:
-            file: ${source.dir}/SHA256SUMS
-            keys: /tmp/cabal-release-keys.asc
-            signature: ${source.dir}/SHA256SUMS.sig
         - name: prepare release dependencies
           privileged: true
           runs: |
             set -eux -o pipefail
 
-            tar -xzf "${source.dir}/cabal-src.tar.gz" --strip-components=1
             python3 "${source.dir}/source-metadata.py" fetch --source . --plan "linux-9.12.4.json"
         - name: bootstrap cabal
           runs: |
@@ -124,7 +83,7 @@ contents:
             python3 "${source.dir}/source-metadata.py" sbom \
               --source . --plan "linux-9.12.4.json" \
               --compiler-root "/usr/lib/ghc-9.12" --compiler-version "9.12.4" \
-              --version "3.18.1.0" \
+              --version "3.18.2.0" --commit "45f982c12ef78ea8ec5beb43cb8c71c8e8f237c1" \
               --output "${target.dir}/opt/docker/sbom/cabal-install/.spdx.cabal-install.json"
         - uses: dhi/build-pkg:0
           with:
@@ -145,7 +104,7 @@ contents:
             name: cabal-install
             rel: 0
             url: https://www.haskell.org/cabal/
-            version: 3.18.1.0
+            version: 3.18.2.0
       paths:
         - type: file
           path: ${source.dir}/source-metadata.py
