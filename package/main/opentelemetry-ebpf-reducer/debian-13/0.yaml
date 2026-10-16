@@ -10,8 +10,8 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BREAKPAD_COMMIT_SHA: 6598c9c33fc02da7805401f3b0f1a733e6a24071
-  BREAKPAD_VERSION: 2026.10.01
+  BREAKPAD_COMMIT_SHA: 94c818ea27482d8a8d32b0c8de50cbca0270db9a
+  BREAKPAD_VERSION: 2026.10.15
   COMMIT_SHA: 5e07f9d6875c72ea0e4e2e44a13a83c13b0d17c5
   REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "0.11"
@@ -121,15 +121,15 @@ contents:
                   license: NOASSERTION
             uid: 0
             gid: 0
-          - url: git+https://github.com/google/breakpad.git#6598c9c33fc02da7805401f3b0f1a733e6a24071
-            checksum: 6598c9c33fc02da7805401f3b0f1a733e6a24071
+          - url: git+https://github.com/google/breakpad.git#94c818ea27482d8a8d32b0c8de50cbca0270db9a
+            checksum: 94c818ea27482d8a8d32b0c8de50cbca0270db9a
             path: ${source.dir}/breakpad
             spdx:
               name: breakpad
-              version: 6598c9c33fc02da7805401f3b0f1a733e6a24071
+              version: 94c818ea27482d8a8d32b0c8de50cbca0270db9a
               packages:
                 - name: breakpad
-                  purl: pkg:github/google/breakpad@6598c9c33fc02da7805401f3b0f1a733e6a24071
+                  purl: pkg:github/google/breakpad@94c818ea27482d8a8d32b0c8de50cbca0270db9a
                   license: BSD-3-Clause
             uid: 0
             gid: 0
