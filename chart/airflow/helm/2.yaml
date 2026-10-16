@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  AIRFLOW_REFERENCE: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:00c8a1901b106e9f57a6eec3346b46d4f2aeb38ca6f376798824124b7279a0e6
+  AIRFLOW_REFERENCE: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:ab9b46a10255a28e4f412d5e18ac7f39f6dc30327538a073bac52b295b18a469
   APPVERSION: 3.3.2
   APPVERSION_MATCH: 3.3.2
   CHART_COMMIT_SHA: aa19d2dbb9ed187ec01957a92848d9b005e9ba9d
@@ -17,7 +17,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GIT_SYNC_REFERENCE: dhi/git-sync:4.7.1-debian13@sha256:c224dde6a14487330129c31a8e00641e42885cc265ee8f1591abfef9020bd1ef
+  GIT_SYNC_REFERENCE: dhi/git-sync:4.7.1-debian13@sha256:d86262a45a245178f0677121b9ca9f1c032bd62d2ef559afa8af3291d5781d04
   HELM_VERSION: 4.1.4-2
   OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:48889c5306b06b2517501ec3605e1b923200aabc21131e9c8818df60c13f1498
   PGBOUNCER_EXPORTER_REFERENCE: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:ed53cf156c4c93d0d76801fcc942d5f20029292a04976cac5bf447ded6702bfb
@@ -65,7 +65,7 @@ contents:
               description: Docker Hardened Images Helm chart for Apache Airflow
               images:
                 - name: airflow
-                  ref: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:00c8a1901b106e9f57a6eec3346b46d4f2aeb38ca6f376798824124b7279a0e6
+                  ref: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:ab9b46a10255a28e4f412d5e18ac7f39f6dc30327538a073bac52b295b18a469
                 - name: prometheus-statsd-exporter
                   ref: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:87797da1dab679a1de5f5173db66088c725910d1627d8adebe0210fe4125a876
                 - name: pgbouncer
@@ -73,7 +73,7 @@ contents:
                 - name: airflow-pgbouncer-exporter
                   ref: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:ed53cf156c4c93d0d76801fcc942d5f20029292a04976cac5bf447ded6702bfb
                 - name: git-sync
-                  ref: dhi/git-sync:4.7.1-debian13@sha256:c224dde6a14487330129c31a8e00641e42885cc265ee8f1591abfef9020bd1ef
+                  ref: dhi/git-sync:4.7.1-debian13@sha256:d86262a45a245178f0677121b9ca9f1c032bd62d2ef559afa8af3291d5781d04
                 - name: redis
                   ref: dhi/redis:8.10.2-debian13-compat@sha256:8477e3456e63d1777b0df44658d8bb93b40ca0d0442df89222bd0ca4612b662f
                 - name: opentelemetry-collector
