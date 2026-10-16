@@ -3,22 +3,22 @@
 image: dhi.io/pkg-jupyterhub-k8s-hub
 variant: runtime
 tags:
-  - 4.4.2-alpine3.24
-  - 4.4.2-r6-alpine3.24
+  - 4.4.3-alpine3.24
+  - 4.4.3-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2024-11-07"
 vars:
-  COMMIT_SHA: ec77affd8cf847ad95b2bbcdb57aa17fb5c23c8b
-  JUPYTERHUB_VERSION: 5.5.2
+  COMMIT_SHA: 90bb972f4f0644378a0f065e620e7af2e49c2ca1
+  JUPYTERHUB_VERSION: 5.5.3
   PYTHON_VERSION: 3.14.8-r1
-  REL: "6"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "4.4"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.4.2
-  VERSION: 4.4.2
+  SEMVER_VERSION: 4.4.3
+  VERSION: 4.4.3
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -63,15 +63,15 @@ contents:
             path: ${source.dir}/moment-2.31.0.tgz
             uid: 0
             gid: 0
-          - url: git+https://github.com/jupyterhub/zero-to-jupyterhub-k8s.git#4.4.2
-            checksum: ec77affd8cf847ad95b2bbcdb57aa17fb5c23c8b
+          - url: git+https://github.com/jupyterhub/zero-to-jupyterhub-k8s.git#4.4.3
+            checksum: 90bb972f4f0644378a0f065e620e7af2e49c2ca1
             path: ${source.dir}/zero-to-jupyterhub-k8s
             spdx:
               name: zero-to-jupyterhub-k8s
-              version: 4.4.2
+              version: 4.4.3
               packages:
                 - name: zero-to-jupyterhub-k8s
-                  purl: pkg:github/jupyterhub/zero-to-jupyterhub-k8s@4.4.2
+                  purl: pkg:github/jupyterhub/zero-to-jupyterhub-k8s@4.4.3
                   license: BSD-3-Clause
             uid: 0
             gid: 0
@@ -104,9 +104,9 @@ contents:
               - apk
             license: BSD-3-Clause
             name: jupyterhub-k8s-hub
-            rel: 6
+            rel: 0
             url: https://github.com/jupyterhub/zero-to-jupyterhub-k8s
-            version: 4.4.2
+            version: 4.4.3
       paths:
         - type: file
           path: ${source.dir}/build-venv.sh
