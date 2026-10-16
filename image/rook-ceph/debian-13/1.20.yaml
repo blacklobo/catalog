@@ -4,11 +4,8 @@ name: Rook Ceph 1.20.x
 image: dhi.io/rook-ceph
 variant: runtime
 tags:
-  - "1"
   - "1.20"
   - 1.20.8
-  - 1-debian
-  - 1-debian13
   - 1.20-debian
   - 1.20-debian13
   - 1.20.8-debian
@@ -68,7 +65,7 @@ contents:
             uid: 0
             gid: 0
       pipeline:
-        - name: bump go dependencies (1.20 only)
+        - name: bump go dependencies (1.20 and 1.21)
           uses: go/bump@v1
           with:
             deps:
@@ -176,7 +173,7 @@ contents:
             uid: 0
             gid: 0
       pipeline:
-        - name: bump go dependencies (1.20 only)
+        - name: bump go dependencies (1.20 and 1.21)
           uses: go/bump@v1
           with:
             deps:
