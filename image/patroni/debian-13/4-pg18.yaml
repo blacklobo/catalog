@@ -23,25 +23,33 @@ vars:
   COMMIT_SHA: 235fdb3990513c7852da8dc51e9cb92b6d0e4907
   PG_MAJOR_VERSION: "18"
   PG_VERSION: "18.6"
-  POSTGRES_BUILD_REFERENCE: dhi/postgres:18.6-debian13-dev@sha256:efdf459d0a23c6522debd809e7a7b8cbedca946b3bac875425123baceb90879a
-  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:18.6-debian13@sha256:81034c8000d5cb8651dd10a3596bd17506523051e4e578e7e7cba5be1e89fbb7
-  PYTHON_BUILD_REFERENCE: dhi/python:3.13.15-debian13-dev@sha256:0749e2f0f23d7f10f63ee1f35ef3061a59bac601f687a67505ca670a58c1b8fb
-  PYTHON_BUILD_VERSION: 3.13.15
+  POSTGRES_BUILD_REFERENCE: dhi/postgres:18.6-debian13-dev@sha256:508fdecd294904f41dcb6e028260513a7089198a91d1e1489da55efe0c8dfce2
+  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:18.6-debian13@sha256:756e5eafff783e9dd83ce59e90cbc8b6ead8b46267214bca4663b1a1710a6c34
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
-  PYTHON_REFERENCE: dhi/python:3.13.15-debian13@sha256:eedfbaf99554976858bd219321f4e79c937d63d6582574eca9c8ef2e148a0e4c
-  PYTHON_VERSION: 3.13.15
   SEMVER_MAJOR_MINOR_VERSION: "4.1"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.1.5
   VERSION: 4.1.5
 contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
     - '!libelogind0'
+    - '!libpython3-stdlib'
+    - '!libpython3.13-minimal'
+    - '!libpython3.13-stdlib'
     - '!mawk'
     - '!original-awk'
+    - '!python3'
+    - '!python3-minimal'
+    - '!python3.13'
+    - '!python3.13-minimal'
     - base-files
     - bash
     - ca-certificates
+    - libcurl4t64
     - libgssapi-krb5-2
     - libicu76
     - libldap2
@@ -51,27 +59,40 @@ contents:
     - libreadline8t64
     - libselinux1
     - libssl3t64
+    - libtinfo6
+    - libuuid1
     - libxml2
     - libxslt1.1
     - libzstd1
     - locales
+    - python-3.13
+    - python3-pip
+    - python3-setuptools
+    - python3-wheel
     - tzdata
     - zlib1g
   builds:
     - name: patroni
-      uses: dhi.io/python:3.13.15-debian13-dev@sha256:0749e2f0f23d7f10f63ee1f35ef3061a59bac601f687a67505ca670a58c1b8fb
       work-dir: ${source.dir}/patroni
+      environment:
+        PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       caches:
         - path: /root/.cache/pip
       contents:
         packages:
           - bash
           - build-essential
+          - ca-certificates
           - coreutils
           - curl
           - dpkg
           - findutils
           - libpq-dev
+          - python-3.13
+          - python-3.13-dev
+          - python3-pip
+          - python3-setuptools
+          - python3-wheel
         files:
           - url: git+https://github.com/patroni/patroni.git#v4.1.5
             checksum: 235fdb3990513c7852da8dc51e9cb92b6d0e4907
@@ -105,21 +126,23 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/python:3.13.15-debian13@sha256:eedfbaf99554976858bd219321f4e79c937d63d6582574eca9c8ef2e148a0e4c
-      includes:
-        - opt/**
-        - usr/**
-      excludes:
-        - usr/lib/ssl/certs
-        - usr/lib/ssl/private
-      uid: 0
-      gid: 0
-    - name: dhi.io/postgres:18.6-debian13@sha256:81034c8000d5cb8651dd10a3596bd17506523051e4e578e7e7cba5be1e89fbb7
+    - name: dhi.io/postgres:18.6-debian13@sha256:756e5eafff783e9dd83ce59e90cbc8b6ead8b46267214bca4663b1a1710a6c34
       excludes:
         - etc/os-release
+        - usr/lib/aarch64-linux-gnu/libtinfo.so.6
+        - usr/lib/aarch64-linux-gnu/libtinfo.so.6.5
         - usr/lib/ssl/certs
         - usr/lib/ssl/private
+        - usr/lib/x86_64-linux-gnu/libtinfo.so.6
+        - usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+        - usr/share/doc/libtinfo6
+        - var/lib/dpkg/info/libtinfo6.list
+        - var/lib/dpkg/info/libtinfo6.md5sums
+        - var/lib/dpkg/info/libtinfo6.shlibs
         - var/lib/dpkg/status
+        - var/lib/dpkg/status.d/libcurl4t64
+        - var/lib/dpkg/status.d/libtinfo6
+        - var/lib/dpkg/status.d/libuuid1
       uid: 0
       gid: 0
 accounts:
