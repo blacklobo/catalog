@@ -4,7 +4,7 @@ image: dhi.io/pkg-gitea
 variant: runtime
 tags:
   - 1.27.3-alpine3.24
-  - 1.27.3-r10-alpine3.24
+  - 1.27.3-r11-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ vars:
   GO_BUILD_TAGS: bindata,timetzdata,sqlite,sqlite_unlock_notify
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: gitea
-  REL: "10"
+  REL: "11"
   SEMVER_MAJOR_MINOR_VERSION: "1.27"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.27.3
@@ -69,7 +69,7 @@ contents:
               - gitea.com/gitea/runner@v1.0.9-0.20260731160927-34bfa1915022
               - google.golang.org/grpc@v1.83.2
               - github.com/moby/sys/user@v0.4.1
-              - github.com/getkin/kin-openapi@v0.144.0
+              - github.com/getkin/kin-openapi@v0.149.0
             download: true
         - name: record bumped go modules in go.sum
           runs: |
@@ -208,7 +208,7 @@ contents:
               - usr/bin/gitea
             license: MIT
             name: gitea
-            rel: 10
+            rel: 11
             subpackages:
               - files:
                   - path: usr/bin/gitea
