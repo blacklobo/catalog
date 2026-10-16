@@ -7,9 +7,9 @@ tags:
   - 1-alpine
   - 1.30-alpine
   - 1-alpine3.24
-  - 1.30.5-alpine
+  - 1.30.6-alpine
   - 1.30-alpine3.24
-  - 1.30.5-alpine3.24
+  - 1.30.6-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,18 +18,18 @@ dates:
 vars:
   APK_MAJOR_MINOR_VERSION: "1.30"
   APK_MAJOR_VERSION: "1"
-  APK_VERSION: 1.30.5
+  APK_VERSION: 1.30.6
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
   GOTPL_COMMIT_SHA: 5611a46fb0482613b8b88175fd8ed92e5243c3fe
   GOTPL_VERSION: 0.6.10
   NGINX_PACKAGE: nginx-stable
-  NGINX_VERSION: 1.30.5
+  NGINX_VERSION: 1.30.6
   PKG_RELEASE: "4"
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.5
-  VERSION: 1.30.5-r4
+  SEMVER_VERSION: 1.30.6
+  VERSION: 1.30.6-r4
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -42,10 +42,10 @@ contents:
     - bash
     - busybox
     - ca-certificates-bundle
-    - nginx-stable-mod-http-brotli=1.30.5-r4
-    - nginx-stable-mod-http-upload-progress=1.30.5-r4
-    - nginx-stable-mod-http-vts=1.30.5-r4
-    - nginx-stable=1.30.5-r4
+    - nginx-stable-mod-http-brotli=1.30.6-r4
+    - nginx-stable-mod-http-upload-progress=1.30.6-r4
+    - nginx-stable-mod-http-vts=1.30.6-r4
+    - nginx-stable=1.30.6-r4
     - tzdata
   builds:
     - name: gotpl
@@ -105,10 +105,10 @@ contents:
           - https://dhi.io/keyring/dhi-apk@docker-0F81AD7700D99184.rsa.pub
         packages:
           - alpine-baselayout-data
-          - nginx-stable=1.30.5-r4
-          - nginx-stable-mod-http-brotli=1.30.5-r4
-          - nginx-stable-mod-http-upload-progress=1.30.5-r4
-          - nginx-stable-mod-http-vts=1.30.5-r4
+          - nginx-stable=1.30.6-r4
+          - nginx-stable-mod-http-brotli=1.30.6-r4
+          - nginx-stable-mod-http-upload-progress=1.30.6-r4
+          - nginx-stable-mod-http-vts=1.30.6-r4
           - bash
           - busybox
       pipeline:
@@ -161,8 +161,8 @@ work-dir: /var/www/html
 environment:
   APP_ROOT: /var/www/html
   FILES_DIR: /mnt/files
-  NGINX_VER: 1.30.5
-  NGINX_VERSION: 1.30.5
+  NGINX_VER: 1.30.6
+  NGINX_VERSION: 1.30.6
   NGINX_VHOST_PRESET: html
   PKG_RELEASE: "4"
 paths:
