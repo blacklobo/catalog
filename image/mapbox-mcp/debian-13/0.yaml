@@ -1,29 +1,29 @@
 # syntax=dhi.io/build:2-debian13
 
-name: Mapbox MCP Server 0.15.x
+name: Mapbox MCP Server 0.16.x
 image: dhi.io/mapbox-mcp
 variant: runtime
 tags:
   - "0"
-  - "0.15"
-  - 0.15.1
+  - "0.16"
+  - 0.16.0
   - 0-debian
   - 0-debian13
-  - 0.15-debian
-  - 0.15-debian13
-  - 0.15.1-debian
-  - 0.15.1-debian13
+  - 0.16-debian
+  - 0.16-debian13
+  - 0.16.0-debian
+  - 0.16.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-06-15"
 vars:
-  COMMIT_SHA: 77fecbd213940f547e884133f5e9a5e6aeb682a4
-  SEMVER_MAJOR_MINOR_VERSION: "0.15"
+  COMMIT_SHA: c257ffa02450756f8edcd8c6fa1c3fe02f7e7327
+  SEMVER_MAJOR_MINOR_VERSION: "0.16"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.15.1
-  VERSION: 0.15.1
+  SEMVER_VERSION: 0.16.0
+  VERSION: 0.16.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -60,15 +60,15 @@ contents:
           - sed
           - yarn-classic
         files:
-          - url: git+https://github.com/mapbox/mcp-server.git#v0.15.1
-            checksum: 77fecbd213940f547e884133f5e9a5e6aeb682a4
+          - url: git+https://github.com/mapbox/mcp-server.git#v0.16.0
+            checksum: c257ffa02450756f8edcd8c6fa1c3fe02f7e7327
             path: ${source.dir}/mapbox-mcp
             spdx:
               name: mapbox-mcp
-              version: 0.15.1
+              version: 0.16.0
               packages:
                 - name: mapbox-mcp
-                  purl: pkg:npm/%40mapbox/mcp-server@0.15.1
+                  purl: pkg:npm/%40mapbox/mcp-server@0.16.0
                   license: MIT
             uid: 0
             gid: 0
@@ -130,7 +130,7 @@ contents:
         - runs: |
             set -eux -o pipefail
 
-            sed -i "s/_VERSION_/0.15.1/g" "${source.dir}/config/server.json"
+            sed -i "s/_VERSION_/0.16.0/g" "${source.dir}/config/server.json"
       paths:
         - type: file
           path: ${source.dir}/config/server.json
