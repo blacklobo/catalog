@@ -5,10 +5,10 @@ variant: runtime
 tags:
   - "3.4"
   - 3.4.3
-  - 3.4.3-r20
+  - 3.4.3-r21
   - 3.4-debian13
   - 3.4.3-debian13
-  - 3.4.3-r20-debian13
+  - 3.4.3-r21-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -28,13 +28,13 @@ vars:
   ERLFMT_VERSION: 1.8.0
   GOSU_VERSION: 1.19-12
   NODEJS_VERSION: 24.22.0-0
-  NPM_VERSION: 11.20.0-0
+  NPM_VERSION: 11.21.0-0
   PACKAGE_NAME: couchdb-3.4
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
   REBAR_COMMIT_SHA: 8723cb44fddb7ed66809d4dfbfc1da1ba6841456
   REBAR_VERSION: 3.27.3
-  REL: "20"
+  REL: "21"
   SEMVER_MAJOR_MINOR_VERSION: "3.4"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.4.3
@@ -86,7 +86,7 @@ contents:
           - make
           - mesa-utils
           - nodejs-24=24.22.0-0
-          - npm=11.20.0-0
+          - npm=11.21.0-0
           - perl
           - passwd
           - pkg-config
@@ -331,7 +331,7 @@ contents:
               - deb
             license: Apache-2.0
             name: couchdb-3.4
-            rel: 20
+            rel: 21
             url: https://couchdb.apache.org/
             version: 3.4.3
 os-release:
