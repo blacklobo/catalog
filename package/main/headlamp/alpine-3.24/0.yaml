@@ -3,22 +3,22 @@
 image: dhi.io/pkg-headlamp
 variant: runtime
 tags:
-  - 0.45.0-alpine3.24
-  - 0.45.0-r9-alpine3.24
+  - 0.46.0-alpine3.24
+  - 0.46.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-07-29"
 vars:
-  COMMIT_SHA: 0e9fe810cb618964172f420666727c9a67fd6ebf
+  COMMIT_SHA: 825604fdadbe7ed94b8e61f615d7917c743e9083
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: headlamp
-  REL: "9"
-  SEMVER_MAJOR_MINOR_VERSION: "0.45"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "0.46"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.45.0
-  VERSION: 0.45.0
+  SEMVER_VERSION: 0.46.0
+  VERSION: 0.46.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -48,15 +48,15 @@ contents:
           - nodejs-22
           - npm
         files:
-          - url: git+https://github.com/kubernetes-sigs/headlamp.git#v0.45.0
-            checksum: 0e9fe810cb618964172f420666727c9a67fd6ebf
+          - url: git+https://github.com/kubernetes-sigs/headlamp.git#v0.46.0
+            checksum: 825604fdadbe7ed94b8e61f615d7917c743e9083
             path: /go/src/github.com/kubernetes-sigs/headlamp
             spdx:
               name: headlamp
-              version: 0.45.0
+              version: 0.46.0
               packages:
                 - name: headlamp
-                  purl: pkg:golang/github.com/kubernetes-sigs/headlamp/backend@0.45.0
+                  purl: pkg:golang/github.com/kubernetes-sigs/headlamp/backend@0.46.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -129,7 +129,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/kubernetes-sigs/headlamp/backend/pkg/kubeconfig.Version=0.45.0
+              - -X github.com/kubernetes-sigs/headlamp/backend/pkg/kubeconfig.Version=0.46.0
               - -X github.com/kubernetes-sigs/headlamp/backend/pkg/kubeconfig.AppName=Headlamp
             output: ${target.dir}/usr/bin/headlamp-server
             packages: ./cmd
@@ -148,9 +148,9 @@ contents:
               - usr/share/headlamp/frontend
             license: Apache-2.0
             name: headlamp
-            rel: 9
+            rel: 0
             url: https://headlamp.dev/
-            version: 0.45.0
+            version: 0.46.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
