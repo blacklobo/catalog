@@ -4,7 +4,7 @@ image: dhi.io/pkg-calico
 variant: runtime
 tags:
   - 3.32.2-alpine3.23
-  - 3.32.2-r8-alpine3.23
+  - 3.32.2-r9-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,7 +20,7 @@ vars:
   PACKAGE_NAME: calico-3.32
   PACKAGE_SUFFIX: "3.32"
   REGISTRAR_COMMIT_SHA: 2d18e12bc5077c36cbd564be7eab9ea94c0c85fb
-  REL: "8"
+  REL: "9"
   SEMVER_MAJOR_MINOR_VERSION: "3.32"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.32.2
@@ -91,14 +91,13 @@ contents:
             download: true
             replaces:
               - go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc=go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.60.0
-        - name: update node-driver-registrar go dependencies
+        - name: update node-driver-registrar go dependencies (3.32 only)
           uses: go/bump@v2
           work-dir: /go/src/github.com/kubernetes-csi/node-driver-registrar
           with:
             deps:
               - go.opentelemetry.io/otel@v1.44.0
-              - golang.org/x/net@v0.56.0
-              - golang.org/x/text@v0.39.0
+              - golang.org/x/net@v0.60.0
               - google.golang.org/grpc@v1.83.2
             download: true
         - name: update cni plugins go dependencies
@@ -657,7 +656,7 @@ contents:
             license: Apache-2.0
             name: calico-3.32
             provides: calico=$pkg_full_version
-            rel: 8
+            rel: 9
             replaces: calico
             subpackages:
               - files:
@@ -762,7 +761,7 @@ contents:
               - usr/bin/webhook
             license: Apache-2.0
             name: calico-webhooks-3.32
-            rel: 8
+            rel: 9
             subpackages:
               - files:
                   - path: usr/bin/webhook
