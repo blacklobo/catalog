@@ -83,6 +83,7 @@ os-release:
 stop-signal: SIGQUIT
 environment:
   DEBIAN_FRONTEND: noninteractive
+  HOME: /home/gitlab-runner
 paths:
   - type: directory
     path: /usr/local/bin

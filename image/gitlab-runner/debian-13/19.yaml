@@ -66,6 +66,8 @@ os-release:
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
 stop-signal: SIGQUIT
+environment:
+  HOME: /home/gitlab-runner
 paths:
   - type: directory
     path: /usr/local/bin
