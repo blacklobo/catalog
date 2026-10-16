@@ -4,7 +4,7 @@ image: dhi.io/pkg-ceph-csi-operator
 variant: runtime
 tags:
   - 1.1.0-alpine3.24
-  - 1.1.0-r2-alpine3.24
+  - 1.1.0-r3-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: 98eee8980fc69e5c9c02c80958abe06c3faba5eb
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: ceph-csi-operator
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "1.1"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.1.0
@@ -57,6 +57,14 @@ contents:
             uid: 0
             gid: 0
       pipeline:
+        - name: patch source
+          uses: git/patch@v1
+          with:
+            patch: /go/src/patch/add-missing-caps.patch
+        - name: patch source for feature gate
+          uses: git/patch@v1
+          with:
+            patch: /go/src/patch/feature-gate.patch
         - name: remove vendored dependencies
           runs: |
             set -eux -o pipefail
@@ -111,7 +119,7 @@ contents:
               - usr/bin/ceph-csi-operator
             license: Apache-2.0
             name: ceph-csi-operator
-            rel: 2
+            rel: 3
             subpackages:
               - files:
                   - path: usr/bin/ceph-csi-operator
@@ -119,6 +127,17 @@ contents:
                 name: ceph-csi-operator-dev
             url: https://github.com/ceph/ceph-csi-operator
             version: 1.1.0
+      paths:
+        - type: file
+          path: /go/src/patch/add-missing-caps.patch
+          uid: 0
+          gid: 0
+          source: package/main/ceph-csi-operator/patch/add-missing-caps.patch
+        - type: file
+          path: /go/src/patch/feature-gate.patch
+          uid: 0
+          gid: 0
+          source: package/main/ceph-csi-operator/patch/feature-gate.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
