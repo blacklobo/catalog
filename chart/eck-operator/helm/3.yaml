@@ -17,7 +17,7 @@ vars:
   ECK_OPERATOR_REFERENCE: dhi/eck-operator:3.5.0-debian13@sha256:60fb3ce9d98187ba440b45bb537c64995e8666391a08f06750d1addc3f29b10e
   ELASTICSEARCH_REFERENCE: dhi/elasticsearch:9.5.5-debian13@sha256:d94f516e9b7318c07e0a3eae84468f6f27e8ad3da0e0c7397c0a3e1665a5a8ab
   HELM_VERSION: 4.1.4-2
-  KIBANA_REFERENCE: dhi/kibana:9.5.4-debian13@sha256:fa2d1d10b9a2d09c7f66bdf8977a44e85f413453b182e87db344bf3736441474
+  KIBANA_REFERENCE: dhi/kibana:9.5.4-debian13@sha256:2c87421b3bdcf0d915a60d290c631e5aba90a979edb51f1802b3dea6671aa641
   LOGSTASH_REFERENCE: dhi/logstash:9.5.4-debian13-compat@sha256:4fc68bd537b951f88087b34711a84ef43c39dd3ab5d5dc04ef98d28e910cbfea
   SEMVER_MAJOR_MINOR_VERSION: "3.5"
   SEMVER_MAJOR_VERSION: "3"
@@ -60,7 +60,7 @@ contents:
                 - name: logstash
                   ref: dhi/logstash:9.5.4-debian13-compat@sha256:4fc68bd537b951f88087b34711a84ef43c39dd3ab5d5dc04ef98d28e910cbfea
                 - name: kibana
-                  ref: dhi/kibana:9.5.4-debian13@sha256:fa2d1d10b9a2d09c7f66bdf8977a44e85f413453b182e87db344bf3736441474
+                  ref: dhi/kibana:9.5.4-debian13@sha256:2c87421b3bdcf0d915a60d290c631e5aba90a979edb51f1802b3dea6671aa641
                 - name: elasticsearch
                   ref: dhi/elasticsearch:9.5.5-debian13@sha256:d94f516e9b7318c07e0a3eae84468f6f27e8ad3da0e0c7397c0a3e1665a5a8ab
               name: eck-operator-chart
