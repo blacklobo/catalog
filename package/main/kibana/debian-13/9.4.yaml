@@ -4,9 +4,9 @@ image: dhi.io/pkg-kibana
 variant: runtime
 tags:
   - 9.4.8
-  - 9.4.8-r1
+  - 9.4.8-r2
   - 9.4.8-debian13
-  - 9.4.8-r1-debian13
+  - 9.4.8-r2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,13 +16,15 @@ vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
   COMMIT_SHA: e480f260be8f73cfb3424961a59867631291a2dd
   GO_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
+  KIBANA_NODE_BUILD_FLAGS: ""
+  KIBANA_NODE_RENDER_FLAGS: ""
   NODE_ARCH: '#{ target.arch == "amd64" ? "x64" : "arm64" }'
   NODE_BINARIES_EXTRA_SUBDIR: glibc-217
   NODE_BINARIES_SUBDIR: default
   NODE_MAJOR_VERSION: "24"
   NODE_VERSION: 24.22.0-0
   PACKAGE_NAME: kibana-9.4
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "9.4"
   SEMVER_MAJOR_VERSION: "9"
   SEMVER_VERSION: 9.4.8
@@ -100,25 +102,16 @@ contents:
           runs: |
             set -eux -o pipefail
 
+            mkdir -p ${source.dir}/bin
+            export PATH=$PATH:${source.dir}/bin
+            corepack enable --install-directory ${source.dir}/bin
+
             echo "startup --batch" > .bazelrc.user
 
             mkdir -p ~/.moon/plugins/toolchains
             export MOON_TOOLCHAIN_FORCE_GLOBALS=1
 
-            if [ "9.4" = "9.4" ]; then
-              mkdir -p "${HOME}/.local/bin"
-              corepack enable --install-directory "${HOME}/.local/bin"
-              export PATH="${HOME}/.local/bin:${PATH}"
-              export KBN_OPTIMIZER_MAX_WORKERS=2
-              corepack prepare "$(jq -r .packageManager package.json)" --activate
-              pnpm kbn bootstrap
-            else
-              yarn kbn bootstrap
-            fi
-
-            bash "${source.dir}/scripts/patch-extract-zip.sh" \
-              "${source.dir}/patches/extract-zip-2.0.2" \
-              "${source.dir}/kibana"
+            ${source.dir}/bin/pnpm kbn bootstrap
 
             NODE_RUNTIME_VERSION="$(node --version | sed 's/^v//')"
             populate_node_extract() {
@@ -156,7 +149,7 @@ contents:
               fi
             done
 
-            node --no-experimental-require-module -- \
+            node  -- \
               scripts/build --skip-os-packages --skip-initialize \
               --skip-docker-cloud-fips --skip-docker-contexts --skip-docker-ubi \
               --skip-docker-wolfi --skip-docker-cloud --skip-docker-cloud-fips \
@@ -165,8 +158,8 @@ contents:
             KBN_DIST="${source.dir}/kibana/build/default/kibana-9.4.8-SNAPSHOT-linux-${GO_ARCH}"
             if [ ! -x "${KBN_DIST}/bin/kibana" ]; then
               cd "${source.dir}/kibana"
-              KBN_VERSION="9.4.8" KBN_GO_ARCH="${GO_ARCH}" \
-                node --no-experimental-require-module scripts/render-bin-scripts.js
+              export KBN_VERSION="9.4.8" KBN_GO_ARCH="${GO_ARCH}"
+              node  scripts/render-bin-scripts.js
             fi
 
             mkdir -p "${target.dir}/usr/share/kibana"
@@ -197,28 +190,10 @@ contents:
               - deb
             license: Elastic-License-2.0
             name: kibana-9.4
-            rel: 1
+            rel: 2
             url: https://www.elastic.co/kibana/
             version: 9.4.8
       paths:
-        - type: file
-          path: ${source.dir}/patches/yarn-patches_9.1.json
-          uid: 65532
-          gid: 65532
-          mode: "0444"
-          source: package/main/kibana/patch/yarn-patches_9.1.json
-        - type: file
-          path: ${source.dir}/patches/yarn-patches_9.2.json
-          uid: 65532
-          gid: 65532
-          mode: "0444"
-          source: package/main/kibana/patch/yarn-patches_9.2.json
-        - type: file
-          path: ${source.dir}/patches/yarn-patches_9.3.json
-          uid: 65532
-          gid: 65532
-          mode: "0444"
-          source: package/main/kibana/patch/yarn-patches_9.3.json
         - type: file
           path: ${source.dir}/patches/pnpm-security-overrides_9.4.patch
           uid: 65532
@@ -226,23 +201,11 @@ contents:
           mode: "0444"
           source: package/main/kibana/patch/pnpm-security-overrides_9.4.patch
         - type: file
-          path: ${source.dir}/patches/expr-eval_9.1.patch
+          path: ${source.dir}/patches/pnpm-security-overrides_9.5.patch
           uid: 65532
           gid: 65532
           mode: "0444"
-          source: package/main/kibana/patch/expr-eval_9.1.patch
-        - type: directory
-          path: ${source.dir}/patches/extract-zip-2.0.2
-          uid: 65532
-          gid: 65532
-          mode: "0555"
-          source: package/main/kibana/patch/extract-zip-2.0.2
-        - type: file
-          path: ${source.dir}/scripts/patch-extract-zip.sh
-          uid: 65532
-          gid: 65532
-          mode: "0555"
-          source: package/main/kibana/scripts/patch-extract-zip.sh
+          source: package/main/kibana/patch/pnpm-security-overrides_9.5.patch
         - type: file
           path: ${source.dir}/kibana/scripts/render-bin-scripts.js
           uid: 65532

@@ -1,0 +1,44 @@
+Subject: retain DHI security resolutions after Kibana's pnpm migration
+Origin: DHI security hardening carried forward from the Yarn-based 9.5 build
+Upstream: https://github.com/elastic/kibana/releases/tag/v9.4.8
+Description: Pin newly exposed dependencies to fixed releases while pnpm
+ regenerates its workspace overrides and lockfile during bootstrap. Preserve
+ Kibana's patched d3-color fork across pnpm's nested dependency layout.
+
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+@@ -90,6 +90,7 @@
+     "**/@babel/traverse": "7.29.8",
+     "**/@babel/types": "7.29.8",
+     "**/@emotion/sheet": "npm:@elastic/emotion-sheet@1.4.1",
++    "**/@grpc/grpc-js": "1.14.5",
+     "**/@hapi/mimos/mime-db": "1.53.0",
+     "**/@hello-pangea/dnd": "18.0.1",
+     "**/@langchain/core": "1.2.3",
+@@ -98,16 +99,25 @@
+     "**/@types/prop-types": "15.7.5",
+     "**/@typescript-eslint/utils": "8.60.0",
+     "**/adm-zip": "0.6.1",
++    "**/axios": "1.20.0",
+     "**/baseline-browser-mapping": "2.9.14",
++    "**/basic-ftp": "6.2.1",
++    "**/brace-expansion@5.0.9": "5.0.12",
++    "**/brace-expansion@2.1.4": "2.1.6",
++    "**/brace-expansion@1.1.18": "1.1.21",
+     "**/cheerio": "1.0.0-rc.12",
+     "**/chokidar": "3.5.3",
+     "**/d3-scale/**/d3-color": "npm:@elastic/kibana-d3-color@2.0.1",
+     "**/esbuild": "0.28.1",
+     "**/fast-xml-parser": "5.5.7",
+     "**/flatted": "3.4.2",
++    "**/handlebars": "4.7.10",
+     "**/hoist-non-react-statics": "3.3.2",
+     "**/isomorphic-fetch/node-fetch": "2.7.0",
++    "**/jws": "^4.0.1",
++    "**/piscina": "5.3.2",
+     "**/pixelmatch": "5.3.0",
++    "**/prismjs": "1.30.0",
+     "**/qs": "6.16.0",
+     "**/remark-parse/trim": "1.0.1",
+     "**/serialize-javascript": "7.0.5",
