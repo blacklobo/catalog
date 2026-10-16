@@ -17,13 +17,13 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13@sha256:f02173234d21c581f427e35930f90e359f0731df664cef0ab82deed702b9a048
-  KYVERNO_BACKGROUND_CONTROLLER_REFERENCE: dhi/kyverno-background-controller:1.17.2-debian13@sha256:c4421d380b4a647b0563f2e8f9d4f3bd81322c9a6697d7735569c37c2ac6dabd
-  KYVERNO_CLEANUP_CONTROLLER_REFERENCE: dhi/kyverno-cleanup-controller:1.17.2-debian13@sha256:fdcb3cf3eaaf48b2027d3595c0c1d74a2f57aaebf9eb6889b1c0d4d6acbd5708
-  KYVERNO_CLI_REFERENCE: dhi/kyverno-cli:1.17.2-debian13@sha256:1a8299c263563fbf8681c4ba8a6f9af4931c0a4eaee1ff33825bc3a5b4192746
-  KYVERNO_INIT_REFERENCE: dhi/kyverno-init:1.17.2-debian13@sha256:bfbc9f42af0a77aa1abf6f2c9fead5a81ea9ae0626fe98a02d0d9220f6d1c97f
-  KYVERNO_READINESS_CHECKER_REFERENCE: dhi/kyverno-readiness-checker:1.17.2-debian13@sha256:41b0828ec4aa3a4dd4bf99d24d4edc64936ac59c22a785bb395c2f9a253202a9
-  KYVERNO_REFERENCE: dhi/kyverno:1.17.2-debian13@sha256:cdca8b23780c7ee7f2e96044876287a4541392db80ddad437ca1229808150e03
-  KYVERNO_REPORTS_CONTROLLER_REFERENCE: dhi/kyverno-reports-controller:1.17.2-debian13@sha256:8de782e28a15486341686d09e4d7dae53bf62118ba9b757c1720003005787d17
+  KYVERNO_BACKGROUND_CONTROLLER_REFERENCE: dhi/kyverno-background-controller:1.17.2-debian13@sha256:ac8dc4f23037387f2f5da6e5bc299fb671df1e12df40af91f513acf6aad579b9
+  KYVERNO_CLEANUP_CONTROLLER_REFERENCE: dhi/kyverno-cleanup-controller:1.17.2-debian13@sha256:116230d49dcb01f950cb7aebdfbd867f3d0b64ac8bb70bdb4b10ba8e8884a999
+  KYVERNO_CLI_REFERENCE: dhi/kyverno-cli:1.17.2-debian13@sha256:4cc7a2789e12786677e6c505a47a5ca02e052e90895df46a24702bb1861d87aa
+  KYVERNO_INIT_REFERENCE: dhi/kyverno-init:1.17.2-debian13@sha256:f94e1aa48fa7fdb95038da16e0a8ba782276cd41af339bb6c259d81ac8365475
+  KYVERNO_READINESS_CHECKER_REFERENCE: dhi/kyverno-readiness-checker:1.17.2-debian13@sha256:51403604ffe88d55688985af407d491a92e670ebb5e8a27fc26c1a6262cd8b12
+  KYVERNO_REFERENCE: dhi/kyverno:1.17.2-debian13@sha256:9683f9980e50886acddb034a9ef124414f7944cb619119703127b5ccaf2e454c
+  KYVERNO_REPORTS_CONTROLLER_REFERENCE: dhi/kyverno-reports-controller:1.17.2-debian13@sha256:9ddbf200387e3688348f51860a2d965ad6cb1fc20c31b8886079a8a42d2ae84b
   KYVERNO_REPORTS_SERVER_CHART_REFERENCE: dhi/kyverno-reports-server-chart:0.1.7@sha256:db55a87ef82dfd3e9f17ccc81cfad2a761931750af56e3ff290538bf8be6e0ac
   SEMVER_MAJOR_MINOR_VERSION: "3.7"
   SEMVER_MAJOR_VERSION: "3"
@@ -75,21 +75,21 @@ contents:
               description: Docker Hardened Images Helm chart for Kyverno
               images:
                 - name: kyverno
-                  ref: dhi/kyverno:1.17.2-debian13@sha256:cdca8b23780c7ee7f2e96044876287a4541392db80ddad437ca1229808150e03
+                  ref: dhi/kyverno:1.17.2-debian13@sha256:9683f9980e50886acddb034a9ef124414f7944cb619119703127b5ccaf2e454c
                 - name: kyverno-cli
-                  ref: dhi/kyverno-cli:1.17.2-debian13@sha256:1a8299c263563fbf8681c4ba8a6f9af4931c0a4eaee1ff33825bc3a5b4192746
+                  ref: dhi/kyverno-cli:1.17.2-debian13@sha256:4cc7a2789e12786677e6c505a47a5ca02e052e90895df46a24702bb1861d87aa
                 - name: kyverno-readiness-checker
-                  ref: dhi/kyverno-readiness-checker:1.17.2-debian13@sha256:41b0828ec4aa3a4dd4bf99d24d4edc64936ac59c22a785bb395c2f9a253202a9
+                  ref: dhi/kyverno-readiness-checker:1.17.2-debian13@sha256:51403604ffe88d55688985af407d491a92e670ebb5e8a27fc26c1a6262cd8b12
                 - name: kubectl
                   ref: dhi/kubectl:1.35.9-debian13@sha256:f02173234d21c581f427e35930f90e359f0731df664cef0ab82deed702b9a048
                 - name: kyverno-init
-                  ref: dhi/kyverno-init:1.17.2-debian13@sha256:bfbc9f42af0a77aa1abf6f2c9fead5a81ea9ae0626fe98a02d0d9220f6d1c97f
+                  ref: dhi/kyverno-init:1.17.2-debian13@sha256:f94e1aa48fa7fdb95038da16e0a8ba782276cd41af339bb6c259d81ac8365475
                 - name: kyverno-background-controller
-                  ref: dhi/kyverno-background-controller:1.17.2-debian13@sha256:c4421d380b4a647b0563f2e8f9d4f3bd81322c9a6697d7735569c37c2ac6dabd
+                  ref: dhi/kyverno-background-controller:1.17.2-debian13@sha256:ac8dc4f23037387f2f5da6e5bc299fb671df1e12df40af91f513acf6aad579b9
                 - name: kyverno-cleanup-controller
-                  ref: dhi/kyverno-cleanup-controller:1.17.2-debian13@sha256:fdcb3cf3eaaf48b2027d3595c0c1d74a2f57aaebf9eb6889b1c0d4d6acbd5708
+                  ref: dhi/kyverno-cleanup-controller:1.17.2-debian13@sha256:116230d49dcb01f950cb7aebdfbd867f3d0b64ac8bb70bdb4b10ba8e8884a999
                 - name: kyverno-reports-controller
-                  ref: dhi/kyverno-reports-controller:1.17.2-debian13@sha256:8de782e28a15486341686d09e4d7dae53bf62118ba9b757c1720003005787d17
+                  ref: dhi/kyverno-reports-controller:1.17.2-debian13@sha256:9ddbf200387e3688348f51860a2d965ad6cb1fc20c31b8886079a8a42d2ae84b
               name: kyverno-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kyverno/kyverno
