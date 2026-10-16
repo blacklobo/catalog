@@ -12,7 +12,7 @@ vars:
   DHI_REL: "68"
   DHI_VERSION: 3.3.12-68
   PACKAGE_NAME: ruby-3.3
-  RUBY_REFERENCE: dhi/ruby:3.4.11-debian13-dev@sha256:db4841d2e261f3e8fb98666372e71b311226bb03b64f76df2f3ab9881223f728
+  RUBY_REFERENCE: dhi/ruby:3.4.11-debian13-dev@sha256:565b712cce004497f4cfd537a7e1a3e787115751be2f1cf040e8df85cc2a2f22
   SEMVER_MAJOR_MINOR_VERSION: "3.3"
   SHA256: 873e3297990b8cff7a5436f6e510a3a7a18c74e5f2c794e4162e605fe0a743b3
   VERSION: 3.3.12
@@ -84,7 +84,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/ruby:3.4.11-debian13-dev@sha256:db4841d2e261f3e8fb98666372e71b311226bb03b64f76df2f3ab9881223f728
+          - name: dhi.io/ruby:3.4.11-debian13-dev@sha256:565b712cce004497f4cfd537a7e1a3e787115751be2f1cf040e8df85cc2a2f22
             includes:
               - usr/bin/ruby
               - usr/lib/libruby.so.3.4
