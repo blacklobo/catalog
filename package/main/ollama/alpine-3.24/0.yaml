@@ -3,15 +3,15 @@
 image: dhi.io/pkg-ollama
 variant: runtime
 tags:
-  - 0.40.5-alpine3.24
-  - 0.40.5-r0-alpine3.24
+  - 0.40.6-alpine3.24
+  - 0.40.6-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-27"
 vars:
-  COMMIT_SHA: d919272e53593d1d55d40e1180eaa06dfbede3ac
+  COMMIT_SHA: 2476d5ead197abe04629651028f83d48dc75d2b2
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
   LLAMA_CPP_COMMIT_SHA: 620d2225cc436ab0b001e3200e590e3b286ef9ab
@@ -21,8 +21,8 @@ vars:
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "0.40"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.40.5
-  VERSION: 0.40.5
+  SEMVER_VERSION: 0.40.6
+  VERSION: 0.40.6
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -47,15 +47,15 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/ollama/ollama.git#v0.40.5
-            checksum: d919272e53593d1d55d40e1180eaa06dfbede3ac
+          - url: git+https://github.com/ollama/ollama.git#v0.40.6
+            checksum: 2476d5ead197abe04629651028f83d48dc75d2b2
             path: /go/src/github.com/ollama/ollama
             spdx:
               name: ollama
-              version: 0.40.5
+              version: 0.40.6
               packages:
                 - name: ollama
-                  purl: pkg:golang/github.com/ollama/ollama@0.40.5
+                  purl: pkg:golang/github.com/ollama/ollama@0.40.6
                   license: MIT
             uid: 0
             gid: 0
@@ -115,7 +115,7 @@ contents:
             ldflags:
               - -linkmode=external
               - -extldflags=-static
-              - -X github.com/ollama/ollama/version.Version=0.40.5
+              - -X github.com/ollama/ollama/version.Version=0.40.6
               - -X github.com/ollama/ollama/server.mode=release
             output: ${target.dir}/usr/bin/ollama
         - name: build ollama dev
@@ -128,7 +128,7 @@ contents:
             ldflags:
               - -linkmode=external
               - -extldflags=-static
-              - -X github.com/ollama/ollama/version.Version=0.40.5
+              - -X github.com/ollama/ollama/version.Version=0.40.6
               - -X github.com/ollama/ollama/server.mode=release
             output: ${target.dir}/usr/bin/ollama-dev
             strip: false
@@ -157,7 +157,7 @@ contents:
                     source: usr/lib/ollama-dev
                 name: ollama-dev
             url: https://ollama.com
-            version: 0.40.5
+            version: 0.40.6
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
