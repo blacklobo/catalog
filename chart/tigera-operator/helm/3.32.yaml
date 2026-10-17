@@ -9,11 +9,11 @@ platforms:
   - linux/amd64
 vars:
   CALICO_CNI_REFERENCE: dhi/calico-cni:3.32.2-debian13@sha256:98e9949be201a7667b15228fab4f716d2e1ccbbdd75541b79cf84fcd4d7fed82
-  CALICO_CSI_REFERENCE: dhi/calico-csi:3.32.2-debian13@sha256:bd0a3552c6f259f46ca6c4b633d5db744cc53f2ae12a9254ab641c15c798f2d4
+  CALICO_CSI_REFERENCE: dhi/calico-csi:3.32.2-debian13@sha256:e9ae795dc1618423baffaa4c881bf785f941117340254fa96ce36c9aff70b0e9
   CALICO_CTL_REFERENCE: dhi/calico-ctl:3.32.2-debian13@sha256:b1f04e264854327f650ded2cb495a95231ca0b553df588b8d7be9044260ce351
   CALICO_GOLDMANE_REFERENCE: dhi/calico-goldmane:3.32.2-debian13@sha256:d086e58b48e6f463502271bce1cc2ce1dae9c57b62ed2972166882045cee8ca5
   CALICO_KUBE_CONTROLLERS_REFERENCE: dhi/calico-kube-controllers:3.32.2-debian13@sha256:b9693d106ca03581b07168d08944242eacee4854c063c755ee75671010dd78d0
-  CALICO_NODE_DRIVER_REGISTRAR_REFERENCE: dhi/calico-node-driver-registrar:3.32.2-debian13@sha256:499336f7416e12e99dd4169cdd260819e7b26132d7d734738630319f244650bb
+  CALICO_NODE_DRIVER_REGISTRAR_REFERENCE: dhi/calico-node-driver-registrar:3.32.2-debian13@sha256:f76dd83b49223fca3bab45674df69132709f7aebcb1e764cdbf34545c307cb96
   CALICO_NODE_REFERENCE: dhi/calico-node:3.32.2-debian13@sha256:05937a3b28a8cc227cb7da02ace474c6101bbd95449ec11eb3a39c89afe3bf01
   CALICO_POD2DAEMON_FLEXVOL_REFERENCE: dhi/calico-pod2daemon-flexvol:3.32.2-debian13@sha256:179c47717c9ab3ec6c588f1356107503cfd58f156ac159fe8ccb02de15ad7d05
   CALICO_TYPHA_REFERENCE: dhi/calico-typha:3.32.2-debian13@sha256:19ef8a4f14594f16011afa798828580ae3f24f8ba0625bb4ff8bbbeb3e729313
@@ -31,7 +31,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.32"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.32.2
-  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.42.6-debian13@sha256:9ac70b4f59d1749269170e3dbbb203a303fc7303b11149e48d2b0f0b9f69a4d9
+  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.42.6-debian13@sha256:cbaedccced89aa8051cd58f8ce9da70a1ff3b645bb2574f92bbd56fa5681e5f5
   VERSION: 3.32.2
 contents:
   repositories:
@@ -63,7 +63,7 @@ contents:
               description: Docker Hardened Images Helm chart for the Tigera operator (installs Calico)
               images:
                 - name: tigera-operator
-                  ref: dhi/tigera-operator:1.42.6-debian13@sha256:9ac70b4f59d1749269170e3dbbb203a303fc7303b11149e48d2b0f0b9f69a4d9
+                  ref: dhi/tigera-operator:1.42.6-debian13@sha256:cbaedccced89aa8051cd58f8ce9da70a1ff3b645bb2574f92bbd56fa5681e5f5
                 - name: calico-whisker
                   ref: dhi/calico-whisker:3.32.2-debian13@sha256:a3ddafc26c04c1bcab1752949442f4642345a04b46c3bbd2b1d1db21bccc5055
                 - name: calico-whisker-backend
@@ -73,7 +73,7 @@ contents:
                 - name: calico-cni
                   ref: dhi/calico-cni:3.32.2-debian13@sha256:98e9949be201a7667b15228fab4f716d2e1ccbbdd75541b79cf84fcd4d7fed82
                 - name: calico-csi
-                  ref: dhi/calico-csi:3.32.2-debian13@sha256:bd0a3552c6f259f46ca6c4b633d5db744cc53f2ae12a9254ab641c15c798f2d4
+                  ref: dhi/calico-csi:3.32.2-debian13@sha256:e9ae795dc1618423baffaa4c881bf785f941117340254fa96ce36c9aff70b0e9
                 - name: calico-goldmane
                   ref: dhi/calico-goldmane:3.32.2-debian13@sha256:d086e58b48e6f463502271bce1cc2ce1dae9c57b62ed2972166882045cee8ca5
                 - name: calico-kube-controllers
@@ -81,7 +81,7 @@ contents:
                 - name: calico-node
                   ref: dhi/calico-node:3.32.2-debian13@sha256:05937a3b28a8cc227cb7da02ace474c6101bbd95449ec11eb3a39c89afe3bf01
                 - name: calico-node-driver-registrar
-                  ref: dhi/calico-node-driver-registrar:3.32.2-debian13@sha256:499336f7416e12e99dd4169cdd260819e7b26132d7d734738630319f244650bb
+                  ref: dhi/calico-node-driver-registrar:3.32.2-debian13@sha256:f76dd83b49223fca3bab45674df69132709f7aebcb1e764cdbf34545c307cb96
                 - name: calico-pod2daemon-flexvol
                   ref: dhi/calico-pod2daemon-flexvol:3.32.2-debian13@sha256:179c47717c9ab3ec6c588f1356107503cfd58f156ac159fe8ccb02de15ad7d05
                 - name: calico-typha
