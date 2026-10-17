@@ -5,11 +5,11 @@ image: dhi.io/headlamp
 variant: dev
 tags:
   - 0-alpine-dev
-  - 0.45-alpine-dev
+  - 0.46-alpine-dev
   - 0-alpine3.24-dev
-  - 0.45.0-alpine-dev
-  - 0.45-alpine3.24-dev
-  - 0.45.0-alpine3.24-dev
+  - 0.46.0-alpine-dev
+  - 0.46-alpine3.24-dev
+  - 0.46.0-alpine3.24-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,10 +18,10 @@ dates:
 vars:
   DHI_TEST_APK_PACKAGE: jq
   HEADLAMP_SUFFIX: ""
-  SEMVER_MAJOR_MINOR_VERSION: "0.45"
+  SEMVER_MAJOR_MINOR_VERSION: "0.46"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.45.0
-  VERSION: 0.45.0-r9
+  SEMVER_VERSION: 0.46.0
+  VERSION: 0.46.0-r0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -38,7 +38,7 @@ contents:
     - ca-certificates-bundle
     - coreutils
     - findutils
-    - headlamp=0.45.0-r9
+    - headlamp=0.46.0-r0
     - musl-utils
     - tzdata
 accounts:
