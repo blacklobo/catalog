@@ -14,7 +14,7 @@ platforms:
   - linux/arm64
 vars:
   COMMIT_SHA: aece9221f8c09221a14395d964806b956289bc07
-  GO_REF: dhi/golang:1.26.9-debian13-dev@sha256:2a2c0a08f8f14cd61acdc533231fac11eaed958b77df6c62f69bf7a5a679f890
+  GO_REF: dhi/golang:1.26.9-debian13-dev@sha256:29fcff4424c069df3b76161fec95f4512f176a42209b5017787daec437e9a292
   SEMVER_MAJOR_MINOR_VERSION: "3.8"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.8.0
@@ -24,7 +24,7 @@ contents:
     - '!base-files'
   builds:
     - name: git-lfs
-      uses: dhi.io/golang:1.26.9-debian13-dev@sha256:2a2c0a08f8f14cd61acdc533231fac11eaed958b77df6c62f69bf7a5a679f890
+      uses: dhi.io/golang:1.26.9-debian13-dev@sha256:29fcff4424c069df3b76161fec95f4512f176a42209b5017787daec437e9a292
       contents:
         files:
           - url: git+https://github.com/git-lfs/git-lfs.git#v3.8.0
