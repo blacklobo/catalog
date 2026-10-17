@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ARGOCD_REFERENCE: dhi/argocd:3.5.5-debian13@sha256:aebf9df6960d2642afe24a2ab69e925040ee28dedbd392918704d2e3e54e32ae
+  ARGOCD_REFERENCE: dhi/argocd:3.5.5-debian13@sha256:1d689be7eb9b62fa338107e307044fec42298ce351ab014d5a64fd3c758b45f2
   CHART_COMMIT_SHA: 3d4228871ef2f98cbcd22d9f54f8265213cf0870
   CHART_HELM_NAME: argocd-chart
   DEX_REFERENCE: dhi/dex:2.46.0-debian13@sha256:54826e157f23855f2ae97ec1064789d8abe538b7181393de51da870ac8e1de3e
@@ -18,7 +18,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HAPROXY_CHART_REFERENCE: dhi/haproxy-chart:1.30.2@sha256:29993d27fa09072484e1c92a63f6d7f1a512890224e138ff50b489fc8c07b8f5
   HELM_VERSION: 4.1.4-2
-  REDIS_CHART_REFERENCE: dhi/redis-chart:23.0.7@sha256:05fa052dc4ce52f164ae9561737eea1c30b246ae768fe55ac4e6322a3b02ab14
+  REDIS_CHART_REFERENCE: dhi/redis-chart:23.0.7@sha256:88451dd2980262fa25e4257c21ccd4cf6c799b7595afe75f54e7207e6b8b3813
   REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.94.0-debian13@sha256:4788a887168e2c74800cd879842e5667099de4c0640308198af09d614a3b15ea
   REDIS_REFERENCE: dhi/redis:8.10.2-debian13-compat@sha256:8477e3456e63d1777b0df44658d8bb93b40ca0d0442df89222bd0ca4612b662f
   SEMVER_MAJOR_MINOR_VERSION: "10.10"
@@ -57,7 +57,7 @@ contents:
                 - alias: redis-ha
                   condition: redis-ha.enabled
                   name: redis-ha
-                  ref: dhi/redis-chart:23.0.7@sha256:05fa052dc4ce52f164ae9561737eea1c30b246ae768fe55ac4e6322a3b02ab14
+                  ref: dhi/redis-chart:23.0.7@sha256:88451dd2980262fa25e4257c21ccd4cf6c799b7595afe75f54e7207e6b8b3813
                 - alias: haproxy
                   condition: haproxy.enabled
                   name: haproxy
@@ -65,7 +65,7 @@ contents:
               description: Docker Hardened Images Helm chart for Argo CD
               images:
                 - name: argocd
-                  ref: dhi/argocd:3.5.5-debian13@sha256:aebf9df6960d2642afe24a2ab69e925040ee28dedbd392918704d2e3e54e32ae
+                  ref: dhi/argocd:3.5.5-debian13@sha256:1d689be7eb9b62fa338107e307044fec42298ce351ab014d5a64fd3c758b45f2
                 - name: dex
                   ref: dhi/dex:2.46.0-debian13@sha256:54826e157f23855f2ae97ec1064789d8abe538b7181393de51da870ac8e1de3e
                 - name: redis
