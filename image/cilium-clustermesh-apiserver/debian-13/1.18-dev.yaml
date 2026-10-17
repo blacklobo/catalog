@@ -5,27 +5,27 @@ image: dhi.io/cilium-clustermesh-apiserver
 variant: dev
 tags:
   - 1.18-dev
-  - 1.18.14-dev
+  - 1.18.15-dev
   - 1.18-debian-dev
   - 1.18-debian13-dev
-  - 1.18.14-debian-dev
-  - 1.18.14-debian13-dev
+  - 1.18.15-debian-dev
+  - 1.18.15-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-07-29"
 vars:
-  COMMIT_SHA: 0a5b4195ff0bfc4d5d6e707a24f57e1047166ab4
+  COMMIT_SHA: ede23d6dc728377671b56017e7ae3fbd8686fc09
   ETCD_VERSION: 3.7.2-2
   FLAVORED_SUFFIX: -dev
   GOPS_VERSION: 0.3.29-6
   SEMVER_MAJOR_MINOR_VERSION: "1.18"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_PATCH_VERSION: "14"
-  SEMVER_VERSION: 1.18.14
+  SEMVER_PATCH_VERSION: "15"
+  SEMVER_VERSION: 1.18.15
   SUFFIX: -dev
-  VERSION: 1.18.14-3
+  VERSION: 1.18.15-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -40,7 +40,7 @@ contents:
     - bash
     - ca-certificates
     - ca-certificates-bundle
-    - cilium-clustermesh-apiserver-1.18-dev=1.18.14-3
+    - cilium-clustermesh-apiserver-1.18-dev=1.18.15-0
     - coreutils
     - diffutils
     - dpkg
@@ -55,7 +55,7 @@ contents:
     - tzdata
     - util-linux
   files:
-    - url: https://raw.githubusercontent.com/cilium/cilium/0a5b4195ff0bfc4d5d6e707a24f57e1047166ab4/clustermesh-apiserver/etcd-config.yaml
+    - url: https://raw.githubusercontent.com/cilium/cilium/ede23d6dc728377671b56017e7ae3fbd8686fc09/clustermesh-apiserver/etcd-config.yaml
       path: /var/lib/cilium/etcd-config.yaml
       uid: 0
       gid: 0
