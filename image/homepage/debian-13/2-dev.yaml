@@ -5,25 +5,25 @@ image: dhi.io/homepage
 variant: dev
 tags:
   - 2-dev
-  - 2.5-dev
-  - 2.5.0-dev
+  - 2.6-dev
+  - 2.6.0-dev
   - 2-debian-dev
   - 2-debian13-dev
-  - 2.5-debian-dev
-  - 2.5-debian13-dev
-  - 2.5.0-debian-dev
-  - 2.5.0-debian13-dev
+  - 2.6-debian-dev
+  - 2.6-debian13-dev
+  - 2.6.0-debian-dev
+  - 2.6.0-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-14"
 vars:
-  COMMIT_SHA: 347d34c08c4441857b1ff3f9a0cc30e946411d4b
-  SEMVER_MAJOR_MINOR_VERSION: "2.5"
+  COMMIT_SHA: 51cc1684f9f34a7877ed462b8f94c9cc687b4dde
+  SEMVER_MAJOR_MINOR_VERSION: "2.6"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.5.0
-  VERSION: 2.5.0
+  SEMVER_VERSION: 2.6.0
+  VERSION: 2.6.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -79,15 +79,15 @@ contents:
           - yarn-classic
           - yq
         files:
-          - url: git+https://github.com/gethomepage/homepage.git#v2.5.0
-            checksum: 347d34c08c4441857b1ff3f9a0cc30e946411d4b
+          - url: git+https://github.com/gethomepage/homepage.git#v2.6.0
+            checksum: 51cc1684f9f34a7877ed462b8f94c9cc687b4dde
             path: ${source.dir}/homepage
             spdx:
               name: homepage
-              version: 2.5.0
+              version: 2.6.0
               packages:
                 - name: homepage
-                  purl: pkg:dhi/homepage@2.5.0
+                  purl: pkg:dhi/homepage@2.6.0
                   license: GPL-3.0
             uid: 0
             gid: 0
@@ -172,8 +172,8 @@ contents:
             pnpm install --prefer-offline \
               && NEXT_TELEMETRY_DISABLED=1 \
                 NEXT_PUBLIC_BUILDTIME=$(date -u -d @${SOURCE_DATE_EPOCH} +'%FT%TZ') \
-                NEXT_PUBLIC_VERSION=2.5.0 \
-                NEXT_PUBLIC_REVISION=347d34c08c4441857b1ff3f9a0cc30e946411d4b \
+                NEXT_PUBLIC_VERSION=2.6.0 \
+                NEXT_PUBLIC_REVISION=51cc1684f9f34a7877ed462b8f94c9cc687b4dde \
                 pnpm run build
 
             mkdir ${target.dir}/app
