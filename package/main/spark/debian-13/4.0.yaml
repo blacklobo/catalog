@@ -4,9 +4,9 @@ image: dhi.io/pkg-spark
 variant: runtime
 tags:
   - 4.0.4
-  - 4.0.4-r8
+  - 4.0.4-r9
   - 4.0.4-debian13
-  - 4.0.4-r8-debian13
+  - 4.0.4-r9-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,7 +22,7 @@ vars:
   MAVEN_VERSION: 3.10.0
   PACKAGE_HOME: /usr/share/spark
   PACKAGE_NAME: spark-4.0
-  REL: "8"
+  REL: "9"
   SCALA_VERSION: "2.13"
   SEMVER_MAJOR_MINOR_VERSION: "4.0"
   SEMVER_MAJOR_VERSION: "4"
@@ -88,34 +88,34 @@ contents:
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-core/2.21.5/jackson-core-2.21.5.jar
-            checksum: sha256:b64b5874162b503a0e58a8f7758266e8dd9f91bf49e3a59ae0b5f47589a231b7
-            path: ${source.dir}/patch/deps/jackson-core-2.21.5.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-core/2.21.7/jackson-core-2.21.7.jar
+            checksum: sha256:8c5623b98f32d5f7e1287ff61ed50e08ab7b11381e991fff89327faabba42261
+            path: ${source.dir}/patch/deps/jackson-core-2.21.7.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.5/jackson-databind-2.21.5.jar
-            checksum: sha256:507418c0fafd38b2b2cfb704521630da613a8e4cc8381195a6f418017883e2c0
-            path: ${source.dir}/patch/deps/jackson-databind-2.21.5.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.7/jackson-databind-2.21.7.jar
+            checksum: sha256:1290c2795e93e8a6861a6c4d9ff0d844d32f5ea178362cb2721edf5561e828b1
+            path: ${source.dir}/patch/deps/jackson-databind-2.21.7.jar
             uid: 0
             gid: 0
           - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar
             checksum: sha256:53ca085f4a150f703f49e1aabd935bd03b43e1ea3d55d135438292af22cef56b
-            path: ${source.dir}/patch/deps/jackson-annotations-2.21.5.jar
+            path: ${source.dir}/patch/deps/jackson-annotations-2.21.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-core/2.18.9/jackson-core-2.18.9.jar
-            checksum: sha256:e03144f48c8d5307da2894570b4972aab8c72f22440f8dcdb745be2485ce2024
-            path: ${source.dir}/patch/deps/jackson-core-2.18.9.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-core/2.18.11/jackson-core-2.18.11.jar
+            checksum: sha256:825fa72dfb9e2f8a642322f1390dbac22c30d15ebd6dc6b3772158821ee124eb
+            path: ${source.dir}/patch/deps/jackson-core-2.18.11.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.18.9/jackson-databind-2.18.9.jar
-            checksum: sha256:71595a3f7ff58344ec0496a9f9ec9f623ef7b85b45402d88f1ca261f1bc4b42c
-            path: ${source.dir}/patch/deps/jackson-databind-2.18.9.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.18.11/jackson-databind-2.18.11.jar
+            checksum: sha256:075ad94a76c3edf83e1972dc26f476361eb6b9d0e260d93fc11105509bc79cab
+            path: ${source.dir}/patch/deps/jackson-databind-2.18.11.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-annotations/2.18.9/jackson-annotations-2.18.9.jar
-            checksum: sha256:798c85b86e7420d0b4eb91e7b3e37d4bee673c61de37a616ba51a7539631e6b7
-            path: ${source.dir}/patch/deps/jackson-annotations-2.18.9.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-annotations/2.18.11/jackson-annotations-2.18.11.jar
+            checksum: sha256:9eab0d36da981645392427eedcb087e13be542488e37f935723dc0be50d18a53
+            path: ${source.dir}/patch/deps/jackson-annotations-2.18.11.jar
             uid: 0
             gid: 0
           - url: https://maven-central.storage-download.googleapis.com/maven2/org/apache/commons/commons-configuration2/2.15.0/commons-configuration2-2.15.0.jar
@@ -126,6 +126,11 @@ contents:
           - url: https://maven-central.storage-download.googleapis.com/maven2/org/jline/jline-remote-telnet/4.2.1/jline-remote-telnet-4.2.1.jar
             checksum: sha256:8acefb44b243f07e64e65a95cdb57471ec9d22c5a81b9d4a65cb3862f45a14e1
             path: ${source.dir}/patch/deps/jline-remote-telnet-4.2.1.jar
+            uid: 0
+            gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/org/jline/jline/3.30.17/jline-3.30.17-jdk8.jar
+            checksum: sha256:44a242fec11e344fdfa54fc430d79416b71a508bbace165e9feba3d85dc2ee84
+            path: ${source.dir}/patch/deps/jline-3.30.17-jdk8.jar
             uid: 0
             gid: 0
           - url: https://maven-central.storage-download.googleapis.com/maven2/org/apache/derby/derby/10.17.1.0/derby-10.17.1.0.jar
@@ -274,9 +279,9 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            JACKSON_REMEDIATION_VERSION="2.21.5"
+            JACKSON_REMEDIATION_VERSION="2.21.7"
             if [ "4.0" = "4.0" ]; then
-              JACKSON_REMEDIATION_VERSION="2.18.9"
+              JACKSON_REMEDIATION_VERSION="2.18.11"
             fi
 
             bash "${source.dir}/patch/remediate-jars.sh" \
@@ -296,7 +301,7 @@ contents:
               - deb
             license: Apache-2.0
             name: spark-4.0
-            rel: 8
+            rel: 9
             url: https://spark.apache.org/
             version: 4.0.4
       paths:

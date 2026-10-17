@@ -9,6 +9,6 @@
     },
     {
         "property": "jetty.version",
-        "value" : "12.1.10"
+        "value" : "12.1.11"
     }
 ]

@@ -14,9 +14,14 @@ JACKSON_VERSION="${3:?usage: remediate-jars.sh <jars-dir> <patch-deps-dir> <jack
 
 JACKSON_CORE="${PATCH_DIR}/jackson-core-${JACKSON_VERSION}.jar"
 JACKSON_DATABIND="${PATCH_DIR}/jackson-databind-${JACKSON_VERSION}.jar"
-JACKSON_ANNOTATIONS="${PATCH_DIR}/jackson-annotations-${JACKSON_VERSION}.jar"
+JACKSON_ANNOTATIONS_VERSION="${JACKSON_VERSION}"
+if [ "${JACKSON_VERSION}" = "2.21.7" ]; then
+    JACKSON_ANNOTATIONS_VERSION="2.21"
+fi
+JACKSON_ANNOTATIONS="${PATCH_DIR}/jackson-annotations-${JACKSON_ANNOTATIONS_VERSION}.jar"
 COMMONS_CONFIGURATION2="${PATCH_DIR}/commons-configuration2-2.15.0.jar"
 JLINE_REMOTE_TELNET="${PATCH_DIR}/jline-remote-telnet-4.2.1.jar"
+JLINE_UBER_JAR="${PATCH_DIR}/jline-3.30.17-jdk8.jar"
 DERBY="${PATCH_DIR}/derby-10.17.1.0.jar"
 DERBYSHARED="${PATCH_DIR}/derbyshared-10.17.1.0.jar"
 DERBYTOOLS="${PATCH_DIR}/derbytools-10.17.1.0.jar"
@@ -28,7 +33,7 @@ NIMBUS_JOSE_JWT="${PATCH_DIR}/nimbus-jose-jwt-10.0.2.jar"
 
 for jar in \
     "$JACKSON_CORE" "$JACKSON_DATABIND" "$JACKSON_ANNOTATIONS" \
-    "$COMMONS_CONFIGURATION2" "$JLINE_REMOTE_TELNET" \
+    "$COMMONS_CONFIGURATION2" "$JLINE_REMOTE_TELNET" "$JLINE_UBER_JAR" \
     "$DERBY" "$DERBYSHARED" "$DERBYTOOLS" "$LIBTHRIFT" \
     "$HIVE_JDBC_313" "$HIVE_EXEC_401_CORE" "$COMMONS_LANG3" "$NIMBUS_JOSE_JWT"; do
     if [ ! -f "$jar" ]; then
@@ -168,8 +173,9 @@ fi
 
 JLINE_UBER="$(find "${JARS_DIR}" -maxdepth 1 -name 'jline-*-jdk8.jar' -print -quit)"
 if [ -n "$JLINE_UBER" ] && [ -f "$JLINE_UBER" ]; then
-    echo "removing vulnerable telnet support from ${JLINE_UBER}"
-    repack_jar "$JLINE_UBER" strip_jline_telnet
+    destname="$(basename "$JLINE_UBER")"
+    echo "replacing ${JLINE_UBER} with jline 3.30.17 (${destname})"
+    replace_loose_jar "$destname" "$JLINE_UBER_JAR"
 fi
 
 echo "jar remediation complete"
