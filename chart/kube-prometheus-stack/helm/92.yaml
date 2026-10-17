@@ -16,7 +16,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:207672c33edcd4b466138a7667a6a189e07761693defe464813cfa422f193edb
+  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:4935aa85351033fd49c9a62abbf53a69e501c511ee9121ff6b7b051e999d1430
   HELM_VERSION: 4.1.4-2
   KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:8.6.0@sha256:dd17a6c5562dacf88b4407978e8d72850ddeb5d4b6cf5149b699ccf8f0c74d24
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:81daf33fd88d10ee4086c247d70b37766037ac2d03e6759b930b294c5ee8f613
@@ -73,7 +73,7 @@ contents:
                 - alias: grafana
                   condition: grafana.enabled
                   name: grafana
-                  ref: dhi/grafana-chart:12.11.2@sha256:207672c33edcd4b466138a7667a6a189e07761693defe464813cfa422f193edb
+                  ref: dhi/grafana-chart:12.11.2@sha256:4935aa85351033fd49c9a62abbf53a69e501c511ee9121ff6b7b051e999d1430
               description: Docker Hardened Images Helm chart for Kube Prometheus Stack
               images:
                 - name: busybox
