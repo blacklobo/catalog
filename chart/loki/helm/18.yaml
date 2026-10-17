@@ -4,13 +4,13 @@ name: Grafana Loki Helm chart 18.x
 image: dhi.io/loki-chart
 variant: helm
 tags:
-  - 18.16.2
+  - 18.17.0
 platforms:
   - linux/amd64
 vars:
-  ACCESS_LOG_EXPORTER_REFERENCE: dhi/access-log-exporter:0.5.0-debian13@sha256:06caeb72c11b09192d33d488066b5f5799b822e417f4dc41d16cebfd4913912e
+  ACCESS_LOG_EXPORTER_REFERENCE: dhi/access-log-exporter:0.5.1-debian13@sha256:7bb570b32ad8e37290dd8a04f560038429cc373efd5ef1b3a81f2b4a326770b3
   APPVERSION: 3.7.8
-  CHART_COMMIT_SHA: 28d8df66d7ffb00788ee211505bde7557bebcf3b
+  CHART_COMMIT_SHA: 6cdfdab16045c154df492f077bb7af0013cc6d76
   CHART_HELM_NAME: loki-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -26,10 +26,10 @@ vars:
   MEMCACHED_EXPORTER_REFERENCE: dhi/memcached-exporter:0.17.0-debian13@sha256:6cd9d50baeb54af73e2ff25754d3119690c0c8ebf01482c3c15f700f7204b29f
   MEMCACHED_REFERENCE: dhi/memcached:1.6.45-debian13@sha256:d57daefef26377731e55dbc5e7be1763937ff889ad8cfbbe375d885c0073da6a
   NGINX_REFERENCE: dhi/nginx:1.31.7-debian13@sha256:0f59fb1684b6e9b32a532f7769fb255d4bb7106ce4354ca413b59369b63a71df
-  SEMVER_MAJOR_MINOR_VERSION: "18.16"
+  SEMVER_MAJOR_MINOR_VERSION: "18.17"
   SEMVER_MAJOR_VERSION: "18"
-  SEMVER_VERSION: 18.16.2
-  VERSION: 18.16.2
+  SEMVER_VERSION: 18.17.0
+  VERSION: 18.17.0
   checksum: 02327afab1a59e6a4abc504fac25467772b32b1f
 contents:
   repositories:
@@ -46,8 +46,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/grafana-community/helm-charts.git#loki-18.16.2
-            checksum: 28d8df66d7ffb00788ee211505bde7557bebcf3b
+          - url: git+https://github.com/grafana-community/helm-charts.git#loki-18.17.0
+            checksum: 6cdfdab16045c154df492f077bb7af0013cc6d76
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -80,7 +80,7 @@ contents:
                 - name: memcached-exporter
                   ref: dhi/memcached-exporter:0.17.0-debian13@sha256:6cd9d50baeb54af73e2ff25754d3119690c0c8ebf01482c3c15f700f7204b29f
                 - name: access-log-exporter
-                  ref: dhi/access-log-exporter:0.5.0-debian13@sha256:06caeb72c11b09192d33d488066b5f5799b822e417f4dc41d16cebfd4913912e
+                  ref: dhi/access-log-exporter:0.5.1-debian13@sha256:7bb570b32ad8e37290dd8a04f560038429cc373efd5ef1b3a81f2b4a326770b3
                 - name: kubectl
                   ref: dhi/kubectl:1.37.1-debian13@sha256:38c1d49abb6d077935674feecf3d41558ff52bd652a1effbe413092c9d9ebd7b
               name: loki-chart
