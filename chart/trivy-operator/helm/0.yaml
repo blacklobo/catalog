@@ -19,12 +19,12 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  NODE_COLLECTOR_IMAGE_REFERENCE: dhi/node-collector:0.3.1-debian13@sha256:e45eeef7eb806e973301ff1022aa20507a3d168f12adca41ef6cb357c2a2c18e
+  NODE_COLLECTOR_IMAGE_REFERENCE: dhi/node-collector:0.3.1-debian13@sha256:cf9a6f58d1258fd0c5920456ca1fa4f1efd9597ae4b1785f271548d373073433
   SEMVER_MAJOR_MINOR_VERSION: "0.33"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.33.1
-  TRIVY_IMAGE_REFERENCE: dhi/trivy:0.74.0-debian13-compat@sha256:7849c4e02614263ff67db029cdb371887ed57569a6861fadabad57a8c51a82fd
-  TRIVY_OPERATOR_IMAGE_REFERENCE: dhi/trivy-operator:0.31.1-debian13@sha256:ab776a6301cc0abff57d715c7457050510a6d09e2c86a359182a8ef82f5075e0
+  TRIVY_IMAGE_REFERENCE: dhi/trivy:0.74.0-debian13-compat@sha256:430463e55b6946463afc70a33ae821d885555e3a03b38cc3e8bf214b50e31369
+  TRIVY_OPERATOR_IMAGE_REFERENCE: dhi/trivy-operator:0.31.1-debian13@sha256:bf70d3b2926d2a29e31d1ac0d32c855624b0d93756b3f1b318e3369925cb9ee5
   VERSION: 0.33.1
 contents:
   repositories:
@@ -55,11 +55,11 @@ contents:
               description: Docker Hardened Images Helm chart for trivy-operator
               images:
                 - name: trivy-operator
-                  ref: dhi/trivy-operator:0.31.1-debian13@sha256:ab776a6301cc0abff57d715c7457050510a6d09e2c86a359182a8ef82f5075e0
+                  ref: dhi/trivy-operator:0.31.1-debian13@sha256:bf70d3b2926d2a29e31d1ac0d32c855624b0d93756b3f1b318e3369925cb9ee5
                 - name: trivy
-                  ref: dhi/trivy:0.74.0-debian13-compat@sha256:7849c4e02614263ff67db029cdb371887ed57569a6861fadabad57a8c51a82fd
+                  ref: dhi/trivy:0.74.0-debian13-compat@sha256:430463e55b6946463afc70a33ae821d885555e3a03b38cc3e8bf214b50e31369
                 - name: node-collector
-                  ref: dhi/node-collector:0.3.1-debian13@sha256:e45eeef7eb806e973301ff1022aa20507a3d168f12adca41ef6cb357c2a2c18e
+                  ref: dhi/node-collector:0.3.1-debian13@sha256:cf9a6f58d1258fd0c5920456ca1fa4f1efd9597ae4b1785f271548d373073433
               name: trivy-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/aquasecurity/trivy-operator
