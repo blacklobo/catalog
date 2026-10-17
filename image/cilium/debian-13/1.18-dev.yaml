@@ -5,11 +5,11 @@ image: dhi.io/cilium
 variant: dev
 tags:
   - 1.18-dev
-  - 1.18.14-dev
+  - 1.18.15-dev
   - 1.18-debian-dev
   - 1.18-debian13-dev
-  - 1.18.14-debian-dev
-  - 1.18.14-debian13-dev
+  - 1.18.15-debian-dev
+  - 1.18.15-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,10 +22,10 @@ vars:
   FLAVORED_SUFFIX: -dev
   SEMVER_MAJOR_MINOR_VERSION: "1.18"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_PATCH_VERSION: "14"
-  SEMVER_VERSION: 1.18.14
+  SEMVER_PATCH_VERSION: "15"
+  SEMVER_VERSION: 1.18.15
   SUFFIX: -dev
-  VERSION: 1.18.14-2
+  VERSION: 1.18.15-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -41,8 +41,8 @@ contents:
     - bpftool
     - ca-certificates
     - ca-certificates-bundle
-    - cilium-1.18-dev=1.18.14-2
-    - cilium-1.18-libs=1.18.14-2
+    - cilium-1.18-dev=1.18.15-0
+    - cilium-1.18-libs=1.18.15-0
     - cilium-envoy-1.18=1.18.14-3
     - coreutils
     - diffutils
