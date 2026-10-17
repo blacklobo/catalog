@@ -6,16 +6,16 @@ variant: dev
 tags:
   - 8-jdk11-alpine3.22-dev
   - 8.14-jdk11-alpine3.22-dev
-  - 8.14.5-jdk11-alpine3.22-dev
+  - 8.14.6-jdk11-alpine3.22-dev
 platforms:
   - linux/amd64
 dates:
   release: "2023-02-10"
 vars:
-  GRADLE_DIGEST: sha256:78fb5a331897640610cd0589381526b8be16c3096be9249d23bd736bb79e3cd6
+  GRADLE_DIGEST: sha256:55215ef6d0cd637656f87db29bd0c380b4d777ea89315f81bbb0fe2c3fca0618
   GRADLE_MAJOR_MINOR_VERSION: "8.14"
   GRADLE_MAJOR_VERSION: "8"
-  GRADLE_VERSION: 8.14.5
+  GRADLE_VERSION: 8.14.6
   JAVA_DIGEST: sha256:623a7485271b5125af38b9dbb275ce605debb22a7e4d72927e3b2ad2ca58a3d0
   JAVA_MAJOR_VERSION: "11"
   JAVA_VERSION: 11.0.32.9
@@ -37,7 +37,7 @@ contents:
         - opt/**
       uid: 0
       gid: 0
-    - name: dhi.io/pkg-gradle:8.14.5@sha256:78fb5a331897640610cd0589381526b8be16c3096be9249d23bd736bb79e3cd6
+    - name: dhi.io/pkg-gradle:8.14.6@sha256:55215ef6d0cd637656f87db29bd0c380b4d777ea89315f81bbb0fe2c3fca0618
       includes:
         - opt/**
         - usr/local/bin/**
@@ -64,8 +64,8 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /build
 environment:
-  GRADLE_HOME: /opt/java/gradle/gradle-8.14.5
-  GRADLE_VERSION: 8.14.5
+  GRADLE_HOME: /opt/java/gradle/gradle-8.14.6
+  GRADLE_VERSION: 8.14.6
   JAVA_HOME: /opt/java/openjdk/11
 paths:
   - type: directory
