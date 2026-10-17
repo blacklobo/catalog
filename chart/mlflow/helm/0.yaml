@@ -16,7 +16,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  MLFLOW_REFERENCE: dhi/mlflow:3.17.1-debian13@sha256:ce6f2a1f38b65809d3a04ac8183a0643cd0af424b3b5d245c175f94851afdc3c
+  MLFLOW_REFERENCE: dhi/mlflow:3.17.1-debian13@sha256:419be76226576dfef9095124bfd79bdea9159a89ab672cdb15cd284f75e67061
   SEMVER_MAJOR_MINOR_VERSION: "0.1"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.1.1
@@ -52,7 +52,7 @@ contents:
               description: Docker Hardened Images Helm chart for MLFlow
               images:
                 - name: mlflow
-                  ref: dhi/mlflow:3.17.1-debian13@sha256:ce6f2a1f38b65809d3a04ac8183a0643cd0af424b3b5d245c175f94851afdc3c
+                  ref: dhi/mlflow:3.17.1-debian13@sha256:419be76226576dfef9095124bfd79bdea9159a89ab672cdb15cd284f75e67061
               name: mlflow-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/mlflow/mlflow/tree/master/charts
