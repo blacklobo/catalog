@@ -32,7 +32,7 @@ vars:
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.20.2
   SPIRE_AGENT_REFERENCE: dhi/spire-agent:1.15.3-debian13@sha256:e345ff282d6c2473cc63c24de11adc31ae5156989ee8d93669efdf642b80e550
-  SPIRE_SERVER_REFERENCE: dhi/spire-server:1.15.3-debian13@sha256:62d0477749ee15fa34f0bda3448997c39555091201df5a94b1d9726a57add2e6
+  SPIRE_SERVER_REFERENCE: dhi/spire-server:1.15.4-debian13@sha256:53030d04939a630af01b93148e7313f5ab36e21b43bcb6b9b5e2929eab66d7d6
   VERSION: 1.20.2
   ZTUNNEL_REFERENCE: dhi/ztunnel:1.31.2-debian13@sha256:95eec305f3cf500648345466175e7564a2e12e6977b509d191d04f64ee7e0043
 contents:
@@ -89,7 +89,7 @@ contents:
                 - name: spire-agent
                   ref: dhi/spire-agent:1.15.3-debian13@sha256:e345ff282d6c2473cc63c24de11adc31ae5156989ee8d93669efdf642b80e550
                 - name: spire-server
-                  ref: dhi/spire-server:1.15.3-debian13@sha256:62d0477749ee15fa34f0bda3448997c39555091201df5a94b1d9726a57add2e6
+                  ref: dhi/spire-server:1.15.4-debian13@sha256:53030d04939a630af01b93148e7313f5ab36e21b43bcb6b9b5e2929eab66d7d6
                 - name: busybox
                   ref: dhi/busybox:1.38.0-alpine3.24@sha256:59ec745ef4b2e553eafea215cf9550f545daf68edf151bdb88a2abbe392da132
               name: cilium-chart
