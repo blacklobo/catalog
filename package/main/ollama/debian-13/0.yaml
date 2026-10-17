@@ -3,17 +3,17 @@
 image: dhi.io/pkg-ollama
 variant: runtime
 tags:
-  - 0.40.5
-  - 0.40.5-r0
-  - 0.40.5-debian13
-  - 0.40.5-r0-debian13
+  - 0.40.6
+  - 0.40.6-r0
+  - 0.40.6-debian13
+  - 0.40.6-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-27"
 vars:
-  COMMIT_SHA: d919272e53593d1d55d40e1180eaa06dfbede3ac
+  COMMIT_SHA: 2476d5ead197abe04629651028f83d48dc75d2b2
   CUBLAS_VERSION: 13.4.1.3-1
   CUDA_VERSION: 13.2.2-1
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
@@ -26,8 +26,8 @@ vars:
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "0.40"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.40.5
-  VERSION: 0.40.5
+  SEMVER_VERSION: 0.40.6
+  VERSION: 0.40.6
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -54,15 +54,15 @@ contents:
           - golang-1.27=1.27.2-0
           - golang-1.27-oci-config=1.27.2-0
         files:
-          - url: git+https://github.com/ollama/ollama.git#v0.40.5
-            checksum: d919272e53593d1d55d40e1180eaa06dfbede3ac
+          - url: git+https://github.com/ollama/ollama.git#v0.40.6
+            checksum: 2476d5ead197abe04629651028f83d48dc75d2b2
             path: /go/src/github.com/ollama/ollama
             spdx:
               name: ollama
-              version: 0.40.5
+              version: 0.40.6
               packages:
                 - name: ollama
-                  purl: pkg:golang/github.com/ollama/ollama@0.40.5
+                  purl: pkg:golang/github.com/ollama/ollama@0.40.6
                   license: MIT
             uid: 0
             gid: 0
@@ -121,7 +121,7 @@ contents:
             fips: false
             ldflags:
               - -linkmode=external
-              - -X github.com/ollama/ollama/version.Version=0.40.5
+              - -X github.com/ollama/ollama/version.Version=0.40.6
               - -X github.com/ollama/ollama/server.mode=release
             output: ${target.dir}/usr/bin/ollama
         - name: build ollama dev
@@ -133,7 +133,7 @@ contents:
             fips: false
             ldflags:
               - -linkmode=external
-              - -X github.com/ollama/ollama/version.Version=0.40.5
+              - -X github.com/ollama/ollama/version.Version=0.40.6
               - -X github.com/ollama/ollama/server.mode=release
             output: ${target.dir}/usr/bin/ollama-dev
             strip: false
@@ -164,7 +164,7 @@ contents:
                     source: usr/lib/ollama-dev
                 name: ollama-dev
             url: https://ollama.com
-            version: 0.40.5
+            version: 0.40.6
     - name: ollama-cuda-backend
       work-dir: /go/src/github.com/ollama/ollama
       contents:
@@ -190,15 +190,15 @@ contents:
           - cuda-minimal-build-13-2
           - libcublas-dev-13-2
         files:
-          - url: git+https://github.com/ollama/ollama.git#v0.40.5
-            checksum: d919272e53593d1d55d40e1180eaa06dfbede3ac
+          - url: git+https://github.com/ollama/ollama.git#v0.40.6
+            checksum: 2476d5ead197abe04629651028f83d48dc75d2b2
             path: /go/src/github.com/ollama/ollama
             spdx:
               name: ollama
-              version: 0.40.5
+              version: 0.40.6
               packages:
                 - name: ollama
-                  purl: pkg:golang/github.com/ollama/ollama@0.40.5
+                  purl: pkg:golang/github.com/ollama/ollama@0.40.6
                   license: MIT
             uid: 0
             gid: 0
@@ -253,7 +253,7 @@ contents:
             name: ollama-cuda-backend
             rel: 0
             url: https://ollama.com
-            version: 0.40.5
+            version: 0.40.6
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
