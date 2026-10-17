@@ -25,8 +25,8 @@ vars:
   COUCHDB_DOCKER_ENTRYPOINT_CHECKSUM: sha256:d3042b6e100bfe2b9f124f654afc6bdbcad9e9e870511c60e9010da759b60962
   COUCHDB_DOCKER_VERSION: 3.5.2
   COUCHDB_DOCKER_VM_ARGS_CHECKSUM: sha256:5f84c4bfc47f16f404443dc1437829372ab9ee126d30fc819a2927a4cd333da7
-  ERLANG_DEV_REFERENCE: dhi/erlang-otp:27.3-debian13-dev@sha256:131d73945544d3371c6bc5e231b9f494afd0c274aa41495c0456926938500f4c
-  ERLANG_REFERENCE: dhi/erlang-otp:27.3-debian13@sha256:67fee55b3971521d63f0f91a2ef08bd1defc1af79e78539c1a1b3a127cc15a2f
+  ERLANG_DEV_REFERENCE: dhi/erlang-otp:27.3-debian13-dev@sha256:fd9cce15e3318fd56597ab3c60999ab717b126e38e0b9d385bc1427059caca64
+  ERLANG_REFERENCE: dhi/erlang-otp:27.3-debian13@sha256:3fc7112a2fde85fc1de0cc105d43448af74b213d9ede93d9a44e207a917f5c54
   GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:aeaabfe590d0e03bc4046023387c0a8e29f7b897e63b9ffb5fd9fdfe82c9f17a
   REBAR_COMMIT_SHA: 8723cb44fddb7ed66809d4dfbfc1da1ba6841456
   REBAR_VERSION: 3.27.3
@@ -169,7 +169,7 @@ contents:
             gid: 65532
             mode: "0644"
         artifacts:
-          - name: dhi.io/erlang-otp:27.3-debian13-dev@sha256:131d73945544d3371c6bc5e231b9f494afd0c274aa41495c0456926938500f4c
+          - name: dhi.io/erlang-otp:27.3-debian13-dev@sha256:fd9cce15e3318fd56597ab3c60999ab717b126e38e0b9d385bc1427059caca64
             includes:
               - usr/local/bin/erl
               - usr/local/bin/erlc
@@ -277,7 +277,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/erlang-otp:27.3-debian13@sha256:67fee55b3971521d63f0f91a2ef08bd1defc1af79e78539c1a1b3a127cc15a2f
+    - name: dhi.io/erlang-otp:27.3-debian13@sha256:3fc7112a2fde85fc1de0cc105d43448af74b213d9ede93d9a44e207a917f5c54
       includes:
         - /usr/local/**
       uid: 0
