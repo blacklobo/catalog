@@ -5,7 +5,25 @@
   },
   {
     "package": "@modelcontextprotocol/sdk",
-    "version": "1.29.0"
+    "version": "1.31.0"
+  },
+  {
+    "package": "proxy-addr",
+    "version": "2.0.8"
+  },
+  {
+    "package": "@graphql-tools/load",
+    "version": "8.1.19",
+    "overridePath": [
+      "@genql/cli"
+    ]
+  },
+  {
+    "package": "@graphql-tools/graphql-file-loader",
+    "version": "8.1.22",
+    "overridePath": [
+      "@genql/cli"
+    ]
   },
   {
     "package": "@genql/cli",
@@ -56,14 +74,14 @@
   },
   {
     "package": "@hono/node-server",
-    "version": "2.0.10",
+    "version": "2.1.4",
     "overridePath": [
       "@hono/node-server"
     ]
   },
   {
     "package": "@hono/node-server",
-    "version": "2.0.10",
+    "version": "2.1.4",
     "overridePath": [
       "@modelcontextprotocol/sdk"
     ]
