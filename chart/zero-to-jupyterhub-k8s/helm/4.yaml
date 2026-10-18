@@ -20,7 +20,7 @@ vars:
   JUPYTERHUB_K8S_IMAGE_AWAITER_REFERENCE: dhi/jupyterhub-k8s-image-awaiter:4.4.3-alpine3.24@sha256:4fe67910ed2306c92e7a8e2cceec5013c880eed1e4887f08569a5424df9d3577
   JUPYTERHUB_K8S_NETWORK_TOOLS_REFERENCE: dhi/jupyterhub-k8s-network-tools:4.4.3-alpine3.24@sha256:d9261522d69a5cdc6d7f97d0505477bd6a42856e8bea5067dddda41dd020df18
   JUPYTERHUB_K8S_SECRET_SYNC_REFERENCE: dhi/jupyterhub-k8s-secret-sync:4.4.3-debian13@sha256:ad3c61e6e98c2c0b0dddc50b194bd5c1b4e6685c59ff9aa3501990e4d7a5cac7
-  JUPYTERHUB_K8S_SINGLEUSER_SAMPLE_REFERENCE: dhi/jupyterhub-k8s-singleuser-sample:4.4.3-debian13-compat@sha256:58b89ef5202c5220eca152aee05255415beea113fc152bcba421ba62d66ace41
+  JUPYTERHUB_K8S_SINGLEUSER_SAMPLE_REFERENCE: dhi/jupyterhub-k8s-singleuser-sample:4.4.3-debian13-compat@sha256:b1b94e3be2667bd88947e9397dd1ab9dccda3cedc296cf11983141f1769b32cc
   KUBE_SCHEDULER_REFERENCE: dhi/kube-scheduler:1.37.1-debian13@sha256:7d31f412a5fd7863415222783f09471332575e0856fcd23fc92e28a3ba40e63f
   KUBERNETES_PAUSE_REFERENCE: dhi/kubernetes-pause:3.10.2-debian13@sha256:9e70ba8ae339c08553112fca6f1bb233f38eabf76e30d10cf1de0cace4084e17
   SEMVER_MAJOR_MINOR_VERSION: "4.4"
@@ -65,7 +65,7 @@ contents:
                 - name: network-tools
                   ref: dhi/jupyterhub-k8s-network-tools:4.4.3-alpine3.24@sha256:d9261522d69a5cdc6d7f97d0505477bd6a42856e8bea5067dddda41dd020df18
                 - name: singleuser
-                  ref: dhi/jupyterhub-k8s-singleuser-sample:4.4.3-debian13-compat@sha256:58b89ef5202c5220eca152aee05255415beea113fc152bcba421ba62d66ace41
+                  ref: dhi/jupyterhub-k8s-singleuser-sample:4.4.3-debian13-compat@sha256:b1b94e3be2667bd88947e9397dd1ab9dccda3cedc296cf11983141f1769b32cc
                 - name: image-awaiter
                   ref: dhi/jupyterhub-k8s-image-awaiter:4.4.3-alpine3.24@sha256:4fe67910ed2306c92e7a8e2cceec5013c880eed1e4887f08569a5424df9d3577
                 - name: pause
