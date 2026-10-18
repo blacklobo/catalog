@@ -12,7 +12,7 @@ vars:
   DHI_REL: "18"
   DHI_VERSION: 4.0.7-18
   PACKAGE_NAME: ruby-4.0
-  RUBY_REFERENCE: dhi/ruby:3.4.11-debian13-dev@sha256:a66e1046091425d5aa579385c9633941ce1ba3ea9d0da8cf92bcf465f95e2b1e
+  RUBY_REFERENCE: dhi/ruby:3.4.11-debian13-dev@sha256:b02a18d4eb3999402854abd89688df4ff724d61a6d03cd75e94e51fe7697c7c6
   SEMVER_MAJOR_MINOR_VERSION: "4.0"
   SHA256: 47ef59413f7a4587ba6a6b78b14036eb5e36eec2ec0b90964801e88d56a3d375
   VERSION: 4.0.7
@@ -84,7 +84,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/ruby:3.4.11-debian13-dev@sha256:a66e1046091425d5aa579385c9633941ce1ba3ea9d0da8cf92bcf465f95e2b1e
+          - name: dhi.io/ruby:3.4.11-debian13-dev@sha256:b02a18d4eb3999402854abd89688df4ff724d61a6d03cd75e94e51fe7697c7c6
             includes:
               - usr/bin/ruby
               - usr/lib/libruby.so.3.4
