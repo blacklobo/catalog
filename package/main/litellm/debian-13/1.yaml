@@ -3,24 +3,24 @@
 image: dhi.io/pkg-litellm
 variant: runtime
 tags:
-  - 1.105.1
-  - 1.105.1-r0
-  - 1.105.1-debian13
-  - 1.105.1-r0-debian13
+  - 1.106.0
+  - 1.106.0-r0
+  - 1.106.0-debian13
+  - 1.106.0-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   CARGO_VERSION: 1.97.1-0
-  COMMIT_SHA: d665dc1a6315847fcad6cc2c1264ceb47c06abce
+  COMMIT_SHA: 955bdaafa8b72b2b6ff728048f272fbc06049f63
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
   REL: "0"
   RUSTC_VERSION: 1.97.1-0
-  SEMVER_MAJOR_MINOR_VERSION: "1.105"
+  SEMVER_MAJOR_MINOR_VERSION: "1.106"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.105.1
-  VERSION: 1.105.1
+  SEMVER_VERSION: 1.106.0
+  VERSION: 1.106.0
 contents:
   packages:
     - base-files
@@ -64,15 +64,15 @@ contents:
           - python3-venv
           - python3-wheel
         files:
-          - url: git+https://github.com/BerriAI/litellm.git#d665dc1a6315847fcad6cc2c1264ceb47c06abce
-            checksum: d665dc1a6315847fcad6cc2c1264ceb47c06abce
+          - url: git+https://github.com/BerriAI/litellm.git#955bdaafa8b72b2b6ff728048f272fbc06049f63
+            checksum: 955bdaafa8b72b2b6ff728048f272fbc06049f63
             path: ${source.dir}/litellm-src
             spdx:
               name: litellm
-              version: 1.105.1
+              version: 1.106.0
               packages:
                 - name: litellm
-                  purl: pkg:pypi/litellm@1.105.1
+                  purl: pkg:pypi/litellm@1.106.0
                   license: MIT
             uid: 0
             gid: 0
@@ -157,7 +157,7 @@ contents:
             name: litellm
             rel: 0
             url: https://github.com/BerriAI/litellm
-            version: 1.105.1
+            version: 1.106.0
       paths:
         - type: file
           path: ${source.dir}/build-litellm.sh
