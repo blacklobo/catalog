@@ -13,7 +13,7 @@ platforms:
 vars:
   COMMIT_SHA: 0954dea2d09b7f218373653fa0af9f846eedae73
   DHI_TAGS_OVERWRITE: "true"
-  GOLANG_REFERENCE: dhi/golang:1.26.9-alpine3.22-dev@sha256:eac1036fd123d367c32e1a4b8ed2b75b4eb2381b26216557cb1fbf66d0f5c47a
+  GOLANG_REFERENCE: dhi/golang:1.26.9-alpine3.22-dev@sha256:17a4e9ed069605b519f1ce04ed855d43bd289d6f14c1af009f314fd87eb90bc8
   SEMVER_MAJOR_MINOR_VERSION: "2.26"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.26.1
@@ -56,7 +56,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/golang:1.26.9-alpine3.22-dev@sha256:eac1036fd123d367c32e1a4b8ed2b75b4eb2381b26216557cb1fbf66d0f5c47a
+          - name: dhi.io/golang:1.26.9-alpine3.22-dev@sha256:17a4e9ed069605b519f1ce04ed855d43bd289d6f14c1af009f314fd87eb90bc8
             includes:
               - usr/local/go
             uid: 0
