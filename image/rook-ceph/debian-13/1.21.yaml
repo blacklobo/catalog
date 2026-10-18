@@ -68,7 +68,7 @@ contents:
             uid: 0
             gid: 0
       pipeline:
-        - name: bump go dependencies (1.20 and 1.21)
+        - name: bump go dependencies (1.21 only)
           uses: go/bump@v1
           with:
             deps:

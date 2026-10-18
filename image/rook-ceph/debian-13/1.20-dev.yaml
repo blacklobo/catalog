@@ -5,11 +5,11 @@ image: dhi.io/rook-ceph
 variant: dev
 tags:
   - 1.20-dev
-  - 1.20.8-dev
+  - 1.20.9-dev
   - 1.20-debian-dev
   - 1.20-debian13-dev
-  - 1.20.8-debian-dev
-  - 1.20.8-debian13-dev
+  - 1.20.9-debian-dev
+  - 1.20.9-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,14 +17,14 @@ dates:
   release: "2026-06-02"
 vars:
   CEPH_REFERENCE: dhi/ceph:20.3.0-debian13@sha256:88360604225b398fba966f2526d4dafcb3eb59f54856ae5c29239b7cbccf521d
-  COMMIT_SHA: 70452ac10b697160e9f946eb9782990691927e9d
+  COMMIT_SHA: b35448a399ab014dc6e8db08b715e548bdc95e6e
   ROOK_GO_BUILD_TAGS: ceph_preview
   S5CMD_COMMIT_SHA: 991c9fbc16709341b4bac04513232a1445941f63
   S5CMD_VERSION: 2.3.0
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.20.8
-  VERSION: 1.20.8
+  SEMVER_VERSION: 1.20.9
+  VERSION: 1.20.9
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -68,24 +68,23 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/rook/rook.git#v1.20.8
-            checksum: 70452ac10b697160e9f946eb9782990691927e9d
+          - url: git+https://github.com/rook/rook.git#v1.20.9
+            checksum: b35448a399ab014dc6e8db08b715e548bdc95e6e
             path: /go/src/github.com/rook/rook
             spdx:
               name: rook
-              version: 1.20.8
+              version: 1.20.9
               packages:
                 - name: rook
-                  purl: pkg:golang/github.com/rook/rook@1.20.8
+                  purl: pkg:golang/github.com/rook/rook@1.20.9
                   license: Apache-2.0
             uid: 0
             gid: 0
       pipeline:
-        - name: bump go dependencies (1.20 and 1.21)
+        - name: bump go dependencies (1.20 only)
           uses: go/bump@v1
           with:
-            deps:
-              - golang.org/x/crypto@v0.56.0
+            deps: []
             download: true
         - name: run targeted go tests
           work-dir: /go/src/github.com/rook/rook
@@ -109,7 +108,7 @@ contents:
           with:
             cgo_enabled: 0
             ldflags:
-              - -X github.com/rook/rook/pkg/version.Version=1.20.8
+              - -X github.com/rook/rook/pkg/version.Version=1.20.9
             output: ${target.dir}/usr/bin/rook
             packages: ./cmd/rook
             tags: ceph_preview
