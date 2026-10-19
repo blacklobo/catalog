@@ -3,8 +3,8 @@
 image: dhi.io/pkg-libusb-1.0
 variant: runtime
 tags:
-  - 2-1.0.28-1-dhi0
-  - 2-1.0.28-1-dhi0-debian13
+  - 2-1.0.28-1-deb13u0-dhi0
+  - 2-1.0.28-1-deb13u0-dhi0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -23,8 +23,8 @@ vars:
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/libu/libusb-1.0/libusb-1.0_1.0.28.orig.tar.bz2
   DEBIAN_VERSION: 2:1.0.28-1
   DHI_REL: "0"
-  DHI_VERSION: 2:1.0.28-1+dhi0
-  TAG_VERSION: 2-1.0.28-1-dhi0
+  DHI_VERSION: 2:1.0.28-1+deb13u0+dhi0
+  TAG_VERSION: 2-1.0.28-1-deb13u0-dhi0
   UPSTREAM_VERSION: 1.0.28
 contents:
   packages:
@@ -78,7 +78,7 @@ contents:
           with:
             changelog:
               - Backport upstream descriptor.c fix for CVE-2026-47104 and CVE-2026-23679
-            version: 2:1.0.28-1+dhi0
+            version: 2:1.0.28-1+deb13u0+dhi0
         - uses: dpkg/build@v1
           environment:
             DEB_BUILD_PROFILES: noudeb
