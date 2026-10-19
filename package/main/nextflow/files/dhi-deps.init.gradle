@@ -1,3 +1,27 @@
+def mavenCentralMirror = uri('https://maven-central.storage-download.googleapis.com/maven2/')
+
+def mirrorMavenCentral = { repo ->
+    if (repo instanceof org.gradle.api.artifacts.repositories.MavenArtifactRepository &&
+            (repo.url.toString() == 'https://repo.maven.apache.org/maven2/' ||
+             repo.url.toString() == 'https://repo1.maven.org/maven2/')) {
+        repo.setUrl(mavenCentralMirror)
+    }
+}
+
+beforeSettings { settings ->
+    settings.pluginManagement.repositories.clear()
+    settings.pluginManagement.repositories.maven {
+        name = 'GCS Maven Central mirror'
+        url = mavenCentralMirror
+    }
+    settings.pluginManagement.repositories.gradlePluginPortal()
+}
+
+settingsEvaluated { settings ->
+    settings.pluginManagement.repositories.configureEach(mirrorMavenCentral)
+    settings.dependencyResolutionManagement.repositories.configureEach(mirrorMavenCentral)
+}
+
 // Force patched releases of libraries shaded into the one-jar.
 // jackson-databind 2.21.1 -> 2.21.7: CVE-2026-54512, CVE-2026-54513,
 // CVE-2026-54514, CVE-2026-54515, CVE-2026-54516, CVE-2026-54517,
@@ -12,6 +36,11 @@
 // pf4j 3.12.0 (25 line) -> 3.14.1: CVE-2025-70952. 26 already resolves 3.14.1.
 // commons-lang:commons-lang:2.6 has CVE-2025-48924 with no fixed release.
 allprojects {
+    buildscript.repositories.configureEach(mirrorMavenCentral)
+    buildscript.repositories.whenObjectAdded(mirrorMavenCentral)
+    repositories.configureEach(mirrorMavenCentral)
+    repositories.whenObjectAdded(mirrorMavenCentral)
+
     configurations.all {
         resolutionStrategy {
             force(
