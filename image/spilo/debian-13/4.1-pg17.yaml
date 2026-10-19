@@ -77,8 +77,8 @@ vars:
   PGAUDIT_17_COMMIT_SHA: 538f89a93d8fd0d8913f3d740cacaea7b7eb66d9
   PGAUDIT_17_TAG: "17.1"
   PGBOUNCER_PACKAGE: pgbouncer-1.26
-  PGBOUNCER_PACKAGE_VERSION: 1.26.0-1
-  PGBOUNCER_VERSION: 1.26.0
+  PGBOUNCER_PACKAGE_VERSION: 1.26.1-0
+  PGBOUNCER_VERSION: 1.26.1
   PGEXTWLIST_COMMIT_SHA: 729f8bf99a38d43004750d8debfd28de2fca936d
   PGEXTWLIST_TAG: v1.20
   PGFACETING_COMMIT_SHA: 753be8ee758c775af4c64e7794f8083a5d3960a5
@@ -280,7 +280,7 @@ contents:
     - llvm
     - locales
     - openssl
-    - pgbouncer-1.26=1.26.0-1
+    - pgbouncer-1.26=1.26.1-0
     - postgresql-17=17.11-1
     - procps
     - proj-data
@@ -4154,8 +4154,8 @@ contents:
           with:
             license: ISC
             name: pgbouncer
-            purl: pkg:github/pgbouncer/pgbouncer@1.26.0
-            version: 1.26.0
+            purl: pkg:github/pgbouncer/pgbouncer@1.26.1
+            version: 1.26.1
       outputs:
         - source: ${target.dir}/usr/local/bin/pgqd
           target: /usr/local/bin/pgqd
