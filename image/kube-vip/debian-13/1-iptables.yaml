@@ -6,24 +6,24 @@ variant: runtime
 flavor: iptables
 tags:
   - 1-iptables
-  - 1.2-iptables
-  - 1.2.4-iptables
+  - 1.3-iptables
+  - 1.3.1-iptables
   - 1-debian-iptables
   - 1-debian13-iptables
-  - 1.2-debian-iptables
-  - 1.2-debian13-iptables
-  - 1.2.4-debian-iptables
-  - 1.2.4-debian13-iptables
+  - 1.3-debian-iptables
+  - 1.3-debian13-iptables
+  - 1.3.1-debian-iptables
+  - 1.3.1-debian13-iptables
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   FLAVORED_SUFFIX: -iptables
-  SEMVER_MAJOR_MINOR_VERSION: "1.2"
+  SEMVER_MAJOR_MINOR_VERSION: "1.3"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.2.4
+  SEMVER_VERSION: 1.3.1
   SUFFIX: ""
-  VERSION: 1.2.4-2
+  VERSION: 1.3.1-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -33,7 +33,7 @@ contents:
     - base-files
     - ca-certificates-bundle
     - iptables
-    - kube-vip=1.2.4-2
+    - kube-vip=1.3.1-0
     - tzdata
   builds:
     - name: setcap kube-vip
@@ -47,7 +47,7 @@ contents:
         packages:
           - bash
           - libcap2-bin
-          - kube-vip=1.2.4-2
+          - kube-vip=1.3.1-0
       pipeline:
         - name: setcap
           runs: |
