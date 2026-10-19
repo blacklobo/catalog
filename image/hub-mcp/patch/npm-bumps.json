@@ -35,7 +35,7 @@
   },
   {
     "package": "qs",
-    "version": "6.16.0"
+    "version": "6.16.1"
   },
   {
     "package": "undici",
@@ -74,14 +74,14 @@
   },
   {
     "package": "@hono/node-server",
-    "version": "2.1.4",
+    "version": "2.1.5",
     "overridePath": [
       "@hono/node-server"
     ]
   },
   {
     "package": "@hono/node-server",
-    "version": "2.1.4",
+    "version": "2.1.5",
     "overridePath": [
       "@modelcontextprotocol/sdk"
     ]
