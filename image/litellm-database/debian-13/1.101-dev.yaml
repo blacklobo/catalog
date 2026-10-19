@@ -4,11 +4,8 @@ name: LiteLLM Database 1.101.x (dev)
 image: dhi.io/litellm-database
 variant: dev
 tags:
-  - 1-dev
   - 1.101-dev
   - 1.101.6-dev
-  - 1-debian-dev
-  - 1-debian13-dev
   - 1.101-debian-dev
   - 1.101-debian13-dev
   - 1.101.6-debian-dev
