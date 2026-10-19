@@ -1,6 +1,6 @@
 From: Docker Hardened Images <dhi@docker.com>
 Subject: [PATCH] run the gitlab-runner binary directly on the hardened image
-Source: https://gitlab.com/gitlab-org/charts/gitlab-runner/-/tree/v0.93.0/templates
+Source: https://gitlab.com/gitlab-org/charts/gitlab-runner/-/tree/v0.94.0/templates
 
 The upstream chart scripts assume the upstream runner image: dumb-init as
 PID 1, an /entrypoint wrapper script, procps for pgrep, and a named
@@ -73,7 +73,19 @@ gitlab-runner binary directly as uid 65532.
  
 --- a/templates/deployment.yaml
 +++ b/templates/deployment.yaml
-@@ -74,7 +74,7 @@
+@@ -62,56 +62,56 @@ spec:
+       {{- end }}
+       serviceAccountName: {{ include "gitlab-runner.serviceAccountName" . }}
+       {{- if .Values.deploymentInitContainers }}
+       initContainers:
+       {{ toYaml .Values.deploymentInitContainers | nindent 6 }}
+       {{- end }}
+       containers:
+       - name: {{ include "gitlab-runner.fullname" . }}
+         image: {{ include "gitlab-runner.image" . }}
+         imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
+         securityContext: {{ toYaml .Values.securityContext | nindent 10 }}
+         {{- include "gitlab-runner.unregisterRunners" . | nindent 8 }}
          {{- if .Values.useTini }}
          command: ["/usr/local/bin/tini", "--", "/bin/bash", "/configmaps/entrypoint"]
          {{- else }}
@@ -82,8 +94,25 @@ gitlab-runner binary directly as uid 65532.
          {{- end }}
          {{- if .Values.deploymentLifecycle }}
          lifecycle: {{ toYaml .Values.deploymentLifecycle | nindent 10 }}
-@@ -97,7 +97,7 @@
+         {{- end }}
+         env:
+         {{- include "gitlab-runner.runner-env-vars" . | indent 8 }}
+         {{- if .Values.extraEnvFromRefs }}
+         envFrom: {{ toYaml .Values.extraEnvFromRefs | nindent 8 }}
+         {{- end }}
+         {{- if or (not (hasKey .Values.livenessProbe "enabled")) .Values.livenessProbe.enabled }}
+         livenessProbe:
+           exec:
+             command: ["/bin/bash", "/configmaps/check-live", "{{ default 4 .Values.probeTimeoutSeconds | add -1 | max 1 }}"]
+           initialDelaySeconds: {{ default 60 .Values.livenessProbe.initialDelaySeconds }}
+           timeoutSeconds: {{ default 4 .Values.probeTimeoutSeconds }}
+           periodSeconds: {{ default 60 .Values.livenessProbe.periodSeconds }}
+           successThreshold: {{ default 1 .Values.livenessProbe.successThreshold }}
+           failureThreshold: {{ default 3 .Values.livenessProbe.failureThreshold }}
+           {{- if .Values.livenessProbe.terminationGracePeriodSeconds }}
+           terminationGracePeriodSeconds: {{ .Values.livenessProbe.terminationGracePeriodSeconds }}
            {{- end }}
+         {{- end }}
          readinessProbe:
            exec:
 -            command: ["/usr/bin/pgrep","gitlab.*runner"]
@@ -91,3 +120,15 @@ gitlab-runner binary directly as uid 65532.
            initialDelaySeconds: {{ default 60 .Values.readinessProbe.initialDelaySeconds }}
            timeoutSeconds: {{ default 4 .Values.probeTimeoutSeconds }}
            periodSeconds: {{ default 60 .Values.readinessProbe.periodSeconds }}
+           successThreshold: {{ default 1 .Values.readinessProbe.successThreshold }}
+           failureThreshold: {{ default 3 .Values.readinessProbe.failureThreshold }}
+         {{- with .Values.startupProbe }}
+         startupProbe: {{ toYaml . | nindent 10 }}
+         {{- end }}
+         ports:
+         - name: {{ .Values.metrics.portName | quote }}
+           containerPort: {{ .Values.metrics.port }}
+         {{- if eq (include "gitlab-runner.isSessionServerAllowed" . ) "true" }}
+         - name: session-server
+           containerPort: {{ include "gitlab-runner.server-session-internal-port" . }}
+           protocol: TCP
