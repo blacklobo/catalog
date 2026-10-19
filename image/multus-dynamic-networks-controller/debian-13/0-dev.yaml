@@ -6,27 +6,27 @@ variant: dev
 tags:
   - 0-dev
   - 0.3-dev
-  - 0.3.8-dev
+  - 0.3.9-dev
   - 0-debian-dev
   - 0-debian13-dev
   - 0.3-debian-dev
   - 0.3-debian13-dev
-  - 0.3.8-debian-dev
-  - 0.3.8-debian13-dev
+  - 0.3.9-debian-dev
+  - 0.3.9-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-05-20"
 vars:
-  COMMIT_SHA: 3793ea8b6af2f7fe91b5cb56466dc4ebd2799f1c
+  COMMIT_SHA: 2245dbeab2765a9d3b8752eecd3a16a4d46bc2ce
   DEBIAN_VERSION: 0.3.8-7
   FLAVORED_SUFFIX: -dev
   SEMVER_MAJOR_MINOR_VERSION: "0.3"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.3.8
+  SEMVER_VERSION: 0.3.9
   SUFFIX: -dev
-  VERSION: 0.3.8
+  VERSION: 0.3.9
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -78,7 +78,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 environment:
   DEBIAN_FRONTEND: noninteractive
-  DYNAMIC_NETWORK_CONTROLLER_COMMIT_HASH: 3793ea8b6af2f7fe91b5cb56466dc4ebd2799f1c
+  DYNAMIC_NETWORK_CONTROLLER_COMMIT_HASH: 2245dbeab2765a9d3b8752eecd3a16a4d46bc2ce
 paths:
   - type: directory
     path: /usr/local/bin
