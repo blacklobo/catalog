@@ -61,6 +61,8 @@ contents:
     - zlib1g
   builds:
     - name: calico-node
+      environment:
+        GOTOOLCHAIN: local
       caches:
         - path: /go/pkg/mod
       contents:
@@ -99,7 +101,7 @@ contents:
           - zlib1g-dev
           - ca-certificates-bundle
           - coreutils
-          - golang-1.26
+          - golang-1.27
           - findutils
           - mawk
           - sed
@@ -242,6 +244,7 @@ contents:
           work-dir: /go/src/github.com/projectcalico/calico
           with:
             deps:
+              - golang.org/x/net@v0.60.0
               - go.etcd.io/etcd/client/pkg/v3@v3.7.1
             download: true
             replaces:
