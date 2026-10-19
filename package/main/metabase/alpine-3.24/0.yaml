@@ -3,8 +3,8 @@
 image: dhi.io/pkg-metabase
 variant: runtime
 tags:
-  - 0.63.19.2-alpine3.24
-  - 0.63.19.2-r1-alpine3.24
+  - 0.64.2.8-alpine3.24
+  - 0.64.2.8-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,17 +15,17 @@ vars:
   BUN_SHA256: '#{ target.arch == "amd64" ? "sha256:14bd9aedeebf1dba67e8def9531c89bc989ecfdf1de42e5bfcaf1b8cd9294719" : "sha256:b98e0ad3625c5c00d1d5b5ff55605c7adddbfae151861e68ade57b2d3b8703bb" }'
   BUN_VERSION: 1.3.14
   CLOJURE_CLI_VERSION: 1.12.5.1664
-  COMMIT_SHA: 2098e2271e69eaa3ba809ac392efb07b0676f29f
+  COMMIT_SHA: 0f5961a930d0fb8f8ac4b6c051472a3b92761cec
   JAVA_MAJOR_VERSION: "25"
   PACKAGE_NAME: metabase
-  REL: "1"
-  SEMVER_MAJOR_MINOR_VERSION: "0.63"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "0.64"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.63.19.2
+  SEMVER_VERSION: 0.64.2.8
   TOOLS_DEPS_VERSION: 0.31.1646
   UV_ARCH: '#{ target.arch == "amd64" ? "x86_64-unknown-linux-musl" : "aarch64-unknown-linux-musl" }'
   UV_VERSION: 0.11.32
-  VERSION: 0.63.19.2
+  VERSION: 0.64.2.8
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -54,15 +54,15 @@ contents:
           - tar
           - unzip
         files:
-          - url: git+https://github.com/metabase/metabase.git#v0.63.19.2
-            checksum: 2098e2271e69eaa3ba809ac392efb07b0676f29f
+          - url: git+https://github.com/metabase/metabase.git#v0.64.2.8
+            checksum: 0f5961a930d0fb8f8ac4b6c051472a3b92761cec
             path: ${source.dir}/metabase
             spdx:
               name: metabase
-              version: 0.63.19.2
+              version: 0.64.2.8
               packages:
                 - name: metabase
-                  purl: pkg:github/metabase/metabase@v0.63.19.2
+                  purl: pkg:github/metabase/metabase@v0.64.2.8
                   license: AGPL-3.0-only
             uid: 0
             gid: 0
@@ -104,20 +104,14 @@ contents:
             tar -xzf ${source.dir}/uv.tar.gz -C /opt
             ln -s /opt/uv-${UV_ARCH}/uv /usr/bin/uv
         - uses: mvn/mirror@v1
-        - name: bump vulnerable dependencies
+        - name: pin netty-codec-dns
           runs: |
             set -eux -o pipefail
 
-            grep -q 'com.microsoft.sqlserver/mssql-jdbc {:mvn/version "13.2.1.jre11"}' modules/drivers/sqlserver/deps.edn
-
-            sed -i 's/13\.2\.1\.jre11/13.4.0.jre11/' modules/drivers/sqlserver/deps.edn # CVE-2025-59250
-        - name: bump the lz4 fork
-          runs: |
-            set -eux -o pipefail
-
-            grep -q 'org.lz4/lz4-java' modules/drivers/clickhouse/deps.edn
-            grep -q 'at.yawk.lz4/lz4-java {:mvn/version "1.10.2"}' modules/drivers/clickhouse/deps.edn
-            sed -i 's|at\.yawk\.lz4/lz4-java {:mvn/version "1\.10\.2"}|at.yawk.lz4/lz4-java {:mvn/version "1.11.1"}|' modules/drivers/clickhouse/deps.edn # CVE-2026-59949
+            grep -q '^  io.netty/netty-handler  *{:mvn/version "4.1.137.Final"}$' modules/drivers/snowflake/deps.edn
+            test "$(grep -c 'netty-codec-dns' modules/drivers/snowflake/deps.edn || true)" = 0
+            sed -i 's|^\(  io.netty/netty-handler  *{:mvn/version "4.1.137.Final"}\)$|\1\n  io.netty/netty-codec-dns                {:mvn/version "4.1.137.Final"}|' modules/drivers/snowflake/deps.edn
+            grep -q 'io.netty/netty-codec-dns  *{:mvn/version "4.1.137.Final"}' modules/drivers/snowflake/deps.edn
         - name: replace compression plugin
           runs: |
             set -eux -o pipefail
@@ -158,21 +152,19 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            grep -q '"csv-parse": "\^5.5.6"' package.json
-            grep -q '"qs": "6.15.2"' package.json
-            grep -q '"@tiptap/core": "\^3.2.0"' package.json
             grep -q '"fflate": "\^0.8.1"' bun.lock
             grep -q '"uuid": "\^3.4.0"' bun.lock
-            bun pm pkg set 'dependencies.csv-parse=^7.0.2'                                                                                                 # CVE-2026-85063
-            bun pm pkg set dependencies.qs=6.16.0 resolutions.qs=6.16.0                                                                                    # CVE-2026-82417, CVE-2026-82562
-            bun pm pkg set dependencies.@tiptap/core=^3.30.5 dependencies.@tiptap/pm=^3.30.5 resolutions.@tiptap/core=3.30.5 resolutions.@tiptap/pm=3.30.5 # GHSA-cp6q-959q-f8rh, GHSA-j95f-988m-3j2f
-            bun pm pkg set resolutions.fflate=0.8.3                                                                                                        # CVE-2026-45820
-            bun pm pkg set resolutions.uuid=11.1.1                                                                                                         # CVE-2026-41907
+            grep -q '"@modelcontextprotocol/sdk@1.28.0"' bun.lock
+            grep -q '"dompurify@3.4.14"' bun.lock
+            bun pm pkg set resolutions.fflate=0.8.3                                                                   # CVE-2026-45820
+            bun pm pkg set resolutions.uuid=11.1.1                                                                    # CVE-2026-41907
+            bun pm pkg set resolutions.dompurify=3.4.16                                                               # GHSA-p98j-92pf-mc4p, GHSA-6688-9rhm-gjv2
+            bun pm pkg set dependencies.@modelcontextprotocol/sdk=1.31.0 resolutions.@modelcontextprotocol/sdk=1.31.0 # CVE-2026-104850, peer of ext-apps so resolutions alone leave 1.28.0
             bun install --lockfile-only
             bun install --frozen-lockfile
             INTERACTIVE=false CI=true MB_EDITION=oss \
               clojure -Sdeps '{:deps {org.clojure/tools.deps {:mvn/version "0.31.1646"}}}' \
-              -X:drivers:build:build/all :version v0.63.19.2
+              -X:drivers:build:build/all :version v0.64.2.8
         - name: assert bouncy castle pins
           runs: |
             set -eux -o pipefail
@@ -292,9 +284,9 @@ contents:
               - usr/share/metabase/metabase.jar
             license: AGPL-3.0-only
             name: metabase
-            rel: 1
+            rel: 0
             url: https://www.metabase.com
-            version: 0.63.19.2
+            version: 0.64.2.8
       paths:
         - type: file
           path: ${source.dir}/CompressionRspackPlugin.js
