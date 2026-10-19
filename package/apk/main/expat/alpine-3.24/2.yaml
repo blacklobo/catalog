@@ -3,22 +3,22 @@
 image: dhi.io/pkg-expat
 variant: runtime
 tags:
-  - 2.8.5-alpine3.24
-  - 2.8.5-r1-alpine3.24
+  - 2.9.0-alpine3.24
+  - 2.9.0-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   _REL: "0"
-  COMMIT_SHA: 41a9605db84bb52cd65c6349e5e087c2c7fe9efb
-  DHI_TEST_APK_PACKAGES: expat-2.8.5-r1 libexpat-2.8.5-r1
+  COMMIT_SHA: c10df79ce35862cf273f98f6eb78d52e4f064ac7
+  DHI_TEST_APK_PACKAGES: expat-2.9.0-r1 libexpat-2.9.0-r1
   PACKAGE_NAME: main/expat
   REL: "1"
-  SEMVER_MAJOR_MINOR_VERSION: "2.8"
+  SEMVER_MAJOR_MINOR_VERSION: "2.9"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.8.5
-  TAGVER: R_2_8_5
-  VERSION: 2.8.5
+  SEMVER_VERSION: 2.9.0
+  TAGVER: R_2_9_0
+  VERSION: 2.9.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -36,49 +36,24 @@ contents:
         packages:
           - bash
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#41a9605db84bb52cd65c6349e5e087c2c7fe9efb
+          - url: git+https://github.com/alpinelinux/aports.git#c10df79ce35862cf273f98f6eb78d52e4f064ac7
             path: ${source.dir}/aports
             uid: 0
             gid: 0
-          - url: https://github.com/libexpat/libexpat/releases/download/R_2_8_5/expat-2.8.5.tar.xz
-            path: /var/cache/distfiles/expat-2.8.5.tar.xz
+          - url: https://github.com/libexpat/libexpat/releases/download/R_2_9_0/expat-2.9.0.tar.xz
+            path: /var/cache/distfiles/expat-2.9.0.tar.xz
             uid: 0
             gid: 0
       pipeline:
         - uses: abuild/setup@v1
-        - uses: patch@v1
-          work-dir: ${source.dir}/aports/main/expat
-          with:
-            options: -p1
-            patches:
-              - ${source.dir}/patch/register-cve-backports.patch
         - uses: abuild/bump@v1
           with:
             rel: 1
-            version: 2.8.5
+            version: 2.9.0
         - uses: abuild/build@v1
           with:
             command: checksum
         - uses: abuild/build@v1
-      paths:
-        - type: file
-          path: ${source.dir}/aports/main/expat/dhi-cve-2026-102633-realloc-overflow.patch
-          uid: 0
-          gid: 0
-          mode: "0644"
-          source: package/apk/main/expat/patch/dhi-cve-2026-102633-realloc-overflow.patch
-        - type: file
-          path: ${source.dir}/aports/main/expat/dhi-cve-2026-77214-parsebuffer-len-validation.patch
-          uid: 0
-          gid: 0
-          mode: "0644"
-          source: package/apk/main/expat/patch/dhi-cve-2026-77214-parsebuffer-len-validation.patch
-        - type: file
-          path: ${source.dir}/patch/register-cve-backports.patch
-          uid: 0
-          gid: 0
-          mode: "0644"
-          source: package/apk/main/expat/patch/register-cve-backports.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
