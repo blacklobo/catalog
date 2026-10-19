@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:c80dfe4e62ce6203d7ba855f429ba674e32b4207176bf5658313c7cb6e8d9eaf
+  KUBECTL_REFERENCE: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:3d9851171e2b4837f82341dd5fc3a932df3b9479fbd30f852c7fb7924dfc63db
   NEO4J_REFERENCE: dhi/neo4j:5.26.32-debian13@sha256:6f166c928b6dd06ebc2e68cdff7e064f38bee629f1e8506a9add93ce477cda32
   SEMVER_MAJOR_MINOR_VERSION: "5.26"
   SEMVER_MAJOR_VERSION: "5"
@@ -53,7 +53,7 @@ contents:
                 - name: neo4j
                   ref: dhi/neo4j:5.26.32-debian13@sha256:6f166c928b6dd06ebc2e68cdff7e064f38bee629f1e8506a9add93ce477cda32
                 - name: kubectl
-                  ref: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:c80dfe4e62ce6203d7ba855f429ba674e32b4207176bf5658313c7cb6e8d9eaf
+                  ref: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:3d9851171e2b4837f82341dd5fc3a932df3b9479fbd30f852c7fb7924dfc63db
               name: neo4j-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/neo4j/helm-charts
