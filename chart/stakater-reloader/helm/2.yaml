@@ -18,7 +18,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "2.2"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.2.18
-  STAKATER_RELOADER_REFERENCE: dhi/stakater-reloader:1.4.22-debian13@sha256:dc7a5b8d02db5a05771ce6ccafc15552aa8659342d234344f3a88e352cd820cb
+  STAKATER_RELOADER_REFERENCE: dhi/stakater-reloader:1.4.22-debian13@sha256:83234cbc4ae495db5a07b29f5e729113c1eb4955dcd8d8e6315bb031150b5a77
   VERSION: 2.2.18
 contents:
   repositories:
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Stakater Reloader
               images:
                 - name: stakater-reloader
-                  ref: dhi/stakater-reloader:1.4.22-debian13@sha256:dc7a5b8d02db5a05771ce6ccafc15552aa8659342d234344f3a88e352cd820cb
+                  ref: dhi/stakater-reloader:1.4.22-debian13@sha256:83234cbc4ae495db5a07b29f5e729113c1eb4955dcd8d8e6315bb031150b5a77
               name: stakater-reloader-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/stakater/Reloader
