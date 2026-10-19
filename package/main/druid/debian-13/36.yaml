@@ -4,9 +4,9 @@ image: dhi.io/pkg-druid
 variant: runtime
 tags:
   - 36.0.0
-  - 36.0.0-r18
+  - 36.0.0-r19
   - 36.0.0-debian13
-  - 36.0.0-r18-debian13
+  - 36.0.0-r19-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -25,7 +25,7 @@ vars:
   NODEJS_VERSION: 24.22.0-0
   PACKAGE_HOME: /usr/share/druid
   PACKAGE_NAME: druid-36
-  REL: "18"
+  REL: "19"
   SEMVER_MAJOR_MINOR_VERSION: "36.0"
   SEMVER_MAJOR_VERSION: "36"
   SEMVER_VERSION: 36.0.0
@@ -310,7 +310,7 @@ contents:
               - deb
             license: Apache-2.0
             name: druid-36
-            rel: 18
+            rel: 19
             url: https://druid.apache.org/
             version: 36.0.0
         - name: fipsify
@@ -344,7 +344,7 @@ contents:
               - deb
             license: Apache-2.0
             name: druid-36-fips
-            rel: 18
+            rel: 19
             url: https://druid.apache.org/
             version: 36.0.0
       paths:
