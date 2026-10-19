@@ -3,24 +3,23 @@
 image: dhi.io/pkg-rabbitmq
 variant: runtime
 tags:
-  - 4.3.6
-  - 4.3.6-r2
-  - 4.3.6-debian13
-  - 4.3.6-r2-debian13
+  - 4.4.0
+  - 4.4.0-r0
+  - 4.4.0-debian13
+  - 4.4.0-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
-  release: "2026-04-21"
-  end-of-life: "2026-07-30"
+  release: "2026-10-17"
 vars:
   ERLANG_VERSION: 27.3.4.19
-  PACKAGE_NAME: rabbitmq-4.3
-  REL: "2"
-  SEMVER_MAJOR_MINOR_VERSION: "4.3"
+  PACKAGE_NAME: rabbitmq-4.4
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "4.4"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.3.6
-  VERSION: 4.3.6
+  SEMVER_VERSION: 4.4.0
+  VERSION: 4.4.0
 contents:
   packages:
     - base-files
@@ -64,18 +63,18 @@ contents:
             path: ${source.dir}/rabbitmq-signing-key-public.asc
             uid: 0
             gid: 0
-          - url: https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.3.6/rabbitmq-server-generic-unix-4.3.6.tar.xz.asc
+          - url: https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.4.0/rabbitmq-server-generic-unix-4.4.0.tar.xz.asc
             path: ${source.dir}/rabbitmq-sig.tar.xz.asc
             uid: 0
             gid: 0
-          - url: https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.3.6/rabbitmq-server-generic-unix-4.3.6.tar.xz
-            path: ${source.dir}/rabbitmq-server-generic-unix-4.3.6.tar.xz
+          - url: https://github.com/rabbitmq/rabbitmq-server/releases/download/v4.4.0/rabbitmq-server-generic-unix-4.4.0.tar.xz
+            path: ${source.dir}/rabbitmq-server-generic-unix-4.4.0.tar.xz
             spdx:
               name: rabbitmq
-              version: 4.3.6
+              version: 4.4.0
               packages:
                 - name: rabbitmq
-                  purl: pkg:dhi/rabbitmq@4.3.6
+                  purl: pkg:dhi/rabbitmq@4.4.0
                   license: MPL-2.0
             uid: 0
             gid: 0
@@ -83,7 +82,7 @@ contents:
         - name: verify rabbitmq release
           uses: gpg/verify@v1
           with:
-            file: ${source.dir}/rabbitmq-server-generic-unix-4.3.6.tar.xz
+            file: ${source.dir}/rabbitmq-server-generic-unix-4.4.0.tar.xz
             keys: ${source.dir}/rabbitmq-signing-key-public.asc
             signature: ${source.dir}/rabbitmq-sig.tar.xz.asc
         - name: build and install erlang
@@ -104,7 +103,7 @@ contents:
             set -eux -o pipefail
 
             install -d "${target.dir}/usr/lib/rabbitmq"
-            tar -xJf "${source.dir}/rabbitmq-server-generic-unix-4.3.6.tar.xz" \
+            tar -xJf "${source.dir}/rabbitmq-server-generic-unix-4.4.0.tar.xz" \
               -C "${target.dir}/usr/lib/rabbitmq" --strip-components=1
             sed -i 's/SYS_PREFIX=\${RABBITMQ_HOME}/SYS_PREFIX=/g' \
               "${target.dir}/usr/lib/rabbitmq/sbin/rabbitmq-defaults"
@@ -129,10 +128,10 @@ contents:
             formats:
               - deb
             license: MPL-2.0
-            name: rabbitmq-4.3
-            rel: 2
+            name: rabbitmq-4.4
+            rel: 0
             url: https://www.rabbitmq.com/
-            version: 4.3.6
+            version: 4.4.0
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
