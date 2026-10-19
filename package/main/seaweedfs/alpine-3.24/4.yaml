@@ -4,7 +4,7 @@ image: dhi.io/pkg-seaweedfs
 variant: runtime
 tags:
   - 4.48-alpine3.24
-  - 4.48-r2-alpine3.24
+  - 4.48-r3-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,7 +12,7 @@ vars:
   COMMIT_SHA: 530be3e37337488ecc34d58441e0bc476e121c93
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "4.48"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: "4.48"
@@ -73,7 +73,7 @@ contents:
 
             EXCLUSIONS='/(s3|logstore|kafka|client|mq|command|cluster)'
 
-            CGO_ENABLED=0 go test $(go list ./... | egrep -v "$EXCLUSIONS")
+            CGO_ENABLED=0 go test -count=1 -p 2 $(go list ./... | egrep -v "$EXCLUSIONS")
         - name: build
           uses: go/build@v1
           work-dir: /go/src/github.com/seaweedfs/seaweedfs/weed
@@ -99,7 +99,7 @@ contents:
               - usr/bin/weed
             license: Apache-2.0
             name: seaweedfs
-            rel: 2
+            rel: 3
             subpackages:
               - files:
                   - path: usr/bin/weed
