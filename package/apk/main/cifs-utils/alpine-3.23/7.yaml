@@ -4,14 +4,14 @@ image: dhi.io/pkg-cifs-utils
 variant: runtime
 tags:
   - 7.4-alpine3.23
-  - 7.4-r0-alpine3.23
+  - 7.4-r1-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 50a07edb997d8340b5a6a92a58d2700902a6352b
+  COMMIT_SHA: 4326a6d6431a99453adc8d7160ca8df4e3a54f54
   PACKAGE_NAME: main/cifs-utils
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "7.4"
   SEMVER_MAJOR_VERSION: "7"
   SEMVER_VERSION: "7.4"
@@ -39,7 +39,7 @@ contents:
           - samba-dev
           - py3-docutils
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#50a07edb997d8340b5a6a92a58d2700902a6352b
+          - url: git+https://github.com/alpinelinux/aports.git#4326a6d6431a99453adc8d7160ca8df4e3a54f54
             path: ${source.dir}/aports
             uid: 0
             gid: 0
