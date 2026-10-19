@@ -23,7 +23,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "0.63"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.63.19.2
-  VERSION: 0.63.19.2-0
+  VERSION: 0.63.19.2-1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -43,7 +43,7 @@ contents:
     - fontconfig
     - fonts-noto-cjk
     - fonts-noto-core
-    - metabase=0.63.19.2-0
+    - metabase=0.63.19.2-1
     - tzdata
   builds:
     - name: java-cacerts
@@ -54,14 +54,14 @@ contents:
           - eclipse-temurin-25-jre
         files:
           - url: https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
-            checksum: sha256:fe45bbebf92ad3e27a583bbb2ddd1553c521ed4d49af5514dc0a40372ea5395c
+            checksum: sha256:90a6f1a7978a1b1b096dca6c57511ca48d3b8cf052f8e704baf358f34ea2f21b
             path: ${source.dir}/rds-combined-ca-bundle.pem
             spdx:
               name: aws-rds-ca-bundle
-              version: 2026-09
+              version: 2026-10
               packages:
                 - name: aws-rds-ca-bundle
-                  purl: pkg:generic/aws-rds-ca-bundle@2026-09
+                  purl: pkg:generic/aws-rds-ca-bundle@2026-10
                   license: LicenseRef-Public-Domain-CA-Certificates
             uid: 0
             gid: 0
