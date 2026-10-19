@@ -4,22 +4,22 @@ image: dhi.io/pkg-spire-agent
 variant: runtime
 tags:
   - 1.14-alpine3.24
-  - 1.14.7-alpine3.24
-  - 1.14.7-r7-alpine3.24
+  - 1.14.8-alpine3.24
+  - 1.14.8-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-12-11"
 vars:
-  COMMIT_SHA: 154f636ea73099005f90e6c29eb47f78e2f0d349
+  COMMIT_SHA: 93a86a43ec1e7bbb1af39946c8f13a44eec4b5ce
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: spire-agent-1.14
-  REL: "7"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.14"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.14.7
-  VERSION: 1.14.7
+  SEMVER_VERSION: 1.14.8
+  VERSION: 1.14.8
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -47,15 +47,15 @@ contents:
           - golang-1.26=1.26.9-r0
           - golang-1.26-oci-config=1.26.9-r0
         files:
-          - url: git+https://github.com/spiffe/spire.git#v1.14.7
-            checksum: 154f636ea73099005f90e6c29eb47f78e2f0d349
+          - url: git+https://github.com/spiffe/spire.git#v1.14.8
+            checksum: 93a86a43ec1e7bbb1af39946c8f13a44eec4b5ce
             path: /go/src/github.com/spiffe/spire
             spdx:
               name: spire-agent
-              version: 1.14.7
+              version: 1.14.8
               packages:
                 - name: spire-agent
-                  purl: pkg:golang/github.com/spiffe/spire@1.14.7
+                  purl: pkg:golang/github.com/spiffe/spire@1.14.8
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -72,7 +72,6 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/mod@v0.40.0
               - github.com/klauspost/compress@v1.18.7
               - google.golang.org/grpc@v1.83.2
               - github.com/in-toto/in-toto-golang@v0.11.0
@@ -108,8 +107,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.14.7
-              - -X github.com/spiffe/spire/pkg/common/version.githash=154f636ea73099005f90e6c29eb47f78e2f0d349
+              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.14.8
+              - -X github.com/spiffe/spire/pkg/common/version.githash=93a86a43ec1e7bbb1af39946c8f13a44eec4b5ce
             output: ${target.dir}/usr/bin/spire-agent
             packages: ./cmd/spire-agent
         - name: build spire-agent dev
@@ -117,8 +116,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.14.7
-              - -X github.com/spiffe/spire/pkg/common/version.githash=154f636ea73099005f90e6c29eb47f78e2f0d349
+              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.14.8
+              - -X github.com/spiffe/spire/pkg/common/version.githash=93a86a43ec1e7bbb1af39946c8f13a44eec4b5ce
             output: ${target.dir}/usr/bin/spire-agent-dev
             packages: ./cmd/spire-agent
             strip: false
@@ -129,14 +128,14 @@ contents:
               - usr/bin/spire-agent
             license: Apache-2.0
             name: spire-agent-1.14
-            rel: 7
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/spire-agent
                     source: usr/bin/spire-agent-dev
                 name: spire-agent-1.14-dev
             url: https://github.com/spiffe/spire
-            version: 1.14.7
+            version: 1.14.8
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine

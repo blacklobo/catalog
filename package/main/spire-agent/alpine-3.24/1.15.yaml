@@ -3,22 +3,22 @@
 image: dhi.io/pkg-spire-agent
 variant: runtime
 tags:
-  - 1.15.3-alpine3.24
-  - 1.15.3-r5-alpine3.24
+  - 1.15.4-alpine3.24
+  - 1.15.4-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-05-19"
 vars:
-  COMMIT_SHA: 2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
+  COMMIT_SHA: 4a21c1b319ca76c4144d583edd78fdb41507e893
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: spire-agent-1.15
-  REL: "5"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.15"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.15.3
-  VERSION: 1.15.3
+  SEMVER_VERSION: 1.15.4
+  VERSION: 1.15.4
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -46,15 +46,15 @@ contents:
           - golang-1.26=1.26.9-r0
           - golang-1.26-oci-config=1.26.9-r0
         files:
-          - url: git+https://github.com/spiffe/spire.git#v1.15.3
-            checksum: 2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
+          - url: git+https://github.com/spiffe/spire.git#v1.15.4
+            checksum: 4a21c1b319ca76c4144d583edd78fdb41507e893
             path: /go/src/github.com/spiffe/spire
             spdx:
               name: spire-agent
-              version: 1.15.3
+              version: 1.15.4
               packages:
                 - name: spire-agent
-                  purl: pkg:golang/github.com/spiffe/spire@1.15.3
+                  purl: pkg:golang/github.com/spiffe/spire@1.15.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -63,26 +63,21 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/mod@v0.40.0
               - github.com/klauspost/compress@v1.19.1
-              - google.golang.org/grpc@v1.83.2
               - github.com/in-toto/in-toto-golang@v0.11.0
               - github.com/sigstore/rekor@v1.5.3
               - github.com/sigstore/sigstore-go@v1.2.1
             download: true
             replaces:
               - github.com/sigstore/timestamp-authority=github.com/docker-hardened-images/sigstore-timestamp-authority@v1.2.10-0.20251207163215-621a8cc1532f
-              - google.golang.org/grpc=google.golang.org/grpc@v1.83.2
             tidy: true
         - name: lock grpc after tidy (1.15 only)
           uses: go/bump@v2
           with:
-            deps:
-              - google.golang.org/grpc@v1.83.2
+            deps: []
             downgrade: true
             download: true
-            replaces:
-              - google.golang.org/grpc=google.golang.org/grpc@v1.83.2
+            replaces: []
             tidy: false
         - name: test
           runs: |
@@ -96,8 +91,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.15.3
-              - -X github.com/spiffe/spire/pkg/common/version.githash=2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
+              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.15.4
+              - -X github.com/spiffe/spire/pkg/common/version.githash=4a21c1b319ca76c4144d583edd78fdb41507e893
             output: ${target.dir}/usr/bin/spire-agent
             packages: ./cmd/spire-agent
         - name: build spire-agent dev
@@ -105,8 +100,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.15.3
-              - -X github.com/spiffe/spire/pkg/common/version.githash=2f7861ae3923caf1f57eb087fc2928d58c0fb1d2
+              - -X github.com/spiffe/spire/pkg/common/version.gittag=1.15.4
+              - -X github.com/spiffe/spire/pkg/common/version.githash=4a21c1b319ca76c4144d583edd78fdb41507e893
             output: ${target.dir}/usr/bin/spire-agent-dev
             packages: ./cmd/spire-agent
             strip: false
@@ -117,14 +112,14 @@ contents:
               - usr/bin/spire-agent
             license: Apache-2.0
             name: spire-agent-1.15
-            rel: 5
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/spire-agent
                     source: usr/bin/spire-agent-dev
                 name: spire-agent-1.15-dev
             url: https://github.com/spiffe/spire
-            version: 1.15.3
+            version: 1.15.4
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
