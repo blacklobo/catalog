@@ -22,6 +22,7 @@ JACKSON_ANNOTATIONS="${PATCH_DIR}/jackson-annotations-${JACKSON_ANNOTATIONS_VERS
 COMMONS_CONFIGURATION2="${PATCH_DIR}/commons-configuration2-2.15.0.jar"
 JLINE_REMOTE_TELNET="${PATCH_DIR}/jline-remote-telnet-4.2.1.jar"
 JLINE_UBER_JAR="${PATCH_DIR}/jline-3.30.17-jdk8.jar"
+JARJAR_JAR="${PATCH_DIR}/jarjar-assembly-1.14.1.jar"
 DERBY="${PATCH_DIR}/derby-10.17.1.0.jar"
 DERBYSHARED="${PATCH_DIR}/derbyshared-10.17.1.0.jar"
 DERBYTOOLS="${PATCH_DIR}/derbytools-10.17.1.0.jar"
@@ -33,7 +34,7 @@ NIMBUS_JOSE_JWT="${PATCH_DIR}/nimbus-jose-jwt-10.0.2.jar"
 
 for jar in \
     "$JACKSON_CORE" "$JACKSON_DATABIND" "$JACKSON_ANNOTATIONS" \
-    "$COMMONS_CONFIGURATION2" "$JLINE_REMOTE_TELNET" "$JLINE_UBER_JAR" \
+    "$COMMONS_CONFIGURATION2" "$JLINE_REMOTE_TELNET" "$JLINE_UBER_JAR" "$JARJAR_JAR" \
     "$DERBY" "$DERBYSHARED" "$DERBYTOOLS" "$LIBTHRIFT" \
     "$HIVE_JDBC_313" "$HIVE_EXEC_401_CORE" "$COMMONS_LANG3" "$NIMBUS_JOSE_JWT"; do
     if [ ! -f "$jar" ]; then
@@ -70,6 +71,113 @@ relocate_tree() {
     rm -rf "$tmp"
 }
 
+# Hadoop's hadoop-client-runtime shade relocates pattern org/ to
+# org.apache.hadoop.shaded.org. and excludes slf4j. jarjar applies that
+# relocation to the packages these JLine classes reference, rewriting
+# this_class and constant-pool names. A path-only copy leaves org.jline.*
+# and the JVM rejects the shaded path.
+relocate_jline_jar() {
+    local srcjar="$1"
+    local outjar="$2"
+    local rules
+    rules="$(mktemp)"
+    cat >"$rules" <<'EOF'
+rule org.jline.** org.apache.hadoop.shaded.org.jline.@1
+rule org.apache.sshd.** org.apache.hadoop.shaded.org.apache.sshd.@1
+rule org.mozilla.** org.apache.hadoop.shaded.org.mozilla.@1
+EOF
+    java -jar "$JARJAR_JAR" process "$rules" "$srcjar" "$outjar"
+    rm -f "$rules"
+}
+
+copy_relocated_tree() {
+    local srcdir="$1"
+    local destsub="$2"
+    if [ ! -d "$srcdir" ]; then
+        echo "missing relocated tree: $srcdir" >&2
+        exit 1
+    fi
+    rm -rf "$destsub"
+    find META-INF/versions -type d -path "*/${destsub}" -prune -exec rm -rf {} + 2>/dev/null || true
+    mkdir -p "$(dirname "$destsub")"
+    cp -a "$srcdir" "$(dirname "$destsub")/"
+}
+
+assert_shaded_class_loads() {
+    local classname="$1"
+    local dir
+    dir="$(mktemp -d)"
+    cat >"$dir/LoadShaded.java" <<'EOF'
+public class LoadShaded {
+    public static void main(String[] args) throws Exception {
+        Class<?> loaded = Class.forName(args[0], false, ClassLoader.getSystemClassLoader());
+        if (!loaded.getName().equals(args[0])) {
+            throw new AssertionError(loaded.getName());
+        }
+    }
+}
+EOF
+    javac -d "$dir" "$dir/LoadShaded.java"
+    java -cp "$dir:." LoadShaded "$classname"
+    rm -rf "$dir"
+}
+
+install_shaded_jline() {
+    local uber_dir telnet_dir
+    local prefix reader builtins telnet
+    local classfile base count
+    uber_dir="$(mktemp -d)"
+    telnet_dir="$(mktemp -d)"
+    relocate_jline_jar "$JLINE_UBER_JAR" "$uber_dir/reloc.jar"
+    relocate_jline_jar "$JLINE_REMOTE_TELNET" "$telnet_dir/reloc.jar"
+    (cd "$uber_dir" && jar xf reloc.jar)
+    (cd "$telnet_dir" && jar xf reloc.jar)
+
+    prefix="org/apache/hadoop/shaded/org/jline"
+    reader="${prefix}/reader"
+    builtins="${prefix}/builtins"
+    telnet="${prefix}/builtins/telnet"
+
+    copy_relocated_tree "$uber_dir/$reader" "$reader"
+    copy_relocated_tree "$uber_dir/$builtins" "$builtins"
+    # The uber jar's builtins tree contains jline 3.30.17 telnet classes.
+    # Replace that directory with relocated jline-remote-telnet 4.2.1.
+    copy_relocated_tree "$telnet_dir/$telnet" "$telnet"
+
+    count=0
+    for classfile in "$telnet_dir/$telnet"/*.class; do
+        count=$((count + 1))
+        base="$(basename "$classfile")"
+        if ! cmp -s "$classfile" "$telnet/$base"; then
+            echo "telnet class does not match jline-remote-telnet 4.2.1: $base" >&2
+            exit 1
+        fi
+    done
+    if [ "$count" -ne 18 ]; then
+        echo "expected 18 jline-remote-telnet 4.2.1 classes, found $count" >&2
+        exit 1
+    fi
+    if cmp -s "$uber_dir/$telnet/Telnet.class" "$telnet/Telnet.class"; then
+        echo "installed telnet classes are still jline 3.30.17" >&2
+        exit 1
+    fi
+
+    assert_shaded_class_loads org.apache.hadoop.shaded.org.jline.reader.LineReader
+    assert_shaded_class_loads org.apache.hadoop.shaded.org.jline.builtins.telnet.Telnet
+    if ! javap -verbose -classpath . org.apache.hadoop.shaded.org.jline.reader.LineReader \
+        | grep -q 'this_class:.*org/apache/hadoop/shaded/org/jline/reader/LineReader'; then
+        echo "LineReader this_class is not the Hadoop shaded name" >&2
+        exit 1
+    fi
+    if ! javap -verbose -classpath . org.apache.hadoop.shaded.org.jline.builtins.telnet.Telnet \
+        | grep -q 'this_class:.*org/apache/hadoop/shaded/org/jline/builtins/telnet/Telnet'; then
+        echo "Telnet this_class is not the Hadoop shaded name" >&2
+        exit 1
+    fi
+
+    rm -rf "$uber_dir" "$telnet_dir"
+}
+
 write_pom_properties() {
     local workdir="$1"
     local group="$2"
@@ -104,7 +212,7 @@ patch_hadoop_jar() {
     relocate_tree "$PWD" "$JACKSON_DATABIND" com/fasterxml/jackson/databind org/apache/hadoop/shaded/com/fasterxml/jackson/databind
     relocate_tree "$PWD" "$JACKSON_ANNOTATIONS" com/fasterxml/jackson/annotation org/apache/hadoop/shaded/com/fasterxml/jackson/annotation
     relocate_tree "$PWD" "$COMMONS_CONFIGURATION2" org/apache/commons/configuration2 org/apache/hadoop/shaded/org/apache/commons/configuration2
-    relocate_tree "$PWD" "$JLINE_REMOTE_TELNET" org/jline/builtins/telnet org/apache/hadoop/shaded/org/jline/builtins/telnet
+    install_shaded_jline
     relocate_tree "$PWD" "$COMMONS_LANG3" org/apache/commons/lang3 org/apache/hadoop/shaded/org/apache/commons/lang3
     relocate_tree "$PWD" "$NIMBUS_JOSE_JWT" com/nimbusds org/apache/hadoop/shaded/com/nimbusds
     rm -rf org/apache/hadoop/shaded/org/eclipse/jetty
@@ -115,6 +223,11 @@ patch_hadoop_jar() {
     write_pom_properties "$PWD" org.apache.commons commons-configuration2 2.15.0
     write_pom_properties "$PWD" org.apache.commons commons-lang3 3.18.0
     write_pom_properties "$PWD" org.jline jline-remote-telnet 4.2.1
+    write_pom_properties "$PWD" org.jline jline-reader 3.30.17
+    write_pom_properties "$PWD" org.jline jline-builtins 3.30.17
+    grep -q '^version=4.2.1$' META-INF/maven/org.jline/jline-remote-telnet/pom.properties
+    grep -q '^version=3.30.17$' META-INF/maven/org.jline/jline-reader/pom.properties
+    grep -q '^version=3.30.17$' META-INF/maven/org.jline/jline-builtins/pom.properties
     write_pom_properties "$PWD" com.nimbusds nimbus-jose-jwt 10.0.2
 }
 

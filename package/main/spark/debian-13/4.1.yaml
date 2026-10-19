@@ -4,9 +4,9 @@ image: dhi.io/pkg-spark
 variant: runtime
 tags:
   - 4.1.3
-  - 4.1.3-r9
+  - 4.1.3-r10
   - 4.1.3-debian13
-  - 4.1.3-r9-debian13
+  - 4.1.3-r10-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,7 +22,7 @@ vars:
   MAVEN_VERSION: 3.10.0
   PACKAGE_HOME: /usr/share/spark
   PACKAGE_NAME: spark-4.1
-  REL: "9"
+  REL: "10"
   SCALA_VERSION: "2.13"
   SEMVER_MAJOR_MINOR_VERSION: "4.1"
   SEMVER_MAJOR_VERSION: "4"
@@ -49,6 +49,7 @@ contents:
           - bash
           - ca-certificates
           - coreutils
+          - diffutils
           - findutils
           - git
           - grep
@@ -131,6 +132,11 @@ contents:
           - url: https://maven-central.storage-download.googleapis.com/maven2/org/jline/jline/3.30.17/jline-3.30.17-jdk8.jar
             checksum: sha256:44a242fec11e344fdfa54fc430d79416b71a508bbace165e9feba3d85dc2ee84
             path: ${source.dir}/patch/deps/jline-3.30.17-jdk8.jar
+            uid: 0
+            gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/eed3si9n/jarjar/jarjar-assembly/1.14.1/jarjar-assembly-1.14.1.jar
+            checksum: sha256:270fe285e399e298fb08c5daf1486648203a5bd5e90eaba4a6466097be7dd50f
+            path: ${source.dir}/patch/deps/jarjar-assembly-1.14.1.jar
             uid: 0
             gid: 0
           - url: https://maven-central.storage-download.googleapis.com/maven2/org/apache/derby/derby/10.17.1.0/derby-10.17.1.0.jar
@@ -299,7 +305,7 @@ contents:
               - deb
             license: Apache-2.0
             name: spark-4.1
-            rel: 9
+            rel: 10
             url: https://spark.apache.org/
             version: 4.1.3
       paths:
