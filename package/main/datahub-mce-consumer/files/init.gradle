@@ -70,7 +70,7 @@ settingsEvaluated { settings ->
 }
 
 // Force CVE-remediated dependency versions at resolution time.
-// CVE-2026-59949 (lz4-java Out-of-bounds Read) -> force lz4-java to 1.11.1.
+// CVE-2026-59949, CVE-2026-106449–106453 -> force lz4-java to 1.11.4.
 // Using init script instead of inline build.gradle force because DataHub's
 // committed Gradle lockfiles pin dependency versions, and the init script
 // force is applied during lock resolution.
@@ -80,10 +80,10 @@ allprojects {
             def grp = details.requested.group
             def name = details.requested.name
 
-            // lz4-java -> 1.11.1 (CVE-2026-59949)
+            // lz4-java -> 1.11.4 (CVE-2026-59949, CVE-2026-106449–106453)
             if (grp == "at.yawk.lz4" && name == "lz4-java") {
-                details.useVersion("1.11.1")
-                details.because("CVE-2026-59949: Out-of-bounds Read")
+                details.useVersion("1.11.4")
+                details.because("CVE remediation: CVE-2026-59949, CVE-2026-106449, CVE-2026-106452, CVE-2026-106453")
             }
         }
     }

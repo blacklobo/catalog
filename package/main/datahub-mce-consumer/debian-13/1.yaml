@@ -4,9 +4,9 @@ image: dhi.io/pkg-datahub-mce-consumer
 variant: runtime
 tags:
   - 1.7.0.1
-  - 1.7.0.1-r6
+  - 1.7.0.1-r7
   - 1.7.0.1-debian13
-  - 1.7.0.1-r6-debian13
+  - 1.7.0.1-r7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -27,7 +27,7 @@ vars:
   OTEL_JAVAAGENT_SHA256: 130606aed07f101458fe42b8f453ef3a2536f6bce8a7ae64f222f5688ada2500
   OTEL_JAVAAGENT_VERSION: 2.28.0
   PACKAGE_HOME: /usr/share/datahub-mce-consumer
-  REL: "6"
+  REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "1.7"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.7.0.1
@@ -139,13 +139,14 @@ contents:
               | xargs -0 sed -i \
                 -e "s|mavenCentral()|${MIRROR}|g" \
                 -e "s|gradlePluginPortal()|${PORTAL}|g"
-        - name: rewrite upstream lz4-java 1.10.1 pins to 1.11.1
+        - name: rewrite upstream lz4-java 1.10.1 pins to 1.11.4
           runs: |
             set -eux -o pipefail
 
             find . \( -name '*.gradle' -o -name '*.gradle.kts' -o -name 'gradle.lockfile' \) -print0 \
               | xargs -0 sed -i \
-                -e 's|at\.yawk\.lz4:lz4-java:1\.10\.1|at.yawk.lz4:lz4-java:1.11.1|g'
+                -e 's|at\.yawk\.lz4:lz4-java:1\.10\.1|at.yawk.lz4:lz4-java:1.11.4|g' \
+                -e 's|at\.yawk\.lz4:lz4-java:1\.11\.1|at.yawk.lz4:lz4-java:1.11.4|g'
         - name: bump vulnerable dependency versions
           runs: |
             set -eux -o pipefail
@@ -158,7 +159,7 @@ contents:
                         setForcedModules(forcedModules.findAll {
                             !(it.group == 'at.yawk.lz4' && it.name == 'lz4-java')
                         })
-                        force 'at.yawk.lz4:lz4-java:1.11.1'
+                        force 'at.yawk.lz4:lz4-java:1.11.4'
                         eachDependency { details ->
                         def req = details.requested
                         if (req.group == 'io.netty'
@@ -221,14 +222,14 @@ contents:
                             details.because 'DHI CVE remediation: CVE-2026-9828, CVE-2026-10532'
                         }
                         if (req.group == 'org.springframework'
-                                && req.name == 'spring-webmvc') {
-                            details.useVersion '7.0.8'
-                            details.because 'DHI CVE remediation: CVE-2026-41841, CVE-2026-41842, CVE-2026-41843, CVE-2026-41844, CVE-2026-41845, CVE-2026-41846, CVE-2026-41853'
+                                && (req.version == '7.0.7' || req.version == '7.0.8')) {
+                            details.useVersion '7.0.9'
+                            details.because 'DHI CVE remediation: CVE-2026-41841, CVE-2026-41842, CVE-2026-41843, CVE-2026-41844, CVE-2026-41845, CVE-2026-41846, CVE-2026-41853, CVE-2026-47884, CVE-2026-47890'
                         }
                         if ((req.group == 'org.lz4' || req.group == 'at.yawk.lz4')
                                 && req.name == 'lz4-java') {
-                            details.useTarget 'at.yawk.lz4:lz4-java:1.11.1'
-                            details.because 'DHI CVE remediation: CVE-2026-59949'
+                            details.useTarget 'at.yawk.lz4:lz4-java:1.11.4'
+                            details.because 'DHI CVE remediation: CVE-2026-59949, CVE-2026-106449, CVE-2026-106450, CVE-2026-106451, CVE-2026-106452, CVE-2026-106453'
                         }
                         if (req.group == 'io.micrometer'
                                 && (req.name == 'micrometer-core'
@@ -364,7 +365,7 @@ contents:
               - deb
             license: Apache-2.0
             name: datahub-mce-consumer
-            rel: 6
+            rel: 7
             root: ${target.dir}/datahub-mce-consumer
             url: https://datahubproject.io/
             version: 1.7.0.1
