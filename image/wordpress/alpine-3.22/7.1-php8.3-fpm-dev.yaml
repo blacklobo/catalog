@@ -18,8 +18,8 @@ vars:
   IMAGEMAGICK_VERSION: 7.1.2-33
   IMAGICK_COMMIT_SHA: 70087bab33eab913e99ac77d64d04d1a2fd0b7b0
   IMAGICK_VERSION: 3.8.1
-  PHP_DEV_REFERENCE: dhi/php:8.3.35-alpine3.22-dev@sha256:e5a4e7b6141cb522bfc8706b15edcfcd8ae0e05d8eadafcee4eac0729aa40efc
-  PHP_FPM_REFERENCE: dhi/php:8.3.35-alpine3.22-fpm@sha256:9895a2974c4c3695b61e6dd42e212c2762bb650c70c13b7958a5fdfd401fa867
+  PHP_DEV_REFERENCE: dhi/php:8.3.35-alpine3.22-dev@sha256:5f272fb8453f7ebb2f6bfa8147463051cdce16c711d07cb4c141a01799b762c7
+  PHP_FPM_REFERENCE: dhi/php:8.3.35-alpine3.22-fpm@sha256:4a0a707e0f9319162fdd6fa15375908d2d9524391ad832f06485d3d4d8e485f7
   PHP_INI_DIR: /opt/php-8.3/etc/php
   PHP_MAJOR_MINOR: "8.3"
   PHP_PREFIX: /opt/php-8.3
@@ -82,7 +82,7 @@ contents:
       mode: "0644"
   builds:
     - name: build php extensions
-      uses: dhi.io/php:8.3.35-alpine3.22-dev@sha256:e5a4e7b6141cb522bfc8706b15edcfcd8ae0e05d8eadafcee4eac0729aa40efc
+      uses: dhi.io/php:8.3.35-alpine3.22-dev@sha256:5f272fb8453f7ebb2f6bfa8147463051cdce16c711d07cb4c141a01799b762c7
       shell: bash
       contents:
         repositories:
@@ -260,7 +260,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/php:8.3.35-alpine3.22-fpm@sha256:9895a2974c4c3695b61e6dd42e212c2762bb650c70c13b7958a5fdfd401fa867
+    - name: dhi.io/php:8.3.35-alpine3.22-fpm@sha256:4a0a707e0f9319162fdd6fa15375908d2d9524391ad832f06485d3d4d8e485f7
       includes:
         - opt/docker/sbom/php
         - opt/php-8.3
