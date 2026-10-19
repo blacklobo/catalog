@@ -4,14 +4,15 @@ image: dhi.io/pkg-perl-dbi
 variant: runtime
 tags:
   - 1.651-alpine3.24
-  - 1.651-r0-alpine3.24
+  - 1.651-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
+  _REL: "0"
   COMMIT_SHA: f5fa89cea842ffcb7591284118fe325c74c7b57b
   PACKAGE_NAME: main/perl-dbi
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "1.651"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: "1.651"
@@ -43,7 +44,60 @@ contents:
             gid: 0
       pipeline:
         - uses: abuild/setup@v1
+        - uses: abuild/source@v1
+          with:
+            source: dhi-perl-dbi-1.651-cve-2026-15392.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-perl-dbi-1.651-cve-2026-73193.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-perl-dbi-1.651-cve-2026-73194.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-perl-dbi-1.651-cve-2026-88815.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-perl-dbi-1.651-cve-2026-88816.patch
+        - uses: abuild/bump@v1
+          with:
+            rel: 1
+            version: 1.651
         - uses: abuild/build@v1
+          with:
+            command: checksum
+        - uses: abuild/build@v1
+      paths:
+        - type: file
+          path: ${source.dir}/aports/main/perl-dbi/dhi-perl-dbi-1.651-cve-2026-15392.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/perl-dbi/patch/dhi-perl-dbi-1.651-cve-2026-15392.patch
+        - type: file
+          path: ${source.dir}/aports/main/perl-dbi/dhi-perl-dbi-1.651-cve-2026-73193.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/perl-dbi/patch/dhi-perl-dbi-1.651-cve-2026-73193.patch
+        - type: file
+          path: ${source.dir}/aports/main/perl-dbi/dhi-perl-dbi-1.651-cve-2026-73194.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/perl-dbi/patch/dhi-perl-dbi-1.651-cve-2026-73194.patch
+        - type: file
+          path: ${source.dir}/aports/main/perl-dbi/dhi-perl-dbi-1.651-cve-2026-88815.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/perl-dbi/patch/dhi-perl-dbi-1.651-cve-2026-88815.patch
+        - type: file
+          path: ${source.dir}/aports/main/perl-dbi/dhi-perl-dbi-1.651-cve-2026-88816.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/perl-dbi/patch/dhi-perl-dbi-1.651-cve-2026-88816.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
