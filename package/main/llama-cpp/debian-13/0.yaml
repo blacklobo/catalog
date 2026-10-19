@@ -3,27 +3,27 @@
 image: dhi.io/pkg-llama-cpp
 variant: runtime
 tags:
-  - 0.6.0
-  - 0.6.0-r0
-  - 0.6.0-debian13
-  - 0.6.0-r0-debian13
+  - 0.7.0
+  - 0.7.0-r0
+  - 0.7.0-debian13
+  - 0.7.0-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: d81235049384534c167caea52b85a694f6103d14
-  GGML_SPDX_VERSION: 0.26.0
-  LLAMA_BUILD_NUMBER: "11429"
-  LLAMA_TAG_COMMIT_SHA: d81235049384534c167caea52b85a694f6103d14
-  LLAMA_TAG_VERSION: 0.6.0
-  NODEJS_24_VERSION: 24.21.0-1
-  NPM_VERSION: 12.2.0-0
+  COMMIT_SHA: 620d2225cc436ab0b001e3200e590e3b286ef9ab
+  GGML_SPDX_VERSION: 0.27.0
+  LLAMA_BUILD_NUMBER: "11669"
+  LLAMA_TAG_COMMIT_SHA: 620d2225cc436ab0b001e3200e590e3b286ef9ab
+  LLAMA_TAG_VERSION: 0.7.0
+  NODEJS_24_VERSION: 24.22.0-0
+  NPM_VERSION: 12.2.1-0
   PACKAGE_NAME: llama-cpp-0
   REL: "0"
-  SEMVER_MAJOR_MINOR_VERSION: "0.6"
+  SEMVER_MAJOR_MINOR_VERSION: "0.7"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.6.0
-  VERSION: 0.6.0
+  SEMVER_VERSION: 0.7.0
+  VERSION: 0.7.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -48,19 +48,19 @@ contents:
           - jq
           - sed
           - libssl-dev
-          - nodejs-24=24.21.0-1
-          - npm-12=12.2.0-0
+          - nodejs-24=24.22.0-0
+          - npm-12=12.2.1-0
           - pkgconf
         files:
-          - url: git+https://github.com/ggml-org/llama.cpp.git#v0.6.0
-            checksum: d81235049384534c167caea52b85a694f6103d14
+          - url: git+https://github.com/ggml-org/llama.cpp.git#v0.7.0
+            checksum: 620d2225cc436ab0b001e3200e590e3b286ef9ab
             path: ${source.dir}/llama.cpp
             spdx:
               name: llama.cpp
-              version: 0.6.0
+              version: 0.7.0
               packages:
                 - name: llama.cpp
-                  purl: pkg:github/ggml-org/llama.cpp@0.6.0
+                  purl: pkg:github/ggml-org/llama.cpp@0.7.0
                   license: MIT
             uid: 0
             gid: 0
@@ -86,9 +86,9 @@ contents:
             set -eux -o pipefail
 
             npm ci
-            LLAMA_BUILD_NUMBER=b11429 npm run build
+            LLAMA_BUILD_NUMBER=b11669 npm run build
             test -f dist/index.html
-            grep -qF '"version":"b11429"' dist/build.json
+            grep -qF '"version":"b11669"' dist/build.json
         - name: ui sbom
           uses: sbom@v1
           with:
@@ -100,7 +100,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            grep -qF '#define CPPHTTPLIB_VERSION "0.59.0"' vendor/cpp-httplib/httplib.h
+            grep -qF '#define CPPHTTPLIB_VERSION "0.61.0"' vendor/cpp-httplib/httplib.h
             grep -qF '#define NLOHMANN_JSON_VERSION_MAJOR 3' vendor/nlohmann/json.hpp
             grep -qF '#define NLOHMANN_JSON_VERSION_MINOR 12' vendor/nlohmann/json.hpp
             grep -qF '#define NLOHMANN_JSON_VERSION_PATCH 0' vendor/nlohmann/json.hpp
@@ -122,15 +122,15 @@ contents:
             test -n "$ggml_major"
             test -n "$ggml_minor"
             test -n "$ggml_patch"
-            test "$ggml_major.$ggml_minor.$ggml_patch" = "0.26.0"
+            test "$ggml_major.$ggml_minor.$ggml_patch" = "0.27.0"
             test -f tools/ui/dist/index.html
         - name: configure and build
           work-dir: ${source.dir}/llama.cpp
           runs: |
             set -eux -o pipefail
 
-            test "0.6.0" = "0.6.0"
-            test "d81235049384534c167caea52b85a694f6103d14" = "d81235049384534c167caea52b85a694f6103d14"
+            test "0.7.0" = "0.7.0"
+            test "620d2225cc436ab0b001e3200e590e3b286ef9ab" = "620d2225cc436ab0b001e3200e590e3b286ef9ab"
 
             cmake -S . -B build \
               -DCMAKE_BUILD_TYPE=Release \
@@ -141,7 +141,7 @@ contents:
               -DGGML_NATIVE=OFF \
               -DGGML_BACKEND_DL=ON \
               -DGGML_CPU_ALL_VARIANTS=ON \
-              -DLLAMA_BUILD_NUMBER=11429 \
+              -DLLAMA_BUILD_NUMBER=11669 \
               -DLLAMA_BUILD_TESTS=OFF \
               -DLLAMA_BUILD_EXAMPLES=OFF \
               -DLLAMA_TOOLS_INSTALL=ON \
@@ -150,7 +150,7 @@ contents:
               -DLLAMA_USE_PREBUILT_UI=OFF \
               -DLLAMA_BUILD_IS_DEV=OFF \
               -DLLAMA_UI_GZIP=ON
-            grep -qF "int LLAMA_BUILD_NUMBER = 11429;" build/common/build-info.cpp
+            grep -qF "int LLAMA_BUILD_NUMBER = 11669;" build/common/build-info.cpp
             cmake --build build -j"$(nproc)"
         - name: install
           work-dir: ${source.dir}/llama.cpp
@@ -219,8 +219,8 @@ contents:
             test -n "$mtmd_lib"
 
             ggml_real=$(readlink -f "$libdir/libggml.so")
-            test "$(basename "$ggml_real")" = "libggml.so.0.26.0"
-            spdx_version='0.26.0'
+            test "$(basename "$ggml_real")" = "libggml.so.0.27.0"
+            spdx_version='0.27.0'
             ggml_soname_major=${spdx_version%%.*}
             readelf -d "$ggml_real" > /tmp/llama-ggml-dynamic
             grep SONAME /tmp/llama-ggml-dynamic > /tmp/llama-ggml-soname
@@ -256,8 +256,8 @@ contents:
           with:
             license: MIT
             name: cpp-httplib
-            purl: pkg:github/yhirose/cpp-httplib@0.59.0
-            version: 0.59.0
+            purl: pkg:github/yhirose/cpp-httplib@0.61.0
+            version: 0.61.0
         - uses: spdx@v1
           with:
             license: MIT
@@ -304,8 +304,8 @@ contents:
           with:
             license: MIT
             name: ggml
-            purl: pkg:github/ggml-org/ggml@0.26.0
-            version: 0.26.0
+            purl: pkg:github/ggml-org/ggml@0.27.0
+            version: 0.27.0
         - name: install sbom
           runs: |
             set -eux -o pipefail
@@ -345,7 +345,7 @@ contents:
             name: llama-cpp-0
             rel: 0
             url: https://github.com/ggml-org/llama.cpp
-            version: 0.6.0
+            version: 0.7.0
       paths:
         - type: file
           path: ${source.dir}/patch/npm-bumps.json
