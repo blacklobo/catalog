@@ -19,7 +19,7 @@ platforms:
 dates:
   release: "2026-08-26"
 vars:
-  COMMIT_SHA: 3c1c85fb7e8f182dc0e0976b637e2cbd519b60ba
+  COMMIT_SHA: e795d1defa03a6ddeb81c6e016f7253bb7202d92
   FLAVORED_SUFFIX: ""
   GRPC_HEALTH_PROBE_FIPS_VERSION: 0.4.59-0
   GRPC_HEALTH_PROBE_PIN_VERSION: 0.4.59-0
@@ -56,15 +56,15 @@ contents:
           - coreutils
           - opm=1.74.0-8
         files:
-          - url: git+https://github.com/kubev2v/mtv-fbc.git#3c1c85fb7e8f182dc0e0976b637e2cbd519b60ba
-            checksum: 3c1c85fb7e8f182dc0e0976b637e2cbd519b60ba
+          - url: git+https://github.com/kubev2v/mtv-fbc.git#e795d1defa03a6ddeb81c6e016f7253bb7202d92
+            checksum: e795d1defa03a6ddeb81c6e016f7253bb7202d92
             path: ${source.dir}/mtv-fbc
             spdx:
               name: mtv-fbc
               version: 2.12.10
               packages:
                 - name: mtv-fbc
-                  purl: pkg:github/kubev2v/mtv-fbc@3c1c85fb7e8f182dc0e0976b637e2cbd519b60ba
+                  purl: pkg:github/kubev2v/mtv-fbc@e795d1defa03a6ddeb81c6e016f7253bb7202d92
                   license: Apache-2.0
             uid: 0
             gid: 0
