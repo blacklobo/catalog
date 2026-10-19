@@ -112,8 +112,8 @@ vars:
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
   PYTHON_PACKAGE_VERSION: 3.13.16-0
   PYTHON_VERSION: 3.13.16
-  ROARINGBITMAP_COMMIT_SHA: 08205117e862d67b5dcc11b2a77524ff5e5ccb47
-  ROARINGBITMAP_TAG: v1.2.0
+  ROARINGBITMAP_COMMIT_SHA: 9183dc7eb8a15c06541f10ec8a9039c94b282167
+  ROARINGBITMAP_TAG: v1.3.0
   SEMVER_MAJOR_MINOR_VERSION: "4.1"
   SEMVER_MAJOR_VERSION: "4"
   SET_USER_COMMIT_SHA: db4e871528c4b62bba672abaf9044f4cc618ae8c
@@ -1206,15 +1206,15 @@ contents:
                   license: PostgreSQL
             uid: 0
             gid: 0
-          - url: git+https://github.com/ChenHuajun/pg_roaringbitmap.git#v1.2.0
-            checksum: 08205117e862d67b5dcc11b2a77524ff5e5ccb47
+          - url: git+https://github.com/ChenHuajun/pg_roaringbitmap.git#v1.3.0
+            checksum: 9183dc7eb8a15c06541f10ec8a9039c94b282167
             path: ${source.dir}/roaringbitmap
             spdx:
               name: pg_roaringbitmap
-              version: v1.2.0
+              version: v1.3.0
               packages:
                 - name: pg_roaringbitmap
-                  purl: pkg:github/ChenHuajun/pg_roaringbitmap@v1.2.0
+                  purl: pkg:github/ChenHuajun/pg_roaringbitmap@v1.3.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -2020,15 +2020,15 @@ contents:
                   license: PostgreSQL
             uid: 0
             gid: 0
-          - url: git+https://github.com/ChenHuajun/pg_roaringbitmap.git#v1.2.0
-            checksum: 08205117e862d67b5dcc11b2a77524ff5e5ccb47
+          - url: git+https://github.com/ChenHuajun/pg_roaringbitmap.git#v1.3.0
+            checksum: 9183dc7eb8a15c06541f10ec8a9039c94b282167
             path: ${source.dir}/roaringbitmap
             spdx:
               name: pg_roaringbitmap
-              version: v1.2.0
+              version: v1.3.0
               packages:
                 - name: pg_roaringbitmap
-                  purl: pkg:github/ChenHuajun/pg_roaringbitmap@v1.2.0
+                  purl: pkg:github/ChenHuajun/pg_roaringbitmap@v1.3.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -2698,15 +2698,15 @@ contents:
                   license: PostgreSQL
             uid: 0
             gid: 0
-          - url: git+https://github.com/ChenHuajun/pg_roaringbitmap.git#v1.2.0
-            checksum: 08205117e862d67b5dcc11b2a77524ff5e5ccb47
+          - url: git+https://github.com/ChenHuajun/pg_roaringbitmap.git#v1.3.0
+            checksum: 9183dc7eb8a15c06541f10ec8a9039c94b282167
             path: ${source.dir}/roaringbitmap
             spdx:
               name: pg_roaringbitmap
-              version: v1.2.0
+              version: v1.3.0
               packages:
                 - name: pg_roaringbitmap
-                  purl: pkg:github/ChenHuajun/pg_roaringbitmap@v1.2.0
+                  purl: pkg:github/ChenHuajun/pg_roaringbitmap@v1.3.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -3376,15 +3376,15 @@ contents:
                   license: PostgreSQL
             uid: 0
             gid: 0
-          - url: git+https://github.com/ChenHuajun/pg_roaringbitmap.git#v1.2.0
-            checksum: 08205117e862d67b5dcc11b2a77524ff5e5ccb47
+          - url: git+https://github.com/ChenHuajun/pg_roaringbitmap.git#v1.3.0
+            checksum: 9183dc7eb8a15c06541f10ec8a9039c94b282167
             path: ${source.dir}/roaringbitmap
             spdx:
               name: pg_roaringbitmap
-              version: v1.2.0
+              version: v1.3.0
               packages:
                 - name: pg_roaringbitmap
-                  purl: pkg:github/ChenHuajun/pg_roaringbitmap@v1.2.0
+                  purl: pkg:github/ChenHuajun/pg_roaringbitmap@v1.3.0
                   license: Apache-2.0
             uid: 0
             gid: 0
