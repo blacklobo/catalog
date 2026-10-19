@@ -3,14 +3,14 @@
 image: dhi.io/pkg-npm
 variant: runtime
 tags:
-  - 11.21.1-0
-  - 11.21.1-0-debian13
+  - 11.21.1-1
+  - 11.21.1-1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DHI_REL: "0"
-  DHI_VERSION: 11.21.1-0
+  DHI_REL: "1"
+  DHI_VERSION: 11.21.1-1
   PACKAGE_NAME: npm
   SEMVER_MAJOR_VERSION: "11"
   VERSION: 11.21.1
@@ -36,23 +36,33 @@ contents:
             path: ${source.dir}/vendor/picomatch-4.0.4.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz
-            checksum: sha256:5d06001fddd25cbee90c96db4dc5b7b57711b984c3141e28d10f143deb52dbaf
-            path: ${source.dir}/vendor/brace-expansion-5.0.9.tgz
+          - url: https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz
+            checksum: sha256:ef8448ec78f20b692f04fa6d01f39b5ab34c66404bea3429f5a39c6c9e0be8b4
+            path: ${source.dir}/vendor/brace-expansion-5.0.12.tgz
+            uid: 0
+            gid: 0
+          - url: https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-4.3.0.tgz
+            checksum: sha256:d75e1e6a11587954da5e2f0e2b5c4b397a16d28cc2f7bdf64e9027fc2fe593ee
+            path: ${source.dir}/vendor/http-cache-semantics-4.3.0.tgz
             uid: 0
             gid: 0
           - url: https://registry.npmjs.org/tar/-/tar-7.5.21.tgz
             path: ${source.dir}/vendor/tar-7.5.21.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/undici/-/undici-6.28.0.tgz
-            checksum: sha256:32a86c6fa28fd48b915555048c05bbd37ad35457d9e945953831a4374c886a9c
-            path: ${source.dir}/vendor/undici-6.28.0.tgz
+          - url: https://registry.npmjs.org/undici/-/undici-6.28.1.tgz
+            checksum: sha256:e18191aac9c0ff43dac7fe9b10b7041a22d07addb7b66a6e8ac14a52a5b69b74
+            path: ${source.dir}/vendor/undici-6.28.1.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/ip-address/-/ip-address-10.3.1.tgz
-            checksum: sha256:ad1790063beea11a312c801df30d58e147de762f4f77787552376eb7424623e5
-            path: ${source.dir}/vendor/ip-address-10.3.1.tgz
+          - url: https://registry.npmjs.org/ip-address/-/ip-address-10.7.1.tgz
+            checksum: sha256:7f99ac7abda701afe1fd1e36de462236fb4d1eb8c595d7ae0267bba7d8ee55f8
+            path: ${source.dir}/vendor/ip-address-10.7.1.tgz
+            uid: 0
+            gid: 0
+          - url: https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.6.tgz
+            checksum: sha256:48c903f98c5591d8d26f16f389d5cb3435459474c645209a79f6241bf4b657b6
+            path: ${source.dir}/vendor/postcss-selector-parser-7.1.6.tgz
             uid: 0
             gid: 0
       pipeline:
@@ -73,8 +83,8 @@ contents:
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Bump brace-expansion to 5.0.9 (CVE-2026-69152), bump undici to 6.28.0 (CVE-2026-15157, CVE-2026-16728, CVE-2026-16729), and bump ip-address to 10.3.1 (CVE-2026-54272, CVE-2026-69192, CVE-2026-69198)
-            version: 11.21.1-0
+              - Bump brace-expansion to 5.0.12 (CVE-2026-102276, CVE-2026-102277, CVE-2026-102278), undici to 6.28.1 (CVE-2026-19534, CVE-2026-85024, CVE-2026-18540), http-cache-semantics to 4.3.0 (CVE-2026-93748), ip-address to 10.7.1 (CVE-2026-101910, CVE-2026-101911, CVE-2026-101912, CVE-2026-101913), and postcss-selector-parser to 7.1.6 (CVE-2026-104844)
+            version: 11.21.1-1
         - uses: dpkg/build@v1
           with:
             args: -b -uc -us -d
