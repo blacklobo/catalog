@@ -1,26 +1,26 @@
 # syntax=dhi.io/build:2-helm3
 
-name: Traefik Helm chart 40.x
+name: Traefik Helm chart 42.x
 image: dhi.io/traefik-chart
 variant: helm
 tags:
-  - 40.3.0
+  - 42.0.0
 platforms:
   - linux/amd64
 vars:
-  APPVERSION: 3.7.4
+  APPVERSION: 3.7.14
   CHART_HELM_NAME: traefik-chart
-  COMMIT_SHA: f11f402a34f7009368fae2fe3dd823991c147446
+  COMMIT_SHA: 09be4f439a52e31afe879878737d39cde06c002d
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  SEMVER_MAJOR_MINOR_VERSION: "40.3"
-  SEMVER_MAJOR_VERSION: "40"
-  SEMVER_VERSION: 40.3.0
-  TRAEFIK_REFERENCE: dhi/traefik:3.7.4-debian13@sha256:1b76e6844cbf4e0b24767fd499fd88c35a67894e43383cb3efcb2dbd280fe6f0
-  VERSION: 40.3.0
+  SEMVER_MAJOR_MINOR_VERSION: "42.0"
+  SEMVER_MAJOR_VERSION: "42"
+  SEMVER_VERSION: 42.0.0
+  TRAEFIK_REFERENCE: dhi/traefik:3.7.14-debian13@sha256:c4603d597dbee2de21132e784e49ea5ee8f8a6a87d7e8ddc6f41d70d435bffd5
+  VERSION: 42.0.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - yq-go
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/traefik/traefik-helm-chart.git#v40.3.0
-            checksum: f11f402a34f7009368fae2fe3dd823991c147446
+          - url: git+https://github.com/traefik/traefik-helm-chart.git#v42.0.0
+            checksum: 09be4f439a52e31afe879878737d39cde06c002d
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -51,7 +51,7 @@ contents:
               description: Docker Hardened Images Helm chart for Traefik
               images:
                 - name: traefik
-                  ref: dhi/traefik:3.7.4-debian13@sha256:1b76e6844cbf4e0b24767fd499fd88c35a67894e43383cb3efcb2dbd280fe6f0
+                  ref: dhi/traefik:3.7.14-debian13@sha256:c4603d597dbee2de21132e784e49ea5ee8f8a6a87d7e8ddc6f41d70d435bffd5
               name: traefik-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/traefik/traefik-helm-chart
