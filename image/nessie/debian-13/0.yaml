@@ -69,11 +69,11 @@ contents:
             gid: 0
       pipeline:
         - uses: gradle/mirror@v1
-        - name: force jackson-core 2.22.2 (GHSA-r7wm-3cxj-wff9, CVE-2026-54515, CVE-2026-59889, CVE-2026-68497)
+        - name: force jackson-core 2.22.3 (GHSA-r7wm-3cxj-wff9, CVE-2026-54515, CVE-2026-59889, CVE-2026-68497, CVE-2026-89407, CVE-2026-89425, CVE-2026-91776, CVE-2026-91777)
           uses: git/patch@v1
           work-dir: ${source.dir}/nessie
           with:
-            patch: ${source.dir}/patch/jackson-core-2.22.2.patch
+            patch: ${source.dir}/patch/jackson-core-2.22.3.patch
         - name: force netty 4.2.17 (multiple CVEs)
           uses: git/patch@v1
           work-dir: ${source.dir}/nessie
@@ -117,10 +117,10 @@ contents:
               ${target.dir}/quarkus-app
       paths:
         - type: file
-          path: ${source.dir}/patch/jackson-core-2.22.2.patch
+          path: ${source.dir}/patch/jackson-core-2.22.3.patch
           uid: 0
           gid: 0
-          source: image/nessie/patch/jackson-core-2.22.2.patch
+          source: image/nessie/patch/jackson-core-2.22.3.patch
         - type: file
           path: ${source.dir}/patch/netty-4.2.17.patch
           uid: 0
