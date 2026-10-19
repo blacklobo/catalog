@@ -22,7 +22,7 @@ vars:
   CUDA_SAMPLES_COMMIT_SHA: cab7c66b4fcf35b09ea8fbc4c3c1a9272e92d997
   CUDA_SAMPLES_VERSION: "12.9"
   FLAVORED_SUFFIX: ""
-  KUBECTL_VERSION: 1.34.12-2
+  KUBECTL_VERSION: 1.34.12-3
   NVIDIA_CUDA_REFERENCE: dhi/nvidia-cuda:13.2.1-debian13-dev@sha256:90fdd26009e965a6b326442a9f8fea75232857ea4ecd71636a9768dfc437b8af
   SEMVER_MAJOR_MINOR_VERSION: "26.7"
   SEMVER_MAJOR_VERSION: "26"
@@ -41,7 +41,7 @@ contents:
     - base-files
     - ca-certificates-bundle
     - dash
-    - kubectl-1.34=1.34.12-2
+    - kubectl-1.34=1.34.12-3
     - libc6
     - libgcc-s1
     - libstdc++6
