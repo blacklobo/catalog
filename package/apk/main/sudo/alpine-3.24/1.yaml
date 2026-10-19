@@ -4,15 +4,15 @@ image: dhi.io/pkg-sudo
 variant: runtime
 tags:
   - 1.9.17-alpine3.24
-  - 1.9.17-r1-alpine3.24
+  - 1.9.17-r2-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: a854c03acdac188901fb012f7acbee70a36e8041
+  COMMIT_SHA: 231b3edb78d995cabc640c7e118d8a74fd50e6b4
   PACKAGE_NAME: community/sudo
   PATCH_VERSION: "2"
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "1.9"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.9.17
@@ -34,7 +34,7 @@ contents:
         packages:
           - zlib-dev
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#a854c03acdac188901fb012f7acbee70a36e8041
+          - url: git+https://github.com/alpinelinux/aports.git#231b3edb78d995cabc640c7e118d8a74fd50e6b4
             path: ${source.dir}/aports
             uid: 0
             gid: 0
