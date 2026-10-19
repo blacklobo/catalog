@@ -5,18 +5,18 @@ image: dhi.io/flyway
 variant: runtime
 tags:
   - "13.10"
-  - 13.10.0
+  - 13.10.3
   - 13.10-debian
   - 13.10-debian13
-  - 13.10.0-debian
-  - 13.10.0-debian13
+  - 13.10.3-debian
+  - 13.10.3-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-07-20"
 vars:
-  COMMIT_SHA: b4251cdbec1a6c8ec6b15c9f3f99976d7b8ef251
+  COMMIT_SHA: 782f5b5cec113f0475fce99219906753e834c3bc
   GITHUB_USERNAME: docker-hardened-images
   JDK_DIGEST: sha256:1fbc09d023f6fa08248856cc8c5957745cede8171ae5263e3efe4c7dd12fc03a
   JDK_MAJOR_VERSION: "23"
@@ -28,8 +28,8 @@ vars:
   MAVEN_VERSION: 3.9.11
   SEMVER_MAJOR_MINOR_VERSION: "13.10"
   SEMVER_MAJOR_VERSION: "13"
-  SEMVER_VERSION: 13.10.0
-  VERSION: 13.10.0
+  SEMVER_VERSION: 13.10.3
+  VERSION: 13.10.3
 contents:
   packages:
     - '!libelogind0'
@@ -51,15 +51,15 @@ contents:
           - findutils
           - yq
         files:
-          - url: git+https://github.com/flyway/flyway.git#flyway-13.10.0
-            checksum: b4251cdbec1a6c8ec6b15c9f3f99976d7b8ef251
+          - url: git+https://github.com/flyway/flyway.git#flyway-13.10.3
+            checksum: 782f5b5cec113f0475fce99219906753e834c3bc
             path: ${source.dir}/src/flyway
             spdx:
               name: flyway
-              version: 13.10.0
+              version: 13.10.3
               packages:
                 - name: flyway
-                  purl: pkg:dhi/flyway@13.10.0
+                  purl: pkg:dhi/flyway@13.10.3
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -156,8 +156,8 @@ contents:
               --global-settings "${source.dir}/gpr-settings.xml"
 
             cp \
-              "flyway-commandline/target/flyway-commandline-13.10.0.jar" \
-              "${target.dir}/flyway/lib/flyway/flyway-commandline-13.10.0.jar"
+              "flyway-commandline/target/flyway-commandline-13.10.3.jar" \
+              "${target.dir}/flyway/lib/flyway/flyway-commandline-13.10.3.jar"
 
             mvn dependency:copy-dependencies \
               -pl flyway-commandline \
@@ -409,7 +409,7 @@ paths:
     path: /flyway/flyway.jar
     uid: 0
     gid: 0
-    source: /flyway/lib/flyway/flyway-commandline-13.10.0.jar
+    source: /flyway/lib/flyway/flyway-commandline-13.10.3.jar
   - type: symlink
     path: /opt/flyway
     uid: 0

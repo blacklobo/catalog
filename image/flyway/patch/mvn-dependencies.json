@@ -24,12 +24,6 @@
         "comment": "align with jackson-databind 3.1.6"
     },
     {
-        "groupId": "org.postgresql",
-        "artifactId": "postgresql",
-        "version": "42.7.12",
-        "comment": "CVE-2026-54291"
-    },
-    {
         "groupId": "org.mariadb.jdbc",
         "artifactId": "mariadb-java-client",
         "version": "2.7.14",

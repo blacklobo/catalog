@@ -155,10 +155,20 @@ contents:
           with:
             mvn-root: ${source.dir}/src/flyway
             properties: ${source.dir}/patch/mvn-properties.json
+        - name: patch postgresql property
+          uses: mvn/patch@v1
+          with:
+            mvn-root: ${source.dir}/src/flyway
+            properties: ${source.dir}/patch/mvn-properties-postgresql.json
         - name: patch
           uses: mvn/patch@v1
           with:
             dependencies: ${source.dir}/patch/mvn-dependencies.json
+            mvn-root: ${source.dir}/src/flyway
+        - name: patch postgresql dependency
+          uses: mvn/patch@v1
+          with:
+            dependencies: ${source.dir}/patch/mvn-dependencies-postgresql.json
             mvn-root: ${source.dir}/src/flyway
         - name: patch
           uses: mvn/patch@v1

@@ -2,10 +2,5 @@
     {
         "property": "version.mssql",
         "value": "12.10.2"
-    },
-    {
-        "property": "version.postgresql",
-        "value": "42.7.12",
-        "comment": "CVE-2026-54291"
     }
 ]
