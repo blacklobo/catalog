@@ -3,24 +3,24 @@
 image: dhi.io/pkg-qdrant
 variant: runtime
 tags:
-  - 1.19.1-7
-  - 1.19.1-7-debian13
+  - 1.19.2-0
+  - 1.19.2-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2023-02-08"
 vars:
-  CARGO_VERSION: 1.97.1-0
-  COMMIT_SHA: 6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de
-  DHI_REL: "7"
-  DHI_VERSION: 1.19.1-7
+  CARGO_VERSION: 1.98.1-0
+  COMMIT_SHA: 016542aa5deb6c66380bb137badf73d54f742bde
+  DHI_REL: "0"
+  DHI_VERSION: 1.19.2-0
   GCC_VERSION: 14.2.0-19+dhi5
-  NODEJS_VERSION: 24.21.0-1
-  RUSTC_VERSION: 1.97.1-0
-  VERSION: 1.19.1
-  WEB_UI_COMMIT_SHA: 6f8536529934672a0d2631cfaa0d0779967922bc
-  WEB_UI_VERSION: 0.2.18
+  NODEJS_VERSION: 24.22.0-0
+  RUSTC_VERSION: 1.98.1-0
+  VERSION: 1.19.2
+  WEB_UI_COMMIT_SHA: a88bf748bac82215fcaeffa54708d634988555e2
+  WEB_UI_VERSION: 0.2.19
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -34,7 +34,7 @@ contents:
     - name: qdrant
       work-dir: ${source.dir}/qdrant-deb
       environment:
-        GIT_COMMIT_ID: 6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de
+        GIT_COMMIT_ID: 016542aa5deb6c66380bb137badf73d54f742bde
       caches:
         - path: /root/.cargo
         - path: /root/.npm
@@ -46,7 +46,7 @@ contents:
         packages:
           - bash
           - build-essential
-          - cargo-1.97=1.97.1-0
+          - cargo-1.98=1.98.1-0
           - cargo-auditable
           - ca-certificates
           - clang
@@ -60,34 +60,34 @@ contents:
           - libunwind-dev
           - lld
           - mawk
-          - nodejs-24=24.21.0-1
+          - nodejs-24=24.22.0-0
           - npm
           - pkg-config
           - protobuf-compiler
-          - rustc-1.97=1.97.1-0
+          - rustc-1.98=1.98.1-0
           - sed
         files:
-          - url: git+https://github.com/qdrant/qdrant.git#v1.19.1
-            checksum: 6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de
+          - url: git+https://github.com/qdrant/qdrant.git#v1.19.2
+            checksum: 016542aa5deb6c66380bb137badf73d54f742bde
             path: ${source.dir}/qdrant-src
             spdx:
               name: qdrant
-              version: 1.19.1
+              version: 1.19.2
               packages:
                 - name: qdrant
-                  purl: pkg:cargo/qdrant@1.19.1
+                  purl: pkg:cargo/qdrant@1.19.2
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: git+https://github.com/qdrant/qdrant-web-ui.git#v0.2.18
-            checksum: 6f8536529934672a0d2631cfaa0d0779967922bc
+          - url: git+https://github.com/qdrant/qdrant-web-ui.git#v0.2.19
+            checksum: a88bf748bac82215fcaeffa54708d634988555e2
             path: ${source.dir}/qdrant-web-ui
             spdx:
               name: qdrant-web-ui
-              version: 0.2.18
+              version: 0.2.19
               packages:
                 - name: qdrant-web-ui
-                  purl: pkg:github/qdrant/qdrant-web-ui@0.2.18
+                  purl: pkg:github/qdrant/qdrant-web-ui@0.2.19
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -169,7 +169,7 @@ contents:
           with:
             changelog:
               - Bump Cargo rustls to 0.23.46; keep object 0.40.0 and ruzstd 0.9.1 for RUSTSEC-2026-0344.
-            version: 1.19.1-7
+            version: 1.19.2-0
         - uses: dpkg/build@v1
           privileged: true
           with:
