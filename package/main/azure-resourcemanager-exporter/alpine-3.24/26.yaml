@@ -3,20 +3,20 @@
 image: dhi.io/pkg-azure-resourcemanager-exporter
 variant: runtime
 tags:
-  - 26.1.0-alpine3.24
-  - 26.1.0-r3-alpine3.24
+  - 26.10.0-alpine3.24
+  - 26.10.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: f9232775a23594dc93ca1f3f5ea7f7487b8aab6b
-  GOLANG_VERSION: 1.26.9-r0
+  COMMIT_SHA: 3493fe593202f3bf645d769829bdc0333dd73aef
+  GOLANG_VERSION: 1.27.2-r0
   PACKAGE_NAME: azure-resourcemanager-exporter
-  REL: "3"
-  SEMVER_MAJOR_MINOR_VERSION: "26.1"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "26.10"
   SEMVER_MAJOR_VERSION: "26"
-  SEMVER_VERSION: 26.1.0
-  VERSION: 26.1.0
+  SEMVER_VERSION: 26.10.0
+  VERSION: 26.10.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -35,18 +35,18 @@ contents:
           - busybox
           - bash
           - ca-certificates-bundle
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.27=1.27.2-r0
+          - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/webdevops/azure-resourcemanager-exporter.git#26.1.0
-            checksum: f9232775a23594dc93ca1f3f5ea7f7487b8aab6b
+          - url: git+https://github.com/webdevops/azure-resourcemanager-exporter.git#26.10.0
+            checksum: 3493fe593202f3bf645d769829bdc0333dd73aef
             path: /go/src/github.com/webdevops/azure-resourcemanager-exporter
             spdx:
               name: azure-resourcemanager-exporter
-              version: 26.1.0
+              version: 26.10.0
               packages:
                 - name: azure-resourcemanager-exporter
-                  purl: pkg:golang/github.com/webdevops/azure-resourcemanager-exporter@26.1.0
+                  purl: pkg:golang/github.com/webdevops/azure-resourcemanager-exporter@26.10.0
                   license: MIT
             uid: 0
             gid: 0
@@ -71,8 +71,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.gitTag=26.1.0
-              - -X main.gitCommit=f9232775a23594dc93ca1f3f5ea7f7487b8aab6b
+              - -X main.gitTag=26.10.0
+              - -X main.gitCommit=3493fe593202f3bf645d769829bdc0333dd73aef
               - -X main.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/azure-resourcemanager-exporter
             strip: true
@@ -81,8 +81,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.gitTag=26.1.0
-              - -X main.gitCommit=f9232775a23594dc93ca1f3f5ea7f7487b8aab6b
+              - -X main.gitTag=26.10.0
+              - -X main.gitCommit=3493fe593202f3bf645d769829bdc0333dd73aef
               - -X main.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/azure-resourcemanager-exporter-dev
             strip: false
@@ -93,14 +93,14 @@ contents:
               - usr/bin/azure-resourcemanager-exporter
             license: MIT
             name: azure-resourcemanager-exporter
-            rel: 3
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/azure-resourcemanager-exporter
                     source: usr/bin/azure-resourcemanager-exporter-dev
                 name: azure-resourcemanager-exporter-dev
             url: https://github.com/webdevops/azure-resourcemanager-exporter
-            version: 26.1.0
+            version: 26.10.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
