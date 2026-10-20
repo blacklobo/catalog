@@ -49,9 +49,17 @@ find "${VENV}" \
 find "${VENV}" -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
 
 # Keep pip. DataHub's ingestion executor runs `python -m pip download` to
-# bootstrap per-source environments (acryl-datahub base requirements). No pip
-# release vendors a fixed urllib3 yet (26.2.1 still pins urllib3==2.7.0 in
-# vendor.txt and bom.cdx.json), so those findings stay visible.
+# bootstrap per-source environments (acryl-datahub base requirements). Pip
+# vendors urllib3 for its own HTTP stack; Scout indexes that tree as
+# pkg:pypi/urllib3 even when site-packages already has the override wheel.
+sp=$(echo "${VENV}/lib"/python*/site-packages)
+rm -rf "${sp}/pip/_vendor/urllib3"
+cp -a "${sp}/urllib3" "${sp}/pip/_vendor/urllib3"
+sed -i 's/urllib3==2\.7\.0/urllib3==2.8.0/' "${sp}/pip/_vendor/vendor.txt"
+if [ -f "${sp}/pip/_vendor/bom.cdx.json" ]; then
+  sed -i 's/pkg:pypi\/urllib3@2\.7\.0/pkg:pypi\/urllib3@2.8.0/g' "${sp}/pip/_vendor/bom.cdx.json"
+  sed -i 's/"version": "2.7.0"/"version": "2.8.0"/' "${sp}/pip/_vendor/bom.cdx.json"
+fi
 
 # Relative link so deb --root installs (buildpkg TestDEB) resolve under the
 # chroot; absolute /usr/lib/... targets break -e path checks there.
