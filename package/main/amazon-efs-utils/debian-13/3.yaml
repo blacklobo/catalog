@@ -4,16 +4,16 @@ image: dhi.io/pkg-amazon-efs-utils
 variant: runtime
 tags:
   - 3.3.4
-  - 3.3.4-r0
+  - 3.3.4-r1
   - 3.3.4-debian13
-  - 3.3.4-r0-debian13
+  - 3.3.4-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  BOTOCORE_CHECKSUM: sha256:d1c441a22e93e158de5b1e026205f5d6d67a4545d10540c5090c62dccb3a9eca
-  BOTOCORE_URL: https://files.pythonhosted.org/packages/9a/41/7c6fa7ac5fcfd5ea3c6f32aab001942da32b184a210f39042778cb1ad8ed/botocore-1.43.114-py3-none-any.whl
-  BOTOCORE_VERSION: 1.43.114
+  BOTOCORE_CHECKSUM: sha256:9ceda640c868bc15f5399129e8cfdef8cbb4b350e8a99547c9b5f477cfb9619a
+  BOTOCORE_URL: https://files.pythonhosted.org/packages/77/2d/4b6b6f5704d1ec9b412c1dd9700bda0c315619dbac4a21418180a81a2780/botocore-1.43.115-py3-none-any.whl
+  BOTOCORE_VERSION: 1.43.115
   CARGO_VERSION: 1.98.1-0
   COMMIT_SHA: c9ffb014114311406fc2a8a4b4025ad3fe7f87ee
   GOLANG_VERSION: 1.26.9-0
@@ -25,7 +25,7 @@ vars:
   PYTHON_DATEUTIL_URL: https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl
   PYTHON_DATEUTIL_VERSION: 2.9.0.post0
   PYTHON_VERSION: 3.13.16-0
-  REL: "0"
+  REL: "1"
   RUSTC_VERSION: 1.98.1-0
   SEMVER_MAJOR_MINOR_VERSION: "3.3"
   SEMVER_MAJOR_VERSION: "3"
@@ -107,15 +107,15 @@ contents:
                   license: MIT
             uid: 0
             gid: 0
-          - url: https://files.pythonhosted.org/packages/9a/41/7c6fa7ac5fcfd5ea3c6f32aab001942da32b184a210f39042778cb1ad8ed/botocore-1.43.114-py3-none-any.whl
-            checksum: sha256:d1c441a22e93e158de5b1e026205f5d6d67a4545d10540c5090c62dccb3a9eca
-            path: ${source.dir}/wheels/botocore-1.43.114-py3-none-any.whl
+          - url: https://files.pythonhosted.org/packages/77/2d/4b6b6f5704d1ec9b412c1dd9700bda0c315619dbac4a21418180a81a2780/botocore-1.43.115-py3-none-any.whl
+            checksum: sha256:9ceda640c868bc15f5399129e8cfdef8cbb4b350e8a99547c9b5f477cfb9619a
+            path: ${source.dir}/wheels/botocore-1.43.115-py3-none-any.whl
             spdx:
               name: botocore
-              version: 1.43.114
+              version: 1.43.115
               packages:
                 - name: botocore
-                  purl: pkg:pypi/botocore@1.43.114
+                  purl: pkg:pypi/botocore@1.43.115
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -241,7 +241,7 @@ contents:
               - deb
             license: MIT
             name: amazon-efs-utils-3
-            rel: 0
+            rel: 1
             url: https://github.com/aws/efs-utils
             version: 3.3.4
 os-release:
