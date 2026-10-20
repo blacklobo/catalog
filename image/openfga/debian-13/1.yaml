@@ -18,8 +18,8 @@ platforms:
   - linux/arm64
 vars:
   COMMIT_SHA: a38d5d0f65a964b6030e0b1afd2a831f62309159
-  GRPC_HEALTH_PROBE_COMMIT_SHA: 2f1935839c1504ad92654c5110e4d6135b861a21
-  GRPC_HEALTH_PROBE_VERSION: 0.4.59
+  GRPC_HEALTH_PROBE_COMMIT_SHA: 38dab69cbed6c47225ffdd30ee18f048f241601b
+  GRPC_HEALTH_PROBE_VERSION: 0.4.60
   SEMVER_MAJOR_MINOR_VERSION: "1.22"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.22.0
@@ -48,15 +48,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/grpc-ecosystem/grpc-health-probe.git#v0.4.59
-            checksum: 2f1935839c1504ad92654c5110e4d6135b861a21
+          - url: git+https://github.com/grpc-ecosystem/grpc-health-probe.git#v0.4.60
+            checksum: 38dab69cbed6c47225ffdd30ee18f048f241601b
             path: /go/src/github.com/grpc-ecosystem/grpc-health-probe
             spdx:
               name: grpc-health-probe
-              version: 0.4.59
+              version: 0.4.60
               packages:
                 - name: grpc-health-probe
-                  purl: pkg:golang/github.com/grpc-ecosystem/grpc-health-probe@0.4.59
+                  purl: pkg:golang/github.com/grpc-ecosystem/grpc-health-probe@0.4.60
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -73,7 +73,7 @@ contents:
             ldflags:
               - -s
               - -w
-              - -X main.versionTag=0.4.59
+              - -X main.versionTag=0.4.60
             output: ${target.dir}/usr/local/bin/grpc_health_probe
             packages: ./main.go
         - name: tests
