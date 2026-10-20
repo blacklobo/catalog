@@ -3,18 +3,18 @@
 image: dhi.io/pkg-envoy-ratelimit
 variant: runtime
 tags:
-  - f4e76690d9ce6590707ffd7d28c33a24b99302da-alpine3.24
-  - f4e76690d9ce6590707ffd7d28c33a24b99302da-r0-alpine3.24
+  - 053bfeb54238d9850cc4787d687fda0c82e2f2c7-alpine3.24
+  - 053bfeb54238d9850cc4787d687fda0c82e2f2c7-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: f4e76690d9ce6590707ffd7d28c33a24b99302da
+  COMMIT_SHA: 053bfeb54238d9850cc4787d687fda0c82e2f2c7
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
   PACKAGE_NAME: envoy-ratelimit
   REL: "0"
-  VERSION: 0+git.f4e76690d9ce6590707ffd7d28c33a24b99302da
+  VERSION: 0+git.053bfeb54238d9850cc4787d687fda0c82e2f2c7
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -42,15 +42,15 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/envoyproxy/ratelimit.git#f4e76690d9ce6590707ffd7d28c33a24b99302da
-            checksum: f4e76690d9ce6590707ffd7d28c33a24b99302da
+          - url: git+https://github.com/envoyproxy/ratelimit.git#053bfeb54238d9850cc4787d687fda0c82e2f2c7
+            checksum: 053bfeb54238d9850cc4787d687fda0c82e2f2c7
             path: /go/src/github.com/envoyproxy/ratelimit
             spdx:
               name: ratelimit
-              version: f4e76690d9ce6590707ffd7d28c33a24b99302da
+              version: 053bfeb54238d9850cc4787d687fda0c82e2f2c7
               packages:
                 - name: ratelimit
-                  purl: pkg:golang/github.com/envoyproxy/ratelimit@f4e76690d9ce6590707ffd7d28c33a24b99302da
+                  purl: pkg:golang/github.com/envoyproxy/ratelimit@053bfeb54238d9850cc4787d687fda0c82e2f2c7
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -98,7 +98,7 @@ contents:
                     source: usr/bin/ratelimit-dev
                 name: envoy-ratelimit-dev
             url: https://github.com/envoyproxy/ratelimit
-            version: 0+git.f4e76690d9ce6590707ffd7d28c33a24b99302da
+            version: 0+git.053bfeb54238d9850cc4787d687fda0c82e2f2c7
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
