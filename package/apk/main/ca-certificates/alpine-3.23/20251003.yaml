@@ -3,17 +3,17 @@
 image: dhi.io/pkg-ca-certificates
 variant: runtime
 tags:
-  - 20260909-alpine3.23
-  - 20260909-r0-alpine3.23
+  - 20261020-alpine3.23
+  - 20261020-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: c733d58a9d16316e7fb6a49e65f28ecda365c56b
+  COMMIT_SHA: ac857c298f6fd212498ce76bb87836d940cdba2d
   PACKAGE_NAME: main/ca-certificates
   REL: "0"
-  SEMVER_VERSION: "20260909"
-  VERSION: "20260909"
+  SEMVER_VERSION: "20261020"
+  VERSION: "20261020"
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -31,12 +31,12 @@ contents:
           - perl
           - openssl-dev
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#c733d58a9d16316e7fb6a49e65f28ecda365c56b
+          - url: git+https://github.com/alpinelinux/aports.git#ac857c298f6fd212498ce76bb87836d940cdba2d
             path: ${source.dir}/aports
             uid: 0
             gid: 0
-          - url: https://gitlab.alpinelinux.org/alpine/ca-certificates/-/archive/20260909/ca-certificates-20260909.tar.bz2
-            path: /var/cache/distfiles/ca-certificates-20260909.tar.bz2
+          - url: https://gitlab.alpinelinux.org/alpine/ca-certificates/-/archive/20261020/ca-certificates-20261020.tar.bz2
+            path: /var/cache/distfiles/ca-certificates-20261020.tar.bz2
             uid: 0
             gid: 0
       pipeline:
