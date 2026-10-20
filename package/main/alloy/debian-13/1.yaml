@@ -3,24 +3,24 @@
 image: dhi.io/pkg-alloy
 variant: runtime
 tags:
-  - 1.20.1
-  - 1.20.1-r3
-  - 1.20.1-debian13
-  - 1.20.1-r3-debian13
+  - 1.21.0
+  - 1.21.0-r0
+  - 1.21.0-debian13
+  - 1.21.0-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 95e12cf8961fabc9db6858f7e79bde5c814a07a0
-  GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.9-0
+  COMMIT_SHA: edc36e47f9be60ecbfbfc7daf31c54fbc6e2a9d3
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.2-0
   NODEJS_VERSION: 24.22.0-0
   PACKAGE_NAME: alloy
-  REL: "3"
-  SEMVER_MAJOR_MINOR_VERSION: "1.20"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "1.21"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.20.1
-  VERSION: 1.20.1
+  SEMVER_VERSION: 1.21.0
+  VERSION: 1.21.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -42,8 +42,8 @@ contents:
           - coreutils
           - findutils
           - gcc
-          - golang-1.26=1.26.9-0
-          - golang-1.26-oci-config=1.26.9-0
+          - golang-1.27=1.27.2-0
+          - golang-1.27-oci-config=1.27.2-0
           - libc6-dev
           - libsystemd-dev
           - mawk
@@ -51,15 +51,15 @@ contents:
           - npm
           - sed
         files:
-          - url: git+https://github.com/grafana/alloy.git#v1.20.1
-            checksum: 95e12cf8961fabc9db6858f7e79bde5c814a07a0
+          - url: git+https://github.com/grafana/alloy.git#v1.21.0
+            checksum: edc36e47f9be60ecbfbfc7daf31c54fbc6e2a9d3
             path: /go/src/github.com/grafana/alloy
             spdx:
               name: alloy
-              version: 1.20.1
+              version: 1.21.0
               packages:
                 - name: alloy
-                  purl: pkg:golang/github.com/grafana/alloy@1.20.1
+                  purl: pkg:golang/github.com/grafana/alloy@1.21.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -97,9 +97,9 @@ contents:
             fips: false
             ldflags:
               - -w
-              - -X github.com/grafana/alloy/internal/build.Version=1.20.1
-              - -X github.com/grafana/alloy/syntax/internal/stdlib.Version=1.20.1
-              - -X github.com/grafana/alloy/internal/build.Revision=95e12cf8961fabc9db6858f7e79bde5c814a07a0
+              - -X github.com/grafana/alloy/internal/build.Version=1.21.0
+              - -X github.com/grafana/alloy/syntax/internal/stdlib.Version=1.21.0
+              - -X github.com/grafana/alloy/internal/build.Revision=edc36e47f9be60ecbfbfc7daf31c54fbc6e2a9d3
               - -X github.com/grafana/alloy/internal/build.Branch=dhi
               - -X github.com/grafana/alloy/internal/build.BuildUser=dhi
               - -X github.com/grafana/alloy/internal/build.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%FT%TZ')
@@ -116,9 +116,9 @@ contents:
             cgo_enabled: 1
             fips: false
             ldflags:
-              - -X github.com/grafana/alloy/internal/build.Version=1.20.1
-              - -X github.com/grafana/alloy/syntax/internal/stdlib.Version=1.20.1
-              - -X github.com/grafana/alloy/internal/build.Revision=95e12cf8961fabc9db6858f7e79bde5c814a07a0
+              - -X github.com/grafana/alloy/internal/build.Version=1.21.0
+              - -X github.com/grafana/alloy/syntax/internal/stdlib.Version=1.21.0
+              - -X github.com/grafana/alloy/internal/build.Revision=edc36e47f9be60ecbfbfc7daf31c54fbc6e2a9d3
               - -X github.com/grafana/alloy/internal/build.Branch=dhi
               - -X github.com/grafana/alloy/internal/build.BuildUser=dhi
               - -X github.com/grafana/alloy/internal/build.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%FT%TZ')
@@ -164,14 +164,14 @@ contents:
               - deb
             license: Apache-2.0
             name: alloy
-            rel: 3
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/alloy
                     source: usr/bin/alloy-dev
                 name: alloy-dev
             url: https://github.com/grafana/alloy
-            version: 1.20.1
+            version: 1.21.0
       paths:
         - type: file
           path: ${source.dir}/patch/npm-bumps.json
