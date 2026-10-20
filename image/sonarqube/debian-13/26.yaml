@@ -25,15 +25,17 @@ vars:
   ELASTICSEARCH_VERSION: 9.4.7
   HTTPCLIENT5_VERSION: 5.6.3
   HTTPCORE5_VERSION: 5.4.3
-  JACKSON_CORE_2_VERSION: 2.21.4
-  JACKSON_CORE_3_VERSION: 3.1.6
-  JACKSON_DATABIND_2_VERSION: 2.21.6
-  JACKSON_DATABIND_3_VERSION: 3.1.6
-  JACKSON_DATABIND_ES_VERSION: 2.18.10
+  JACKSON_CORE_2_VERSION: 2.21.7
+  JACKSON_CORE_3_VERSION: 3.1.7
+  JACKSON_CORE_ES_VERSION: 2.18.11
+  JACKSON_DATABIND_2_VERSION: 2.21.7
+  JACKSON_DATABIND_3_VERSION: 3.1.7
+  JACKSON_DATABIND_ES_VERSION: 2.18.11
   JAVA_HOME_PATH: /usr/lib/jvm/temurin-21
   JDK_MAJOR_VERSION: "21"
   LOG4J_API_25_VERSION: 2.25.5
   LOG4J_API_26_VERSION: 2.26.1
+  LZ4_JAVA_VERSION: 1.11.4
   MAVEN_REF: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
   MAVEN_VERSION: 3.10.0
   NETTY_VERSION: 4.1.137.Final
@@ -170,8 +172,8 @@ contents:
             path: ${source.dir}/patch/deps/mssql-jdbc-13.2.1.jre11.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/at/yawk/lz4/lz4-java/1.11.1/lz4-java-1.11.1.jar
-            path: ${source.dir}/patch/deps/lz4-java-1.11.1.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/at/yawk/lz4/lz4-java/1.11.4/lz4-java-1.11.4.jar
+            path: ${source.dir}/patch/deps/lz4-java-1.11.4.jar
             uid: 0
             gid: 0
           - url: https://maven-central.storage-download.googleapis.com/maven2/org/apache/logging/log4j/log4j-1.2-api/2.25.4/log4j-1.2-api-2.25.4.jar
@@ -186,28 +188,28 @@ contents:
             path: ${source.dir}/patch/deps/postgresql-42.7.12.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/tools/jackson/core/jackson-core/3.1.6/jackson-core-3.1.6.jar
-            path: ${source.dir}/patch/deps/jackson-core-3.1.6.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/tools/jackson/core/jackson-core/3.1.7/jackson-core-3.1.7.jar
+            path: ${source.dir}/patch/deps/jackson-core-3.1.7.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.6/jackson-databind-2.21.6.jar
-            path: ${source.dir}/patch/deps/jackson-databind-2.21.6.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.7/jackson-databind-2.21.7.jar
+            path: ${source.dir}/patch/deps/jackson-databind-2.21.7.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/tools/jackson/core/jackson-databind/3.1.6/jackson-databind-3.1.6.jar
-            path: ${source.dir}/patch/deps/jackson-databind-3.1.6.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/tools/jackson/core/jackson-databind/3.1.7/jackson-databind-3.1.7.jar
+            path: ${source.dir}/patch/deps/jackson-databind-3.1.7.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-core/2.21.4/jackson-core-2.21.4.jar
-            path: ${source.dir}/patch/deps/jackson-core-2.21.4.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-core/2.21.7/jackson-core-2.21.7.jar
+            path: ${source.dir}/patch/deps/jackson-core-2.21.7.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-core/2.18.10/jackson-core-2.18.10.jar
-            path: ${source.dir}/patch/deps/jackson-core-2.18.10.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-core/2.18.11/jackson-core-2.18.11.jar
+            path: ${source.dir}/patch/deps/jackson-core-2.18.11.jar
             uid: 0
             gid: 0
-          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.18.10/jackson-databind-2.18.10.jar
-            path: ${source.dir}/patch/deps/jackson-databind-2.18.10.jar
+          - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.18.11/jackson-databind-2.18.11.jar
+            path: ${source.dir}/patch/deps/jackson-databind-2.18.11.jar
             uid: 0
             gid: 0
           - url: https://maven-central.storage-download.googleapis.com/maven2/io/projectreactor/netty/reactor-netty-http/1.2.8/reactor-netty-http-1.2.8.jar
@@ -399,18 +401,18 @@ contents:
               patch_databind \
                 "com.fasterxml.jackson.core" \
                 "com/fasterxml/jackson/databind" \
-                "${source.dir}/patch/deps/jackson-databind-2.21.6.jar" \
-                "2.21.6"
+                "${source.dir}/patch/deps/jackson-databind-2.21.7.jar" \
+                "2.21.7"
               patch_databind \
                 "tools.jackson.core" \
                 "tools/jackson/databind" \
-                "${source.dir}/patch/deps/jackson-databind-3.1.6.jar" \
-                "3.1.6"
+                "${source.dir}/patch/deps/jackson-databind-3.1.7.jar" \
+                "3.1.7"
               patch_jackson_core \
                 "com.fasterxml.jackson.core" \
                 "com/fasterxml/jackson/core" \
-                "${source.dir}/patch/deps/jackson-core-2.21.4.jar" \
-                "2.21.4"
+                "${source.dir}/patch/deps/jackson-core-2.21.7.jar" \
+                "2.21.7"
 
               if [[ "${patched_count}" -eq "${before_count}" ]]; then
                 echo "ERROR: no jackson metadata patched in ${outer_jar}" >&2
@@ -460,7 +462,7 @@ contents:
               exit 1
             fi
 
-            (cd "${overlay_dir}" && jar xf "${source.dir}/patch/deps/jackson-core-3.1.6.jar")
+            (cd "${overlay_dir}" && jar xf "${source.dir}/patch/deps/jackson-core-3.1.7.jar")
 
             rm -rf "${repack_dir:?}/tools/jackson/core" "${repack_dir:?}/${metadata_dir}"
             for vdir in "${repack_dir}"/META-INF/versions/*/tools/jackson/core; do
@@ -476,13 +478,13 @@ contents:
               cp -a "${vdir}" "${repack_dir}/${rel}"
             done
 
-            grep -q "version=3.1.6" "${repack_dir}/${metadata_dir}/pom.properties"
+            grep -q "version=3.1.7" "${repack_dir}/${metadata_dir}/pom.properties"
 
             app_new="${patch_dir}/app-repacked.jar"
             (cd "${repack_dir}" && jar --create --file "${app_new}" --manifest META-INF/MANIFEST.MF .)
             mv "${app_new}" "${app_jar}"
 
-            unzip -p "${app_jar}" "${metadata_dir}/pom.properties" | grep -q "version=3.1.6"
+            unzip -p "${app_jar}" "${metadata_dir}/pom.properties" | grep -q "version=3.1.7"
         - name: patch bundled jackson core 2.x in elasticsearch
           runs: |
             set -eux -o pipefail
@@ -493,7 +495,7 @@ contents:
 
             patch_jackson_core_2x() {
               local jar_path="$1"
-              local expected_version="2.18.10"
+              local expected_version="2.18.11"
               local metadata_dir="META-INF/maven/com.fasterxml.jackson.core/jackson-core"
               local patch_jar="${source.dir}/patch/deps/jackson-core-${expected_version}.jar"
               local verify_impl_jars=false
@@ -606,25 +608,25 @@ contents:
               exit 1
             fi
 
-            if grep -q "version=1.11.1" "${repack_dir}/${metadata_dir}/pom.properties"; then
-              echo "lz4-java already at 1.11.1 in $(basename "${app_jar}")"
+            if grep -q "version=1.11.4" "${repack_dir}/${metadata_dir}/pom.properties"; then
+              echo "lz4-java already at 1.11.4 in $(basename "${app_jar}")"
               exit 0
             fi
 
-            (cd "${overlay_dir}" && jar xf "${source.dir}/patch/deps/lz4-java-1.11.1.jar")
+            (cd "${overlay_dir}" && jar xf "${source.dir}/patch/deps/lz4-java-1.11.4.jar")
 
             rm -rf "${repack_dir:?}/net/jpountz" "${repack_dir:?}/${metadata_dir}"
             mkdir -p "${repack_dir}/net" "${repack_dir}/META-INF/maven/at.yawk.lz4"
             cp -a "${overlay_dir}/net/jpountz" "${repack_dir}/net/jpountz"
             cp -a "${overlay_dir}/${metadata_dir}" "${repack_dir}/${metadata_dir}"
 
-            grep -q "version=1.11.1" "${repack_dir}/${metadata_dir}/pom.properties"
+            grep -q "version=1.11.4" "${repack_dir}/${metadata_dir}/pom.properties"
 
             app_new="${patch_dir}/app-repacked.jar"
             (cd "${repack_dir}" && jar --create --file "${app_new}" --manifest META-INF/MANIFEST.MF .)
             mv "${app_new}" "${app_jar}"
 
-            unzip -p "${app_jar}" "${metadata_dir}/pom.properties" | grep -q "version=1.11.1"
+            unzip -p "${app_jar}" "${metadata_dir}/pom.properties" | grep -q "version=1.11.4"
         - name: patch bundled httpcore5 in sonar-application
           runs: |
             set -eux -o pipefail

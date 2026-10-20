@@ -258,16 +258,22 @@
     {
       "groupId": "at.yawk.lz4",
       "artifactId": "lz4-java",
-      "version": "1.11.1",
+      "version": "1.11.4",
       "replaces": [
         "lz4-java-1.8.0.jar",
         "lz4-java-1.8.1.jar",
         "lz4-java-1.10.1.jar",
-        "lz4-java-1.11.0.jar"
+        "lz4-java-1.11.0.jar",
+        "lz4-java-1.11.1.jar"
       ],
       "cve_fixes": [
         "CVE-2025-12183",
         "CVE-2025-66566",
+        "CVE-2026-106449",
+        "CVE-2026-106450",
+        "CVE-2026-106451",
+        "CVE-2026-106452",
+        "CVE-2026-106453",
         "CVE-2026-59949"
       ],
       "search_paths": [
@@ -321,13 +327,16 @@
     {
       "groupId": "com.fasterxml.jackson.core",
       "artifactId": "jackson-core",
-      "version": "2.18.10",
+      "version": "2.18.11",
       "replaces": [
         "jackson-core-2.15.*.jar",
-        "jackson-core-2.17.*.jar"
+        "jackson-core-2.17.*.jar",
+        "jackson-core-2.18.*.jar"
       ],
       "cve_fixes": [
         "CVE-2026-18401",
+        "CVE-2026-89407",
+        "CVE-2026-89425",
         "GHSA-R7WM-3CXJ-WFF9"
       ],
       "search_paths": [
@@ -338,16 +347,22 @@
     {
       "groupId": "com.fasterxml.jackson.core",
       "artifactId": "jackson-databind",
-      "version": "2.18.10",
+      "version": "2.18.11",
       "replaces": [
-        "jackson-databind-2.15.*.jar"
+        "jackson-databind-2.15.*.jar",
+        "jackson-databind-2.18.*.jar"
       ],
       "cve_fixes": [
+        "CVE-2026-19032",
         "CVE-2026-54513",
         "CVE-2026-54512",
         "CVE-2026-59888",
         "CVE-2026-54515",
-        "CVE-2026-54514"
+        "CVE-2026-54514",
+        "CVE-2026-68497",
+        "CVE-2026-83557",
+        "CVE-2026-91776",
+        "CVE-2026-91777"
       ],
       "search_paths": [
         "elasticsearch/lib",
