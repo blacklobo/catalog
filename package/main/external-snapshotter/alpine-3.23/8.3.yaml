@@ -5,7 +5,7 @@ variant: runtime
 tags:
   - 8.3-alpine3.23
   - 8.3.0-alpine3.23
-  - 8.3.0-r9-alpine3.23
+  - 8.3.0-r10-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
