@@ -4,7 +4,7 @@ image: dhi.io/pkg-golang
 variant: runtime
 tags:
   - 1.24.13-apk-alpine3.23
-  - 1.24.13-r6-apk-alpine3.23
+  - 1.24.13-r7-apk-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,7 +13,7 @@ vars:
   PACKAGE_NAME: golang-1.24
   PACKAGE_VERSION: 1.24.13
   PRIORITY: "124"
-  REL: "6"
+  REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "1.24"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.24.13
@@ -50,6 +50,25 @@ contents:
               - ${source.dir}/patch/always-emit-ldflags.patch
               - ${source.dir}/patch/disable-telemetry.patch
               - ${source.dir}/patch/prefer-musl-over-glibc.patch
+        - name: update vendored std dependencies (1.24)
+          uses: go/bump@v2
+          work-dir: ${source.dir}/go/src
+          environment:
+            GOPROXY: https://proxy.golang.org,direct
+            GOTOOLCHAIN: local
+            GOWORK: "off"
+          with:
+            deps:
+              - golang.org/x/crypto@v0.48.0
+        - name: restore go language version
+          work-dir: ${source.dir}/go
+          runs: |
+            set -eux -o pipefail
+
+            for mod in src/go.mod src/cmd/go.mod; do
+              sed -i "s/^go .*/go 1.24/" "$mod"
+              sed -i '/^toolchain /d' "$mod"
+            done
         - name: install
           work-dir: ${source.dir}/go/src
           runs: |
@@ -186,7 +205,7 @@ contents:
             options: '!check !fhs'
             provider_priority: 124
             provides: go=$pkgver-r$pkgrel golang=$pkgver-r$pkgrel
-            rel: 6
+            rel: 7
             replaces: go
             replaces_priority: 124
             subpackages: $pkgname-doc $pkgname-oci-config:oci_config:noarch $pkgname-fips-oci-config:fips_oci_config:noarch
@@ -236,6 +255,25 @@ contents:
               - ${source.dir}/patch/always-emit-ldflags.patch
               - ${source.dir}/patch/disable-telemetry.patch
               - ${source.dir}/patch/prefer-musl-over-glibc.patch
+        - name: update vendored std dependencies (1.24)
+          uses: go/bump@v2
+          work-dir: ${source.dir}/go/src
+          environment:
+            GOPROXY: https://proxy.golang.org,direct
+            GOTOOLCHAIN: local
+            GOWORK: "off"
+          with:
+            deps:
+              - golang.org/x/crypto@v0.48.0
+        - name: restore go language version
+          work-dir: ${source.dir}/go
+          runs: |
+            set -eux -o pipefail
+
+            for mod in src/go.mod src/cmd/go.mod; do
+              sed -i "s/^go .*/go 1.24/" "$mod"
+              sed -i '/^toolchain /d' "$mod"
+            done
         - name: install
           work-dir: ${source.dir}/go/src
           runs: |
@@ -372,7 +410,7 @@ contents:
             options: '!check !fhs'
             provider_priority: 124
             provides: go=$pkgver-r$pkgrel golang=$pkgver-r$pkgrel
-            rel: 6
+            rel: 7
             replaces: go
             replaces_priority: 124
             subpackages: $pkgname-doc $pkgname-oci-config:oci_config:noarch $pkgname-fips-oci-config:fips_oci_config:noarch
