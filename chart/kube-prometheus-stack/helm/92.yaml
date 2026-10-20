@@ -20,7 +20,7 @@ vars:
   HELM_VERSION: 4.1.4-2
   KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:8.6.0@sha256:dd17a6c5562dacf88b4407978e8d72850ddeb5d4b6cf5149b699ccf8f0c74d24
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:81daf33fd88d10ee4086c247d70b37766037ac2d03e6759b930b294c5ee8f613
-  KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:38c1d49abb6d077935674feecf3d41558ff52bd652a1effbe413092c9d9ebd7b
+  KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:49bd1dc516e038d64e75160fc69dd78c1959779aad2d3833718d0f280ca15b07
   NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.60.0@sha256:82fe94a7fe06b49d65c199ca564c91856226300b4424cfc8a39fe0a0c1ca6ba1
   PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
   PROMETHEUS_OPERATOR_ADMISSION_WEBHOOK_REFERENCE: dhi/prometheus-operator-admission-webhook:0.94.1-debian13@sha256:3a990f3dc615be127e956eba3e4c01e7f7dff4fac136e8a78a52642703f945c5
@@ -79,7 +79,7 @@ contents:
                 - name: busybox
                   ref: dhi/busybox:1.37.0-debian13@sha256:cbf608bac227b555568030a804f7666bb60524ea25c626db8b9b93789748784e
                 - name: kubectl
-                  ref: dhi/kubectl:1.37.1-debian13@sha256:38c1d49abb6d077935674feecf3d41558ff52bd652a1effbe413092c9d9ebd7b
+                  ref: dhi/kubectl:1.37.1-debian13@sha256:49bd1dc516e038d64e75160fc69dd78c1959779aad2d3833718d0f280ca15b07
                 - name: alertmanager
                   ref: dhi/alertmanager:0.34.1-debian13@sha256:01dd89cce4737ec7e44704681b5d6ee561e9b7880f632b4413b0e547e4dabfda
                 - name: prometheus-operator-admission-webhook
