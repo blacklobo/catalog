@@ -3,8 +3,8 @@
 image: dhi.io/pkg-x509-certificate-exporter
 variant: runtime
 tags:
-  - 4.2.0-alpine3.24
-  - 4.2.0-r5-alpine3.24
+  - 4.2.1-alpine3.24
+  - 4.2.1-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,16 +12,16 @@ dates:
   release: "2026-05-06"
 vars:
   BUILD_TIME_LDFLAG: github.com/enix/x509-certificate-exporter/v4/internal/product.buildTime
-  COMMIT_SHA: 8bab222d43bad953d1dbab2bd7f6fd77ae70e1cb
+  COMMIT_SHA: ad35ebb13fc4f9a0a0c2f3ecb5ae9091d5ced9bf
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: x509-certificate-exporter-4
-  REL: "5"
+  REL: "0"
   REVISION_LDFLAG: github.com/enix/x509-certificate-exporter/v4/internal/product.gitCommit
   SEMVER_MAJOR_MINOR_VERSION: "4.2"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.2.0
-  VERSION: 4.2.0
+  SEMVER_VERSION: 4.2.1
+  VERSION: 4.2.1
   VERSION_LDFLAG: github.com/enix/x509-certificate-exporter/v4/internal/product.version
 contents:
   repositories:
@@ -48,15 +48,15 @@ contents:
           - golang-1.26=1.26.9-r0
           - golang-1.26-oci-config=1.26.9-r0
         files:
-          - url: git+https://github.com/enix/x509-certificate-exporter.git#v4.2.0
-            checksum: 8bab222d43bad953d1dbab2bd7f6fd77ae70e1cb
+          - url: git+https://github.com/enix/x509-certificate-exporter.git#v4.2.1
+            checksum: ad35ebb13fc4f9a0a0c2f3ecb5ae9091d5ced9bf
             path: /go/src/github.com/enix/x509-certificate-exporter
             spdx:
               name: x509-certificate-exporter
-              version: 4.2.0
+              version: 4.2.1
               packages:
                 - name: x509-certificate-exporter
-                  purl: pkg:golang/github.com/enix/x509-certificate-exporter/v4@4.2.0
+                  purl: pkg:golang/github.com/enix/x509-certificate-exporter/v4@4.2.1
                   license: MIT
             uid: 0
             gid: 0
@@ -64,8 +64,7 @@ contents:
         - name: update go dependencies (4 only)
           uses: go/bump@v1
           with:
-            deps:
-              - golang.org/x/net@v0.60.0
+            deps: []
             tidy: true
         - uses: go/hermetic@v1
         - name: test
@@ -82,8 +81,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/enix/x509-certificate-exporter/v4/internal/product.version=4.2.0
-              - -X github.com/enix/x509-certificate-exporter/v4/internal/product.gitCommit=8bab222d43bad953d1dbab2bd7f6fd77ae70e1cb
+              - -X github.com/enix/x509-certificate-exporter/v4/internal/product.version=4.2.1
+              - -X github.com/enix/x509-certificate-exporter/v4/internal/product.gitCommit=ad35ebb13fc4f9a0a0c2f3ecb5ae9091d5ced9bf
               - -X github.com/enix/x509-certificate-exporter/v4/internal/product.buildTime=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/x509-certificate-exporter
             packages: ./cmd/x509-certificate-exporter
@@ -96,8 +95,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/enix/x509-certificate-exporter/v4/internal/product.version=4.2.0
-              - -X github.com/enix/x509-certificate-exporter/v4/internal/product.gitCommit=8bab222d43bad953d1dbab2bd7f6fd77ae70e1cb
+              - -X github.com/enix/x509-certificate-exporter/v4/internal/product.version=4.2.1
+              - -X github.com/enix/x509-certificate-exporter/v4/internal/product.gitCommit=ad35ebb13fc4f9a0a0c2f3ecb5ae9091d5ced9bf
               - -X github.com/enix/x509-certificate-exporter/v4/internal/product.buildTime=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/x509-certificate-exporter-dev
             packages: ./cmd/x509-certificate-exporter
@@ -112,14 +111,14 @@ contents:
               - usr/bin/x509-certificate-exporter
             license: MIT
             name: x509-certificate-exporter-4
-            rel: 5
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/x509-certificate-exporter
                     source: usr/bin/x509-certificate-exporter-dev
                 name: x509-certificate-exporter-4-dev
             url: https://github.com/enix/x509-certificate-exporter
-            version: 4.2.0
+            version: 4.2.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
