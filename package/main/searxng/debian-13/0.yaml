@@ -4,18 +4,18 @@ image: dhi.io/pkg-searxng
 variant: runtime
 tags:
   - 2026.10.19
-  - 2026.10.19-r0
+  - 2026.10.19-r1
   - 2026.10.19-debian13
-  - 2026.10.19-r0-debian13
+  - 2026.10.19-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-06"
 vars:
-  COMMIT_SHA: d47cb96bfb79240d487bdb2336886d0dc59f2f30
+  COMMIT_SHA: 81371861f67226091d1c4df2e3908a11d3b54eb9
   PYTHON_VERSION: 3.13.16-0
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2026.10"
   SEMVER_MAJOR_VERSION: "2026"
   SEMVER_VERSION: 2026.10.19
@@ -28,7 +28,7 @@ contents:
       work-dir: ${source.dir}
       environment:
         PYTHON_BIN: /usr/bin/python3.13
-        SEARXNG_COMMIT: d47cb96bfb79240d487bdb2336886d0dc59f2f30
+        SEARXNG_COMMIT: 81371861f67226091d1c4df2e3908a11d3b54eb9
         SEARXNG_VERSION: 2026.10.19
       contents:
         repositories:
@@ -49,8 +49,8 @@ contents:
           - python3-venv
           - sed
         files:
-          - url: git+https://github.com/searxng/searxng.git#d47cb96bfb79240d487bdb2336886d0dc59f2f30
-            checksum: d47cb96bfb79240d487bdb2336886d0dc59f2f30
+          - url: git+https://github.com/searxng/searxng.git#81371861f67226091d1c4df2e3908a11d3b54eb9
+            checksum: 81371861f67226091d1c4df2e3908a11d3b54eb9
             path: ${source.dir}/src
             spdx:
               name: searxng
@@ -81,7 +81,7 @@ contents:
               - deb
             license: AGPL-3.0-or-later
             name: searxng
-            rel: 0
+            rel: 1
             url: https://github.com/searxng/searxng
             version: 2026.10.19
       paths:
