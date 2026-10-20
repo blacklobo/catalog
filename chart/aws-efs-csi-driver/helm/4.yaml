@@ -9,7 +9,7 @@ platforms:
   - linux/amd64
 vars:
   APPVERSION: 3.5.2
-  AWS_EFS_CSI_DRIVER_REFERENCE: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:1ad1d5543e47b8d9fca04d4cc7b1d5911304e127ddb1d09c1d3c7e48fe8d1624
+  AWS_EFS_CSI_DRIVER_REFERENCE: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:cd1f6852b9d7cb3b769057e1832821dc80e34f1f5b33be00eb5a34175ebee11a
   CHART_COMMIT_SHA: b0234626608813dd8f47e106c93be6d0032a00d7
   CHART_HELM_NAME: aws-efs-csi-driver-chart
   CSI_NODE_DRIVER_REGISTRAR_MAJOR: "2"
@@ -56,7 +56,7 @@ contents:
               description: Docker Hardened Images Helm chart for AWS EFS CSI Driver
               images:
                 - name: aws-efs-csi-driver
-                  ref: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:1ad1d5543e47b8d9fca04d4cc7b1d5911304e127ddb1d09c1d3c7e48fe8d1624
+                  ref: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:cd1f6852b9d7cb3b769057e1832821dc80e34f1f5b33be00eb5a34175ebee11a
                 - name: livenessprobe
                   ref: dhi/livenessprobe:2.20.0-debian13@sha256:3a2c53270e25e85b90d1ceb1ca0fca6604b894244dc62ddd6c26f80edc108d3f
                 - name: csi-node-driver-registrar
