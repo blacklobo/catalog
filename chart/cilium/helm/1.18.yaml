@@ -30,7 +30,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "1.18"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.18.15
-  SPIRE_AGENT_REFERENCE: dhi/spire-agent:1.15.3-debian13@sha256:e345ff282d6c2473cc63c24de11adc31ae5156989ee8d93669efdf642b80e550
+  SPIRE_AGENT_REFERENCE: dhi/spire-agent:1.15.4-debian13@sha256:2c7002ff9608a25fe43ab19e53271c08f29673d2d6688c4efb04476dc64bc4e7
   SPIRE_SERVER_REFERENCE: dhi/spire-server:1.15.4-debian13@sha256:53030d04939a630af01b93148e7313f5ab36e21b43bcb6b9b5e2929eab66d7d6
   VERSION: 1.18.15
   ZTUNNEL_REFERENCE: dhi/ztunnel:1.31.2-debian13@sha256:95eec305f3cf500648345466175e7564a2e12e6977b509d191d04f64ee7e0043
@@ -84,7 +84,7 @@ contents:
                 - name: ztunnel
                   ref: dhi/ztunnel:1.31.2-debian13@sha256:95eec305f3cf500648345466175e7564a2e12e6977b509d191d04f64ee7e0043
                 - name: spire-agent
-                  ref: dhi/spire-agent:1.15.3-debian13@sha256:e345ff282d6c2473cc63c24de11adc31ae5156989ee8d93669efdf642b80e550
+                  ref: dhi/spire-agent:1.15.4-debian13@sha256:2c7002ff9608a25fe43ab19e53271c08f29673d2d6688c4efb04476dc64bc4e7
                 - name: spire-server
                   ref: dhi/spire-server:1.15.4-debian13@sha256:53030d04939a630af01b93148e7313f5ab36e21b43bcb6b9b5e2929eab66d7d6
                 - name: busybox
