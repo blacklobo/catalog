@@ -3,23 +3,23 @@
 image: dhi.io/pkg-golang-msft-fips
 variant: runtime
 tags:
-  - 1.27.2-1-dhi1
-  - 1.27.2-1-dhi1-debian13
+  - 1.27.2-2-dhi0
+  - 1.27.2-2-dhi0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  CHECKSUM: sha256:27580d425397dfc97160fce68407dbfd5aa7a1d3af07cf8cb61a770ab08291ee
-  COMMIT: aff203d598bb472fbb64f2f7b716e02552e22bfb
-  DHI_REL: "1"
-  DHI_VERSION: 1.27.2-1+dhi1
+  CHECKSUM: sha256:41856c160a147eb79fbc6082903a35f2079163a36d9b1305ab6658b96854609c
+  COMMIT: 8b5b54130646d196c1bcbd60a6d4b8675aaa1a58
+  DHI_REL: "0"
+  DHI_VERSION: 1.27.2-2+dhi0
   GOLANG_VERSION: 1.27.2
   PACKAGE_NAME: golang-msft-fips-1.27
-  RELEASE_ID: "408248109"
+  RELEASE_ID: "417597276"
   SEMVER_MAJOR_MINOR_VERSION: "1.27"
-  TAG_VERSION: 1.27.2-1-dhi1
-  URL: https://github.com/microsoft/go/releases/download/v1.27.2-1/go1.27.2-20261008.10.src.tar.gz
-  VERSION: 1.27.2-1
+  TAG_VERSION: 1.27.2-2-dhi0
+  URL: https://github.com/microsoft/go/releases/download/v1.27.2-2/go1.27.2-20261019.3.src.tar.gz
+  VERSION: 1.27.2-2
 contents:
   packages:
     - '!base-files'
@@ -44,20 +44,20 @@ contents:
           - git
           - sed
         files:
-          - url: https://github.com/microsoft/go/releases/download/v1.27.2-1/go1.27.2-20261008.10.src.tar.gz
-            checksum: sha256:27580d425397dfc97160fce68407dbfd5aa7a1d3af07cf8cb61a770ab08291ee
+          - url: https://github.com/microsoft/go/releases/download/v1.27.2-2/go1.27.2-20261019.3.src.tar.gz
+            checksum: sha256:41856c160a147eb79fbc6082903a35f2079163a36d9b1305ab6658b96854609c
             path: ${source.dir}/golang-msft-fips-1.27/msft-go-src.tar.gz
             spdx:
               name: golang
-              version: 1.27.2-1
+              version: 1.27.2-2
               packages:
                 - name: golang
-                  purl: pkg:dhi/golang@1.27.2-1
+                  purl: pkg:dhi/golang@1.27.2-2
                   license: BSD-3-Clause
             uid: 0
             gid: 0
-          - url: git+https://github.com/microsoft/go.git#v1.27.2-1
-            checksum: aff203d598bb472fbb64f2f7b716e02552e22bfb
+          - url: git+https://github.com/microsoft/go.git#v1.27.2-2
+            checksum: 8b5b54130646d196c1bcbd60a6d4b8675aaa1a58
             path: ${source.dir}/golang-msft-fips-1.27/msft-go-repo
             uid: 0
             gid: 0
@@ -171,7 +171,7 @@ contents:
           with:
             changelog:
               - Bump bootstrap golang.org/x modules to patched releases (CVE-2026-56852, CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
-            version: 1.27.2-1+dhi1
+            version: 1.27.2-2+dhi0
         - uses: dpkg/build@v1
           environment:
             DHI_GOROOT_BOOTSTRAP: /usr/lib/go-1.27
@@ -204,20 +204,20 @@ contents:
           - git
           - sed
         files:
-          - url: https://github.com/microsoft/go/releases/download/v1.27.2-1/go1.27.2-20261008.10.src.tar.gz
-            checksum: sha256:27580d425397dfc97160fce68407dbfd5aa7a1d3af07cf8cb61a770ab08291ee
+          - url: https://github.com/microsoft/go/releases/download/v1.27.2-2/go1.27.2-20261019.3.src.tar.gz
+            checksum: sha256:41856c160a147eb79fbc6082903a35f2079163a36d9b1305ab6658b96854609c
             path: ${source.dir}/golang-msft-fips-1.27-dev/msft-go-src.tar.gz
             spdx:
               name: golang
-              version: 1.27.2-1
+              version: 1.27.2-2
               packages:
                 - name: golang
-                  purl: pkg:dhi/golang@1.27.2-1
+                  purl: pkg:dhi/golang@1.27.2-2
                   license: BSD-3-Clause
             uid: 0
             gid: 0
-          - url: git+https://github.com/microsoft/go.git#v1.27.2-1
-            checksum: aff203d598bb472fbb64f2f7b716e02552e22bfb
+          - url: git+https://github.com/microsoft/go.git#v1.27.2-2
+            checksum: 8b5b54130646d196c1bcbd60a6d4b8675aaa1a58
             path: ${source.dir}/golang-msft-fips-1.27-dev/msft-go-repo
             uid: 0
             gid: 0
@@ -331,7 +331,7 @@ contents:
           with:
             changelog:
               - Bump bootstrap golang.org/x modules to patched releases (CVE-2026-56852, CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
-            version: 1.27.2-1+dhi1
+            version: 1.27.2-2+dhi0
         - uses: dpkg/build@v1
           environment:
             DHI_GOROOT_BOOTSTRAP: /usr/lib/go-1.27
