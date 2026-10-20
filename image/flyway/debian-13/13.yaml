@@ -174,29 +174,29 @@ contents:
               [ -e "${jar}" ] || continue
               case "$(basename "${jar}")" in
                 jackson-annotations-2.21.jar | jackson-annotations-2.22.jar) continue ;;
-                jackson-databind-2.21.6.jar | jackson-core-2.21.5.jar | *-2.22.2.jar | *-3.1.6.jar) continue ;;
+                jackson-databind-2.21.7.jar | jackson-core-2.21.7.jar | *-2.22.3.jar | *-3.1.7.jar) continue ;;
                 *) rm -f "${jar}" ;;
               esac
             done
 
             for artifact in \
-              com.fasterxml.jackson.core:jackson-databind:2.21.6 \
-              com.fasterxml.jackson.core:jackson-core:2.21.5 \
+              com.fasterxml.jackson.core:jackson-databind:2.21.7 \
+              com.fasterxml.jackson.core:jackson-core:2.21.7 \
               com.fasterxml.jackson.core:jackson-annotations:2.21 \
-              tools.jackson.core:jackson-databind:3.1.6 \
-              tools.jackson.core:jackson-core:3.1.6 \
-              tools.jackson.dataformat:jackson-dataformat-toml:3.1.6; do
+              tools.jackson.core:jackson-databind:3.1.7 \
+              tools.jackson.core:jackson-core:3.1.7 \
+              tools.jackson.dataformat:jackson-dataformat-toml:3.1.7; do
               mvn dependency:copy \
                 -Dartifact="${artifact}" \
                 -DoutputDirectory="${lib}" \
                 -q
             done
 
-            # Flyway 12.x also needs jackson 2.22.2 line
+            # Flyway 12.x also needs jackson 2.22.3 line
             if [ "13" = "12" ] || [ "13" = "13" ]; then
               for artifact in \
-                com.fasterxml.jackson.core:jackson-databind:2.22.2 \
-                com.fasterxml.jackson.core:jackson-core:2.22.2 \
+                com.fasterxml.jackson.core:jackson-databind:2.22.3 \
+                com.fasterxml.jackson.core:jackson-core:2.22.3 \
                 com.fasterxml.jackson.core:jackson-annotations:2.22; do
                 mvn dependency:copy \
                   -Dartifact="${artifact}" \
@@ -292,6 +292,34 @@ contents:
 
             mvn dependency:copy \
               -Dartifact=org.mariadb.jdbc:mariadb-java-client:2.7.14 \
+              -DoutputDirectory="${lib}" \
+              -q
+
+            for jar in \
+              "${lib}"/lz4-java-*.jar; do
+              [ -e "${jar}" ] || continue
+              case "$(basename "${jar}")" in
+                lz4-java-1.11.4.jar) continue ;;
+                *) rm -f "${jar}" ;;
+              esac
+            done
+
+            mvn dependency:copy \
+              -Dartifact=at.yawk.lz4:lz4-java:1.11.4 \
+              -DoutputDirectory="${lib}" \
+              -q
+
+            for jar in \
+              "${lib}"/snowflake-jdbc-*.jar; do
+              [ -e "${jar}" ] || continue
+              case "$(basename "${jar}")" in
+                snowflake-jdbc-4.3.4.jar) continue ;;
+                *) rm -f "${jar}" ;;
+              esac
+            done
+
+            mvn dependency:copy \
+              -Dartifact=net.snowflake:snowflake-jdbc:4.3.4 \
               -DoutputDirectory="${lib}" \
               -q
 
