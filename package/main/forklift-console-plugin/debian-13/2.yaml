@@ -4,19 +4,19 @@ image: dhi.io/pkg-forklift-console-plugin
 variant: runtime
 tags:
   - 2.12.10
-  - 2.12.10-r7
+  - 2.12.10-r8
   - 2.12.10-debian13
-  - 2.12.10-r7-debian13
+  - 2.12.10-r8-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-05-18"
 vars:
-  COMMIT_SHA: edba5ad58516fd4d876dcd7d64fa7b39cabc1b77
+  COMMIT_SHA: 7ad882965ac01b0c2d8aaeab451f2e0fa868180f
   DHI_TEST_DEB_EXPECTED_FILES: /usr/share/forklift-console-plugin/plugin-manifest.json
   NODEJS_VERSION: 24.22.0-0
-  REL: "7"
+  REL: "8"
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.12.10
@@ -52,15 +52,15 @@ contents:
           - npm
           - sed
         files:
-          - url: git+https://github.com/kubev2v/forklift-console-plugin.git#edba5ad58516fd4d876dcd7d64fa7b39cabc1b77
-            checksum: edba5ad58516fd4d876dcd7d64fa7b39cabc1b77
+          - url: git+https://github.com/kubev2v/forklift-console-plugin.git#7ad882965ac01b0c2d8aaeab451f2e0fa868180f
+            checksum: 7ad882965ac01b0c2d8aaeab451f2e0fa868180f
             path: ${source.dir}/forklift-console-plugin
             spdx:
               name: forklift-console-plugin
               version: 2.12.10
               packages:
                 - name: forklift-console-plugin
-                  purl: pkg:github/kubev2v/forklift-console-plugin@edba5ad58516fd4d876dcd7d64fa7b39cabc1b77
+                  purl: pkg:github/kubev2v/forklift-console-plugin@7ad882965ac01b0c2d8aaeab451f2e0fa868180f
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -113,7 +113,7 @@ contents:
               - deb
             license: Apache-2.0
             name: forklift-console-plugin
-            rel: 7
+            rel: 8
             url: https://github.com/kubev2v/forklift-console-plugin
             version: 2.12.10
       paths:
