@@ -1,13 +1,20 @@
 [
     {
         "package": "undici",
-        "version": "7.29.0",
+        "version": "7.29.1",
         "cves": [
             "CVE-2026-13697",
             "CVE-2026-14643",
             "CVE-2026-15157",
             "CVE-2026-16728",
-            "CVE-2026-16729"
+            "CVE-2026-16729",
+            "CVE-2026-18149",
+            "CVE-2026-19534",
+            "CVE-2026-84890",
+            "CVE-2026-84933",
+            "CVE-2026-84961",
+            "CVE-2026-85014",
+            "CVE-2026-85024"
         ]
     },
     {
@@ -20,11 +27,15 @@
     },
     {
         "package": "ip-address",
-        "version": "10.3.1",
+        "version": "10.7.1",
         "cves": [
             "CVE-2026-69192",
             "CVE-2026-54272",
-            "CVE-2026-69198"
+            "CVE-2026-69198",
+            "CVE-2026-101910",
+            "CVE-2026-101911",
+            "CVE-2026-101912",
+            "CVE-2026-101913"
         ],
         "overridePath": [
             "ip-address"
@@ -32,10 +43,13 @@
     },
     {
         "package": "brace-expansion",
-        "version": "2.1.4",
+        "version": "2.1.7",
         "cves": [
             "CVE-2026-14257",
-            "CVE-2026-69152"
+            "CVE-2026-69152",
+            "CVE-2026-102276",
+            "CVE-2026-102278",
+            "CVE-2026-102277"
         ],
         "overridePath": [
             "brace-expansion@2"
@@ -43,9 +57,12 @@
     },
     {
         "package": "brace-expansion",
-        "version": "5.0.9",
+        "version": "5.0.12",
         "cves": [
-            "CVE-2026-69152"
+            "CVE-2026-69152",
+            "CVE-2026-102276",
+            "CVE-2026-102278",
+            "CVE-2026-102277"
         ],
         "overridePath": [
             "brace-expansion@5"
@@ -53,24 +70,114 @@
     },
     {
         "package": "fast-uri",
-        "version": "3.1.6",
+        "version": "3.1.8",
         "cves": [
             "CVE-2026-18446",
             "CVE-2026-75899",
             "CVE-2026-75931",
             "CVE-2026-75975",
-            "CVE-2026-76172"
+            "CVE-2026-76172",
+            "CVE-2026-84292",
+            "CVE-2026-84394",
+            "CVE-2026-86472"
         ],
         "overridePath": [
             "fast-uri@3"
         ]
     },
     {
+        "package": "fast-uri",
+        "version": "4.2.1",
+        "cves": [
+            "CVE-2026-18446",
+            "CVE-2026-75899",
+            "CVE-2026-75931",
+            "CVE-2026-75975",
+            "CVE-2026-76172",
+            "CVE-2026-84292",
+            "CVE-2026-86472"
+        ],
+        "overridePath": [
+            "fast-uri@4"
+        ]
+    },
+    {
         "package": "fastify",
-        "version": "5.12.1",
+        "version": "5.12.5",
         "cves": [
             "CVE-2026-16732",
-            "CVE-2026-18504"
+            "CVE-2026-18504",
+            "CVE-2026-76169",
+            "CVE-2026-84428",
+            "CVE-2026-84469",
+            "CVE-2026-84504",
+            "CVE-2026-92081"
+        ]
+    },
+    {
+        "package": "@grpc/grpc-js",
+        "version": "1.14.5",
+        "cves": [
+            "CVE-2026-101916"
+        ],
+        "overridePath": [
+            "@grpc/grpc-js"
+        ]
+    },
+    {
+        "package": "@fastify/busboy",
+        "version": "3.2.2",
+        "cves": [
+            "CVE-2026-19481",
+            "CVE-2026-19484",
+            "CVE-2026-74866"
+        ],
+        "overridePath": [
+            "@fastify/busboy"
+        ]
+    },
+    {
+        "package": "@opentelemetry/propagator-jaeger",
+        "version": "2.12.0",
+        "cves": [
+            "CVE-2026-59892"
+        ],
+        "overridePath": [
+            "@opentelemetry/propagator-jaeger"
+        ]
+    },
+    {
+        "package": "@opentelemetry/sdk-node",
+        "version": "0.223.0",
+        "cves": [
+            "CVE-2026-104872"
+        ]
+    },
+    {
+        "package": "@opentelemetry/auto-instrumentations-node",
+        "version": "0.81.0",
+        "cves": [
+            "CVE-2026-104872"
+        ]
+    },
+    {
+        "package": "@opentelemetry/core",
+        "version": "2.12.0",
+        "cves": [
+            "CVE-2026-104872"
+        ],
+        "overridePath": [
+            "@opentelemetry/core"
+        ]
+    },
+    {
+        "package": "fast-copy",
+        "version": "4.1.0",
+        "cves": [
+            "GHSA-jggr-w7fw-pc2j"
+        ],
+        "overridePath": [
+            "fast-copy"
         ]
     },
     {

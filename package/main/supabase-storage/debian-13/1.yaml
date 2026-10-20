@@ -4,9 +4,9 @@ image: dhi.io/pkg-supabase-storage
 variant: runtime
 tags:
   - 1.79.30
-  - 1.79.30-r0
+  - 1.79.30-r1
   - 1.79.30-debian13
-  - 1.79.30-r0-debian13
+  - 1.79.30-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,7 +17,7 @@ vars:
   DHI_TEST_DEB_EXPECTED_FILES: /usr/lib/supabase-storage/dist/start/server.js /usr/lib/supabase-storage/migrations/tenant /usr/lib/supabase-storage/migrations/multitenant /usr/lib/supabase-storage/migrations/vector_store /usr/lib/supabase-storage/package.json /usr/lib/supabase-storage/watt.json /usr/lib/supabase-storage/watt.storage.json /usr/lib/supabase-storage/node_modules/fs-xattr/build/Release/xattr.node
   NODE_ARCH: '#{ target.arch == "amd64" ? "x64" : "arm64" }'
   NODEJS_VERSION: 24.21.0-1
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "1.79"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.79.30
@@ -208,7 +208,7 @@ contents:
               - deb
             license: Apache-2.0
             name: supabase-storage
-            rel: 0
+            rel: 1
             url: https://github.com/supabase/storage
             version: 1.79.30
       paths:
