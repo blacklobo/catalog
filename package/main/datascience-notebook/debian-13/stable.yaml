@@ -4,9 +4,9 @@ image: dhi.io/pkg-datascience-notebook
 variant: runtime
 tags:
   - 2026.07.28
-  - 2026.07.28-r6
+  - 2026.07.28-r7
   - 2026.07.28-debian13
-  - 2026.07.28-r6-debian13
+  - 2026.07.28-r7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -28,7 +28,7 @@ vars:
   MICROMAMBA_VERSION: 2.9.0-0
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "6"
+  REL: "7"
   VERSION: 2026.07.28
 contents:
   repositories:
@@ -148,7 +148,7 @@ contents:
 
             mamba install --yes -c conda-forge \
               fonts-conda-ecosystem \
-              jupyterhub-singleuser \
+              "jupyterhub-singleuser>=6.1.0" \
               jupyterlab \
               nbclassic \
               "notebook>=7.2.2" \
@@ -230,6 +230,9 @@ contents:
 
             /opt/conda/bin/pip install --no-deps --upgrade 'urllib3==2.8.0' # CVE-2026-97687 CVE-2026-97688 CVE-2026-97689
             rm -f /opt/conda/conda-meta/urllib3-2.7.*.json
+
+            /opt/conda/bin/pip install --no-deps --upgrade 'multidict==6.9.1' # CVE-2026-104874
+            rm -f /opt/conda/conda-meta/multidict-6.7.*.json /opt/conda/conda-meta/multidict-6.8.*.json /opt/conda/conda-meta/multidict-6.9.0*.json
 
             /opt/conda/bin/pip install --no-deps --upgrade 'aiohttp>=3.14.0'
             rm -f /opt/conda/conda-meta/aiohttp-3.13.*.json
@@ -389,6 +392,7 @@ contents:
         - name: conda packages sbom
           uses: sbom@v1
           with:
+            extra-scanners: python-package-cataloger,javascript-package-cataloger
             prefix: datascience-notebook-conda
             source: /opt/conda
         - name: create which symlink
@@ -454,7 +458,7 @@ contents:
               - deb
             license: BSD-3-Clause
             name: datascience-notebook
-            rel: 6
+            rel: 7
             url: https://jupyter-docker-stacks.readthedocs.io/
             version: 2026.07.28
 os-release:
