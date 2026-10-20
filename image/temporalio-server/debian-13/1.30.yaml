@@ -18,7 +18,7 @@ dates:
 vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
   COMMIT_SHA: 2710cd3a4d47c6641264b100327342661dc947ed
-  GOLANG_REFERENCE: dhi/golang:1.27.2-debian13-dev@sha256:40fddb9244a96d22d30a3bc2dba2d2f11389bbfdd4cfea1dadf68776a4e897e3
+  GOLANG_REFERENCE: dhi/golang:1.27.2-debian13-dev@sha256:5533f138209a9db91d04cff39d65e36f1bcee76778f5a04127444ef11950dd78
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.30.8
@@ -50,7 +50,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/golang:1.27.2-debian13-dev@sha256:40fddb9244a96d22d30a3bc2dba2d2f11389bbfdd4cfea1dadf68776a4e897e3
+          - name: dhi.io/golang:1.27.2-debian13-dev@sha256:5533f138209a9db91d04cff39d65e36f1bcee76778f5a04127444ef11950dd78
             uid: 0
             gid: 0
       pipeline:
