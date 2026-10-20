@@ -4,9 +4,9 @@ image: dhi.io/pkg-mongodb-mcp
 variant: runtime
 tags:
   - 3.1.0
-  - 3.1.0-r0
+  - 3.1.0-r1
   - 3.1.0-debian13
-  - 3.1.0-r0-debian13
+  - 3.1.0-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,12 +14,16 @@ dates:
   release: "2026-09-17"
 vars:
   COMMIT_SHA: f369482783bdef116c35d352fd9d92f6c984242f
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "3.1"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.1.0
   VERSION: 3.1.0
 contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
     - base-files
   builds:
@@ -70,11 +74,12 @@ contents:
 
             yq -Y -i '.overrides.minimatch = "10.2.6"' pnpm-workspace.yaml                 # CVE-2026-26996, CVE-2026-27903, CVE-2026-27904
             yq -Y -i '.overrides.qs = "6.16.0"' pnpm-workspace.yaml                        # CVE-2026-2391, CVE-2026-8723, CVE-2026-82417, CVE-2026-82562
-            yq -Y -i '.overrides.hono = "4.13.5"' pnpm-workspace.yaml                      # CVE-2026-54290, CVE-2026-54288, CVE-2026-54286, CVE-2026-54287, CVE-2026-54289, CVE-2026-84363, CVE-2026-84364, CVE-2026-84365
+            yq -Y -i '.overrides.hono = "4.13.7"' pnpm-workspace.yaml                      # CVE-2026-54290, CVE-2026-54288, CVE-2026-54286, CVE-2026-54287, CVE-2026-54289, CVE-2026-84363, CVE-2026-84364, CVE-2026-84365, CVE-2026-93981
             yq -Y -i '.overrides."fast-xml-parser" = "5.7.0"' pnpm-workspace.yaml          # CVE-2026-41650
-            yq -Y -i '.overrides."ip-address" = "10.5.1"' pnpm-workspace.yaml              # CVE-2026-69192, CVE-2026-54272, CVE-2026-69198, CVE-2026-101910, CVE-2026-101913
-            yq -Y -i '.overrides."@mongodb-js/socksv5" = "0.0.11"' pnpm-workspace.yaml     # pulls ip-address@10.5.1 (CVE-2026-69192 transitive)
-            yq -Y -i '.overrides."fast-uri" = "3.1.7"' pnpm-workspace.yaml                 # CVE-2026-16221, CVE-2026-18446, CVE-2026-75899, CVE-2026-75931, CVE-2026-75975, CVE-2026-76172, CVE-2026-84394
+            yq -Y -i '.overrides."ip-address" = "10.7.1"' pnpm-workspace.yaml              # CVE-2026-69192, CVE-2026-54272, CVE-2026-69198, CVE-2026-101910, CVE-2026-101913, CVE-2026-101911, CVE-2026-101912
+            yq -Y -i '.overrides."@mongodb-js/socksv5" = "0.0.11"' pnpm-workspace.yaml     # pulls ip-address@10.7.1 (CVE-2026-69192 transitive)
+            yq -Y -i '.overrides."fast-uri" = "3.1.8"' pnpm-workspace.yaml                 # CVE-2026-16221, CVE-2026-18446, CVE-2026-75899, CVE-2026-75931, CVE-2026-75975, CVE-2026-76172, CVE-2026-84394, CVE-2026-86472
+            yq -Y -i '.overrides."basic-ftp" = "6.2.1"' pnpm-workspace.yaml                # CVE-2026-102990
             yq -Y -i '.overrides."@hono/node-server" = "1.19.15"' pnpm-workspace.yaml      # GHSA-frvp-7c67-39w9
             yq -Y -i '.overrides."hono>@hono/node-server" = "1.19.15"' pnpm-workspace.yaml # GHSA-frvp-7c67-39w9
         - name: build and stage payload
@@ -112,7 +117,7 @@ contents:
               - deb
             license: Apache-2.0
             name: mongodb-mcp
-            rel: 0
+            rel: 1
             url: https://github.com/mongodb-js/mongodb-mcp-server
             version: 3.1.0
 os-release:
