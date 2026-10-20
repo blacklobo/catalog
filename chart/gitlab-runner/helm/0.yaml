@@ -15,8 +15,8 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GITLAB_RUNNER_HELPER_REFERENCE: dhi/gitlab-runner-helper:19.5.0-debian13@sha256:1fb09712d0e79c428ec371c84ca5c301484694e8d27069454644cae7332d3430
-  GITLAB_RUNNER_REFERENCE: dhi/gitlab-runner:19.5.0-debian13@sha256:90777c6a265d8599e60b0b7f7f0a5f9fb8ad8570d23193396e4a3fd981b5017e
+  GITLAB_RUNNER_HELPER_REFERENCE: dhi/gitlab-runner-helper:19.5.0-debian13@sha256:d3b4ee6b9a3213e92aa04e55332c15d8f4b5b4bcfa322cd8cda5f6dbcbe73224
+  GITLAB_RUNNER_REFERENCE: dhi/gitlab-runner:19.5.0-debian13@sha256:46bcc99c2a5596ad18bc988bcd054e9823478e5e553b8b3b6625487c64e619ef
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "0.94"
   SEMVER_MAJOR_VERSION: "0"
@@ -52,9 +52,9 @@ contents:
               description: Docker Hardened Images Helm chart for GitLab Runner
               images:
                 - name: gitlab-runner
-                  ref: dhi/gitlab-runner:19.5.0-debian13@sha256:90777c6a265d8599e60b0b7f7f0a5f9fb8ad8570d23193396e4a3fd981b5017e
+                  ref: dhi/gitlab-runner:19.5.0-debian13@sha256:46bcc99c2a5596ad18bc988bcd054e9823478e5e553b8b3b6625487c64e619ef
                 - name: gitlab-runner-helper
-                  ref: dhi/gitlab-runner-helper:19.5.0-debian13@sha256:1fb09712d0e79c428ec371c84ca5c301484694e8d27069454644cae7332d3430
+                  ref: dhi/gitlab-runner-helper:19.5.0-debian13@sha256:d3b4ee6b9a3213e92aa04e55332c15d8f4b5b4bcfa322cd8cda5f6dbcbe73224
                 - name: busybox
                   ref: dhi/busybox:1.37.0-alpine3.22@sha256:c1011eab944f17e619ce982878ea8d52cc36c67325ab374f4ad2a344a6c03786
               name: gitlab-runner-chart
