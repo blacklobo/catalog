@@ -18,7 +18,7 @@ vars:
   CILIUM_DNSPROXY_REFERENCE: dhi/cilium-dnsproxy:1.20.3-debian13@sha256:56af01159f0fc475780c7f98742fe7709cdc81d6aa4aa369338db12cbdc69d6c
   CILIUM_ENVOY_REFERENCE: dhi/cilium-envoy:1.20.2-debian13-compat@sha256:93925c1ee6bd07a5cc938dc125e77e0e01443683a63d0e3071c1ccdd3463c3b6
   CILIUM_OPERATOR_REFERENCE: dhi/cilium-operator:1.20.3-debian13@sha256:0f7e1d755be63539f44118d5a64c742caf71b2a6f6fb9257637a807e35020281
-  CILIUM_REFERENCE: dhi/cilium:1.20.3-debian13@sha256:729fdacafcf5e05e64de86e63c71c1ff21f44efcc1877fdad4326fb1dd36654b
+  CILIUM_REFERENCE: dhi/cilium:1.20.3-debian13@sha256:6b86720bbcfdf1a03dd48f6fae95861456f62257bc1c9bad1428ae9bdfa237c8
   CILIUM_STARTUP_SCRIPT_REFERENCE: dhi/cilium-startup-script:0.20261002-debian13@sha256:050eaf734356634af5ce0fe876f7ef0a7e843bc4b189dfb9b364a52b3659ea06
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -65,7 +65,7 @@ contents:
               description: Docker Hardened Images Helm chart for Cilium
               images:
                 - name: cilium
-                  ref: dhi/cilium:1.20.3-debian13@sha256:729fdacafcf5e05e64de86e63c71c1ff21f44efcc1877fdad4326fb1dd36654b
+                  ref: dhi/cilium:1.20.3-debian13@sha256:6b86720bbcfdf1a03dd48f6fae95861456f62257bc1c9bad1428ae9bdfa237c8
                 - name: cilium-operator
                   ref: dhi/cilium-operator:1.20.3-debian13@sha256:0f7e1d755be63539f44118d5a64c742caf71b2a6f6fb9257637a807e35020281
                 - name: hubble-relay
