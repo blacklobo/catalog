@@ -15,8 +15,8 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_DIGEST: sha256:924e476ae0224458ae7771acfb6d182051365d67e0cb6fa2ce12b52415eb575f
-  KUBECTL_REFERENCE: dhi/kubectl:1.34.12-debian13-compat@sha256:924e476ae0224458ae7771acfb6d182051365d67e0cb6fa2ce12b52415eb575f
+  KUBECTL_DIGEST: sha256:e7e5688f314f6c1305e68706ce69ea06f3abb8dd4b16fd765d4ef3e91d7e4dc1
+  KUBECTL_REFERENCE: dhi/kubectl:1.34.12-debian13-compat@sha256:e7e5688f314f6c1305e68706ce69ea06f3abb8dd4b16fd765d4ef3e91d7e4dc1
   KUBECTL_TAG: 1.34.12-debian13-compat
   SEMVER_MAJOR_MINOR_VERSION: "1.8"
   SEMVER_MAJOR_VERSION: "1"
@@ -57,7 +57,7 @@ contents:
                 - name: spark-kubernetes-operator
                   ref: dhi/spark-kubernetes-operator:1.0.0-debian13@sha256:2112cb81b6180cf8fc6abac6464b722bd79f662b9f8abf7feb40ffa559a4234c
                 - name: kubectl
-                  ref: dhi/kubectl:1.34.12-debian13-compat@sha256:924e476ae0224458ae7771acfb6d182051365d67e0cb6fa2ce12b52415eb575f
+                  ref: dhi/kubectl:1.34.12-debian13-compat@sha256:e7e5688f314f6c1305e68706ce69ea06f3abb8dd4b16fd765d4ef3e91d7e4dc1
               name: spark-kubernetes-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/apache/spark-kubernetes-operator
@@ -67,7 +67,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            sed -i 's|bitnamisecure/kubectl:latest|dhi.io/kubectl:1.34.12-debian13-compat@sha256:924e476ae0224458ae7771acfb6d182051365d67e0cb6fa2ce12b52415eb575f|' templates/tests/test-rbac.yaml
+            sed -i 's|bitnamisecure/kubectl:latest|dhi.io/kubectl:1.34.12-debian13-compat@sha256:e7e5688f314f6c1305e68706ce69ea06f3abb8dd4b16fd765d4ef3e91d7e4dc1|' templates/tests/test-rbac.yaml
         - name: relocate chart
           uses: helm/rudder@v1
           with:
