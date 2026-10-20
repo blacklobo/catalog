@@ -35,8 +35,16 @@ fi
 export npm_config_build_from_source=true
 
 # pnpm is the version the packageManager field of package.json pins.
-corepack enable
-corepack prepare --activate
+# Debian's node-corepack activates that pin. Alpine installs the same pin
+# with npm: the corepack apk depends on the nodejs virtual, which nodejs-26
+# also provides, so it cannot be installed beside pinned nodejs-22.
+if command -v corepack >/dev/null 2>&1; then
+  corepack enable
+  corepack prepare --activate
+else
+  pnpm_version="$(node -p 'require("./package.json").packageManager.split("@")[1].split("+")[0]')"
+  npm install -g "pnpm@${pnpm_version}"
+fi
 pnpm --version
 
 # pnpm installs both libc flavours of every platform binding here, so the leaf
@@ -63,10 +71,24 @@ node -e '
     "axios-cache-interceptor": "1.12.3", // typed against axios 1.19+, needed to compile update-check with axios 1.20
     "brace-expansion@5": "5.0.12", // CVE-2026-102276, CVE-2026-102277, CVE-2026-102278
     "ip-address@10": "10.7.1", // CVE-2026-101911, CVE-2026-101912
+    "@simple-git/argv-parser": "2.0.1", // CVE-2026-102829
+    "proxy-addr": "2.0.8", // CVE-2026-90711
+    "sharp": "0.35.5", // GHSA-wq5f-xc86-pv6w
+    "simple-git": "4.0.1", // CVE-2026-102828, CVE-2026-102826, CVE-2026-102827
+    "source-map-js": "1.2.2", // CVE-2026-93749
     "nodemailer": "10.0.9", // CVE-2026-100699, CVE-2026-100700
   };
   const rootFile = "package.json";
   const root = JSON.parse(fs.readFileSync(rootFile, "utf8"));
+  const directusVersion = JSON.parse(fs.readFileSync("directus/package.json", "utf8")).version;
+  if (typeof directusVersion !== "string" || directusVersion.length === 0) {
+    throw new Error("directus/package.json has no version; cannot scope the @modelcontextprotocol/sdk pin");
+  }
+  // CVE-2026-104850 is fixed in 1.31.0. Directus 12.5.0 already depends on
+  // 1.32.1, so forcing 1.31.0 would downgrade that line. 12.4.1 still resolves 1.30.0.
+  if (directusVersion.startsWith("12.4.")) {
+    overrides["@modelcontextprotocol/sdk"] = "1.31.0"; // CVE-2026-104850
+  }
   root.pnpm = root.pnpm || {};
   Object.assign(root.pnpm.overrides = root.pnpm.overrides || {}, overrides);
   fs.writeFileSync(rootFile, JSON.stringify(root, null, "\t") + "\n");
@@ -128,9 +150,14 @@ cd dist
 # with the toolchain of this build, so the shipped binary has a source path.
 # node-gyp comes from the workspace install (sqlite3 depends on it), with the
 # copy pnpm bundles as the fallback; the distro npm packages place it under
-# different prefixes, so npm root -g is not a stable way to find it. Only the
-# built addon is kept; node-gyp's object files and Makefiles are not payload.
-node_gyp=$(find "${SOURCE_DIR}/directus/node_modules/.pnpm" /root/.cache/node/corepack -path '*/node_modules/node-gyp/bin/node-gyp.js' 2>/dev/null | sed -n '1p')
+# different prefixes, so npm root -g is not a stable way to find it. find
+# exits 1 when a starting path is missing, and Alpine has no corepack cache,
+# so that directory is searched only when it exists. Only the built addon is
+# kept; node-gyp's object files and Makefiles are not payload.
+node_gyp=$(find "${SOURCE_DIR}/directus/node_modules/.pnpm" -path '*/node_modules/node-gyp/bin/node-gyp.js' -print -quit)
+if [ -z "${node_gyp}" ] && [ -d /root/.cache/node/corepack ]; then
+  node_gyp=$(find /root/.cache/node/corepack -path '*/node_modules/node-gyp/bin/node-gyp.js' -print -quit)
+fi
 test -n "${node_gyp}"
 argon2_dir=$(find node_modules -type d -name argon2 -exec test -f '{}/argon2.cjs' ';' -print | sed -n '1p')
 test -n "${argon2_dir}"

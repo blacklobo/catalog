@@ -1,13 +1,17 @@
 Origin: DHI-internal (Directus package build harness)
-Description: Keep the Directus 12.4 security pins while accepting the newer
+Description: Keep the Directus 12.4 catalog pins while accepting the newer
  nodemailer and undici catalog versions shipped by Directus 12.5.
+ The hunks apply to package/main/directus/build.sh in this repository.
 Upstream catalog: https://github.com/directus/directus/blob/v12.5.0/pnpm-workspace.yaml
+Base-Tree: git https://github.com/docker-hardened-images/definitions c30ca203b7fd470d72a2a55ed21c467f1e7b509e path=package/main/directus
+Verify: cmd `patch --dry-run -p1 --fuzz=0 --verbose -d package/main/directus -i debian-13/dhi-build-current-catalog-versions.patch` expect "Hunk #1 succeeded at 64."
 Forwarded: not-needed (version-transition compatibility in the DHI build)
+Drop-When: never: delete only after build.sh itself accepts nodemailer 10.0.15 and undici 7.30.0 without this debian-only delta
 
 diff --git a/build.sh b/build.sh
 --- a/build.sh
 +++ b/build.sh
-@@ -56,6 +56,8 @@ export DHI_LIBC
+@@ -64,6 +64,8 @@
  # reflect, so the lockfile is regenerated for these edits first.
  node -e '
    const fs = require("node:fs");
@@ -16,15 +20,17 @@ diff --git a/build.sh b/build.sh
    const overrides = {
      "fast-uri@3": "3.1.8", // CVE-2026-75899, CVE-2026-75931, CVE-2026-75975, CVE-2026-76172, GHSA-qw65-cvwx-89v3, GHSA-58mr-gqgx-xq4g, GHSA-hrr3-gc8f-f4qj
      "axios": "1.20.0", // CVE-2026-101898, CVE-2026-101899, CVE-2026-101900, CVE-2026-101901, CVE-2026-101902, CVE-2026-101903, CVE-2026-101904, CVE-2026-101905, CVE-2026-101906, CVE-2026-101907, CVE-2026-101908, CVE-2026-101909
-@@ -63,22 +65,21 @@ node -e '
-     "axios-cache-interceptor": "1.12.3", // typed against axios 1.19+, needed to compile update-check with axios 1.20
-     "brace-expansion@5": "5.0.12", // CVE-2026-102276, CVE-2026-102277, CVE-2026-102278
-     "ip-address@10": "10.7.1", // CVE-2026-101911, CVE-2026-101912
+@@ -76,8 +78,8 @@
+     "sharp": "0.35.5", // GHSA-wq5f-xc86-pv6w
+     "simple-git": "4.0.1", // CVE-2026-102828, CVE-2026-102826, CVE-2026-102827
+     "source-map-js": "1.2.2", // CVE-2026-93749
 -    "nodemailer": "10.0.9", // CVE-2026-100699, CVE-2026-100700
    };
 +  if (ws.includes("\n  nodemailer: 10.0.1\n")) overrides.nodemailer = "10.0.9"; // CVE-2026-100699, CVE-2026-100700
    const rootFile = "package.json";
    const root = JSON.parse(fs.readFileSync(rootFile, "utf8"));
+   const directusVersion = JSON.parse(fs.readFileSync("directus/package.json", "utf8")).version;
+@@ -92,15 +94,14 @@
    root.pnpm = root.pnpm || {};
    Object.assign(root.pnpm.overrides = root.pnpm.overrides || {}, overrides);
    fs.writeFileSync(rootFile, JSON.stringify(root, null, "\t") + "\n");
