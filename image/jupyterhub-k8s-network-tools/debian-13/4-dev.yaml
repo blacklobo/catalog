@@ -6,13 +6,13 @@ variant: dev
 tags:
   - 4-dev
   - 4.4-dev
-  - 4.4.2-dev
+  - 4.4.3-dev
   - 4-debian-dev
   - 4-debian13-dev
   - 4.4-debian-dev
   - 4.4-debian13-dev
-  - 4.4.2-debian-dev
-  - 4.4.2-debian13-dev
+  - 4.4.3-debian-dev
+  - 4.4.3-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,9 +22,9 @@ vars:
   FLAVORED_SUFFIX: -dev
   SEMVER_MAJOR_MINOR_VERSION: "4.4"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.4.2
+  SEMVER_VERSION: 4.4.3
   SUFFIX: -dev
-  VERSION: 4.4.2
+  VERSION: 4.4.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -73,17 +73,6 @@ os-release:
   bug-report-url: https://docker.com/support/
 environment:
   DEBIAN_FRONTEND: noninteractive
-paths:
-  - type: symlink
-    path: /usr/sbin/iptables
-    uid: 0
-    gid: 0
-    source: /usr/sbin/iptables-nft
-  - type: symlink
-    path: /usr/sbin/ip6tables
-    uid: 0
-    gid: 0
-    source: /usr/sbin/ip6tables-nft
 annotations:
   org.opencontainers.image.description: A minimal jupyterhub-k8s-network-tools image
   org.opencontainers.image.licenses: BSD-3-Clause
