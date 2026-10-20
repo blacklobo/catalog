@@ -4,11 +4,11 @@ name: Vector Helm chart 0.x
 image: dhi.io/vector-chart
 variant: helm
 tags:
-  - 0.59.0
+  - 0.60.0
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 5ffd3bae42c0afcc219789bf3ebffb1b89e46b11
+  CHART_COMMIT_SHA: 77482149811aa321653b9a05d715f56d22185c19
   CHART_HELM_NAME: vector-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -16,11 +16,11 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HAPROXY_REFERENCE: dhi/haproxy:3.0.30-debian13@sha256:5c7f85e141510bf819bacf2aef5656a61d9e2c72892283ca38f319392f3c96f8
   HELM_VERSION: 4.1.4-2
-  SEMVER_MAJOR_MINOR_VERSION: "0.59"
+  SEMVER_MAJOR_MINOR_VERSION: "0.60"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.59.0
-  VECTOR_REFERENCE: dhi/vector:0.58.0-debian13@sha256:01195da95384a879a724f66d4016e1eec83c3d3e34d4784e6490a3a1f18982e1
-  VERSION: 0.59.0
+  SEMVER_VERSION: 0.60.0
+  VECTOR_REFERENCE: dhi/vector:0.58.0-debian13@sha256:75f50bdf9dd1a585216e9b4cbb9d64dde5b24a19648ab907693827d34ec5e1bb
+  VERSION: 0.60.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/vectordotdev/helm-charts.git#vector-0.59.0
-            checksum: 5ffd3bae42c0afcc219789bf3ebffb1b89e46b11
+          - url: git+https://github.com/vectordotdev/helm-charts.git#vector-0.60.0
+            checksum: 77482149811aa321653b9a05d715f56d22185c19
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for Vector
               images:
                 - name: vector
-                  ref: dhi/vector:0.58.0-debian13@sha256:01195da95384a879a724f66d4016e1eec83c3d3e34d4784e6490a3a1f18982e1
+                  ref: dhi/vector:0.58.0-debian13@sha256:75f50bdf9dd1a585216e9b4cbb9d64dde5b24a19648ab907693827d34ec5e1bb
                 - name: haproxy
                   ref: dhi/haproxy:3.0.30-debian13@sha256:5c7f85e141510bf819bacf2aef5656a61d9e2c72892283ca38f319392f3c96f8
               name: vector-chart
