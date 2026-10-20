@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  ISTIO_INSTALL_CNI_REFERENCE: dhi/istio-install-cni:1.30.6-debian13@sha256:367d63d6ad91f6ff358caac6ed2598e5365d7a17e5fc22dd5675c9348f4592db
+  ISTIO_INSTALL_CNI_REFERENCE: dhi/istio-install-cni:1.30.6-debian13@sha256:bee9268e20567a037430f0934c43f7327167d7608811aa1fd5163640ad43c59a
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.30.6
@@ -47,7 +47,7 @@ contents:
               description: Docker Hardened Images Helm chart for Istio CNI
               images:
                 - name: istio-install-cni
-                  ref: dhi/istio-install-cni:1.30.6-debian13@sha256:367d63d6ad91f6ff358caac6ed2598e5365d7a17e5fc22dd5675c9348f4592db
+                  ref: dhi/istio-install-cni:1.30.6-debian13@sha256:bee9268e20567a037430f0934c43f7327167d7608811aa1fd5163640ad43c59a
               name: istio-cni-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/istio/istio
