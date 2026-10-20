@@ -4,14 +4,15 @@ image: dhi.io/pkg-ghostscript
 variant: runtime
 tags:
   - 10.06.0-alpine3.23
-  - 10.06.0-r0-alpine3.23
+  - 10.06.0-r1-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
+  _REL: "0"
   COMMIT_SHA: 4c2ad606657dfa32733f8a1c28fd884af5806203
   PACKAGE_NAME: main/ghostscript
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "10.06"
   SEMVER_MAJOR_VERSION: "10"
   SEMVER_VERSION: 10.06.0
@@ -56,7 +57,24 @@ contents:
             gid: 0
       pipeline:
         - uses: abuild/setup@v1
+        - runs: |
+            set -eux -o pipefail
+
+            sed -i '/^source=/,/^\t"$/s/^\t"$/"/' APKBUILD
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-39919-sjpx-openjpeg.patch
+        - uses: abuild/bump@v1
+          with:
+            rel: 1
         - uses: abuild/build@v1
+      paths:
+        - type: file
+          path: ${source.dir}/aports/main/ghostscript/dhi-cve-2026-39919-sjpx-openjpeg.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/ghostscript/patch/dhi-cve-2026-39919-sjpx-openjpeg.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
