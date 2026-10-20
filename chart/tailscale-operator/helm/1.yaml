@@ -19,7 +19,7 @@ vars:
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.104.1
   TAILSCALE_OPERATOR_REFERENCE: dhi/tailscale-operator:1.104.1-debian13@sha256:80d4b9eb5843a894358df90db19ed6cccaea44d9d03566630d51e04b6f45d193
-  TAILSCALE_REFERENCE: dhi/tailscale:1.104.1-debian13@sha256:edd3f21753cf205327ca101a3cab449d8ec959f888ea2955737ce4a1e5173260
+  TAILSCALE_REFERENCE: dhi/tailscale:1.104.1-debian13@sha256:f28e2383faafa8185a6de1fefdedce921bf1396a461929c8357cf8a757a6b343
   VERSION: 1.104.1
 contents:
   repositories:
@@ -52,7 +52,7 @@ contents:
                 - name: tailscale-operator
                   ref: dhi/tailscale-operator:1.104.1-debian13@sha256:80d4b9eb5843a894358df90db19ed6cccaea44d9d03566630d51e04b6f45d193
                 - name: tailscale
-                  ref: dhi/tailscale:1.104.1-debian13@sha256:edd3f21753cf205327ca101a3cab449d8ec959f888ea2955737ce4a1e5173260
+                  ref: dhi/tailscale:1.104.1-debian13@sha256:f28e2383faafa8185a6de1fefdedce921bf1396a461929c8357cf8a757a6b343
               name: tailscale-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/tailscale/tailscale
