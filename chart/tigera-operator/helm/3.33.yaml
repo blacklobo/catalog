@@ -9,7 +9,7 @@ platforms:
   - linux/amd64
 vars:
   CALICO_CALICO_REFERENCE: dhi/calico-calico:3.33.0-debian13@sha256:6d86e29568a6d8bc283d121a5248df1774e55f107f364ca09c7a190d4f88c5b4
-  CALICO_NODE_REFERENCE: dhi/calico-node:3.33.0-debian13@sha256:e4b22abf711ef60f4231b393fa1dc659f0126f4005516f1ea56ece6cf2822395
+  CALICO_NODE_REFERENCE: dhi/calico-node:3.33.0-debian13@sha256:4d9d1d3fcbc56e8593ba6a5c671e9ead04f234964361947ac628cc4feef8386c
   CALICO_THIRD_PARTY_CNI_PLUGINS_REFERENCE: dhi/calico-third-party-cni-plugins:3.33.0-debian13@sha256:72c375d64a8d1fd97502d11806ca0e763dad87c212ed3a2bba679b0ff90c29c0
   CALICO_WHISKER_REFERENCE: dhi/calico-whisker:3.33.0-debian13@sha256:2862bc6e4d8b720cbb04527bbb5c0d0d375e0c3620a6e6783362bf2b4c8247b8
   CHART_COMMIT_SHA: fbaa371111636a37ecc82625fce8453064a7fff2
@@ -59,7 +59,7 @@ contents:
                 - name: calico-calico
                   ref: dhi/calico-calico:3.33.0-debian13@sha256:6d86e29568a6d8bc283d121a5248df1774e55f107f364ca09c7a190d4f88c5b4
                 - name: calico-node
-                  ref: dhi/calico-node:3.33.0-debian13@sha256:e4b22abf711ef60f4231b393fa1dc659f0126f4005516f1ea56ece6cf2822395
+                  ref: dhi/calico-node:3.33.0-debian13@sha256:4d9d1d3fcbc56e8593ba6a5c671e9ead04f234964361947ac628cc4feef8386c
                 - name: calico-whisker
                   ref: dhi/calico-whisker:3.33.0-debian13@sha256:2862bc6e4d8b720cbb04527bbb5c0d0d375e0c3620a6e6783362bf2b4c8247b8
                 - name: calico-third-party-cni-plugins
