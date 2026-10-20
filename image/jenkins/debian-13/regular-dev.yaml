@@ -4,14 +4,14 @@ name: Jenkins 2.x (weekly) (dev)
 image: dhi.io/jenkins
 variant: dev
 tags:
-  - 2.586-dev
-  - 2.586-debian-dev
-  - 2.586-debian13-dev
+  - 2.587-dev
+  - 2.587-debian-dev
+  - 2.587-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 8534fcc9125062b7acb0cce78c02d3d7e41c15f8
+  COMMIT_SHA: 9626398d75cbd86bd28822a64b86fb8e7da11872
   DOCKER_REPO_COMMIT_SHA: a92354bb17c840615bc94baf4c0b8662586dfa76
   DOCKER_REPO_VERSION: "2.586"
   JAVA_FIPS_SUFFIX: ""
@@ -19,11 +19,11 @@ vars:
   JAVA_MAJOR_VERSION: "21"
   JAVA_VARIANT: jdk
   JDK_MAJOR_VERSION: "21"
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:656c9e4b0253d864c3b1a1db680e7ee899c3743540f64c95db017a5fbcf2ea21
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
   MAVEN_VERSION: 3.10.0
-  SEMVER_MAJOR_MINOR_VERSION: "2.586"
+  SEMVER_MAJOR_MINOR_VERSION: "2.587"
   SEMVER_MAJOR_VERSION: "2"
-  VERSION: "2.586"
+  VERSION: "2.587"
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -107,15 +107,15 @@ contents:
           - zip
           - xmlstarlet
         files:
-          - url: git+https://github.com/jenkinsci/jenkins.git#jenkins-2.586
-            checksum: 8534fcc9125062b7acb0cce78c02d3d7e41c15f8
+          - url: git+https://github.com/jenkinsci/jenkins.git#jenkins-2.587
+            checksum: 9626398d75cbd86bd28822a64b86fb8e7da11872
             path: ${source.dir}/jenkins
             spdx:
               name: jenkins
-              version: "2.586"
+              version: "2.587"
               packages:
                 - name: jenkins
-                  purl: pkg:dhi/jenkins@2.586
+                  purl: pkg:dhi/jenkins@2.587
                   license: MIT
             uid: 0
             gid: 0
@@ -137,7 +137,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:656c9e4b0253d864c3b1a1db680e7ee899c3743540f64c95db017a5fbcf2ea21
+          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
             includes:
               - opt/**
               - usr/local/bin/**
@@ -249,7 +249,7 @@ environment:
   JENKINS_SLAVE_AGENT_PORT: "50000"
   JENKINS_UC: https://updates.jenkins.io
   JENKINS_UC_EXPERIMENTAL: https://updates.jenkins.io/experimental
-  JENKINS_VERSION: "2.586"
+  JENKINS_VERSION: "2.587"
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
