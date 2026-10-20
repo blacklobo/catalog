@@ -22,7 +22,7 @@ vars:
   JAVA_HOME: /usr/lib/jvm/temurin-21
   JAVA_VARIANT: jdk
   JDK_MAJOR_VERSION: "21"
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:656c9e4b0253d864c3b1a1db680e7ee899c3743540f64c95db017a5fbcf2ea21
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
   MAVEN_VERSION: 3.10.0
   SEMVER_MAJOR_MINOR_VERSION: "37.0"
   SEMVER_MAJOR_VERSION: "37"
@@ -95,7 +95,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:656c9e4b0253d864c3b1a1db680e7ee899c3743540f64c95db017a5fbcf2ea21
+          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
             includes:
               - opt/**
               - usr/local/bin/**
