@@ -17,7 +17,7 @@ vars:
   HELM_VERSION: 4.1.4-2
   KEDA_ADMISSION_WEBHOOKS_REFERENCE: dhi/keda-admission-webhooks:2.21.0-debian13@sha256:1bf304520c8719083519f4988b9cd1c4d3846abe2af773562499d8b543f321da
   KEDA_METRICS_APISERVER_REFERENCE: dhi/keda-metrics-apiserver:2.21.0-debian13@sha256:73275e5836470164798153b4a0cb1302e70311af7a3b7c36d798f89e20e34adb
-  KEDA_REFERENCE: dhi/keda:2.21.0-debian13@sha256:3533a432f4002077adfe369121bf9257eec03a12b2940419ea52b429539c827e
+  KEDA_REFERENCE: dhi/keda:2.21.0-debian13@sha256:7217391951d4ae408e969d5357ff4017b1437da21b8b9baf77a64152c963fd93
   SEMVER_MAJOR_MINOR_VERSION: "2.21"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.21.0
@@ -51,7 +51,7 @@ contents:
               description: Docker Hardened Images Helm chart for KEDA
               images:
                 - name: keda
-                  ref: dhi/keda:2.21.0-debian13@sha256:3533a432f4002077adfe369121bf9257eec03a12b2940419ea52b429539c827e
+                  ref: dhi/keda:2.21.0-debian13@sha256:7217391951d4ae408e969d5357ff4017b1437da21b8b9baf77a64152c963fd93
                 - name: keda-admission-webhooks
                   ref: dhi/keda-admission-webhooks:2.21.0-debian13@sha256:1bf304520c8719083519f4988b9cd1c4d3846abe2af773562499d8b543f321da
                 - name: keda-metrics-apiserver
