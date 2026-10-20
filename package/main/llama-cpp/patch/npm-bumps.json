@@ -14,7 +14,7 @@
   { "package": "browserslist", "version": "4.28.7", "overridePath": ["browserslist"] },
   { "package": "devalue", "version": "5.9.3", "overridePath": ["devalue"] },
   { "package": "fast-uri", "version": "3.1.8", "overridePath": ["fast-uri"] },
-  { "package": "hono", "version": "4.13.7", "overridePath": ["hono"] },
+  { "package": "hono", "version": "4.13.11", "overridePath": ["hono"] },
   { "package": "ip-address", "version": "10.7.1", "overridePath": ["ip-address"] },
   { "package": "js-yaml", "version": "4.3.2", "overridePath": ["js-yaml"] },
   { "package": "katex", "version": "0.18.2", "overridePath": ["katex"] },
