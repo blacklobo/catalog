@@ -4,9 +4,9 @@ image: dhi.io/pkg-druid
 variant: runtime
 tags:
   - 37.0.0
-  - 37.0.0-r19
+  - 37.0.0-r20
   - 37.0.0-debian13
-  - 37.0.0-r19-debian13
+  - 37.0.0-r20-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -25,7 +25,7 @@ vars:
   NODEJS_VERSION: 24.22.0-0
   PACKAGE_HOME: /usr/share/druid
   PACKAGE_NAME: druid-37
-  REL: "19"
+  REL: "20"
   SEMVER_MAJOR_MINOR_VERSION: "37.0"
   SEMVER_MAJOR_VERSION: "37"
   SEMVER_VERSION: 37.0.0
@@ -138,6 +138,11 @@ contents:
             downgrade: false
             mvn-root: ${source.dir}/druid
             properties: ${source.dir}/patch/mvn-properties-37.0.json
+        - name: backport libthrift 0.24 compatibility
+          uses: git/patch@v1
+          work-dir: ${source.dir}/druid
+          with:
+            patch: ${source.dir}/patch/libthrift-0.24-compat.patch
         - name: bump vertx-core for CVE-2026-6860 and CVE-2026-1002
           uses: git/patch@v1
           work-dir: ${source.dir}/druid
@@ -148,43 +153,21 @@ contents:
             set -eux -o pipefail
 
             EXCLUDE_MODULES=(
-              "extensions-contrib/ambari-metrics-emitter"
               "extensions-contrib/cassandra-storage"
               "extensions-contrib/aliyun-oss-extensions"
               "extensions-contrib/cloudfiles-extensions"
-              "extensions-contrib/graphite-emitter"
-              "extensions-contrib/redis-cache"
-              "extensions-contrib/thrift-extensions"
-              "extensions-contrib/druid-iceberg-extensions"
-              "extensions-contrib/druid-deltalake-extensions"
-              "extensions-contrib/druid-ranger-security"
               "extensions-core/testing-tools"
               "extensions-core/hdfs-storage"
               "extensions-core/druid-kerberos"
-              "extensions-core/avro-extensions"
-              "extensions-core/orc-extensions"
-              "extensions-core/parquet-extensions"
-              "extensions-core/druid-pac4j"
             )
 
             EXCLUDE_ARTIFACTS=(
-              "ambari-metrics-emitter"
               "druid-cassandra-storage"
               "druid-cloudfiles-extensions"
               "aliyun-oss-extensions"
-              "graphite-emitter"
-              "druid-redis-cache"
-              "druid-thrift-extensions"
-              "druid-iceberg-extensions"
-              "druid-deltalake-extensions"
-              "druid-ranger-security"
               "druid-testing-tools"
               "druid-hdfs-storage"
               "druid-kerberos"
-              "druid-avro-extensions"
-              "druid-orc-extensions"
-              "druid-parquet-extensions"
-              "druid-pac4j"
             )
 
             for m in "${EXCLUDE_MODULES[@]}"; do
@@ -231,23 +214,12 @@ contents:
             set -eux -o pipefail
 
             for ext in \
-              ambari-metrics-emitter \
               druid-testing-tools \
               druid-cassandra-storage \
               aliyun-oss-extensions \
               druid-cloudfiles-extensions \
-              graphite-emitter \
-              druid-redis-cache \
-              druid-thrift-extensions \
-              druid-iceberg-extensions \
-              druid-deltalake-extensions \
-              druid-ranger-security \
               druid-hdfs-storage \
-              druid-kerberos \
-              druid-avro-extensions \
-              druid-orc-extensions \
-              druid-parquet-extensions \
-              druid-pac4j; do
+              druid-kerberos; do
               rm -rf "${target.dir}/usr/share/druid/extensions/${ext}"
 
               find "${target.dir}/usr/share/druid/conf" \
@@ -258,11 +230,6 @@ contents:
                 -e "s/\"${ext}\"//g" \
                 {} +
             done
-        - name: remove hadoop dependencies
-          runs: |
-            set -eux -o pipefail
-
-            rm -rf "${target.dir}/usr/share/druid/hadoop-dependencies"
         - name: remove legacy transitive jars
           runs: |
             set -eux -o pipefail
@@ -310,7 +277,7 @@ contents:
               - deb
             license: Apache-2.0
             name: druid-37
-            rel: 19
+            rel: 20
             url: https://druid.apache.org/
             version: 37.0.0
         - name: fipsify
@@ -344,7 +311,7 @@ contents:
               - deb
             license: Apache-2.0
             name: druid-37-fips
-            rel: 19
+            rel: 20
             url: https://druid.apache.org/
             version: 37.0.0
       paths:
@@ -358,6 +325,16 @@ contents:
           uid: 0
           gid: 0
           source: package/main/druid/patch/mvn-deps-37.0.json
+        - type: file
+          path: ${source.dir}/patch/libthrift-0.24-compat.patch
+          uid: 0
+          gid: 0
+          source: package/main/druid/patch/libthrift-0.24-compat.patch
+        - type: file
+          path: ${source.dir}/patch/mvn-properties-parquet-36.0.json
+          uid: 0
+          gid: 0
+          source: package/main/druid/patch/mvn-properties-parquet-36.0.json
         - type: file
           path: ${source.dir}/patch/vertx-core-37.0.patch
           uid: 0
