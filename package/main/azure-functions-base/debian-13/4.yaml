@@ -4,9 +4,9 @@ image: dhi.io/pkg-azure-functions-base
 variant: runtime
 tags:
   - 4.1055.100
-  - 4.1055.100-r2
+  - 4.1055.100-r3
   - 4.1055.100-debian13
-  - 4.1055.100-r2-debian13
+  - 4.1055.100-r3-debian13
 platforms:
   - linux/amd64
 vars:
@@ -15,16 +15,16 @@ vars:
   DOTNET_8_VERSION: 8.0.426-0
   DOTNET_10_VERSION: 10.0.402-0
   DOTNET_RUNTIME_VERSION: 10.0.13
-  EXT_BUNDLE_COMMIT_SHA: 1e67550bb52fdd95787452de913fbe4ec06c1d93
-  EXT_BUNDLE_VERSION: 4.40.0
+  EXT_BUNDLE_COMMIT_SHA: 1d9352e3b1e4349d2723df2e64b8572bdec246a6
+  EXT_BUNDLE_VERSION: 4.41.0
   PACKAGE_NAME: azure-functions-base-4
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "4.1055"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.1055.100
-  TEMPLATES_BUILDID: "309389"
-  TEMPLATES_COMMIT: eed5195218cd6059e0f96e0e1654c1501047a8c7
-  TEMPLATES_DOWNLOADURL: https://artprodwus21.artifacts.visualstudio.com/Ad1c51fbc-4477-4a0f-b99f-fc9013009a58/ae7e3bf3-d41a-4480-9ac0-b6cf9df9ac24/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2F6ZnVuYy9wcm9qZWN0SWQvYWU3ZTNiZjMtZDQxYS00NDgwLTlhYzAtYjZjZjlkZjlhYzI0L2J1aWxkSWQvMzA5Mzg5L2FydGlmYWN0TmFtZS9kcm9w0/content?format=zip
+  TEMPLATES_BUILDID: "310918"
+  TEMPLATES_COMMIT: e9b8a34b77c4091323456931f549282a289191b0
+  TEMPLATES_DOWNLOADURL: https://artprodwus21.artifacts.visualstudio.com/Ad1c51fbc-4477-4a0f-b99f-fc9013009a58/ae7e3bf3-d41a-4480-9ac0-b6cf9df9ac24/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2F6ZnVuYy9wcm9qZWN0SWQvYWU3ZTNiZjMtZDQxYS00NDgwLTlhYzAtYjZjZjlkZjlhYzI0L2J1aWxkSWQvMzEwOTE4L2FydGlmYWN0TmFtZS9kcm9w0/content?format=zip
   VERSION: 4.1055.100
 contents:
   repositories:
@@ -67,26 +67,26 @@ contents:
                   license: MIT
             uid: 0
             gid: 0
-          - url: git+https://github.com/Azure/azure-functions-extension-bundles.git#4.40.0
-            checksum: 1e67550bb52fdd95787452de913fbe4ec06c1d93
+          - url: git+https://github.com/Azure/azure-functions-extension-bundles.git#4.41.0
+            checksum: 1d9352e3b1e4349d2723df2e64b8572bdec246a6
             path: ${source.dir}/azure-functions-extension-bundles
             spdx:
               name: azure-functions-extension-bundles
-              version: 4.40.0
+              version: 4.41.0
               packages:
                 - name: azure-functions-extension-bundles
-                  purl: pkg:github/Azure/azure-functions-extension-bundles@4.40.0
+                  purl: pkg:github/Azure/azure-functions-extension-bundles@4.41.0
                   license: MIT
             uid: 0
             gid: 0
-          - url: https://artprodwus21.artifacts.visualstudio.com/Ad1c51fbc-4477-4a0f-b99f-fc9013009a58/ae7e3bf3-d41a-4480-9ac0-b6cf9df9ac24/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2F6ZnVuYy9wcm9qZWN0SWQvYWU3ZTNiZjMtZDQxYS00NDgwLTlhYzAtYjZjZjlkZjlhYzI0L2J1aWxkSWQvMzA5Mzg5L2FydGlmYWN0TmFtZS9kcm9w0/content?format=zip
+          - url: https://artprodwus21.artifacts.visualstudio.com/Ad1c51fbc-4477-4a0f-b99f-fc9013009a58/ae7e3bf3-d41a-4480-9ac0-b6cf9df9ac24/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2F6ZnVuYy9wcm9qZWN0SWQvYWU3ZTNiZjMtZDQxYS00NDgwLTlhYzAtYjZjZjlkZjlhYzI0L2J1aWxkSWQvMzEwOTE4L2FydGlmYWN0TmFtZS9kcm9w0/content?format=zip
             path: ${source.dir}/templatesArtifacts.zip
             spdx:
               name: azure-functions-templates
-              version: eed5195218cd6059e0f96e0e1654c1501047a8c7
+              version: e9b8a34b77c4091323456931f549282a289191b0
               packages:
                 - name: azure-functions-templates
-                  purl: pkg:github/Azure/azure-functions-templates@eed5195218cd6059e0f96e0e1654c1501047a8c7
+                  purl: pkg:github/Azure/azure-functions-templates@e9b8a34b77c4091323456931f549282a289191b0
                   license: MIT
             uid: 0
             gid: 0
@@ -141,7 +141,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            grep -Eq '"commitId" *: *"eed5195218cd6059e0f96e0e1654c1501047a8c7"' version.json
+            grep -Eq '"commitId" *: *"e9b8a34b77c4091323456931f549282a289191b0"' version.json
 
             for archive in *.zip *.nupkg; do
               unzip -tq "$archive"
@@ -178,9 +178,9 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            mkdir -p ${target.dir}/usr/share/FuncExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.40.0
-            unzip Microsoft.Azure.Functions.ExtensionBundle.4.40.0_linux-x64.zip \
-              -d ${target.dir}/usr/share/FuncExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.40.0
+            mkdir -p ${target.dir}/usr/share/FuncExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.41.0
+            unzip Microsoft.Azure.Functions.ExtensionBundle.4.41.0_linux-x64.zip \
+              -d ${target.dir}/usr/share/FuncExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.41.0
         - name: spdx netcore runtime
           uses: spdx@v1
           with:
@@ -213,7 +213,7 @@ contents:
               - deb
             license: MIT
             name: azure-functions-base-4
-            rel: 2
+            rel: 3
             url: https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview
             version: 4.1055.100
       paths:
