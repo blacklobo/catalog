@@ -3,8 +3,8 @@
 image: dhi.io/pkg-cloud-sdk
 variant: runtime
 tags:
-  - 589.0.0-alpine3.24
-  - 589.0.0-r0-alpine3.24
+  - 590.0.0-alpine3.24
+  - 590.0.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,16 +12,16 @@ dates:
   release: "2026-07-24"
 vars:
   GCLOUD_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm" }'
-  GCLOUD_SHA256: '#{ target.arch == "amd64" ? "f865da648f6fdae2015abb5b32eaa0eb10520e88f0ca735cfb33795868c8d26f" : "3febb61a57ea76612973e40a2ff7bd79939161451d11130659d5c981201dca97" }'
-  GCLOUD_SHA256_AMD64: f865da648f6fdae2015abb5b32eaa0eb10520e88f0ca735cfb33795868c8d26f
-  GCLOUD_SHA256_ARM64: 3febb61a57ea76612973e40a2ff7bd79939161451d11130659d5c981201dca97
+  GCLOUD_SHA256: '#{ target.arch == "amd64" ? "1503a6fcda689d1e1013a421e2c85850e7f58382c0be7064877b5e1a1038bc64" : "547c5c28ae449a862339edbe73e4254073b33072a364463f581adebf894c5cfa" }'
+  GCLOUD_SHA256_AMD64: 1503a6fcda689d1e1013a421e2c85850e7f58382c0be7064877b5e1a1038bc64
+  GCLOUD_SHA256_ARM64: 547c5c28ae449a862339edbe73e4254073b33072a364463f581adebf894c5cfa
   PYTHON_DEB_VERSION: 3.13.16-0
   PYTHON_VERSION: 3.13.16-r1
   REL: "0"
-  SEMVER_MAJOR_MINOR_VERSION: "589.0"
-  SEMVER_MAJOR_VERSION: "589"
-  SEMVER_VERSION: 589.0.0
-  VERSION: 589.0.0
+  SEMVER_MAJOR_MINOR_VERSION: "590.0"
+  SEMVER_MAJOR_VERSION: "590"
+  SEMVER_VERSION: 590.0.0
+  VERSION: 590.0.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -44,15 +44,15 @@ contents:
           - gzip
           - tar
         files:
-          - url: https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-589.0.0-linux-${GCLOUD_ARCH}.tar.gz
+          - url: https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-590.0.0-linux-${GCLOUD_ARCH}.tar.gz
             checksum: sha256:${GCLOUD_SHA256}
             path: ${source.dir}/google-cloud-cli.tar.gz
             spdx:
               name: google-cloud-cli
-              version: 589.0.0
+              version: 590.0.0
               packages:
                 - name: google-cloud-cli
-                  purl: pkg:generic/google-cloud-cli@589.0.0
+                  purl: pkg:generic/google-cloud-cli@590.0.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -116,7 +116,7 @@ contents:
             name: cloud-sdk
             rel: 0
             url: https://cloud.google.com/sdk
-            version: 589.0.0
+            version: 590.0.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
