@@ -4,7 +4,7 @@ image: dhi.io/pkg-gitea
 variant: runtime
 tags:
   - 1.27.3-alpine3.24
-  - 1.27.3-r11-alpine3.24
+  - 1.27.3-r12-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ vars:
   GO_BUILD_TAGS: bindata,timetzdata,sqlite,sqlite_unlock_notify
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: gitea
-  REL: "11"
+  REL: "12"
   SEMVER_MAJOR_MINOR_VERSION: "1.27"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.27.3
@@ -103,7 +103,7 @@ contents:
 
             # Reviewed against gitea v1.27.0 lockfile (pnpm 11.9.0):
             # Dropped stale 1.26.x pins already satisfied (or superseded) upstream:
-            #   lodash-es 4.18.0 (lock 4.18.1), vite 8.0.16 (direct 8.1.0),
+            #   lodash-es 4.18.0 (lock 4.18.1); vite was 8.0.16 on 1.26.x, now direct 8.1.x.
             #   ws 8.21.0, js-yaml 4.2.0, uuid 11.1.1 (lock 14.0.0), esbuild 0.28.1.
             # Kept still-required floors:
             #   form-data 4.0.6 (CVE-2026-12143; lock 4.0.5 via jsdom),
@@ -118,7 +118,8 @@ contents:
             #   seroval 1.6.3 (CVE-2026-104846, CVE-2026-104845; lock 1.5.4 via solid-js),
             #   @vue/server-renderer 3.5.42 (GHSA-g2v6-rqmx-r4w6; lock 3.5.38 via vue),
             #   source-map-js 1.2.2 (CVE-2026-93749; lock 1.2.1 via postcss),
-            #   katex 0.18.2 (CVE-2026-103923; lock 0.16.47 / 0.17.0 via mermaid).
+            #   katex 0.18.2 (CVE-2026-103923; lock 0.16.47 / 0.17.0 via mermaid),
+            #   vite 8.1.6 (CVE-2026-112942, CVE-2026-112943, CVE-2026-112944; direct 8.1.0).
             node -e '
               const fs = require("fs");
               const path = "pnpm-workspace.yaml";
@@ -139,6 +140,7 @@ contents:
                 "@vue/server-renderer": "3.5.42",
                 "source-map-js": "1.2.2",
                 "katex": "0.18.2",
+                "vite": "8.1.6",
               };
               const yamlKey = (k) => (k.match(/[@:]/) ? JSON.stringify(k) : k);
               const block =
@@ -208,7 +210,7 @@ contents:
               - usr/bin/gitea
             license: MIT
             name: gitea
-            rel: 11
+            rel: 12
             subpackages:
               - files:
                   - path: usr/bin/gitea
