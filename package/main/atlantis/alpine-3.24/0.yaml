@@ -3,22 +3,22 @@
 image: dhi.io/pkg-atlantis
 variant: runtime
 tags:
-  - 0.48.1-alpine3.24
-  - 0.48.1-r2-alpine3.24
+  - 0.48.2-alpine3.24
+  - 0.48.2-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-06-30"
 vars:
-  COMMIT_SHA: abbc696d84d937fa153493306e40fe6cabcf0902
+  COMMIT_SHA: 305453da83c9683a4dab4c20b1d41731c0873386
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.2-r0
-  REL: "2"
+  GOLANG_VERSION: 1.27.3-r0
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "0.48"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.48.1
-  VERSION: 0.48.1
+  SEMVER_VERSION: 0.48.2
+  VERSION: 0.48.2
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -42,18 +42,18 @@ contents:
           - git
           - mawk
           - sed
-          - golang-1.27=1.27.2-r0
-          - golang-1.27-oci-config=1.27.2-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/runatlantis/atlantis.git#v0.48.1
-            checksum: abbc696d84d937fa153493306e40fe6cabcf0902
+          - url: git+https://github.com/runatlantis/atlantis.git#v0.48.2
+            checksum: 305453da83c9683a4dab4c20b1d41731c0873386
             path: /go/src/github.com/runatlantis/atlantis
             spdx:
               name: atlantis
-              version: 0.48.1
+              version: 0.48.2
               packages:
                 - name: atlantis
-                  purl: pkg:golang/github.com/runatlantis/atlantis@0.48.1
+                  purl: pkg:golang/github.com/runatlantis/atlantis@0.48.2
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -62,9 +62,8 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - github.com/klauspost/compress@v1.18.7
-              - golang.org/x/crypto@v0.56.0
               - golang.org/x/net@v0.60.0
+              - github.com/klauspost/compress@v1.18.7
             download: true
         - name: test
           runs: |
@@ -81,8 +80,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.version=0.48.1
-              - -X main.commit=abbc696d84d937fa153493306e40fe6cabcf0902
+              - -X main.version=0.48.2
+              - -X main.commit=305453da83c9683a4dab4c20b1d41731c0873386
             output: ${target.dir}/usr/bin/atlantis
             packages: .
         - name: build dev
@@ -90,8 +89,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.version=0.48.1
-              - -X main.commit=abbc696d84d937fa153493306e40fe6cabcf0902
+              - -X main.version=0.48.2
+              - -X main.commit=305453da83c9683a4dab4c20b1d41731c0873386
             output: ${target.dir}/usr/bin/atlantis-dev
             packages: .
             strip: false
@@ -102,14 +101,14 @@ contents:
               - usr/bin/atlantis
             license: Apache-2.0
             name: atlantis
-            rel: 2
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/atlantis
                     source: usr/bin/atlantis-dev
                 name: atlantis-dev
             url: https://github.com/runatlantis/atlantis
-            version: 0.48.1
+            version: 0.48.2
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
