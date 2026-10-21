@@ -4,26 +4,26 @@ image: dhi.io/pkg-teleport
 variant: runtime
 tags:
   - 18.11.1
-  - 18.11.1-r5
+  - 18.11.1-r6
   - 18.11.1-debian13
-  - 18.11.1-r5-debian13
+  - 18.11.1-r6-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   BINARYEN_VERSION: 120-4
   BPF_ARCH: '#{ target.arch == "amd64" ? "x86" : "arm64" }'
-  CARGO_UPDATES: rustls=0.23.45 anyhow=1.0.103 cryptoki=0.12.1
+  CARGO_UPDATES: rustls=0.23.45 rustls-webpki=0.103.16 anyhow=1.0.103 cryptoki=0.12.1
   CARGO_VERSION: 1.97.1-0
   COMMIT_SHA: 27eb07217a0efca4a5d2dd88bce7472cba5f406a
-  GOLANG_VERSION: 1.26.8-1
+  GOLANG_VERSION: 1.26.10-0
   KUBECTL_VERSION: v1.35.3
   LLVM_VERSION: 1:19.1.7-3+b1
-  NODEJS_VERSION: 24.21.0-1
+  NODEJS_VERSION: 24.22.0-0
   PACKAGE_NAME: teleport-18
   PNPM_VERSION: 11.20.0
   RDP_CRATES: -p rdp-client -p rdp-decoder
-  REL: "5"
+  REL: "6"
   RUST_STD_WASM32_CHECKSUM: sha256:fa0edb6e9f34faae5735554d62d50875eded839dc707d0f1c01467a918d8453b
   RUST_STD_WASM32_VERSION: 1.97.1
   RUST_TARGET: '#{ target.arch == "amd64" ? "x86_64-unknown-linux-gnu" : "aarch64-unknown-linux-gnu" }'
@@ -67,8 +67,8 @@ contents:
           - coreutils
           - findutils
           - gcc
-          - golang-1.26=1.26.8-1
-          - golang-1.26-oci-config=1.26.8-1
+          - golang-1.26=1.26.10-0
+          - golang-1.26-oci-config=1.26.10-0
           - gzip
           - libbpf-dev
           - libc6-dev
@@ -100,7 +100,7 @@ contents:
           - llvm-19-runtime
           - mawk
           - node-corepack
-          - nodejs-24=24.21.0-1
+          - nodejs-24=24.22.0-0
           - pkg-config
           - rustc-1.97=1.97.1-0
           - sed
@@ -213,7 +213,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            for spec in rustls=0.23.45 anyhow=1.0.103 cryptoki=0.12.1; do
+            for spec in rustls=0.23.45 rustls-webpki=0.103.16 anyhow=1.0.103 cryptoki=0.12.1; do
               cargo update -p "${spec%=*}" --precise "${spec#*=}"
             done
             grep -A1 'name = "rustls-webpki"' Cargo.lock
@@ -451,7 +451,7 @@ contents:
               - deb
             license: AGPL-3.0-only
             name: teleport-18
-            rel: 5
+            rel: 6
             subpackages:
               - files:
                   - path: usr/bin/teleport
