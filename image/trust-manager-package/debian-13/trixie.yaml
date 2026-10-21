@@ -17,9 +17,9 @@ dates:
   release: "2025-08-09"
   end-of-life: "2028-08-09"
 vars:
-  CA_CERTIFICATES_VERSION: "20250419"
+  CA_CERTIFICATES_VERSION: 20250419+deb13u1
   CA_CERTIFICATES_VERSION_DATE: "20250419"
-  CA_CERTIFICATES_VERSION_DEB: ""
+  CA_CERTIFICATES_VERSION_DEB: deb13u1
   CODENAME: trixie
   DISTRO_PRETTY_VERSION: Debian 13 (trixie)
   DISTRO_VERSION: "13"
@@ -42,7 +42,7 @@ contents:
       contents:
         packages:
           - bash
-          - ca-certificates=20250419
+          - ca-certificates=20250419+deb13u1
           - ca-certificates-bundle
           - coreutils
           - findutils
@@ -86,7 +86,7 @@ contents:
             jq -n \
               --rawfile bundle /etc/ssl/certs/ca-certificates.crt \
               --arg name "cert-manager-debian-trixie" \
-              --arg version "20250419" \
+              --arg version "20250419+deb13u1" \
               '.name = $name | .bundle = $bundle | .version = $version' \
               > ${target.dir}/debian-package/cert-manager-package-debian.json
       outputs:
