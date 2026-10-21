@@ -135,9 +135,10 @@
   },
   {
     "package": "follow-redirects",
-    "version": "1.16.0",
+    "version": "1.16.1",
     "resolutions": [
-      "follow-redirects"
+      "follow-redirects",
+      "**/follow-redirects"
     ]
   },
   {
@@ -245,7 +246,10 @@
   },
   {
     "package": "dompurify",
-    "version": "3.4.16"
+    "version": "3.4.16",
+    "resolutions": [
+      "**/dompurify"
+    ]
   },
   {
     "package": "moment",
@@ -278,6 +282,56 @@
     "version": "2.0.3",
     "resolutions": [
       "**/image-size"
+    ]
+  },
+  {
+    "package": "qs",
+    "version": "6.16.0",
+    "resolutions": [
+      "**/qs"
+    ]
+  },
+  {
+    "package": "fast-xml-parser",
+    "version": "5.7.0",
+    "resolutions": [
+      "**/fast-xml-parser"
+    ]
+  },
+  {
+    "package": "uuid",
+    "version": "11.1.1",
+    "resolutions": [
+      "**/uuid"
+    ]
+  },
+  {
+    "package": "decode-uri-component",
+    "version": "0.5.0",
+    "resolutions": [
+      "**/decode-uri-component"
+    ]
+  },
+  {
+    "package": "stream-json",
+    "version": "3.6.0",
+    "resolutions": [
+      "**/stream-json"
+    ]
+  },
+  {
+    "package": "csv-parse",
+    "version": "7.0.2",
+    "resolutions": [
+      "**/csv-parse"
+    ]
+  },
+  {
+    "package": "bn.js",
+    "version": "4.12.3",
+    "resolutions": [
+      "elliptic/bn.js",
+      "**/elliptic/**/bn.js"
     ]
   }
 ]

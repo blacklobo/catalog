@@ -4,9 +4,9 @@ image: dhi.io/pkg-grist
 variant: runtime
 tags:
   - 1.7.21
-  - 1.7.21-r2
+  - 1.7.21-r3
   - 1.7.21-debian13
-  - 1.7.21-r2-debian13
+  - 1.7.21-r3-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,7 +17,7 @@ vars:
   NODEJS_VERSION: 24.22.0-0
   PYTHON_MAJOR_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "1.7"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.7.21
@@ -186,6 +186,18 @@ contents:
 
             rm -rf node_modules
             mv node_modules_prod node_modules
+        - name: sync-bower-dompurify
+          work-dir: ${source.dir}/grist
+          runs: |
+            set -eux -o pipefail
+
+            if [ -d bower_components/dompurify ]; then
+              test -d node_modules/dompurify
+              rm -rf bower_components/dompurify
+              mkdir -p bower_components/dompurify
+              cp -a node_modules/dompurify/. bower_components/dompurify/
+              ! grep -qE '"version": "2\\.5\\.9"' bower_components/dompurify/package.json
+            fi
         - name: patch-pyodide-worker
           uses: yarn/bump@v2
           with:
@@ -243,7 +255,7 @@ contents:
               - deb
             license: Apache-2.0
             name: grist
-            rel: 2
+            rel: 3
             url: https://www.getgrist.com/
             version: 1.7.21
       paths:
