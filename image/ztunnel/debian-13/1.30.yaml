@@ -92,7 +92,7 @@ contents:
             sed -i '/^openssl = /s/version = "0\.10"/version = ">=0.10.79, <0.11"/' Cargo.toml
 
             # GHSA-82j2-j2ch-gfr8 / GHSA-pwjx-qhcg-rvj4 / GHSA-965h-392x-2mh5 / GHSA-xgp8-3hg3-c2mh
-            sed -i '/rustls-webpki/s/version = "0\.103"/version = ">=0.103.13, <0.104"/' Cargo.toml
+            sed -i '/rustls-webpki/s/version = "0\.103"/version = ">=0.103.16, <0.104"/' Cargo.toml
 
             # Update patched transitive deps (hickory 0.25.x cannot move to patched 0.26 without Istio ≥1.30)
             cargo update --ignore-rust-version --recursive \
@@ -115,7 +115,7 @@ contents:
               }
             }' Cargo.lock | sort -u | while read -r __rw_v; do
               [ -z "${__rw_v}" ] && continue
-              cargo update --ignore-rust-version -p "rustls-webpki@${__rw_v}" --precise 0.103.13 || true
+              cargo update --ignore-rust-version -p "rustls-webpki@${__rw_v}" --precise 0.103.16 || true
             done
 
             # GHSA-cq8v-f236-94qc — disambiguate multiple rand versions (do not pass bare `rand`)
@@ -134,8 +134,9 @@ contents:
             # GHSA-q83h-524g-xf6h: h2 0.4.15 → 0.4.16
             cargo update --ignore-rust-version -p h2@0.4.15 --precise 0.4.16 || true
 
-            # GHSA-2mjx-qc3c-rqvc: rustls 0.23.43 → 0.23.45
-            cargo update --ignore-rust-version -p rustls@0.23.43 --precise 0.23.45 || true
+            # GHSA-2mjx-qc3c-rqvc / GHSA-c8m5-c952-6cm4: rustls → 0.23.46
+            cargo update --ignore-rust-version -p rustls@0.23.43 --precise 0.23.46 || true
+            cargo update --ignore-rust-version -p rustls@0.23.45 --precise 0.23.46 || true
         - name: cargo sbom
           uses: sbom@v1
           with:

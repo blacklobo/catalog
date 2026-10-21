@@ -4,9 +4,9 @@ image: dhi.io/pkg-ztunnel
 variant: runtime
 tags:
   - 1.30.6
-  - 1.30.6-r0
+  - 1.30.6-r1
   - 1.30.6-debian13
-  - 1.30.6-r0-debian13
+  - 1.30.6-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,7 +17,7 @@ vars:
   CARGO_VERSION: 1.97.1-0
   COMMIT_SHA: f6316f5b15836cc0d011fbf59f2672abcb4f66b8
   PACKAGE_NAME: ztunnel-1.30
-  REL: "0"
+  REL: "1"
   RUSTC_VERSION: 1.97.1-0
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
@@ -91,7 +91,7 @@ contents:
 
             sed -i '/^openssl = /s/version = "0\.10"/version = ">=0.10.79, <0.11"/' Cargo.toml
 
-            sed -i '/rustls-webpki/s/version = "0\.103"/version = ">=0.103.13, <0.104"/' Cargo.toml
+            sed -i '/rustls-webpki/s/version = "0\.103"/version = ">=0.103.16, <0.104"/' Cargo.toml
 
             cargo update --ignore-rust-version --recursive \
               pprof tracing-subscriber aws-lc-rs time \
@@ -109,7 +109,7 @@ contents:
               }
             }' Cargo.lock | sort -u | while read -r __rw_v; do
               [ -z "${__rw_v}" ] && continue
-              cargo update --ignore-rust-version -p "rustls-webpki@${__rw_v}" --precise 0.103.13 || true
+              cargo update --ignore-rust-version -p "rustls-webpki@${__rw_v}" --precise 0.103.16 || true
             done
 
             cargo update --ignore-rust-version -p rand@0.7.3 --precise 0.8.6 || true
@@ -123,6 +123,10 @@ contents:
             cargo update --ignore-rust-version -p crossbeam-epoch@0.9.18 --precise 0.9.20 || true
 
             cargo update --ignore-rust-version -p h2@0.4.15 --precise 0.4.16 || true
+
+            # GHSA-2mjx-qc3c-rqvc / GHSA-c8m5-c952-6cm4: rustls → 0.23.46
+            cargo update --ignore-rust-version -p rustls@0.23.43 --precise 0.23.46 || true
+            cargo update --ignore-rust-version -p rustls@0.23.45 --precise 0.23.46 || true
         - name: cargo sbom
           uses: sbom@v1
           with:
@@ -154,7 +158,7 @@ contents:
               - deb
             license: Apache-2.0
             name: ztunnel-1.30
-            rel: 0
+            rel: 1
             url: https://github.com/istio/ztunnel
             version: 1.30.6
 os-release:

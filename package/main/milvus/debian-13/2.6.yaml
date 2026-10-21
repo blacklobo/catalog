@@ -4,9 +4,9 @@ image: dhi.io/pkg-milvus
 variant: runtime
 tags:
   - 2.6.25
-  - 2.6.25-r2
+  - 2.6.25-r3
   - 2.6.25-debian13
-  - 2.6.25-r2-debian13
+  - 2.6.25-r3-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -19,7 +19,7 @@ vars:
   MILVUS_ENTITLEMENT: ""
   MILVUS_PACKAGE_SUFFIX: ""
   PACKAGE_NAME: milvus-2.6
-  REL: "2"
+  REL: "3"
   RUSTC_VERSION: 1.97.1-0
   SEMVER_MAJOR_MINOR_VERSION: "2.6"
   SEMVER_MAJOR_VERSION: "2"
@@ -219,7 +219,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            cargo update -p rustls-webpki --precise 0.103.15
+            cargo update -p rustls-webpki --precise 0.103.16
             cargo update -p rustls --precise 0.23.45
             cargo update -p oneshot --precise 0.1.13
             cargo update -p tar --precise 0.4.46
@@ -403,7 +403,7 @@ contents:
               - deb
             license: Apache-2.0
             name: milvus-2.6
-            rel: 2
+            rel: 3
             subpackages:
               - deb:
                   depends:
