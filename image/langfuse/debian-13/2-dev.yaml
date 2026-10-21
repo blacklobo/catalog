@@ -186,12 +186,13 @@ contents:
               // Remove upstream pnpm patch so next-auth can be upgraded
               if (p.pnpm.patchedDependencies) delete p.pnpm.patchedDependencies["next-auth@4.24.11"];
               Object.assign(p.pnpm.overrides = p.pnpm.overrides || {}, {
-                "axios":             "1.18.0",  // CVE-2026-44494, CVE-2026-44492, CVE-2026-44495, CVE-2026-44490, GHSA-gcfj-64vw-6mp9, GHSA-42h9-826w-cgv3, GHSA-7q8q-rj6j-mhjq, GHSA-f4gw-2p7v-4548, GHSA-hcpx-6fm6-wx23, GHSA-jqh4-m9w3-8hp9, GHSA-mmx7-hfxf-jppx, GHSA-mwf2-3pr3-8698, GHSA-pmv8-rq9r-6j72, GHSA-xj6q-8x83-jv6g (HIGH/MED)
-                "fast-uri":          "3.1.7",   // CVE-2026-6321, CVE-2026-6322, CVE-2026-18446, CVE-2026-76172, CVE-2026-75975, CVE-2026-75931, CVE-2026-75899, CVE-2026-84394 (HIGH)
+                "axios":             "1.20.0",  // CVE-2026-101898..101909, CVE-2026-101899..101904, CVE-2026-101908, CVE-2026-44494, CVE-2026-44492, CVE-2026-44495, CVE-2026-44490 (HIGH/MED)
+                "fast-uri":          "3.1.8",   // CVE-2026-86472, CVE-2026-6321, CVE-2026-6322, CVE-2026-18446, CVE-2026-76172, CVE-2026-75975, CVE-2026-75931, CVE-2026-75899, CVE-2026-84394 (HIGH/MED)
                 "nanoid":            "3.3.18",  // CVE-2026-67213, CVE-2026-67214 (HIGH)
-                "ip-address":        "10.5.1",  // CVE-2026-69192 (HIGH), CVE-2026-101910, CVE-2026-101913 (MED)
+                "ip-address":        "10.7.1",  // CVE-2026-101911, CVE-2026-101912, CVE-2026-69192 (HIGH/MED)
                 "langsmith":         "0.6.0",   // CVE-2026-45134 (HIGH), CVE-2026-40190, CVE-2026-41182 (MED)
-                "nodemailer":        "9.1.1",   // GHSA-p6gq-j5cr-w38f (HIGH), GHSA-vvjj-xcjg-gr5g (MED), GHSA-c7w3-x93f-qmm8 (LOW), GHSA-8m3c-c648-2xjj (MED)
+                "nodemailer":        "9.1.1",   // 10.x fixes nodemailer CVEs/GHSAs but breaks v2 @langfuse/shared tsc; v3 pnpm-workspace override uses 10.0.9
+                "source-map-js":     "1.2.2",   // CVE-2026-93749 (HIGH)
                 "brace-expansion":   "1.1.13",  // CVE-2026-33750 (MED), CVE-2025-5889 (LOW)
                 "fast-xml-parser":   "5.7.0",   // CVE-2026-41650 (MED)
                 "qs":                "6.16.0",  // CVE-2026-8723 (MED), CVE-2026-2391 (LOW), CVE-2026-82562, CVE-2026-82417 (MED)
@@ -204,10 +205,16 @@ contents:
                 "@babel/runtime":    "7.29.2",  // CVE-2025-27789 (MED)
                 "next":              "14.2.35", // CVE-2026-44578, GHSA-mwv6-3258-q52c, GHSA-5j59-xgg2-r9c4 (HIGH)
                 "next-auth":         "4.24.15", // GHSA-XMF8-CVQR-RFGJ
-                "shell-quote":       "1.9.0",   // CVE-2026-9277 (CRITICAL), CVE-2026-13311 (HIGH)
+                "shell-quote":       "1.11.0",  // CVE-2026-102422, CVE-2026-9277 (CRITICAL), CVE-2026-13311 (HIGH)
                 "esbuild":           "0.28.1",  // GHSA-gv7w-rqvm-qjhr (HIGH)
                 "@grpc/grpc-js":     ">=1.11.4",// CVE-2026-48068, CVE-2026-48069 (HIGH)
-                "dompurify":         "3.4.13",  // CVE-2026-49458, CVE-2026-49459, CVE-2026-49978, GHSA-76mc-f452-cxcm, GHSA-gvmj-g25r-r7wr, GHSA-vxr8-fq34-vvx9, GHSA-55q2-fjhq-7xh7, GHSA-c2j3-45gr-mqc4 (MED/LOW)
+                "dompurify":         "3.4.16",  // GHSA-p98j-92pf-mc4p, GHSA-6688-9rhm-gjv2, CVE-2026-49458, CVE-2026-49459, CVE-2026-49978 (MED/LOW)
+                "@opentelemetry/instrumentation-knex": "0.65.0",     // CVE-2026-104872 (MED)
+                "@opentelemetry/instrumentation-mongoose": "0.67.0", // CVE-2026-104872 (MED)
+                "@opentelemetry/instrumentation-mysql2": "0.67.0",   // CVE-2026-104872 (MED)
+                "@opentelemetry/instrumentation-mysql": "0.67.0",    // CVE-2026-104872 (MED)
+                "@opentelemetry/instrumentation-pg": "0.73.0",       // CVE-2026-104872 (MED)
+                "@opentelemetry/instrumentation-tedious": "0.40.0",  // CVE-2026-104872 (MED)
                 "@langchain/core":   "0.3.80",  // CVE-2025-68665 (HIGH)
                 "browserslist":      "4.28.7",  // CVE-2026-73088, CVE-2026-73089 (HIGH)
               });
