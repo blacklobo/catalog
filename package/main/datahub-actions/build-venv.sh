@@ -21,7 +21,8 @@ mkdir -p "${TARGET_DIR}/usr/lib" "${TARGET_DIR}/usr/bin"
 # CVE-2026-44431, CVE-2026-21441, CVE-2025-66471, CVE-2025-66418),
 # lxml >= 6.1.0 (CVE-2026-41066),
 # cryptography >= 50.0.0 (CVE-2026-69247, CVE-2026-69249, CVE-2026-69248),
-# setuptools >= 83.0.0 (CVE-2026-59890).
+# setuptools >= 83.0.0 (CVE-2026-59890),
+# certifi >= 2026.10.19 (GHSA-6q48-6c7w-9gw2).
 # cryptography from sdist (--no-binary-package): the PyPI wheels bundle a
 # vulnerable OpenSSL (GHSA-537c-gmf6-5ccf, fixed only in 48.0.1 which is
 # outside datahub's <47 pin); building from source links the patched
@@ -31,6 +32,7 @@ urllib3>=2.8.0
 lxml>=6.1.0
 cryptography>=50.0.0
 setuptools>=83.0.0
+certifi>=2026.10.19
 EOF
 
 export UV_PYTHON_DOWNLOADS=never
