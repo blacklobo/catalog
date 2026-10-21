@@ -90,6 +90,8 @@ contents:
             cargo update --package h2 --precise 0.4.16
 
             cargo update --package rustls --precise 0.23.46
+            cargo update --package rustls-webpki --precise 0.103.16
+            cargo update --package webpki-root-certs --precise 1.0.10
         - name: build
           work-dir: ${source.dir}/uv-7456b60bc6bc348e13e06e3691bf08e78d3aef54
           privileged: true
