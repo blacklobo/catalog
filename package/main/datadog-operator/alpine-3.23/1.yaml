@@ -3,20 +3,20 @@
 image: dhi.io/pkg-datadog-operator
 variant: runtime
 tags:
-  - 1.31.1-alpine3.23
-  - 1.31.1-r0-alpine3.23
+  - 1.31.2-alpine3.23
+  - 1.31.2-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 45d984d88725f429534f4dd893b9782db2d08424
-  GOLANG_VERSION: 1.26.9-r0
+  COMMIT_SHA: f840e8fa829ed3f3a827f177391e0c323a367b11
+  GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: datadog-operator
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.31"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.31.1
-  VERSION: 1.31.1
+  SEMVER_VERSION: 1.31.2
+  VERSION: 1.31.2
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -34,11 +34,11 @@ contents:
           - busybox
           - bash
           - ca-certificates-bundle
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/DataDog/datadog-operator.git#v1.31.1
-            checksum: 45d984d88725f429534f4dd893b9782db2d08424
+          - url: git+https://github.com/DataDog/datadog-operator.git#v1.31.2
+            checksum: f840e8fa829ed3f3a827f177391e0c323a367b11
             path: /go/src/github.com/DataDog/datadog-operator
             uid: 0
             gid: 0
@@ -61,8 +61,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/DataDog/datadog-operator/pkg/version.Version=1.31.1
-              - -X github.com/DataDog/datadog-operator/pkg/version.Commit=45d984d88725f429534f4dd893b9782db2d08424
+              - -X github.com/DataDog/datadog-operator/pkg/version.Version=1.31.2
+              - -X github.com/DataDog/datadog-operator/pkg/version.Commit=f840e8fa829ed3f3a827f177391e0c323a367b11
               - -X github.com/DataDog/datadog-operator/pkg/version.BuildTime=$(date -u -d @${SOURCE_DATE_EPOCH} +'%FT%TZ')
             output: ${target.dir}/usr/bin/manager
             packages: ./cmd/main.go
@@ -71,8 +71,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/DataDog/datadog-operator/pkg/version.Version=1.31.1
-              - -X github.com/DataDog/datadog-operator/pkg/version.Commit=45d984d88725f429534f4dd893b9782db2d08424
+              - -X github.com/DataDog/datadog-operator/pkg/version.Version=1.31.2
+              - -X github.com/DataDog/datadog-operator/pkg/version.Commit=f840e8fa829ed3f3a827f177391e0c323a367b11
               - -X github.com/DataDog/datadog-operator/pkg/version.BuildTime=$(date -u -d @${SOURCE_DATE_EPOCH} +'%FT%TZ')
             output: ${target.dir}/usr/bin/manager-dev
             packages: ./cmd/main.go
@@ -123,7 +123,7 @@ contents:
                     source: usr/bin/yaml-mapper-dev
                 name: datadog-operator-dev
             url: https://github.com/DataDog/datadog-operator
-            version: 1.31.1
+            version: 1.31.2
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
