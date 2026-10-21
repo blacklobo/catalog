@@ -4,9 +4,9 @@ image: dhi.io/pkg-time-mcp
 variant: runtime
 tags:
   - 2026.8.31
-  - 2026.8.31-r18
+  - 2026.8.31-r19
   - 2026.8.31-debian13
-  - 2026.8.31-r18-debian13
+  - 2026.8.31-r19-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ vars:
   COMMIT_SHA: a40bc270fb5ece62673f8a1196f57116d885c5eb
   PYTHON_MINOR: "3.14"
   PYTHON_VERSION: 3.14.8-0
-  REL: "18"
+  REL: "19"
   SEMVER_MAJOR_MINOR_VERSION: "2026.8"
   SEMVER_MAJOR_VERSION: "2026"
   SEMVER_VERSION: 2026.8.31
@@ -83,7 +83,7 @@ contents:
             TIME_SRC="${source.dir}/servers/src/time"
 
             sed -i '/dependencies = \[/a\    "starlette>=1.3.1",' "${TIME_SRC}/pyproject.toml"
-            sed -i '/^\[tool\.uv\]$/a constraint-dependencies = ["mcp<2.0.0"]' "${TIME_SRC}/pyproject.toml"
+            sed -i '/^\[tool\.uv\]$/a constraint-dependencies = ["mcp<2.0.0", "certifi>=2026.10.19"]' "${TIME_SRC}/pyproject.toml"
 
             mkdir -p "${source.dir}/time"
             cp -a "${TIME_SRC}/." "${source.dir}/time/"
@@ -106,7 +106,7 @@ contents:
               - deb
             license: MIT
             name: time-mcp
-            rel: 18
+            rel: 19
             url: https://github.com/modelcontextprotocol/servers/tree/main/src/time
             version: 2026.8.31
       paths:
