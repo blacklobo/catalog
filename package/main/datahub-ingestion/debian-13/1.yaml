@@ -3,27 +3,27 @@
 image: dhi.io/pkg-datahub-ingestion
 variant: runtime
 tags:
-  - 1.7.0.14
-  - 1.7.0.14-r2
-  - 1.7.0.14-debian13
-  - 1.7.0.14-r2-debian13
+  - 1.7.0.16
+  - 1.7.0.16-r0
+  - 1.7.0.16-debian13
+  - 1.7.0.16-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-10-01"
 vars:
-  ACRYL_DATAHUB_SDIST_CHECKSUM: sha256:4956e380d7c745d93092a0c0db75cf3ff1d3d62c93198a88a1a3487e2f451c58
+  ACRYL_DATAHUB_SDIST_CHECKSUM: sha256:e8667323427592cb14de2ceecfd471e233b299fe25b45d93d5382c39abcbdb68
   ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
   EXTRAS: base,datahub-rest,datahub-kafka,snowflake,bigquery,redshift,mysql,postgres,s3-slim,gcs-slim,abs-slim,clickhouse,glue,dbt,looker,lookml,tableau,powerbi,superset,datahub-business-glossary
   PYTHON_MINOR: "3.10"
   PYTHON_VERSION: 3.10.22-0
-  REL: "2"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.7"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.7.0.14
+  SEMVER_VERSION: 1.7.0.16
   UV_VERSION: 0.11.23
-  VERSION: 1.7.0.14
+  VERSION: 1.7.0.16
 contents:
   packages:
     - base-files
@@ -76,15 +76,15 @@ contents:
             path: ${source.dir}/uv-unknown-linux-gnu.tar.gz
             uid: 0
             gid: 0
-          - url: https://files.pythonhosted.org/packages/source/a/acryl-datahub/acryl_datahub-1.7.0.14.tar.gz
-            checksum: sha256:4956e380d7c745d93092a0c0db75cf3ff1d3d62c93198a88a1a3487e2f451c58
+          - url: https://files.pythonhosted.org/packages/source/a/acryl-datahub/acryl_datahub-1.7.0.16.tar.gz
+            checksum: sha256:e8667323427592cb14de2ceecfd471e233b299fe25b45d93d5382c39abcbdb68
             path: ${source.dir}/acryl_datahub.tar.gz
             spdx:
               name: acryl-datahub
-              version: 1.7.0.14
+              version: 1.7.0.16
               packages:
                 - name: acryl-datahub
-                  purl: pkg:pypi/acryl-datahub@1.7.0.14
+                  purl: pkg:pypi/acryl-datahub@1.7.0.16
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -175,9 +175,9 @@ contents:
               - deb
             license: Apache-2.0
             name: datahub-ingestion
-            rel: 2
+            rel: 0
             url: https://datahubproject.io/
-            version: 1.7.0.14
+            version: 1.7.0.16
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
