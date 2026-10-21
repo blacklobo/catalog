@@ -4,15 +4,17 @@ image: dhi.io/pkg-nghttp2
 variant: runtime
 tags:
   - 1.70.0-alpine3.24
-  - 1.70.0-r0-alpine3.24
+  - 1.70.0-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 9e30efb76c55a806e089d65ec5da2ebf062ef9c8
-  DHI_TEST_APK_PACKAGES: nghttp2-1.70.0-r0 nghttp2-libs-1.70.0-r0 nghttp2-doc-1.70.0-r0 nghttp2-static-1.70.0-r0
+  _REL: "0"
+  COMMIT_SHA: d5a34efc88bbe8d18737fda28125071c4aef8517
+  DHI_TEST_APK_INSTALL_DEV: nghttp2-dev-1.70.0-r1
+  DHI_TEST_APK_PACKAGES: nghttp2-1.70.0-r1 nghttp2-libs-1.70.0-r1 nghttp2-doc-1.70.0-r1 nghttp2-static-1.70.0-r1
   PACKAGE_NAME: main/nghttp2
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "1.70"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.70.0
@@ -38,7 +40,7 @@ contents:
           - c-ares-dev
           - cunit-dev
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#9e30efb76c55a806e089d65ec5da2ebf062ef9c8
+          - url: git+https://github.com/alpinelinux/aports.git#d5a34efc88bbe8d18737fda28125071c4aef8517
             path: ${source.dir}/aports
             uid: 0
             gid: 0
@@ -48,6 +50,9 @@ contents:
             gid: 0
       pipeline:
         - uses: abuild/setup@v1
+        - uses: abuild/bump@v1
+          with:
+            rel: 1
         - uses: abuild/build@v1
 os-release:
   name: Docker Hardened Images (Alpine)
