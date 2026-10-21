@@ -11,7 +11,7 @@ platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  CA_VERSION: 20250419+dhi2
+  CA_VERSION: 20250419+deb13u1+dhi0
   VERSION: "20250419"
 contents:
   repositories:
@@ -70,7 +70,7 @@ contents:
     - '!zlib'
     - '!zlib1g'
     - base-files
-    - ca-certificates=20250419+dhi2
+    - ca-certificates=20250419+deb13u1+dhi0
     - tzdata
 accounts:
   root: true
