@@ -19,7 +19,7 @@ platforms:
 dates:
   release: "2026-08-20"
 vars:
-  BASE_DIGEST: sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
+  BASE_DIGEST: sha256:620157c61ee0377151d3e11a7dd4d2ec6da34488f8c63a2706916f88f5f814fd
   BASE_TAG: 20250419-debian13
   FLAVORED_SUFFIX: ""
   SEMVER_MAJOR_MINOR_VERSION: "1.19"
@@ -40,7 +40,7 @@ contents:
     - base-files
     - kyverno-init-1.19=1.19.1-2
   artifacts:
-    - name: dhi.io/static:20250419-debian13@sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
+    - name: dhi.io/static:20250419-debian13@sha256:620157c61ee0377151d3e11a7dd4d2ec6da34488f8c63a2706916f88f5f814fd
       includes:
         - bin
         - etc

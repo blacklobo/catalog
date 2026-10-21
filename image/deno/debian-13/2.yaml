@@ -19,7 +19,7 @@ platforms:
 dates:
   release: "2025-09-10"
 vars:
-  BASE_REFERENCE: dhi/static:20250419-glibc-debian13@sha256:235b1831903e5ed82142b85b8b8b940d548d92af57cba0021afec39f17ffac00
+  BASE_REFERENCE: dhi/static:20250419-glibc-debian13@sha256:7a3f73ac0e3306ca283ebfcd99e9530752b6f416a372e15cc2629977bf22c67f
   BINUTILS_DIGEST: sha256:069179316afd8be7ba10ffb968dce13db5f4a349516553a98d77bfb85051f31d
   BINUTILS_VERSION: "2.46"
   COMMIT_SHA: 0c071246a412575e07423263404a5d13e7ed6aa2
@@ -46,7 +46,7 @@ contents:
     - '!libgprofng0'
     - '!libsframe1'
     - gcc
-    - gcc-14-base=14.2.0-19+dhi3
+    - gcc-14-base=14.2.0-19+dhi5
   builds:
     - name: deno
       uses: dhi.io/rust:1.95.0-debian13-dev@sha256:0334d0957269abccc1aab06d0a54171b66b8ff48fb805e9d4b52a6d6a2066e72
@@ -115,7 +115,7 @@ contents:
         - var/lib/dpkg/status.d/gcc-14-base
       uid: 0
       gid: 0
-    - name: dhi.io/static:20250419-glibc-debian13@sha256:235b1831903e5ed82142b85b8b8b940d548d92af57cba0021afec39f17ffac00
+    - name: dhi.io/static:20250419-glibc-debian13@sha256:7a3f73ac0e3306ca283ebfcd99e9530752b6f416a372e15cc2629977bf22c67f
       includes:
         - bin
         - etc
