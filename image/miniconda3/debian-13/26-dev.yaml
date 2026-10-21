@@ -123,9 +123,9 @@ contents:
 
             printf 'channels:\n  - conda-forge\nchannel_priority: strict\n' > /opt/conda/.condarc
 
-            /opt/conda/bin/conda update -n base -y urllib3 cryptography pyjwt pip idna python-dotenv msgpack-python pydantic-settings click anyio
+            /opt/conda/bin/conda update -n base -y urllib3 cryptography pyjwt pip idna python-dotenv msgpack-python pydantic-settings click anyio certifi
 
-            /opt/conda/bin/conda install -n base -y 'urllib3==2.8.0'
+            /opt/conda/bin/conda install -n base -y 'urllib3==2.8.0' 'certifi==2026.10.19' 'pip==26.2.2'
 
             SITE=$(echo /opt/conda/lib/python*/site-packages)
             align_vendor() {
@@ -141,6 +141,28 @@ contents:
               grep -q 'pkg:pypi/urllib3@2.8.0' "${root}/bom.cdx.json"
               if grep -q 'urllib3@2\.7\.0' "${root}/bom.cdx.json"; then
                 echo "stale urllib3 pin in ${root}/bom.cdx.json" >&2
+                exit 1
+              fi
+              rm -rf "${root}/certifi"
+              cp -a "${SITE}/certifi" "${root}/certifi"
+              sed -i -E 's/certifi==[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}/certifi==2026.10.19/' "${root}/vendor.txt"
+              sed -i -E \
+                -e 's|pkg:pypi/certifi@[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}|pkg:pypi/certifi@2026.10.19|g' \
+                -e 's|"version": "[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}"|"version": "2026.10.19"|g' \
+                "${root}/bom.cdx.json"
+              grep -q 'certifi==2026.10.19' "${root}/vendor.txt"
+              grep -q 'pkg:pypi/certifi@2026.10.19' "${root}/bom.cdx.json"
+              stale_certifi=$(grep -oE 'pkg:pypi/certifi@[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}' "${root}/bom.cdx.json" | sort -u | grep -v 'pkg:pypi/certifi@2026.10.19' || true)
+              if [ -n "${stale_certifi}" ]; then
+                echo "stale certifi pin in ${root}/bom.cdx.json" >&2
+                exit 1
+              fi
+              if grep -E '"version": "[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}"' "${root}/bom.cdx.json" | grep -qv '"version": "2026.10.19"'; then
+                echo "stale certifi version in ${root}/bom.cdx.json" >&2
+                exit 1
+              fi
+              if grep -q 'emSign ECC Root CA - G3' "${root}/certifi/cacert.pem"; then
+                echo "eMudhra G3 root still present in ${root}/certifi/cacert.pem" >&2
                 exit 1
               fi
             }
