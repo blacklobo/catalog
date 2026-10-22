@@ -4,9 +4,9 @@ image: dhi.io/pkg-netdata
 variant: runtime
 tags:
   - 2.12.1
-  - 2.12.1-r1
+  - 2.12.1-r2
   - 2.12.1-debian13
-  - 2.12.1-r1-debian13
+  - 2.12.1-r2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,9 +15,9 @@ dates:
 vars:
   COMMIT_SHA: 814d8bef2f50b96ff1adf7377fa622846026e3f7
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.2-0
+  GOLANG_VERSION: 1.27.3-0
   PACKAGE_NAME: netdata
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.12.1
@@ -75,8 +75,8 @@ contents:
           - coreutils
           - findutils
           - git
-          - golang-1.27=1.27.2-0
-          - golang-1.27-oci-config=1.27.2-0
+          - golang-1.27=1.27.3-0
+          - golang-1.27-oci-config=1.27.3-0
           - mawk
           - sed
         files:
@@ -211,7 +211,7 @@ contents:
               - deb
             license: GPL-3.0
             name: netdata
-            rel: 1
+            rel: 2
             url: https://www.netdata.cloud/
             version: 2.12.1
       paths:
