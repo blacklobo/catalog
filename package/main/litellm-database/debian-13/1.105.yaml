@@ -3,20 +3,20 @@
 image: dhi.io/pkg-litellm-database
 variant: runtime
 tags:
-  - 1.105.1
-  - 1.105.1-r0
-  - 1.105.1-debian13
-  - 1.105.1-r0-debian13
+  - 1.105.3
+  - 1.105.3-r0
+  - 1.105.3-debian13
+  - 1.105.3-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-10-11"
 vars:
-  COMMIT_SHA: d665dc1a6315847fcad6cc2c1264ceb47c06abce
-  NODEJS_VERSION: 24.22.0-0
+  COMMIT_SHA: fc795d5bfd3aa634497f12ce5196541230490cf5
+  NODEJS_VERSION: 24.22.1-0
   NODEJS_VERSION_SUFFIX: "-24"
-  NODEJS_VERSION_SUFFIX_FULL: -24=24.22.0-0
+  NODEJS_VERSION_SUFFIX_FULL: -24=24.22.1-0
   PACKAGE_NAME: litellm-database-1.105
   PYTHON_VERSION: "8.4"
   REL: "0"
@@ -24,8 +24,8 @@ vars:
   RUSTC_VERSION: "1.98"
   SEMVER_MAJOR_MINOR_VERSION: "1.105"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.105.1
-  VERSION: 1.105.1
+  SEMVER_VERSION: 1.105.3
+  VERSION: 1.105.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -65,7 +65,7 @@ contents:
           - libssl-dev
           - libsndfile1
           - libstdc++6
-          - nodejs-24=24.22.0-0
+          - nodejs-24=24.22.1-0
           - npm
           - python3.13
           - python3-dev
@@ -76,15 +76,15 @@ contents:
           - rustc-1.98
           - sed
         files:
-          - url: git+https://github.com/BerriAI/litellm.git#v1.105.1
-            checksum: d665dc1a6315847fcad6cc2c1264ceb47c06abce
+          - url: git+https://github.com/BerriAI/litellm.git#v1.105.3
+            checksum: fc795d5bfd3aa634497f12ce5196541230490cf5
             path: ${source.dir}/litellm-src
             spdx:
               name: litellm
-              version: 1.105.1
+              version: 1.105.3
               packages:
                 - name: litellm
-                  purl: pkg:pypi/litellm@1.105.1
+                  purl: pkg:pypi/litellm@1.105.3
                   license: MIT
             uid: 0
             gid: 0
@@ -243,7 +243,7 @@ contents:
             name: litellm-database-1.105
             rel: 0
             url: https://github.com/BerriAI/litellm
-            version: 1.105.1
+            version: 1.105.3
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
