@@ -4,9 +4,9 @@ image: dhi.io/pkg-searxng
 variant: runtime
 tags:
   - 2026.10.19
-  - 2026.10.19-r1
+  - 2026.10.19-r2
   - 2026.10.19-debian13
-  - 2026.10.19-r1-debian13
+  - 2026.10.19-r2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ dates:
 vars:
   COMMIT_SHA: 81371861f67226091d1c4df2e3908a11d3b54eb9
   PYTHON_VERSION: 3.13.16-0
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "2026.10"
   SEMVER_MAJOR_VERSION: "2026"
   SEMVER_VERSION: 2026.10.19
@@ -81,7 +81,7 @@ contents:
               - deb
             license: AGPL-3.0-or-later
             name: searxng
-            rel: 1
+            rel: 2
             url: https://github.com/searxng/searxng
             version: 2026.10.19
       paths:

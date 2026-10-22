@@ -4,9 +4,9 @@ image: dhi.io/pkg-jupyterhub
 variant: runtime
 tags:
   - 5.5.4
-  - 5.5.4-r0
+  - 5.5.4-r1
   - 5.5.4-debian13
-  - 5.5.4-r0-debian13
+  - 5.5.4-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -19,7 +19,7 @@ vars:
   PACKAGE_NAME: jupyterhub
   PYTHON_MINOR: "3.14"
   PYTHON_VERSION: 3.14.8-0
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "5.5"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.5.4
@@ -147,7 +147,7 @@ contents:
               - deb
             license: BSD-3-Clause
             name: jupyterhub
-            rel: 0
+            rel: 1
             url: https://jupyterhub.readthedocs.io/
             version: 5.5.4
       paths:
