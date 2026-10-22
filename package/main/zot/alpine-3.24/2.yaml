@@ -4,7 +4,7 @@ image: dhi.io/pkg-zot
 variant: runtime
 tags:
   - 2.1.22-alpine3.24
-  - 2.1.22-r0-alpine3.24
+  - 2.1.22-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,8 +13,8 @@ dates:
 vars:
   COMMIT_SHA: 6bbc7e56db2b7a64eee589324efe5813245e3a28
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.1-r1
-  REL: "0"
+  GOLANG_VERSION: 1.27.3-r0
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2.1"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.1.22
@@ -44,8 +44,8 @@ contents:
           - gzip
           - mawk
           - sed
-          - golang-1.27=1.27.1-r1
-          - golang-1.27-oci-config=1.27.1-r1
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
           - url: git+https://github.com/project-zot/zot.git#v2.1.22
             checksum: 6bbc7e56db2b7a64eee589324efe5813245e3a28
@@ -65,20 +65,37 @@ contents:
           with:
             deps:
               - github.com/Azure/go-ntlmssp@v0.1.1
+              - github.com/containerd/containerd/v2@v2.3.6
+              - github.com/distribution/distribution/v3@v3.1.2
               - github.com/go-git/go-git/v5@v5.19.2
-              - github.com/opencontainers/distribution-spec/specs-go@v0.0.0-20260627150115-216c04cd22ce
+              - github.com/opencontainers/distribution-spec/specs-go@v0.0.0-20260831232431-97274622c111
               - github.com/in-toto/in-toto-golang@v0.11.0
               - github.com/hashicorp/go-getter@v1.8.6
+              - golang.org/x/net@v0.61.0
               - google.golang.org/grpc@v1.85.0-dev.0.20260825072537-93e31b48545e
-              - go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp@v1.44.0
-              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.44.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp@v1.45.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.45.0
               - oras.land/oras-go/v2@v2.6.2
+            downgrade: true
+            download: true
             tidy: true
         - name: align otel log modules after go/bump tidy
           uses: go/bump@v2
           with:
-            deps: []
+            deps:
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc@v0.21.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0
+              - go.opentelemetry.io/otel/log@v0.21.0
+              - go.opentelemetry.io/otel/sdk/log@v0.21.0
+              - go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0
             downgrade: true
+            replaces:
+              - go.opentelemetry.io/otel/log=go.opentelemetry.io/otel/log@v0.21.0
+              - go.opentelemetry.io/otel/sdk/log=go.opentelemetry.io/otel/sdk/log@v0.21.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc@v0.21.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0
+              - go.opentelemetry.io/otel/exporters/stdout/stdoutlog=go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0
             tidy: true
         - uses: go/hermetic@v1
         - name: test
@@ -125,7 +142,7 @@ contents:
               - usr/bin/zot
             license: Apache-2.0
             name: zot
-            rel: 0
+            rel: 1
             subpackages:
               - files:
                   - path: usr/bin/zot
@@ -145,8 +162,8 @@ contents:
           - gzip
           - mawk
           - sed
-          - golang-1.27=1.27.1-r1
-          - golang-1.27-oci-config=1.27.1-r1
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
           - url: git+https://github.com/project-zot/zot.git#v2.1.22
             checksum: 6bbc7e56db2b7a64eee589324efe5813245e3a28
@@ -178,20 +195,37 @@ contents:
           with:
             deps:
               - github.com/Azure/go-ntlmssp@v0.1.1
+              - github.com/containerd/containerd/v2@v2.3.6
+              - github.com/distribution/distribution/v3@v3.1.2
               - github.com/go-git/go-git/v5@v5.19.2
-              - github.com/opencontainers/distribution-spec/specs-go@v0.0.0-20260627150115-216c04cd22ce
+              - github.com/opencontainers/distribution-spec/specs-go@v0.0.0-20260831232431-97274622c111
               - github.com/in-toto/in-toto-golang@v0.11.0
               - github.com/hashicorp/go-getter@v1.8.6
+              - golang.org/x/net@v0.61.0
               - google.golang.org/grpc@v1.85.0-dev.0.20260825072537-93e31b48545e
-              - go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp@v1.44.0
-              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.44.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp@v1.45.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.45.0
               - oras.land/oras-go/v2@v2.6.2
+            downgrade: true
+            download: true
             tidy: true
         - name: align otel log modules after go/bump tidy
           uses: go/bump@v2
           with:
-            deps: []
+            deps:
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc@v0.21.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0
+              - go.opentelemetry.io/otel/log@v0.21.0
+              - go.opentelemetry.io/otel/sdk/log@v0.21.0
+              - go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0
             downgrade: true
+            replaces:
+              - go.opentelemetry.io/otel/log=go.opentelemetry.io/otel/log@v0.21.0
+              - go.opentelemetry.io/otel/sdk/log=go.opentelemetry.io/otel/sdk/log@v0.21.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc@v0.21.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0
+              - go.opentelemetry.io/otel/exporters/stdout/stdoutlog=go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0
             tidy: true
         - uses: go/hermetic@v1
         - name: test
@@ -246,7 +280,7 @@ contents:
               - usr/bin/zot
             license: Apache-2.0
             name: zot-ui
-            rel: 0
+            rel: 1
             subpackages:
               - files:
                   - path: usr/bin/zot
