@@ -6,7 +6,7 @@
     {"groupId": "org.apache.httpcomponents.core5", "artifactId": "httpcore5", "version": "5.4.3"},
     {"groupId": "org.apache.httpcomponents.core5", "artifactId": "httpcore5-h2", "version": "5.4.3"},
     {"groupId": "org.apache.httpcomponents.client5", "artifactId": "httpclient5", "version": "5.6.3"},
-    {"groupId": "com.rabbitmq", "artifactId": "amqp-client", "version": "5.33.1"},
+    {"groupId": "com.rabbitmq", "artifactId": "amqp-client", "version": "5.37.0"},
     {"groupId": "org.apache.thrift", "artifactId": "libthrift", "version": "0.24.0"},
     {"groupId": "org.jline", "artifactId": "jline-builtins", "version": "3.30.15"},
     {"groupId": "org.jline", "artifactId": "jline-reader", "version": "3.30.15"},
