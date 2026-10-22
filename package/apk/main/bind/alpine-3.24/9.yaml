@@ -3,19 +3,19 @@
 image: dhi.io/pkg-bind
 variant: runtime
 tags:
-  - 9.20.29-alpine3.24
-  - 9.20.29-r0-alpine3.24
+  - 9.20.30-alpine3.24
+  - 9.20.30-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: f5d392caf312ee39159edea9c79a6396fd8b9837
+  COMMIT_SHA: 80227f99f7eadc13f52958639f797fa06a55fcbe
   PACKAGE_NAME: main/bind
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "9.20"
   SEMVER_MAJOR_VERSION: "9"
-  SEMVER_VERSION: 9.20.29
-  VERSION: 9.20.29
+  SEMVER_VERSION: 9.20.30
+  VERSION: 9.20.30
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -47,12 +47,12 @@ contents:
           - userspace-rcu-dev
           - json-c-dev
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#f5d392caf312ee39159edea9c79a6396fd8b9837
+          - url: git+https://github.com/alpinelinux/aports.git#80227f99f7eadc13f52958639f797fa06a55fcbe
             path: ${source.dir}/aports
             uid: 0
             gid: 0
-          - url: https://downloads.isc.org/isc/bind9/9.20.29/bind-9.20.29.tar.xz
-            path: /var/cache/distfiles/bind-9.20.29.tar.xz
+          - url: https://downloads.isc.org/isc/bind9/9.20.30/bind-9.20.30.tar.xz
+            path: /var/cache/distfiles/bind-9.20.30.tar.xz
             uid: 0
             gid: 0
       pipeline:
