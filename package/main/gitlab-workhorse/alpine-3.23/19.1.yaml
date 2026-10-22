@@ -3,20 +3,20 @@
 image: dhi.io/pkg-gitlab-workhorse
 variant: runtime
 tags:
-  - 19.1.8-alpine3.23
-  - 19.1.8-r3-alpine3.23
+  - 19.1.9-alpine3.23
+  - 19.1.9-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 25601e798604a50f025102e4598a6884305802c4
-  GOLANG_VERSION: 1.26.9-r0
+  COMMIT_SHA: b98e49420d2b687ddd82b9108f6c402eb6c2c671
+  GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: gitlab-workhorse
-  REL: "3"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "19.1"
   SEMVER_MAJOR_VERSION: "19"
-  SEMVER_VERSION: 19.1.8
-  VERSION: 19.1.8
+  SEMVER_VERSION: 19.1.9
+  VERSION: 19.1.9
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -35,20 +35,20 @@ contents:
           - ca-certificates-bundle
           - coreutils
           - findutils
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
           - mawk
           - sed
         files:
-          - url: git+https://gitlab.com/gitlab-org/gitlab-foss.git#v19.1.8
-            checksum: 25601e798604a50f025102e4598a6884305802c4
+          - url: git+https://gitlab.com/gitlab-org/gitlab-foss.git#v19.1.9
+            checksum: b98e49420d2b687ddd82b9108f6c402eb6c2c671
             path: /go/src/gitlab.com/gitlab-org/gitlab
             spdx:
               name: gitlab-workhorse
-              version: 19.1.8
+              version: 19.1.9
               packages:
                 - name: gitlab-workhorse
-                  purl: pkg:golang/gitlab.com/gitlab-org/gitlab/workhorse@19.1.8
+                  purl: pkg:golang/gitlab.com/gitlab-org/gitlab/workhorse@19.1.9
                   license: MIT
             uid: 0
             gid: 0
@@ -85,7 +85,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v19.1.8
+              - -X main.Version=v19.1.9
               - -X main.BuildTime=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y%m%d.%H%M%S')
             output: ${target.dir}/usr/bin/gitlab-workhorse
             packages: ./cmd/gitlab-workhorse
@@ -95,7 +95,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v19.1.8
+              - -X main.Version=v19.1.9
               - -X main.BuildTime=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y%m%d.%H%M%S')
             output: ${target.dir}/usr/bin/gitlab-resize-image
             packages: ./cmd/gitlab-resize-image
@@ -105,7 +105,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v19.1.8
+              - -X main.Version=v19.1.9
               - -X main.BuildTime=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y%m%d.%H%M%S')
             output: ${target.dir}/usr/bin/gitlab-zip-cat
             packages: ./cmd/gitlab-zip-cat
@@ -115,7 +115,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v19.1.8
+              - -X main.Version=v19.1.9
               - -X main.BuildTime=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y%m%d.%H%M%S')
             output: ${target.dir}/usr/bin/gitlab-zip-metadata
             packages: ./cmd/gitlab-zip-metadata
@@ -130,9 +130,9 @@ contents:
               - usr/bin/gitlab-zip-metadata
             license: MIT
             name: gitlab-workhorse
-            rel: 3
+            rel: 0
             url: https://gitlab.com/gitlab-org/gitlab/-/tree/master/workhorse
-            version: 19.1.8
+            version: 19.1.9
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
