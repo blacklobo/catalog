@@ -6,7 +6,7 @@ variant: runtime
 tags:
   - bookworm-debian12
   - bookworm-20250419-debian12
-  - bookworm-20250419-deb12u1-debian12
+  - bookworm-20250419-deb12u2-debian12
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,11 +14,11 @@ dates:
   release: "2023-06-10"
   end-of-life: "2026-06-10"
 vars:
-  BASE_DIGEST: sha256:30ccc6534f3896896ad61c9355e4634a0ec38288f4a787f318bcd7179ac20fec
+  BASE_DIGEST: sha256:9d1b3dc08de39cdf788533d6aae4140dda87c74e81fd4b411f6def916f722a66
   BASE_TAG: 20250419-debian12
-  CA_CERTIFICATES_VERSION: 20250419~deb12u1
+  CA_CERTIFICATES_VERSION: 20250419~deb12u2
   CA_CERTIFICATES_VERSION_DATE: "20250419"
-  CA_CERTIFICATES_VERSION_DEB: deb12u1
+  CA_CERTIFICATES_VERSION_DEB: deb12u2
   CODENAME: bookworm
   DISTRO_PRETTY_VERSION: Debian 12 (bookworm)
   DISTRO_VERSION: "12"
@@ -32,6 +32,8 @@ contents:
     - name: trust-pkg-debian-bookworm
       uses: dhi.io/golang:1.26.9-debian12-dev@sha256:454897baffeca27d3fcf2b162cb30e38d78b641181c3ad25c4d8301028b7292a
       contents:
+        packages:
+          - ca-certificates=20250419~deb12u2
         files:
           - url: git+https://github.com/cert-manager/trust-manager.git#v0.25.0
             checksum: ddeb17c70923c4c6ec44b34c36f4103a0bb798a1
@@ -64,12 +66,11 @@ contents:
 
             mkdir -p ${target.dir}/debian-package
 
-            # ca-certificates and jq are pre-installed in the golang builder
-            # Create the JSON trust bundle matching upstream format
+            # ca-certificates from contents.packages; jq is pre-installed in the golang builder
             jq -n \
               --rawfile bundle /etc/ssl/certs/ca-certificates.crt \
               --arg name "cert-manager-debian-bookworm" \
-              --arg version "20250419~deb12u1" \
+              --arg version "20250419~deb12u2" \
               '.name = $name | .bundle = $bundle | .version = $version' \
               > ${target.dir}/debian-package/cert-manager-package-debian.json
       outputs:
@@ -86,7 +87,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/static:20250419-debian12@sha256:30ccc6534f3896896ad61c9355e4634a0ec38288f4a787f318bcd7179ac20fec
+    - name: dhi.io/static:20250419-debian12@sha256:9d1b3dc08de39cdf788533d6aae4140dda87c74e81fd4b411f6def916f722a66
       includes:
         - bin
         - etc
