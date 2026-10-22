@@ -64,6 +64,8 @@ export DHI_LIBC
 # reflect, so the lockfile is regenerated for these edits first.
 node -e '
   const fs = require("node:fs");
+  const wsFile = "pnpm-workspace.yaml";
+  let ws = fs.readFileSync(wsFile, "utf8");
   const overrides = {
     "fast-uri@3": "3.1.8", // CVE-2026-75899, CVE-2026-75931, CVE-2026-75975, CVE-2026-76172, GHSA-qw65-cvwx-89v3, GHSA-58mr-gqgx-xq4g, GHSA-hrr3-gc8f-f4qj
     "axios": "1.20.0", // CVE-2026-101898, CVE-2026-101899, CVE-2026-101900, CVE-2026-101901, CVE-2026-101902, CVE-2026-101903, CVE-2026-101904, CVE-2026-101905, CVE-2026-101906, CVE-2026-101907, CVE-2026-101908, CVE-2026-101909
@@ -76,8 +78,8 @@ node -e '
     "sharp": "0.35.5", // GHSA-wq5f-xc86-pv6w
     "simple-git": "4.0.1", // CVE-2026-102828, CVE-2026-102826, CVE-2026-102827
     "source-map-js": "1.2.2", // CVE-2026-93749
-    "nodemailer": "10.0.9", // CVE-2026-100699, CVE-2026-100700
   };
+  if (ws.includes("\n  nodemailer: 10.0.1\n")) overrides.nodemailer = "10.0.9"; // CVE-2026-100699, CVE-2026-100700
   const rootFile = "package.json";
   const root = JSON.parse(fs.readFileSync(rootFile, "utf8"));
   const directusVersion = JSON.parse(fs.readFileSync("directus/package.json", "utf8")).version;
@@ -92,15 +94,14 @@ node -e '
   root.pnpm = root.pnpm || {};
   Object.assign(root.pnpm.overrides = root.pnpm.overrides || {}, overrides);
   fs.writeFileSync(rootFile, JSON.stringify(root, null, "\t") + "\n");
-  const wsFile = "pnpm-workspace.yaml";
-  let ws = fs.readFileSync(wsFile, "utf8");
-  for (const [from, to, why] of [
-    ["nodemailer: 10.0.1", "nodemailer: 10.0.2", "GHSA-6vj9-mwq6-2f5v"],
-    ["undici: 7.29.0", "undici: 7.29.1", "CVE-2026-85024"],
+  for (const [from, to, current, why] of [
+    ["nodemailer: 10.0.1", "nodemailer: 10.0.2", "nodemailer: 10.0.15", "GHSA-6vj9-mwq6-2f5v"],
+    ["undici: 7.29.0", "undici: 7.29.1", "undici: 7.30.0", "CVE-2026-85024"],
   ]) {
     const line = "\n  " + from + "\n";
-    if (!ws.includes(line)) throw new Error("catalog entry " + from + " not found, re-check the " + why + " pin");
-    ws = ws.replace(line, "\n  " + to + "\n");
+    const currentLine = "\n  " + current + "\n";
+    if (ws.includes(line)) ws = ws.replace(line, "\n  " + to + "\n");
+    else if (!ws.includes(currentLine)) throw new Error("catalog entry " + from + " or " + current + " not found, re-check the " + why + " pin");
   }
   if (ws.includes("supportedArchitectures")) throw new Error("upstream now sets supportedArchitectures, re-check the libc selection");
   ws += "\nsupportedArchitectures:\n  os:\n    - current\n  cpu:\n    - current\n  libc:\n    - " + process.env.DHI_LIBC + "\n";
