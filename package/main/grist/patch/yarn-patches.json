@@ -246,6 +246,10 @@
   },
   {
     "package": "dompurify",
+    "version": "3.4.16"
+  },
+  {
+    "package": "dompurify",
     "version": "3.4.16",
     "resolutions": [
       "**/dompurify"
