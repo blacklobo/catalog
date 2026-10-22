@@ -4,7 +4,7 @@ image: dhi.io/pkg-operator-sdk
 variant: runtime
 tags:
   - 1.42.3-alpine3.24
-  - 1.42.3-r5-alpine3.24
+  - 1.42.3-r6-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,10 +13,10 @@ dates:
 vars:
   COMMIT_SHA: 2016cae87253bef07444dd47c463bdbb27c44c48
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.2-r0
+  GOLANG_VERSION: 1.27.3-r0
   K8S_VERSION: 1.33.1
   PACKAGE_NAME: operator-sdk
-  REL: "5"
+  REL: "6"
   SEMVER_MAJOR_MINOR_VERSION: "1.42"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.42.3
@@ -39,8 +39,8 @@ contents:
           - busybox
           - bash
           - ca-certificates-bundle
-          - golang-1.27=1.27.2-r0
-          - golang-1.27-oci-config=1.27.2-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
           - url: git+https://github.com/operator-framework/operator-sdk.git#v1.42.3
             checksum: 2016cae87253bef07444dd47c463bdbb27c44c48
@@ -67,7 +67,6 @@ contents:
               - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.23.0
               - go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.23.0
               - go.opentelemetry.io/otel/sdk/log@v1.47.0
-              - golang.org/x/mod@v0.41.0
               - helm.sh/helm/v3@v3.20.2
               - oras.land/oras-go/v2@v2.6.2
             replaces:
@@ -130,7 +129,7 @@ contents:
               - usr/bin/operator-sdk
             license: Apache-2.0
             name: operator-sdk
-            rel: 5
+            rel: 6
             subpackages:
               - files:
                   - path: usr/bin/operator-sdk
