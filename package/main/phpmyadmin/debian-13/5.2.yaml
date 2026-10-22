@@ -4,9 +4,9 @@ image: dhi.io/pkg-phpmyadmin
 variant: runtime
 tags:
   - 5.2.3
-  - 5.2.3-r0
+  - 5.2.3-r1
   - 5.2.3-debian13
-  - 5.2.3-r0-debian13
+  - 5.2.3-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,8 +17,8 @@ vars:
   COMPOSER_PHAR_SHA256: 7a2d379d5b8ffdaa028580ef26494c36d2feef4b178d3dd1473a4dbc5e17c8d6
   COMPOSER_VERSION: 2.10.3
   DHI_TEST_DEB_EXPECTED_FILES: /usr/share/phpmyadmin/index.php /usr/share/phpmyadmin/js/dist/common.js /usr/share/phpmyadmin/themes/pmahomme/css/theme.css /usr/share/phpmyadmin/locale/de/LC_MESSAGES/phpmyadmin.mo /usr/share/phpmyadmin/vendor/autoload.php /usr/share/phpmyadmin/doc/html/index.html /usr/share/phpmyadmin/libraries/cache/routes.cache.php
-  PHP_VERSION: 8.3.35-0
-  REL: "0"
+  PHP_VERSION: 8.3.36-0
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "5.2"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.2.3
@@ -52,7 +52,7 @@ contents:
           - tar
           - unzip
           - xz-utils
-          - php-8.3=8.3.35-0
+          - php-8.3=8.3.36-0
           - libargon2-1
           - libcurl4t64
           - libicu76
@@ -188,7 +188,7 @@ contents:
               - deb
             license: GPL-2.0-only
             name: dhi-phpmyadmin
-            rel: 0
+            rel: 1
             url: https://www.phpmyadmin.net
             version: 5.2.3
 os-release:
