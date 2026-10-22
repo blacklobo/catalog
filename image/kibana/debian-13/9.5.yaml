@@ -6,13 +6,13 @@ variant: runtime
 tags:
   - "9"
   - "9.5"
-  - 9.5.4
+  - 9.5.5
   - 9-debian
   - 9-debian13
   - 9.5-debian
   - 9.5-debian13
-  - 9.5.4-debian
-  - 9.5.4-debian13
+  - 9.5.5-debian
+  - 9.5.5-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,20 +20,12 @@ dates:
   release: "2026-08-04"
 vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
-  COMMIT_SHA: abf4eb613d64cdb3a6290671ce1cb67399677ab3
   GO_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
-  KIBANA_NODE_BUILD_FLAGS: ' '
-  KIBANA_NODE_RENDER_FLAGS: ' '
-  NODE_ARCH: '#{ target.arch == "amd64" ? "x64" : "arm64" }'
-  NODE_BINARIES_EXTRA_SUBDIR: glibc-217
-  NODE_BINARIES_SUBDIR: default
-  NODE_DEB_VERSION: 24.22.0-0
   NODE_MAJOR_VERSION: "24"
-  NODE_VERSION: 24.22.0
   SEMVER_MAJOR_MINOR_VERSION: "9.5"
   SEMVER_MAJOR_VERSION: "9"
-  SEMVER_VERSION: 9.5.4
-  VERSION: 9.5.4
+  SEMVER_VERSION: 9.5.5
+  VERSION: 9.5.5-1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -49,167 +41,10 @@ contents:
     - coreutils
     - findutils
     - grep
+    - kibana-9.5=9.5.5-1
     - libstdc++6
     - tini
     - tzdata
-  builds:
-    - name: kibana
-      contents:
-        packages:
-          - bash
-          - gzip
-          - jq
-          - base-files
-          - ca-certificates
-          - coreutils
-          - findutils
-          - git
-          - libc6
-          - libstdc++6
-          - mawk
-          - nodejs-24
-          - node-corepack
-          - npm
-          - sed
-          - yarn-classic
-        files:
-          - url: git+https://github.com/elastic/kibana.git#v9.5.4
-            checksum: abf4eb613d64cdb3a6290671ce1cb67399677ab3
-            path: ${source.dir}/kibana
-            spdx:
-              name: kibana
-              version: 9.5.4
-              packages:
-                - name: kibana
-                  purl: pkg:dhi/kibana@9.5.4
-                  license: Apache-2.0
-            uid: 65532
-            gid: 65532
-      pipeline:
-        - name: update node engine
-          work-dir: ${source.dir}/kibana
-          runs: |
-            set -eux -o pipefail
-
-            ls -la package.json
-
-            REQUIRED_VERSION=$(sed -nr "s/\"node\": \"([0-9]+)\.[0-9]+\.[0-9]+\".*/\1/p" package.json | tr -d " ")
-            if [ "$REQUIRED_VERSION" != "24" ]; then
-              echo "Error: upstream requirement for Node v$REQUIRED_VERSION not met by build v24."
-              echo "Error: if version change is intentional, update this version verification logic."
-              exit 1
-            fi
-
-            sed -ir "s/\"node\": \"[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"node\": \"$(node --version | sed 's/^v//')\"/g" package.json
-        - name: bump yarn deps (9.5)
-          uses: yarn/bump@v2
-          run-as: "65532"
-          privileged: true
-          with:
-            bumps: ${source.dir}/patches/yarn-patches_9.5.json
-            yarn-root: ${source.dir}/kibana
-        - name: build kibana
-          work-dir: ${source.dir}/kibana
-          privileged: true
-          runs: |
-            set -eux -o pipefail
-
-            echo "startup --batch" > .bazelrc.user
-
-            mkdir -p ~/.moon/plugins/toolchains
-            export MOON_TOOLCHAIN_FORCE_GLOBALS=1
-
-            yarn kbn bootstrap
-
-            NODE_RUNTIME_VERSION="$(node --version | sed 's/^v//')"
-            populate_node_extract() {
-              local variant="$1"
-              local platform="$2"
-              local extract="${source.dir}/kibana/.node_binaries/${NODE_RUNTIME_VERSION}/${variant}/${platform}/extract"
-
-              mkdir -p "${extract}/bin"
-              cp -a /usr/bin/node "${extract}/bin/node"
-              node << EOF
-            const fs = require('fs');
-            const https = require('https');
-            const url = 'https://raw.githubusercontent.com/nodejs/node/v${NODE_RUNTIME_VERSION}/LICENSE';
-            https.get(url, (res) => {
-              if (res.statusCode !== 200) {
-                console.error('failed to download Node LICENSE:', res.statusCode);
-                process.exit(1);
-              }
-              const chunks = [];
-              res.on('data', (chunk) => chunks.push(chunk));
-              res.on('end', () => fs.writeFileSync('${extract}/LICENSE', Buffer.concat(chunks)));
-            }).on('error', (err) => {
-              console.error(err);
-              process.exit(1);
-            });
-            EOF
-            }
-            for node_subdir in default glibc-217; do
-              if [ -z "${node_subdir}" ]; then
-                continue
-              fi
-              populate_node_extract "${node_subdir}" "linux-x64"
-              if [ ${NODE_ARCH} != "x64" ]; then
-                populate_node_extract "${node_subdir}" "linux-${NODE_ARCH}"
-              fi
-            done
-
-            node   -- \
-              scripts/build --skip-os-packages --skip-initialize \
-              --skip-docker-cloud-fips --skip-docker-contexts --skip-docker-ubi \
-              --skip-docker-wolfi --skip-docker-cloud --skip-docker-cloud-fips \
-              --skip-docker-serverless --skip-docker-fips
-
-            KBN_DIST="${source.dir}/kibana/build/default/kibana-9.5.4-SNAPSHOT-linux-${GO_ARCH}"
-            if [ ! -x "${KBN_DIST}/bin/kibana" ]; then
-              cd "${source.dir}/kibana"
-              export KBN_VERSION="9.5.4" KBN_GO_ARCH="${GO_ARCH}"
-              node   scripts/render-bin-scripts.js
-            fi
-
-            mkdir -p "${target.dir}/opt/kibana/kibana-9.5.4"
-
-            cp -r "${KBN_DIST}"/* "${target.dir}/opt/kibana/kibana-9.5.4"
-
-            cd "${target.dir}/opt/kibana/kibana-9.5.4"
-            rm -rf data
-      paths:
-        - type: file
-          path: ${source.dir}/patches/yarn-patches_9.4.json
-          uid: 65532
-          gid: 65532
-          mode: "0444"
-          source: image/kibana/patch/yarn-patches_9.4.json
-        - type: file
-          path: ${source.dir}/patches/yarn-patches_9.5.json
-          uid: 65532
-          gid: 65532
-          mode: "0444"
-          source: image/kibana/patch/yarn-patches_9.5.json
-        - type: file
-          path: ${source.dir}/kibana/scripts/render-bin-scripts.js
-          uid: 65532
-          gid: 65532
-          mode: "0444"
-          source: image/kibana/scripts/render-bin-scripts.js
-      accounts:
-        run-as: node
-        users:
-          - name: node
-            uid: 65532
-            gid: 65532
-      outputs:
-        - source: ${target.dir}/opt/kibana/kibana-9.5.4
-          target: /opt/kibana/kibana-9.5.4
-          uid: 0
-          gid: 0
-        - source: /opt/docker/sbom/kibana
-          target: /opt/docker/sbom/kibana
-          uid: 0
-          gid: 0
 accounts:
   run-as: nonroot
   users:
@@ -231,36 +66,25 @@ os-release:
   bug-report-url: https://docker.com/support/
 environment:
   ELASTIC_CONTAINER: "true"
-  KIBANA_VERSION: 9.5.4
-  PATH: /opt/kibana/kibana-9.5.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  KIBANA_VERSION: 9.5.5
 paths:
   - type: directory
-    path: /usr/share
-    uid: 0
-    gid: 0
-    mode: "0755"
-  - type: symlink
-    path: /usr/share/kibana
-    uid: 0
-    gid: 0
-    source: /opt/kibana/kibana-9.5.4
-  - type: directory
-    path: /opt/kibana/kibana-9.5.4/data
+    path: /usr/share/kibana/data
     uid: 65532
     gid: 65532
     mode: "0755"
+  - type: file
+    path: /usr/share/kibana/config/kibana.yml
+    uid: 65532
+    gid: 65532
+    mode: "0644"
+    source: image/kibana/config/kibana.yml
   - type: file
     path: /usr/local/bin/kibana-docker
     uid: 0
     gid: 0
     mode: "0755"
     source: image/kibana/bin/kibana-docker
-  - type: file
-    path: /opt/kibana/kibana-9.5.4/config/kibana.yml
-    uid: 65532
-    gid: 65532
-    mode: "0644"
-    source: image/kibana/config/kibana.yml
   - type: symlink
     path: /usr/local/bin/tini
     uid: 0
