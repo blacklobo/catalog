@@ -4,15 +4,15 @@ image: dhi.io/pkg-devspace
 variant: runtime
 tags:
   - 6.3.21-alpine3.23
-  - 6.3.21-r16-alpine3.23
+  - 6.3.21-r17-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   COMMIT_SHA: 7f272dcf90653fa9b42bc4347f7f3f9a52b0e8b5
-  GOLANG_VERSION: 1.26.9-r0
+  GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: devspace
-  REL: "16"
+  REL: "17"
   SEMVER_MAJOR_MINOR_VERSION: "6.3"
   SEMVER_MAJOR_VERSION: "6"
   SEMVER_VERSION: 6.3.21
@@ -34,8 +34,8 @@ contents:
           - busybox
           - bash
           - ca-certificates-bundle
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
         files:
           - url: git+https://github.com/loft-sh/devspace.git#v6.3.21
             checksum: 7f272dcf90653fa9b42bc4347f7f3f9a52b0e8b5
@@ -52,12 +52,13 @@ contents:
               - github.com/distribution/distribution/v3@v3.1.1
               - github.com/moby/buildkit@v0.12.5
               - github.com/gorilla/websocket@v1.5.3
-              - github.com/klauspost/compress@v1.20.1
               - github.com/moby/go-archive@v0.3.0
               - github.com/moby/spdystream@v0.5.1
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace@v1.46.0
             download: true
             replaces:
+              - github.com/docker/cli=github.com/docker/cli@v28.2.2+incompatible
+              - github.com/google/go-containerregistry=github.com/google/go-containerregistry@v0.20.6
               - google.golang.org/grpc=google.golang.org/grpc@v1.83.2
               - go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc=go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.46.1
             tidy: true
@@ -70,6 +71,10 @@ contents:
           with:
             patch: buildkit-0.12-progressui.patch
         - uses: go/hermetic@v1
+        - name: patch Docker Engine client for go-connections 0.7
+          uses: git/patch@v1
+          with:
+            patch: docker-engine-go-connections-0.7-compat.patch
         - name: patch buildkit vendor for containerd auth API
           uses: git/patch@v1
           with:
@@ -102,7 +107,7 @@ contents:
               - usr/bin/devspace
             license: Apache-2.0
             name: devspace
-            rel: 16
+            rel: 17
             subpackages:
               - files:
                   - path: usr/bin/devspace
@@ -116,6 +121,11 @@ contents:
           uid: 0
           gid: 0
           source: package/main/devspace/patch/docker-cli-go-archive-0.3-compat.patch
+        - type: file
+          path: /go/src/github.com/loft-sh/devspace/docker-engine-go-connections-0.7-compat.patch
+          uid: 0
+          gid: 0
+          source: package/main/devspace/patch/docker-engine-go-connections-0.7-compat.patch
         - type: file
           path: /go/src/github.com/loft-sh/devspace/buildkit-containerd-expiresin.patch
           uid: 0
