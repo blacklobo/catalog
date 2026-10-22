@@ -4,9 +4,9 @@ image: dhi.io/pkg-maven
 variant: runtime
 tags:
   - 3.10.0
-  - 3.10.0-r0
+  - 3.10.0-r1
   - 3.10.0-debian13
-  - 3.10.0-r0-debian13
+  - 3.10.0-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ dates:
   release: "2026-09-27"
 vars:
   PACKAGE_NAME: maven
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "3.10"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.10.0
@@ -39,7 +39,7 @@ contents:
           - gzip
           - tar
         files:
-          - url: https://archive.apache.org/dist/maven/maven-3/3.10.0/binaries/apache-maven-3.10.0-bin.tar.gz
+          - url: https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.10.0/apache-maven-3.10.0-bin.tar.gz
             checksum: sha256:a46cc51bc74fa23fd267c7a0b9132b146dcf526da60d31aa5174e565632e9e0e
             path: ${source.dir}/maven/apache-maven-3.10.0-bin.tar.gz
             spdx:
@@ -96,7 +96,7 @@ contents:
               - deb
             license: Apache-2.0
             name: maven
-            rel: 0
+            rel: 1
             url: https://maven.apache.org/
             version: 3.10.0
 os-release:
