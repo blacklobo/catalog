@@ -3,23 +3,23 @@
 image: dhi.io/pkg-valkey-operator
 variant: runtime
 tags:
-  - 0.7.1-alpine3.24
-  - 0.7.1-r10-alpine3.24
+  - 0.8.0-alpine3.24
+  - 0.8.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: c24c471e972bd16a463cd5a1acdf17b38729bea2
+  COMMIT_SHA: c41fb27b4314cb9d21d0adfd9277df509bd3fc06
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.9-r0
+  GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: valkey-operator
-  REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.94.0-debian13@sha256:4788a887168e2c74800cd879842e5667099de4c0640308198af09d614a3b15ea
-  REL: "10"
-  SEMVER_MAJOR_MINOR_VERSION: "0.7"
+  REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.94.0-debian13@sha256:74eb3960875ab8288dd7ebdfafbdd5ab3e2e71e5093a60be6e980547657c5b85
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "0.8"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.7.1
-  VALKEY_REFERENCE: dhi/valkey:9.1.2-debian13@sha256:e8d06d6e14feb2574e36b3400c89e4ae091cf5c075c790351372ad344efbf05a
-  VERSION: 0.7.1
+  SEMVER_VERSION: 0.8.0
+  VALKEY_REFERENCE: dhi/valkey:9.1.2-debian13@sha256:88c9f6749db5757ecd2270fbb000840bad1f3a002662ad034c86e1809f2b46b1
+  VERSION: 0.8.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -42,18 +42,18 @@ contents:
           - findutils
           - gettext-envsubst
           - mawk
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/valkey-io/valkey-operator.git#v0.7.1
-            checksum: c24c471e972bd16a463cd5a1acdf17b38729bea2
+          - url: git+https://github.com/valkey-io/valkey-operator.git#v0.8.0
+            checksum: c41fb27b4314cb9d21d0adfd9277df509bd3fc06
             path: /go/src/github.com/valkey-io/valkey-operator
             spdx:
               name: valkey-operator
-              version: 0.7.1
+              version: 0.8.0
               packages:
                 - name: valkey-operator
-                  purl: pkg:golang/github.com/valkey-io/valkey-operator@0.7.1
+                  purl: pkg:golang/github.com/valkey-io/valkey-operator@0.8.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -68,8 +68,8 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            export VALKEY_REFERENCE="dhi/valkey:9.1.2-debian13@sha256:e8d06d6e14feb2574e36b3400c89e4ae091cf5c075c790351372ad344efbf05a"
-            export REDIS_EXPORTER_REFERENCE="dhi/redis-exporter:1.94.0-debian13@sha256:4788a887168e2c74800cd879842e5667099de4c0640308198af09d614a3b15ea"
+            export VALKEY_REFERENCE="dhi/valkey:9.1.2-debian13@sha256:88c9f6749db5757ecd2270fbb000840bad1f3a002662ad034c86e1809f2b46b1"
+            export REDIS_EXPORTER_REFERENCE="dhi/redis-exporter:1.94.0-debian13@sha256:74eb3960875ab8288dd7ebdfafbdd5ab3e2e71e5093a60be6e980547657c5b85"
 
             file=internal/controller/valkeycluster_controller.go
             envsubst '$VALKEY_REFERENCE $REDIS_EXPORTER_REFERENCE' < "$file" > "$file.tmp"
@@ -118,14 +118,14 @@ contents:
               - usr/bin/manager
             license: Apache-2.0
             name: valkey-operator
-            rel: 10
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/manager
                     source: usr/bin/manager-dev
                 name: valkey-operator-dev
             url: https://github.com/valkey-io/valkey-operator
-            version: 0.7.1
+            version: 0.8.0
       paths:
         - type: file
           path: ${source.dir}/patch/dhi-default-images.patch
