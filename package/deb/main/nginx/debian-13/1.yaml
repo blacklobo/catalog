@@ -3,28 +3,28 @@
 image: dhi.io/pkg-nginx
 variant: runtime
 tags:
-  - 1.26.3-3-deb13u9-dhi1
-  - 1.26.3-3-deb13u9-dhi1-debian13
+  - 1.26.3-3-deb13u10-dhi0
+  - 1.26.3-3-deb13u10-dhi0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DEBIAN_DEBIAN_CHECKSUM: sha256:860b84ea2e0b394ef2124ce118f9479eea7e63d9a6c6991e5b965e7c21a4a407
-  DEBIAN_DEBIAN_FILENAME: nginx_1.26.3-3+deb13u9.debian.tar.xz
-  DEBIAN_DEBIAN_URL: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3-3+deb13u9.debian.tar.xz
-  DEBIAN_DSC_CHECKSUM: sha256:ede21ae86c60e8be4112f871d319724d19c0f1b3b1840aa9abbcce4c1a7244b9
-  DEBIAN_DSC_FILENAME: nginx_1.26.3-3+deb13u9.dsc
-  DEBIAN_DSC_URL: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3-3+deb13u9.dsc
-  DEBIAN_FILENAME_VERSION: 1.26.3-3+deb13u9
+  DEBIAN_DEBIAN_CHECKSUM: sha256:22b58b7a5261cd427022544814d502935aba9d84bf2ca4e03d9f7a17e678c388
+  DEBIAN_DEBIAN_FILENAME: nginx_1.26.3-3+deb13u10.debian.tar.xz
+  DEBIAN_DEBIAN_URL: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3-3+deb13u10.debian.tar.xz
+  DEBIAN_DSC_CHECKSUM: sha256:b1b8dc9c2fa47dcd46844f68833bc80244220a127299be36754bbb3b5d56192e
+  DEBIAN_DSC_FILENAME: nginx_1.26.3-3+deb13u10.dsc
+  DEBIAN_DSC_URL: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3-3+deb13u10.dsc
+  DEBIAN_FILENAME_VERSION: 1.26.3-3+deb13u10
   DEBIAN_ORIG_ASC_CHECKSUM: sha256:faa36c1c57af475445b2a50d203fea314ed1db6a3399ed95c79ae7e99478a9f3
   DEBIAN_ORIG_ASC_URL: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3.orig.tar.gz.asc
   DEBIAN_ORIG_CHECKSUM: sha256:69ee2b237744036e61d24b836668aad3040dda461fe6f570f1787eab570c75aa
   DEBIAN_ORIG_FILENAME: nginx_1.26.3.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3.orig.tar.gz
-  DEBIAN_VERSION: 1.26.3-3+deb13u9
-  DHI_REL: "1"
-  DHI_VERSION: 1.26.3-3+deb13u9+dhi1
-  TAG_VERSION: 1.26.3-3-deb13u9-dhi1
+  DEBIAN_VERSION: 1.26.3-3+deb13u10
+  DHI_REL: "0"
+  DHI_VERSION: 1.26.3-3+deb13u10+dhi0
+  TAG_VERSION: 1.26.3-3-deb13u10-dhi0
   UPSTREAM_VERSION: 1.26.3
 contents:
   packages:
@@ -49,9 +49,9 @@ contents:
           - util-linux
           - zlib1g-dev
         files:
-          - url: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3-3+deb13u9.dsc
-            checksum: sha256:ede21ae86c60e8be4112f871d319724d19c0f1b3b1840aa9abbcce4c1a7244b9
-            path: ${source.dir}/nginx_1.26.3-3+deb13u9.dsc
+          - url: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3-3+deb13u10.dsc
+            checksum: sha256:b1b8dc9c2fa47dcd46844f68833bc80244220a127299be36754bbb3b5d56192e
+            path: ${source.dir}/nginx_1.26.3-3+deb13u10.dsc
             uid: 0
             gid: 0
           - url: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3.orig.tar.gz
@@ -64,61 +64,25 @@ contents:
             path: ${source.dir}/nginx_1.26.3.orig.tar.gz.asc
             uid: 0
             gid: 0
-          - url: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3-3+deb13u9.debian.tar.xz
-            checksum: sha256:860b84ea2e0b394ef2124ce118f9479eea7e63d9a6c6991e5b965e7c21a4a407
-            path: ${source.dir}/nginx_1.26.3-3+deb13u9.debian.tar.xz
+          - url: https://deb.debian.org/debian-security/pool/updates/main/n/nginx/nginx_1.26.3-3+deb13u10.debian.tar.xz
+            checksum: sha256:22b58b7a5261cd427022544814d502935aba9d84bf2ca4e03d9f7a17e678c388
+            path: ${source.dir}/nginx_1.26.3-3+deb13u10.debian.tar.xz
             uid: 0
             gid: 0
       pipeline:
         - uses: dpkg/source@v1
           work-dir: ${source.dir}
           with:
-            file: nginx_1.26.3-3+deb13u9.dsc
+            file: nginx_1.26.3-3+deb13u10.dsc
             path: nginx
-        - uses: dpkg/patch@v1
-          with:
-            apply: true
-            patches:
-              - ${source.dir}/patch/quilt-cve-93479-map-script.patch
-              - ${source.dir}/patch/CVE-2026-15176.patch
-              - ${source.dir}/patch/CVE-2026-97629.patch
-              - ${source.dir}/patch/CVE-2026-95101.patch
-              - ${source.dir}/patch/CVE-2026-97205.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Backport upstream nginx fixes for CVE-2026-15176, CVE-2026-93479, CVE-2026-97629, and CVE-2026-95101
-              - Backport upstream nginx fix for CVE-2026-97205, limiting pending operations counted in r->main->blocked
-            version: 1.26.3-3+deb13u9+dhi1
+              - DHI Rebuild
+            version: 1.26.3-3+deb13u10+dhi0
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
-      paths:
-        - type: file
-          path: ${source.dir}/patch/quilt-cve-93479-map-script.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/nginx/patch/quilt-cve-93479-map-script.patch
-        - type: file
-          path: ${source.dir}/patch/CVE-2026-15176.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/nginx/patch/CVE-2026-15176.patch
-        - type: file
-          path: ${source.dir}/patch/CVE-2026-97629.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/nginx/patch/CVE-2026-97629.patch
-        - type: file
-          path: ${source.dir}/patch/CVE-2026-95101.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/nginx/patch/CVE-2026-95101.patch
-        - type: file
-          path: ${source.dir}/patch/CVE-2026-97205.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/nginx/patch/CVE-2026-97205.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
