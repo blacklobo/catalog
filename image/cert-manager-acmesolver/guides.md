@@ -86,6 +86,12 @@ spec:
           class: nginx
 ```
 
+### Use the FIPS variant for HTTP-01 challenges
+
+The cert-manager controller starts the acmesolver pod from the image in its `--acme-http01-solver-image` flag, which the
+cert-manager Helm chart sets from the `acmesolver.image` values, so set `acmesolver.image.tag` to a FIPS tag such as
+`<tag>-fips`.
+
 ## Image variants
 
 Docker Hardened Images come in different variants depending on their intended use.
@@ -103,6 +109,10 @@ multi-stage Dockerfile. These images typically:
 - Run as the root user
 - Include a shell and package manager
 - Are used to build or compile applications
+
+FIPS variants include `fips` in the variant name and tag. They come in both runtime and build-time variants. These
+variants use cryptographic modules that have been validated under FIPS 140, a U.S. government standard for secure
+cryptographic operations. For example, usage of MD5 fails in FIPS variants.
 
 **Note:** cert-manager consists of multiple components (controller, acmesolver, cainjector, webhook) that work together.
 Each component may be available as a separate Docker Hardened Image for deployment flexibility.
