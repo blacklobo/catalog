@@ -3,8 +3,8 @@
 # Without this, shlibsign and modutil fail to dlopen libsoftokn3.so during packaging
 # because the staged libraries cannot find their NSPR/sqlite dependencies.
 #
-# Upstream rules: https://sources.debian.org/src/nss/2%3A3.110-1%2Bdeb13u1/debian/rules/
-# Debian source package: https://packages.debian.org/source/trixie/nss
+# Upstream rules: https://sources.debian.org/src/nss/2%3A3.131.1-1/debian/rules/
+# Debian source package: https://packages.debian.org/source/sid/nss
 --- a/debian/rules
 +++ b/debian/rules
 @@ -173,12 +173,12 @@
