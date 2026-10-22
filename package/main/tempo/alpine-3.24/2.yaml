@@ -3,21 +3,21 @@
 image: dhi.io/pkg-tempo
 variant: runtime
 tags:
-  - 2.10.8-alpine3.24
-  - 2.10.8-r13-alpine3.24
+  - 2.10.10-alpine3.24
+  - 2.10.10-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: f0f3ed59197bfe9f54f3b0f8015ccca112f9e544
+  COMMIT_SHA: f317720e7e5191a7f282e8f7d6fe5387ae6015b4
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.2-r0
+  GOLANG_VERSION: 1.27.3-r0
   PACKAGE_NAME: tempo-2
-  REL: "13"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.10"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.10.8
-  VERSION: 2.10.8
+  SEMVER_VERSION: 2.10.10
+  VERSION: 2.10.10
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -41,18 +41,18 @@ contents:
           - make
           - mawk
           - sed
-          - golang-1.27=1.27.2-r0
-          - golang-1.27-oci-config=1.27.2-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/grafana/tempo.git#v2.10.8
-            checksum: f0f3ed59197bfe9f54f3b0f8015ccca112f9e544
+          - url: git+https://github.com/grafana/tempo.git#v2.10.10
+            checksum: f317720e7e5191a7f282e8f7d6fe5387ae6015b4
             path: /go/src/github.com/grafana/tempo
             spdx:
               name: tempo
-              version: 2.10.8
+              version: 2.10.10
               packages:
                 - name: tempo
-                  purl: pkg:golang/github.com/grafana/tempo@v2.10.8
+                  purl: pkg:golang/github.com/grafana/tempo@v2.10.10
                   license: AGPL-3.0
             uid: 0
             gid: 0
@@ -95,9 +95,9 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v2.10.8
-              - -X main.Branch=2.10.8
-              - -X main.Revision=f0f3ed59197bfe9f54f3b0f8015ccca112f9e544
+              - -X main.Version=v2.10.10
+              - -X main.Branch=2.10.10
+              - -X main.Revision=f317720e7e5191a7f282e8f7d6fe5387ae6015b4
             output: ${target.dir}/usr/bin/tempo
             packages: ./cmd/tempo
         - name: build tempo dev
@@ -108,9 +108,9 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v2.10.8
-              - -X main.Branch=2.10.8
-              - -X main.Revision=f0f3ed59197bfe9f54f3b0f8015ccca112f9e544
+              - -X main.Version=v2.10.10
+              - -X main.Branch=2.10.10
+              - -X main.Revision=f317720e7e5191a7f282e8f7d6fe5387ae6015b4
             output: ${target.dir}/usr/bin/tempo-dev
             packages: ./cmd/tempo
             strip: false
@@ -122,9 +122,9 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v2.10.8
-              - -X main.Branch=2.10.8
-              - -X main.Revision=f0f3ed59197bfe9f54f3b0f8015ccca112f9e544
+              - -X main.Version=v2.10.10
+              - -X main.Branch=2.10.10
+              - -X main.Revision=f317720e7e5191a7f282e8f7d6fe5387ae6015b4
             output: ${target.dir}/usr/bin/tempo-query
             packages: ./cmd/tempo-query
         - name: build tempo-query dev
@@ -135,9 +135,9 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v2.10.8
-              - -X main.Branch=2.10.8
-              - -X main.Revision=f0f3ed59197bfe9f54f3b0f8015ccca112f9e544
+              - -X main.Version=v2.10.10
+              - -X main.Branch=2.10.10
+              - -X main.Revision=f317720e7e5191a7f282e8f7d6fe5387ae6015b4
             output: ${target.dir}/usr/bin/tempo-query-dev
             packages: ./cmd/tempo-query
             strip: false
@@ -150,7 +150,7 @@ contents:
             name: tempo-2
             priority: "200"
             provides: tempo=$pkg_full_version
-            rel: 13
+            rel: 0
             replaces: tempo
             subpackages:
               - files:
@@ -165,7 +165,7 @@ contents:
                     source: usr/bin/tempo-query-dev
                 name: tempo-query-2-dev
             url: https://github.com/grafana/tempo
-            version: 2.10.8
+            version: 2.10.10
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
