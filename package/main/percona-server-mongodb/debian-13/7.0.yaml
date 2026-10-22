@@ -5,11 +5,11 @@ image: dhi.io/pkg-percona-server-mongodb
 variant: runtime
 tags:
   - "7.0"
-  - 7.0.43
-  - 7.0.43-r5
+  - 7.0.45
+  - 7.0.45-r0
   - 7.0-debian13
-  - 7.0.43-debian13
-  - 7.0.43-r5-debian13
+  - 7.0.45-debian13
+  - 7.0.45-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,7 +17,7 @@ vars:
   COMMIT_SHA: 9348e032419d906e40966f477278cce647b9b1eb
   DEB_ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.9-0
+  GOLANG_VERSION: 1.26.10-0
   MONGO_TOOLS_VERSION: 100.19.1
   MONGOSH_ARCH: '#{ target.arch == "amd64" ? "x64" : "arm64" }'
   MONGOSH_VERSION: 2.13.0
@@ -25,16 +25,16 @@ vars:
   PSMDB_APT_REPO: https://repo.percona.com/psmdb-70/apt
   PSMDB_DEB_POOL: https://repo.percona.com/psmdb-70/apt/pool/main/p/percona-server-mongodb
   PSMDB_MONGOS_SHA256: '#{ target.arch == "amd64" ? definition.vars.PSMDB_MONGOS_SHA256_AMD64 : definition.vars.PSMDB_MONGOS_SHA256_ARM64 }'
-  PSMDB_MONGOS_SHA256_AMD64: 23fa03ef74241c4af6c25aa06f1c8fa4da00572185bbcfc48bc320eeb888bef6
-  PSMDB_MONGOS_SHA256_ARM64: 7de3ff8c16732d68428e993ef4cec8e66194d164a3648c094f72e79fa8407178
+  PSMDB_MONGOS_SHA256_AMD64: a164e249dcb577dd6ef480332b22fc6b60872f734f6b5638080ed57e865c63c8
+  PSMDB_MONGOS_SHA256_ARM64: e7ea3cddfbc6aaf8a90411b2af14e8248f69b3562548ffdeea943c0adf88e61a
   PSMDB_SERVER_SHA256: '#{ target.arch == "amd64" ? definition.vars.PSMDB_SERVER_SHA256_AMD64 : definition.vars.PSMDB_SERVER_SHA256_ARM64 }'
-  PSMDB_SERVER_SHA256_AMD64: 855836afeb4213e32dd9413b9e20411bd3036956a12e6e8cc1ff8b92c1ce148d
-  PSMDB_SERVER_SHA256_ARM64: 43d6da9002c934aa6629ccbdf3d51cc8b4c35880d0b90e0b83dd283ab9ea282a
-  REL: "5"
+  PSMDB_SERVER_SHA256_AMD64: 3f948eabdadb3fc15418303f9632ab299acdd4e54addc5f3e689094e1b5f95e0
+  PSMDB_SERVER_SHA256_ARM64: 0eaeb43d842eb8c26ff6ac4f953505ee6b575dfa08fc2fc9baeeffa381657544
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "7.0"
   SEMVER_MAJOR_VERSION: "7"
-  SEMVER_VERSION: 7.0.43
-  VERSION: 7.0.43-23
+  SEMVER_VERSION: 7.0.45
+  VERSION: 7.0.45-24
 contents:
   packages:
     - base-files
@@ -53,8 +53,8 @@ contents:
           - coreutils
           - dpkg
           - gcc
-          - golang-1.26=1.26.9-0
-          - golang-1.26-oci-config=1.26.9-0
+          - golang-1.26=1.26.10-0
+          - golang-1.26-oci-config=1.26.10-0
           - gpg
           - gpg-agent
           - gzip
@@ -62,19 +62,19 @@ contents:
           - libkrb5-dev
           - tar
         files:
-          - url: https://repo.percona.com/psmdb-70/apt/pool/main/p/percona-server-mongodb/percona-server-mongodb-server_7.0.43-23.noble_${DEB_ARCH}.deb
+          - url: https://repo.percona.com/psmdb-70/apt/pool/main/p/percona-server-mongodb/percona-server-mongodb-server_7.0.45-24.noble_${DEB_ARCH}.deb
             checksum: sha256:${PSMDB_SERVER_SHA256}
             path: ${source.dir}/psmdb-server.deb
             spdx:
               name: percona-server-mongodb
-              version: 7.0.43-23
+              version: 7.0.45-24
               packages:
                 - name: percona-server-mongodb
-                  purl: pkg:github/percona/percona-server-mongodb@7.0.43-23
+                  purl: pkg:github/percona/percona-server-mongodb@7.0.45-24
                   license: SSPL-1.0
             uid: 0
             gid: 0
-          - url: https://repo.percona.com/psmdb-70/apt/pool/main/p/percona-server-mongodb/percona-server-mongodb-mongos_7.0.43-23.noble_${DEB_ARCH}.deb
+          - url: https://repo.percona.com/psmdb-70/apt/pool/main/p/percona-server-mongodb/percona-server-mongodb-mongos_7.0.45-24.noble_${DEB_ARCH}.deb
             checksum: sha256:${PSMDB_MONGOS_SHA256}
             path: ${source.dir}/psmdb-mongos.deb
             uid: 0
@@ -243,7 +243,7 @@ contents:
               - deb
             license: SSPL-1.0
             name: percona-server-mongodb-7.0
-            rel: 5
+            rel: 0
             subpackages:
               - depends:
                   - ca-certificates-bundle
@@ -286,7 +286,7 @@ contents:
                   - path: usr/bin/mongotop
                 name: percona-server-mongodb-7.0-tools
             url: https://www.percona.com/mongodb/software/percona-server-for-mongodb
-            version: 7.0.43-23
+            version: 7.0.45-24
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
