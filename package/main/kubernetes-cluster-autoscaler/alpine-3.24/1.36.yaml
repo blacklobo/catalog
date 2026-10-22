@@ -4,16 +4,16 @@ image: dhi.io/pkg-kubernetes-cluster-autoscaler
 variant: runtime
 tags:
   - 1.36.1-alpine3.24
-  - 1.36.1-r6-alpine3.24
+  - 1.36.1-r7-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   COMMIT_SHA: 35e8a280425c76a4040f57ae0fa232a952c02024
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.9-r0
+  GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: kubernetes-cluster-autoscaler-1.36
-  REL: "6"
+  REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "1.36"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.36.1
@@ -41,8 +41,8 @@ contents:
           - grep
           - mawk
           - sed
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
         files:
           - url: git+https://github.com/kubernetes/autoscaler.git#cluster-autoscaler-1.36.1
             checksum: 35e8a280425c76a4040f57ae0fa232a952c02024
@@ -100,7 +100,7 @@ contents:
               - usr/bin/cluster-autoscaler
             license: Apache-2.0
             name: kubernetes-cluster-autoscaler-1.36
-            rel: 6
+            rel: 7
             subpackages:
               - files:
                   - path: usr/bin/cluster-autoscaler
