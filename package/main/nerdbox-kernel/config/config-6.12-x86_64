@@ -486,7 +486,6 @@ CONFIG_ARCH_HAS_ADD_PAGES=y
 # Power management and ACPI options
 #
 # CONFIG_SUSPEND is not set
-# CONFIG_HIBERNATION is not set
 # CONFIG_PM is not set
 # CONFIG_ENERGY_MODEL is not set
 CONFIG_ARCH_SUPPORTS_ACPI=y
@@ -828,8 +827,7 @@ CONFIG_COREDUMP=y
 #
 # Memory Management options
 #
-CONFIG_SWAP=y
-# CONFIG_ZSWAP is not set
+# CONFIG_SWAP is not set
 
 #
 # Slab allocator options

@@ -515,7 +515,6 @@ CONFIG_EFI=y
 # Power management options
 #
 # CONFIG_SUSPEND is not set
-# CONFIG_HIBERNATION is not set
 # CONFIG_PM is not set
 CONFIG_CPU_PM=y
 # CONFIG_ENERGY_MODEL is not set
@@ -854,8 +853,7 @@ CONFIG_COREDUMP=y
 #
 # Memory Management options
 #
-CONFIG_SWAP=y
-# CONFIG_ZSWAP is not set
+# CONFIG_SWAP is not set
 
 #
 # Slab allocator options
