@@ -4,16 +4,16 @@ image: dhi.io/pkg-searxng
 variant: runtime
 tags:
   - 2026.10.19-alpine3.24
-  - 2026.10.19-r1-alpine3.24
+  - 2026.10.19-r2-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-06"
 vars:
-  COMMIT_SHA: d47cb96bfb79240d487bdb2336886d0dc59f2f30
+  COMMIT_SHA: 81371861f67226091d1c4df2e3908a11d3b54eb9
   PYTHON_VERSION: 3.13.16-r1
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "2026.10"
   SEMVER_MAJOR_VERSION: "2026"
   SEMVER_VERSION: 2026.10.19
@@ -33,7 +33,7 @@ contents:
       work-dir: ${source.dir}
       environment:
         PYTHON_BIN: /usr/bin/python3.13
-        SEARXNG_COMMIT: d47cb96bfb79240d487bdb2336886d0dc59f2f30
+        SEARXNG_COMMIT: 81371861f67226091d1c4df2e3908a11d3b54eb9
         SEARXNG_VERSION: 2026.10.19
       contents:
         packages:
@@ -49,8 +49,8 @@ contents:
           - sed
           - uv
         files:
-          - url: git+https://github.com/searxng/searxng.git#d47cb96bfb79240d487bdb2336886d0dc59f2f30
-            checksum: d47cb96bfb79240d487bdb2336886d0dc59f2f30
+          - url: git+https://github.com/searxng/searxng.git#81371861f67226091d1c4df2e3908a11d3b54eb9
+            checksum: 81371861f67226091d1c4df2e3908a11d3b54eb9
             path: ${source.dir}/src
             spdx:
               name: searxng
@@ -81,7 +81,7 @@ contents:
               - apk
             license: AGPL-3.0-or-later
             name: searxng
-            rel: 1
+            rel: 2
             url: https://github.com/searxng/searxng
             version: 2026.10.19
       paths:
