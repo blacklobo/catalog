@@ -3,25 +3,25 @@
 image: dhi.io/pkg-k8ssandra-medusa
 variant: runtime
 tags:
-  - 0.30.1
-  - 0.30.1-r6
-  - 0.30.1-debian13
-  - 0.30.1-r6-debian13
+  - 0.31.0
+  - 0.31.0-r0
+  - 0.31.0-debian13
+  - 0.31.0-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-04-17"
 vars:
-  COMMIT_SHA: cfd5e063ea1c85dca30c28c2c7364e61f9d8b16e
+  COMMIT_SHA: 5f871625d7597722b40985d21f04ffe041ac035e
   POETRY_VERSION: 1.8.5
   PYTHON_MINOR: "3.12"
   PYTHON_VERSION: 3.12.15-0
-  REL: "6"
-  SEMVER_MAJOR_MINOR_VERSION: "0.30"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "0.31"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.30.1
-  VERSION: 0.30.1
+  SEMVER_VERSION: 0.31.0
+  VERSION: 0.31.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -67,15 +67,15 @@ contents:
           - python3-setuptools
           - python3-wheel
         files:
-          - url: git+https://github.com/thelastpickle/cassandra-medusa.git#v0.30.1
-            checksum: cfd5e063ea1c85dca30c28c2c7364e61f9d8b16e
+          - url: git+https://github.com/thelastpickle/cassandra-medusa.git#v0.31.0
+            checksum: 5f871625d7597722b40985d21f04ffe041ac035e
             path: ${source.dir}/src
             spdx:
               name: k8ssandra-medusa
-              version: 0.30.1
+              version: 0.31.0
               packages:
                 - name: k8ssandra-medusa
-                  purl: pkg:pypi/cassandra-medusa@0.30.1
+                  purl: pkg:pypi/cassandra-medusa@0.31.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -99,9 +99,9 @@ contents:
               - deb
             license: Apache-2.0
             name: k8ssandra-medusa
-            rel: 6
+            rel: 0
             url: https://github.com/thelastpickle/cassandra-medusa
-            version: 0.30.1
+            version: 0.31.0
       paths:
         - type: file
           path: ${source.dir}/build-poetry.sh
