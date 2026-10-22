@@ -3,15 +3,15 @@
 image: dhi.io/pkg-uv
 variant: runtime
 tags:
-  - 0.13.4-0
-  - 0.13.4-0-debian13
+  - 0.13.4-1
+  - 0.13.4-1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   COMMIT_SHA: 7456b60bc6bc348e13e06e3691bf08e78d3aef54
-  DHI_REL: "0"
-  DHI_VERSION: 0.13.4-0
+  DHI_REL: "1"
+  DHI_VERSION: 0.13.4-1
   RUST_MAJOR_MINOR: "1.97"
   VERSION: 0.13.4
 contents:
@@ -65,9 +65,35 @@ contents:
             set -eux -o pipefail
 
             ln -s ../debian .
+        - name: bump cargo dependencies
+          privileged: true
+          runs: |
+            set -eux -o pipefail
+
+            # RUSTSEC-2026-0186 → memmap2 ≥0.9.11
+            cargo update --package memmap2 --precise 0.9.11
+
+            # RUSTSEC-2026-0190 → anyhow ≥1.0.103
+            cargo update --package anyhow --precise 1.0.103
+
+            # RUSTSEC-2026-0204 → crossbeam-epoch ≥0.9.20
+            cargo update --package crossbeam-epoch --precise 0.9.20
+
+            # RUSTSEC-2026-0221 → event-listener ≥5.4.2
+            cargo update --package event-listener --precise 5.4.2
+
+            # GHSA-q83h-524g-xf6h → h2 ≥0.4.16
+            cargo update --package h2 --precise 0.4.16
+
+            cargo update --package rustls --precise 0.23.46
+            cargo update --package rustls-webpki --precise 0.103.16
+            cargo update --package webpki-root-certs --precise 1.0.10
         - uses: dpkg/bump@v1
           with:
-            version: 0.13.4-0
+            changelog:
+              - Bump rustls-webpki to 0.103.16 and webpki-root-certs to 1.0.10 for CVE-2026-111943
+              - Bump rustls, memmap2, anyhow, crossbeam-epoch, event-listener, and h2 to advisory-fixed releases
+            version: 0.13.4-1
         - uses: dpkg/build@v1
           privileged: true
           with:
