@@ -4,7 +4,7 @@ image: dhi.io/pkg-flux-cli
 variant: runtime
 tags:
   - 2.9.6-alpine3.24
-  - 2.9.6-r3-alpine3.24
+  - 2.9.6-r4-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,10 +13,10 @@ dates:
 vars:
   COMMIT_SHA: b9c17924adb533d3617ec7de97a7b0f4acc07b39
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.9-r0
-  KUSTOMIZE_REFERENCE: dhi/kustomize:5.8.3-debian13@sha256:82a0773a8563b92971dd3f90b77220b3ad7c57232fea3b4692e4c59d9bcc8e81
+  GOLANG_VERSION: 1.26.10-r0
+  KUSTOMIZE_REFERENCE: dhi/kustomize:5.8.3-debian13@sha256:45b346837b65dc2724bf5f40f20e8a3d404749560fbc0ca2b66d08cf91535d4c
   PACKAGE_NAME: flux-cli
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "2.9"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.9.6
@@ -43,8 +43,8 @@ contents:
           - findutils
           - mawk
           - sed
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
         files:
           - url: git+https://github.com/fluxcd/flux2.git#v2.9.6
             checksum: b9c17924adb533d3617ec7de97a7b0f4acc07b39
@@ -59,7 +59,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/kustomize:5.8.3-debian13@sha256:82a0773a8563b92971dd3f90b77220b3ad7c57232fea3b4692e4c59d9bcc8e81
+          - name: dhi.io/kustomize:5.8.3-debian13@sha256:45b346837b65dc2724bf5f40f20e8a3d404749560fbc0ca2b66d08cf91535d4c
             includes:
               - opt/**
               - usr/bin/kustomize
@@ -114,7 +114,7 @@ contents:
             license: Apache-2.0
             name: flux-cli
             provides: flux=$pkg_full_version
-            rel: 3
+            rel: 4
             subpackages:
               - files:
                   - path: usr/bin/flux-cli
