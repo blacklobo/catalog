@@ -19,7 +19,7 @@ Apache Kafka, Apache Hadoop, and Apache Solr.
 This Docker Hardened ZooKeeper image includes:
 
 - `zkServer.sh`, `zkCli.sh`, and the rest of the standard ZooKeeper distribution under `/opt/zookeeper`
-- A bundled OpenJDK 23 JRE (Eclipse Temurin) at `/opt/java/openjdk/23-jre`
+- A bundled OpenJDK 25 JRE (Eclipse Temurin) at `/opt/java/openjdk/25-jre`
 - `entrypoint.sh` wrapper script at `/opt/zookeeper/bin/entrypoint.sh` that translates `ZOO_*` environment variables
   into the ZooKeeper config file
 - `bash` and `/bin/sh` (required to run the ZooKeeper distribution's shell-script wrappers)
@@ -304,16 +304,16 @@ This image does not include `nc`. Use one of the following alternatives:
 
 Docker Hardened Images come in different variants depending on their intended use.
 
-The ZooKeeper image is published as runtime variants only. Tags use a JRE-version suffix (`-jre23`) to indicate the
-bundled Java runtime, distinguishing this image from other DHI images that use plain version tags. No `dev`, `fips`, or
+The ZooKeeper image is published as runtime variants only. The 3.9 line uses a JRE-version suffix (`-jre25`) to indicate
+the bundled Java runtime, while the 3.8 line retains plain version tags. Both lines bundle JRE 25. No `dev`, `fips`, or
 `fips-dev` variants are published for this image.
 
 | Variant                     | Tag pattern                                               | User            | Compliance | Availability |
 | --------------------------- | --------------------------------------------------------- | --------------- | ---------- | ------------ |
-| Runtime (3.9.x with JRE 23) | `3-jre23`, `3.9-jre23`, `3.9.5-jre23`, `3-jre23-debian13` | nonroot (65532) | CIS        | Public       |
-| Runtime (3.8.x)             | `3.8`, `3.8.5`, `3.8-debian13`                            | nonroot (65532) | CIS        | Public       |
+| Runtime (3.9.x with JRE 25) | `3-jre25`, `3.9-jre25`, `3.9.6-jre25`, `3-jre25-debian13` | nonroot (65532) | CIS        | Public       |
+| Runtime (3.8.x with JRE 25) | `3.8`, `3.8.7`, `3.8-debian13`                            | nonroot (65532) | CIS        | Public       |
 
-Tags include rolling aliases — `3-jre23` always points to the latest 3.9.x release with JRE 23, and `3.9-jre23` to the
+Tags include rolling aliases — `3-jre25` always points to the latest 3.9.x release with JRE 25, and `3.9-jre25` to the
 latest 3.9.x patch.
 
 To view all published tags and get more information about each variant, select the **Tags** tab for this repository.
@@ -326,7 +326,7 @@ the following table of migration notes.
 
 | Item               | Migration note                                                                                                                                                                                                                            |
 | :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Base image         | Replace your base image with `dhi.io/zookeeper:<tag>`. Note that tags use a JRE-version suffix (`-jre23`) rather than a plain version number.                                                                                             |
+| Base image         | Replace your base image with `dhi.io/zookeeper:<tag>`. ZooKeeper 3.9 tags use the JRE-version suffix `-jre25`; ZooKeeper 3.8 retains plain version tags.                                                                                  |
 | Package management | The runtime image doesn't contain a package manager. To install additional packages, build your own image `FROM dhi.io/zookeeper:<tag>` in a separate environment that has access to package management.                                  |
 | Non-root user      | The image runs as the nonroot user (UID 65532). Ensure that any mounted data, datalog, or configuration directories are writable by UID 65532.                                                                                            |
 | TLS certificates   | Docker Hardened Images contain standard TLS certificates by default. There is no need to install TLS certificates.                                                                                                                        |

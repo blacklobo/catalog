@@ -17,19 +17,23 @@ dates:
   release: "2022-02-25"
 vars:
   DIGEST: 9085db92dd679e1e90a63bfe6ae6345ab6cbc4ae
-  JDK_DIGEST: sha256:1fbc09d023f6fa08248856cc8c5957745cede8171ae5263e3efe4c7dd12fc03a
-  JDK_MAJOR_VERSION: "23"
-  JDK_VERSION: 23.0.2.7
-  JRE_DIGEST: sha256:32f38497a1407da908ab81dee46c3f372c61dc82f9605a41c70fbf0d3f740050
-  JRE_PATH: /opt/java/openjdk/23-jre
-  JRE_VERSION: 23.0.2.7
-  MAVEN_DIGEST: sha256:97e4283d662a0a0dd680bc67c7cfa519d9cf6ef21567f0a727d050a760df3ff8
+  JDK_DIGEST: sha256:693a788c0ea5a29ce15d0d3f1f82953166fe177db675447f2d345a81ec6923e8
+  JDK_MAJOR_VERSION: "25"
+  JDK_VERSION: 25.0.4.1
+  JRE_DIGEST: sha256:24247f48855acba1fad726427f239d37cb4873bbf5d818f94341fb4485fa713c
+  JRE_PATH: /opt/java/openjdk/25-jre
+  JRE_VERSION: 25.0.4.1
+  MAVEN_DIGEST: sha256:408145c290801523810943cd9d8c0011969ac8e2e6b26819b547586fe2710d68
   MAVEN_VERSION: 3.9.11
   SEMVER_MAJOR_MINOR_VERSION: "3.8"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.8.7
   VERSION: 3.8.7
 contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
     - '!libelogind0'
     - '!mawk'
@@ -39,6 +43,7 @@ contents:
     - coreutils
     - grep
     - sed
+    - zlib1g
   builds:
     - name: zookeeper
       contents:
@@ -63,13 +68,13 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.9.11-jdk23-debian13-dev@sha256:97e4283d662a0a0dd680bc67c7cfa519d9cf6ef21567f0a727d050a760df3ff8
+          - name: dhi.io/maven:3.9.11-jdk25-debian13-dev@sha256:408145c290801523810943cd9d8c0011969ac8e2e6b26819b547586fe2710d68
             includes:
               - opt/**
               - usr/local/bin/**
             uid: 0
             gid: 0
-          - name: dhi.io/eclipse-temurin:23.0.2.7-jdk-debian13-dev@sha256:1fbc09d023f6fa08248856cc8c5957745cede8171ae5263e3efe4c7dd12fc03a
+          - name: dhi.io/eclipse-temurin:25.0.4.1-jdk-debian13-dev@sha256:693a788c0ea5a29ce15d0d3f1f82953166fe177db675447f2d345a81ec6923e8
             includes:
               - usr/local/bin/**
             uid: 0
@@ -111,7 +116,7 @@ contents:
 
             export MAVEN_HOME="/opt/java/apache-maven-3.9.11"
             export MAVEN_VERSION="3.9.11"
-            export JAVA_HOME="/opt/java/openjdk/23"
+            export JAVA_HOME="/opt/java/openjdk/25"
 
             mkdir -p "${target.dir}/zookeeper"
 
@@ -162,7 +167,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/eclipse-temurin:23.0.2.7-debian13@sha256:32f38497a1407da908ab81dee46c3f372c61dc82f9605a41c70fbf0d3f740050
+    - name: dhi.io/eclipse-temurin:25.0.4.1-debian13@sha256:24247f48855acba1fad726427f239d37cb4873bbf5d818f94341fb4485fa713c
       includes:
         - opt/**
       uid: 0
@@ -187,7 +192,7 @@ os-release:
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
 environment:
-  JAVA_HOME: /opt/java/openjdk/23-jre
+  JAVA_HOME: /opt/java/openjdk/25-jre
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
