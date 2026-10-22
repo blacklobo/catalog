@@ -4,7 +4,7 @@ image: dhi.io/pkg-sorry-cypress-director
 variant: runtime
 tags:
   - 2.6.0-alpine3.24
-  - 2.6.0-r2-alpine3.24
+  - 2.6.0-r3-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,8 +12,8 @@ vars:
   COMMIT_SHA: 37c3bf62937ebd26814acdf7b287134f7b5d4dcd
   DHI_TEST_APK_EXPECTED_FILES: /usr/bin/sorry-cypress-director /usr/lib/nodejs/sorry-cypress-director/packages/director/dist/index.js /usr/lib/nodejs/sorry-cypress-director/node_modules/mongodb/package.json
   DHI_TEST_DEB_EXPECTED_FILES: /usr/bin/sorry-cypress-director /usr/lib/nodejs/sorry-cypress-director/packages/director/dist/index.js /usr/lib/nodejs/sorry-cypress-director/node_modules/mongodb/package.json
-  NODEJS_VERSION: 24.22.0-r0
-  REL: "2"
+  NODEJS_VERSION: 24.22.1-r0
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "2.6"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.6.0
@@ -43,7 +43,7 @@ contents:
           - ca-certificates-bundle
           - coreutils
           - findutils
-          - nodejs-24=24.22.0-r0
+          - nodejs-24=24.22.1-r0
           - npm
           - yarn
         files:
@@ -77,7 +77,7 @@ contents:
               - usr/bin/sorry-cypress-director
             license: MIT
             name: sorry-cypress-director-2
-            rel: 2
+            rel: 3
             url: https://sorry-cypress.dev
             version: 2.6.0
       paths:
