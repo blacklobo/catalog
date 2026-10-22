@@ -3,27 +3,27 @@
 image: dhi.io/pkg-jupyterhub
 variant: runtime
 tags:
-  - 6.1.0
-  - 6.1.0-r0
-  - 6.1.0-debian13
-  - 6.1.0-r0-debian13
+  - 6.1.1
+  - 6.1.1-r0
+  - 6.1.1-debian13
+  - 6.1.1-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-09-01"
 vars:
-  COMMIT_SHA: 10c37af3bfe6aad9676c6decde14a6f6b2dd11d0
-  JUPYTERHUB_WHEEL_CHECKSUM: sha256:1dd7921a4952e0520d85e25867eeae5f74c2490f32b6d3dd11684a51ac54df46
-  JUPYTERHUB_WHEEL_URL: https://files.pythonhosted.org/packages/4e/92/cec66ffcdf31516560819c5ee084c6789618abc365971ddfcc6c8f6d2fe0/jupyterhub-6.1.0-py3-none-any.whl
+  COMMIT_SHA: 8ba4f6be484110cb7f626d636a06548d6f2f6045
+  JUPYTERHUB_WHEEL_CHECKSUM: sha256:ae20ed7b3d7cef1dd5d51e28723fd53853d69f732e7a9e84a73136acab454248
+  JUPYTERHUB_WHEEL_URL: https://files.pythonhosted.org/packages/96/70/8a769c5434db19b4ee3b07efff8426df97e3370f6006a652b28ebc2116f0/jupyterhub-6.1.1-py3-none-any.whl
   PACKAGE_NAME: jupyterhub-6
   PYTHON_MINOR: "3.14"
   PYTHON_VERSION: 3.14.8-0
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "6.1"
   SEMVER_MAJOR_VERSION: "6"
-  SEMVER_VERSION: 6.1.0
-  VERSION: 6.1.0
+  SEMVER_VERSION: 6.1.1
+  VERSION: 6.1.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -67,21 +67,21 @@ contents:
           - python-3.14=3.14.8-0
           - python-3.14-dev=3.14.8-0
         files:
-          - url: git+https://github.com/jupyterhub/jupyterhub.git#6.1.0
-            checksum: 10c37af3bfe6aad9676c6decde14a6f6b2dd11d0
+          - url: git+https://github.com/jupyterhub/jupyterhub.git#6.1.1
+            checksum: 8ba4f6be484110cb7f626d636a06548d6f2f6045
             path: ${source.dir}/jupyterhub
             spdx:
               name: jupyterhub
-              version: 6.1.0
+              version: 6.1.1
               packages:
                 - name: jupyterhub
-                  purl: pkg:pypi/jupyterhub@6.1.0
+                  purl: pkg:pypi/jupyterhub@6.1.1
                   license: BSD-3-Clause
             uid: 0
             gid: 0
-          - url: https://files.pythonhosted.org/packages/4e/92/cec66ffcdf31516560819c5ee084c6789618abc365971ddfcc6c8f6d2fe0/jupyterhub-6.1.0-py3-none-any.whl
-            checksum: sha256:1dd7921a4952e0520d85e25867eeae5f74c2490f32b6d3dd11684a51ac54df46
-            path: ${source.dir}/jupyterhub-6.1.0-py3-none-any.whl
+          - url: https://files.pythonhosted.org/packages/96/70/8a769c5434db19b4ee3b07efff8426df97e3370f6006a652b28ebc2116f0/jupyterhub-6.1.1-py3-none-any.whl
+            checksum: sha256:ae20ed7b3d7cef1dd5d51e28723fd53853d69f732e7a9e84a73136acab454248
+            path: ${source.dir}/jupyterhub-6.1.1-py3-none-any.whl
             uid: 0
             gid: 0
       pipeline:
@@ -100,11 +100,11 @@ contents:
             "$VENV/bin/python3" -m pip install --no-cache-dir --no-deps --require-hashes \
               -r "${source.dir}/requirements-6.txt"
             "$VENV/bin/python3" -m pip install --no-cache-dir --no-deps --no-index \
-              "${source.dir}/jupyterhub-6.1.0-py3-none-any.whl"
+              "${source.dir}/jupyterhub-6.1.1-py3-none-any.whl"
             "$VENV/bin/python3" -m pip check
             version="$("$VENV/bin/jupyterhub" --version)"
-            if [ "$version" != "6.1.0" ]; then
-              printf 'installed jupyterhub %s, expected %s\n' "$version" "6.1.0" >&2
+            if [ "$version" != "6.1.1" ]; then
+              printf 'installed jupyterhub %s, expected %s\n' "$version" "6.1.1" >&2
               exit 1
             fi
             "$VENV/bin/python3" -m pip uninstall --yes pip setuptools wheel
@@ -149,7 +149,7 @@ contents:
             name: jupyterhub-6
             rel: 0
             url: https://jupyterhub.readthedocs.io/
-            version: 6.1.0
+            version: 6.1.1
       paths:
         - type: file
           path: ${source.dir}/requirements-5.txt
