@@ -3,21 +3,21 @@
 image: dhi.io/pkg-gh
 variant: runtime
 tags:
-  - 2.102.0-alpine3.24
-  - 2.102.0-r3-alpine3.24
+  - 2.103.0-alpine3.24
+  - 2.103.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: fc4b137cdef0a6bd28fd461b7cf9c84a5812a8cd
+  COMMIT_SHA: 7948e8056e45ac3c729b829e0eafe2d0797a95c6
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.2-r0
+  GOLANG_VERSION: 1.27.3-r0
   PACKAGE_NAME: gh
-  REL: "3"
-  SEMVER_MAJOR_MINOR_VERSION: "2.102"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "2.103"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.102.0
-  VERSION: 2.102.0
+  SEMVER_VERSION: 2.103.0
+  VERSION: 2.103.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -40,18 +40,18 @@ contents:
           - git
           - openssh-client-default
           - openssh-keygen
-          - golang-1.27=1.27.2-r0
-          - golang-1.27-oci-config=1.27.2-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/cli/cli.git#v2.102.0
-            checksum: fc4b137cdef0a6bd28fd461b7cf9c84a5812a8cd
+          - url: git+https://github.com/cli/cli.git#v2.103.0
+            checksum: 7948e8056e45ac3c729b829e0eafe2d0797a95c6
             path: /go/src/github.com/cli/cli
             spdx:
               name: gh
-              version: 2.102.0
+              version: 2.103.0
               packages:
                 - name: gh
-                  purl: pkg:golang/github.com/cli/cli/v2@2.102.0
+                  purl: pkg:golang/github.com/cli/cli/v2@2.103.0
                   license: MIT
             uid: 0
             gid: 0
@@ -73,7 +73,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cli/cli/v2/internal/build.Version=2.102.0
+              - -X github.com/cli/cli/v2/internal/build.Version=2.103.0
               - -X github.com/cli/cli/v2/internal/build.Date=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%d')
             output: ${target.dir}/usr/bin/gh
             packages: ./cmd/gh
@@ -83,7 +83,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cli/cli/v2/internal/build.Version=2.102.0
+              - -X github.com/cli/cli/v2/internal/build.Version=2.103.0
               - -X github.com/cli/cli/v2/internal/build.Date=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%d')
             output: ${target.dir}/usr/bin/gh-dev
             packages: ./cmd/gh
@@ -102,7 +102,7 @@ contents:
               - usr/bin/gh
             license: MIT
             name: gh
-            rel: 3
+            rel: 0
             subpackages:
               - depends:
                   - git
@@ -111,7 +111,7 @@ contents:
                     source: usr/bin/gh-dev
                 name: gh-dev
             url: https://github.com/cli/cli
-            version: 2.102.0
+            version: 2.103.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
