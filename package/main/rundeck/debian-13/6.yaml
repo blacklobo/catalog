@@ -4,9 +4,9 @@ image: dhi.io/pkg-rundeck
 variant: runtime
 tags:
   - 6.2.1
-  - 6.2.1-r3
+  - 6.2.1-r4
   - 6.2.1-debian13
-  - 6.2.1-r3-debian13
+  - 6.2.1-r4-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,10 +16,10 @@ vars:
   COMMIT_SHA: e649f088e039b0fabbbb7039f730cbbcc183f82d
   JDK_MAJOR_VERSION: "21"
   JDK_VERSION: 1:21.0.12.1+1-4
-  NODEJS_VERSION: 24.22.0-0
+  NODEJS_VERSION: 24.22.1-0
   PACKAGE_HOME: /usr/share/rundeck
   PACKAGE_NAME: rundeck
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "6.2"
   SEMVER_MAJOR_VERSION: "6"
   SEMVER_VERSION: 6.2.1
@@ -53,7 +53,7 @@ contents:
           - unzip
           - zip
           - eclipse-temurin-21-jdk=1:21.0.12.1+1-4
-          - nodejs-24=24.22.0-0
+          - nodejs-24=24.22.1-0
           - npm
         files:
           - url: https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-databind/2.22.3/jackson-databind-2.22.3.jar
@@ -247,7 +247,7 @@ contents:
               - deb
             license: Apache-2.0
             name: rundeck
-            rel: 3
+            rel: 4
             url: https://www.rundeck.com/
             version: 6.2.1
       paths:
