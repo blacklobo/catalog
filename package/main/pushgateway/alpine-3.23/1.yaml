@@ -3,20 +3,20 @@
 image: dhi.io/pkg-pushgateway
 variant: runtime
 tags:
-  - 1.11.4-alpine3.23
-  - 1.11.4-r2-alpine3.23
+  - 1.11.5-alpine3.23
+  - 1.11.5-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 3e29338978f3046ba1a602d6cca520121ab91112
-  GOLANG_VERSION: 1.26.9-r0
+  COMMIT_SHA: 5fc0596b9b0848707e677bf0d00c7cf30e1eb4b9
+  GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: pushgateway
-  REL: "2"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.11"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.11.4
-  VERSION: 1.11.4
+  SEMVER_VERSION: 1.11.5
+  VERSION: 1.11.5
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -34,11 +34,11 @@ contents:
           - busybox
           - bash
           - ca-certificates-bundle
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/prometheus/pushgateway#v1.11.4
-            checksum: 3e29338978f3046ba1a602d6cca520121ab91112
+          - url: git+https://github.com/prometheus/pushgateway#v1.11.5
+            checksum: 5fc0596b9b0848707e677bf0d00c7cf30e1eb4b9
             path: /go/src/github.com/prometheus/pushgateway
             uid: 0
             gid: 0
@@ -55,8 +55,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/prometheus/common/version.Version=1.11.4
-              - -X github.com/prometheus/common/version.Revision=3e29338978f3046ba1a602d6cca520121ab91112
+              - -X github.com/prometheus/common/version.Version=1.11.5
+              - -X github.com/prometheus/common/version.Revision=5fc0596b9b0848707e677bf0d00c7cf30e1eb4b9
               - -X github.com/prometheus/common/version.Branch=master
               - -X github.com/prometheus/common/version.BuildUser=DHI
               - -X github.com/prometheus/common/version.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y%m%d-%H:%M:%S')
@@ -67,8 +67,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/prometheus/common/version.Version=1.11.4
-              - -X github.com/prometheus/common/version.Revision=3e29338978f3046ba1a602d6cca520121ab91112
+              - -X github.com/prometheus/common/version.Version=1.11.5
+              - -X github.com/prometheus/common/version.Revision=5fc0596b9b0848707e677bf0d00c7cf30e1eb4b9
               - -X github.com/prometheus/common/version.Branch=master
               - -X github.com/prometheus/common/version.BuildUser=DHI
               - -X github.com/prometheus/common/version.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y%m%d-%H:%M:%S')
@@ -82,14 +82,14 @@ contents:
               - usr/bin/pushgateway
             license: Apache-2.0
             name: pushgateway
-            rel: 2
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/pushgateway
                     source: usr/bin/pushgateway-dev
                 name: pushgateway-dev
             url: https://github.com/prometheus/pushgateway
-            version: 1.11.4
+            version: 1.11.5
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
