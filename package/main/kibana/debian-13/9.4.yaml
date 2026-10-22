@@ -4,9 +4,9 @@ image: dhi.io/pkg-kibana
 variant: runtime
 tags:
   - 9.4.8
-  - 9.4.8-r3
+  - 9.4.8-r4
   - 9.4.8-debian13
-  - 9.4.8-r3-debian13
+  - 9.4.8-r4-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,9 +22,9 @@ vars:
   NODE_BINARIES_EXTRA_SUBDIR: glibc-217
   NODE_BINARIES_SUBDIR: default
   NODE_MAJOR_VERSION: "24"
-  NODE_VERSION: 24.22.0-0
+  NODE_VERSION: 24.22.1-0
   PACKAGE_NAME: kibana-9.4
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "9.4"
   SEMVER_MAJOR_VERSION: "9"
   SEMVER_VERSION: 9.4.8
@@ -55,7 +55,7 @@ contents:
           - libc6
           - libstdc++6
           - mawk
-          - nodejs-24=24.22.0-0
+          - nodejs-24=24.22.1-0
           - node-corepack
           - npm
           - sed
@@ -181,7 +181,7 @@ contents:
               - deb
             license: Elastic-License-2.0
             name: kibana-9.4
-            rel: 3
+            rel: 4
             url: https://www.elastic.co/kibana/
             version: 9.4.8
       paths:
