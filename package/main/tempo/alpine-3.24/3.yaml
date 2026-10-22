@@ -3,23 +3,23 @@
 image: dhi.io/pkg-tempo
 variant: runtime
 tags:
-  - 3.1.0-alpine3.24
-  - 3.1.0-r3-alpine3.24
+  - 3.1.1-alpine3.24
+  - 3.1.1-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-05-28"
 vars:
-  COMMIT_SHA: 77fc4563d1135d0ca2656709c7384c278a9c67b0
+  COMMIT_SHA: 9db7df79d2af105a90d96484e6403e1fda0d011e
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.2-r0
+  GOLANG_VERSION: 1.27.3-r0
   PACKAGE_NAME: tempo-3
-  REL: "3"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "3.1"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.1.0
-  VERSION: 3.1.0
+  SEMVER_VERSION: 3.1.1
+  VERSION: 3.1.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -43,18 +43,18 @@ contents:
           - make
           - mawk
           - sed
-          - golang-1.27=1.27.2-r0
-          - golang-1.27-oci-config=1.27.2-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/grafana/tempo.git#v3.1.0
-            checksum: 77fc4563d1135d0ca2656709c7384c278a9c67b0
+          - url: git+https://github.com/grafana/tempo.git#v3.1.1
+            checksum: 9db7df79d2af105a90d96484e6403e1fda0d011e
             path: /go/src/github.com/grafana/tempo
             spdx:
               name: tempo
-              version: 3.1.0
+              version: 3.1.1
               packages:
                 - name: tempo
-                  purl: pkg:golang/github.com/grafana/tempo@v3.1.0
+                  purl: pkg:golang/github.com/grafana/tempo@v3.1.1
                   license: AGPL-3.0
             uid: 0
             gid: 0
@@ -96,9 +96,9 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v3.1.0
-              - -X main.Branch=3.1.0
-              - -X main.Revision=77fc4563d1135d0ca2656709c7384c278a9c67b0
+              - -X main.Version=v3.1.1
+              - -X main.Branch=3.1.1
+              - -X main.Revision=9db7df79d2af105a90d96484e6403e1fda0d011e
             output: ${target.dir}/usr/bin/tempo
             packages: ./cmd/tempo
         - name: build tempo dev
@@ -109,9 +109,9 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v3.1.0
-              - -X main.Branch=3.1.0
-              - -X main.Revision=77fc4563d1135d0ca2656709c7384c278a9c67b0
+              - -X main.Version=v3.1.1
+              - -X main.Branch=3.1.1
+              - -X main.Revision=9db7df79d2af105a90d96484e6403e1fda0d011e
             output: ${target.dir}/usr/bin/tempo-dev
             packages: ./cmd/tempo
             strip: false
@@ -123,9 +123,9 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v3.1.0
-              - -X main.Branch=3.1.0
-              - -X main.Revision=77fc4563d1135d0ca2656709c7384c278a9c67b0
+              - -X main.Version=v3.1.1
+              - -X main.Branch=3.1.1
+              - -X main.Revision=9db7df79d2af105a90d96484e6403e1fda0d011e
             output: ${target.dir}/usr/bin/tempo-query
             packages: ./cmd/tempo-query
         - name: build tempo-query dev
@@ -136,9 +136,9 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.Version=v3.1.0
-              - -X main.Branch=3.1.0
-              - -X main.Revision=77fc4563d1135d0ca2656709c7384c278a9c67b0
+              - -X main.Version=v3.1.1
+              - -X main.Branch=3.1.1
+              - -X main.Revision=9db7df79d2af105a90d96484e6403e1fda0d011e
             output: ${target.dir}/usr/bin/tempo-query-dev
             packages: ./cmd/tempo-query
             strip: false
@@ -151,7 +151,7 @@ contents:
             name: tempo-3
             priority: "200"
             provides: tempo=$pkg_full_version
-            rel: 3
+            rel: 0
             replaces: tempo
             subpackages:
               - files:
@@ -166,7 +166,7 @@ contents:
                     source: usr/bin/tempo-query-dev
                 name: tempo-query-3-dev
             url: https://github.com/grafana/tempo
-            version: 3.1.0
+            version: 3.1.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
