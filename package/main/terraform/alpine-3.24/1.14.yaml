@@ -5,7 +5,7 @@ variant: runtime
 tags:
   - 1.14-alpine3.24
   - 1.14.9-alpine3.24
-  - 1.14.9-r5-alpine3.24
+  - 1.14.9-r6-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: terraform-1.14
-  REL: "5"
+  REL: "6"
   SEMVER_MAJOR_MINOR_VERSION: "1.14"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.14.9
@@ -69,6 +69,7 @@ contents:
             deps:
               - golang.org/x/crypto@v0.52.0
               - golang.org/x/mod@v0.40.0
+              - golang.org/x/net@v0.60.0
               - github.com/Azure/go-ntlmssp@v0.1.1
               - github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream@v1.7.8
               - github.com/aws/aws-sdk-go-v2/service/s3@v1.97.3
@@ -78,8 +79,8 @@ contents:
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.46.0
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.46.0
               - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc@v0.21.0
-              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0
-              - go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.22.0
+              - go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.22.0
               - google.golang.org/grpc@v1.85.0-dev.0.20260825072537-93e31b48545e
             download: true
             replaces:
@@ -118,7 +119,7 @@ contents:
               - usr/bin/terraform
             license: BUSL-1.1
             name: terraform-1.14
-            rel: 5
+            rel: 6
             subpackages:
               - files:
                   - path: usr/bin/terraform
