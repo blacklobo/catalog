@@ -3,19 +3,19 @@
 image: dhi.io/pkg-mariadb
 variant: runtime
 tags:
-  - 11.8.8-alpine3.24
-  - 11.8.8-r0-alpine3.24
+  - 11.8.9-alpine3.24
+  - 11.8.9-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 3a2401417496d5e86e9fc8927aeb91801935b226
+  COMMIT_SHA: c27933815c1980a8db2b378c55830cc38ac6b819
   PACKAGE_NAME: main/mariadb
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "11.8"
   SEMVER_MAJOR_VERSION: "11"
-  SEMVER_VERSION: 11.8.8
-  VERSION: 11.8.8
+  SEMVER_VERSION: 11.8.9
+  VERSION: 11.8.9
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -56,13 +56,15 @@ contents:
           - samurai
           - xz-dev
           - zstd-dev
+          - bash
+          - git
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#3a2401417496d5e86e9fc8927aeb91801935b226
+          - url: git+https://github.com/alpinelinux/aports.git#c27933815c1980a8db2b378c55830cc38ac6b819
             path: ${source.dir}/aports
             uid: 0
             gid: 0
-          - url: https://archive.mariadb.org/mariadb-11.8.8/source/mariadb-11.8.8.tar.gz
-            path: /var/cache/distfiles/mariadb-11.8.8.tar.gz
+          - url: https://archive.mariadb.org/mariadb-11.8.9/source/mariadb-11.8.9.tar.gz
+            path: /var/cache/distfiles/mariadb-11.8.9.tar.gz
             uid: 0
             gid: 0
       pipeline:
