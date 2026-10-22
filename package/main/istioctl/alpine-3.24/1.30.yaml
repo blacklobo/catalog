@@ -4,7 +4,7 @@ image: dhi.io/pkg-istioctl
 variant: runtime
 tags:
   - 1.30.6-alpine3.24
-  - 1.30.6-r0-alpine3.24
+  - 1.30.6-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,9 +13,9 @@ dates:
 vars:
   COMMIT_SHA: b85dac9587f2f997151d205e069e4f4ff091c7c5
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.9-r0
+  GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: istioctl-1.30
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.30.6
@@ -43,8 +43,8 @@ contents:
           - git
           - mawk
           - sed
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
         files:
           - url: git+https://github.com/istio/istio.git#1.30.6
             checksum: b85dac9587f2f997151d205e069e4f4ff091c7c5
@@ -116,7 +116,7 @@ contents:
               - usr/bin/istioctl
             license: Apache-2.0
             name: istioctl-1.30
-            rel: 0
+            rel: 1
             subpackages:
               - files:
                   - path: usr/bin/istioctl
