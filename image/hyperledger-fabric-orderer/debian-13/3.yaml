@@ -16,12 +16,15 @@ tags:
 platforms:
   - linux/amd64
   - linux/arm64
+dates:
+  release: "2024-09-20"
 vars:
-  COMMIT_SHA: 86c1172bec37e6590c6b1ae6f847833df48d65fc
+  FLAVORED_SUFFIX: ""
   SEMVER_MAJOR_MINOR_VERSION: "3.1"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.1.5
-  VERSION: 3.1.5
+  SUFFIX: ""
+  VERSION: 3.1.5-12
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -30,103 +33,8 @@ contents:
   packages:
     - base-files
     - ca-certificates-bundle
+    - fabric-3=3.1.5-12
     - tzdata
-  builds:
-    - name: hyperledger-fabric-orderer
-      contents:
-        packages:
-          - bash
-          - ca-certificates-bundle
-          - coreutils
-          - golang-1.26
-          - findutils
-          - mawk
-          - sed
-        files:
-          - url: git+https://github.com/hyperledger/fabric.git#v3.1.5
-            checksum: 86c1172bec37e6590c6b1ae6f847833df48d65fc
-            path: /go/src/github.com/hyperledger/fabric
-            spdx:
-              name: hyperledger-fabric-orderer
-              version: 3.1.5
-              packages:
-                - name: hyperledger-fabric-orderer
-                  purl: pkg:golang/github.com/hyperledger/fabric@3.1.5
-                  license: Apache-2.0
-            uid: 0
-            gid: 0
-      pipeline:
-        - name: go dependencies (3 only)
-          uses: go/bump@v2
-          work-dir: /go/src/github.com/hyperledger/fabric
-          with:
-            deps:
-              - golang.org/x/text@v0.39.0
-              - golang.org/x/crypto@v0.56.0
-              - github.com/klauspost/compress@v1.18.7
-              - google.golang.org/grpc@v1.85.0-dev.0.20260825072537-93e31b48545e
-        - name: go etcd dependencies (3 only)
-          uses: go/bump@v2
-          work-dir: /go/src/github.com/hyperledger/fabric
-          with:
-            deps:
-              - go.etcd.io/etcd/api/v3@v3.6.14
-              - go.etcd.io/etcd/client/pkg/v3@v3.6.14
-              - go.etcd.io/etcd/client/v3@v3.6.14
-              - go.etcd.io/etcd/pkg/v3@v3.6.14
-              - go.etcd.io/etcd/server/v3@v3.6.14
-              - go.etcd.io/raft/v3@v3.6.0
-            downgrade: true
-            download: true
-            replaces:
-              - go.etcd.io/etcd/api/v3=go.etcd.io/etcd/api/v3@v3.6.14
-              - go.etcd.io/etcd/client/pkg/v3=go.etcd.io/etcd/client/pkg/v3@v3.6.14
-              - go.etcd.io/etcd/client/v3=go.etcd.io/etcd/client/v3@v3.6.14
-              - go.etcd.io/etcd/pkg/v3=go.etcd.io/etcd/pkg/v3@v3.6.14
-              - go.etcd.io/etcd/server/v3=go.etcd.io/etcd/server/v3@v3.6.14
-              - go.etcd.io/raft/v3=go.etcd.io/raft/v3@v3.6.0
-            tidy: true
-        - name: test
-          work-dir: /go/src/github.com/hyperledger/fabric
-          runs: |
-            set -eux -o pipefail
-
-            CGO_ENABLED=0 go test ./cmd/orderer
-        - name: build
-          uses: go/build@v1
-          work-dir: /go/src/github.com/hyperledger/fabric/cmd/orderer
-          environment:
-            GOFLAGS: -buildvcs=false
-          with:
-            ldflags:
-              - -X github.com/hyperledger/fabric/common/metadata.Version=3.1.5
-            output: ${target.dir}/usr/local/bin/orderer
-        - name: copy configs
-          work-dir: /go/src/github.com/hyperledger/fabric/sampleconfig
-          runs: |
-            set -eux -o pipefail
-
-            mkdir -p ${target.dir}/etc/hyperledger/fabric
-            cp orderer.yaml configtx.yaml ${target.dir}/etc/hyperledger/fabric
-      outputs:
-        - source: ${target.dir}/usr/local/bin/orderer
-          target: /usr/local/bin/orderer
-          uid: 0
-          gid: 0
-        - source: /go/src/github.com/hyperledger/fabric/sampleconfig/orderer.yaml
-          target: /etc/hyperledger/fabric/orderer.yaml
-          uid: 0
-          gid: 0
-          mode: "0644"
-        - source: /go/src/github.com/hyperledger/fabric/sampleconfig/configtx.yaml
-          target: /etc/hyperledger/fabric/configtx.yaml
-          uid: 0
-          gid: 0
-          mode: "0644"
-        - source: /opt/docker/sbom/hyperledger-fabric-orderer
-          target: /opt/docker/sbom/hyperledger-fabric-orderer
-          uid: 0
-          gid: 0
 accounts:
   run-as: nonroot
   users:
@@ -146,7 +54,20 @@ os-release:
   pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
+environment:
+  FABRIC_CFG_PATH: /etc/hyperledger/fabric
+  FABRIC_VER: v3.1.5
 paths:
+  - type: directory
+    path: /usr/local/bin
+    uid: 0
+    gid: 0
+    mode: "0755"
+  - type: symlink
+    path: /usr/local/bin/orderer
+    uid: 0
+    gid: 0
+    source: /usr/bin/orderer
   - type: directory
     path: /var/hyperledger/production/orderer
     uid: 65532

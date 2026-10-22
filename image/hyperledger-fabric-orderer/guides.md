@@ -27,9 +27,13 @@ docker run -d --publish 7050:7050 \
 -v /tmp/fabric/config/orderer.example.com:/etc/hyperledger/fabric \
 -v /tmp/fabric/config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/etc/hyperledger/fabric/msp \
 -v /tmp/fabric/config/ordererOrganizations/example.com/orderers/orderer.example.com/tls:/etc/hyperledger/fabric/tls \
--v /tmp/fabric/data/orderer.example.com:/var/hyperledger/production \
+-v orderer-data:/var/hyperledger/production \
 --name orderer.example.com dhi.io/hyperledger-fabric-orderer:<tag>
 ```
+
+The orderer runs as UID 65532, so its ledger directory must be writable by that user. A named volume, as above, is
+seeded from the image and keeps that ownership. To use a host directory instead, create it and run
+`sudo chown 65532:65532 <dir>` before mounting it, otherwise the orderer stops with `permission denied`.
 
 ## Common Hyperledger Fabric Orderer use cases
 
@@ -46,16 +50,18 @@ further details on running Hyperledger Fabric and the provided examples.
 
 ### Key differences
 
-| Feature         | Non-hardened Hyperledger Fabric Orderer | Docker Hardened Hyperledger Fabric Orderer |
-| --------------- | --------------------------------------- | ------------------------------------------ |
-| Base image      | Ubuntu-based                            | Debian hardened base                       |
-| Security        | Standard utilities                      | Security patches + metadata                |
-| Shell access    | Shell available                         | No shell                                   |
-| Package manager | `apt`                                   | No package manager                         |
-| User            | Runs as root                            | Runs as dedicated non-root user            |
-| Build process   | Pre-compiled binaries                   | Built from source with verified commit     |
-| Debugging       | Shell + tools                           | Docker Debug or Image Mount                |
-| SBOM            | Not included                            | SBOM included                              |
+| Feature         | Non-hardened Hyperledger Fabric Orderer                           | Docker Hardened Hyperledger Fabric Orderer                          |
+| --------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Base image      | Ubuntu-based                                                      | Debian hardened base                                                |
+| Security        | Standard utilities                                                | Security patches + metadata                                         |
+| Shell access    | Shell available                                                   | No shell                                                            |
+| Package manager | `apt`                                                             | No package manager                                                  |
+| User            | Runs as root                                                      | Runs as dedicated non-root user                                     |
+| Build process   | Pre-compiled binaries                                             | Built from source with verified commit                              |
+| Orderer binary  | `/usr/local/bin/orderer`                                          | `/usr/bin/orderer`, with `/usr/local/bin/orderer` kept as a symlink |
+| Sample MSP      | 2.x ships `/etc/hyperledger/fabric/msp` with a sample signing key | Not included; mount your own MSP directory                          |
+| Debugging       | Shell + tools                                                     | Docker Debug or Image Mount                                         |
+| SBOM            | Not included                                                      | SBOM included                                                       |
 
 ## Hardened image debugging
 
@@ -109,6 +115,13 @@ Docker Hardened Images come in different variants depending on their intended us
   - Run as the root user
   - Include a shell and package manager
   - Are used to build or compile applications
+
+- FIPS variants include `fips` in the variant name and tag. They come in both runtime and build-time variants. These
+  variants use cryptographic modules that have been validated under FIPS 140, a U.S. government standard for secure
+  cryptographic operations. For example, usage of MD5 fails in FIPS variants.
+
+To view the image variants and get more information about them, select the Tags tab for this repository, and then select
+a tag.
 
 ## Migrate to a Docker Hardened Image
 
