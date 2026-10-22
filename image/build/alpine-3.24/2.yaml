@@ -1,4 +1,4 @@
-# syntax=dhi.io/build:2-alpine3.22
+# syntax=dhi.io/build:2-alpine3.23
 
 name: DHI Build 2.x (dev)
 image: dhi.io/build
