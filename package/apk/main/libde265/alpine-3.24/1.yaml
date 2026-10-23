@@ -10,8 +10,8 @@ platforms:
   - linux/arm64
 vars:
   _REL: "0"
-  _VERSION: 1.0.18
-  COMMIT_SHA: 3b1048d5a397b4e68f22e19f30c57332712d6b84
+  _VERSION: 1.1.3
+  COMMIT_SHA: c91a404808a54ac43837f3e459595fb868d5d6e1
   DHI_TEST_APK_PACKAGES: libde265-1.1.1-r0
   PACKAGE_NAME: main/libde265
   REL: "0"
@@ -37,7 +37,7 @@ contents:
           - cmake
           - samurai
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#3b1048d5a397b4e68f22e19f30c57332712d6b84
+          - url: git+https://github.com/alpinelinux/aports.git#c91a404808a54ac43837f3e459595fb868d5d6e1
             path: ${source.dir}/aports
             uid: 0
             gid: 0
