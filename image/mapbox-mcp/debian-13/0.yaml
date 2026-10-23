@@ -97,6 +97,7 @@ contents:
 
             rm -rf node_modules
             npm ci --omit=dev --ignore-scripts
+            rm patches/@modelcontextprotocol+sdk+1.30.0.patch
             ./node_modules/.bin/patch-package
       paths:
         - type: file
@@ -104,6 +105,11 @@ contents:
           uid: 0
           gid: 0
           source: image/mapbox-mcp/patch/npm-bump.json
+        - type: file
+          path: ${source.dir}/mapbox-mcp/patches/@modelcontextprotocol+sdk+1.32.0.patch
+          uid: 0
+          gid: 0
+          source: image/mapbox-mcp/patch/@modelcontextprotocol+sdk+1.32.0.patch
       outputs:
         - source: ${source.dir}/mapbox-mcp/node_modules
           target: /app/node_modules
