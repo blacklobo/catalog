@@ -4,22 +4,22 @@ name: Grafana Rollout Operator Helm chart 0.x
 image: dhi.io/grafana-rollout-operator-chart
 variant: helm
 tags:
-  - 0.53.0
+  - 0.53.1
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: fd0114209eeb780161c36ec649d2c53a18a937cf
+  CHART_COMMIT_SHA: da1bfd25af57b5242114b44c2fe75b5367b0a8bd
   CHART_HELM_NAME: grafana-rollout-operator-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_ROLLOUT_OPERATOR_REFERENCE: dhi/grafana-rollout-operator:0.41.0-debian13@sha256:344971a2993fab260abdfc6c8061711fe0d7f49d3721affeb6f186897f4ca7e8
+  GRAFANA_ROLLOUT_OPERATOR_REFERENCE: dhi/grafana-rollout-operator:0.41.0-debian13@sha256:3f0b1e87748561fee1e4bdeb9a12be6760255cad5e52c341673067067cb01d34
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "0.53"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.53.0
-  VERSION: 0.53.0
+  SEMVER_VERSION: 0.53.1
+  VERSION: 0.53.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/grafana/helm-charts.git#rollout-operator-0.53.0
-            checksum: fd0114209eeb780161c36ec649d2c53a18a937cf
+          - url: git+https://github.com/grafana/helm-charts.git#rollout-operator-0.53.1
+            checksum: da1bfd25af57b5242114b44c2fe75b5367b0a8bd
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Grafana Rollout Operator
               images:
                 - name: grafana-rollout-operator
-                  ref: dhi/grafana-rollout-operator:0.41.0-debian13@sha256:344971a2993fab260abdfc6c8061711fe0d7f49d3721affeb6f186897f4ca7e8
+                  ref: dhi/grafana-rollout-operator:0.41.0-debian13@sha256:3f0b1e87748561fee1e4bdeb9a12be6760255cad5e52c341673067067cb01d34
               name: grafana-rollout-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana/helm-charts
