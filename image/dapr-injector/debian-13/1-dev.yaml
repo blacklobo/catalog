@@ -5,25 +5,25 @@ image: dhi.io/dapr-injector
 variant: dev
 tags:
   - 1-dev
-  - 1.18-dev
-  - 1.18.7-dev
+  - 1.19-dev
+  - 1.19.0-dev
   - 1-debian-dev
   - 1-debian13-dev
-  - 1.18-debian-dev
-  - 1.18-debian13-dev
-  - 1.18.7-debian-dev
-  - 1.18.7-debian13-dev
+  - 1.19-debian-dev
+  - 1.19-debian13-dev
+  - 1.19.0-debian-dev
+  - 1.19.0-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-09-16"
 vars:
-  COMMIT_SHA: b32a815fa2260983e181b95272ea555fe17d3895
-  SEMVER_MAJOR_MINOR_VERSION: "1.18"
+  COMMIT_SHA: cd59bfba89c39344bfaca73f1eb7c76ec411c258
+  SEMVER_MAJOR_MINOR_VERSION: "1.19"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.18.7
-  VERSION: 1.18.7
+  SEMVER_VERSION: 1.19.0
+  VERSION: 1.19.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -64,15 +64,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/dapr/dapr#v1.18.7
-            checksum: b32a815fa2260983e181b95272ea555fe17d3895
+          - url: git+https://github.com/dapr/dapr#v1.19.0
+            checksum: cd59bfba89c39344bfaca73f1eb7c76ec411c258
             path: /go/src/github.com/dapr/dapr
             spdx:
               name: dapr
-              version: 1.18.7
+              version: 1.19.0
               packages:
                 - name: dapr
-                  purl: pkg:golang/github.com/dapr/dapr@1.18.7
+                  purl: pkg:golang/github.com/dapr/dapr@1.19.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -98,9 +98,9 @@ contents:
             GOFLAGS: -buildvcs=false
           with:
             ldflags:
-              - -X github.com/dapr/dapr/pkg/buildinfo.gitcommit=b32a815fa2260983e181b95272ea555fe17d3895
-              - -X github.com/dapr/dapr/pkg/buildinfo.gitversion=1.18.7
-              - -X github.com/dapr/dapr/pkg/buildinfo.version=1.18.7
+              - -X github.com/dapr/dapr/pkg/buildinfo.gitcommit=cd59bfba89c39344bfaca73f1eb7c76ec411c258
+              - -X github.com/dapr/dapr/pkg/buildinfo.gitversion=1.19.0
+              - -X github.com/dapr/dapr/pkg/buildinfo.version=1.19.0
             output: ${target.dir}/usr/local/bin/injector
             tags: allcomponents
       outputs:
