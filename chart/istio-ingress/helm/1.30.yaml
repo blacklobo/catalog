@@ -4,22 +4,22 @@ name: Istio Ingress Helm chart 1.30.x
 image: dhi.io/istio-ingress-chart
 variant: helm
 tags:
-  - 1.30.6
+  - 1.30.7
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: b85dac9587f2f997151d205e069e4f4ff091c7c5
+  CHART_COMMIT_SHA: 7209fe474ce6229c303170be35e76d21619e302a
   CHART_HELM_NAME: istio-ingress-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  ISTIO_PROXYV2_REFERENCE: dhi/istio-proxyv2:1.30.5-debian13@sha256:bf7e8e9360300919f35f9ec2d2a02f5a30987c301a861a2571fcaf9e035efd14
+  ISTIO_PROXYV2_REFERENCE: dhi/istio-proxyv2:1.30.5-debian13@sha256:d5dd20f3969415f58b6b81d0f78bf87ff96b322060560e9c59dea5aa0f6d9f0e
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.6
-  VERSION: 1.30.6
+  SEMVER_VERSION: 1.30.7
+  VERSION: 1.30.7
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/istio/istio.git#1.30.6
-            checksum: b85dac9587f2f997151d205e069e4f4ff091c7c5
+          - url: git+https://github.com/istio/istio.git#1.30.7
+            checksum: 7209fe474ce6229c303170be35e76d21619e302a
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Istio Ingress
               images:
                 - name: proxyv2
-                  ref: dhi/istio-proxyv2:1.30.5-debian13@sha256:bf7e8e9360300919f35f9ec2d2a02f5a30987c301a861a2571fcaf9e035efd14
+                  ref: dhi/istio-proxyv2:1.30.5-debian13@sha256:d5dd20f3969415f58b6b81d0f78bf87ff96b322060560e9c59dea5aa0f6d9f0e
               name: istio-ingress-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/istio/istio
