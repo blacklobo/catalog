@@ -6,24 +6,24 @@ variant: runtime
 tags:
   - "3"
   - "3.11"
-  - 3.11.1
+  - 3.11.2
   - 3-debian
   - 3-debian13
   - 3.11-debian
   - 3.11-debian13
-  - 3.11.1-debian
-  - 3.11.1-debian13
+  - 3.11.2-debian
+  - 3.11.2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-07-31"
 vars:
-  COMMIT_SHA: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
+  COMMIT_SHA: 8bb91357fd7326a21e3370c2edf839a15d0a6774
   SEMVER_MAJOR_MINOR_VERSION: "3.11"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.11.1
-  VERSION: 3.11.1
+  SEMVER_VERSION: 3.11.2
+  VERSION: 3.11.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -47,15 +47,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/kyverno/policy-reporter.git#v3.11.1
-            checksum: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
+          - url: git+https://github.com/kyverno/policy-reporter.git#v3.11.2
+            checksum: 8bb91357fd7326a21e3370c2edf839a15d0a6774
             path: /go/src/github.com/kyverno/policy-reporter
             spdx:
               name: kyverno-policy-reporter
-              version: 3.11.1
+              version: 3.11.2
               packages:
                 - name: kyverno-policy-reporter
-                  purl: pkg:golang/github.com/kyverno/policy-reporter@3.11.1
+                  purl: pkg:golang/github.com/kyverno/policy-reporter@3.11.2
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -64,10 +64,7 @@ contents:
           uses: go/bump@v1
           with:
             deps:
-              - golang.org/x/crypto@v0.56.0
-              - golang.org/x/net@v0.60.0
               - filippo.io/edwards25519@v1.2.0
-              - github.com/go-jose/go-jose/v4@v4.1.4
             replaces:
               - github.com/sigstore/timestamp-authority=github.com/docker-hardened-images/sigstore-timestamp-authority@v1.2.10-0.20251207163215-621a8cc1532f
             tidy: true
@@ -85,7 +82,7 @@ contents:
           with:
             cgo_enabled: 1
             ldflags:
-              - -X github.com/kyverno/policy-reporter/cmd/version.BuildVersion=3.11.1
+              - -X github.com/kyverno/policy-reporter/cmd/version.BuildVersion=3.11.2
             output: ${target.dir}/usr/local/bin/kyverno-policy-reporter
             tags: sqlite_unlock_notify
       outputs:
