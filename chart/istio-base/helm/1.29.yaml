@@ -4,11 +4,11 @@ name: Istio Base Helm chart 1.29.x
 image: dhi.io/istio-base-chart
 variant: helm
 tags:
-  - 1.29.9
+  - 1.29.10
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 46c9beb3406813d1ef52fae1f6af266d3508acca
+  CHART_COMMIT_SHA: cca610c61900bd48b5a7b3ee3d8af19ff265c495
   CHART_HELM_NAME: istio-base-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -17,8 +17,8 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "1.29"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.29.9
-  VERSION: 1.29.9
+  SEMVER_VERSION: 1.29.10
+  VERSION: 1.29.10
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -33,8 +33,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/istio/istio.git#46c9beb3406813d1ef52fae1f6af266d3508acca
-            checksum: 46c9beb3406813d1ef52fae1f6af266d3508acca
+          - url: git+https://github.com/istio/istio.git#cca610c61900bd48b5a7b3ee3d8af19ff265c495
+            checksum: cca610c61900bd48b5a7b3ee3d8af19ff265c495
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
