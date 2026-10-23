@@ -7,7 +7,7 @@ flavor: sfw-ent
 tags:
   - 1-debian12-sfw-ent-dev
   - 1.26-debian12-sfw-ent-dev
-  - 1.26.9-debian12-sfw-ent-dev
+  - 1.26.10-debian12-sfw-ent-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,10 +20,10 @@ vars:
   EXPAT_VERSION: 2.9.0
   MAJOR_MINOR_VERSION: "1.26"
   MAJOR_VERSION: "1"
-  PKG_GOLANG_REFERENCE: dhi/pkg-golang:1.26.9-debian12@sha256:1efa86824b4d8a437bdbabfd6766c2452bc9faf1cf49a8eb5cdf6627e9185c43
+  PKG_GOLANG_REFERENCE: dhi/pkg-golang:1.26.10-debian12@sha256:52e35f74e2286ccf794ed120e8987deae1ac36229546d4fe01355ccb7a264b3f
   SFW_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
   SFW_VERSION: 1.15.4
-  VERSION: 1.26.9
+  VERSION: 1.26.10
 contents:
   packages:
     - '!binutils'
@@ -100,7 +100,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/pkg-golang:1.26.9-debian12@sha256:1efa86824b4d8a437bdbabfd6766c2452bc9faf1cf49a8eb5cdf6627e9185c43
+    - name: dhi.io/pkg-golang:1.26.10-debian12@sha256:52e35f74e2286ccf794ed120e8987deae1ac36229546d4fe01355ccb7a264b3f
       includes:
         - opt/docker/sbom
         - usr/local/go
@@ -146,7 +146,7 @@ os-release:
 work-dir: /go
 environment:
   DEBIAN_FRONTEND: noninteractive
-  GOLANG_VERSION: 1.26.9
+  GOLANG_VERSION: 1.26.10
   GOPATH: /go
   GOTOOLCHAIN: local
   PATH: /opt/socket/bin:/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
