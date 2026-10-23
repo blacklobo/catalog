@@ -10,7 +10,7 @@ platforms:
 vars:
   CHART_COMMIT_SHA: effa01d9a7d6fa390712a83bbadad1784940f2f4
   CHART_HELM_NAME: cloudnative-pg-chart
-  CLOUDNATIVE_PG_REFERENCE: dhi/cloudnative-pg:1.30.1-debian13@sha256:83a48ea0a6595a0c842429be25bf8921e48198c813492a8ecc07629e5a8a3b5e
+  CLOUDNATIVE_PG_REFERENCE: dhi/cloudnative-pg:1.30.1-debian13@sha256:83e412b4b77cd1d2dea17a3d3c8081c422b58b490e55c1e2c0a7eaa5e044150c
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for CloudNativePG
               images:
                 - name: cloudnative-pg
-                  ref: dhi/cloudnative-pg:1.30.1-debian13@sha256:83a48ea0a6595a0c842429be25bf8921e48198c813492a8ecc07629e5a8a3b5e
+                  ref: dhi/cloudnative-pg:1.30.1-debian13@sha256:83e412b4b77cd1d2dea17a3d3c8081c422b58b490e55c1e2c0a7eaa5e044150c
               name: cloudnative-pg-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/cloudnative-pg/charts
