@@ -4,7 +4,7 @@ image: dhi.io/pkg-argocd
 variant: runtime
 tags:
   - 3.5.6-alpine3.24
-  - 3.5.6-r0-alpine3.24
+  - 3.5.6-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   GOLANG_VERSION: 1.26.10-r0
   NODEJS_VERSION: 24.22.0-r0
   PACKAGE_NAME: argocd-3.5
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "3.5"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.5.6
@@ -107,15 +107,16 @@ contents:
             npm pkg set pnpm.overrides.lodash-es=4.18.1
             npm pkg set pnpm.overrides.lodash=4.18.1
             npm pkg set pnpm.overrides.fast-xml-parser=5.7.0
-            npm pkg set pnpm.overrides.dompurify=3.4.13
+            npm pkg set pnpm.overrides.dompurify=3.4.16
             npm pkg set pnpm.overrides.form-data=4.0.6
             npm pkg set pnpm.overrides.qs=6.16.0 # CVE-2026-82562, CVE-2026-82417
             npm pkg set pnpm.overrides.yaml=1.10.3
             npm pkg set pnpm.overrides.unidiff=1.0.4
             npm pkg set pnpm.overrides.date-fns=4.1.0
             npm pkg set pnpm.overrides.uuid=11.1.1
-            npm pkg set pnpm.overrides.brace-expansion=5.0.9 # CVE-2026-69152
-            npm pkg set pnpm.overrides.linkify-it=5.0.2      # CVE-2026-48801, CVE-2026-59887
+            npm pkg set pnpm.overrides.moment=2.31.0          # CVE-2026-17495
+            npm pkg set pnpm.overrides.brace-expansion=5.0.12 # CVE-2026-69152, CVE-2026-102276, CVE-2026-102277, CVE-2026-102278
+            npm pkg set pnpm.overrides.linkify-it=5.0.2       # CVE-2026-48801, CVE-2026-59887
 
             npm pkg delete dependencies.tsx devDependencies.tsx
             npm pkg delete dependencies.react-hot-loader devDependencies.react-hot-loader # CVE-2025-57352
@@ -134,6 +135,20 @@ contents:
             set -eux -o pipefail
 
             pnpm install
+            assert_version_absent() {
+              pattern="$1"
+              selector="$2"
+              label="$3"
+              matches="$(find node_modules -path "${selector}" -exec grep -l -F -- "${pattern}" {} + || true)"
+              if [ -n "${matches}" ]; then
+                echo "forbidden ${label} still installed:" >&2
+                printf '%s\n' "${matches}" >&2
+                exit 1
+              fi
+            }
+            assert_version_absent '"version": "5.0.9"' '*/brace-expansion/package.json' 'brace-expansion 5.0.9'
+            assert_version_absent '"version": "2.30.1"' '*/moment/package.json' 'moment 2.30.1'
+            assert_version_absent '"version": "3.4.13"' '*/dompurify/package.json' 'dompurify 3.4.13'
             pnpm build
         - name: prepare ui for sbom (pnpm, 3.5 only)
           work-dir: /go/src/github.com/argoproj/argo-cd/v3/ui
@@ -215,7 +230,7 @@ contents:
             license: Apache-2.0
             name: argocd-3.5
             provides: argocd=$pkg_full_version
-            rel: 0
+            rel: 1
             replaces: argocd
             subpackages:
               - files:

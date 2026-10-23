@@ -5,7 +5,7 @@ variant: runtime
 tags:
   - 3.4-alpine3.24
   - 3.4.12-alpine3.24
-  - 3.4.12-r0-alpine3.24
+  - 3.4.12-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,7 +17,7 @@ vars:
   GOLANG_VERSION: 1.26.10-r0
   NODEJS_VERSION: 24.22.0-r0
   PACKAGE_NAME: argocd-3.4
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "3.4"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.4.12
@@ -98,6 +98,28 @@ contents:
           with:
             bumps: ${source.dir}/patch/yarn-patches-3.4.json
             yarn-root: /go/src/github.com/argoproj/argo-cd/v3/ui
+        - name: reconcile-ui-yarn-deps
+          work-dir: /go/src/github.com/argoproj/argo-cd/v3/ui
+          privileged: true
+          caches:
+            - path: /root/.cache/yarn
+          runs: |
+            set -eux -o pipefail
+
+            yarn install --ignore-scripts
+            assert_version_absent() {
+              pattern="$1"
+              selector="$2"
+              label="$3"
+              matches="$(find node_modules -path "${selector}" -exec grep -l -F -- "${pattern}" {} + || true)"
+              if [ -n "${matches}" ]; then
+                echo "forbidden ${label} still installed:" >&2
+                printf '%s\n' "${matches}" >&2
+                exit 1
+              fi
+            }
+            assert_version_absent '"version": "2.1.4"' '*/brace-expansion/package.json' 'brace-expansion 2.1.4'
+            assert_version_absent '"version": "2.29.4"' '*/moment/package.json' 'moment 2.29.4'
         - name: build-ui (yarn)
           work-dir: /go/src/github.com/argoproj/argo-cd/v3/ui
           privileged: true
@@ -106,7 +128,6 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            yarn
             yarn run build
         - name: prepare ui for sbom (yarn)
           work-dir: /go/src/github.com/argoproj/argo-cd/v3/ui
@@ -188,7 +209,7 @@ contents:
             license: Apache-2.0
             name: argocd-3.4
             provides: argocd=$pkg_full_version
-            rel: 0
+            rel: 1
             replaces: argocd
             subpackages:
               - files:
