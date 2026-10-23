@@ -4,9 +4,9 @@ image: dhi.io/pkg-airflow
 variant: runtime
 tags:
   - 3.3.2
-  - 3.3.2-r7
+  - 3.3.2-r8
   - 3.3.2-debian13
-  - 3.3.2-r7-debian13
+  - 3.3.2-r8-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,7 +18,7 @@ vars:
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "7"
+  REL: "8"
   SEMVER_MAJOR_MINOR_VERSION: "3.3"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.3.2
@@ -152,7 +152,8 @@ contents:
 
             sed -i 's/^google-cloud-aiplatform==1\.148\.1/google-cloud-aiplatform==1.155.0/g' ./constraints.txt
 
-            sed -i 's/litellm==1\.82\.6/litellm==1.85.4/' ./constraints.txt
+            sed -i 's/litellm==1\.85\.7/litellm==1.88.6/' ./constraints.txt
+            sed -i 's/litellm==1\.82\.6/litellm==1.88.6/' ./constraints.txt
             for pkg in importlib_metadata; do
               version=$(grep -i "^${pkg}==" ./constraints.txt | head -1 | sed 's/.*==//')
               if [ -n "$version" ]; then
@@ -160,8 +161,8 @@ contents:
               fi
             done
 
-            # aiohttp 3.14.3 fixes CVE-2026-54273, CVE-2026-54274, CVE-2026-54275, CVE-2026-54276, CVE-2026-54277, CVE-2026-54278, CVE-2026-54279, CVE-2026-54280, CVE-2026-59881, CVE-2026-69243, CVE-2026-69244.
-            sed -i 's/^aiohttp==3\.14\.1/aiohttp==3.14.3/g' ./constraints.txt
+            sed -i 's/^aiohttp==3\.14\.3/aiohttp==3.14.4/g' ./constraints.txt
+            sed -i 's/^aiohttp==3\.14\.1/aiohttp==3.14.4/g' ./constraints.txt
 
             sed -i 's/Mako==1\.3\.11/Mako==1.3.12/' ./constraints.txt
 
@@ -175,6 +176,16 @@ contents:
 
             sed -i 's/GitPython==3\.1\.50/GitPython==3.1.57/' ./constraints.txt # GHSA-2f96-g7mh-g2hx, GHSA-v396-v7q4-x2qj, GHSA-956x-8gvw-wg5v, GHSA-rwj8-pgh3-r573, GHSA-3rp5-jjmw-4wv2, GHSA-6p8h-3wgx-97gf, GHSA-fjr4-x663-mwxc, GHSA-r9mr-m37c-5fr3, GHSA-94p4-4cq8-9g67, GHSA-3f7w-8rr8-f37f, GHSA-539m-9xh6-q6rr, GHSA-p538-c434-8v24
 
+            sed -i 's/^opentelemetry-api==1\.44\.0/opentelemetry-api==1.45.1/' ./constraints.txt
+            sed -i 's/^opentelemetry-exporter-otlp-proto-common==1\.44\.0/opentelemetry-exporter-otlp-proto-common==1.45.1/' ./constraints.txt
+            sed -i 's/^opentelemetry-exporter-otlp-proto-grpc==1\.44\.0/opentelemetry-exporter-otlp-proto-grpc==1.45.1/' ./constraints.txt
+            sed -i 's/^opentelemetry-exporter-otlp-proto-http==1\.44\.0/opentelemetry-exporter-otlp-proto-http==1.45.1/' ./constraints.txt
+            sed -i 's/^opentelemetry-exporter-otlp==1\.44\.0/opentelemetry-exporter-otlp==1.45.1/' ./constraints.txt
+            sed -i 's/^opentelemetry-proto==1\.44\.0/opentelemetry-proto==1.45.1/' ./constraints.txt
+            sed -i 's/^opentelemetry-sdk==1\.44\.0/opentelemetry-sdk==1.45.1/' ./constraints.txt
+            sed -i 's/^opentelemetry-semantic-conventions==0\.65b0/opentelemetry-semantic-conventions==0.66b1/' ./constraints.txt
+            sed -i 's/^opentelemetry-exporter-prometheus==0\.65b0/opentelemetry-exporter-prometheus==0.66b0/' ./constraints.txt # CVE-2026-114603
+
             sed -i 's/pyasn1==0\.6\.3/pyasn1==0.6.4/' ./constraints.txt
 
             sed -i 's/idna==3\.11/idna==3.15/' ./constraints.txt
@@ -187,13 +198,27 @@ contents:
 
             sed -i 's/apache-airflow-providers-elasticsearch==6\.5\.2/apache-airflow-providers-elasticsearch==6.5.3/' ./constraints.txt
 
-            sed -i 's/apache-airflow-providers-google==22\.1\.0/apache-airflow-providers-google==22.2.1/' ./constraints.txt
+            sed -i 's/apache-airflow-providers-google==22\.5\.0/apache-airflow-providers-google==22.6.0/' ./constraints.txt
+            sed -i 's/apache-airflow-providers-google==22\.1\.0/apache-airflow-providers-google==22.6.0/' ./constraints.txt
+
+            sed -i 's/apache-airflow-providers-snowflake==6\.17\.0/apache-airflow-providers-snowflake==6.18.0/' ./constraints.txt
 
             sed -i 's/soupsieve==2\.8\.3/soupsieve==2.8.4/' ./constraints.txt
 
             sed -i 's/PyJWT==2\.14\.0/PyJWT==2.15.0/' ./constraints.txt
 
-            sed -i 's/tornado==6\.5\.5/tornado==6.5.7/' ./constraints.txt
+            sed -i 's/tornado==6\.5\.8/tornado==6.5.9/' ./constraints.txt
+            sed -i 's/tornado==6\.5\.5/tornado==6.5.9/' ./constraints.txt
+
+            sed -i 's/^certifi==2026\.7\.22/certifi==2026.10.19/' ./constraints.txt
+
+            sed -i 's/^Werkzeug==3\.1\.8/Werkzeug==3.1.9/' ./constraints.txt
+
+            sed -i 's/^virtualenv==21\.7\.9/virtualenv==21.7.13/' ./constraints.txt
+
+            sed -i 's/^multidict==6\.8\.0/multidict==6.9.1/' ./constraints.txt
+
+            sed -i 's/^oauthlib==3\.3\.1/oauthlib==4.0.0/' ./constraints.txt
 
             sed -i 's/starlette==1\.1\.0/starlette==1.3.1/' ./constraints.txt
 
@@ -358,7 +383,7 @@ contents:
               - deb
             license: Apache-2.0
             name: airflow
-            rel: 7
+            rel: 8
             url: https://airflow.apache.org/
             version: 3.3.2
       paths:
