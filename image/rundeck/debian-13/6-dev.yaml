@@ -5,27 +5,27 @@ image: dhi.io/rundeck
 variant: dev
 tags:
   - 6-dev
-  - 6.2-dev
-  - 6.2.1-dev
+  - 6.3-dev
+  - 6.3.0-dev
   - 6-debian-dev
   - 6-debian13-dev
-  - 6.2-debian-dev
-  - 6.2-debian13-dev
-  - 6.2.1-debian-dev
-  - 6.2.1-debian13-dev
+  - 6.3-debian-dev
+  - 6.3-debian13-dev
+  - 6.3.0-debian-dev
+  - 6.3.0-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-03"
 vars:
-  COMMIT_SHA: e649f088e039b0fabbbb7039f730cbbcc183f82d
+  COMMIT_SHA: 6ac5d092e6ccde3fd580ac61371487a300a0b6ca
   FLAVORED_SUFFIX: -dev
-  SEMVER_MAJOR_MINOR_VERSION: "6.2"
+  SEMVER_MAJOR_MINOR_VERSION: "6.3"
   SEMVER_MAJOR_VERSION: "6"
-  SEMVER_VERSION: 6.2.1
+  SEMVER_VERSION: 6.3.0
   SUFFIX: -dev
-  VERSION: 6.2.1
+  VERSION: 6.3.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -82,15 +82,15 @@ contents:
           - nodejs-24
           - npm
         files:
-          - url: git+https://github.com/rundeck/rundeck.git#e649f088e039b0fabbbb7039f730cbbcc183f82d
-            checksum: e649f088e039b0fabbbb7039f730cbbcc183f82d
+          - url: git+https://github.com/rundeck/rundeck.git#6ac5d092e6ccde3fd580ac61371487a300a0b6ca
+            checksum: 6ac5d092e6ccde3fd580ac61371487a300a0b6ca
             path: ${source.dir}/rundeck
             spdx:
               name: rundeck
-              version: 6.2.1
+              version: 6.3.0
               packages:
                 - name: rundeck
-                  purl: pkg:github/rundeck/rundeck@6.2.1
+                  purl: pkg:github/rundeck/rundeck@6.3.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -103,7 +103,7 @@ contents:
             export JAVA_HOME=/usr/lib/jvm/temurin-21
             export PATH="/usr/lib/jvm/temurin-21/bin:$PATH"
             export NPM_CONFIG_REGISTRY=https://registry.npmjs.org/
-            export CIRCLE_TAG=v6.2.1
+            export CIRCLE_TAG=v6.3.0
             export CI=true
 
             node --version
