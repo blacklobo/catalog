@@ -19,7 +19,7 @@ platforms:
 dates:
   release: "2026-10-06"
 vars:
-  CEPH_REFERENCE: dhi/ceph:20.2.4-debian13@sha256:0a1290c61ffffad1ac5beb758f143f985aa49d72f1b10771a49642676178e233
+  CEPH_REFERENCE: dhi/ceph:20.2.4-debian13@sha256:7e8b2b1642f2cf800d3620816e00b651ea0b52517eedb4f89b1d2386973c0069
   COMMIT_SHA: f190ca3b45f131da03641741e9e03b2584cd7d5e
   ROOK_GO_BUILD_TAGS: ceph_preview
   S5CMD_COMMIT_SHA: 991c9fbc16709341b4bac04513232a1445941f63
@@ -201,7 +201,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/ceph:20.2.4-debian13@sha256:0a1290c61ffffad1ac5beb758f143f985aa49d72f1b10771a49642676178e233
+    - name: dhi.io/ceph:20.2.4-debian13@sha256:7e8b2b1642f2cf800d3620816e00b651ea0b52517eedb4f89b1d2386973c0069
       includes:
         - etc/ld.so.conf.d/ceph.conf
         - etc/logrotate.d/ceph
