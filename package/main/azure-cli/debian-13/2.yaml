@@ -4,16 +4,16 @@ image: dhi.io/pkg-azure-cli
 variant: runtime
 tags:
   - 2.91.0
-  - 2.91.0-r0
+  - 2.91.0-r1
   - 2.91.0-debian13
-  - 2.91.0-r0-debian13
+  - 2.91.0-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2.91"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.91.0
@@ -66,6 +66,8 @@ contents:
               "pyjwt>=2.14.0" # CVE-2026-102274
             "${target.dir}/opt/azure-cli/bin/pip" install --no-cache-dir --only-binary=:all: --upgrade \
               "urllib3>=2.8.0" # CVE-2026-97687 CVE-2026-97688 CVE-2026-97689
+            "${target.dir}/opt/azure-cli/bin/pip" install --no-cache-dir --only-binary=:all: --upgrade \
+              "certifi>=2026.10.19" # GHSA-6q48-6c7w-9gw2
         - name: align pip vendored urllib3 with site packages
           runs: |
             set -eux -o pipefail
@@ -77,6 +79,21 @@ contents:
             sed -i 's/pkg:pypi\/urllib3@2\.7\.0/pkg:pypi\/urllib3@2.8.0/g' "$sp/pip/_vendor/bom.cdx.json"
             sed -i 's/"version": "2.7.0"/"version": "2.8.0"/' "$sp/pip/_vendor/bom.cdx.json"
             "${target.dir}/opt/azure-cli/bin/pip" --version
+        - name: align pip vendored certifi with site packages
+          runs: |
+            set -eux -o pipefail
+
+            sp=$(echo "${target.dir}/opt/azure-cli/lib"/python*/site-packages)
+            certifi_ver=$(basename "$(echo "$sp"/certifi-*.dist-info)" .dist-info | sed 's/^certifi-//')
+            rm -rf "$sp/pip/_vendor/certifi"
+            cp -a "$sp/certifi" "$sp/pip/_vendor/certifi"
+            sed -i "s/certifi==2026\\.6\\.17/certifi==${certifi_ver}/" "$sp/pip/_vendor/vendor.txt"
+            sed -i "s/pkg:pypi\\/certifi@2026\\.6\\.17/pkg:pypi\\/certifi@${certifi_ver}/g" "$sp/pip/_vendor/bom.cdx.json"
+            sed -i "s/pkg:pypi\\/certifi@2026\\.7\\.22/pkg:pypi\\/certifi@${certifi_ver}/g" "$sp/pip/_vendor/bom.cdx.json"
+            sed -i 's/"name": "certifi", "version": "2026.6.17"/"name": "certifi", "version": "'"${certifi_ver}"'"/' "$sp/pip/_vendor/bom.cdx.json"
+            sed -i 's/"name": "certifi", "version": "2026.7.22"/"name": "certifi", "version": "'"${certifi_ver}"'"/' "$sp/pip/_vendor/bom.cdx.json"
+            sed -i 's/"version": "2026\.6\.17"/"version": "'"${certifi_ver}"'"/' "$sp/pip/_vendor/bom.cdx.json"
+            sed -i 's/"version": "2026\.7\.22"/"version": "'"${certifi_ver}"'"/' "$sp/pip/_vendor/bom.cdx.json"
         - name: fix venv build paths
           runs: |
             set -eux -o pipefail
@@ -149,7 +166,7 @@ contents:
               - deb
             license: MIT
             name: azure-cli
-            rel: 0
+            rel: 1
             url: https://github.com/Azure/azure-cli
             version: 2.91.0
 os-release:
