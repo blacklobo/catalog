@@ -12,14 +12,14 @@ platforms:
   - linux/arm64
 vars:
   COMMIT_SHA: 9626398d75cbd86bd28822a64b86fb8e7da11872
-  DOCKER_REPO_COMMIT_SHA: a92354bb17c840615bc94baf4c0b8662586dfa76
-  DOCKER_REPO_VERSION: "2.586"
+  DOCKER_REPO_COMMIT_SHA: 5fead20453e28529f05c1825705f2e04c84cb764
+  DOCKER_REPO_VERSION: "2.587"
   JAVA_FIPS_SUFFIX: ""
   JAVA_HOME_PATH: /usr/lib/jvm/temurin-21
   JAVA_MAJOR_VERSION: "21"
   JAVA_VARIANT: jre
   JDK_MAJOR_VERSION: "21"
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:094410572fa29ee0ef79de6e30e5a2c5502850f1bdc22eeb6f71d575ee347c6e
   MAVEN_VERSION: 3.10.0
   SEMVER_MAJOR_MINOR_VERSION: "2.587"
   SEMVER_MAJOR_VERSION: "2"
@@ -110,8 +110,8 @@ contents:
                   license: MIT
             uid: 0
             gid: 0
-          - url: git+https://github.com/jenkinsci/docker.git#a92354bb17c840615bc94baf4c0b8662586dfa76
-            checksum: a92354bb17c840615bc94baf4c0b8662586dfa76
+          - url: git+https://github.com/jenkinsci/docker.git#5fead20453e28529f05c1825705f2e04c84cb764
+            checksum: 5fead20453e28529f05c1825705f2e04c84cb764
             path: ${source.dir}/docker-builds
             uid: 0
             gid: 0
@@ -128,7 +128,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
+          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:094410572fa29ee0ef79de6e30e5a2c5502850f1bdc22eeb6f71d575ee347c6e
             includes:
               - opt/**
               - usr/local/bin/**
