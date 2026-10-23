@@ -24,8 +24,8 @@ vars:
   PG_MAJOR_VERSION: "14"
   PG_VERSION: "14.24"
   PGDATA: /var/lib/postgresql/14/data
-  POSTGRES_BUILD_REFERENCE: dhi/postgres:14.24-debian13-dev@sha256:d1bd3bba7a277a71177d2b58169458360c76f430373646a7763a7ac7e9a6b636
-  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:14.24-debian13@sha256:7bd54531f55863f2db9659000b66ea0ce7cefef5e091f015d80fed478085df39
+  POSTGRES_BUILD_REFERENCE: dhi/postgres:14.24-debian13-dev@sha256:5b9efbdc4b2a03680e8d196158bb7b4af59f363020148920aec6a92455cf677e
+  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:14.24-debian13@sha256:ce2a9fe6c2da6a1097e6fdfdaf6093af307d5a2a6d8f1e17923a4f407ee5adb5
   SEMVER_MAJOR_MINOR_VERSION: "0.8"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.8.7
@@ -81,7 +81,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/postgres:14.24-debian13-dev@sha256:d1bd3bba7a277a71177d2b58169458360c76f430373646a7763a7ac7e9a6b636
+          - name: dhi.io/postgres:14.24-debian13-dev@sha256:5b9efbdc4b2a03680e8d196158bb7b4af59f363020148920aec6a92455cf677e
             includes:
               - opt/postgresql/14/**
               - usr/bin/pg_config
@@ -135,7 +135,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/postgres:14.24-debian13@sha256:7bd54531f55863f2db9659000b66ea0ce7cefef5e091f015d80fed478085df39
+    - name: dhi.io/postgres:14.24-debian13@sha256:ce2a9fe6c2da6a1097e6fdfdaf6093af307d5a2a6d8f1e17923a4f407ee5adb5
       excludes:
         - etc/os-release
         - var/lib/dpkg/status
