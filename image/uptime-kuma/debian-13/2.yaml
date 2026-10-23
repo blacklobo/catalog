@@ -6,22 +6,22 @@ variant: runtime
 tags:
   - "2"
   - "2.5"
-  - 2.5.6
+  - 2.5.7
   - 2-debian
   - 2-debian13
   - 2.5-debian
   - 2.5-debian13
-  - 2.5.6-debian
-  - 2.5.6-debian13
+  - 2.5.7-debian
+  - 2.5.7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 7ca4a3debd76443d8452da95d4040200a1479af4
+  COMMIT_SHA: d54e4619e52553416e292549f435cc7e57330c29
   SEMVER_MAJOR_MINOR_VERSION: "2.5"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.5.6
-  VERSION: 2.5.6
+  SEMVER_VERSION: 2.5.7
+  VERSION: 2.5.7
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -58,8 +58,8 @@ contents:
           - sed
           - yarn-classic
         files:
-          - url: git+https://github.com/louislam/uptime-kuma.git#2.5.6
-            checksum: 7ca4a3debd76443d8452da95d4040200a1479af4
+          - url: git+https://github.com/louislam/uptime-kuma.git#2.5.7
+            checksum: d54e4619e52553416e292549f435cc7e57330c29
             path: ${source.dir}/uptime-kuma
             uid: 0
             gid: 0
@@ -172,7 +172,7 @@ contents:
               from_entries |
               {
                 name: "frontend",
-                version: "2.5.6",
+                version: "2.5.7",
                 dependencies: .
               }' package.json ./hack/exclude-dev-dependencies.json > ./frontend/package.json
             cp package.json package.json.original
