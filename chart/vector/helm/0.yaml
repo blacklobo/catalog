@@ -14,12 +14,12 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  HAPROXY_REFERENCE: dhi/haproxy:3.0.30-debian13@sha256:5c7f85e141510bf819bacf2aef5656a61d9e2c72892283ca38f319392f3c96f8
+  HAPROXY_REFERENCE: dhi/haproxy:3.0.30-debian13@sha256:831b05c680735e5f1e14c4089b6f4bf4d6260a610e2d3d52885f5e2c55a6064e
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "0.60"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.60.0
-  VECTOR_REFERENCE: dhi/vector:0.58.0-debian13@sha256:75f50bdf9dd1a585216e9b4cbb9d64dde5b24a19648ab907693827d34ec5e1bb
+  VECTOR_REFERENCE: dhi/vector:0.60.0-debian13@sha256:872edcb22a8d384571f74a15805f92d5a94c8a0f8e81b17924fd73d0e15c6f6e
   VERSION: 0.60.0
 contents:
   repositories:
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Vector
               images:
                 - name: vector
-                  ref: dhi/vector:0.58.0-debian13@sha256:75f50bdf9dd1a585216e9b4cbb9d64dde5b24a19648ab907693827d34ec5e1bb
+                  ref: dhi/vector:0.60.0-debian13@sha256:872edcb22a8d384571f74a15805f92d5a94c8a0f8e81b17924fd73d0e15c6f6e
                 - name: haproxy
-                  ref: dhi/haproxy:3.0.30-debian13@sha256:5c7f85e141510bf819bacf2aef5656a61d9e2c72892283ca38f319392f3c96f8
+                  ref: dhi/haproxy:3.0.30-debian13@sha256:831b05c680735e5f1e14c4089b6f4bf4d6260a610e2d3d52885f5e2c55a6064e
               name: vector-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/vectordotdev/helm-charts
