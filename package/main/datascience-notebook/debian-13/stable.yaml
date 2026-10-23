@@ -4,9 +4,9 @@ image: dhi.io/pkg-datascience-notebook
 variant: runtime
 tags:
   - 2026.07.28
-  - 2026.07.28-r7
+  - 2026.07.28-r8
   - 2026.07.28-debian13
-  - 2026.07.28-r7-debian13
+  - 2026.07.28-r8-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -28,7 +28,7 @@ vars:
   MICROMAMBA_VERSION: 2.9.0-0
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "7"
+  REL: "8"
   VERSION: 2026.07.28
 contents:
   repositories:
@@ -254,6 +254,12 @@ contents:
 
             /opt/conda/bin/pip install --no-deps --upgrade 'oauthlib>=4.0.0,<5.0.0' # CVE-2026-49264 CVE-2026-49265
             rm -f /opt/conda/conda-meta/oauthlib-3.*.json
+
+            /opt/conda/bin/pip install --no-deps --upgrade 'certifi==2026.10.19' # GHSA-6q48-6c7w-9gw2
+            rm -f /opt/conda/conda-meta/certifi-2026.6.*.json /opt/conda/conda-meta/certifi-2026.7.*.json /opt/conda/conda-meta/certifi-2026.8.*.json /opt/conda/conda-meta/certifi-2026.9.*.json
+
+            /opt/conda/bin/pip install --no-deps --upgrade 'pillow==13.0.0' # CVE-2026-96636 CVE-2026-96637 CVE-2026-96638 CVE-2026-96639 CVE-2026-96640 CVE-2026-96641 CVE-2026-96642 CVE-2026-96643 CVE-2026-96644 CVE-2026-96778 CVE-2026-112390 CVE-2026-112391 CVE-2026-112392 CVE-2026-112393 CVE-2026-112394 CVE-2026-112395 CVE-2026-112396 CVE-2026-112397 CVE-2026-112399 CVE-2026-112400 CVE-2026-112401 CVE-2026-112402 CVE-2026-112403 CVE-2026-112404 CVE-2026-112405 CVE-2026-112406 CVE-2026-112891 CVE-2026-112892 CVE-2026-112893 CVE-2026-112894 CVE-2026-112895 CVE-2026-112896 CVE-2026-112897 CVE-2026-112898 CVE-2026-112899 CVE-2026-112900 CVE-2026-112901 CVE-2026-112902 GHSA-78G4-XQWV-Q3G8
+            rm -f /opt/conda/conda-meta/pillow-12.*.json
         - name: align pip vendored urllib3 with site packages
           runs: |
             set -eux -o pipefail
@@ -458,7 +464,7 @@ contents:
               - deb
             license: BSD-3-Clause
             name: datascience-notebook
-            rel: 7
+            rel: 8
             url: https://jupyter-docker-stacks.readthedocs.io/
             version: 2026.07.28
 os-release:
