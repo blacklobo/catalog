@@ -5,21 +5,21 @@ image: dhi.io/loki
 variant: runtime
 tags:
   - "3.6"
-  - 3.6.18
+  - 3.6.19
   - 3.6-debian
   - 3.6-debian13
-  - 3.6.18-debian
-  - 3.6.18-debian13
+  - 3.6.19-debian
+  - 3.6.19-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: c969f5cf4b4ca6073d29e0a74b236f4d05d7b79a
+  COMMIT_SHA: de41836f1cfe918cc2c053deed98a751a6f639ee
   LOKI_MODULE_BASE: github.com/grafana/loki/v3
   SEMVER_MAJOR_MINOR_VERSION: "3.6"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.6.18
-  VERSION: 3.6.18
+  SEMVER_VERSION: 3.6.19
+  VERSION: 3.6.19
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -45,15 +45,15 @@ contents:
           - findutils
           - mawk
         files:
-          - url: git+https://github.com/grafana/loki.git#v3.6.18
-            checksum: c969f5cf4b4ca6073d29e0a74b236f4d05d7b79a
+          - url: git+https://github.com/grafana/loki.git#v3.6.19
+            checksum: de41836f1cfe918cc2c053deed98a751a6f639ee
             path: ${source.dir}/loki
             spdx:
               name: loki
-              version: 3.6.18
+              version: 3.6.19
               packages:
                 - name: loki
-                  purl: pkg:dhi/loki@3.6.18
+                  purl: pkg:dhi/loki@3.6.19
                   license: AGPL-3.0
             uid: 0
             gid: 0
@@ -108,9 +108,9 @@ contents:
           with:
             ldflags:
               - -extldflags "-static"
-              - -X github.com/grafana/loki/v3/pkg/util/build.Branch=3.6.18
-              - -X github.com/grafana/loki/v3/pkg/util/build.Version=3.6.18
-              - -X github.com/grafana/loki/v3/pkg/util/build.Revision=c969f5cf4b4ca6073d29e0a74b236f4d05d7b79a
+              - -X github.com/grafana/loki/v3/pkg/util/build.Branch=3.6.19
+              - -X github.com/grafana/loki/v3/pkg/util/build.Version=3.6.19
+              - -X github.com/grafana/loki/v3/pkg/util/build.Revision=de41836f1cfe918cc2c053deed98a751a6f639ee
               - -X github.com/grafana/loki/v3/pkg/util/build.BuildUser=dhi@build
               - -X github.com/grafana/loki/v3/pkg/util/build.BuildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/local/bin/loki
