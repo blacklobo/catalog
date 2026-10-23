@@ -3,19 +3,19 @@
 image: dhi.io/pkg-alpine-base
 variant: runtime
 tags:
-  - 3.24.2-alpine3.24
-  - 3.24.2-r0-alpine3.24
+  - 3.24.3-alpine3.24
+  - 3.24.3-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: d9d560d5de74ff9a7a73f3c903d6f126a0bf3142
+  COMMIT_SHA: ee92350c8a4509152dc91c693814215a884c07c3
   PACKAGE_NAME: main/alpine-base
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "3.24"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.24.2
-  VERSION: 3.24.2
+  SEMVER_VERSION: 3.24.3
+  VERSION: 3.24.3
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -42,7 +42,7 @@ contents:
           - musl-utils
           - openrc
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#d9d560d5de74ff9a7a73f3c903d6f126a0bf3142
+          - url: git+https://github.com/alpinelinux/aports.git#ee92350c8a4509152dc91c693814215a884c07c3
             path: ${source.dir}/aports
             uid: 0
             gid: 0
