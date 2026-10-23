@@ -8,9 +8,9 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  APP_VERSION: 3.17.1
+  APP_VERSION: 3.17.2
   CHART_HELM_NAME: mlflow-chart
-  COMMIT_SHA: 7fc49ae9fcd65ed125e46cf68b976060e5a38c77
+  COMMIT_SHA: d0b397f85b602e8f146be0d0373b28bba2ca2b74
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/mlflow/mlflow.git#v3.17.1
-            checksum: 7fc49ae9fcd65ed125e46cf68b976060e5a38c77
+          - url: git+https://github.com/mlflow/mlflow.git#v3.17.2
+            checksum: d0b397f85b602e8f146be0d0373b28bba2ca2b74
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
