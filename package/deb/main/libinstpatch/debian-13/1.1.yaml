@@ -3,8 +3,8 @@
 image: dhi.io/pkg-libinstpatch
 variant: runtime
 tags:
-  - 1.1.6-1-dhi0
-  - 1.1.6-1-dhi0-debian13
+  - 1.1.6-1-dhi1
+  - 1.1.6-1-dhi1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,9 +20,9 @@ vars:
   DEBIAN_ORIG_FILENAME: libinstpatch_1.1.6.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/libi/libinstpatch/libinstpatch_1.1.6.orig.tar.gz
   DEBIAN_VERSION: 1.1.6-1
-  DHI_REL: "0"
-  DHI_VERSION: 1.1.6-1+dhi0
-  TAG_VERSION: 1.1.6-1-dhi0
+  DHI_REL: "1"
+  DHI_VERSION: 1.1.6-1+dhi1
+  TAG_VERSION: 1.1.6-1-dhi1
   UPSTREAM_VERSION: 1.1.6
 contents:
   packages:
@@ -64,14 +64,30 @@ contents:
           with:
             file: libinstpatch_1.1.6-1.dsc
             path: libinstpatch
+        - name: create debian patch stack directory
+          runs: |
+            set -eux -o pipefail
+
+            mkdir -p debian/patches
+        - uses: dpkg/patch@v1
+          with:
+            apply: true
+            patches:
+              - ${source.dir}/patch/dhi-cve-2026-111136-sf2-gen-id-bounds.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - DHI Rebuild
-            version: 1.1.6-1+dhi0
+              - Backport upstream fix for CVE-2026-111136
+            version: 1.1.6-1+dhi1
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
+      paths:
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2026-111136-sf2-gen-id-bounds.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/libinstpatch/patch/dhi-cve-2026-111136-sf2-gen-id-bounds.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
