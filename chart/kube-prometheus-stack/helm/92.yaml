@@ -8,8 +8,8 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:01dd89cce4737ec7e44704681b5d6ee561e9b7880f632b4413b0e547e4dabfda
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:cbf608bac227b555568030a804f7666bb60524ea25c626db8b9b93789748784e
+  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:d2e254cd3d9848a14369fc020176d6a5776d1b52d67191fc764888f54ff91c20
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:bb67e1b1d351fa4cb5cdb459dbb580ff0202d40ea8feb23660936defd7af5a74
   CHART_COMMIT_SHA: 86e724d5dd4cb73275410f211d1cedfb77f67764
   CHART_HELM_NAME: kube-prometheus-stack-chart
   DHI_NAMESPACE: dhi
@@ -19,17 +19,17 @@ vars:
   GRAFANA_CHART_REFERENCE: dhi/grafana-chart:14.0.1@sha256:2f7939bea41acb7895dd661f4e146b39dcbda1c3e123d400a3342ea8324512d2
   HELM_VERSION: 4.1.4-2
   KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:8.6.0@sha256:dd17a6c5562dacf88b4407978e8d72850ddeb5d4b6cf5149b699ccf8f0c74d24
-  KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:81daf33fd88d10ee4086c247d70b37766037ac2d03e6759b930b294c5ee8f613
-  KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:49bd1dc516e038d64e75160fc69dd78c1959779aad2d3833718d0f280ca15b07
+  KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:c8bdd8c1fe08c5823cba4a838211ecccd973bed0edbd4a7e3a2afd85d6ee3d8f
+  KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:1de86207bae194c7c828a097293476c801c26dedc4584b0414deb1057cab3bf1
   NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.60.0@sha256:82fe94a7fe06b49d65c199ca564c91856226300b4424cfc8a39fe0a0c1ca6ba1
-  PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
-  PROMETHEUS_OPERATOR_ADMISSION_WEBHOOK_REFERENCE: dhi/prometheus-operator-admission-webhook:0.94.1-debian13@sha256:3a990f3dc615be127e956eba3e4c01e7f7dff4fac136e8a78a52642703f945c5
-  PROMETHEUS_OPERATOR_REFERENCE: dhi/prometheus-operator:0.94.1-debian13@sha256:e98b7a8ce6bb27a0eec34d12d28ec6a7ff66a2d6206fe264ee9dc405cbcd64b5
-  PROMETHEUS_REFERENCE: dhi/prometheus:3.15.0-debian13@sha256:92551a86d2f1fc71f99cf8b45b53eb757d7b1d9a90e389be95c948540942ac49
+  PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:08bbee7585db90001b4f74cef1d127d5ad9b463d4379b154b7ae35da1891707a
+  PROMETHEUS_OPERATOR_ADMISSION_WEBHOOK_REFERENCE: dhi/prometheus-operator-admission-webhook:0.94.1-debian13@sha256:6a4b0dcc581e97d59cb8efcc2209d4c657c1d1b0bacdc74b334a3617158e2646
+  PROMETHEUS_OPERATOR_REFERENCE: dhi/prometheus-operator:0.94.1-debian13@sha256:626da999e10fe493a5ff1aa0584c8cb6d273d865dfa2aec1a582493ee7748acb
+  PROMETHEUS_REFERENCE: dhi/prometheus:3.15.0-debian13@sha256:839c37b75b190fa24215bf9498bee570fd4276978aa13de44ceaf5108d1a8cde
   SEMVER_MAJOR_MINOR_VERSION: "92.11"
   SEMVER_MAJOR_VERSION: "92"
   SEMVER_VERSION: 92.11.0
-  THANOS_REFERENCE: dhi/thanos:0.42.4-debian13@sha256:539a884638c8fcff48911a156421267e76946a79f58008db46b87593a78bf4b4
+  THANOS_REFERENCE: dhi/thanos:0.42.4-debian13@sha256:15da46b22a5fd24a2555369472c761dd06484d6c29628c06467aad32eaeb769f
   VERSION: 92.11.0
 contents:
   repositories:
@@ -77,23 +77,23 @@ contents:
               description: Docker Hardened Images Helm chart for Kube Prometheus Stack
               images:
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-debian13@sha256:cbf608bac227b555568030a804f7666bb60524ea25c626db8b9b93789748784e
+                  ref: dhi/busybox:1.37.0-debian13@sha256:bb67e1b1d351fa4cb5cdb459dbb580ff0202d40ea8feb23660936defd7af5a74
                 - name: kubectl
-                  ref: dhi/kubectl:1.37.1-debian13@sha256:49bd1dc516e038d64e75160fc69dd78c1959779aad2d3833718d0f280ca15b07
+                  ref: dhi/kubectl:1.37.1-debian13@sha256:1de86207bae194c7c828a097293476c801c26dedc4584b0414deb1057cab3bf1
                 - name: alertmanager
-                  ref: dhi/alertmanager:0.34.1-debian13@sha256:01dd89cce4737ec7e44704681b5d6ee561e9b7880f632b4413b0e547e4dabfda
+                  ref: dhi/alertmanager:0.34.1-debian13@sha256:d2e254cd3d9848a14369fc020176d6a5776d1b52d67191fc764888f54ff91c20
                 - name: prometheus-operator-admission-webhook
-                  ref: dhi/prometheus-operator-admission-webhook:0.94.1-debian13@sha256:3a990f3dc615be127e956eba3e4c01e7f7dff4fac136e8a78a52642703f945c5
+                  ref: dhi/prometheus-operator-admission-webhook:0.94.1-debian13@sha256:6a4b0dcc581e97d59cb8efcc2209d4c657c1d1b0bacdc74b334a3617158e2646
                 - name: kube-webhook-certgen
-                  ref: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:81daf33fd88d10ee4086c247d70b37766037ac2d03e6759b930b294c5ee8f613
+                  ref: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:c8bdd8c1fe08c5823cba4a838211ecccd973bed0edbd4a7e3a2afd85d6ee3d8f
                 - name: prometheus-operator
-                  ref: dhi/prometheus-operator:0.94.1-debian13@sha256:e98b7a8ce6bb27a0eec34d12d28ec6a7ff66a2d6206fe264ee9dc405cbcd64b5
+                  ref: dhi/prometheus-operator:0.94.1-debian13@sha256:626da999e10fe493a5ff1aa0584c8cb6d273d865dfa2aec1a582493ee7748acb
                 - name: prometheus-config-reloader
-                  ref: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
+                  ref: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:08bbee7585db90001b4f74cef1d127d5ad9b463d4379b154b7ae35da1891707a
                 - name: thanos
-                  ref: dhi/thanos:0.42.4-debian13@sha256:539a884638c8fcff48911a156421267e76946a79f58008db46b87593a78bf4b4
+                  ref: dhi/thanos:0.42.4-debian13@sha256:15da46b22a5fd24a2555369472c761dd06484d6c29628c06467aad32eaeb769f
                 - name: prometheus
-                  ref: dhi/prometheus:3.15.0-debian13@sha256:92551a86d2f1fc71f99cf8b45b53eb757d7b1d9a90e389be95c948540942ac49
+                  ref: dhi/prometheus:3.15.0-debian13@sha256:839c37b75b190fa24215bf9498bee570fd4276978aa13de44ceaf5108d1a8cde
               name: kube-prometheus-stack-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/prometheus-community/helm-charts
