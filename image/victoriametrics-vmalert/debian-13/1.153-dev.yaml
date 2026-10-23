@@ -21,7 +21,7 @@ dates:
 vars:
   COMMIT_SHA: 3acd30be3427c5a63aa75b498af929daf2633480
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.2-0
+  GOLANG_VERSION: 1.27.3-0
   SEMVER_MAJOR_MINOR_VERSION: "1.153"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.153.0
@@ -59,7 +59,7 @@ contents:
           - bash
           - ca-certificates-bundle
           - coreutils
-          - golang-1.27=1.27.2-0
+          - golang-1.27=1.27.3-0
           - findutils
           - mawk
           - sed
