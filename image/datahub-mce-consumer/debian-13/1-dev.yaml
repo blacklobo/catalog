@@ -7,22 +7,22 @@ tags:
   - 1-dev
   - 1.7-dev
   - 1.7.0-dev
-  - 1.7.0-4-dev
   - 1-debian-dev
+  - 1.7.0.1-7-dev
   - 1-debian13-dev
   - 1.7-debian-dev
   - 1.7-debian13-dev
   - 1.7.0-debian-dev
-  - 1.7.0-4-debian-dev
   - 1.7.0-debian13-dev
-  - 1.7.0-4-debian13-dev
+  - 1.7.0.1-7-debian-dev
+  - 1.7.0.1-7-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-10-01"
 vars:
-  DATAHUBPACKAGE: datahub-mce-consumer=1.7.0-4
+  DATAHUBPACKAGE: datahub-mce-consumer=1.7.0.1-7
   DOCKERIZE_VERSION: 0.25.4-1
   FLAVORED_SUFFIX: -dev
   JAVA_FIPS_SUFFIX: ""
@@ -30,9 +30,9 @@ vars:
   JDK_MAJOR_VERSION: "21"
   SEMVER_MAJOR_MINOR_VERSION: "1.7"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.7.0-4
+  SEMVER_VERSION: 1.7.0.1-7
   SUFFIX: -dev
-  VERSION: 1.7.0-4
+  VERSION: 1.7.0.1-7
   VERSION_MAJOR_MINOR_PATCH: 1.7.0
 contents:
   repositories:
@@ -50,7 +50,7 @@ contents:
     - ca-certificates
     - coreutils
     - curl
-    - datahub-mce-consumer=1.7.0-4
+    - datahub-mce-consumer=1.7.0.1-7
     - diffutils
     - dockerize-dev=0.25.4-1
     - dpkg
