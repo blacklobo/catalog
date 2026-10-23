@@ -15,7 +15,7 @@ platforms:
 dates:
   release: "2025-10-16"
 vars:
-  ERLANG_OTP_REFERENCE: dhi/erlang-otp:28.5-debian13@sha256:609f858640bdcec6515805f7e6c75c084f801fe6d4e52a820e374b857c5c3c02
+  ERLANG_OTP_REFERENCE: dhi/erlang-otp:28.5-debian13@sha256:65011be03d8fd5b180607383e18b0b5d5a60b210372dd1fd6504e198ff93f950
   PACKAGE_NAME: elixir-1.19
   SEMVER_MAJOR_MINOR_VERSION: "1.19"
   SEMVER_MAJOR_VERSION: "1"
@@ -76,7 +76,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/erlang-otp:28.5-debian13@sha256:609f858640bdcec6515805f7e6c75c084f801fe6d4e52a820e374b857c5c3c02
+    - name: dhi.io/erlang-otp:28.5-debian13@sha256:65011be03d8fd5b180607383e18b0b5d5a60b210372dd1fd6504e198ff93f950
       excludes:
         - etc/group
         - etc/os-release
