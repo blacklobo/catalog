@@ -9,7 +9,7 @@ platforms:
   - linux/amd64
 vars:
   AZURE_SERVICE_OPERATOR_IMAGE_TAG: 2.17.0
-  AZURE_SERVICE_OPERATOR_REFERENCE: dhi/azure-service-operator:2.21.1-debian13@sha256:f4755c873343e9bc9d742887486e31a554156369d71dc065b624aa1255328ff4
+  AZURE_SERVICE_OPERATOR_REFERENCE: dhi/azure-service-operator:2.21.1-debian13@sha256:f27f4fed27257ed8226fc0bea976c105b36184593a1f26caff9fc48bd3a66916
   CHART_COMMIT_SHA: dd0599c16e630c8b0e8de6cadc49d9e84e441bf5
   CHART_HELM_NAME: azure-service-operator-chart
   DHI_NAMESPACE: dhi
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for Azure Service Operator
               images:
                 - name: azure-service-operator
-                  ref: dhi/azure-service-operator:2.21.1-debian13@sha256:f4755c873343e9bc9d742887486e31a554156369d71dc065b624aa1255328ff4
+                  ref: dhi/azure-service-operator:2.21.1-debian13@sha256:f27f4fed27257ed8226fc0bea976c105b36184593a1f26caff9fc48bd3a66916
               name: azure-service-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/Azure/azure-service-operator
