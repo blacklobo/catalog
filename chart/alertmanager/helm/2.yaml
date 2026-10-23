@@ -4,24 +4,24 @@ name: Prometheus AlertManager Helm chart 2.x
 image: dhi.io/alertmanager-chart
 variant: helm
 tags:
-  - 2.1.1
+  - 2.1.2
 platforms:
   - linux/amd64
 vars:
-  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:01dd89cce4737ec7e44704681b5d6ee561e9b7880f632b4413b0e547e4dabfda
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-alpine3.22@sha256:c1011eab944f17e619ce982878ea8d52cc36c67325ab374f4ad2a344a6c03786
-  CHART_COMMIT_SHA: 6498f5f4e1efa2b137f4f5687162ce5975d04f7a
+  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:d2e254cd3d9848a14369fc020176d6a5776d1b52d67191fc764888f54ff91c20
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-alpine3.22@sha256:673be683cc7fd876518c6d3959643dfa343ef22a8e8c0ba4176e47a98c47e3c4
+  CHART_COMMIT_SHA: a022325101584eeeb33a724bfbcb168f4ce90a31
   CHART_HELM_NAME: alertmanager-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
+  PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:08bbee7585db90001b4f74cef1d127d5ad9b463d4379b154b7ae35da1891707a
   SEMVER_MAJOR_MINOR_VERSION: "2.1"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.1.1
-  VERSION: 2.1.1
+  SEMVER_VERSION: 2.1.2
+  VERSION: 2.1.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/prometheus-community/helm-charts.git#alertmanager-2.1.1
-            checksum: 6498f5f4e1efa2b137f4f5687162ce5975d04f7a
+          - url: git+https://github.com/prometheus-community/helm-charts.git#alertmanager-2.1.2
+            checksum: a022325101584eeeb33a724bfbcb168f4ce90a31
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -50,11 +50,11 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus AlertManager
               images:
                 - name: alertmanager
-                  ref: dhi/alertmanager:0.34.1-debian13@sha256:01dd89cce4737ec7e44704681b5d6ee561e9b7880f632b4413b0e547e4dabfda
+                  ref: dhi/alertmanager:0.34.1-debian13@sha256:d2e254cd3d9848a14369fc020176d6a5776d1b52d67191fc764888f54ff91c20
                 - name: prometheus-config-reloader
-                  ref: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
+                  ref: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:08bbee7585db90001b4f74cef1d127d5ad9b463d4379b154b7ae35da1891707a
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-alpine3.22@sha256:c1011eab944f17e619ce982878ea8d52cc36c67325ab374f4ad2a344a6c03786
+                  ref: dhi/busybox:1.37.0-alpine3.22@sha256:673be683cc7fd876518c6d3959643dfa343ef22a8e8c0ba4176e47a98c47e3c4
               name: alertmanager-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/prometheus-community/helm-charts
