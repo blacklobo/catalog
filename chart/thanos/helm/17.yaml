@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BASH_REFERENCE: dhi/bash:5.2.37-debian13@sha256:13f77dc5e0e34d9bb2651d0537c8dbee631bfaf8330bf4ab31658bc0874fd309
+  BASH_REFERENCE: dhi/bash:5.2.37-debian13@sha256:6bbf75cc90fba0a76c6008e0b5ca09707b64e8eb183f776a67b8b4e364354a81
   CHART_COMMIT_SHA: cd04b0e93380dcb987c52a214b20cd6864362d9d
   CHART_HELM_NAME: thanos-chart
   DHI_NAMESPACE: dhi
@@ -19,7 +19,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "17.4"
   SEMVER_MAJOR_VERSION: "17"
   SEMVER_VERSION: 17.4.0
-  THANOS_REFERENCE: dhi/thanos:0.42.4-debian13@sha256:539a884638c8fcff48911a156421267e76946a79f58008db46b87593a78bf4b4
+  THANOS_REFERENCE: dhi/thanos:0.42.4-debian13@sha256:15da46b22a5fd24a2555369472c761dd06484d6c29628c06467aad32eaeb769f
   VERSION: 17.4.0
 contents:
   repositories:
@@ -51,9 +51,9 @@ contents:
               description: Docker Hardened Images Helm chart for Thanos
               images:
                 - name: thanos
-                  ref: dhi/thanos:0.42.4-debian13@sha256:539a884638c8fcff48911a156421267e76946a79f58008db46b87593a78bf4b4
+                  ref: dhi/thanos:0.42.4-debian13@sha256:15da46b22a5fd24a2555369472c761dd06484d6c29628c06467aad32eaeb769f
                 - name: bash
-                  ref: dhi/bash:5.2.37-debian13@sha256:13f77dc5e0e34d9bb2651d0537c8dbee631bfaf8330bf4ab31658bc0874fd309
+                  ref: dhi/bash:5.2.37-debian13@sha256:6bbf75cc90fba0a76c6008e0b5ca09707b64e8eb183f776a67b8b4e364354a81
               name: thanos-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/docker-hardened-images/helm-charts
