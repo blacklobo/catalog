@@ -6,13 +6,13 @@ variant: runtime
 tags:
   - "8"
   - "8.2"
-  - 8.2.0
+  - 8.2.1
   - 8-debian
   - 8-debian13
   - 8.2-debian
   - 8.2-debian13
-  - 8.2.0-debian
-  - 8.2.0-debian13
+  - 8.2.1-debian
+  - 8.2.1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,8 +21,8 @@ dates:
 vars:
   SEMVER_MAJOR_MINOR_VERSION: "8.2"
   SEMVER_MAJOR_VERSION: "8"
-  SEMVER_VERSION: 8.2.0
-  VERSION: 8.2.0-4
+  SEMVER_VERSION: 8.2.1
+  VERSION: 8.2.1-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -40,7 +40,7 @@ contents:
     - netbase
     - nodejs-24
     - tzdata
-    - unleash-8=8.2.0-4
+    - unleash-8=8.2.1-0
 accounts:
   root: true
   run-as: nonroot
