@@ -5,11 +5,11 @@ image: dhi.io/ztunnel
 variant: runtime
 tags:
   - "1.30"
-  - 1.30.6
+  - 1.30.7
   - 1.30-debian
   - 1.30-debian13
-  - 1.30.6-debian
-  - 1.30.6-debian13
+  - 1.30.7-debian
+  - 1.30.7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,11 +17,11 @@ dates:
   release: "2026-05-06"
   end-of-life: "2026-08-31"
 vars:
-  COMMIT_SHA: f6316f5b15836cc0d011fbf59f2672abcb4f66b8
+  COMMIT_SHA: 05d04ac15310bcb2a4fddfa1fe980a81d59137ca
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.6
-  VERSION: 1.30.6
+  SEMVER_VERSION: 1.30.7
+  VERSION: 1.30.7
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -38,7 +38,7 @@ contents:
     - name: ztunnel
       work-dir: ${source.dir}/ztunnel
       environment:
-        VERSION: 1.30.6
+        VERSION: 1.30.7
       caches:
         - path: /root/.cargo
       contents:
@@ -57,15 +57,15 @@ contents:
           - pkg-config
           - libssl-dev
         files:
-          - url: git+https://github.com/istio/ztunnel.git#1.30.6
-            checksum: f6316f5b15836cc0d011fbf59f2672abcb4f66b8
+          - url: git+https://github.com/istio/ztunnel.git#1.30.7
+            checksum: 05d04ac15310bcb2a4fddfa1fe980a81d59137ca
             path: ${source.dir}/ztunnel
             spdx:
               name: ztunnel
-              version: 1.30.6
+              version: 1.30.7
               packages:
                 - name: ztunnel
-                  purl: pkg:dhi/ztunnel@1.30.6
+                  purl: pkg:dhi/ztunnel@1.30.7
                   license: Apache-2.0
             uid: 0
             gid: 0
