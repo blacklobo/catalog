@@ -28,10 +28,13 @@ export UV_COMPILE_BYTECODE="${UV_COMPILE_BYTECODE:-1}"
 # `uv sync` builds a venv without seeding pip, so no build tooling lands in
 # the payload.
 # CVE-2026-59950: mcp <1.28.1 misses WebSocket origin validation.
+# CVE-2026-59951: mcp <1.30.0 uncontrolled resource consumption.
 # GHSA-4xgf-cpjx-pc3j: pydantic-settings 2.14.1 path traversal.
 # CVE-2026-69247: cryptography <50.0.0 Bleichenbacher oracle in PKCS#7 decryption.
 # CVE-2026-102274: pyjwt <=2.13.0 exceptional-condition handling.
-uv lock --upgrade-package "mcp==1.28.1" --upgrade-package "pydantic-settings>=2.14.2" --upgrade-package "cryptography>=50.0.0" --upgrade-package "pyjwt>=2.14.0"
+# GHSA-6Q48-6C7W-9GW2: certifi <2026.10.19 bundles compromised emSign root CAs.
+# CVE-2026-114603: opentelemetry-api <=1.45.0 unbounded tracestate parsing.
+uv lock --upgrade-package "mcp==1.30.0" --upgrade-package "pydantic-settings>=2.14.2" --upgrade-package "cryptography>=50.0.0" --upgrade-package "pyjwt>=2.14.0" --upgrade-package "certifi>=2026.10.19" --upgrade-package "opentelemetry-api>=1.45.1"
 uv sync --locked --no-dev --no-editable
 
 # Drop caches/tests from the shipped venv. Prune the directory branch so -exec
