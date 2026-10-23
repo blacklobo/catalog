@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KURED_REFERENCE: dhi/kured:1.23.0-debian13@sha256:19f4513a7d6065ce47ee983cc9fccc4c1115ed48a226461862019a037936e0c1
+  KURED_REFERENCE: dhi/kured:1.23.0-debian13@sha256:72bc74bfea0e594c95053c0fc4a4c10903637e256bfc88cfdbf0bae9f629b0c6
   SEMVER_MAJOR_MINOR_VERSION: "5.12"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.12.1
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Kured
               images:
                 - name: kured
-                  ref: dhi/kured:1.23.0-debian13@sha256:19f4513a7d6065ce47ee983cc9fccc4c1115ed48a226461862019a037936e0c1
+                  ref: dhi/kured:1.23.0-debian13@sha256:72bc74bfea0e594c95053c0fc4a4c10903637e256bfc88cfdbf0bae9f629b0c6
               name: kured-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kubereboot/kured
