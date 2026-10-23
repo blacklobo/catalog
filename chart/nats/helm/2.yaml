@@ -16,10 +16,10 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  NATS_BOX_REFERENCE: dhi/nats-box:0.20.0-debian13-compat@sha256:a7a02aa65a1e6a8b71bbee500c371e6e1da72cdfb46d2776976d4f09befa5bf0
-  NATS_REFERENCE: dhi/nats:2.15.1-debian13@sha256:6ef8431af84ea35e73374b931574096dc3289213701c1a3c44d0a4138120cbaf
-  NATS_SERVER_CONFIG_RELOADER_REFERENCE: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:286ee2eb45153e60afde3f949286499cda32a2bd8aa827ba63d97a751bdd5dae
-  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:20b6b1dd5e93b50efe379844212826d1f693eae8c0fd50acc0e2068798d6c9f7
+  NATS_BOX_REFERENCE: dhi/nats-box:0.20.0-debian13-compat@sha256:969eac7da5b8abd207df8fa6689d0aa61632da28576d43d34770c8e45cd0b583
+  NATS_REFERENCE: dhi/nats:2.15.1-debian13@sha256:4ee529060972956c3ad3283ff7ec4fb2456af7229601778a686136ea36b2d7f7
+  NATS_SERVER_CONFIG_RELOADER_REFERENCE: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:343c68b91ce96bf7e24d35c72b5fdeeed7b0ee51b82249440a406ad8633ca6f4
+  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:ee1b46e4dcb41353ca04be66f627bd7833c72ace01c9da93c8afc8d2b6ff4f4f
   SEMVER_MAJOR_MINOR_VERSION: "2.15"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.15.1
@@ -53,13 +53,13 @@ contents:
               description: Docker Hardened Images Helm chart for NATS
               images:
                 - name: nats
-                  ref: dhi/nats:2.15.1-debian13@sha256:6ef8431af84ea35e73374b931574096dc3289213701c1a3c44d0a4138120cbaf
+                  ref: dhi/nats:2.15.1-debian13@sha256:4ee529060972956c3ad3283ff7ec4fb2456af7229601778a686136ea36b2d7f7
                 - name: nats-server-config-reloader
-                  ref: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:286ee2eb45153e60afde3f949286499cda32a2bd8aa827ba63d97a751bdd5dae
+                  ref: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:343c68b91ce96bf7e24d35c72b5fdeeed7b0ee51b82249440a406ad8633ca6f4
                 - name: prometheus-nats-exporter
-                  ref: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:20b6b1dd5e93b50efe379844212826d1f693eae8c0fd50acc0e2068798d6c9f7
+                  ref: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:ee1b46e4dcb41353ca04be66f627bd7833c72ace01c9da93c8afc8d2b6ff4f4f
                 - name: nats-box
-                  ref: dhi/nats-box:0.20.0-debian13-compat@sha256:a7a02aa65a1e6a8b71bbee500c371e6e1da72cdfb46d2776976d4f09befa5bf0
+                  ref: dhi/nats-box:0.20.0-debian13-compat@sha256:969eac7da5b8abd207df8fa6689d0aa61632da28576d43d34770c8e45cd0b583
               name: nats-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/nats-io/k8s
