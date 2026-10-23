@@ -26,7 +26,7 @@ vars:
   SEMVER_MAJOR_VERSION: "19"
   SEMVER_VERSION: 19.5.0
   SUFFIX: -dev
-  VERSION: 19.5.0-0
+  VERSION: 19.5.0-1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -47,7 +47,7 @@ contents:
     - findutils
     - git
     - git-lfs
-    - gitlab-runner-19-dev=19.5.0-0
+    - gitlab-runner-19-dev=19.5.0-1
     - grep
     - hostname
     - libc-bin
