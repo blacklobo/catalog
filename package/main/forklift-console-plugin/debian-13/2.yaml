@@ -4,9 +4,9 @@ image: dhi.io/pkg-forklift-console-plugin
 variant: runtime
 tags:
   - 2.12.11
-  - 2.12.11-r0
+  - 2.12.11-r1
   - 2.12.11-debian13
-  - 2.12.11-r0-debian13
+  - 2.12.11-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   COMMIT_SHA: 30630d3f6a39cf85b5d86c292fbdd4aff6d78ca4
   DHI_TEST_DEB_EXPECTED_FILES: /usr/share/forklift-console-plugin/plugin-manifest.json
   NODEJS_VERSION: 24.22.1-0
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.12.11
@@ -113,7 +113,7 @@ contents:
               - deb
             license: Apache-2.0
             name: forklift-console-plugin
-            rel: 0
+            rel: 1
             url: https://github.com/kubev2v/forklift-console-plugin
             version: 2.12.11
       paths:
