@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KARPENTER_REFERENCE: dhi/karpenter:1.15.0-debian13@sha256:d54c1ea046b0964419a63712643d04e31963378bf7851cb3705170ee61fd71ed
+  KARPENTER_REFERENCE: dhi/karpenter:1.15.0-debian13@sha256:f7d636f7ef7483f6b44c9e6fedc47843061090db557b5ba666b732bbcc30c643
   SEMVER_MAJOR_MINOR_VERSION: "1.15"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.15.0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Karpenter
               images:
                 - name: karpenter
-                  ref: dhi/karpenter:1.15.0-debian13@sha256:d54c1ea046b0964419a63712643d04e31963378bf7851cb3705170ee61fd71ed
+                  ref: dhi/karpenter:1.15.0-debian13@sha256:f7d636f7ef7483f6b44c9e6fedc47843061090db557b5ba666b732bbcc30c643
               name: karpenter-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/aws/karpenter-provider-aws
