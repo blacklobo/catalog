@@ -3,23 +3,23 @@
 image: dhi.io/pkg-github-mcp-server
 variant: runtime
 tags:
-  - 2.0.2-alpine3.23
-  - 2.0.2-r0-alpine3.23
+  - 2.0.3-alpine3.23
+  - 2.0.3-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-10-07"
 vars:
-  COMMIT_SHA: eb47a99ddb866ca2b8a162920e6bda9521f33ebb
-  GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.9-r0
+  COMMIT_SHA: b98d115bbb080e9555466a96656ec4df605aea21
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.3-r0
   PACKAGE_NAME: github-mcp-server-2
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.0"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.0.2
-  VERSION: 2.0.2
+  SEMVER_VERSION: 2.0.3
+  VERSION: 2.0.3
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -41,18 +41,18 @@ contents:
           - findutils
           - mawk
           - sed
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/github/github-mcp-server.git#v2.0.2
-            checksum: eb47a99ddb866ca2b8a162920e6bda9521f33ebb
+          - url: git+https://github.com/github/github-mcp-server.git#v2.0.3
+            checksum: b98d115bbb080e9555466a96656ec4df605aea21
             path: /go/src/github.com/github/github-mcp-server
             spdx:
               name: github-mcp-server
-              version: 2.0.2
+              version: 2.0.3
               packages:
                 - name: github-mcp-server
-                  purl: pkg:dhi/github-mcp-server@2.0.2
+                  purl: pkg:dhi/github-mcp-server@2.0.3
                   license: MIT
             uid: 0
             gid: 0
@@ -76,8 +76,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.version=2.0.2
-              - -X main.commit=eb47a99ddb866ca2b8a162920e6bda9521f33ebb
+              - -X main.version=2.0.3
+              - -X main.commit=b98d115bbb080e9555466a96656ec4df605aea21
               - -X main.date=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/github-mcp-server
             packages: ./cmd/github-mcp-server
@@ -103,7 +103,7 @@ contents:
                     source: usr/bin/github-mcp-server-dev
                 name: github-mcp-server-dev
             url: https://github.com/github/github-mcp-server
-            version: 2.0.2
+            version: 2.0.3
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
