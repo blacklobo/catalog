@@ -22,10 +22,10 @@ dates:
 vars:
   PHP_INI_DIR: /etc/php-8.5
   PHP_MAJOR_MINOR: "8.5"
-  PHP_SRC_ASC_CHECKSUM: 129bdc610d10f883e0a0127b0688dff98473e410469364414960d1d859451b32
-  PHP_SRC_CHECKSUM: d9be75c08e8c316f4c8f4194d8fbe1750a15f6a6d9d4e3fe72082abeeb800360
-  PHP_SRC_VERSION: 8.5.11
-  PHP_VERSION: 8.5.11-0
+  PHP_SRC_ASC_CHECKSUM: ee9317cb40874ee4f733298e3159197a39e602020f8229c16d1bedf1aaefd242
+  PHP_SRC_CHECKSUM: 08bc2eba2a588654ade1357174aa646b761556c862dda0678345ee29ed481209
+  PHP_SRC_VERSION: 8.5.12
+  PHP_VERSION: 8.5.12-0
   SEMVER_MAJOR_MINOR_VERSION: "6.1"
   SEMVER_MAJOR_VERSION: "6"
   SEMVER_VERSION: 6.1.2
@@ -56,8 +56,8 @@ contents:
     - libstdc++6
     - libsybdb5
     - libxml2
-    - php-8.5-fpm=8.5.11-0
-    - php-8.5=8.5.11-0
+    - php-8.5-fpm=8.5.12-0
+    - php-8.5=8.5.12-0
     - tzdata
   files:
     - url: https://raw.githubusercontent.com/TimWolla/docker-adminer/5f14885ec2f8ad8b2a5b94b42017cced5cae3e45/5/entrypoint.sh
@@ -87,8 +87,8 @@ contents:
           - findutils
           - gawk
           - grep
-          - php-8.5=8.5.11-0
-          - php-8.5-dev=8.5.11-0
+          - php-8.5=8.5.12-0
+          - php-8.5-dev=8.5.12-0
           - make
           - pkg-config
           - sed
@@ -98,46 +98,46 @@ contents:
           - unixodbc-dev
           - freetds-dev
         files:
-          - url: https://www.php.net/distributions/php-8.5.11.tar.xz.asc
-            checksum: sha256:129bdc610d10f883e0a0127b0688dff98473e410469364414960d1d859451b32
-            path: ${source.dir}/php-8.5.11.tar.xz.asc
+          - url: https://www.php.net/distributions/php-8.5.12.tar.xz.asc
+            checksum: sha256:ee9317cb40874ee4f733298e3159197a39e602020f8229c16d1bedf1aaefd242
+            path: ${source.dir}/php-8.5.12.tar.xz.asc
             spdx:
               name: php-signature
-              version: 8.5.11
+              version: 8.5.12
               packages:
                 - name: php-signature
-                  purl: pkg:generic/php@8.5.11
+                  purl: pkg:generic/php@8.5.12
                   license: PHP-3.01
             uid: 0
             gid: 0
-          - url: https://www.php.net/distributions/php-8.5.11.tar.xz
-            checksum: sha256:d9be75c08e8c316f4c8f4194d8fbe1750a15f6a6d9d4e3fe72082abeeb800360
-            path: ${source.dir}/php-8.5.11.tar.xz
+          - url: https://www.php.net/distributions/php-8.5.12.tar.xz
+            checksum: sha256:08bc2eba2a588654ade1357174aa646b761556c862dda0678345ee29ed481209
+            path: ${source.dir}/php-8.5.12.tar.xz
             spdx:
               name: php
-              version: 8.5.11
+              version: 8.5.12
               packages:
                 - name: php
-                  purl: pkg:generic/php@8.5.11
+                  purl: pkg:generic/php@8.5.12
                   license: PHP-3.01
             uid: 0
             gid: 0
       pipeline:
-        - name: verify php-8.5.11.tar.xz
+        - name: verify php-8.5.12.tar.xz
           uses: gpg/verify@v1
           with:
-            file: ${source.dir}/php-8.5.11.tar.xz
+            file: ${source.dir}/php-8.5.12.tar.xz
             keys: ${source.dir}/keyring.asc
-            signature: ${source.dir}/php-8.5.11.tar.xz.asc
+            signature: ${source.dir}/php-8.5.12.tar.xz.asc
         - name: extract php source
           runs: |
             set -eux -o pipefail
 
-            test "$(php-config --version)" = "8.5.11"
+            test "$(php-config --version)" = "8.5.12"
 
             PHP_SRC_DIR="${source.dir}/php-src"
             mkdir -p "$PHP_SRC_DIR"
-            tar xf "${source.dir}/php-8.5.11.tar.xz" -C "$PHP_SRC_DIR" --strip-components=1
+            tar xf "${source.dir}/php-8.5.12.tar.xz" -C "$PHP_SRC_DIR" --strip-components=1
         - name: build database extensions
           runs: |
             set -eux -o pipefail
