@@ -19,12 +19,12 @@ platforms:
 dates:
   release: "2026-09-28"
 vars:
-  ETCD_VERSION: 3.7.2-2
+  ETCD_VERSION: 3.7.2-3
   PACKAGE_NAME: apisix-3
   SEMVER_MAJOR_MINOR_VERSION: "3.19"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.19.0
-  VERSION: 3.19.0-0
+  VERSION: 3.19.0-2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -34,13 +34,13 @@ contents:
     - '!libelogind0'
     - '!mawk'
     - '!original-awk'
-    - apisix-3=3.19.0-0
+    - apisix-3=3.19.0-2
     - base-files
     - bash
     - brotli
     - ca-certificates
     - coreutils
-    - etcd-3.7=3.7.2-2
+    - etcd-3.7=3.7.2-3
     - libcrypt1
     - libldap2
     - libpcre2-8-0
@@ -58,7 +58,7 @@ contents:
         keyring:
           - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
         packages:
-          - apisix-3=3.19.0-0
+          - apisix-3=3.19.0-2
           - bash
           - ca-certificates
           - coreutils
