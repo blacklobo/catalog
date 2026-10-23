@@ -11,7 +11,7 @@ platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  BASE_DIGEST: sha256:c5da5e4bef3751140f1ddc59c078aed03f4a7cb82bcb059090f50f1918d36347
+  BASE_DIGEST: sha256:b415c4b4ec0fe3e96a78c4d323811d8e9a5055c7e6454265b02164a43cea6104
   BASE_TAG: 20250419-glibc-debian12
   COMMIT_SHA: 7456b60bc6bc348e13e06e3691bf08e78d3aef54
   RUST_REFERENCE: dhi/rust:1.99.1-debian12-sfw-dev@sha256:617317038abfaa49c8469a7e55edb1958e97382354f4963d7fddf97bc6c1fbad
@@ -113,7 +113,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/static:20250419-glibc-debian12@sha256:c5da5e4bef3751140f1ddc59c078aed03f4a7cb82bcb059090f50f1918d36347
+    - name: dhi.io/static:20250419-glibc-debian12@sha256:b415c4b4ec0fe3e96a78c4d323811d8e9a5055c7e6454265b02164a43cea6104
       includes:
         - etc
         - home
