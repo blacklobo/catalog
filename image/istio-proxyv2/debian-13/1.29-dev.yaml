@@ -5,11 +5,11 @@ image: dhi.io/istio-proxyv2
 variant: dev
 tags:
   - 1.29-dev
-  - 1.29.9-dev
+  - 1.29.10-dev
   - 1.29-debian-dev
   - 1.29-debian13-dev
-  - 1.29.9-debian-dev
-  - 1.29.9-debian13-dev
+  - 1.29.10-debian-dev
+  - 1.29.10-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -19,12 +19,12 @@ dates:
 vars:
   BAZEL_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
   BAZEL_VERSION: 7.7.1
-  COMMIT_SHA: 46c9beb3406813d1ef52fae1f6af266d3508acca
+  COMMIT_SHA: cca610c61900bd48b5a7b3ee3d8af19ff265c495
   ISTIO_PROXY_SHA: 6d807371331491b1ba0742bb02cefc7c4db36cd6
   SEMVER_MAJOR_MINOR_VERSION: "1.29"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.29.9
-  VERSION: 1.29.9
+  SEMVER_VERSION: 1.29.10
+  VERSION: 1.29.10
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -94,27 +94,27 @@ contents:
           - findutils
           - gawk
         files:
-          - url: git+https://github.com/istio/istio.git#1.29.9
-            checksum: 46c9beb3406813d1ef52fae1f6af266d3508acca
+          - url: git+https://github.com/istio/istio.git#1.29.10
+            checksum: cca610c61900bd48b5a7b3ee3d8af19ff265c495
             path: /go/src/istio.io/istio
             spdx:
               name: istio
-              version: 1.29.9
+              version: 1.29.10
               packages:
                 - name: istio
-                  purl: pkg:golang/istio.io/istio@1.29.9
+                  purl: pkg:golang/istio.io/istio@1.29.10
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: git+https://github.com/istio/proxy.git#1.29.9
+          - url: git+https://github.com/istio/proxy.git#1.29.10
             checksum: 6d807371331491b1ba0742bb02cefc7c4db36cd6
             path: ${source.dir}/istio-proxy
             spdx:
               name: istio-proxy
-              version: 1.29.9
+              version: 1.29.10
               packages:
                 - name: istio-proxy
-                  purl: pkg:golang/github.com/istio/proxy@1.29.9
+                  purl: pkg:golang/github.com/istio/proxy@1.29.10
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -463,16 +463,16 @@ contents:
               --override_repository=intel_dlb=/src/dlb-stub
               --@envoy//contrib/dlb/source:enabled=false
             "
-            python ${source.dir}/bin/envoy-bazel-to-spdx.py istio-proxyv2-envoy 1.29.9 > /opt/docker/sbom/envoy/.spdx.envoy.json
+            python ${source.dir}/bin/envoy-bazel-to-spdx.py istio-proxyv2-envoy 1.29.10 > /opt/docker/sbom/envoy/.spdx.envoy.json
         - name: build-pilot-agent
           privileged: true
           runs: |
             set -eux -o pipefail
 
-            GOLDFLAGS="-X istio.io/istio/pkg/version.buildVersion=1.29.9
-                       -X istio.io/istio/pkg/version.buildGitRevision=46c9beb3406813d1ef52fae1f6af266d3508acca
+            GOLDFLAGS="-X istio.io/istio/pkg/version.buildVersion=1.29.10
+                       -X istio.io/istio/pkg/version.buildGitRevision=cca610c61900bd48b5a7b3ee3d8af19ff265c495
                        -X istio.io/istio/pkg/version.buildStatus=Clean
-                       -X istio.io/istio/pkg/version.buildTag=1.29.9
+                       -X istio.io/istio/pkg/version.buildTag=1.29.10
                        -X istio.io/istio/pkg/version.buildHub=docker.io/dhi
                        -X istio.io/istio/pkg/version.buildOS=$(go env GOOS)
                        -X istio.io/istio/pkg/version.buildArch=$(go env GOARCH)"
