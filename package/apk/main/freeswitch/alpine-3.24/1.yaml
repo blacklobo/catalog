@@ -4,15 +4,15 @@ image: dhi.io/pkg-freeswitch
 variant: runtime
 tags:
   - 1.10.12-alpine3.24
-  - 1.10.12-r6-alpine3.24
+  - 1.10.12-r7-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  _REL: "5"
-  COMMIT_SHA: 01646424190f854afba326a58a1436d80d6f6685
+  _REL: "6"
+  COMMIT_SHA: 4f5be284ba89eb2c6f0c9376668ec1f8d7265d26
   PACKAGE_NAME: main/freeswitch
-  REL: "6"
+  REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "1.10"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.10.12
@@ -78,7 +78,7 @@ contents:
           - xmlrpc-c-dev
           - zlib-dev
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#01646424190f854afba326a58a1436d80d6f6685
+          - url: git+https://github.com/alpinelinux/aports.git#4f5be284ba89eb2c6f0c9376668ec1f8d7265d26
             path: ${source.dir}/aports
             uid: 0
             gid: 0
@@ -124,7 +124,7 @@ contents:
             source: dhi-cve-2026-49847-cjson-nesting-limit.patch
         - uses: abuild/bump@v1
           with:
-            rel: 6
+            rel: 7
         - uses: abuild/build@v1
       paths:
         - type: file
