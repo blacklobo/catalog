@@ -4,22 +4,22 @@ name: Prometheus NATS Exporter Helm chart 2.x
 image: dhi.io/prometheus-nats-exporter-chart
 variant: helm
 tags:
-  - 2.23.2
+  - 2.23.3
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: dfec1b55c688de13b1829738d43087f9842fe795
+  CHART_COMMIT_SHA: 6fb9067c25d7d66650963544325a12d43c8ae5e2
   CHART_HELM_NAME: prometheus-nats-exporter-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:20b6b1dd5e93b50efe379844212826d1f693eae8c0fd50acc0e2068798d6c9f7
+  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:ee1b46e4dcb41353ca04be66f627bd7833c72ace01c9da93c8afc8d2b6ff4f4f
   SEMVER_MAJOR_MINOR_VERSION: "2.23"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.23.2
-  VERSION: 2.23.2
+  SEMVER_VERSION: 2.23.3
+  VERSION: 2.23.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -34,8 +34,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-nats-exporter-2.23.2
-            checksum: dfec1b55c688de13b1829738d43087f9842fe795
+          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-nats-exporter-2.23.3
+            checksum: 6fb9067c25d7d66650963544325a12d43c8ae5e2
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus NATS Exporter
               images:
                 - name: prometheus-nats-exporter
-                  ref: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:20b6b1dd5e93b50efe379844212826d1f693eae8c0fd50acc0e2068798d6c9f7
+                  ref: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:ee1b46e4dcb41353ca04be66f627bd7833c72ace01c9da93c8afc8d2b6ff4f4f
               name: prometheus-nats-exporter-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/prometheus-community/helm-charts
