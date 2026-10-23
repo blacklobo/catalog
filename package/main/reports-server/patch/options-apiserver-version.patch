@@ -1,0 +1,31 @@
+Origin: DHI-internal (Kubernetes client compatibility)
+Description: Set OpenAPI version metadata directly after k8s.io/apiserver
+ removed Config.Version from the Kubernetes v0.35 server configuration.
+Base-Tree: git https://github.com/kyverno/reports-server.git 7f1511eeb6b5f4a83bab914214b5dcd22d8d3e14
+Verify: test alpine-3.24/0.yaml
+Drop-When: upstream >= 0.1.8
+Forwarded: not-needed (reports-server is archived)
+Upstream API: https://github.com/kubernetes/kubernetes/blob/v0.35.0/staging/src/k8s.io/apiserver/pkg/server/config.go
+Upstream source: https://github.com/kyverno/reports-server/blob/v0.1.7/pkg/app/opts/options.go
+
+diff --git a/pkg/app/opts/options.go b/pkg/app/opts/options.go
+--- a/pkg/app/opts/options.go
++++ b/pkg/app/opts/options.go
+@@ -147,13 +147,13 @@ func (o Options) Config() (*server.Config, error) {
+ 	}
+ 
+ 	versionGet := version.Get()
+-	serverConfig.Version = &versionGet
++	versionString := strings.Split(versionGet.String(), "-")[0]
+ 	// enable OpenAPI schemas
+ 	serverConfig.OpenAPIConfig = genericapiserver.DefaultOpenAPIConfig(generatedopenapi.GetOpenAPIDefinitions, openapinamer.NewDefinitionNamer(api.Scheme))
+ 	serverConfig.OpenAPIV3Config = genericapiserver.DefaultOpenAPIV3Config(generatedopenapi.GetOpenAPIDefinitions, openapinamer.NewDefinitionNamer(api.Scheme))
+ 	serverConfig.OpenAPIConfig.Info.Title = "reports-server"
+ 	serverConfig.OpenAPIV3Config.Info.Title = "reports-server"
+-	serverConfig.OpenAPIConfig.Info.Version = strings.Split(serverConfig.Version.String(), "-")[0] // TODO(directxman12): remove this once autosetting this doesn't require security definitions
+-	serverConfig.OpenAPIV3Config.Info.Version = strings.Split(serverConfig.Version.String(), "-")[0]
++	serverConfig.OpenAPIConfig.Info.Version = versionString
++	serverConfig.OpenAPIV3Config.Info.Version = versionString
+ 
+ 	return serverConfig, nil
+ }
