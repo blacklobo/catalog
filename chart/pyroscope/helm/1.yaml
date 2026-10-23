@@ -16,7 +16,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  PYROSCOPE_REFERENCE: dhi/pyroscope:1.21.1-debian13@sha256:c9328fece80dc20e818e7cba559f4b6de8e5af943da00d74011d6e1ccf2066d4
+  PYROSCOPE_REFERENCE: dhi/pyroscope:1.21.1-debian13@sha256:bee5552775bca457d6b083b6bf8a75d1811a728a761a0e51c8ff71911bae2def
   SEMVER_MAJOR_MINOR_VERSION: "1.21"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.21.1
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for Grafana Pyroscope
               images:
                 - name: pyroscope
-                  ref: dhi/pyroscope:1.21.1-debian13@sha256:c9328fece80dc20e818e7cba559f4b6de8e5af943da00d74011d6e1ccf2066d4
+                  ref: dhi/pyroscope:1.21.1-debian13@sha256:bee5552775bca457d6b083b6bf8a75d1811a728a761a0e51c8ff71911bae2def
               name: pyroscope-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana/pyroscope
