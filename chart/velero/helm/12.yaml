@@ -15,11 +15,11 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13-compat@sha256:3d01a8701b0de3615ff25e1def26b2062103c1ddaa4c77d5680abd3404972423
+  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13-compat@sha256:e3a7535e770bc482f16f19e1b956094215bb22c654890e2360840057e0acbaa5
   SEMVER_MAJOR_MINOR_VERSION: "12.2"
   SEMVER_MAJOR_VERSION: "12"
   SEMVER_VERSION: 12.2.1
-  VELERO_REFERENCE: dhi/velero:1.18.4-debian13@sha256:566766057417986f4ffd728c57e7911293d32c7787f8866ea5a199b4e63d0c08
+  VELERO_REFERENCE: dhi/velero:1.18.4-debian13@sha256:6b8eacdb1fa6c159f2f4ce97148fffda85dc9d9d079d702921a7fd5368e85953
   VERSION: 12.2.1
 contents:
   repositories:
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Velero
               images:
                 - name: velero
-                  ref: dhi/velero:1.18.4-debian13@sha256:566766057417986f4ffd728c57e7911293d32c7787f8866ea5a199b4e63d0c08
+                  ref: dhi/velero:1.18.4-debian13@sha256:6b8eacdb1fa6c159f2f4ce97148fffda85dc9d9d079d702921a7fd5368e85953
                 - name: kubectl
-                  ref: dhi/kubectl:1.35.9-debian13-compat@sha256:3d01a8701b0de3615ff25e1def26b2062103c1ddaa4c77d5680abd3404972423
+                  ref: dhi/kubectl:1.35.9-debian13-compat@sha256:e3a7535e770bc482f16f19e1b956094215bb22c654890e2360840057e0acbaa5
               name: velero-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/vmware-tanzu/helm-charts
