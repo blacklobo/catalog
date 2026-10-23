@@ -4,16 +4,16 @@ image: dhi.io/pkg-scout-sbom-indexer
 variant: runtime
 tags:
   - 1.26.0-alpine3.23
-  - 1.26.0-r1-alpine3.23
+  - 1.26.0-r2-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   COMMIT_SHA: ee73e17cd5243bd85c30416b274c339ad5e2f284
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
-  GOLANG_VERSION: 1.27.2-r0
+  GOLANG_VERSION: 1.27.3-r0
   PACKAGE_NAME: scout-sbom-indexer
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "1.26"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.26.0
@@ -35,8 +35,8 @@ contents:
           - busybox
           - bash
           - ca-certificates-bundle
-          - golang-1.27=1.27.2-r0
-          - golang-1.27-oci-config=1.27.2-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
           - url: git+https://github.com/docker/scout-cli-plugin.git#v1.26.0
             checksum: ee73e17cd5243bd85c30416b274c339ad5e2f284
@@ -57,17 +57,12 @@ contents:
               - github.com/in-toto/in-toto-golang@v0.11.0
               - github.com/sigstore/fulcio@v1.8.6
               - github.com/sigstore/rekor@v1.5.4
-              - github.com/sigstore/sigstore@v1.11.0
-              - github.com/sigstore/sigstore/pkg/signature/kms/aws@v1.11.0
-              - github.com/sigstore/sigstore/pkg/signature/kms/azure@v1.11.0
-              - github.com/sigstore/sigstore/pkg/signature/kms/gcp@v1.11.0
-              - github.com/sigstore/sigstore/pkg/signature/kms/hashivault@v1.11.0
               - github.com/sigstore/timestamp-authority/v2@v2.1.2
               - github.com/sigstore/sigstore-go@v1.2.2
               - github.com/yuin/goldmark@v1.7.17
               - oras.land/oras-go/v2@v2.6.2
             replaces:
-              - github.com/sigstore/sigstore=github.com/sigstore/sigstore@v1.11.0
+              - github.com/sigstore/sigstore=github.com/sigstore/sigstore@v1.11.1
               - github.com/containerd/containerd=github.com/containerd/containerd@v1.7.36
               - google.golang.org/grpc=google.golang.org/grpc@v1.83.2
               - github.com/docker/cli=github.com/docker/cli@v29.5.2+incompatible
@@ -103,7 +98,7 @@ contents:
             oci-config:
               environment:
                 BUILDKIT_SCAN_SELECT-CATALOGERS: -binary-classifier-cataloger,-java-jvm-cataloger,-php-interpreter-cataloger,+erlang-otp-application-cataloger,+lua-rock-cataloger
-            rel: 1
+            rel: 2
             subpackages:
               - files:
                   - path: sbom-indexer
