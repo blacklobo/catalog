@@ -57,7 +57,8 @@ pip install --no-cache-dir --upgrade 'aiohttp>=3.12.14'
 pip install --no-cache-dir --upgrade 'cryptography>=46.0.5'
 pip install --no-cache-dir --upgrade 'mcp>=1.23.0'
 pip install --no-cache-dir --upgrade 'fastapi-sso>=0.19.0'
-pip install --no-cache-dir --upgrade 'urllib3>=2.6.3'
+pip install --no-cache-dir --upgrade 'urllib3==2.8.0'
+pip install --no-cache-dir --upgrade 'certifi==2026.10.19'
 pip install --no-cache-dir --upgrade 'pynacl>=1.6.2'
 pip install --no-cache-dir --upgrade 'nodejs-wheel-binaries>=24.17.0'
 pip install --no-cache-dir --upgrade 'python-multipart>=0.0.22'
@@ -103,15 +104,56 @@ apply_npm_patch "diff" "diff-8.0.3.tgz"
 apply_npm_patch "tar" "tar-7.5.21.tgz"
 apply_npm_patch "minimatch" "minimatch-10.2.3.tgz"
 apply_npm_patch "@isaacs/brace-expansion" "isaacs-brace-expansion-5.0.1.tgz" 1
-apply_npm_patch "brace-expansion" "brace-expansion-5.0.9.tgz"
-apply_npm_patch "ip-address" "ip-address-10.5.1.tgz"
+apply_npm_patch "brace-expansion" "brace-expansion-5.0.12.tgz"
+apply_npm_patch "ip-address" "ip-address-10.7.1.tgz"
+apply_npm_patch "postcss-selector-parser" "postcss-selector-parser-7.1.6.tgz"
 apply_npm_patch "tinyglobby/node_modules/picomatch" "picomatch-4.0.4.tgz"
-apply_npm_patch "undici" "undici-6.28.0.tgz"
+apply_npm_patch "undici" "undici-6.28.1.tgz"
 apply_npm_patch "@sigstore/core" "sigstore-core-3.2.1.tgz"
 apply_npm_patch "@sigstore/verify" "sigstore-verify-3.1.1.tgz"
 apply_npm_patch "sigstore" "sigstore-4.1.1.tgz"
 
 pip install --no-cache-dir semantic_router --no-deps
+
+# pip vendors urllib3 for its own HTTP stack; Scout indexes that tree as
+# pkg:pypi/urllib3 even when site-packages already has the fixed wheel.
+# Replace the vendor copy with the pinned runtime wheel so pip keeps
+# working for consuming images and the SBOM does not retain a duplicate.
+sp=$(echo "${VENV}/lib"/python*/site-packages)
+rm -rf "$sp/pip/_vendor/urllib3"
+cp -a "$sp/urllib3" "$sp/pip/_vendor/urllib3"
+sed -i 's/urllib3==2\.7\.0/urllib3==2.8.0/' "$sp/pip/_vendor/vendor.txt"
+CERTIFI_VER=$("${VENV}/bin/python" -c 'import certifi; print(certifi.__version__)')
+rm -rf "$sp/pip/_vendor/certifi"
+cp -a "$sp/certifi" "$sp/pip/_vendor/certifi"
+sed -i "s/^certifi==.*/certifi==${CERTIFI_VER}/" "$sp/pip/_vendor/vendor.txt"
+if [ -f "$sp/pip/_vendor/bom.cdx.json" ]; then
+  sed -i 's/pkg:pypi\/urllib3@2\.7\.0/pkg:pypi\/urllib3@2.8.0/g' "$sp/pip/_vendor/bom.cdx.json"
+  sed -i 's/"version": "2.7.0"/"version": "2.8.0"/' "$sp/pip/_vendor/bom.cdx.json"
+  sed -i -E 's/pkg:pypi\/certifi@[0-9.]+/pkg:pypi\/certifi@'"${CERTIFI_VER}"'/g' "$sp/pip/_vendor/bom.cdx.json"
+  # Pip 26.2.1 records certifi's component version separately from its PURL.
+  # Rewrite both so an SBOM reader cannot keep the vendored 2026.6.17.
+  sed -i 's/"version": "2026.6.17"/"version": "'"${CERTIFI_VER}"'"/' "$sp/pip/_vendor/bom.cdx.json"
+  "${VENV}/bin/python" - "$sp/pip/_vendor/bom.cdx.json" "${CERTIFI_VER}" <<'PY'
+import json, sys
+path, ver = sys.argv[1], sys.argv[2]
+with open(path) as f:
+    bom = json.load(f)
+found = False
+for comp in bom.get("components", []):
+    if comp.get("name") != "certifi":
+        continue
+    found = True
+    want = f"pkg:pypi/certifi@{ver}"
+    if comp.get("version") != ver or comp.get("purl") != want or comp.get("bom-ref") != want:
+        raise SystemExit(
+            f"certifi component is version={comp.get('version')!r} purl={comp.get('purl')!r} bom-ref={comp.get('bom-ref')!r}, want {ver}"
+        )
+if not found:
+    raise SystemExit("certifi component missing from pip vendor bom")
+PY
+fi
+"${VENV}/bin/pip" --version
 
 mkdir -p "${APP}/docker"
 cp docker/entrypoint.sh "${APP}/docker/"

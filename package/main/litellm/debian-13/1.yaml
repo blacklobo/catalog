@@ -4,9 +4,9 @@ image: dhi.io/pkg-litellm
 variant: runtime
 tags:
   - 1.106.0
-  - 1.106.0-r0
+  - 1.106.0-r1
   - 1.106.0-debian13
-  - 1.106.0-r0-debian13
+  - 1.106.0-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,7 +17,7 @@ vars:
   COMMIT_SHA: 955bdaafa8b72b2b6ff728048f272fbc06049f63
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "0"
+  REL: "1"
   RUSTC_VERSION: 1.97.1-0
   SEMVER_MAJOR_MINOR_VERSION: "1.106"
   SEMVER_MAJOR_VERSION: "1"
@@ -94,20 +94,24 @@ contents:
             path: ${source.dir}/npm-patches/isaacs-brace-expansion-5.0.1.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz
-            path: ${source.dir}/npm-patches/brace-expansion-5.0.9.tgz
+          - url: https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz
+            path: ${source.dir}/npm-patches/brace-expansion-5.0.12.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/ip-address/-/ip-address-10.5.1.tgz
-            path: ${source.dir}/npm-patches/ip-address-10.5.1.tgz
+          - url: https://registry.npmjs.org/ip-address/-/ip-address-10.7.1.tgz
+            path: ${source.dir}/npm-patches/ip-address-10.7.1.tgz
+            uid: 0
+            gid: 0
+          - url: https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.6.tgz
+            path: ${source.dir}/npm-patches/postcss-selector-parser-7.1.6.tgz
             uid: 0
             gid: 0
           - url: https://registry.npmjs.org/picomatch/-/picomatch-4.0.4.tgz
             path: ${source.dir}/npm-patches/picomatch-4.0.4.tgz
             uid: 0
             gid: 0
-          - url: https://registry.npmjs.org/undici/-/undici-6.28.0.tgz
-            path: ${source.dir}/npm-patches/undici-6.28.0.tgz
+          - url: https://registry.npmjs.org/undici/-/undici-6.28.1.tgz
+            path: ${source.dir}/npm-patches/undici-6.28.1.tgz
             uid: 0
             gid: 0
           - url: https://registry.npmjs.org/@sigstore/core/-/core-3.2.1.tgz
@@ -137,6 +141,13 @@ contents:
             extra-scanners: python-package-cataloger
             prefix: litellm-python
             source: ${target.dir}/usr/lib/litellm
+        - name: nodejs_wheel npm dependencies sbom
+          uses: sbom@v1
+          privileged: true
+          with:
+            extra-scanners: javascript-package-cataloger
+            prefix: litellm-npm
+            source: ${target.dir}/usr/lib/litellm/lib/python3.13/site-packages/nodejs_wheel/lib/node_modules
         - uses: dhi/build-pkg:0
           with:
             deb:
@@ -157,7 +168,7 @@ contents:
               - deb
             license: MIT
             name: litellm
-            rel: 0
+            rel: 1
             url: https://github.com/BerriAI/litellm
             version: 1.106.0
       paths:
