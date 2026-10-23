@@ -4,14 +4,15 @@ image: dhi.io/pkg-node
 variant: runtime
 tags:
   - 26.12.1-apk-alpine3.23
-  - 26.12.1-r0-apk-alpine3.23
+  - 26.12.1-r1-apk-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
+  BROTLI_VERSION: 1.2.0
   PACKAGE_NAME: nodejs-26
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "26.12"
   SEMVER_MAJOR_VERSION: "26"
   SEMVER_VERSION: 26.12.1
@@ -87,6 +88,16 @@ contents:
           - url: https://nodejs.org/download/release/v26.12.1/node-v26.12.1.tar.gz
             checksum: https://nodejs.org/download/release/v26.12.1/SHASUMS256.txt
             path: ${source.dir}/node-v26.12.1.tar.gz
+            spdx:
+              name: node
+              version: 26.12.1
+              packages:
+                - name: node
+                  purl: pkg:github/nodejs/node@26.12.1
+                  license: MIT
+                - name: brotli
+                  purl: pkg:github/google/brotli@1.2.0?node_version=26.12.1
+                  license: MIT
             uid: 0
             gid: 0
       pipeline:
@@ -114,6 +125,16 @@ contents:
 
             tar -xf "node-v26.12.1.tar.gz"
             cd "node-v26.12.1"
+
+            actual_brotli_version="$(
+              awk '
+                $1 == "#define" && $2 == "BROTLI_VERSION_MAJOR" { major = $3 }
+                $1 == "#define" && $2 == "BROTLI_VERSION_MINOR" { minor = $3 }
+                $1 == "#define" && $2 == "BROTLI_VERSION_PATCH" { patch = $3 }
+                END { print major "." minor "." patch }
+              ' deps/brotli/c/common/version.h
+            )"
+            test "$actual_brotli_version" = "1.2.0"
 
             # if $SEMVER_MAJOR_VERSION is not 25/26, then we can't use --without-corepack
             opts="--without-npm"
@@ -143,7 +164,7 @@ contents:
             name: nodejs-26
             provider_priority: 200
             provides: nodejs=$pkgver-r$pkgrel nodejs-lts=$pkgver-r$pkgrel
-            rel: 0
+            rel: 1
             replaces: nodejs nodejs-lts
             subpackages: $pkgname-doc $pkgname-dev
             version: 26.12.1

@@ -4,14 +4,15 @@ image: dhi.io/pkg-node
 variant: runtime
 tags:
   - 20.20.2-apk-alpine3.24
-  - 20.20.2-r1-apk-alpine3.24
+  - 20.20.2-r2-apk-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
+  BROTLI_VERSION: 1.1.0
   PACKAGE_NAME: nodejs-20
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "20.20"
   SEMVER_MAJOR_VERSION: "20"
   SEMVER_VERSION: 20.20.2
@@ -88,6 +89,16 @@ contents:
           - url: https://nodejs.org/download/release/v20.20.2/node-v20.20.2.tar.gz
             checksum: https://nodejs.org/download/release/v20.20.2/SHASUMS256.txt
             path: ${source.dir}/node-v20.20.2.tar.gz
+            spdx:
+              name: node
+              version: 20.20.2
+              packages:
+                - name: node
+                  purl: pkg:github/nodejs/node@20.20.2
+                  license: MIT
+                - name: brotli
+                  purl: pkg:github/google/brotli@1.1.0?node_version=20.20.2
+                  license: MIT
             uid: 0
             gid: 0
       pipeline:
@@ -115,6 +126,16 @@ contents:
 
             tar -xf "node-v20.20.2.tar.gz"
             cd "node-v20.20.2"
+
+            actual_brotli_version="$(
+              awk '
+                $1 == "#define" && $2 == "BROTLI_VERSION_MAJOR" { major = $3 }
+                $1 == "#define" && $2 == "BROTLI_VERSION_MINOR" { minor = $3 }
+                $1 == "#define" && $2 == "BROTLI_VERSION_PATCH" { patch = $3 }
+                END { print major "." minor "." patch }
+              ' deps/brotli/c/common/version.h
+            )"
+            test "$actual_brotli_version" = "1.1.0"
 
             # if $SEMVER_MAJOR_VERSION is not 25/26, then we can't use --without-corepack
             opts="--without-npm"
@@ -144,7 +165,7 @@ contents:
             name: nodejs-20
             provider_priority: 200
             provides: nodejs=$pkgver-r$pkgrel nodejs-lts=$pkgver-r$pkgrel
-            rel: 1
+            rel: 2
             replaces: nodejs nodejs-lts
             subpackages: $pkgname-doc $pkgname-dev
             version: 20.20.2

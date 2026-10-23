@@ -3,14 +3,15 @@
 image: dhi.io/pkg-node
 variant: runtime
 tags:
-  - 24.22.1-0
-  - 24.22.1-0-debian13
+  - 24.22.1-1
+  - 24.22.1-1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DHI_REL: "0"
-  DHI_VERSION: 24.22.1-0
+  BROTLI_VERSION: 1.2.0
+  DHI_REL: "1"
+  DHI_VERSION: 24.22.1-1
   PACKAGE_NAME: nodejs-24
   SEMVER_MAJOR_VERSION: "24"
   SEMVER_VERSION: 24.22.1
@@ -79,6 +80,16 @@ contents:
           - url: https://nodejs.org/download/release/v24.22.1/node-v24.22.1.tar.gz
             checksum: https://nodejs.org/download/release/v24.22.1/SHASUMS256.txt
             path: ${source.dir}/node-v24.22.1.tar.gz
+            spdx:
+              name: node
+              version: 24.22.1
+              packages:
+                - name: node
+                  purl: pkg:github/nodejs/node@24.22.1
+                  license: MIT
+                - name: brotli
+                  purl: pkg:github/google/brotli@1.2.0?node_version=24.22.1
+                  license: MIT
             uid: 0
             gid: 0
           - url: https://github.com/madler/zlib/commit/df84af25dc1942490e1d1c899a07619152a46148.patch
@@ -112,6 +123,16 @@ contents:
 
             tar -xf "${source.dir}/node-v24.22.1.tar.gz" --strip-components=1
 
+            actual_brotli_version="$(
+              awk '
+                $1 == "#define" && $2 == "BROTLI_VERSION_MAJOR" { major = $3 }
+                $1 == "#define" && $2 == "BROTLI_VERSION_MINOR" { minor = $3 }
+                $1 == "#define" && $2 == "BROTLI_VERSION_PATCH" { patch = $3 }
+                END { print major "." minor "." patch }
+              ' deps/brotli/c/common/version.h
+            )"
+            test "$actual_brotli_version" = "1.2.0"
+
             sed -i -e "s/@PACKAGE_NAME@/nodejs-24/g" \
               -e "s/@MAJOR_VERSION@/24/g" \
               -e "s/@TRAIN@/lts/g" \
@@ -131,7 +152,7 @@ contents:
           with:
             changelog:
               - Backport upstream bundled zlib fix for CVE-2026-85091
-            version: 24.22.1-0
+            version: 24.22.1-1
         - uses: dpkg/build@v1
           environment:
             DHI_CONFIGURE_OPTS: '#{ definition.vars.SEMVER_MAJOR_VERSION == "25" || definition.vars.SEMVER_MAJOR_VERSION == "26" ? "--without-npm" : "--without-npm --without-corepack" }'
