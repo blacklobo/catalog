@@ -3,20 +3,20 @@
 image: dhi.io/pkg-vpa-updater
 variant: runtime
 tags:
-  - 1.8.0-alpine3.23
-  - 1.8.0-r2-alpine3.23
+  - 1.8.1-alpine3.23
+  - 1.8.1-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 238579734e73e4a263d1ab75a44353e58eeee3ea
-  GOLANG_VERSION: 1.26.9-r0
+  COMMIT_SHA: de59752fd24e25cca63e8e779561b97c9240623a
+  GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: vpa-updater
-  REL: "2"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.8"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.8.0
-  VERSION: 1.8.0
+  SEMVER_VERSION: 1.8.1
+  VERSION: 1.8.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -34,11 +34,11 @@ contents:
           - busybox
           - bash
           - ca-certificates-bundle
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/kubernetes/autoscaler.git#vertical-pod-autoscaler-1.8.0
-            checksum: 238579734e73e4a263d1ab75a44353e58eeee3ea
+          - url: git+https://github.com/kubernetes/autoscaler.git#vertical-pod-autoscaler-1.8.1
+            checksum: de59752fd24e25cca63e8e779561b97c9240623a
             path: /go/src/k8s.io/autoscaler
             uid: 0
             gid: 0
@@ -70,14 +70,14 @@ contents:
               - usr/bin/updater
             license: Apache-2.0
             name: vpa-updater
-            rel: 2
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/updater
                     source: usr/bin/updater-dev
                 name: vpa-updater-dev
             url: https://github.com/kubernetes/autoscaler
-            version: 1.8.0
+            version: 1.8.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
