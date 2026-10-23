@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  AIRFLOW_REFERENCE: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:284b406475afdd0f8f3b77cdccd6833207dbbd3f48cd9612da92a0122f480f0a
+  AIRFLOW_REFERENCE: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:ebaf1c670f42be91a7dc7b50b5aacbe6bb5efe208c9ba7447eefb2af93788ada
   APPVERSION: 3.3.2
   APPVERSION_MATCH: 3.3.2
   CHART_COMMIT_SHA: aa19d2dbb9ed187ec01957a92848d9b005e9ba9d
@@ -17,13 +17,13 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GIT_SYNC_REFERENCE: dhi/git-sync:4.7.1-debian13@sha256:a1cfe7df859c199fb13beca84f4552abfae695ff038baacdb5fe82e0e3eb6203
+  GIT_SYNC_REFERENCE: dhi/git-sync:4.7.1-debian13@sha256:c55fab3e9564ba64aeaa038bc33c9e48069168b07e981aa125abe1c929e6113e
   HELM_VERSION: 4.1.4-2
-  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:48889c5306b06b2517501ec3605e1b923200aabc21131e9c8818df60c13f1498
-  PGBOUNCER_EXPORTER_REFERENCE: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:ed53cf156c4c93d0d76801fcc942d5f20029292a04976cac5bf447ded6702bfb
-  PGBOUNCER_REFERENCE: dhi/pgbouncer:1.25.2-debian13@sha256:39a136f73bc1587ef719c1ea59024a7c54ded91efc5e0991826bb5369994a622
-  PROMETHEUS_STATSD_EXPORTER_REFERENCE: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:87797da1dab679a1de5f5173db66088c725910d1627d8adebe0210fe4125a876
-  REDIS_REFERENCE: dhi/redis:8.10.2-debian13-compat@sha256:8477e3456e63d1777b0df44658d8bb93b40ca0d0442df89222bd0ca4612b662f
+  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:0911f602665b31d4db47aa6d90978081fdce25308697878f461bf9e2a8474871
+  PGBOUNCER_EXPORTER_REFERENCE: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:8a892091e0380ce01e1744a1c8b43aac876028037135f4184de6194dcc0ba475
+  PGBOUNCER_REFERENCE: dhi/pgbouncer:1.25.2-debian13@sha256:ba6cc900d42e34b2ceaf0ff61cdd5d3cccbbe03f58e5463eb7d4f1cd41234194
+  PROMETHEUS_STATSD_EXPORTER_REFERENCE: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:32b8cc806d5b3b16551bc14f8936a1e48d9a337a0f34b5073847a7556490ef0b
+  REDIS_REFERENCE: dhi/redis:8.10.2-debian13-compat@sha256:62f0464bb3a48bccf2064c0b793d98e08d2ad763ee60d6913ba18842fec5ce3d
   SEMVER_MAJOR_MINOR_VERSION: "2.0"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.0.0
@@ -65,19 +65,19 @@ contents:
               description: Docker Hardened Images Helm chart for Apache Airflow
               images:
                 - name: airflow
-                  ref: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:284b406475afdd0f8f3b77cdccd6833207dbbd3f48cd9612da92a0122f480f0a
+                  ref: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:ebaf1c670f42be91a7dc7b50b5aacbe6bb5efe208c9ba7447eefb2af93788ada
                 - name: prometheus-statsd-exporter
-                  ref: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:87797da1dab679a1de5f5173db66088c725910d1627d8adebe0210fe4125a876
+                  ref: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:32b8cc806d5b3b16551bc14f8936a1e48d9a337a0f34b5073847a7556490ef0b
                 - name: pgbouncer
-                  ref: dhi/pgbouncer:1.25.2-debian13@sha256:39a136f73bc1587ef719c1ea59024a7c54ded91efc5e0991826bb5369994a622
+                  ref: dhi/pgbouncer:1.25.2-debian13@sha256:ba6cc900d42e34b2ceaf0ff61cdd5d3cccbbe03f58e5463eb7d4f1cd41234194
                 - name: airflow-pgbouncer-exporter
-                  ref: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:ed53cf156c4c93d0d76801fcc942d5f20029292a04976cac5bf447ded6702bfb
+                  ref: dhi/airflow-pgbouncer-exporter:0.21.0-debian13@sha256:8a892091e0380ce01e1744a1c8b43aac876028037135f4184de6194dcc0ba475
                 - name: git-sync
-                  ref: dhi/git-sync:4.7.1-debian13@sha256:a1cfe7df859c199fb13beca84f4552abfae695ff038baacdb5fe82e0e3eb6203
+                  ref: dhi/git-sync:4.7.1-debian13@sha256:c55fab3e9564ba64aeaa038bc33c9e48069168b07e981aa125abe1c929e6113e
                 - name: redis
-                  ref: dhi/redis:8.10.2-debian13-compat@sha256:8477e3456e63d1777b0df44658d8bb93b40ca0d0442df89222bd0ca4612b662f
+                  ref: dhi/redis:8.10.2-debian13-compat@sha256:62f0464bb3a48bccf2064c0b793d98e08d2ad763ee60d6913ba18842fec5ce3d
                 - name: opentelemetry-collector
-                  ref: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:48889c5306b06b2517501ec3605e1b923200aabc21131e9c8818df60c13f1498
+                  ref: dhi/opentelemetry-collector:0.162.0-debian13-contrib@sha256:0911f602665b31d4db47aa6d90978081fdce25308697878f461bf9e2a8474871
               name: airflow-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/apache/airflow
