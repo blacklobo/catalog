@@ -14,7 +14,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  EXTERNAL_SECRETS_REFERENCE: dhi/external-secrets:2.12.0-debian13@sha256:b5ba63e4ba3dab850b647651fa059da431d371351aa1e315008f3401041a601a
+  EXTERNAL_SECRETS_REFERENCE: dhi/external-secrets:2.13.0-debian13@sha256:0546e91adc031e3446876c6d653c166ff27ad852905008305c5627322faa3b43
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "2.13"
   SEMVER_MAJOR_VERSION: "2"
@@ -53,7 +53,7 @@ contents:
               description: Docker Hardened Images Helm chart for External Secrets Operator
               images:
                 - name: external-secrets
-                  ref: dhi/external-secrets:2.12.0-debian13@sha256:b5ba63e4ba3dab850b647651fa059da431d371351aa1e315008f3401041a601a
+                  ref: dhi/external-secrets:2.13.0-debian13@sha256:0546e91adc031e3446876c6d653c166ff27ad852905008305c5627322faa3b43
               name: external-secrets-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/external-secrets/external-secrets
