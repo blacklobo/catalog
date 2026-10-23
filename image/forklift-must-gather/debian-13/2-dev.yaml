@@ -6,13 +6,13 @@ variant: dev
 tags:
   - 2-dev
   - 2.12-dev
-  - 2.12.10-dev
+  - 2.12.11-dev
   - 2-debian-dev
   - 2-debian13-dev
   - 2.12-debian-dev
   - 2.12-debian13-dev
-  - 2.12.10-debian-dev
-  - 2.12.10-debian13-dev
+  - 2.12.11-debian-dev
+  - 2.12.11-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,12 +20,12 @@ dates:
   release: "2024-09-20"
 vars:
   FLAVORED_SUFFIX: -dev
-  OPENSHIFT_CLIENT_VERSION: 4.21.35-0
+  OPENSHIFT_CLIENT_VERSION: 4.21.37-0
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.12.10
+  SEMVER_VERSION: 2.12.11
   SUFFIX: -dev
-  VERSION: 2.12.10-3
+  VERSION: 2.12.11-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -44,14 +44,14 @@ contents:
     - diffutils
     - dpkg
     - findutils
-    - forklift-must-gather=2.12.10-3
+    - forklift-must-gather=2.12.11-0
     - gawk
     - grep
     - gzip
     - jq
     - libc-bin
     - mawk
-    - openshift-client-4.21-dev=4.21.35-0
+    - openshift-client-4.21-dev=4.21.37-0
     - perl-base
     - sed
     - tar
