@@ -4,11 +4,11 @@ name: Grafana Tempo Helm chart 3.x
 image: dhi.io/tempo-chart
 variant: helm
 tags:
-  - 3.2.0
+  - 3.2.1
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 26245a9a9e3963b56cbb0c11873dc1bb319f29d6
+  CHART_COMMIT_SHA: 5444e60df9a54b0e9665bc4ef7782f659709ad6b
   CHART_HELM_NAME: tempo-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -17,10 +17,10 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "3.2"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.2.0
-  TEMPO_QUERY_REFERENCE: dhi/tempo-query:3.1.0-debian13@sha256:ac6077af5d6347d867257b103bd9c58eb8dff9d4c5a577f7d19e9c883c7799b9
-  TEMPO_REFERENCE: dhi/tempo:3.1.0-debian13@sha256:c603acdc63df7418e13f7f6ed1363899249273ab7a33ba0521ec15134ee2f654
-  VERSION: 3.2.0
+  SEMVER_VERSION: 3.2.1
+  TEMPO_QUERY_REFERENCE: dhi/tempo-query:3.1.0-debian13@sha256:b274de5d3f07d126f5beec6b1e16d74fc563f19d1f525ac6c630c9aa8aad00d7
+  TEMPO_REFERENCE: dhi/tempo:3.1.0-debian13@sha256:eb2850145a48524ed0299c5788d81fca2b30470d05fd483cf5ffd47c875bca1d
+  VERSION: 3.2.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/grafana-community/helm-charts.git#tempo-3.2.0
-            checksum: 26245a9a9e3963b56cbb0c11873dc1bb319f29d6
+          - url: git+https://github.com/grafana-community/helm-charts.git#tempo-3.2.1
+            checksum: 5444e60df9a54b0e9665bc4ef7782f659709ad6b
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Grafana Tempo
               images:
                 - name: tempo
-                  ref: dhi/tempo:3.1.0-debian13@sha256:c603acdc63df7418e13f7f6ed1363899249273ab7a33ba0521ec15134ee2f654
+                  ref: dhi/tempo:3.1.0-debian13@sha256:eb2850145a48524ed0299c5788d81fca2b30470d05fd483cf5ffd47c875bca1d
                 - name: tempo-query
-                  ref: dhi/tempo-query:3.1.0-debian13@sha256:ac6077af5d6347d867257b103bd9c58eb8dff9d4c5a577f7d19e9c883c7799b9
+                  ref: dhi/tempo-query:3.1.0-debian13@sha256:b274de5d3f07d126f5beec6b1e16d74fc563f19d1f525ac6c630c9aa8aad00d7
               name: tempo-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana-community/helm-charts
