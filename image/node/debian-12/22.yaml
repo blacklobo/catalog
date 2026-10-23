@@ -6,16 +6,16 @@ variant: runtime
 tags:
   - 22-debian12
   - 22.23-debian12
-  - 22.23.3-debian12
+  - 22.23.4-debian12
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DIGEST: sha256:e75d1f214c723476a8346c89661ce6e562777a59112d1b165b2a32249264f2cd
+  DIGEST: sha256:62ed4e332b99f68ae5a1727b509991172dbdf8f2a19a943f983cd28b8d42b85a
   NODEJS_VERSION_MAJOR: "22"
   NODEJS_VERSION_MAJOR_MINOR: "22.23"
-  NODEJS_VERSION_MAJOR_MINOR_PATCH: 22.23.3
-  VERSION: 22.23.3
+  NODEJS_VERSION_MAJOR_MINOR_PATCH: 22.23.4
+  VERSION: 22.23.4
 contents:
   packages:
     - '!acl'
@@ -73,30 +73,30 @@ contents:
           - bash
           - coreutils
         artifacts:
-          - name: dhi.io/pkg-node:22.23.3-debian12@sha256:e75d1f214c723476a8346c89661ce6e562777a59112d1b165b2a32249264f2cd
+          - name: dhi.io/pkg-node:22.23.4-debian12@sha256:62ed4e332b99f68ae5a1727b509991172dbdf8f2a19a943f983cd28b8d42b85a
             includes:
               - opt/docker
               - opt/nodejs
               - usr/local/bin/node
             excludes:
               - opt/docker/sbom/yarn
-              - opt/nodejs/node-v22.23.3/bin/corepack
-              - opt/nodejs/node-v22.23.3/bin/npm
-              - opt/nodejs/node-v22.23.3/bin/npx
-              - opt/nodejs/node-v22.23.3/bin/pnpm
-              - opt/nodejs/node-v22.23.3/bin/pnpx
-              - opt/nodejs/node-v22.23.3/bin/yarn
-              - opt/nodejs/node-v22.23.3/bin/yarnpkg
-              - opt/nodejs/node-v22.23.3/include
-              - opt/nodejs/node-v22.23.3/lib
-              - opt/nodejs/node-v22.23.3/share
+              - opt/nodejs/node-v22.23.4/bin/corepack
+              - opt/nodejs/node-v22.23.4/bin/npm
+              - opt/nodejs/node-v22.23.4/bin/npx
+              - opt/nodejs/node-v22.23.4/bin/pnpm
+              - opt/nodejs/node-v22.23.4/bin/pnpx
+              - opt/nodejs/node-v22.23.4/bin/yarn
+              - opt/nodejs/node-v22.23.4/bin/yarnpkg
+              - opt/nodejs/node-v22.23.4/include
+              - opt/nodejs/node-v22.23.4/lib
+              - opt/nodejs/node-v22.23.4/share
             uid: 0
             gid: 0
       pipeline:
         - name: strip
           uses: strip@v1
           with:
-            dir: /opt/nodejs/node-v22.23.3
+            dir: /opt/nodejs/node-v22.23.4
       outputs:
         - source: /opt/nodejs
           target: /opt/nodejs
@@ -132,7 +132,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /app
 environment:
-  NODE_VERSION: 22.23.3
+  NODE_VERSION: 22.23.4
 paths:
   - type: directory
     path: /app
