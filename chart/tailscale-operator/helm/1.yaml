@@ -4,11 +4,11 @@ name: Tailscale Operator Helm chart 1.x
 image: dhi.io/tailscale-operator-chart
 variant: helm
 tags:
-  - 1.104.1
+  - 1.104.2
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 9a522a9786c97eb7910c01ccb7bd66557b04c910
+  CHART_COMMIT_SHA: e26db7a5797683ec99ad1516c40b628c7f2dfd71
   CHART_HELM_NAME: tailscale-operator-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -17,10 +17,10 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "1.104"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.104.1
+  SEMVER_VERSION: 1.104.2
   TAILSCALE_OPERATOR_REFERENCE: dhi/tailscale-operator:1.104.1-debian13@sha256:80d4b9eb5843a894358df90db19ed6cccaea44d9d03566630d51e04b6f45d193
   TAILSCALE_REFERENCE: dhi/tailscale:1.104.1-debian13@sha256:f28e2383faafa8185a6de1fefdedce921bf1396a461929c8357cf8a757a6b343
-  VERSION: 1.104.1
+  VERSION: 1.104.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/tailscale/tailscale.git#v1.104.1
-            checksum: 9a522a9786c97eb7910c01ccb7bd66557b04c910
+          - url: git+https://github.com/tailscale/tailscale.git#v1.104.2
+            checksum: e26db7a5797683ec99ad1516c40b628c7f2dfd71
             path: ${source.dir}/tailscale
             uid: 0
             gid: 0
