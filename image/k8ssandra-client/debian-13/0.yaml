@@ -26,7 +26,7 @@ vars:
   SEMVER_VERSION: 0.9.1
   SUFFIX: ""
   VERSION: 0.9.1
-  YQ_REFERENCE: dhi/pkg-go-yq:4.53.6-debian13@sha256:f098057c30aafdabfba5e99a3411bad21223b9e43a5e58a5689375824fb53ac8
+  YQ_REFERENCE: dhi/pkg-go-yq:4.53.6-debian13@sha256:6a850a32817d825fee75d1a75e6634b426099d15e697bc083a5dc1645ca0bd40
   YQ_VERSION: 4.53.6
 contents:
   repositories:
@@ -97,7 +97,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/pkg-go-yq:4.53.6-debian13@sha256:f098057c30aafdabfba5e99a3411bad21223b9e43a5e58a5689375824fb53ac8
+    - name: dhi.io/pkg-go-yq:4.53.6-debian13@sha256:6a850a32817d825fee75d1a75e6634b426099d15e697bc083a5dc1645ca0bd40
       includes:
         - opt/docker/sbom/go-yq
         - usr/local/bin/yq
