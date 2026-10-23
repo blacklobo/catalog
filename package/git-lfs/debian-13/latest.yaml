@@ -5,37 +5,37 @@ variant: runtime
 tags:
   - "3"
   - "3.8"
-  - 3.8.0
+  - 3.8.1
   - 3-debian13
   - 3.8-debian13
-  - 3.8.0-debian13
+  - 3.8.1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: aece9221f8c09221a14395d964806b956289bc07
-  GO_REF: dhi/golang:1.26.10-debian13-dev@sha256:5bff7bbb70c4f0791e039b58deb70eb0609dcc2d503c5524af3565b86d8b7544
+  COMMIT_SHA: a662a6dbfedf706cfa9fc7a5b7bcc7ba2e2c8a65
+  GO_REF: dhi/golang:1.26.10-debian13-dev@sha256:2f42240398e49b12de0bafef6cee3b35a654d196921eb294f9e56c9ab34ee4ce
   SEMVER_MAJOR_MINOR_VERSION: "3.8"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.8.0
-  VERSION: 3.8.0
+  SEMVER_VERSION: 3.8.1
+  VERSION: 3.8.1
 contents:
   packages:
     - '!base-files'
   builds:
     - name: git-lfs
-      uses: dhi.io/golang:1.26.10-debian13-dev@sha256:5bff7bbb70c4f0791e039b58deb70eb0609dcc2d503c5524af3565b86d8b7544
+      uses: dhi.io/golang:1.26.10-debian13-dev@sha256:2f42240398e49b12de0bafef6cee3b35a654d196921eb294f9e56c9ab34ee4ce
       contents:
         files:
-          - url: git+https://github.com/git-lfs/git-lfs.git#v3.8.0
-            checksum: aece9221f8c09221a14395d964806b956289bc07
+          - url: git+https://github.com/git-lfs/git-lfs.git#v3.8.1
+            checksum: a662a6dbfedf706cfa9fc7a5b7bcc7ba2e2c8a65
             path: /go/src/github.com/git-lfs/git-lfs
             spdx:
               name: git-lfs
-              version: 3.8.0
+              version: 3.8.1
               packages:
                 - name: git-lfs
-                  purl: pkg:golang/github.com/git-lfs/git-lfs/v3@3.8.0
+                  purl: pkg:golang/github.com/git-lfs/git-lfs/v3@3.8.1
                   license: MIT
             uid: 0
             gid: 0
@@ -57,7 +57,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            GOLDFLAGS="-X github.com/git-lfs/git-lfs/v3/config.GitCommit=aece9221f8c09221a14395d964806b956289bc07"
+            GOLDFLAGS="-X github.com/git-lfs/git-lfs/v3/config.GitCommit=a662a6dbfedf706cfa9fc7a5b7bcc7ba2e2c8a65"
 
             CGO_ENABLED=0 go build \
               -ldflags="$GOLDFLAGS" \
