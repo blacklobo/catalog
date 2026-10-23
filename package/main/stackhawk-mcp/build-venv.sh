@@ -24,11 +24,13 @@ export UV_PROJECT_ENVIRONMENT="${VENV}"
 export UV_COMPILE_BYTECODE="${UV_COMPILE_BYTECODE:-1}"
 
 # StackHawk 1.2.4 requires mcp 1.x compatibility.
+# CVE-2026-59951: mcp <1.30.0 uncontrolled resource consumption; fixed in 1.30.0.
 # CVE-2026-69247: cryptography <50.0.0 Bleichenbacher oracle in PKCS#7 decryption.
 # CVE-2026-101918: pyjwt <=2.14.0 uncaught exception; fixed in 2.15.0.
+# GHSA-6Q48-6C7W-9GW2: certifi <2026.10.19 bundles compromised emSign root CAs.
 # Exact pin: a floor re-resolves on every rebuild because the lockfile is not
 # committed, so a later PyJWT release could ship without a reviewed change.
-uv lock --upgrade-package "mcp==1.28.1" --upgrade-package "cryptography>=50.0.0" --upgrade-package "pyjwt==2.15.1"
+uv lock --upgrade-package "mcp==1.30.0" --upgrade-package "cryptography>=50.0.0" --upgrade-package "pyjwt==2.15.1" --upgrade-package "certifi==2026.10.19"
 uv sync --locked --no-install-project --no-dev --no-editable
 uv sync --locked --no-dev --no-editable
 
