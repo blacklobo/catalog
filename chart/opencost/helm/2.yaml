@@ -9,17 +9,17 @@ platforms:
   - linux/amd64
 vars:
   APPVERSION: 1.121.3
-  AWS_SIGV4_PROXY_REFERENCE: dhi/aws-sigv4-proxy:1.13.1-debian13@sha256:69347e41f01bb986c964a9e089e0b563726bdb317838a24af7964b0c41d0d0dc
+  AWS_SIGV4_PROXY_REFERENCE: dhi/aws-sigv4-proxy:1.13.1-debian13@sha256:ff1b9b51ed18c06b4cf7f6920a10aca0ac4efcc012428b252d9eff8f8909722e
   CHART_COMMIT_SHA: 274f0e47db3f65a2f9e8dbffb573120235587b4a
   CHART_HELM_NAME: opencost-chart
-  CURL_REFERENCE: dhi/curl:8.14.1-debian13@sha256:cc369571fe818fa246b86cbf143b53bec8d37d76b5affc41533b05fbe0eb608e
+  CURL_REFERENCE: dhi/curl:8.14.1-debian13@sha256:8dff0c1029a86c250cab4db6a2cb6722510ff1e5fbe04b918995c690ee85af20
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  OPENCOST_REFERENCE: dhi/opencost:1.121.3-debian13@sha256:caa3ec558663bbcf4927a010ced2d61ef877a6490ee4462e667034a1026c3f71
-  OPENCOST_UI_REFERENCE: dhi/opencost-ui:1.121.3-debian13@sha256:d7f762f14e95bd0956aa7d9f3b91a1b25ccc9b74892cdb241984cbe18c40dd39
+  OPENCOST_REFERENCE: dhi/opencost:1.121.3-debian13@sha256:3234236bd3a70a247ad9fd3c4333c2f778c7a48360696bec85c3533a417133e9
+  OPENCOST_UI_REFERENCE: dhi/opencost-ui:1.121.3-debian13@sha256:03aa656cde66efecaec3fe7c4cb5d5db88483c68b6ee7be2ad17089540520613
   SEMVER_MAJOR_MINOR_VERSION: "2.5"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.5.33
@@ -54,13 +54,13 @@ contents:
               description: Docker Hardened Images Helm chart for Opencost
               images:
                 - name: opencost
-                  ref: dhi/opencost:1.121.3-debian13@sha256:caa3ec558663bbcf4927a010ced2d61ef877a6490ee4462e667034a1026c3f71
+                  ref: dhi/opencost:1.121.3-debian13@sha256:3234236bd3a70a247ad9fd3c4333c2f778c7a48360696bec85c3533a417133e9
                 - name: opencost-ui
-                  ref: dhi/opencost-ui:1.121.3-debian13@sha256:d7f762f14e95bd0956aa7d9f3b91a1b25ccc9b74892cdb241984cbe18c40dd39
+                  ref: dhi/opencost-ui:1.121.3-debian13@sha256:03aa656cde66efecaec3fe7c4cb5d5db88483c68b6ee7be2ad17089540520613
                 - name: aws-sigv4-proxy
-                  ref: dhi/aws-sigv4-proxy:1.13.1-debian13@sha256:69347e41f01bb986c964a9e089e0b563726bdb317838a24af7964b0c41d0d0dc
+                  ref: dhi/aws-sigv4-proxy:1.13.1-debian13@sha256:ff1b9b51ed18c06b4cf7f6920a10aca0ac4efcc012428b252d9eff8f8909722e
                 - name: curl
-                  ref: dhi/curl:8.14.1-debian13@sha256:cc369571fe818fa246b86cbf143b53bec8d37d76b5affc41533b05fbe0eb608e
+                  ref: dhi/curl:8.14.1-debian13@sha256:8dff0c1029a86c250cab4db6a2cb6722510ff1e5fbe04b918995c690ee85af20
               name: opencost-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/opencost/opencost
