@@ -6,23 +6,23 @@ variant: runtime
 tags:
   - "0"
   - "0.20"
-  - 0.20.0
+  - 0.20.1
   - 0-debian
   - 0-debian13
   - 0.20-debian
   - 0.20-debian13
-  - 0.20.0-debian
-  - 0.20.0-debian13
+  - 0.20.1-debian
+  - 0.20.1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-01-21"
 vars:
-  COMMIT_SHA: fd6274c619030f9403dc27a76a4a656d984e4b48
-  NATS_TOP_COMMIT_SHA: 8d79e0bb87577ed33fc9aba5415cc41b22b63a9b
-  NATS_TOP_VERSION: 0.6.4
-  NATSCLI_REFERENCE: dhi/natscli:0.5.0-debian13@sha256:3b583e135d810cfbbb55b7cceca42cc8b694b5f8b891875cb684b720166bb899
+  COMMIT_SHA: 585ebd6efc223f5f2c6822b56f51c52a9327b975
+  NATS_TOP_COMMIT_SHA: a0c9ca33ec40ed92c5314d0076aa6f7c07a4ef50
+  NATS_TOP_VERSION: 0.6.5
+  NATSCLI_REFERENCE: dhi/natscli:0.5.0-debian13@sha256:d6721de27c7ecdef3c0e3bec328e025617da4d506e8d24c9f50c7f199f68ba84
   NATSCLI_VERSION: 0.5.0
   NKEYS_COMMIT_SHA: c1eebf38bd8b1b1021b45b5f8f403052ac042dc5
   NKEYS_VERSION: 0.4.16
@@ -30,8 +30,8 @@ vars:
   NSC_VERSION: 2.15.0
   SEMVER_MAJOR_MINOR_VERSION: "0.20"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.20.0
-  VERSION: 0.20.0
+  SEMVER_VERSION: 0.20.1
+  VERSION: 0.20.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -120,15 +120,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/nats-io/nats-top.git#v0.6.4
-            checksum: 8d79e0bb87577ed33fc9aba5415cc41b22b63a9b
+          - url: git+https://github.com/nats-io/nats-top.git#v0.6.5
+            checksum: a0c9ca33ec40ed92c5314d0076aa6f7c07a4ef50
             path: /go/src/github.com/nats-io/nats-top
             spdx:
               name: nats-top
-              version: 0.6.4
+              version: 0.6.5
               packages:
                 - name: nats-top
-                  purl: pkg:golang/github.com/nats-io/nats-top@0.6.4
+                  purl: pkg:golang/github.com/nats-io/nats-top@0.6.5
                   license: MIT
             uid: 0
             gid: 0
@@ -139,10 +139,7 @@ contents:
           caches:
             - path: /go/pkg/mod
           with:
-            deps:
-              - golang.org/x/crypto@v0.56.0
-              - github.com/klauspost/compress@v1.18.7
-              - github.com/nats-io/nats-server/v2@v2.12.6
+            deps: []
             download: true
         - name: test
           work-dir: /go/src/github.com/nats-io/nats-top
@@ -163,8 +160,8 @@ contents:
           with:
             ldflags:
               - -s -w
-              - -X main.version=0.6.4
-              - -X main.commit=8d79e0bb87577ed33fc9aba5415cc41b22b63a9b
+              - -X main.version=0.6.5
+              - -X main.commit=a0c9ca33ec40ed92c5314d0076aa6f7c07a4ef50
               - -X main.date=${SOURCE_DATE_EPOCH}
             output: ${target.dir}/usr/local/bin/nats-top
             packages: .
@@ -237,7 +234,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/natscli:0.5.0-debian13@sha256:3b583e135d810cfbbb55b7cceca42cc8b694b5f8b891875cb684b720166bb899
+    - name: dhi.io/natscli:0.5.0-debian13@sha256:d6721de27c7ecdef3c0e3bec328e025617da4d506e8d24c9f50c7f199f68ba84
       includes:
         - opt/docker/sbom/dhi-natscli
         - usr/bin/nats
@@ -264,7 +261,7 @@ os-release:
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
 environment:
-  NATS_TOP_VERSION: 0.6.4
+  NATS_TOP_VERSION: 0.6.5
   NATSCLI_VERSION: 0.5.0
   NKEYS_PATH: /nsc/nkeys
   NKEYS_VERSION: 0.4.16
