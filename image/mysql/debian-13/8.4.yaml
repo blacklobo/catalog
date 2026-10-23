@@ -6,13 +6,13 @@ variant: runtime
 tags:
   - "8"
   - "8.4"
-  - 8.4.11
+  - 8.4.13
   - 8-debian
   - 8-debian13
   - 8.4-debian
   - 8.4-debian13
-  - 8.4.11-debian
-  - 8.4.11-debian13
+  - 8.4.13-debian
+  - 8.4.13-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -24,8 +24,8 @@ vars:
   PACKAGE_NAME: mysql-8.4
   SEMVER_MAJOR_MINOR_VERSION: "8.4"
   SEMVER_MAJOR_VERSION: "8"
-  SEMVER_VERSION: 8.4.11
-  VERSION: 8.4.11-0
+  SEMVER_VERSION: 8.4.13
+  VERSION: 8.4.13-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -46,7 +46,7 @@ contents:
     - libssl3t64
     - libstdc++6
     - libtirpc3t64
-    - mysql-8.4=8.4.11-0
+    - mysql-8.4=8.4.13-0
     - zlib1g
   builds:
     - name: legacy /opt/mysql layout
@@ -59,7 +59,7 @@ contents:
           - bash
           - coreutils
           - findutils
-          - mysql-8.4=8.4.11-0
+          - mysql-8.4=8.4.13-0
       pipeline:
         - runs: |
             set -eux -o pipefail
