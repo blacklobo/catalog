@@ -4,11 +4,11 @@ name: Kyverno Policies Helm chart 3.x
 image: dhi.io/kyverno-policies-chart
 variant: helm
 tags:
-  - 3.9.1
+  - 3.9.2
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: b77571d49043e7b0a0978b55d11cc5a866e10798
+  CHART_COMMIT_SHA: e63308f1e16c05cd009ac4864be6ec25c66b49be
   CHART_HELM_NAME: kyverno-policies-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -17,8 +17,8 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "3.9"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.9.1
-  VERSION: 3.9.1
+  SEMVER_VERSION: 3.9.2
+  VERSION: 3.9.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -34,8 +34,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/kyverno/kyverno.git#kyverno-policies-chart-3.9.1
-            checksum: b77571d49043e7b0a0978b55d11cc5a866e10798
+          - url: git+https://github.com/kyverno/kyverno.git#kyverno-policies-chart-3.9.2
+            checksum: e63308f1e16c05cd009ac4864be6ec25c66b49be
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
