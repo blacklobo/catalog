@@ -83,6 +83,14 @@ contents:
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.46.0
               - go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0
             download: true
+        - name: preserve s3 middleware compatibility (3.6 only)
+          uses: go/bump@v2
+          work-dir: ${source.dir}/loki
+          with:
+            deps:
+              - github.com/aws/aws-sdk-go-v2/service/internal/s3shared@v1.19.21
+            downgrade: true
+            download: true
         - name: bump prometheus for 3.6.11+ compatibility
           work-dir: ${source.dir}/loki
           privileged: true
