@@ -5,11 +5,11 @@ image: dhi.io/envoy
 variant: runtime
 tags:
   - "1.37"
-  - 1.37.9
+  - 1.37.10
   - 1.37-debian
   - 1.37-debian13
-  - 1.37.9-debian
-  - 1.37.9-debian13
+  - 1.37.10-debian
+  - 1.37.10-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,11 +21,11 @@ vars:
   BAZEL_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
   BAZEL_VERSION: 7.7.1
   CLANG_VERSION: "18"
-  COMMIT_SHA: 2fdc50edf463bd125b412409b3f52b78fed60cf6
+  COMMIT_SHA: ecc81c8a370c858bf97380faa16e54e62ca21f25
   SEMVER_MAJOR_MINOR_VERSION: "1.37"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.37.9
-  VERSION: 1.37.9
+  SEMVER_VERSION: 1.37.10
+  VERSION: 1.37.10
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -74,15 +74,15 @@ contents:
           - unzip
           - zip
         files:
-          - url: git+https://github.com/envoyproxy/envoy.git#v1.37.9
-            checksum: 2fdc50edf463bd125b412409b3f52b78fed60cf6
+          - url: git+https://github.com/envoyproxy/envoy.git#v1.37.10
+            checksum: ecc81c8a370c858bf97380faa16e54e62ca21f25
             path: ${source.dir}/envoy
             spdx:
               name: envoy
-              version: 1.37.9
+              version: 1.37.10
               packages:
                 - name: envoy
-                  purl: pkg:dhi/envoy@1.37.9
+                  purl: pkg:dhi/envoy@1.37.10
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -155,7 +155,7 @@ contents:
             set -eux -o pipefail
 
             mkdir -p /opt/docker/sbom/envoy
-            python3 "${source.dir}/bin/envoy-bazel-to-spdx.py" envoy "1.37.9" \
+            python3 "${source.dir}/bin/envoy-bazel-to-spdx.py" envoy "1.37.10" \
               > /opt/docker/sbom/envoy/.spdx.envoy.json
       paths:
         - type: file
