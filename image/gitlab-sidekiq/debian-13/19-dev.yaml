@@ -20,11 +20,11 @@ dates:
   release: "2026-05-21"
 vars:
   BINUTILS_ARCH: '#{ target.arch == "amd64" ? "x86-64" : "aarch64" }'
-  COSIGN_VERSION: 2.6.5-9
+  COSIGN_VERSION: 2.6.5-10
   PYTHON_MAJOR_MINOR_VERSION: "3.12"
   PYTHON_VERSION: 3.12.15-0
   RUBY_MAJOR_MINOR_VERSION: "3.3"
-  RUBY_VERSION: 3.3.12-68
+  RUBY_VERSION: 3.3.12-69
   SEMVER_MAJOR_MINOR_VERSION: "19.4"
   SEMVER_MAJOR_VERSION: "19"
   SEMVER_VERSION: 19.4.2
@@ -57,7 +57,7 @@ contents:
     - ca-certificates
     - ca-certificates-bundle
     - coreutils
-    - cosign-2=2.6.5-9
+    - cosign-2=2.6.5-10
     - diffutils
     - dpkg
     - exiftool-gitlab
@@ -119,7 +119,7 @@ contents:
     - python-3.12=3.12.15-0
     - python3-pip-whl
     - python3-setuptools-whl
-    - ruby-3.3=3.3.12-68
+    - ruby-3.3=3.3.12-69
     - sed
     - tzdata
     - tzdata-legacy
