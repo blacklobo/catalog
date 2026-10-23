@@ -4,7 +4,7 @@ image: dhi.io/pkg-temporalio-server
 variant: runtime
 tags:
   - 1.28.4-alpine3.24
-  - 1.28.4-r9-alpine3.24
+  - 1.28.4-r10-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,7 +18,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.3-r0
   PACKAGE_NAME: temporalio-server-1.28
-  REL: "9"
+  REL: "10"
   SEMVER_MAJOR_MINOR_VERSION: "1.28"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.28.4
@@ -212,7 +212,7 @@ contents:
               - github.com/apache/thrift@v0.24.0
               - github.com/aws/aws-sdk-go-v2/service/lambda@v1.88.5
               - github.com/go-jose/go-jose/v4@v4.1.4
-              - github.com/gomarkdown/markdown@v0.0.0-20260411013819-759bbc3e3207
+              - github.com/gomarkdown/markdown@v0.0.0-20260724235538-61af6e1e6971
               - github.com/jackc/pgx/v5@v5.9.2
               - github.com/klauspost/compress@v1.18.7
               - github.com/labstack/echo/v4@v4.15.3
@@ -281,7 +281,7 @@ contents:
               - etc/temporal
             license: MIT
             name: temporalio-server-1.28
-            rel: 9
+            rel: 10
             subpackages:
               - files:
                   - path: usr/bin/dockerize
