@@ -21,13 +21,13 @@ dates:
 vars:
   COMMIT_SHA: e795d1defa03a6ddeb81c6e016f7253bb7202d92
   FLAVORED_SUFFIX: -dev
-  GRPC_HEALTH_PROBE_FIPS_VERSION: 0.4.59-0
-  GRPC_HEALTH_PROBE_PIN_VERSION: 0.4.59-0
-  GRPC_HEALTH_PROBE_VERSION: 0.4.59-0
+  GRPC_HEALTH_PROBE_FIPS_VERSION: 0.4.60-0
+  GRPC_HEALTH_PROBE_PIN_VERSION: 0.4.60-0
+  GRPC_HEALTH_PROBE_VERSION: 0.4.60-0
   OCP_VERSION: v4.22
-  OPM_FIPS_VERSION: 1.74.0-8
-  OPM_PIN_VERSION: 1.74.0-8
-  OPM_VERSION: 1.74.0-8
+  OPM_FIPS_VERSION: 1.74.0-9
+  OPM_PIN_VERSION: 1.74.0-9
+  OPM_VERSION: 1.74.0-9
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.12.10
@@ -53,10 +53,10 @@ contents:
     - findutils
     - gpgv
     - grep
-    - grpc-health-probe-dev=0.4.59-0
+    - grpc-health-probe-dev=0.4.60-0
     - libc-bin
     - mawk
-    - opm-dev=1.74.0-8
+    - opm-dev=1.74.0-9
     - perl-base
     - sed
     - tzdata
@@ -71,7 +71,7 @@ contents:
         packages:
           - bash
           - coreutils
-          - opm-dev=1.74.0-8
+          - opm-dev=1.74.0-9
         files:
           - url: git+https://github.com/kubev2v/mtv-fbc.git#e795d1defa03a6ddeb81c6e016f7253bb7202d92
             checksum: e795d1defa03a6ddeb81c6e016f7253bb7202d92
