@@ -13,11 +13,15 @@
   },
   {
     "package": "dompurify",
-    "version": "3.4.16"
+    "version": "3.4.17"
   },
   {
     "package": "moment",
     "version": "2.31.0"
+  },
+  {
+    "package": "follow-redirects",
+    "version": "1.16.1"
   },
   {
     "package": "react-router-dom-v5-compat",
