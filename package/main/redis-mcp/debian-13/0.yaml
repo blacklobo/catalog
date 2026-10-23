@@ -4,9 +4,9 @@ image: dhi.io/pkg-redis-mcp
 variant: runtime
 tags:
   - 0.5.1
-  - 0.5.1-r7
+  - 0.5.1-r8
   - 0.5.1-debian13
-  - 0.5.1-r7-debian13
+  - 0.5.1-r8-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: 11e67e44358cd6410d5a7e615a29539ccd71a045
   PYTHON_MINOR: "3.14"
   PYTHON_VERSION: 3.14.8-0
-  REL: "7"
+  REL: "8"
   SEMVER_MAJOR_MINOR_VERSION: "0.5"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.5.1
@@ -81,6 +81,7 @@ contents:
                 raise SystemExit("pyproject.toml already defines [tool.uv]; merge constraint-dependencies manually")
             constraints = [
                 "aiohttp>=3.14.1",
+                "certifi>=2026.10.19",  # GHSA-6q48-6c7w-9gw2
                 "cryptography>=50.0.0",  # CVE-2026-69247
                 "idna>=3.15",
                 "mcp<2.0.0",
@@ -128,7 +129,7 @@ contents:
               - deb
             license: MIT
             name: redis-mcp
-            rel: 7
+            rel: 8
             url: https://github.com/redis/mcp-redis
             version: 0.5.1
       paths:
