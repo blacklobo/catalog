@@ -7,7 +7,7 @@ flavor: sfw-ent
 tags:
   - 1-alpine3.22-sfw-ent-dev
   - 1.26-alpine3.22-sfw-ent-dev
-  - 1.26.9-alpine3.22-sfw-ent-dev
+  - 1.26.10-alpine3.22-sfw-ent-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,10 +16,10 @@ dates:
 vars:
   MAJOR_MINOR_VERSION: "1.26"
   MAJOR_VERSION: "1"
-  PKG_GOLANG_REFERENCE: dhi/pkg-golang:1.26.9-alpine3.22@sha256:0ba4102acf15ef8cd0f895a4c1773200055a179c67ea6faf4726f08039cffb99
+  PKG_GOLANG_REFERENCE: dhi/pkg-golang:1.26.10-alpine3.22@sha256:820f019693f45943620a84cb1e1480380951fb9b723866cdbb04e09cb6a23bfc
   SFW_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
   SFW_VERSION: 1.15.4
-  VERSION: 1.26.9
+  VERSION: 1.26.10
 contents:
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/v3.22/main
@@ -76,7 +76,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/pkg-golang:1.26.9-alpine3.22@sha256:0ba4102acf15ef8cd0f895a4c1773200055a179c67ea6faf4726f08039cffb99
+    - name: dhi.io/pkg-golang:1.26.10-alpine3.22@sha256:820f019693f45943620a84cb1e1480380951fb9b723866cdbb04e09cb6a23bfc
       includes:
         - opt/docker/sbom
         - usr/local/go
@@ -103,7 +103,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /go
 environment:
-  GOLANG_VERSION: 1.26.9
+  GOLANG_VERSION: 1.26.10
   GOPATH: /go
   GOTOOLCHAIN: local
   PATH: /opt/socket/bin:/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
