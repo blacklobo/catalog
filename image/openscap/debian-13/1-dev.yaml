@@ -6,24 +6,24 @@ variant: dev
 tags:
   - 1-dev
   - 1.4-dev
-  - 1.4.5-dev
+  - 1.4.6-dev
   - 1-debian-dev
   - 1-debian13-dev
   - 1.4-debian-dev
   - 1.4-debian13-dev
-  - 1.4.5-debian-dev
-  - 1.4.5-debian13-dev
+  - 1.4.6-debian-dev
+  - 1.4.6-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: c84c8aa5e961b7ba0340a43faf4555dc383af625
+  COMMIT_SHA: af8cd99abf97f9f2c3b44378e144e88df634f56d
   DOCKER_PY_COMMIT_SHA: 5ad5327fba623897ee9a527d7eee1b01703e0726
   DOCKER_PY_VERSION: 7.2.0
   SEMVER_MAJOR_MINOR_VERSION: "1.4"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.4.5
-  VERSION: 1.4.5
+  SEMVER_VERSION: 1.4.6
+  VERSION: 1.4.6
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -127,14 +127,14 @@ contents:
           - doxygen
           - graphviz
         files:
-          - url: git+https://github.com/OpenSCAP/openscap#1.4.5
-            checksum: c84c8aa5e961b7ba0340a43faf4555dc383af625
+          - url: git+https://github.com/OpenSCAP/openscap#1.4.6
+            checksum: af8cd99abf97f9f2c3b44378e144e88df634f56d
             path: ${source.dir}/openscap
             spdx:
               name: openscap
-              version: 1.4.5
+              version: 1.4.6
               packages:
-                - purl: pkg:dhi/openscap@1.4.5
+                - purl: pkg:dhi/openscap@1.4.6
                   license: LGPL-2.1-only
             uid: 0
             gid: 0
