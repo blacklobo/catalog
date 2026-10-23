@@ -8,8 +8,8 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  AWS_LOAD_BALANCER_CONTROLLER_REFERENCE: dhi/aws-load-balancer-controller:3.6.0-debian13@sha256:236b045b60b3ce4e2ae0f4e198484ec696e2e91aa289a9a605428ec30e1b23c6
-  CHART_COMMIT_SHA: 768822a51d6d425f24261a67287a181d1b6cffe0
+  AWS_LOAD_BALANCER_CONTROLLER_REFERENCE: dhi/aws-load-balancer-controller:3.6.0-debian13@sha256:207256fe6d490a07c33095af24aa52ecef21112a5b5b5635577e3efb8cdd43ec
+  CHART_COMMIT_SHA: 6ac4298e0914603f25540dccd0c6e56f0ee81bcc
   CHART_HELM_NAME: aws-load-balancer-controller-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/aws/eks-charts.git#768822a51d6d425f24261a67287a181d1b6cffe0
-            checksum: 768822a51d6d425f24261a67287a181d1b6cffe0
+          - url: git+https://github.com/aws/eks-charts.git#6ac4298e0914603f25540dccd0c6e56f0ee81bcc
+            checksum: 6ac4298e0914603f25540dccd0c6e56f0ee81bcc
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for AWS Load Balancer Controller
               images:
                 - name: aws-load-balancer-controller
-                  ref: dhi/aws-load-balancer-controller:3.6.0-debian13@sha256:236b045b60b3ce4e2ae0f4e198484ec696e2e91aa289a9a605428ec30e1b23c6
+                  ref: dhi/aws-load-balancer-controller:3.6.0-debian13@sha256:207256fe6d490a07c33095af24aa52ecef21112a5b5b5635577e3efb8cdd43ec
               name: aws-load-balancer-controller-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
