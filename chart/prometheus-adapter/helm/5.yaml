@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  PROMETHEUS_ADAPTER_REFERENCE: dhi/prometheus-adapter:0.12.0-debian13@sha256:b521fe44fc62baccca027f204ae361c230fd7f79b6a8b996dd766a4245039cd6
+  PROMETHEUS_ADAPTER_REFERENCE: dhi/prometheus-adapter:0.12.0-debian13@sha256:d897ebf84cf88c5adf70de44d8c708151302cb204e1f6104e1184796221566b6
   SEMVER_MAJOR_MINOR_VERSION: "5.3"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.3.0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus Adapter
               images:
                 - name: prometheus-adapter
-                  ref: dhi/prometheus-adapter:0.12.0-debian13@sha256:b521fe44fc62baccca027f204ae361c230fd7f79b6a8b996dd766a4245039cd6
+                  ref: dhi/prometheus-adapter:0.12.0-debian13@sha256:d897ebf84cf88c5adf70de44d8c708151302cb204e1f6104e1184796221566b6
               name: prometheus-adapter-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/prometheus-community/helm-charts
