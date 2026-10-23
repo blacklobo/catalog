@@ -15,16 +15,16 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:81daf33fd88d10ee4086c247d70b37766037ac2d03e6759b930b294c5ee8f613
-  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13@sha256:9d64d692611000f8ee55b1af1118ad040a7ab64082f373f29bdf33d9fa8b7a66
+  KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:c8bdd8c1fe08c5823cba4a838211ecccd973bed0edbd4a7e3a2afd85d6ee3d8f
+  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13@sha256:70192b8458c4cc9b2a2681586cc4804d3f35cfdb487f316267b3f5bc0f73f219
   METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:0c5cec1b11ec81e19df35de2fa9af62d4414364ba00e53f4bf18578238bed13b
   SEMVER_MAJOR_MINOR_VERSION: "5.1"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.1.0
   VERSION: 5.1.0
-  VPA_ADMISSION_CONTROLLER_REFERENCE: dhi/vpa-admission-controller:1.8.0-debian13@sha256:c9b78b8e21989e0db55a67ebb7de1f0cee5ac5057aea2853deea7a168db3ce25
-  VPA_RECOMMENDER_REFERENCE: dhi/vpa-recommender:1.8.0-debian13@sha256:79f940346f5cf627bf0251238c892f1fa0cd013b24861494604f069a460fa6a0
-  VPA_UPDATER_REFERENCE: dhi/vpa-updater:1.8.0-debian13@sha256:71cb87ce66bdb5a1747205b49a1a0a4644677ed9b0fabceee6655c95c5a52002
+  VPA_ADMISSION_CONTROLLER_REFERENCE: dhi/vpa-admission-controller:1.8.0-debian13@sha256:cf9d0e76d712f8a945044e66c7b2659c6316d0961593c87f655d65c437f8afc3
+  VPA_RECOMMENDER_REFERENCE: dhi/vpa-recommender:1.8.0-debian13@sha256:72727b502110e79c04f67c60972b1cb6ffb3151a42a87bee3a50480817cc8020
+  VPA_UPDATER_REFERENCE: dhi/vpa-updater:1.8.0-debian13@sha256:d512fba9a521d5a7c95f0ee261897b05e6a7f357a00efe21fff3d10e46dc7cf3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -59,15 +59,15 @@ contents:
               description: Docker Hardened Images Helm chart for Fairwinds VPA
               images:
                 - name: vpa-admission-controller
-                  ref: dhi/vpa-admission-controller:1.8.0-debian13@sha256:c9b78b8e21989e0db55a67ebb7de1f0cee5ac5057aea2853deea7a168db3ce25
+                  ref: dhi/vpa-admission-controller:1.8.0-debian13@sha256:cf9d0e76d712f8a945044e66c7b2659c6316d0961593c87f655d65c437f8afc3
                 - name: vpa-recommender
-                  ref: dhi/vpa-recommender:1.8.0-debian13@sha256:79f940346f5cf627bf0251238c892f1fa0cd013b24861494604f069a460fa6a0
+                  ref: dhi/vpa-recommender:1.8.0-debian13@sha256:72727b502110e79c04f67c60972b1cb6ffb3151a42a87bee3a50480817cc8020
                 - name: vpa-updater
-                  ref: dhi/vpa-updater:1.8.0-debian13@sha256:71cb87ce66bdb5a1747205b49a1a0a4644677ed9b0fabceee6655c95c5a52002
+                  ref: dhi/vpa-updater:1.8.0-debian13@sha256:d512fba9a521d5a7c95f0ee261897b05e6a7f357a00efe21fff3d10e46dc7cf3
                 - name: kube-webhook-certgen
-                  ref: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:81daf33fd88d10ee4086c247d70b37766037ac2d03e6759b930b294c5ee8f613
+                  ref: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:c8bdd8c1fe08c5823cba4a838211ecccd973bed0edbd4a7e3a2afd85d6ee3d8f
                 - name: kubectl
-                  ref: dhi/kubectl:1.35.9-debian13@sha256:9d64d692611000f8ee55b1af1118ad040a7ab64082f373f29bdf33d9fa8b7a66
+                  ref: dhi/kubectl:1.35.9-debian13@sha256:70192b8458c4cc9b2a2681586cc4804d3f35cfdb487f316267b3f5bc0f73f219
               name: fairwinds-vpa-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/FairwindsOps/charts
