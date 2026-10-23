@@ -4,22 +4,22 @@ name: OpenTelemetry Collector Helm chart 0.x
 image: dhi.io/opentelemetry-collector-chart
 variant: helm
 tags:
-  - 0.176.0
+  - 0.177.0
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 5e4af3981d18712b40e096de0cf470efa8c59bb5
+  CHART_COMMIT_SHA: 1ee603ccb4e819e4621e5577e735283e6e968b35
   CHART_HELM_NAME: opentelemetry-collector-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.162.0-debian13@sha256:44c3fe179eaa94ba2cac00d0c2f41d3d74fb4d8b78925a5482c7d9d58b508d5d
-  SEMVER_MAJOR_MINOR_VERSION: "0.176"
+  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.162.0-debian13@sha256:53a9a15d9b6303dbb883b632a35ddab6ba6bd7d493c83a5f9d07b9fefe1db9c1
+  SEMVER_MAJOR_MINOR_VERSION: "0.177"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.176.0
-  VERSION: 0.176.0
+  SEMVER_VERSION: 0.177.0
+  VERSION: 0.177.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -34,8 +34,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/open-telemetry/opentelemetry-helm-charts.git#opentelemetry-collector-0.176.0
-            checksum: 5e4af3981d18712b40e096de0cf470efa8c59bb5
+          - url: git+https://github.com/open-telemetry/opentelemetry-helm-charts.git#opentelemetry-collector-0.177.0
+            checksum: 1ee603ccb4e819e4621e5577e735283e6e968b35
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for OpenTelemetry Collector
               images:
                 - name: opentelemetry-collector
-                  ref: dhi/opentelemetry-collector:0.162.0-debian13@sha256:44c3fe179eaa94ba2cac00d0c2f41d3d74fb4d8b78925a5482c7d9d58b508d5d
+                  ref: dhi/opentelemetry-collector:0.162.0-debian13@sha256:53a9a15d9b6303dbb883b632a35ddab6ba6bd7d493c83a5f9d07b9fefe1db9c1
               name: opentelemetry-collector-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/open-telemetry/opentelemetry-helm-charts
