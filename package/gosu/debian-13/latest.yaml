@@ -12,7 +12,7 @@ platforms:
   - linux/arm64
 vars:
   COMMIT_SHA: 6456aaa0f3c854d199d0f037f068eb97515b7513
-  GOLANG_DIGEST: sha256:0ed4283ed380a48e5f2f1c8ec20bb8bea7b39aaea7a8504fadace084efba2688
+  GOLANG_DIGEST: sha256:41f92b19aa9c8540ef0abdd7f9ec243aefa4933238c919a0cdfc7d3c8af241dc
   GOLANG_VERSION: 1.27.3
   GOSU_MAJOR_MINOR_VERSION: "1.19"
   GOSU_MAJOR_VERSION: "1"
@@ -52,7 +52,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/golang:1.27.3-debian13@sha256:0ed4283ed380a48e5f2f1c8ec20bb8bea7b39aaea7a8504fadace084efba2688
+          - name: dhi.io/golang:1.27.3-debian13@sha256:41f92b19aa9c8540ef0abdd7f9ec243aefa4933238c919a0cdfc7d3c8af241dc
             includes:
               - usr/lib/go/**
             uid: 0
