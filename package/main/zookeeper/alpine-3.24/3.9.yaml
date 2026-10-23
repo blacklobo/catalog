@@ -11,7 +11,7 @@ platforms:
 vars:
   COMMIT_SHA: a355171b081b5b60749db8f19cca1528b0df936f
   JDK_MAJOR_VERSION: "21"
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:419b95307aa32ff6606fc2a974a02e2f708895f275fbdc8b6e60c1e8f7ad22a2
   MAVEN_VERSION: 3.10.0
   PACKAGE_HOME: /usr/share/zookeeper
   PACKAGE_NAME: zookeeper-3.9
@@ -66,7 +66,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:37604150105651748382d9c04f001104f4aebdee5ab2b33a6633c8b2646c2da7
+          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:419b95307aa32ff6606fc2a974a02e2f708895f275fbdc8b6e60c1e8f7ad22a2
             includes:
               - opt/**
               - usr/local/bin/**
