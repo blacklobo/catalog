@@ -6,27 +6,27 @@ variant: runtime
 tags:
   - "2"
   - "2.46"
-  - 2.46.0
+  - 2.46.1
   - 2-debian
   - 2-debian13
   - 2.46-debian
   - 2.46-debian13
-  - 2.46.0-debian
-  - 2.46.0-debian13
+  - 2.46.1-debian
+  - 2.46.1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 05a275057112ba93e17db21f600b756f000f1c21
-  DEBIAN_VERSION: 2.46.0-0
+  COMMIT_SHA: 75eb19238e10fc4750e7efb05a4031b254b04029
+  DEBIAN_VERSION: 2.46.1-0
   FLAVORED_SUFFIX: ""
-  GOMPLATE_COMMIT_SHA: ede902a06d7a31bb6f0e1ba07139c21543dd1cdf
-  GOMPLATE_VERSION: 5.3.0
+  GOMPLATE_COMMIT_SHA: 6f33b7aa15255352e47771f535c6f258d266df24
+  GOMPLATE_VERSION: 5.3.1
   SEMVER_MAJOR_MINOR_VERSION: "2.46"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.46.0
+  SEMVER_VERSION: 2.46.1
   SUFFIX: ""
-  VERSION: 2.46.0
+  VERSION: 2.46.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -37,13 +37,13 @@ contents:
     - '!libgcc-s1'
     - base-files
     - ca-certificates-bundle
-    - dex-docker-entrypoint=2.46.0-0
-    - dex=2.46.0-0
+    - dex-docker-entrypoint=2.46.1-0
+    - dex=2.46.1-0
     - libc6
     - libsqlite3-0
     - tzdata
   files:
-    - url: https://raw.githubusercontent.com/dexidp/dex/05a275057112ba93e17db21f600b756f000f1c21/config.docker.yaml
+    - url: https://raw.githubusercontent.com/dexidp/dex/75eb19238e10fc4750e7efb05a4031b254b04029/config.docker.yaml
       path: /etc/dex/config.docker.yaml
       uid: 65532
       gid: 65532
@@ -63,15 +63,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/hairyhenderson/gomplate.git#v5.3.0
-            checksum: ede902a06d7a31bb6f0e1ba07139c21543dd1cdf
+          - url: git+https://github.com/hairyhenderson/gomplate.git#v5.3.1
+            checksum: 6f33b7aa15255352e47771f535c6f258d266df24
             path: /go/src/github.com/hairyhenderson/gomplate
             spdx:
               name: gomplate
-              version: 5.3.0
+              version: 5.3.1
               packages:
                 - name: gomplate
-                  purl: pkg:golang/github.com/hairyhenderson/gomplate@5.3.0
+                  purl: pkg:golang/github.com/hairyhenderson/gomplate@5.3.1
                   license: MIT
             uid: 0
             gid: 0
@@ -86,8 +86,8 @@ contents:
           uses: go/build@v1
           with:
             ldflags:
-              - -X github.com/hairyhenderson/gomplate/v4/version.GitCommit=ede902a06d7a31bb6f0e1ba07139c21543dd1cdf
-              - -X github.com/hairyhenderson/gomplate/v4/version.Version=5.3.0
+              - -X github.com/hairyhenderson/gomplate/v4/version.GitCommit=6f33b7aa15255352e47771f535c6f258d266df24
+              - -X github.com/hairyhenderson/gomplate/v4/version.Version=5.3.1
             output: ${target.dir}/usr/local/bin/gomplate
             packages: ./cmd/gomplate
       outputs:
@@ -106,15 +106,15 @@ contents:
           - bash
           - coreutils
         files:
-          - url: git+https://github.com/dexidp/dex.git#v2.46.0
-            checksum: 05a275057112ba93e17db21f600b756f000f1c21
+          - url: git+https://github.com/dexidp/dex.git#v2.46.1
+            checksum: 75eb19238e10fc4750e7efb05a4031b254b04029
             path: /go/src/github.com/dexidp/dex
             spdx:
               name: dex-web
-              version: 2.46.0
+              version: 2.46.1
               packages:
                 - name: dex
-                  purl: pkg:golang/github.com/dexidp/dex@2.46.0
+                  purl: pkg:golang/github.com/dexidp/dex@2.46.1
                   license: Apache-2.0
             uid: 0
             gid: 0
