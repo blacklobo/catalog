@@ -6,13 +6,13 @@ variant: runtime
 tags:
   - "1"
   - "1.39"
-  - 1.39.4
+  - 1.39.5
   - 1-debian
   - 1-debian13
   - 1.39-debian
   - 1.39-debian13
-  - 1.39.4-debian
-  - 1.39.4-debian13
+  - 1.39.5-debian
+  - 1.39.5-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -26,11 +26,11 @@ vars:
   BAZEL_TARGET_OPTS: '#{ target.arch == "arm64" ? "--cpu=aarch64" : "" }'
   BAZEL_VERSION: 8.7.0
   CLANG_VERSION: "18"
-  COMMIT_SHA: 72315c132d462e5126e492ab2a71057565dbc87a
+  COMMIT_SHA: abcc910ca2c0690d7dbd96557f6dbc8f5090aaa0
   SEMVER_MAJOR_MINOR_VERSION: "1.39"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.39.4
-  VERSION: 1.39.4
+  SEMVER_VERSION: 1.39.5
+  VERSION: 1.39.5
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -81,15 +81,15 @@ contents:
           - util-linux
           - zip
         files:
-          - url: git+https://github.com/envoyproxy/envoy.git#v1.39.4
-            checksum: 72315c132d462e5126e492ab2a71057565dbc87a
+          - url: git+https://github.com/envoyproxy/envoy.git#v1.39.5
+            checksum: abcc910ca2c0690d7dbd96557f6dbc8f5090aaa0
             path: ${source.dir}/envoy
             spdx:
               name: envoy-contrib
-              version: 1.39.4
+              version: 1.39.5
               packages:
                 - name: envoy-contrib
-                  purl: pkg:dhi/envoy-contrib@1.39.4
+                  purl: pkg:dhi/envoy-contrib@1.39.5
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -127,7 +127,7 @@ contents:
             set -eux -o pipefail
 
             mkdir -p /opt/docker/sbom/envoy-contrib
-            python3 "${source.dir}/bin/envoy-bazel-to-spdx.py" envoy-contrib "1.39.4" \
+            python3 "${source.dir}/bin/envoy-bazel-to-spdx.py" envoy-contrib "1.39.5" \
               -c opt --curses=no --verbose_failures --sandbox_debug --jobs=auto --experimental_ui_max_stdouterr_bytes=11712829 --disk_cache=/bazel-disk-cache --repository_cache=/bazel-repo-cache --experimental_disk_cache_gc_max_size=5G --experimental_disk_cache_gc_max_age=30d --config=clang-local --repo_env=BAZEL_LLVM_PATH=/usr/lib/llvm-18 --repo_env=BAZEL_USE_HOST_SYSROOT=True --action_env=INSTALL=/usr/bin/install  ${BAZEL_TARGET_OPTS} \
               > /opt/docker/sbom/envoy-contrib/.spdx.envoy-contrib.json
       paths:
