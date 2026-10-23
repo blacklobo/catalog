@@ -14,7 +14,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  EXTERNAL_DNS_REFERENCE: dhi/external-dns:0.23.0-debian13@sha256:2d78337a6eb0b655697449260e3ab66256afce5e9a7a18b57f0e80ca0fa8d584
+  EXTERNAL_DNS_REFERENCE: dhi/external-dns:0.23.0-debian13@sha256:e8d6697b263ed2b3bc558a097c8a3ff797bc597cbd045bb352ab98ce7a86e24e
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "1.23"
   SEMVER_MAJOR_VERSION: "1"
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for External DNS
               images:
                 - name: external-dns
-                  ref: dhi/external-dns:0.23.0-debian13@sha256:2d78337a6eb0b655697449260e3ab66256afce5e9a7a18b57f0e80ca0fa8d584
+                  ref: dhi/external-dns:0.23.0-debian13@sha256:e8d6697b263ed2b3bc558a097c8a3ff797bc597cbd045bb352ab98ce7a86e24e
               name: external-dns-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kubernetes-sigs/external-dns
