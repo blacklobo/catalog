@@ -20,8 +20,8 @@ dates:
   release: "2026-07-26"
 vars:
   JAVA_FIPS_SUFFIX: ""
-  JAVA_MAJOR_VERSION: "26"
-  JDK_MAJOR_VERSION: "26"
+  JAVA_MAJOR_VERSION: "25"
+  JDK_MAJOR_VERSION: "25"
   OPERATOR_HOME: /opt/spark-operator
   OPERATOR_WORK_DIR: /opt/spark-operator/operator
   PACKAGE_NAME: spark-kubernetes-operator-1.0
@@ -40,8 +40,8 @@ contents:
     - '!original-awk'
     - base-files
     - ca-certificates-bundle
-    - eclipse-temurin-26-jre
-    - eclipse-temurin-26-jre-oci-config
+    - eclipse-temurin-25-jre
+    - eclipse-temurin-25-jre-oci-config
     - libc6
     - libstdc++6
     - lsb-base
@@ -92,11 +92,11 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /opt/spark-operator/operator
 environment:
-  JAVA_HOME: /usr/lib/jvm/temurin-26
+  JAVA_HOME: /usr/lib/jvm/temurin-25
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
-  PATH: /usr/lib/jvm/temurin-26/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+  PATH: /usr/lib/jvm/temurin-25/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin
   SPARK_OPERATOR_HOME: /opt/spark-operator
   SPARK_OPERATOR_JAR: spark-kubernetes-operator.jar
   SPARK_OPERATOR_WORK_DIR: /opt/spark-operator/operator

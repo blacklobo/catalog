@@ -31,7 +31,7 @@ The image preserves upstream environment variables for compatibility:
 
 | Variable                  | Description                            | Default                         | Required |
 | ------------------------- | -------------------------------------- | ------------------------------- | -------- |
-| `JAVA_HOME`               | Java installation directory            | `/usr/lib/jvm/temurin-26`       | No       |
+| `JAVA_HOME`               | Java installation directory            | `/usr/lib/jvm/temurin-25`       | No       |
 | `SPARK_OPERATOR_HOME`     | Operator installation root             | `/opt/spark-operator`           | No       |
 | `SPARK_OPERATOR_WORK_DIR` | Working directory for the operator JAR | `/opt/spark-operator/operator`  | No       |
 | `SPARK_OPERATOR_JAR`      | Operator JAR filename in the work dir  | `spark-kubernetes-operator.jar` | No       |
