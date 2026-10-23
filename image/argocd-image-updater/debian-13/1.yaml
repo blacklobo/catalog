@@ -19,21 +19,21 @@ platforms:
 dates:
   release: "2025-12-15"
 vars:
-  AWSCLI_REFERENCE: dhi/awscli:2.38.1-debian13@sha256:20f28e2f05af09d74d5051fea1d93753daf84a6c2377ce3a9f98f716eb645a5e
-  AWSCLI_VERSION: 2.38.1
+  AWSCLI_REFERENCE: dhi/awscli:2.38.2-debian13@sha256:abcb43a0017c638aeb767a8f533e786a56fa14f06de596cb7ea1ab3141ae13d4
+  AWSCLI_VERSION: 2.38.2
   FLAVORED_SUFFIX: ""
   SEMVER_MAJOR_MINOR_VERSION: "1.3"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.3.1
   SUFFIX: ""
-  VERSION: 1.3.1-2
+  VERSION: 1.3.1-3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
   keyring:
     - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
-    - argocd-image-updater=1.3.1-2
+    - argocd-image-updater=1.3.1-3
     - base-files
     - ca-certificates
     - ca-certificates-bundle
@@ -45,7 +45,7 @@ contents:
     - tini
     - tzdata
   artifacts:
-    - name: dhi.io/awscli:2.38.1-debian13@sha256:20f28e2f05af09d74d5051fea1d93753daf84a6c2377ce3a9f98f716eb645a5e
+    - name: dhi.io/awscli:2.38.2-debian13@sha256:abcb43a0017c638aeb767a8f533e786a56fa14f06de596cb7ea1ab3141ae13d4
       includes:
         - opt/aws-cli
         - opt/docker/sbom/awscli
@@ -73,7 +73,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /app
 environment:
-  AWS_CLI_VERSION: 2.38.1
+  AWS_CLI_VERSION: 2.38.2
   PATH: /opt/aws-cli/bin:/usr/sbin:/sbin:/usr/bin:/bin
 paths:
   - type: directory
