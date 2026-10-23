@@ -45,7 +45,7 @@
   },
   {
     "package": "dompurify",
-    "version": "3.4.16",
+    "version": "3.4.17",
     "removeLockfileEntries": [
       "node_modules/dompurify"
     ]
