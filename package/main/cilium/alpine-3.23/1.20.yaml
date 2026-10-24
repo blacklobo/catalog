@@ -3,17 +3,17 @@
 image: dhi.io/pkg-cilium
 variant: runtime
 tags:
-  - 1.20.3-alpine3.23
-  - 1.20.3-r2-alpine3.23
+  - 1.20.4-alpine3.23
+  - 1.20.4-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-07-29"
 vars:
-  CILIUM_ENVOY_SHA: 00e749f11f69334c625e53fc1ce2fc6c7f34a51f
+  CILIUM_ENVOY_SHA: 8c73b2816bc8239e27f1fd53b271884688137459
   CNI_VERSION: 1.9.1-r9
-  COMMIT_SHA: bf1aba7b34ab6d9c711315d78d8eefbea81962d1
+  COMMIT_SHA: beb276d2f38d4aadfda14710acf8d14a0f1ba723
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
   IPTABLES_WRAPPER_COMMIT_SHA: bfef9e5087a198b50a4124bb9ce9d2c7c99025dd
@@ -22,11 +22,11 @@ vars:
   PROTOC_GEN_GO_GRPC_VERSION: 1.5.1
   PROTOC_GEN_GO_JSON_VERSION: 1.5.0
   PROTOC_GEN_GO_VERSION: 1.36.10
-  REL: "2"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.20.3
-  VERSION: 1.20.3
+  SEMVER_VERSION: 1.20.4
+  VERSION: 1.20.4
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -51,15 +51,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/cilium/cilium.git#v1.20.3
-            checksum: bf1aba7b34ab6d9c711315d78d8eefbea81962d1
+          - url: git+https://github.com/cilium/cilium.git#v1.20.4
+            checksum: beb276d2f38d4aadfda14710acf8d14a0f1ba723
             path: /go/src/github.com/cilium/cilium
             spdx:
               name: cilium
-              version: 1.20.3
+              version: 1.20.4
               packages:
                 - name: cilium
-                  purl: pkg:golang/github.com/cilium/cilium@1.20.3
+                  purl: pkg:golang/github.com/cilium/cilium@1.20.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -120,9 +120,9 @@ contents:
             license: Apache-2.0
             name: cilium-1.20-libs
             priority: optional
-            rel: 2
+            rel: 0
             url: https://github.com/cilium/cilium
-            version: 1.20.3
+            version: 1.20.4
     - name: cilium-1.20
       work-dir: /go/src/github.com/cilium/cilium
       contents:
@@ -134,15 +134,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/cilium/cilium.git#v1.20.3
-            checksum: bf1aba7b34ab6d9c711315d78d8eefbea81962d1
+          - url: git+https://github.com/cilium/cilium.git#v1.20.4
+            checksum: beb276d2f38d4aadfda14710acf8d14a0f1ba723
             path: /go/src/github.com/cilium/cilium
             spdx:
               name: cilium
-              version: 1.20.3
+              version: 1.20.4
               packages:
                 - name: cilium
-                  purl: pkg:golang/github.com/cilium/cilium@1.20.3
+                  purl: pkg:golang/github.com/cilium/cilium@1.20.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -175,8 +175,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
-              - -X github.com/cilium/cilium/pkg/envoy.requiredEnvoyVersionSHA=00e749f11f69334c625e53fc1ce2fc6c7f34a51f
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
+              - -X github.com/cilium/cilium/pkg/envoy.requiredEnvoyVersionSHA=8c73b2816bc8239e27f1fd53b271884688137459
             output: ${target.dir}/usr/bin/cilium-agent
             packages: ./daemon
             tags: osusergo
@@ -185,8 +185,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
-              - -X github.com/cilium/cilium/pkg/envoy.requiredEnvoyVersionSHA=00e749f11f69334c625e53fc1ce2fc6c7f34a51f
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
+              - -X github.com/cilium/cilium/pkg/envoy.requiredEnvoyVersionSHA=8c73b2816bc8239e27f1fd53b271884688137459
             output: ${target.dir}/usr/bin/cilium-agent-dev
             packages: ./daemon
             strip: false
@@ -196,7 +196,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-dbg
             packages: ./cilium-dbg
             tags: osusergo
@@ -205,7 +205,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-dbg-dev
             packages: ./cilium-dbg
             strip: false
@@ -215,7 +215,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-health
             packages: ./cilium-health
             tags: osusergo
@@ -224,7 +224,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-health-dev
             packages: ./cilium-health
             strip: false
@@ -234,7 +234,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-health-responder
             packages: ./cilium-health/responder
             tags: osusergo
@@ -243,7 +243,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-health-responder-dev
             packages: ./cilium-health/responder
             strip: false
@@ -253,7 +253,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-bugtool
             packages: ./bugtool
             tags: osusergo
@@ -262,7 +262,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-bugtool-dev
             packages: ./bugtool
             strip: false
@@ -272,7 +272,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-mount
             packages: ./tools/mount
             tags: osusergo
@@ -281,7 +281,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-mount-dev
             packages: ./tools/mount
             strip: false
@@ -291,7 +291,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/hubble
             packages: ./hubble
             tags: osusergo
@@ -300,7 +300,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/hubble-dev
             packages: ./hubble
             strip: false
@@ -310,7 +310,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-sysctlfix
             packages: ./tools/sysctlfix
             tags: osusergo
@@ -319,7 +319,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/usr/bin/cilium-sysctlfix-dev
             packages: ./tools/sysctlfix
             strip: false
@@ -329,7 +329,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/opt/cni/bin/cilium-cni
             packages: ./plugins/cilium-cni
             tags: osusergo
@@ -338,7 +338,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
             output: ${target.dir}/opt/cni/bin/cilium-cni-dev
             packages: ./plugins/cilium-cni
             strip: false
@@ -348,8 +348,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
-              - -X github.com/cilium/cilium/pkg/envoy.requiredEnvoyVersionSHA=00e749f11f69334c625e53fc1ce2fc6c7f34a51f
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
+              - -X github.com/cilium/cilium/pkg/envoy.requiredEnvoyVersionSHA=8c73b2816bc8239e27f1fd53b271884688137459
             output: ${target.dir}/usr/bin/cilium-envoy-bootstrap-locality
             packages: ./tools/envoy-bootstrap-locality
             tags: osusergo
@@ -358,8 +358,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.3
-              - -X github.com/cilium/cilium/pkg/envoy.requiredEnvoyVersionSHA=00e749f11f69334c625e53fc1ce2fc6c7f34a51f
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.4
+              - -X github.com/cilium/cilium/pkg/envoy.requiredEnvoyVersionSHA=8c73b2816bc8239e27f1fd53b271884688137459
             output: ${target.dir}/usr/bin/cilium-envoy-bootstrap-locality-dev
             packages: ./tools/envoy-bootstrap-locality
             strip: false
@@ -387,7 +387,7 @@ contents:
             license: Apache-2.0
             name: cilium-1.20
             priority: optional
-            rel: 2
+            rel: 0
             subpackages:
               - deb:
                   depends:
@@ -415,7 +415,7 @@ contents:
                     source: usr/bin/cilium-envoy-bootstrap-locality-dev
                 name: cilium-1.20-dev
             url: https://github.com/cilium/cilium
-            version: 1.20.3
+            version: 1.20.4
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
