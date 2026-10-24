@@ -16,8 +16,8 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:d19dc67b261a29bb3925a5d01d356047e40936d5609cd841b63eb86112d42a5f
-  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13@sha256:5bd4fc5a4a785ff3d8e74269bac44ccba5fcffa3743a96ddcc7010e3a33a3bbf
-  METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:0c5cec1b11ec81e19df35de2fa9af62d4414364ba00e53f4bf18578238bed13b
+  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13@sha256:73737d1a5ce167764292ddac0fed116a587721d6f56fcd233a12f6128e877c47
+  METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:27e5f4427cd9e65d43b4fd513eac4c6918118b5729c88dd52b2fb56ebe8f865c
   SEMVER_MAJOR_MINOR_VERSION: "5.1"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.1.0
@@ -55,7 +55,7 @@ contents:
                 - alias: metrics-server
                   condition: metrics-server.enabled
                   name: metrics-server
-                  ref: dhi/metrics-server-chart:3.14.0@sha256:0c5cec1b11ec81e19df35de2fa9af62d4414364ba00e53f4bf18578238bed13b
+                  ref: dhi/metrics-server-chart:3.14.0@sha256:27e5f4427cd9e65d43b4fd513eac4c6918118b5729c88dd52b2fb56ebe8f865c
               description: Docker Hardened Images Helm chart for Fairwinds VPA
               images:
                 - name: vpa-admission-controller
@@ -67,7 +67,7 @@ contents:
                 - name: kube-webhook-certgen
                   ref: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:d19dc67b261a29bb3925a5d01d356047e40936d5609cd841b63eb86112d42a5f
                 - name: kubectl
-                  ref: dhi/kubectl:1.35.9-debian13@sha256:5bd4fc5a4a785ff3d8e74269bac44ccba5fcffa3743a96ddcc7010e3a33a3bbf
+                  ref: dhi/kubectl:1.35.9-debian13@sha256:73737d1a5ce167764292ddac0fed116a587721d6f56fcd233a12f6128e877c47
               name: fairwinds-vpa-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/FairwindsOps/charts
