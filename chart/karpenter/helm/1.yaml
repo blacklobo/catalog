@@ -4,22 +4,22 @@ name: Karpenter Helm chart 1.x
 image: dhi.io/karpenter-chart
 variant: helm
 tags:
-  - 1.15.0
+  - 1.15.1
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: b2896451034b61e8641b8b891e4a0f10d905608f
+  CHART_COMMIT_SHA: 2b6449d0a2d8eec32df41b36eb292e76359dfe1e
   CHART_HELM_NAME: karpenter-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KARPENTER_REFERENCE: dhi/karpenter:1.15.0-debian13@sha256:f7d636f7ef7483f6b44c9e6fedc47843061090db557b5ba666b732bbcc30c643
+  KARPENTER_REFERENCE: dhi/karpenter:1.15.0-debian13@sha256:efbee9abc2327452037cc9693927e6f553d4cbf84ee8a0ce915a2c5c0969aeb4
   SEMVER_MAJOR_MINOR_VERSION: "1.15"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.15.0
-  VERSION: 1.15.0
+  SEMVER_VERSION: 1.15.1
+  VERSION: 1.15.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -34,8 +34,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/aws/karpenter-provider-aws.git#v1.15.0
-            checksum: b2896451034b61e8641b8b891e4a0f10d905608f
+          - url: git+https://github.com/aws/karpenter-provider-aws.git#v1.15.1
+            checksum: 2b6449d0a2d8eec32df41b36eb292e76359dfe1e
             path: ${source.dir}/karpenter-repo
             uid: 0
             gid: 0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Karpenter
               images:
                 - name: karpenter
-                  ref: dhi/karpenter:1.15.0-debian13@sha256:f7d636f7ef7483f6b44c9e6fedc47843061090db557b5ba666b732bbcc30c643
+                  ref: dhi/karpenter:1.15.0-debian13@sha256:efbee9abc2327452037cc9693927e6f553d4cbf84ee8a0ce915a2c5c0969aeb4
               name: karpenter-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/aws/karpenter-provider-aws
