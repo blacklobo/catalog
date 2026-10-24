@@ -1,0 +1,168 @@
+# syntax=dhi.io/build:2-alpine3.24
+
+image: dhi.io/pkg-linkerd-network-validator
+variant: runtime
+tags:
+  - 0.1.9-alpine3.24
+  - 0.1.9-r0-alpine3.24
+platforms:
+  - linux/amd64
+  - linux/arm64
+vars:
+  CARGO_VERSION: 1.96.1-r0
+  COMMIT_SHA: 2753485ad694588c12b44406d7734f9f8e8c834d
+  EDGE_VERSION: 26.10.1
+  LIBGCC_VERSION: 15.2.0-r7
+  MUSL_VERSION: 1.2.6-r2
+  PACKAGE_NAME: linkerd-network-validator-0
+  PINNED_VERSION: 0.1.9
+  REL: "0"
+  RUST_VERSION: 1.96.1-r0
+  SEMVER_MAJOR_MINOR_VERSION: "0.1"
+  SEMVER_MAJOR_VERSION: "0"
+  SEMVER_VERSION: 0.1.9
+  VERSION: 0.1.9
+contents:
+  repositories:
+    - https://dhi.io/apk/alpine/v3.24/main
+    - https://dhi.io/apk/alpine/v3.23/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.24/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.24/community
+  keyring:
+    - https://dhi.io/keyring/dhi-apk@docker-0F81AD7700D99184.rsa.pub
+  packages:
+    - alpine-baselayout-data
+  builds:
+    - name: linkerd-network-validator-0
+      work-dir: ${source.dir}/linkerd2-proxy-init
+      caches:
+        - path: /root/.cargo
+      contents:
+        packages:
+          - binutils
+          - busybox
+          - bash
+          - ca-certificates-bundle
+          - cargo=1.96.1-r0
+          - gcc
+          - libgcc=15.2.0-r7
+          - musl-dev=1.2.6-r2
+          - rust=1.96.1-r0
+        files:
+          - url: git+https://github.com/linkerd/linkerd2-proxy-init.git#validator/v0.1.9
+            checksum: 2753485ad694588c12b44406d7734f9f8e8c834d
+            path: ${source.dir}/linkerd2-proxy-init
+            spdx:
+              name: linkerd2-proxy-init
+              version: 0.1.9
+              packages:
+                - name: linkerd-network-validator
+                  purl: pkg:github/linkerd/linkerd2-proxy-init@validator%2Fv0.1.9
+                  license: Apache-2.0
+            uid: 0
+            gid: 0
+      pipeline:
+        - name: update cargo dependencies
+          privileged: true
+          runs: |
+            set -eux -o pipefail
+
+            raise_to() {
+              spec=$(cargo pkgid "$1@$3" 2> /dev/null) || return 0
+              locked=${spec##*[#@]}
+              if [ "$locked" != "$2" ] && [ "$(printf '%s\n%s\n' "$locked" "$2" | sort -V | head -n 1)" = "$locked" ]; then
+                cargo update -p "$1@$locked" --precise "$2"
+              fi
+            }
+
+            raise_to rand 0.9.3 0.9
+            raise_to anyhow 1.0.103 1
+            raise_to tokio 1.53.3 1
+        - name: scope lockfile to validator
+          privileged: true
+          runs: |
+            set -eux -o pipefail
+
+            scope="${source.dir}/validator-sbom"
+            mkdir -p "$scope"
+            cp -a validator "$scope/validator"
+            cp Cargo.lock "$scope/Cargo.lock"
+            printf '[workspace]\nmembers = ["validator"]\n' > "$scope/Cargo.toml"
+            cd "$scope"
+            cargo metadata --format-version 1 > /dev/null
+        - name: cargo sbom
+          uses: sbom@v1
+          with:
+            extra-scanners: rust-cargo-lock-cataloger
+            prefix: linkerd-network-validator-cargo
+            source: ${source.dir}/validator-sbom
+        - name: test
+          privileged: true
+          environment:
+            RUSTFLAGS: -C target-feature=+crt-static
+          runs: |
+            set -eux -o pipefail
+
+            rust_target=$(rustc -vV | sed -n 's/^host: //p')
+            cargo test --release --locked --package linkerd-network-validator --target "$rust_target"
+        - name: build
+          privileged: true
+          environment:
+            RUSTFLAGS: -C target-feature=+crt-static
+          runs: |
+            set -eux -o pipefail
+
+            rust_target=$(rustc -vV | sed -n 's/^host: //p')
+            cargo build --release --locked --package linkerd-network-validator --target "$rust_target"
+            install -D -m 755 "target/$rust_target/release/linkerd-network-validator" "${target.dir}/usr/bin/linkerd-network-validator-dev"
+            install -D -m 755 "target/$rust_target/release/linkerd-network-validator" "${target.dir}/usr/bin/linkerd-network-validator"
+            strip --strip-unneeded "${target.dir}/usr/bin/linkerd-network-validator"
+        - name: verify bundled libgcc version
+          privileged: true
+          runs: |
+            set -eux -o pipefail
+
+            rust_target=$(rustc -vV | sed -n 's/^host: //p')
+            libgcc_version=15.2.0-r7
+            gcc_version=${libgcc_version%-r*}
+            readelf -p .comment "target/$rust_target/release/linkerd-network-validator" | grep -qF "GCC: (Alpine $gcc_version) $gcc_version"
+        - uses: spdx@v1
+          with:
+            license: GPL-2.0-or-later AND LGPL-2.1-or-later
+            name: libgcc
+            purl: pkg:apk/alpine/libgcc@15.2.0-r7?os_name=alpine&os_version=3.24
+            version: 15.2.0-r7
+        - uses: spdx@v1
+          with:
+            license: MIT
+            name: musl
+            purl: pkg:apk/alpine/musl@1.2.6-r2?os_name=alpine&os_version=3.24
+            version: 1.2.6-r2
+        - uses: spdx@v1
+          with:
+            license: Apache-2.0 OR MIT
+            name: rust-std
+            purl: pkg:apk/alpine/rust@1.96.1-r0?os_name=alpine&os_version=3.24
+            version: 1.96.1-r0
+        - uses: dhi/build-pkg:0
+          with:
+            description: Linkerd network validator that checks pod traffic redirection before the Linkerd proxy starts
+            files:
+              - usr/bin/linkerd-network-validator
+            license: Apache-2.0
+            name: linkerd-network-validator-0
+            rel: 0
+            subpackages:
+              - files:
+                  - path: usr/bin/linkerd-network-validator
+                    source: usr/bin/linkerd-network-validator-dev
+                name: linkerd-network-validator-0-dev
+            url: https://github.com/linkerd/linkerd2-proxy-init
+            version: 0.1.9
+os-release:
+  name: Docker Hardened Images (Alpine)
+  id: alpine
+  version-id: "3.24"
+  pretty-name: Docker Hardened Images/Alpine Linux v3.24
+  home-url: https://docker.com/products/hardened-images/
+  bug-report-url: https://docker.com/support/
