@@ -4,11 +4,11 @@ name: AWS Load Balancer Controller Helm chart 3.x
 image: dhi.io/aws-load-balancer-controller-chart
 variant: helm
 tags:
-  - 3.6.0
+  - 3.6.1
 platforms:
   - linux/amd64
 vars:
-  AWS_LOAD_BALANCER_CONTROLLER_REFERENCE: dhi/aws-load-balancer-controller:3.6.0-debian13@sha256:207256fe6d490a07c33095af24aa52ecef21112a5b5b5635577e3efb8cdd43ec
+  AWS_LOAD_BALANCER_CONTROLLER_REFERENCE: dhi/aws-load-balancer-controller:3.6.1-debian13@sha256:f8ce02630b8a4efbdeae8747673f2ff18b3732dbb259640ca663cef5cdc1c513
   CHART_COMMIT_SHA: 6ac4298e0914603f25540dccd0c6e56f0ee81bcc
   CHART_HELM_NAME: aws-load-balancer-controller-chart
   DHI_NAMESPACE: dhi
@@ -18,8 +18,8 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "3.6"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.6.0
-  VERSION: 3.6.0
+  SEMVER_VERSION: 3.6.1
+  VERSION: 3.6.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for AWS Load Balancer Controller
               images:
                 - name: aws-load-balancer-controller
-                  ref: dhi/aws-load-balancer-controller:3.6.0-debian13@sha256:207256fe6d490a07c33095af24aa52ecef21112a5b5b5635577e3efb8cdd43ec
+                  ref: dhi/aws-load-balancer-controller:3.6.1-debian13@sha256:f8ce02630b8a4efbdeae8747673f2ff18b3732dbb259640ca663cef5cdc1c513
               name: aws-load-balancer-controller-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
