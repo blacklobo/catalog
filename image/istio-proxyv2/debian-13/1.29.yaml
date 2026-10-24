@@ -18,7 +18,7 @@ dates:
   end-of-life: "2026-10-12"
 vars:
   BAZEL_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
-  BAZEL_VERSION: 7.7.1
+  BAZEL_VERSION: 7.7.2
   COMMIT_SHA: cca610c61900bd48b5a7b3ee3d8af19ff265c495
   ISTIO_PROXY_SHA: 6d807371331491b1ba0742bb02cefc7c4db36cd6
   SEMVER_MAJOR_MINOR_VERSION: "1.29"
@@ -102,8 +102,8 @@ contents:
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: https://github.com/bazelbuild/bazel/releases/download/7.7.1/bazel-7.7.1-linux-${BAZEL_ARCH}
-            checksum: https://github.com/bazelbuild/bazel/releases/download/7.7.1/bazel-7.7.1-linux-${BAZEL_ARCH}.sha256
+          - url: https://github.com/bazelbuild/bazel/releases/download/7.7.2/bazel-7.7.2-linux-${BAZEL_ARCH}
+            checksum: https://github.com/bazelbuild/bazel/releases/download/7.7.2/bazel-7.7.2-linux-${BAZEL_ARCH}.sha256
             path: /opt/bazel/bin/bazel
             uid: 0
             gid: 0
