@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BLACKBOX_EXPORTER_REFERENCE: dhi/blackbox-exporter:0.29.0-debian13@sha256:2fa05bd783f718f3e23f0ad4e6dcd15f1bfe70cf968a24ce2c0335312c48d4a9
+  BLACKBOX_EXPORTER_REFERENCE: dhi/blackbox-exporter:0.29.0-debian13@sha256:f20550e9cccfb3ea0ec38cabafe9afb8942485df0c5757eb6438263cfc99f481
   CHART_COMMIT_SHA: 2a440c56b24b0d71a7e68a43c974dc549c0fb1ca
   CHART_HELM_NAME: blackbox-exporter-chart
   DHI_NAMESPACE: dhi
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus Blackbox Exporter
               images:
                 - name: blackbox-exporter
-                  ref: dhi/blackbox-exporter:0.29.0-debian13@sha256:2fa05bd783f718f3e23f0ad4e6dcd15f1bfe70cf968a24ce2c0335312c48d4a9
+                  ref: dhi/blackbox-exporter:0.29.0-debian13@sha256:f20550e9cccfb3ea0ec38cabafe9afb8942485df0c5757eb6438263cfc99f481
                 - name: prometheus-config-reloader
                   ref: dhi/prometheus-config-reloader:0.94.2-debian13@sha256:498bade5fe56c6fa3b410425080342d7247617392d7183f799514e2c13f076d4
               name: blackbox-exporter-chart
