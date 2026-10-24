@@ -3,8 +3,8 @@
 image: dhi.io/pkg-opentelemetry-operator
 variant: runtime
 tags:
-  - 0.161.0-alpine3.24
-  - 0.161.0-r0-alpine3.24
+  - 0.162.0-alpine3.24
+  - 0.162.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,19 +14,19 @@ vars:
   AUTOINSTRUMENTATION_GO_VERSION: v0.24.0
   AUTOINSTRUMENTATION_JAVA_VERSION: 2.32.0
   AUTOINSTRUMENTATION_NGINX_VERSION: 1.0.4
-  AUTOINSTRUMENTATION_NODEJS_VERSION: 0.78.0
+  AUTOINSTRUMENTATION_NODEJS_VERSION: 0.82.0-1
   AUTOINSTRUMENTATION_PYTHON_VERSION: 0.66b1
-  COLLECTOR_VERSION: 0.161.0
-  COMMIT_SHA: f3bd3660c30ec57f60b0e9706a14507b747bceb4
+  COLLECTOR_VERSION: 0.162.0
+  COMMIT_SHA: 989089bf5c75d78fdc6004147f97d972fc436bd4
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  OPERATOR_OPAMP_BRIDGE_VERSION: 0.161.0
+  OPERATOR_OPAMP_BRIDGE_VERSION: 0.162.0
   REL: "0"
-  SEMVER_MAJOR_MINOR_VERSION: "0.161"
+  SEMVER_MAJOR_MINOR_VERSION: "0.162"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.161.0
-  TARGET_ALLOCATOR_VERSION: 0.161.0
-  VERSION: 0.161.0
-  VERSION_MAJOR_MINOR: "0.161"
+  SEMVER_VERSION: 0.162.0
+  TARGET_ALLOCATOR_VERSION: 0.162.0
+  VERSION: 0.162.0
+  VERSION_MAJOR_MINOR: "0.162"
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -52,15 +52,15 @@ contents:
           - golang-1.26
           - golang-1.26-oci-config
         files:
-          - url: git+https://github.com/open-telemetry/opentelemetry-operator.git#v0.161.0
-            checksum: f3bd3660c30ec57f60b0e9706a14507b747bceb4
+          - url: git+https://github.com/open-telemetry/opentelemetry-operator.git#v0.162.0
+            checksum: 989089bf5c75d78fdc6004147f97d972fc436bd4
             path: /go/src/github.com/open-telemetry/opentelemetry-operator
             spdx:
               name: opentelemetry-operator
-              version: 0.161.0
+              version: 0.162.0
               packages:
                 - name: opentelemetry-operator
-                  purl: pkg:golang/open-telemetry/opentelemetry-operator@0.161.0
+                  purl: pkg:golang/open-telemetry/opentelemetry-operator@0.162.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -80,13 +80,13 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.version=0.161.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.version=0.162.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.buildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.otelCol=0.161.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.targetAllocator=0.161.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.operatorOpAMPBridge=0.161.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.otelCol=0.162.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.targetAllocator=0.162.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.operatorOpAMPBridge=0.162.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationJava=2.32.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationNodeJS=0.78.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationNodeJS=0.82.0-1
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationPython=0.66b1
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationDotNet=1.17.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationGo=v0.24.0
@@ -100,13 +100,13 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.version=0.161.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.version=0.162.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.buildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.otelCol=0.161.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.targetAllocator=0.161.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.operatorOpAMPBridge=0.161.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.otelCol=0.162.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.targetAllocator=0.162.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.operatorOpAMPBridge=0.162.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationJava=2.32.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationNodeJS=0.78.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationNodeJS=0.82.0-1
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationPython=0.66b1
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationDotNet=1.17.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationGo=v0.24.0
@@ -151,7 +151,7 @@ contents:
                     source: usr/bin/main-dev
                 name: otel-allocator-dev
             url: https://github.com/open-telemetry/opentelemetry-operator
-            version: 0.161.0
+            version: 0.162.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
