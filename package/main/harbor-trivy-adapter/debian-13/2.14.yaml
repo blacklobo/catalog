@@ -4,28 +4,28 @@ image: dhi.io/pkg-harbor-trivy-adapter
 variant: runtime
 tags:
   - "2.14"
-  - 2.14.5
-  - 2.14.5-r2
+  - 2.14.6
+  - 2.14.6-r0
   - 2.14-debian13
-  - 2.14.5-debian13
-  - 2.14.5-r2-debian13
+  - 2.14.6-debian13
+  - 2.14.6-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-01-15"
 vars:
-  COMMIT_SHA: c83198c6a10c040370df997660eda989965d5a25
+  COMMIT_SHA: f435c95078d017ec48cd185e393a47d1ba4c6e65
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-0
   PACKAGE_NAME: harbor-trivy-adapter-2.14
-  REL: "2"
-  SCANNER_TRIVY_ADAPTER_COMMIT_SHA: f76a65660d4f4897a6c9b445ec91cbd76d685b5e
-  SCANNER_TRIVY_ADAPTER_VERSION: 0.36.0
+  REL: "0"
+  SCANNER_TRIVY_ADAPTER_COMMIT_SHA: 621116160d710931905a221981d3f1583a550af7
+  SCANNER_TRIVY_ADAPTER_VERSION: 0.39.1
   SEMVER_MAJOR_MINOR_VERSION: "2.14"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.14.5
-  VERSION: 2.14.5
+  SEMVER_VERSION: 2.14.6
+  VERSION: 2.14.6
 contents:
   packages:
     - base-files
@@ -49,15 +49,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/goharbor/harbor-scanner-trivy.git#v0.36.0
-            checksum: f76a65660d4f4897a6c9b445ec91cbd76d685b5e
+          - url: git+https://github.com/goharbor/harbor-scanner-trivy.git#v0.39.1
+            checksum: 621116160d710931905a221981d3f1583a550af7
             path: /go/src/github.com/goharbor/harbor-scanner-trivy
             spdx:
               name: harbor-scanner-trivy
-              version: 0.36.0
+              version: 0.39.1
               packages:
                 - name: harbor-scanner-trivy
-                  purl: pkg:golang/github.com/goharbor/harbor-scanner-trivy/cmd/scanner-trivy@0.36.0
+                  purl: pkg:golang/github.com/goharbor/harbor-scanner-trivy/cmd/scanner-trivy@0.39.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -66,7 +66,6 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/crypto@v0.52.0
               - golang.org/x/mod@v0.40.0
               - github.com/containerd/containerd@v1.7.32
               - github.com/docker/docker@v28.0.0+incompatible
@@ -82,8 +81,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.version=0.36.0
-              - -X main.commit=f76a65660d4f4897a6c9b445ec91cbd76d685b5e
+              - -X main.version=0.39.1
+              - -X main.commit=621116160d710931905a221981d3f1583a550af7
               - -X main.date=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/scanner-trivy
             packages: ./cmd/scanner-trivy
@@ -92,8 +91,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X main.version=0.36.0
-              - -X main.commit=f76a65660d4f4897a6c9b445ec91cbd76d685b5e
+              - -X main.version=0.39.1
+              - -X main.commit=621116160d710931905a221981d3f1583a550af7
               - -X main.date=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/scanner-trivy-dev
             packages: ./cmd/scanner-trivy
@@ -108,14 +107,14 @@ contents:
               - deb
             license: Apache-2.0
             name: harbor-trivy-adapter-2.14
-            rel: 2
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/scanner-trivy
                     source: usr/bin/scanner-trivy-dev
                 name: harbor-trivy-adapter-2.14-dev
             url: https://goharbor.io/
-            version: 2.14.5
+            version: 2.14.6
       paths:
         - type: file
           path: /go/src/github.com/goharbor/harbor-scanner-trivy/pkg/trivy/target_auth_test.go
