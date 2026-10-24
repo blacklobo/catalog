@@ -4,7 +4,7 @@ image: dhi.io/pkg-confluent-docker-utils
 variant: runtime
 tags:
   - 0.0.172-alpine3.24
-  - 0.0.172-r15-alpine3.24
+  - 0.0.172-r16-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,8 +12,8 @@ vars:
   COMMIT_SHA: 0bc1c0d549cf3bf5dc9f269b3d6bb8d286d5201f
   PACKAGE_NAME: confluent-docker-utils
   PYTHON_MINOR: "3.13"
-  PYTHON_VERSION: 3.13.16-r1
-  REL: "15"
+  PYTHON_VERSION: 3.13.17-r0
+  REL: "16"
   SEMVER_MAJOR_MINOR_VERSION: "0.0"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.0.172
@@ -42,7 +42,7 @@ contents:
           - git
           - grep
           - gzip
-          - python-3.13=3.13.16-r1
+          - python-3.13=3.13.17-r0
           - sed
           - tar
         files:
@@ -107,7 +107,7 @@ contents:
               - apk
             license: Apache-2.0
             name: confluent-docker-utils
-            rel: 15
+            rel: 16
             url: https://github.com/confluentinc/confluent-docker-utils
             version: 0.0.172
       paths:
