@@ -11,7 +11,7 @@ vars:
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-alpine3.22@sha256:673be683cc7fd876518c6d3959643dfa343ef22a8e8c0ba4176e47a98c47e3c4
   CHART_COMMIT_SHA: be2049051fbd157af51d38e2c13ad88e17707f5c
   CHART_HELM_NAME: fluent-bit-chart
-  CONFIGMAP_RELOAD_REFERENCE: dhi/configmap-reload:0.15.0-debian13@sha256:ffd8eb61cf347896d616097524a18451ec38f4f0fced3e98b508d39f77338448
+  CONFIGMAP_RELOAD_REFERENCE: dhi/configmap-reload:0.15.0-debian13@sha256:69ff2a092eb80d7e58459a03bb4b6730de42b3ad2d21ed9278e34e35dcd87a3c
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -53,7 +53,7 @@ contents:
                 - name: fluent-bit
                   ref: dhi/fluent-bit:4.2.6-debian13@sha256:1c6ce8eced0badae09f70e233f1ae75d2a31ac80df9a2b00aa89c42fb54dce48
                 - name: configmap-reload
-                  ref: dhi/configmap-reload:0.15.0-debian13@sha256:ffd8eb61cf347896d616097524a18451ec38f4f0fced3e98b508d39f77338448
+                  ref: dhi/configmap-reload:0.15.0-debian13@sha256:69ff2a092eb80d7e58459a03bb4b6730de42b3ad2d21ed9278e34e35dcd87a3c
                 - name: busybox
                   ref: dhi/busybox:1.37.0-alpine3.22@sha256:673be683cc7fd876518c6d3959643dfa343ef22a8e8c0ba4176e47a98c47e3c4
               name: fluent-bit-chart
