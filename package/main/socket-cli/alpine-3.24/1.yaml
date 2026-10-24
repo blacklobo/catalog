@@ -3,22 +3,22 @@
 image: dhi.io/pkg-socket-cli
 variant: runtime
 tags:
-  - 1.10.0-alpine3.24
-  - 1.10.0-r0-alpine3.24
+  - 1.10.1-alpine3.24
+  - 1.10.1-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-06-13"
 vars:
-  COMMIT_SHA: 437c01d9b2931ca354d14d960ffce995c5ce258b
-  NODEJS_VERSION: 24.22.1-r0
+  COMMIT_SHA: 101238b6e4ba6000107b550846c8cb26b2142e29
+  NODEJS_VERSION: 24.22.1-r1
   PACKAGE_NAME: socket-cli-1
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.10"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.10.0
-  VERSION: 1.10.0
+  SEMVER_VERSION: 1.10.1
+  VERSION: 1.10.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -40,18 +40,18 @@ contents:
           - coreutils
           - corepack
           - git
-          - nodejs-24=24.22.1-r0
+          - nodejs-24=24.22.1-r1
           - openjdk17
         files:
-          - url: git+https://github.com/SocketDev/socket-cli.git#v1.10.0
-            checksum: 437c01d9b2931ca354d14d960ffce995c5ce258b
+          - url: git+https://github.com/SocketDev/socket-cli.git#v1.10.1
+            checksum: 101238b6e4ba6000107b550846c8cb26b2142e29
             path: ${source.dir}/app-src
             spdx:
               name: socket-cli
-              version: 1.10.0
+              version: 1.10.1
               packages:
                 - name: socket
-                  purl: pkg:npm/socket@1.10.0
+                  purl: pkg:npm/socket@1.10.1
                   license: MIT
             uid: 0
             gid: 0
@@ -105,8 +105,8 @@ contents:
           with:
             license: MIT
             name: socket
-            purl: pkg:npm/socket@1.10.0
-            version: 1.10.0
+            purl: pkg:npm/socket@1.10.1
+            version: 1.10.1
         - uses: dhi/build-pkg:0
           with:
             description: Socket CLI (supply-chain security scanning for npm/pnpm/yarn projects)
@@ -116,7 +116,7 @@ contents:
             name: socket-cli-1
             rel: 0
             url: https://github.com/SocketDev/socket-cli
-            version: 1.10.0
+            version: 1.10.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
