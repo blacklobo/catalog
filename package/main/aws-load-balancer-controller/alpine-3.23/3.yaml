@@ -3,23 +3,23 @@
 image: dhi.io/pkg-aws-load-balancer-controller
 variant: runtime
 tags:
-  - 3.6.0-alpine3.23
-  - 3.6.0-r4-alpine3.23
+  - 3.6.1-alpine3.23
+  - 3.6.1-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-01-23"
 vars:
-  COMMIT_SHA: 267b5458b4c4c3066d47673a36dda275af07a6d6
+  COMMIT_SHA: cce96f2c8ae138e85ead0e5efa0d6ad0bde7b11c
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: aws-load-balancer-controller-3
-  REL: "4"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "3.6"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.6.0
-  VERSION: 3.6.0
+  SEMVER_VERSION: 3.6.1
+  VERSION: 3.6.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -40,15 +40,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/kubernetes-sigs/aws-load-balancer-controller.git#267b5458b4c4c3066d47673a36dda275af07a6d6
-            checksum: 267b5458b4c4c3066d47673a36dda275af07a6d6
+          - url: git+https://github.com/kubernetes-sigs/aws-load-balancer-controller.git#cce96f2c8ae138e85ead0e5efa0d6ad0bde7b11c
+            checksum: cce96f2c8ae138e85ead0e5efa0d6ad0bde7b11c
             path: /go/src/sigs.k8s.io/aws-load-balancer-controller
             spdx:
               name: aws-load-balancer-controller
-              version: 3.6.0
+              version: 3.6.1
               packages:
                 - name: aws-load-balancer-controller
-                  purl: pkg:golang/sigs.k8s.io/aws-load-balancer-controller@3.6.0
+                  purl: pkg:golang/sigs.k8s.io/aws-load-balancer-controller@3.6.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -72,8 +72,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.GitVersion=v3.6.0
-              - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.GitCommit=267b5458b4c4c3066d47673a36dda275af07a6d6
+              - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.GitVersion=v3.6.1
+              - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.GitCommit=cce96f2c8ae138e85ead0e5efa0d6ad0bde7b11c
               - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.BuildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/aws-load-balancer-controller
             packages: .
@@ -86,8 +86,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.GitVersion=v3.6.0
-              - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.GitCommit=267b5458b4c4c3066d47673a36dda275af07a6d6
+              - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.GitVersion=v3.6.1
+              - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.GitCommit=cce96f2c8ae138e85ead0e5efa0d6ad0bde7b11c
               - -X sigs.k8s.io/aws-load-balancer-controller/v3/pkg/version.BuildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/aws-load-balancer-controller-dev
             packages: .
@@ -105,7 +105,7 @@ contents:
             name: aws-load-balancer-controller-3
             priority: "200"
             provides: aws-load-balancer-controller=$pkg_full_version
-            rel: 4
+            rel: 0
             replaces: aws-load-balancer-controller
             subpackages:
               - files:
@@ -113,7 +113,7 @@ contents:
                     source: usr/bin/aws-load-balancer-controller-dev
                 name: aws-load-balancer-controller-3-dev
             url: https://github.com/kubernetes-sigs/aws-load-balancer-controller
-            version: 3.6.0
+            version: 3.6.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
