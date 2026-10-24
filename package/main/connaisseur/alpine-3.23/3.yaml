@@ -4,7 +4,7 @@ image: dhi.io/pkg-connaisseur
 variant: runtime
 tags:
   - 3.13.1-alpine3.23
-  - 3.13.1-r1-alpine3.23
+  - 3.13.1-r2-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: a2f917d9060b2b6032b8f251e1c44869adc5c7b5
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.3-r0
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "3.13"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.13.1
@@ -100,7 +100,7 @@ contents:
               - usr/bin/connaisseur
             license: Apache-2.0
             name: connaisseur
-            rel: 1
+            rel: 2
             subpackages:
               - files:
                   - path: usr/bin/connaisseur
