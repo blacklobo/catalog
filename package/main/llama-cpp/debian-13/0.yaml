@@ -4,9 +4,9 @@ image: dhi.io/pkg-llama-cpp
 variant: runtime
 tags:
   - 0.7.0
-  - 0.7.0-r5
+  - 0.7.0-r6
   - 0.7.0-debian13
-  - 0.7.0-r5-debian13
+  - 0.7.0-r6-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,10 +16,10 @@ vars:
   LLAMA_BUILD_NUMBER: "11669"
   LLAMA_TAG_COMMIT_SHA: 620d2225cc436ab0b001e3200e590e3b286ef9ab
   LLAMA_TAG_VERSION: 0.7.0
-  NODEJS_24_VERSION: 24.22.1-0
+  NODEJS_24_VERSION: 24.22.1-1
   NPM_VERSION: 12.2.1-1
   PACKAGE_NAME: llama-cpp-0
-  REL: "5"
+  REL: "6"
   SEMVER_MAJOR_MINOR_VERSION: "0.7"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.7.0
@@ -48,7 +48,7 @@ contents:
           - jq
           - sed
           - libssl-dev
-          - nodejs-24=24.22.1-0
+          - nodejs-24=24.22.1-1
           - npm-12=12.2.1-1
           - pkgconf
         files:
@@ -361,7 +361,7 @@ contents:
               - deb
             license: MIT
             name: llama-cpp-0
-            rel: 5
+            rel: 6
             url: https://github.com/ggml-org/llama.cpp
             version: 0.7.0
       paths:
