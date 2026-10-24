@@ -206,28 +206,28 @@
   },
   {
     "package": "body-parser",
-    "version": "1.20.6",
+    "version": "1.20.9",
     "resolutions": [
       "**/body-parser"
     ]
   },
   {
     "package": "fast-uri",
-    "version": "3.1.8",
+    "version": "3.1.9",
     "resolutions": [
       "**/fast-uri"
     ]
   },
   {
     "package": "undici",
-    "version": "6.28.1",
+    "version": "6.29.1",
     "resolutions": [
       "**/undici"
     ]
   },
   {
     "package": "ip-address",
-    "version": "10.7.1",
+    "version": "10.7.4",
     "resolutions": [
       "**/ip-address"
     ]
@@ -246,11 +246,11 @@
   },
   {
     "package": "dompurify",
-    "version": "3.4.16"
+    "version": "3.4.17"
   },
   {
     "package": "dompurify",
-    "version": "3.4.16",
+    "version": "3.4.17",
     "resolutions": [
       "**/dompurify"
     ]
@@ -290,7 +290,7 @@
   },
   {
     "package": "qs",
-    "version": "6.16.0",
+    "version": "6.16.1",
     "resolutions": [
       "**/qs"
     ]
@@ -318,7 +318,7 @@
   },
   {
     "package": "stream-json",
-    "version": "3.6.0",
+    "version": "3.7.0",
     "resolutions": [
       "**/stream-json"
     ]
