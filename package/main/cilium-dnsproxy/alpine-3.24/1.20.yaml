@@ -3,22 +3,22 @@
 image: dhi.io/pkg-cilium-dnsproxy
 variant: runtime
 tags:
-  - 1.20.3-alpine3.24
-  - 1.20.3-r1-alpine3.24
+  - 1.20.4-alpine3.24
+  - 1.20.4-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-07-29"
 vars:
-  COMMIT_SHA: bf1aba7b34ab6d9c711315d78d8eefbea81962d1
+  COMMIT_SHA: beb276d2f38d4aadfda14710acf8d14a0f1ba723
   GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: cilium-dnsproxy
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.20.3
-  VERSION: 1.20.3
+  SEMVER_VERSION: 1.20.4
+  VERSION: 1.20.4
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -40,15 +40,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/cilium/cilium.git#v1.20.3
-            checksum: bf1aba7b34ab6d9c711315d78d8eefbea81962d1
+          - url: git+https://github.com/cilium/cilium.git#v1.20.4
+            checksum: beb276d2f38d4aadfda14710acf8d14a0f1ba723
             path: /go/src/github.com/cilium/cilium
             spdx:
               name: cilium-dnsproxy
-              version: 1.20.3
+              version: 1.20.4
               packages:
                 - name: cilium-dnsproxy
-                  purl: pkg:golang/github.com/cilium/cilium@1.20.3
+                  purl: pkg:golang/github.com/cilium/cilium@1.20.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -68,7 +68,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=v1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=v1.20.4
             output: ${target.dir}/usr/bin/standalone-dns-proxy
             packages: ./standalone-dns-proxy/
         - name: build dev
@@ -76,7 +76,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=v1.20.3
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=v1.20.4
             output: ${target.dir}/usr/bin/standalone-dns-proxy-dev
             packages: ./standalone-dns-proxy/
             strip: false
@@ -87,14 +87,14 @@ contents:
               - usr/bin/standalone-dns-proxy
             license: Apache-2.0
             name: cilium-dnsproxy
-            rel: 1
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/standalone-dns-proxy
                     source: usr/bin/standalone-dns-proxy-dev
                 name: cilium-dnsproxy-dev
             url: https://docs.cilium.io/en/stable/security/standalone-dns-proxy/
-            version: 1.20.3
+            version: 1.20.4
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
