@@ -5,7 +5,7 @@ image: dhi.io/python
 variant: dev
 tags:
   - 3.13-debian12-dev
-  - 3.13.16-debian12-dev
+  - 3.13.17-debian12-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,11 +14,11 @@ dates:
   end-of-life: "2029-10-31"
 vars:
   BINUTILS_REFERENCE: dhi/pkg-binutils:2.46-debian12@sha256:422c289e706828133bb706ecedc773b35c094571bebc09815d7e838b1498ad53
-  PKG_PYTHON_REFERENCE: dhi/pkg-python:3.13.16-debian12@sha256:6188ed58db71e3066d8fc09ec207cffd7f53234114aa1f5777a7c02694675a7a
+  PKG_PYTHON_REFERENCE: dhi/pkg-python:3.13.17-debian12@sha256:d8e7e8f014cc5ca0af46ae178fe34fd510010a9a2843fb7bea188e822e3e59c7
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
   PYTHON_MAJOR_VERSION: "3"
-  PYTHON_VERSION: 3.13.16
-  VERSION: 3.13.16
+  PYTHON_VERSION: 3.13.17
+  VERSION: 3.13.17
 contents:
   packages:
     - '!binutils'
@@ -66,7 +66,7 @@ contents:
     - util-linux
     - zlib1g
   artifacts:
-    - name: dhi.io/pkg-python:3.13.16-debian12@sha256:6188ed58db71e3066d8fc09ec207cffd7f53234114aa1f5777a7c02694675a7a
+    - name: dhi.io/pkg-python:3.13.17-debian12@sha256:d8e7e8f014cc5ca0af46ae178fe34fd510010a9a2843fb7bea188e822e3e59c7
       includes:
         - opt/**
       uid: 0
@@ -106,7 +106,7 @@ environment:
   DEBIAN_FRONTEND: noninteractive
   LD_LIBRARY_PATH: /opt/python/lib
   PATH: /opt/python/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-  PYTHON_VERSION: 3.13.16
+  PYTHON_VERSION: 3.13.17
   SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
 annotations:
   org.opencontainers.image.description: A minimal Python image
