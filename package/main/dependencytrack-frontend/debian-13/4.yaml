@@ -4,9 +4,9 @@ image: dhi.io/pkg-dependencytrack-frontend
 variant: runtime
 tags:
   - 4.14.5
-  - 4.14.5-r2
+  - 4.14.5-r3
   - 4.14.5-debian13
-  - 4.14.5-r2-debian13
+  - 4.14.5-r3-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,11 +16,11 @@ dates:
 vars:
   COMMIT_SHA: 277856223204f7668194858de8999b0a7f6180e2
   DHI_TEST_DEB_EXPECTED_FILES: /usr/share/dependencytrack-frontend/index.html /usr/share/dependencytrack-frontend/static/config.json /usr/lib/dependencytrack-frontend/nginx/default.conf.template /usr/lib/dependencytrack-frontend/docker-entrypoint.d/10-listen-on-ipv6-by-default.sh /usr/lib/dependencytrack-frontend/docker-entrypoint.d/30-oidc-configuration.sh
-  NODEJS_VERSION: 22.23.3-0
+  NODEJS_VERSION: 22.23.4-0
   NPM_BUMPS: npm-bumps-4.json
   NPM_VERSION: 11.21.1-1
   PACKAGE_NAME: dependencytrack-frontend-4
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "4.14"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.14.5
@@ -47,7 +47,7 @@ contents:
           - git
           - libc6
           - libstdc++6
-          - nodejs-22=22.23.3-0
+          - nodejs-22=22.23.4-0
           - npm=11.21.1-1
           - tar
         files:
@@ -115,7 +115,7 @@ contents:
               - usr/lib/dependencytrack-frontend
             license: Apache-2.0
             name: dependencytrack-frontend-4
-            rel: 2
+            rel: 3
             url: https://github.com/DependencyTrack/frontend
             version: 4.14.5
       paths:
