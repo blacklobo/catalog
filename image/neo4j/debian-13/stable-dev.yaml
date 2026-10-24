@@ -5,20 +5,20 @@ image: dhi.io/neo4j
 variant: dev
 tags:
   - 2026-dev
-  - 2026.09-dev
-  - 2026.09.0-dev
+  - 2026.10-dev
+  - 2026.10.1-dev
   - 2026-debian-dev
   - 2026-debian13-dev
-  - 2026.09-debian-dev
-  - 2026.09-debian13-dev
-  - 2026.09.0-debian-dev
-  - 2026.09.0-debian13-dev
+  - 2026.10-debian-dev
+  - 2026.10-debian13-dev
+  - 2026.10.1-debian-dev
+  - 2026.10.1-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x64" : "aarch64" }'
-  COMMIT_SHA: 54a7dcf7c2501b31866199143364c5332da8936f
+  COMMIT_SHA: 2994b43b44f35bf6520bd2667ab181bb76a45585
   GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:bae937c49fb607aebe732a026dd38b06a1c6ccd76adda4dc7303b75d02ccdcf0
   JAVA_HOME: /usr/lib/jvm/temurin-21
   JDK_MAJOR_VERSION: "21"
@@ -26,10 +26,10 @@ vars:
   MAVEN_VERSION: 3.10.0
   MVN_PROPS_VARIANT: stable
   NEO4J_HOME: /var/lib/neo4j
-  SEMVER_MAJOR_MINOR_VERSION: "2026.09"
+  SEMVER_MAJOR_MINOR_VERSION: "2026.10"
   SEMVER_MAJOR_VERSION: "2026"
-  SEMVER_VERSION: 2026.09.0
-  VERSION: 2026.09.0
+  SEMVER_VERSION: 2026.10.1
+  VERSION: 2026.10.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -74,15 +74,15 @@ contents:
           - tar
           - xmlstarlet
         files:
-          - url: git+https://github.com/neo4j/neo4j.git#2026.09.0
-            checksum: 54a7dcf7c2501b31866199143364c5332da8936f
+          - url: git+https://github.com/neo4j/neo4j.git#2026.10.1
+            checksum: 2994b43b44f35bf6520bd2667ab181bb76a45585
             path: ${source.dir}/neo4j
             spdx:
               name: neo4j
-              version: 2026.09.0
+              version: 2026.10.1
               packages:
                 - name: neo4j
-                  purl: pkg:dhi/neo4j@2026.09.0
+                  purl: pkg:dhi/neo4j@2026.10.1
                   license: GPL-3.0
             uid: 0
             gid: 0
@@ -90,10 +90,10 @@ contents:
             path: ${source.dir}/docker-neo4j-publish
             spdx:
               name: docker-neo4j-publish
-              version: 2026.09.0
+              version: 2026.10.1
               packages:
                 - name: docker-neo4j-publish
-                  purl: pkg:dhi/docker-neo4j-publish@2026.09.0
+                  purl: pkg:dhi/docker-neo4j-publish@2026.10.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -132,7 +132,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            cp -R 2026.09.0/trixie/community/local-package ${target.dir}/startup
+            cp -R 2026.10.1/trixie/community/local-package ${target.dir}/startup
         - name: patch entrypoint to use gosu instead of su-exec
           work-dir: ${target.dir}/startup
           runs: |
@@ -213,7 +213,7 @@ contents:
             fi
 
             # Set release version (source pom.xml uses SNAPSHOT versioning)
-            mvn versions:set -DnewVersion=2026.09.0 -DgenerateBackupPoms=false -q
+            mvn versions:set -DnewVersion=2026.10.1 -DgenerateBackupPoms=false -q
 
             # After updated dependencies, the pom.xml file may need linting;
             mvn spotless:apply
