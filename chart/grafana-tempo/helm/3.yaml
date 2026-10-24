@@ -18,8 +18,8 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.2"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.2.1
-  TEMPO_QUERY_REFERENCE: dhi/tempo-query:3.1.0-debian13@sha256:b274de5d3f07d126f5beec6b1e16d74fc563f19d1f525ac6c630c9aa8aad00d7
-  TEMPO_REFERENCE: dhi/tempo:3.1.0-debian13@sha256:eb2850145a48524ed0299c5788d81fca2b30470d05fd483cf5ffd47c875bca1d
+  TEMPO_QUERY_REFERENCE: dhi/tempo-query:3.1.1-debian13@sha256:4830b29d700f3af802a20c812cc6dc0918c480946db587ec94a536f2e70edbd6
+  TEMPO_REFERENCE: dhi/tempo:3.1.0-debian13@sha256:5e72c758866f3af0997011e3943bb66b9e97402cf8736d47c958dc792a7f5204
   VERSION: 3.2.1
 contents:
   repositories:
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Grafana Tempo
               images:
                 - name: tempo
-                  ref: dhi/tempo:3.1.0-debian13@sha256:eb2850145a48524ed0299c5788d81fca2b30470d05fd483cf5ffd47c875bca1d
+                  ref: dhi/tempo:3.1.0-debian13@sha256:5e72c758866f3af0997011e3943bb66b9e97402cf8736d47c958dc792a7f5204
                 - name: tempo-query
-                  ref: dhi/tempo-query:3.1.0-debian13@sha256:b274de5d3f07d126f5beec6b1e16d74fc563f19d1f525ac6c630c9aa8aad00d7
+                  ref: dhi/tempo-query:3.1.1-debian13@sha256:4830b29d700f3af802a20c812cc6dc0918c480946db587ec94a536f2e70edbd6
               name: tempo-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana-community/helm-charts
