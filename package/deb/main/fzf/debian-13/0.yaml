@@ -3,8 +3,8 @@
 image: dhi.io/pkg-fzf
 variant: runtime
 tags:
-  - 0.60.3-1-dhi5
-  - 0.60.3-1-dhi5-debian13
+  - 0.60.3-1-dhi6
+  - 0.60.3-1-dhi6-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,11 +20,11 @@ vars:
   DEBIAN_ORIG_FILENAME: fzf_0.60.3.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/f/fzf/fzf_0.60.3.orig.tar.gz
   DEBIAN_VERSION: 0.60.3-1
-  DHI_REL: "5"
-  DHI_VERSION: 0.60.3-1+dhi5
+  DHI_REL: "6"
+  DHI_VERSION: 0.60.3-1+dhi6
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-0
-  TAG_VERSION: 0.60.3-1-dhi5
+  TAG_VERSION: 0.60.3-1-dhi6
   UPSTREAM_VERSION: 0.60.3
 contents:
   packages:
@@ -88,11 +88,12 @@ contents:
             patches:
               - ${source.dir}/patch/dhi-cve-2026-53432-fuzzymatchv2-int-overflow.patch
               - ${source.dir}/patch/dhi-cve-2026-53433-listen-http-body-o2.patch
+              - ${source.dir}/patch/dhi-cve-2026-115319-mask-action-contents-o2.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Backport upstream fixes for CVE-2026-53432 and CVE-2026-53433
-            version: 0.60.3-1+dhi5
+              - Backport upstream fix for CVE-2026-115319
+            version: 0.60.3-1+dhi6
         - name: verify golang toolchain
           runs: |
             set -eux -o pipefail
