@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13-compat@sha256:0b066246b9547e7c64aa1fdcada9f135958e01e4348ce00f07b0d93efd91c526
+  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13-compat@sha256:f5d122ff8dc51fefbb820c5ac7d4af7343cb1eab2e3c3b582b4712b12c03803d
   SEMVER_MAJOR_MINOR_VERSION: "11.4"
   SEMVER_MAJOR_VERSION: "11"
   SEMVER_VERSION: 11.4.0
@@ -52,7 +52,7 @@ contents:
                 - name: velero
                   ref: dhi/velero:1.18.4-debian13@sha256:37f42aa76a682b1d1a9fc380414d87e7b2a2f1e091ae9bfc69ef4e3dda040b32
                 - name: kubectl
-                  ref: dhi/kubectl:1.35.9-debian13-compat@sha256:0b066246b9547e7c64aa1fdcada9f135958e01e4348ce00f07b0d93efd91c526
+                  ref: dhi/kubectl:1.35.9-debian13-compat@sha256:f5d122ff8dc51fefbb820c5ac7d4af7343cb1eab2e3c3b582b4712b12c03803d
               name: velero-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/vmware-tanzu/helm-charts
