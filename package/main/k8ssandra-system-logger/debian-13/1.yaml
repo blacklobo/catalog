@@ -4,9 +4,9 @@ image: dhi.io/pkg-k8ssandra-system-logger
 variant: runtime
 tags:
   - 1.32.0
-  - 1.32.0-r17
+  - 1.32.0-r18
   - 1.32.0-debian13
-  - 1.32.0-r17-debian13
+  - 1.32.0-r18-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,11 +14,11 @@ dates:
   release: "2024-06-17"
 vars:
   COMMIT_SHA: d6461a03889c3e67fb65fcf65418634d9530bb5a
-  REL: "17"
+  REL: "18"
   SEMVER_MAJOR_MINOR_VERSION: "1.32"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.32.0
-  VECTOR_REFERENCE: dhi/vector:0.60.0-debian13@sha256:872edcb22a8d384571f74a15805f92d5a94c8a0f8e81b17924fd73d0e15c6f6e
+  VECTOR_REFERENCE: dhi/vector:0.60.0-debian13@sha256:8b65fedd2f68409f50fcbd8391df62118b847f481b245861ad4f75810c490993
   VERSION: 1.32.0
 contents:
   packages:
@@ -44,7 +44,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/vector:0.60.0-debian13@sha256:872edcb22a8d384571f74a15805f92d5a94c8a0f8e81b17924fd73d0e15c6f6e
+          - name: dhi.io/vector:0.60.0-debian13@sha256:8b65fedd2f68409f50fcbd8391df62118b847f481b245861ad4f75810c490993
             includes:
               - usr/bin/vector
             uid: 0
@@ -71,7 +71,7 @@ contents:
               - deb
             license: Apache-2.0
             name: k8ssandra-system-logger
-            rel: 17
+            rel: 18
             url: https://github.com/k8ssandra/cass-operator
             version: 1.32.0
 os-release:
