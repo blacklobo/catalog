@@ -126,7 +126,8 @@ contents:
           uses: go/bump@v2
           work-dir: /go/src/github.com/kyverno/policy-reporter-ui/backend
           with:
-            deps: []
+            deps:
+              - github.com/go-chi/chi/v5@v5.4.0
         - name: test
           work-dir: /go/src/github.com/kyverno/policy-reporter-ui/backend
           privileged: true
