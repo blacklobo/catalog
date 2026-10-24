@@ -23,8 +23,8 @@ vars:
   COMMIT_SHA: 235fdb3990513c7852da8dc51e9cb92b6d0e4907
   PG_MAJOR_VERSION: "18"
   PG_VERSION: "18.6"
-  POSTGRES_BUILD_REFERENCE: dhi/postgres:18.6-debian13-dev@sha256:ae3a4e6e9694a4e8d4f9157f3724aa5d8df7e64c68e965b73d48ffcfcb9e21c6
-  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:18.6-debian13@sha256:1df173565ce7da8031d1c1ebfead27ff5e9c15055831f2ca0ff7f3b1a66f0aa7
+  POSTGRES_BUILD_REFERENCE: dhi/postgres:18.6-debian13-dev@sha256:3926ac8a28311339c303b1b88796c27621a18c46d6eaa2733595de7d9d56ce2a
+  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:18.6-debian13@sha256:876afc8de37548fa24114cf3f4dcdbf4d540229673f5667ca6db9b140d5eb56b
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
   SEMVER_MAJOR_MINOR_VERSION: "4.1"
   SEMVER_MAJOR_VERSION: "4"
@@ -126,7 +126,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/postgres:18.6-debian13@sha256:1df173565ce7da8031d1c1ebfead27ff5e9c15055831f2ca0ff7f3b1a66f0aa7
+    - name: dhi.io/postgres:18.6-debian13@sha256:876afc8de37548fa24114cf3f4dcdbf4d540229673f5667ca6db9b140d5eb56b
       excludes:
         - etc/os-release
         - usr/lib/aarch64-linux-gnu/libtinfo.so.6
