@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  SEALED_SECRETS_CONTROLLER_REFERENCE: dhi/sealed-secrets-controller:0.40.0-debian13@sha256:f2bd18d77f5d60f6721bfc94f1994015c871b1a5a82552be653bfdbe88c475de
+  SEALED_SECRETS_CONTROLLER_REFERENCE: dhi/sealed-secrets-controller:0.40.0-debian13@sha256:9e29530fd9ad2d4caac1a1f2732d19c88aadfa446e6ec9debc6dc4e123b2b874
   SEMVER_MAJOR_MINOR_VERSION: "2.20"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.20.0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Sealed Secrets
               images:
                 - name: sealed-secrets-controller
-                  ref: dhi/sealed-secrets-controller:0.40.0-debian13@sha256:f2bd18d77f5d60f6721bfc94f1994015c871b1a5a82552be653bfdbe88c475de
+                  ref: dhi/sealed-secrets-controller:0.40.0-debian13@sha256:9e29530fd9ad2d4caac1a1f2732d19c88aadfa446e6ec9debc6dc4e123b2b874
               name: sealed-secrets-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/bitnami-labs/sealed-secrets
