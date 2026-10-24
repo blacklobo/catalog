@@ -4,9 +4,9 @@ image: dhi.io/pkg-selenium-node-chromium
 variant: runtime
 tags:
   - 4.51.0
-  - 4.51.0-r0
+  - 4.51.0-r1
   - 4.51.0-debian13
-  - 4.51.0-r0-debian13
+  - 4.51.0-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,9 +17,9 @@ vars:
   BAZEL_VERSION: 9.1.0
   COMMIT_SHA: 35c5fab4a58fa5878edb255eb7747b04ca51a015
   JDK_MAJOR_VERSION: "21"
-  JDK_VERSION: 1:21.0.12.1+1-4
+  JDK_VERSION: 1:21.0.13+9-0
   PACKAGE_NAME: selenium-node-chromium
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "4.51"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.51.0
@@ -51,7 +51,7 @@ contents:
           - python3
           - unzip
           - zip
-          - eclipse-temurin-21-jdk=1:21.0.12.1+1-4
+          - eclipse-temurin-21-jdk=1:21.0.13+9-0
         files:
           - url: git+https://github.com/SeleniumHQ/selenium.git#selenium-4.51.0
             checksum: 35c5fab4a58fa5878edb255eb7747b04ca51a015
@@ -145,7 +145,7 @@ contents:
               - deb
             license: Apache-2.0
             name: selenium-node-chromium
-            rel: 0
+            rel: 1
             url: https://www.selenium.dev/
             version: 4.51.0
       paths:
