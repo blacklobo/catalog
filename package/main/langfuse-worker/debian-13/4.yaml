@@ -3,8 +3,8 @@
 image: dhi.io/pkg-langfuse-worker
 variant: runtime
 tags:
-  - 4.69.0-0
-  - 4.69.0-0-debian13
+  - 4.70.0-0
+  - 4.70.0-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,18 +12,18 @@ dates:
   release: "2026-07-29"
 vars:
   CARGO_VERSION: 1.98.1-0
-  COMMIT_SHA: a0ef9519ce6c934f7db929251a17c35f4080f3c2
+  COMMIT_SHA: ad8d5641486176f9fef4e399bdd85a7b1ecf3842
   DHI_REL: "0"
-  DHI_VERSION: 4.69.0-0
+  DHI_VERSION: 4.70.0-0
   NODEJS_MAJOR: "24"
-  NODEJS_VERSION: 24.22.1-0
+  NODEJS_VERSION: 24.22.1-1
   PNPM_VERSION: 12.8.2
   RUSTC_VERSION: 1.98.1-0
-  SEMVER_MAJOR_MINOR_VERSION: "4.69"
+  SEMVER_MAJOR_MINOR_VERSION: "4.70"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.69.0
+  SEMVER_VERSION: 4.70.0
   TURBO_VERSION: 2.11.6
-  VERSION: 4.69.0
+  VERSION: 4.70.0
 contents:
   packages:
     - '!base-files'
@@ -56,7 +56,7 @@ contents:
           - dpkg-dev
           - findutils
           - git
-          - nodejs-24=24.22.1-0
+          - nodejs-24=24.22.1-1
           - npm
           - node-corepack
           - patch
@@ -64,15 +64,15 @@ contents:
           - tar
           - yq
         files:
-          - url: git+https://github.com/langfuse/langfuse.git#v4.69.0
-            checksum: a0ef9519ce6c934f7db929251a17c35f4080f3c2
+          - url: git+https://github.com/langfuse/langfuse.git#v4.70.0
+            checksum: ad8d5641486176f9fef4e399bdd85a7b1ecf3842
             path: ${source.dir}/src
             spdx:
               name: langfuse-worker
-              version: 4.69.0
+              version: 4.70.0
               packages:
                 - name: langfuse-worker
-                  purl: pkg:github/langfuse/langfuse@4.69.0
+                  purl: pkg:github/langfuse/langfuse@4.70.0
                   license: MIT
             uid: 0
             gid: 0
@@ -200,7 +200,7 @@ contents:
               - ${source.dir}/patch/langfuse-worker-4-strip-go-native-typescript.patch
         - uses: dpkg/bump@v1
           with:
-            version: 4.69.0-0
+            version: 4.70.0-0
         - name: configure pnpm to allow recently-published packages
           runs: |
             set -eux -o pipefail
