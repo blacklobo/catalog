@@ -6,13 +6,13 @@ variant: dev
 tags:
   - 0-dev
   - 0.15-dev
-  - 0.15.0-dev
+  - 0.15.1-dev
   - 0-debian-dev
   - 0-debian13-dev
   - 0.15-debian-dev
   - 0.15-debian13-dev
-  - 0.15.0-debian-dev
-  - 0.15.0-debian13-dev
+  - 0.15.1-debian-dev
+  - 0.15.1-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,11 +21,11 @@ dates:
 vars:
   BASE_DIGEST: sha256:620157c61ee0377151d3e11a7dd4d2ec6da34488f8c63a2706916f88f5f814fd
   BASE_TAG: 20250419-debian13
-  COMMIT_SHA: 1945b42820760eb50893c8da77fdfc42cf8dad45
+  COMMIT_SHA: 23159a8e2d70ca4cece740fe43a8d9eb0c2818de
   SEMVER_MAJOR_MINOR_VERSION: "0.15"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.15.0
-  VERSION: 0.15.0
+  SEMVER_VERSION: 0.15.1
+  VERSION: 0.15.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -65,15 +65,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/actions/actions-runner-controller.git#gha-runner-scale-set-0.15.0
-            checksum: 1945b42820760eb50893c8da77fdfc42cf8dad45
+          - url: git+https://github.com/actions/actions-runner-controller.git#gha-runner-scale-set-0.15.1
+            checksum: 23159a8e2d70ca4cece740fe43a8d9eb0c2818de
             path: /go/src/github.com/actions/actions-runner-controller
             spdx:
               name: gha-runner-scale-set-controller
-              version: 0.15.0
+              version: 0.15.1
               packages:
                 - name: actions-runner-controller
-                  purl: pkg:golang/github.com/actions/actions-runner-controller@0.15.0
+                  purl: pkg:golang/github.com/actions/actions-runner-controller@0.15.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -81,8 +81,7 @@ contents:
         - name: update go dependencies
           uses: go/bump@v2
           with:
-            deps:
-              - golang.org/x/net@v0.60.0
+            deps: []
             download: true
         - name: test
           privileged: true
@@ -95,8 +94,8 @@ contents:
           uses: go/build@v1
           with:
             ldflags:
-              - -X github.com/actions/actions-runner-controller/build.Version=0.15.0
-              - -X github.com/actions/actions-runner-controller/build.CommitSHA=1945b42820760eb50893c8da77fdfc42cf8dad45
+              - -X github.com/actions/actions-runner-controller/build.Version=0.15.1
+              - -X github.com/actions/actions-runner-controller/build.CommitSHA=23159a8e2d70ca4cece740fe43a8d9eb0c2818de
             output: ${target.dir}/usr/local/bin/manager
             packages: .
             strip: true
@@ -104,8 +103,8 @@ contents:
           uses: go/build@v1
           with:
             ldflags:
-              - -X github.com/actions/actions-runner-controller/build.Version=0.15.0
-              - -X github.com/actions/actions-runner-controller/build.CommitSHA=1945b42820760eb50893c8da77fdfc42cf8dad45
+              - -X github.com/actions/actions-runner-controller/build.Version=0.15.1
+              - -X github.com/actions/actions-runner-controller/build.CommitSHA=23159a8e2d70ca4cece740fe43a8d9eb0c2818de
             output: ${target.dir}/usr/local/bin/ghalistener
             packages: ./cmd/ghalistener
             strip: true
