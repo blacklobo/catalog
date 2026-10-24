@@ -3,22 +3,22 @@
 image: dhi.io/pkg-istio-install-cni
 variant: runtime
 tags:
-  - 1.31.2-alpine3.24
-  - 1.31.2-r1-alpine3.24
+  - 1.31.3-alpine3.24
+  - 1.31.3-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-27"
 vars:
-  COMMIT_SHA: e2f3a7949a358af7dd901a6f9ccd6ecdd7270271
+  COMMIT_SHA: edd80bca5f71bd564711ef43ccd085acb545a6b4
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.31"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.31.2
-  VERSION: 1.31.2
+  SEMVER_VERSION: 1.31.3
+  VERSION: 1.31.3
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -46,15 +46,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/istio/istio.git#1.31.2
-            checksum: e2f3a7949a358af7dd901a6f9ccd6ecdd7270271
+          - url: git+https://github.com/istio/istio.git#1.31.3
+            checksum: edd80bca5f71bd564711ef43ccd085acb545a6b4
             path: /go/src/github.com/istio/istio
             spdx:
               name: istio-install-cni
-              version: 1.31.2
+              version: 1.31.3
               packages:
                 - name: istio
-                  purl: pkg:golang/istio.io/istio@1.31.2
+                  purl: pkg:golang/istio.io/istio@1.31.3
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -83,10 +83,10 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X istio.io/istio/pkg/version.buildVersion=1.31.2
-              - -X istio.io/istio/pkg/version.buildGitRevision=e2f3a7949a358af7dd901a6f9ccd6ecdd7270271
+              - -X istio.io/istio/pkg/version.buildVersion=1.31.3
+              - -X istio.io/istio/pkg/version.buildGitRevision=edd80bca5f71bd564711ef43ccd085acb545a6b4
               - -X istio.io/istio/pkg/version.buildStatus=Clean
-              - -X istio.io/istio/pkg/version.buildTag=1.31.2
+              - -X istio.io/istio/pkg/version.buildTag=1.31.3
               - -X istio.io/istio/pkg/version.buildHub=docker.io/dhi
               - -X istio.io/istio/pkg/version.buildOS=$(go env GOOS)
               - -X istio.io/istio/pkg/version.buildArch=$(go env GOARCH)
@@ -100,10 +100,10 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X istio.io/istio/pkg/version.buildVersion=1.31.2
-              - -X istio.io/istio/pkg/version.buildGitRevision=e2f3a7949a358af7dd901a6f9ccd6ecdd7270271
+              - -X istio.io/istio/pkg/version.buildVersion=1.31.3
+              - -X istio.io/istio/pkg/version.buildGitRevision=edd80bca5f71bd564711ef43ccd085acb545a6b4
               - -X istio.io/istio/pkg/version.buildStatus=Clean
-              - -X istio.io/istio/pkg/version.buildTag=1.31.2
+              - -X istio.io/istio/pkg/version.buildTag=1.31.3
               - -X istio.io/istio/pkg/version.buildHub=docker.io/dhi
               - -X istio.io/istio/pkg/version.buildOS=$(go env GOOS)
               - -X istio.io/istio/pkg/version.buildArch=$(go env GOARCH)
@@ -118,10 +118,10 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X istio.io/istio/pkg/version.buildVersion=1.31.2
-              - -X istio.io/istio/pkg/version.buildGitRevision=e2f3a7949a358af7dd901a6f9ccd6ecdd7270271
+              - -X istio.io/istio/pkg/version.buildVersion=1.31.3
+              - -X istio.io/istio/pkg/version.buildGitRevision=edd80bca5f71bd564711ef43ccd085acb545a6b4
               - -X istio.io/istio/pkg/version.buildStatus=Clean
-              - -X istio.io/istio/pkg/version.buildTag=1.31.2
+              - -X istio.io/istio/pkg/version.buildTag=1.31.3
               - -X istio.io/istio/pkg/version.buildHub=docker.io/dhi
               - -X istio.io/istio/pkg/version.buildOS=$(go env GOOS)
               - -X istio.io/istio/pkg/version.buildArch=$(go env GOARCH)
@@ -135,10 +135,10 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X istio.io/istio/pkg/version.buildVersion=1.31.2
-              - -X istio.io/istio/pkg/version.buildGitRevision=e2f3a7949a358af7dd901a6f9ccd6ecdd7270271
+              - -X istio.io/istio/pkg/version.buildVersion=1.31.3
+              - -X istio.io/istio/pkg/version.buildGitRevision=edd80bca5f71bd564711ef43ccd085acb545a6b4
               - -X istio.io/istio/pkg/version.buildStatus=Clean
-              - -X istio.io/istio/pkg/version.buildTag=1.31.2
+              - -X istio.io/istio/pkg/version.buildTag=1.31.3
               - -X istio.io/istio/pkg/version.buildHub=docker.io/dhi
               - -X istio.io/istio/pkg/version.buildOS=$(go env GOOS)
               - -X istio.io/istio/pkg/version.buildArch=$(go env GOARCH)
@@ -154,7 +154,7 @@ contents:
               - opt/cni/bin/istio-cni
             license: Apache-2.0
             name: istio-install-cni
-            rel: 1
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/install-cni
@@ -163,7 +163,7 @@ contents:
                     source: opt/cni/bin/istio-cni-dev
                 name: istio-install-cni-dev
             url: https://github.com/istio/istio
-            version: 1.31.2
+            version: 1.31.3
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
