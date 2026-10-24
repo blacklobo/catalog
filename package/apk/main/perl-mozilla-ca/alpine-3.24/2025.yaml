@@ -4,14 +4,14 @@ image: dhi.io/pkg-perl-mozilla-ca
 variant: runtime
 tags:
   - 20261020-alpine3.24
-  - 20261020-r0-alpine3.24
+  - 20261020-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: d48ff760c9833b2e4cc72168cf3e639cc2b18265
+  COMMIT_SHA: 7e71067f4e879c5d967cd99808b803fa2adf859b
   PACKAGE_NAME: main/perl-mozilla-ca
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "20261020"
   SEMVER_MAJOR_VERSION: "20261020"
   SEMVER_VERSION: "20261020"
@@ -33,7 +33,7 @@ contents:
         packages:
           - perl
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#d48ff760c9833b2e4cc72168cf3e639cc2b18265
+          - url: git+https://github.com/alpinelinux/aports.git#7e71067f4e879c5d967cd99808b803fa2adf859b
             path: ${source.dir}/aports
             uid: 0
             gid: 0
