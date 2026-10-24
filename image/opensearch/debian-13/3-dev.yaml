@@ -19,7 +19,7 @@ platforms:
 dates:
   release: "2025-05-06"
 vars:
-  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:bae937c49fb607aebe732a026dd38b06a1c6ccd76adda4dc7303b75d02ccdcf0
+  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:6b10a69bee8dee98d355880316de35aad43948e5a67dd29a54f5d6f79cbb516a
   JAVA_FIPS_SUFFIX: ""
   JAVA_VARIANT: jdk
   JDK_MAJOR_VERSION: "21"
@@ -142,7 +142,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:bae937c49fb607aebe732a026dd38b06a1c6ccd76adda4dc7303b75d02ccdcf0
+    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:6b10a69bee8dee98d355880316de35aad43948e5a67dd29a54f5d6f79cbb516a
       includes:
         - opt/docker/sbom/gosu
         - usr/local/sbin/gosu
