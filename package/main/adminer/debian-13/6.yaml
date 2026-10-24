@@ -3,22 +3,22 @@
 image: dhi.io/pkg-adminer
 variant: runtime
 tags:
-  - 6.1.2
-  - 6.1.2-r0
-  - 6.1.2-debian13
-  - 6.1.2-r0-debian13
+  - 6.2.0
+  - 6.2.0-r0
+  - 6.2.0-debian13
+  - 6.2.0-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 2a902368cc0fffeedb2e895407a8cc7686d250d3
+  COMMIT_SHA: f21cc90847465d7bd850725c42896c95bb360891
   DOCKER_ADMINER_COMMIT_SHA: 346d8e4559d4fb0af83cd3b4d48080bf18070758
-  JUSH_COMMIT_SHA: ead6366ddd840f585bcae2c9d12c81b5af610821
+  JUSH_COMMIT_SHA: 93cc6b18c1ee6a3d3466b6689b041b74e532962e
   REL: "0"
-  SEMVER_MAJOR_MINOR_VERSION: "6.1"
+  SEMVER_MAJOR_MINOR_VERSION: "6.2"
   SEMVER_MAJOR_VERSION: "6"
-  SEMVER_VERSION: 6.1.2
-  VERSION: 6.1.2
+  SEMVER_VERSION: 6.2.0
+  VERSION: 6.2.0
 contents:
   packages:
     - base-files
@@ -37,18 +37,18 @@ contents:
           - php-8.5
           - sed
         files:
-          - url: git+https://github.com/vrana/adminer.git#v6.1.2
-            checksum: 2a902368cc0fffeedb2e895407a8cc7686d250d3
+          - url: git+https://github.com/vrana/adminer.git#v6.2.0
+            checksum: f21cc90847465d7bd850725c42896c95bb360891
             path: ${source.dir}/adminer
             spdx:
               name: adminer
-              version: 6.1.2
+              version: 6.2.0
               packages:
                 - name: adminer
-                  purl: pkg:composer/vrana/adminer@6.1.2
+                  purl: pkg:composer/vrana/adminer@6.2.0
                   license: (Apache-2.0 OR GPL-2.0-only)
                 - name: jush
-                  purl: pkg:github/vrana/jush@ead6366ddd840f585bcae2c9d12c81b5af610821
+                  purl: pkg:github/vrana/jush@93cc6b18c1ee6a3d3466b6689b041b74e532962e
                   license: (Apache-2.0 OR GPL-2.0-only)
             uid: 0
             gid: 0
@@ -85,7 +85,7 @@ contents:
 
             sed -i "s/\$_ENV\['ADMINER_DEFAULT_SERVER'\]/getenv('ADMINER_DEFAULT_SERVER')/" "${source.dir}/glue/index.php"
 
-            install -D -m 0644 adminer-6.1.2.php "${target.dir}/usr/share/adminer/adminer.php"
+            install -D -m 0644 adminer-6.2.0.php "${target.dir}/usr/share/adminer/adminer.php"
             install -D -m 0644 "${source.dir}/glue/index.php" "${target.dir}/usr/share/adminer/index.php"
             install -D -m 0644 "${source.dir}/glue/plugin-loader.php" "${target.dir}/usr/share/adminer/plugin-loader.php"
             cp -a designs "${target.dir}/usr/share/adminer/designs"
@@ -101,7 +101,7 @@ contents:
             name: adminer
             rel: 0
             url: https://www.adminer.org/
-            version: 6.1.2
+            version: 6.2.0
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
