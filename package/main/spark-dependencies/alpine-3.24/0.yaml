@@ -13,7 +13,7 @@ vars:
   ELASTICSEARCH7_SPARK_VERSION: 7.17.29
   ELASTICSEARCH8_SPARK_VERSION: 8.13.4
   ELASTICSEARCH9_SPARK_VERSION: 9.1.3
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:419b95307aa32ff6606fc2a974a02e2f708895f275fbdc8b6e60c1e8f7ad22a2
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:094410572fa29ee0ef79de6e30e5a2c5502850f1bdc22eeb6f71d575ee347c6e
   PACKAGE_HOME: /usr/share/spark-dependencies
   PACKAGE_NAME: spark-dependencies
   REL: "10"
@@ -33,7 +33,7 @@ contents:
     - alpine-baselayout-data
   builds:
     - name: spark-dependencies
-      uses: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:419b95307aa32ff6606fc2a974a02e2f708895f275fbdc8b6e60c1e8f7ad22a2
+      uses: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:094410572fa29ee0ef79de6e30e5a2c5502850f1bdc22eeb6f71d575ee347c6e
       work-dir: ${source.dir}/spark-dependencies
       caches:
         - path: /root/.m2/repository
