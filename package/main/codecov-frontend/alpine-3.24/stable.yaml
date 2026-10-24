@@ -4,14 +4,14 @@ image: dhi.io/pkg-codecov-frontend
 variant: runtime
 tags:
   - 26.7.6-alpine3.24
-  - 26.7.6-r3-alpine3.24
+  - 26.7.6-r4-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   COMMIT_SHA: 8a439ca365bfddecba4d116849c96d47e69a3c9f
-  NODEJS_VERSION: 24.22.1-r0
-  REL: "3"
+  NODEJS_VERSION: 24.22.1-r1
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "26.7"
   SEMVER_MAJOR_VERSION: "26"
   SEMVER_VERSION: 26.7.6
@@ -34,7 +34,7 @@ contents:
         packages:
           - busybox
           - ca-certificates-bundle
-          - nodejs-24=24.22.1-r0
+          - nodejs-24=24.22.1-r1
         files:
           - url: git+https://github.com/codecov/gazebo.git#self-hosted-26.7.6
             checksum: 8a439ca365bfddecba4d116849c96d47e69a3c9f
@@ -162,7 +162,7 @@ contents:
               - etc/codecov-frontend
             license: FSL-1.1-ALv2
             name: codecov-frontend
-            rel: 3
+            rel: 4
             url: https://github.com/codecov/gazebo
             version: 26.7.6
       paths:
