@@ -3,20 +3,20 @@
 image: dhi.io/pkg-mysqld_exporter
 variant: runtime
 tags:
-  - 0.20.0-alpine3.24
-  - 0.20.0-r8-alpine3.24
+  - 0.21.0-alpine3.24
+  - 0.21.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 11da31c961d37eab296c48ab50c38c3bdff8e2e3
+  COMMIT_SHA: 8feed91b970d346a15c12f164957c8f9a0e3291e
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
-  REL: "8"
-  SEMVER_MAJOR_MINOR_VERSION: "0.20"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "0.21"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.20.0
-  VERSION: 0.20.0
+  SEMVER_VERSION: 0.21.0
+  VERSION: 0.21.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -42,15 +42,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/prometheus/mysqld_exporter.git#v0.20.0
-            checksum: 11da31c961d37eab296c48ab50c38c3bdff8e2e3
+          - url: git+https://github.com/prometheus/mysqld_exporter.git#v0.21.0
+            checksum: 8feed91b970d346a15c12f164957c8f9a0e3291e
             path: /go/src/github.com/prometheus/mysqld_exporter
             spdx:
               name: mysqld-exporter
-              version: 0.20.0
+              version: 0.21.0
               packages:
                 - name: mysqld-exporter
-                  purl: pkg:golang/prometheus/mysqld_exporter@0.20.0
+                  purl: pkg:golang/prometheus/mysqld_exporter@0.21.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -58,9 +58,7 @@ contents:
         - name: update go dependencies
           uses: go/bump@v1
           with:
-            deps:
-              - golang.org/x/net@v0.60.0
-              - golang.org/x/crypto@v0.57.0
+            deps: []
             dir: /go/src/github.com/prometheus/mysqld_exporter
             download: true
         - name: build
@@ -69,8 +67,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/prometheus/common/version.Version=0.20.0
-              - -X github.com/prometheus/common/version.Revision=11da31c961d37eab296c48ab50c38c3bdff8e2e3
+              - -X github.com/prometheus/common/version.Version=0.21.0
+              - -X github.com/prometheus/common/version.Revision=8feed91b970d346a15c12f164957c8f9a0e3291e
               - -X github.com/prometheus/common/version.Branch=main
               - -X github.com/prometheus/common/version.BuildUser=docker
               - -X github.com/prometheus/common/version.BuildDate=$(date -d @${SOURCE_DATE_EPOCH} +'%Y%m%d-%H:%M:%S')
@@ -81,8 +79,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/prometheus/common/version.Version=0.20.0
-              - -X github.com/prometheus/common/version.Revision=11da31c961d37eab296c48ab50c38c3bdff8e2e3
+              - -X github.com/prometheus/common/version.Version=0.21.0
+              - -X github.com/prometheus/common/version.Revision=8feed91b970d346a15c12f164957c8f9a0e3291e
               - -X github.com/prometheus/common/version.Branch=main
               - -X github.com/prometheus/common/version.BuildUser=docker
               - -X github.com/prometheus/common/version.BuildDate=$(date -d @${SOURCE_DATE_EPOCH} +'%Y%m%d-%H:%M:%S')
@@ -96,14 +94,14 @@ contents:
               - usr/bin/mysqld-exporter
             license: Apache-2.0
             name: mysqld-exporter
-            rel: 8
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/mysqld-exporter
                     source: usr/bin/mysqld-exporter-dev
                 name: mysqld-exporter-dev
             url: https://github.com/prometheus/mysqld_exporter
-            version: 0.20.0
+            version: 0.21.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
