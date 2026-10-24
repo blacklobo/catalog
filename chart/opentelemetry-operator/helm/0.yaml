@@ -9,7 +9,7 @@ platforms:
   - linux/amd64
 vars:
   APPVERSION: 0.161.0
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:bb67e1b1d351fa4cb5cdb459dbb580ff0202d40ea8feb23660936defd7af5a74
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:4fe54cacdd9136802256d04883f16081ee71b4cd984b63e94192cbaec7d5dd3d
   CHART_COMMIT_SHA: fcf09e8941b9d639285fcacfa664a61b4b4e3bc1
   CHART_HELM_NAME: opentelemetry-operator-chart
   DHI_NAMESPACE: dhi
@@ -17,9 +17,9 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  OPENTELEMETRY_AUTOINSTRUMENTATION_GO_REFERENCE: dhi/opentelemetry-autoinstrumentation-go:0.24.0-debian13@sha256:a23256e4e2c3666e249ede7595f8640e74b2ca120e156e5c914efbc6de712519
+  OPENTELEMETRY_AUTOINSTRUMENTATION_GO_REFERENCE: dhi/opentelemetry-autoinstrumentation-go:0.24.0-debian13@sha256:31b5681d57dec1edf12996f944c0597174ed337606bc5ac5d6be6eb6f544aac0
   OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.161.0-debian13@sha256:e0c74e212bcf8f38bd6ac5a100bb92396bd2e485ddac1aec657f5c8627738a3a
-  OPENTELEMETRY_OPERATOR_REFERENCE: dhi/opentelemetry-operator:0.161.0-debian13@sha256:f94c65b4d5b021d2db8ee812f237288f121e849b31176e9f19b7dc4cc005ad10
+  OPENTELEMETRY_OPERATOR_REFERENCE: dhi/opentelemetry-operator:0.161.0-debian13@sha256:6beb5670d9f9a6bc542d75d3e4fe99e7a0f08965a5fd7586f56289ef8a05af19
   SEMVER_MAJOR_MINOR_VERSION: "0.126"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.126.2
@@ -53,13 +53,13 @@ contents:
               description: Docker Hardened Images Helm chart for OpenTelemetry Operator
               images:
                 - name: opentelemetry-operator
-                  ref: dhi/opentelemetry-operator:0.161.0-debian13@sha256:f94c65b4d5b021d2db8ee812f237288f121e849b31176e9f19b7dc4cc005ad10
+                  ref: dhi/opentelemetry-operator:0.161.0-debian13@sha256:6beb5670d9f9a6bc542d75d3e4fe99e7a0f08965a5fd7586f56289ef8a05af19
                 - name: opentelemetry-collector
                   ref: dhi/opentelemetry-collector:0.161.0-debian13@sha256:e0c74e212bcf8f38bd6ac5a100bb92396bd2e485ddac1aec657f5c8627738a3a
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-debian13@sha256:bb67e1b1d351fa4cb5cdb459dbb580ff0202d40ea8feb23660936defd7af5a74
+                  ref: dhi/busybox:1.37.0-debian13@sha256:4fe54cacdd9136802256d04883f16081ee71b4cd984b63e94192cbaec7d5dd3d
                 - name: opentelemetry-autoinstrumentation-go
-                  ref: dhi/opentelemetry-autoinstrumentation-go:0.24.0-debian13@sha256:a23256e4e2c3666e249ede7595f8640e74b2ca120e156e5c914efbc6de712519
+                  ref: dhi/opentelemetry-autoinstrumentation-go:0.24.0-debian13@sha256:31b5681d57dec1edf12996f944c0597174ed337606bc5ac5d6be6eb6f544aac0
               name: opentelemetry-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/open-telemetry/opentelemetry-helm-charts
