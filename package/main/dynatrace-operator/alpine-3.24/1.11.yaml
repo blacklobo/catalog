@@ -3,7 +3,7 @@
 image: dhi.io/pkg-dynatrace-operator
 variant: runtime
 tags:
-  - 1.11.0-r1-alpine3.24
+  - 1.11.1-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,15 +12,15 @@ dates:
   end-of-life: "2027-10-01"
 vars:
   BUILD_DATE_FORMAT: '%Y-%m-%dT%H:%M:%SZ'
-  COMMIT_SHA: fd131c9cab4cc4880b13ee570feeb570eb1a528b
+  COMMIT_SHA: 3bbd616a4d7890831963fc082c18c1b7332ed162
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: dynatrace-operator-1.11
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.11"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.11.0
-  VERSION: 1.11.0
+  SEMVER_VERSION: 1.11.1
+  VERSION: 1.11.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -42,15 +42,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/Dynatrace/dynatrace-operator.git#v1.11.0
-            checksum: fd131c9cab4cc4880b13ee570feeb570eb1a528b
+          - url: git+https://github.com/Dynatrace/dynatrace-operator.git#v1.11.1
+            checksum: 3bbd616a4d7890831963fc082c18c1b7332ed162
             path: /go/src/github.com/Dynatrace/dynatrace-operator
             spdx:
               name: dynatrace-operator
-              version: 1.11.0
+              version: 1.11.1
               packages:
                 - name: dynatrace-operator
-                  purl: pkg:golang/github.com/Dynatrace/dynatrace-operator@1.11.0
+                  purl: pkg:golang/github.com/Dynatrace/dynatrace-operator@1.11.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -111,8 +111,8 @@ contents:
             fips: false
             ldflags:
               - -s -w
-              - -X github.com/Dynatrace/dynatrace-operator/pkg/version.Version=v1.11.0
-              - -X github.com/Dynatrace/dynatrace-operator/pkg/version.Commit=fd131c9cab4cc4880b13ee570feeb570eb1a528b
+              - -X github.com/Dynatrace/dynatrace-operator/pkg/version.Version=v1.11.1
+              - -X github.com/Dynatrace/dynatrace-operator/pkg/version.Commit=3bbd616a4d7890831963fc082c18c1b7332ed162
               - -X github.com/Dynatrace/dynatrace-operator/pkg/version.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
               - -extldflags=-static
             output: ${target.dir}/usr/bin/dynatrace-operator
@@ -126,8 +126,8 @@ contents:
             cgo_enabled: 0
             fips: false
             ldflags:
-              - -X github.com/Dynatrace/dynatrace-operator/pkg/version.Version=v1.11.0
-              - -X github.com/Dynatrace/dynatrace-operator/pkg/version.Commit=fd131c9cab4cc4880b13ee570feeb570eb1a528b
+              - -X github.com/Dynatrace/dynatrace-operator/pkg/version.Version=v1.11.1
+              - -X github.com/Dynatrace/dynatrace-operator/pkg/version.Commit=3bbd616a4d7890831963fc082c18c1b7332ed162
               - -X github.com/Dynatrace/dynatrace-operator/pkg/version.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
               - -extldflags=-static
             output: ${target.dir}/usr/bin/dynatrace-operator-dev
@@ -141,14 +141,14 @@ contents:
               - usr/bin/dynatrace-operator
             license: Apache-2.0
             name: dynatrace-operator-1.11
-            rel: 1
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/dynatrace-operator
                     source: usr/bin/dynatrace-operator-dev
                 name: dynatrace-operator-1.11-dev
             url: https://github.com/Dynatrace/dynatrace-operator
-            version: 1.11.0
+            version: 1.11.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
