@@ -23,7 +23,7 @@ vars:
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.11.1
   TRIVY_IMAGE_TAG: 0.74.0
-  TRIVY_REFERENCE: dhi/trivy:0.74.0-debian13@sha256:1ac78c7aa28ce57dc72af21c259b68dc6c0a9642de65893004eddb085ee57051
+  TRIVY_REFERENCE: dhi/trivy:0.74.0-debian13@sha256:317c8a18ab568aa738a3caf587b5a0a448962ca09a093ad04e51c09f955d5f54
   VERSION: 3.11.1
 contents:
   repositories:
@@ -59,7 +59,7 @@ contents:
                 - name: kyverno-policy-reporter-ui
                   ref: dhi/kyverno-policy-reporter-ui:2.9.1-debian13@sha256:f43602074ee7779e45c231a8e247940bc906daff333f03877fc0ee5c58da1d7e
                 - name: trivy
-                  ref: dhi/trivy:0.74.0-debian13@sha256:1ac78c7aa28ce57dc72af21c259b68dc6c0a9642de65893004eddb085ee57051
+                  ref: dhi/trivy:0.74.0-debian13@sha256:317c8a18ab568aa738a3caf587b5a0a448962ca09a093ad04e51c09f955d5f54
               name: kyverno-policy-reporter-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kyverno/policy-reporter
