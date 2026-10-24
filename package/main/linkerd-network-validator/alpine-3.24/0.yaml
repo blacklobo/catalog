@@ -4,7 +4,7 @@ image: dhi.io/pkg-linkerd-network-validator
 variant: runtime
 tags:
   - 0.1.9-alpine3.24
-  - 0.1.9-r0-alpine3.24
+  - 0.1.9-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,10 +13,10 @@ vars:
   COMMIT_SHA: 2753485ad694588c12b44406d7734f9f8e8c834d
   EDGE_VERSION: 26.10.1
   LIBGCC_VERSION: 15.2.0-r7
-  MUSL_VERSION: 1.2.6-r2
+  MUSL_VERSION: 1.2.6-r3
   PACKAGE_NAME: linkerd-network-validator-0
   PINNED_VERSION: 0.1.9
-  REL: "0"
+  REL: "1"
   RUST_VERSION: 1.96.1-r0
   SEMVER_MAJOR_MINOR_VERSION: "0.1"
   SEMVER_MAJOR_VERSION: "0"
@@ -46,7 +46,7 @@ contents:
           - cargo=1.96.1-r0
           - gcc
           - libgcc=15.2.0-r7
-          - musl-dev=1.2.6-r2
+          - musl-dev=1.2.6-r3
           - rust=1.96.1-r0
         files:
           - url: git+https://github.com/linkerd/linkerd2-proxy-init.git#validator/v0.1.9
@@ -136,8 +136,8 @@ contents:
           with:
             license: MIT
             name: musl
-            purl: pkg:apk/alpine/musl@1.2.6-r2?os_name=alpine&os_version=3.24
-            version: 1.2.6-r2
+            purl: pkg:apk/alpine/musl@1.2.6-r3?os_name=alpine&os_version=3.24
+            version: 1.2.6-r3
         - uses: spdx@v1
           with:
             license: Apache-2.0 OR MIT
@@ -151,7 +151,7 @@ contents:
               - usr/bin/linkerd-network-validator
             license: Apache-2.0
             name: linkerd-network-validator-0
-            rel: 0
+            rel: 1
             subpackages:
               - files:
                   - path: usr/bin/linkerd-network-validator
