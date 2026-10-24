@@ -9,20 +9,20 @@ platforms:
   - linux/amd64
 vars:
   APPVERSION: 3.5.2
-  AWS_EFS_CSI_DRIVER_REFERENCE: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:5c342e45f15bd4db8d8608c31b27691410ba67e2a399d990fda7c2dd96e76c89
+  AWS_EFS_CSI_DRIVER_REFERENCE: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:d187ade8a4ff40cf09cd73077d9708a8439f21a94159a901d27a5996cd14d7a2
   CHART_COMMIT_SHA: b0234626608813dd8f47e106c93be6d0032a00d7
   CHART_HELM_NAME: aws-efs-csi-driver-chart
   CSI_NODE_DRIVER_REGISTRAR_MAJOR: "2"
-  CSI_NODE_DRIVER_REGISTRAR_REFERENCE: dhi/csi-node-driver-registrar:2.18.0-debian13@sha256:1a1e92332e79590df2b3d8c9c3bca95ac9e2b42f40df733885dcc96d6bc97f5d
+  CSI_NODE_DRIVER_REGISTRAR_REFERENCE: dhi/csi-node-driver-registrar:2.18.0-debian13@sha256:dec10427175ad45f566fe63f138727c2bded9c633564a3a0edcd08e24489213c
   CSI_PROVISIONER_MAJOR_MINOR: "6.4"
-  CSI_PROVISIONER_REFERENCE: dhi/csi-provisioner:6.4.0-debian13@sha256:310b73906ce7ccbb1ae74de47b3859de58632b78df94cae53bdb31d6dd18c18e
+  CSI_PROVISIONER_REFERENCE: dhi/csi-provisioner:6.4.0-debian13@sha256:630463bdc35c99944cfdfdb46d06a23268a9582dd0eede167d27601005c6b5e9
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   LIVENESSPROBE_MAJOR: "2"
-  LIVENESSPROBE_REFERENCE: dhi/livenessprobe:2.20.0-debian13@sha256:4e449b7a8f1b15ac3e621de46039b5c47187ec9e37d1f8097b73e1bf50b20456
+  LIVENESSPROBE_REFERENCE: dhi/livenessprobe:2.20.0-debian13@sha256:8810aada4fec0f084d1798b4f450e29a242bd6ee228ca0fc4925544fe3c3724a
   SEMVER_MAJOR_MINOR_VERSION: "4.5"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.5.2
@@ -56,13 +56,13 @@ contents:
               description: Docker Hardened Images Helm chart for AWS EFS CSI Driver
               images:
                 - name: aws-efs-csi-driver
-                  ref: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:5c342e45f15bd4db8d8608c31b27691410ba67e2a399d990fda7c2dd96e76c89
+                  ref: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:d187ade8a4ff40cf09cd73077d9708a8439f21a94159a901d27a5996cd14d7a2
                 - name: livenessprobe
-                  ref: dhi/livenessprobe:2.20.0-debian13@sha256:4e449b7a8f1b15ac3e621de46039b5c47187ec9e37d1f8097b73e1bf50b20456
+                  ref: dhi/livenessprobe:2.20.0-debian13@sha256:8810aada4fec0f084d1798b4f450e29a242bd6ee228ca0fc4925544fe3c3724a
                 - name: csi-node-driver-registrar
-                  ref: dhi/csi-node-driver-registrar:2.18.0-debian13@sha256:1a1e92332e79590df2b3d8c9c3bca95ac9e2b42f40df733885dcc96d6bc97f5d
+                  ref: dhi/csi-node-driver-registrar:2.18.0-debian13@sha256:dec10427175ad45f566fe63f138727c2bded9c633564a3a0edcd08e24489213c
                 - name: csi-provisioner
-                  ref: dhi/csi-provisioner:6.4.0-debian13@sha256:310b73906ce7ccbb1ae74de47b3859de58632b78df94cae53bdb31d6dd18c18e
+                  ref: dhi/csi-provisioner:6.4.0-debian13@sha256:630463bdc35c99944cfdfdb46d06a23268a9582dd0eede167d27601005c6b5e9
               name: aws-efs-csi-driver-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kubernetes-sigs/aws-efs-csi-driver
