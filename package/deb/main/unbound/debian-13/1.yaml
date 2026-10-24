@@ -3,29 +3,29 @@
 image: dhi.io/pkg-unbound
 variant: runtime
 tags:
-  - 1.26.1-0-deb13u1-dhi0
-  - 1.26.1-0-deb13u1-dhi0-debian13
+  - 1.26.2-0-deb13u1-dhi0
+  - 1.26.2-0-deb13u1-dhi0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DEBIAN_DEBIAN_CHECKSUM: sha256:22430ce4c5ab232b9530b1f7a0a21126a4ae745dfea7860c8a6b39c6851a86e4
-  DEBIAN_DEBIAN_FILENAME: unbound_1.26.1-0+deb13u1.debian.tar.xz
-  DEBIAN_DEBIAN_URL: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.1-0+deb13u1.debian.tar.xz
-  DEBIAN_DSC_CHECKSUM: sha256:5cfa6c981408a173490f851011f7151828a6626679ef78b1e4767ec55290e5dc
-  DEBIAN_DSC_FILENAME: unbound_1.26.1-0+deb13u1.dsc
-  DEBIAN_DSC_URL: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.1-0+deb13u1.dsc
-  DEBIAN_FILENAME_VERSION: 1.26.1-0+deb13u1
-  DEBIAN_ORIG_ASC_CHECKSUM: sha256:c52227c2a6918f991443c72709313fcd8530c41ea61268dbe820278a1c60a996
-  DEBIAN_ORIG_ASC_URL: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.1.orig.tar.gz.asc
-  DEBIAN_ORIG_CHECKSUM: sha256:35a6dc0e425a9282c3426d9a3043144011bf0534aed4b73ab62c52aee0af1503
-  DEBIAN_ORIG_FILENAME: unbound_1.26.1.orig.tar.gz
-  DEBIAN_ORIG_URL: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.1.orig.tar.gz
-  DEBIAN_VERSION: 1.26.1-0+deb13u1
+  DEBIAN_DEBIAN_CHECKSUM: sha256:cfa3056a5ff76815be4ff3dfeb6a117b6e31c1722f4fc954bedd4bed72d0ec9e
+  DEBIAN_DEBIAN_FILENAME: unbound_1.26.2-0+deb13u1.debian.tar.xz
+  DEBIAN_DEBIAN_URL: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.2-0+deb13u1.debian.tar.xz
+  DEBIAN_DSC_CHECKSUM: sha256:d0de2b0ac0bc2f0448e6a5b80f45b69236c9124f8ac09182f1b95bf02a97385b
+  DEBIAN_DSC_FILENAME: unbound_1.26.2-0+deb13u1.dsc
+  DEBIAN_DSC_URL: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.2-0+deb13u1.dsc
+  DEBIAN_FILENAME_VERSION: 1.26.2-0+deb13u1
+  DEBIAN_ORIG_ASC_CHECKSUM: sha256:0f128cf96c9bd86be12a45082e6f518c5dc09d1c3bd93dccbdc53627e6c5cdf9
+  DEBIAN_ORIG_ASC_URL: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.2.orig.tar.gz.asc
+  DEBIAN_ORIG_CHECKSUM: sha256:d8ee7aa6bbb3ff1be7d9e57637d0d0ec2f18273a8efff1a0afe2c665858b96f7
+  DEBIAN_ORIG_FILENAME: unbound_1.26.2.orig.tar.gz
+  DEBIAN_ORIG_URL: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.2.orig.tar.gz
+  DEBIAN_VERSION: 1.26.2-0+deb13u1
   DHI_REL: "0"
-  DHI_VERSION: 1.26.1-0+deb13u1+dhi0
-  TAG_VERSION: 1.26.1-0-deb13u1-dhi0
-  UPSTREAM_VERSION: 1.26.1
+  DHI_VERSION: 1.26.2-0+deb13u1+dhi0
+  TAG_VERSION: 1.26.2-0-deb13u1-dhi0
+  UPSTREAM_VERSION: 1.26.2
 contents:
   packages:
     - '!base-files'
@@ -59,37 +59,37 @@ contents:
           - swig
           - util-linux
         files:
-          - url: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.1-0+deb13u1.dsc
-            checksum: sha256:5cfa6c981408a173490f851011f7151828a6626679ef78b1e4767ec55290e5dc
-            path: ${source.dir}/unbound_1.26.1-0+deb13u1.dsc
+          - url: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.2-0+deb13u1.dsc
+            checksum: sha256:d0de2b0ac0bc2f0448e6a5b80f45b69236c9124f8ac09182f1b95bf02a97385b
+            path: ${source.dir}/unbound_1.26.2-0+deb13u1.dsc
             uid: 0
             gid: 0
-          - url: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.1.orig.tar.gz
-            checksum: sha256:35a6dc0e425a9282c3426d9a3043144011bf0534aed4b73ab62c52aee0af1503
-            path: ${source.dir}/unbound_1.26.1.orig.tar.gz
+          - url: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.2.orig.tar.gz
+            checksum: sha256:d8ee7aa6bbb3ff1be7d9e57637d0d0ec2f18273a8efff1a0afe2c665858b96f7
+            path: ${source.dir}/unbound_1.26.2.orig.tar.gz
             uid: 0
             gid: 0
-          - url: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.1.orig.tar.gz.asc
-            checksum: sha256:c52227c2a6918f991443c72709313fcd8530c41ea61268dbe820278a1c60a996
-            path: ${source.dir}/unbound_1.26.1.orig.tar.gz.asc
+          - url: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.2.orig.tar.gz.asc
+            checksum: sha256:0f128cf96c9bd86be12a45082e6f518c5dc09d1c3bd93dccbdc53627e6c5cdf9
+            path: ${source.dir}/unbound_1.26.2.orig.tar.gz.asc
             uid: 0
             gid: 0
-          - url: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.1-0+deb13u1.debian.tar.xz
-            checksum: sha256:22430ce4c5ab232b9530b1f7a0a21126a4ae745dfea7860c8a6b39c6851a86e4
-            path: ${source.dir}/unbound_1.26.1-0+deb13u1.debian.tar.xz
+          - url: https://deb.debian.org/debian-security/pool/updates/main/u/unbound/unbound_1.26.2-0+deb13u1.debian.tar.xz
+            checksum: sha256:cfa3056a5ff76815be4ff3dfeb6a117b6e31c1722f4fc954bedd4bed72d0ec9e
+            path: ${source.dir}/unbound_1.26.2-0+deb13u1.debian.tar.xz
             uid: 0
             gid: 0
       pipeline:
         - uses: dpkg/source@v1
           work-dir: ${source.dir}
           with:
-            file: unbound_1.26.1-0+deb13u1.dsc
+            file: unbound_1.26.2-0+deb13u1.dsc
             path: unbound
         - uses: dpkg/bump@v1
           with:
             changelog:
               - DHI Rebuild
-            version: 1.26.1-0+deb13u1+dhi0
+            version: 1.26.2-0+deb13u1+dhi0
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
