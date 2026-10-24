@@ -16,8 +16,8 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   ETCD_REFERENCE: dhi/etcd:3.5.32-debian13@sha256:4e09ba8e4ea9036ba42cdbab098482f1df9123fc0ca9ae68ec003d86fb45b4c2
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13-compat@sha256:37debc339bd865cfa2a3ca7d617e0190a86bde5cf10c11ba1b6a50b89f43689f
-  KYVERNO_REPORTS_SERVER_REFERENCE: dhi/kyverno-reports-server:0.1.7-debian13@sha256:32a9bd895b88c3adcbb946fe92f74b3be134a06a9b587245f1c9e1f343db9a92
+  KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13-compat@sha256:10465d8236ba196fe032bff9257f95cb6d3d43d7043c26e423545013b646caf0
+  KYVERNO_REPORTS_SERVER_REFERENCE: dhi/kyverno-reports-server:0.1.7-debian13@sha256:d0ac3326b42133c026974c298694094e7e394f85ec302fa7ade71a7e5c84f50e
   SEMVER_MAJOR_MINOR_VERSION: "0.1"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.1.7
@@ -55,9 +55,9 @@ contents:
               description: Docker Hardened Images Helm chart for Kyverno Reports Server
               images:
                 - name: kyverno-reports-server
-                  ref: dhi/kyverno-reports-server:0.1.7-debian13@sha256:32a9bd895b88c3adcbb946fe92f74b3be134a06a9b587245f1c9e1f343db9a92
+                  ref: dhi/kyverno-reports-server:0.1.7-debian13@sha256:d0ac3326b42133c026974c298694094e7e394f85ec302fa7ade71a7e5c84f50e
                 - name: kubectl
-                  ref: dhi/kubectl:1.37.1-debian13-compat@sha256:37debc339bd865cfa2a3ca7d617e0190a86bde5cf10c11ba1b6a50b89f43689f
+                  ref: dhi/kubectl:1.37.1-debian13-compat@sha256:10465d8236ba196fe032bff9257f95cb6d3d43d7043c26e423545013b646caf0
                 - name: etcd
                   ref: dhi/etcd:3.5.32-debian13@sha256:4e09ba8e4ea9036ba42cdbab098482f1df9123fc0ca9ae68ec003d86fb45b4c2
               name: kyverno-reports-server-chart
