@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-alpine3.22@sha256:c1011eab944f17e619ce982878ea8d52cc36c67325ab374f4ad2a344a6c03786
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-alpine3.22@sha256:673be683cc7fd876518c6d3959643dfa343ef22a8e8c0ba4176e47a98c47e3c4
   CHART_COMMIT_SHA: 7e3eb70ba32b117511617ae2a66ca35e5806f4a0
   CHART_HELM_NAME: opensearch-chart
   DHI_NAMESPACE: dhi
@@ -16,7 +16,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  OPENSEARCH_REFERENCE: dhi/opensearch:3.8.0-debian13@sha256:5d6b7cd3616a081d328907940854e5eeb8aefacb7d8c3ed88a7a22533b715f85
+  OPENSEARCH_REFERENCE: dhi/opensearch:3.8.0-debian13@sha256:a504eb2771064a5669c4f00f7600c19b899cfa84f03ec767feb82820aa7ebf47
   SEMVER_MAJOR_MINOR_VERSION: "3.9"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.9.0
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for OpenSearch
               images:
                 - name: opensearch
-                  ref: dhi/opensearch:3.8.0-debian13@sha256:5d6b7cd3616a081d328907940854e5eeb8aefacb7d8c3ed88a7a22533b715f85
+                  ref: dhi/opensearch:3.8.0-debian13@sha256:a504eb2771064a5669c4f00f7600c19b899cfa84f03ec767feb82820aa7ebf47
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-alpine3.22@sha256:c1011eab944f17e619ce982878ea8d52cc36c67325ab374f4ad2a344a6c03786
+                  ref: dhi/busybox:1.37.0-alpine3.22@sha256:673be683cc7fd876518c6d3959643dfa343ef22a8e8c0ba4176e47a98c47e3c4
               name: opensearch-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/opensearch-project/helm-charts
