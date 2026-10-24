@@ -3,17 +3,17 @@
 image: dhi.io/pkg-uv
 variant: runtime
 tags:
-  - 0.13.4-1
-  - 0.13.4-1-debian13
+  - 0.13.5-0
+  - 0.13.5-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 7456b60bc6bc348e13e06e3691bf08e78d3aef54
-  DHI_REL: "1"
-  DHI_VERSION: 0.13.4-1
+  COMMIT_SHA: 46776a95d6686ac0160c10611327ce491e6b202f
+  DHI_REL: "0"
+  DHI_VERSION: 0.13.5-0
   RUST_MAJOR_MINOR: "1.97"
-  VERSION: 0.13.4
+  VERSION: 0.13.5
 contents:
   packages:
     - '!base-files'
@@ -45,18 +45,18 @@ contents:
           - liblzma-dev
           - libzstd-dev
         files:
-          - url: git+https://github.com/astral-sh/uv.git#0.13.4
-            checksum: 7456b60bc6bc348e13e06e3691bf08e78d3aef54
+          - url: git+https://github.com/astral-sh/uv.git#0.13.5
+            checksum: 46776a95d6686ac0160c10611327ce491e6b202f
             path: ${source.dir}/uv
             spdx:
               name: uv
-              version: 0.13.4
+              version: 0.13.5
               packages:
                 - name: uv
-                  purl: pkg:cargo/uv@0.13.4
+                  purl: pkg:cargo/uv@0.13.5
                   license: MIT
                 - name: uv
-                  purl: pkg:pypi/uv@0.13.4
+                  purl: pkg:pypi/uv@0.13.5
                   license: MIT
             uid: 0
             gid: 0
@@ -93,7 +93,7 @@ contents:
             changelog:
               - Bump rustls-webpki to 0.103.16 and webpki-root-certs to 1.0.10 for CVE-2026-111943
               - Bump rustls, memmap2, anyhow, crossbeam-epoch, event-listener, and h2 to advisory-fixed releases
-            version: 0.13.4-1
+            version: 0.13.5-0
         - uses: dpkg/build@v1
           privileged: true
           with:
