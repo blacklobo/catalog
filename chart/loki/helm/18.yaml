@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ACCESS_LOG_EXPORTER_REFERENCE: dhi/access-log-exporter:0.5.1-debian13@sha256:992e151563cfa9b760cb9e2817852425bda2e32db2061751ec06be6536b3fac3
+  ACCESS_LOG_EXPORTER_REFERENCE: dhi/access-log-exporter:0.5.2-debian13@sha256:350a120707be56c460f4c03f939b545e5712cc630d6fa2b5cc8d97ef347e2b36
   APPVERSION: 3.7.8
   CHART_COMMIT_SHA: f98da75649cd9bab7c7777e8afe3038dec71b281
   CHART_HELM_NAME: loki-chart
@@ -16,10 +16,10 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_ROLLOUT_OPERATOR_CHART_REFERENCE: dhi/grafana-rollout-operator-chart:0.53.1@sha256:38783a7e9ff65ba7c3a15558a0a1f05608c734c3c70ee5226642c5aee11df419
+  GRAFANA_ROLLOUT_OPERATOR_CHART_REFERENCE: dhi/grafana-rollout-operator-chart:0.53.1@sha256:b36f817abe9be2759937df9be71a9abbffad73be1c86d350d4863aab8c3939ed
   HELM_VERSION: 4.1.4-2
   K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:cd7f69bdbba264134f766f244760b96983931117f5aa7034f7595552356c9b1e
-  KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:f695b69e498dd7de2117b01cb13cb827f61a8a9b40d32ef22749c9435059b674
+  KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:05a8bfd374ee906a6748aae9506886fe33d1696e00c864929d9e3dff2785d5bd
   LOKI_CANARY_REFERENCE: dhi/loki-canary:3.7.8-debian13@sha256:67df03c3ed69c14b0df78764186632102aea8c2663a62718248c6e33a480e215
   LOKI_HELM_TEST_REFERENCE: dhi/loki-helm-test:3.7.9-debian13@sha256:eec5b395b05f10ac9bfd7dc88291dfbab11a627c0e9a75d4fdd21acb3c7365fe
   LOKI_REFERENCE: dhi/loki:3.7.8-debian13@sha256:a1cb3b105a50360a357c3ed340a6f4ed20dd8219062d072a00925fd3d1b54f16
@@ -62,7 +62,7 @@ contents:
                 - alias: rollout_operator
                   condition: rollout_operator.enabled
                   name: rollout-operator
-                  ref: dhi/grafana-rollout-operator-chart:0.53.1@sha256:38783a7e9ff65ba7c3a15558a0a1f05608c734c3c70ee5226642c5aee11df419
+                  ref: dhi/grafana-rollout-operator-chart:0.53.1@sha256:b36f817abe9be2759937df9be71a9abbffad73be1c86d350d4863aab8c3939ed
               description: Docker Hardened Images Helm chart for Grafana Loki
               images:
                 - name: loki
@@ -80,9 +80,9 @@ contents:
                 - name: memcached-exporter
                   ref: dhi/memcached-exporter:0.17.0-debian13@sha256:180bc025656783e2b27d47edd4b53d7f7df71526229db817c57c795b71fefb4c
                 - name: access-log-exporter
-                  ref: dhi/access-log-exporter:0.5.1-debian13@sha256:992e151563cfa9b760cb9e2817852425bda2e32db2061751ec06be6536b3fac3
+                  ref: dhi/access-log-exporter:0.5.2-debian13@sha256:350a120707be56c460f4c03f939b545e5712cc630d6fa2b5cc8d97ef347e2b36
                 - name: kubectl
-                  ref: dhi/kubectl:1.37.1-debian13@sha256:f695b69e498dd7de2117b01cb13cb827f61a8a9b40d32ef22749c9435059b674
+                  ref: dhi/kubectl:1.37.1-debian13@sha256:05a8bfd374ee906a6748aae9506886fe33d1696e00c864929d9e3dff2785d5bd
               name: loki-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana/loki
