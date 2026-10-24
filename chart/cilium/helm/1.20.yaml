@@ -13,7 +13,7 @@ vars:
   BUSYBOX_REFERENCE: dhi/busybox:1.38.0-alpine3.24@sha256:59ec745ef4b2e553eafea215cf9550f545daf68edf151bdb88a2abbe392da132
   CHART_COMMIT_SHA: bf1aba7b34ab6d9c711315d78d8eefbea81962d1
   CHART_HELM_NAME: cilium-chart
-  CILIUM_CERTGEN_REFERENCE: dhi/cilium-certgen:0.4.13-debian13@sha256:8ed9c398f959725086d0151ad95362cb4d223bd56d62c551e598cf909037da92
+  CILIUM_CERTGEN_REFERENCE: dhi/cilium-certgen:0.4.13-debian13@sha256:52e88596795c009545196be7d3abe7ecf75ec24e8410696919a86f15e22a9854
   CILIUM_CLUSTERMESH_APISERVER_REFERENCE: dhi/cilium-clustermesh-apiserver:1.20.3-debian13@sha256:da56edd69316bd05542d2e707704c46b07e2b17c089bc296fa2ae4c03808d60c
   CILIUM_DNSPROXY_REFERENCE: dhi/cilium-dnsproxy:1.20.3-debian13@sha256:56af01159f0fc475780c7f98742fe7709cdc81d6aa4aa369338db12cbdc69d6c
   CILIUM_ENVOY_REFERENCE: dhi/cilium-envoy:1.20.2-debian13-compat@sha256:93925c1ee6bd07a5cc938dc125e77e0e01443683a63d0e3071c1ccdd3463c3b6
@@ -77,7 +77,7 @@ contents:
                 - name: cilium-envoy
                   ref: dhi/cilium-envoy:1.20.2-debian13-compat@sha256:93925c1ee6bd07a5cc938dc125e77e0e01443683a63d0e3071c1ccdd3463c3b6
                 - name: cilium-certgen
-                  ref: dhi/cilium-certgen:0.4.13-debian13@sha256:8ed9c398f959725086d0151ad95362cb4d223bd56d62c551e598cf909037da92
+                  ref: dhi/cilium-certgen:0.4.13-debian13@sha256:52e88596795c009545196be7d3abe7ecf75ec24e8410696919a86f15e22a9854
                 - name: cilium-clustermesh-apiserver
                   ref: dhi/cilium-clustermesh-apiserver:1.20.3-debian13@sha256:da56edd69316bd05542d2e707704c46b07e2b17c089bc296fa2ae4c03808d60c
                 - name: cilium-startup-script
