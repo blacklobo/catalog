@@ -24,8 +24,8 @@ vars:
   PG_MAJOR_VERSION: "15"
   PG_VERSION: "15.19"
   PGDATA: /var/lib/postgresql/15/data
-  POSTGRES_BUILD_REFERENCE: dhi/postgres:15.19-debian13-dev@sha256:10c6da4cbb82554196241be2aab152d583d015f2dd9ab3938486c5ce80a2de89
-  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:15.19-debian13@sha256:1d5586bcaa07aebe5476d861222efa969d71e8cb8c784cd2a3f7e20b39cdfb0d
+  POSTGRES_BUILD_REFERENCE: dhi/postgres:15.19-debian13-dev@sha256:e38cbcea04fcf1e39d656e852f0210f5447ed51734613b8ae643d7baf573f12e
+  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:15.19-debian13@sha256:a0aa5bded97ed24ee643fbd140e0f36b353ec1c4259872e1c86611a5a056aab9
   SEMVER_MAJOR_MINOR_VERSION: "0.8"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.8.7
@@ -81,7 +81,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/postgres:15.19-debian13-dev@sha256:10c6da4cbb82554196241be2aab152d583d015f2dd9ab3938486c5ce80a2de89
+          - name: dhi.io/postgres:15.19-debian13-dev@sha256:e38cbcea04fcf1e39d656e852f0210f5447ed51734613b8ae643d7baf573f12e
             includes:
               - opt/postgresql/15/**
               - usr/bin/pg_config
@@ -135,7 +135,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/postgres:15.19-debian13@sha256:1d5586bcaa07aebe5476d861222efa969d71e8cb8c784cd2a3f7e20b39cdfb0d
+    - name: dhi.io/postgres:15.19-debian13@sha256:a0aa5bded97ed24ee643fbd140e0f36b353ec1c4259872e1c86611a5a056aab9
       excludes:
         - etc/os-release
         - var/lib/dpkg/status
