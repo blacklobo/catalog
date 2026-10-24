@@ -3,23 +3,23 @@
 image: dhi.io/pkg-searxng
 variant: runtime
 tags:
-  - 2026.10.23
-  - 2026.10.23-r0
-  - 2026.10.23-debian13
-  - 2026.10.23-r0-debian13
+  - 2026.10.24
+  - 2026.10.24-r0
+  - 2026.10.24-debian13
+  - 2026.10.24-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-06"
 vars:
-  COMMIT_SHA: 629368e40c2aa4edffb05636a8bbc23d2eaa5923
-  PYTHON_VERSION: 3.13.16-0
+  COMMIT_SHA: ef0ec03da02b62d0a977264cb90a0833dfe001ae
+  PYTHON_VERSION: 3.13.17-0
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2026.10"
   SEMVER_MAJOR_VERSION: "2026"
-  SEMVER_VERSION: 2026.10.23
-  VERSION: 2026.10.23
+  SEMVER_VERSION: 2026.10.24
+  VERSION: 2026.10.24
 contents:
   packages:
     - base-files
@@ -28,8 +28,8 @@ contents:
       work-dir: ${source.dir}
       environment:
         PYTHON_BIN: /usr/bin/python3.13
-        SEARXNG_COMMIT: 629368e40c2aa4edffb05636a8bbc23d2eaa5923
-        SEARXNG_VERSION: 2026.10.23
+        SEARXNG_COMMIT: ef0ec03da02b62d0a977264cb90a0833dfe001ae
+        SEARXNG_VERSION: 2026.10.24
       contents:
         repositories:
           - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -44,20 +44,20 @@ contents:
           - findutils
           - git
           - gzip
-          - python-3.13=3.13.16-0
+          - python-3.13=3.13.17-0
           - python3-pip
           - python3-venv
           - sed
         files:
-          - url: git+https://github.com/searxng/searxng.git#629368e40c2aa4edffb05636a8bbc23d2eaa5923
-            checksum: 629368e40c2aa4edffb05636a8bbc23d2eaa5923
+          - url: git+https://github.com/searxng/searxng.git#ef0ec03da02b62d0a977264cb90a0833dfe001ae
+            checksum: ef0ec03da02b62d0a977264cb90a0833dfe001ae
             path: ${source.dir}/src
             spdx:
               name: searxng
-              version: 2026.10.23
+              version: 2026.10.24
               packages:
                 - name: searxng
-                  purl: pkg:github/searxng/searxng@2026.10.23
+                  purl: pkg:github/searxng/searxng@2026.10.24
                   license: AGPL-3.0-or-later
             uid: 0
             gid: 0
@@ -83,7 +83,7 @@ contents:
             name: searxng
             rel: 0
             url: https://github.com/searxng/searxng
-            version: 2026.10.23
+            version: 2026.10.24
       paths:
         - type: file
           path: ${source.dir}/build-searxng.sh
