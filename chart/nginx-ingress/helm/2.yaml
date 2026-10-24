@@ -16,7 +16,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  NGINX_INGRESS_REFERENCE: dhi/nginx-ingress:5.7.0-debian13@sha256:8b5e5041c25de211056f04f7e4ad160aec7397673a9cf8ce18e3d921cd542879
+  NGINX_INGRESS_REFERENCE: dhi/nginx-ingress:5.7.0-debian13@sha256:c80af4dde05150336ba5e54f653e6d8ed7ce30e961bb20a0fe6c70d6dcda9006
   SEMVER_MAJOR_MINOR_VERSION: "2.8"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.8.0
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for NGINX Ingress Controller
               images:
                 - name: nginx-ingress
-                  ref: dhi/nginx-ingress:5.7.0-debian13@sha256:8b5e5041c25de211056f04f7e4ad160aec7397673a9cf8ce18e3d921cd542879
+                  ref: dhi/nginx-ingress:5.7.0-debian13@sha256:c80af4dde05150336ba5e54f653e6d8ed7ce30e961bb20a0fe6c70d6dcda9006
               name: nginx-ingress-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/nginx/kubernetes-ingress
