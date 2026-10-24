@@ -4,9 +4,9 @@ image: dhi.io/pkg-elasticsearch
 variant: runtime
 tags:
   - 8.19.23
-  - 8.19.23-r0
+  - 8.19.23-r1
   - 8.19.23-debian13
-  - 8.19.23-r0-debian13
+  - 8.19.23-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -45,7 +45,7 @@ vars:
   EXTRA_JDK24_DOWNLOAD: https://github.com/adoptium/temurin24-binaries/releases/download/jdk-24.0.2+12/OpenJDK24U-jdk_${ARCH}_linux_hotspot_24.0.2_12.tar.gz
   EXTRA_JDK24_JAVA_SUFFIX: "12"
   EXTRA_JDK24_JAVA_VERSION: 24.0.2
-  EXTRA_JDK25_VERSION: 1:25.0.4.1+1-4
+  EXTRA_JDK25_VERSION: 1:25.0.5+8-0
   EXTRA_JDK26_VERSION: 1:26.0.2.1+1-4
   EXTRA_JDK27_ADOPTIUM_VERSION: jdk-27+35-ea-beta
   EXTRA_JDK27_CHECKSUM: https://github.com/adoptium/temurin27-binaries/releases/download/jdk-27+35-ea-beta/OpenJDK27U-jdk_${ARCH}_linux_hotspot_27_35-ea.tar.gz.sha256.txt
@@ -53,9 +53,9 @@ vars:
   EXTRA_JDK27_EA_BUILD: "35"
   HAS_SOURCE_SHIMS: "FALSE"
   JDK_MAJOR_VERSION: "21"
-  JDK_VERSION: 1:21.0.12.1+1-4
+  JDK_VERSION: 1:21.0.13+9-0
   PACKAGE_NAME: elasticsearch-8.19
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "8.19"
   SEMVER_MAJOR_VERSION: "8"
   SEMVER_VERSION: 8.19.23
@@ -86,8 +86,8 @@ contents:
           - tar
           - tini
           - eclipse-temurin-17-jdk=1:17.0.20.1+1-4
-          - eclipse-temurin-21-jdk=1:21.0.12.1+1-4
-          - eclipse-temurin-25-jdk=1:25.0.4.1+1-4
+          - eclipse-temurin-21-jdk=1:21.0.13+9-0
+          - eclipse-temurin-25-jdk=1:25.0.5+8-0
           - eclipse-temurin-26-jdk=1:26.0.2.1+1-4
         files:
           - url: git+https://github.com/elastic/elasticsearch.git#v8.19.23
@@ -227,7 +227,7 @@ contents:
               - deb
             license: Elastic-License-2.0
             name: elasticsearch-8.19
-            rel: 0
+            rel: 1
             url: https://www.elastic.co/elasticsearch/
             version: 8.19.23
       paths:
