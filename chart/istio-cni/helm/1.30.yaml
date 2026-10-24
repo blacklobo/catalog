@@ -4,22 +4,22 @@ name: Istio CNI Helm chart 1.30.x
 image: dhi.io/istio-cni-chart
 variant: helm
 tags:
-  - 1.30.6
+  - 1.30.7
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: b85dac9587f2f997151d205e069e4f4ff091c7c5
+  CHART_COMMIT_SHA: 7209fe474ce6229c303170be35e76d21619e302a
   CHART_HELM_NAME: istio-cni-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  ISTIO_INSTALL_CNI_REFERENCE: dhi/istio-install-cni:1.30.6-debian13@sha256:bee9268e20567a037430f0934c43f7327167d7608811aa1fd5163640ad43c59a
+  ISTIO_INSTALL_CNI_REFERENCE: dhi/istio-install-cni:1.30.6-debian13@sha256:affa6819aa9c846f99daf818d254aebe7796c0e66490c3093f71ce2dc0f67f8d
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.6
-  VERSION: 1.30.6
+  SEMVER_VERSION: 1.30.7
+  VERSION: 1.30.7
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -33,8 +33,8 @@ contents:
           - bash
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/istio/istio.git#1.30.6
-            checksum: b85dac9587f2f997151d205e069e4f4ff091c7c5
+          - url: git+https://github.com/istio/istio.git#1.30.7
+            checksum: 7209fe474ce6229c303170be35e76d21619e302a
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -47,7 +47,7 @@ contents:
               description: Docker Hardened Images Helm chart for Istio CNI
               images:
                 - name: istio-install-cni
-                  ref: dhi/istio-install-cni:1.30.6-debian13@sha256:bee9268e20567a037430f0934c43f7327167d7608811aa1fd5163640ad43c59a
+                  ref: dhi/istio-install-cni:1.30.6-debian13@sha256:affa6819aa9c846f99daf818d254aebe7796c0e66490c3093f71ce2dc0f67f8d
               name: istio-cni-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/istio/istio
