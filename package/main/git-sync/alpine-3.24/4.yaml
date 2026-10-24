@@ -3,20 +3,20 @@
 image: dhi.io/pkg-git-sync
 variant: runtime
 tags:
-  - 4.7.1-alpine3.24
-  - 4.7.1-r7-alpine3.24
+  - 4.8.0-alpine3.24
+  - 4.8.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: d9d12f7e9839266ceb1e2719488c1b7112316cb3
+  COMMIT_SHA: 16c456402dc25a2d207464c8595ae2dc3b851cf4
   GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: git-sync
-  REL: "7"
-  SEMVER_MAJOR_MINOR_VERSION: "4.7"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "4.8"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.7.1
-  VERSION: 4.7.1
+  SEMVER_VERSION: 4.8.0
+  VERSION: 4.8.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -38,15 +38,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/kubernetes/git-sync.git#v4.7.1
-            checksum: d9d12f7e9839266ceb1e2719488c1b7112316cb3
+          - url: git+https://github.com/kubernetes/git-sync.git#v4.8.0
+            checksum: 16c456402dc25a2d207464c8595ae2dc3b851cf4
             path: /go/src/k8s.io/git-sync
             spdx:
               name: git-sync
-              version: 4.7.1
+              version: 4.8.0
               packages:
                 - name: git-sync
-                  purl: pkg:golang/k8s.io/git-sync@4.7.1
+                  purl: pkg:golang/k8s.io/git-sync@4.8.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -54,8 +54,7 @@ contents:
         - name: update go dependencies
           uses: go/bump@v2
           with:
-            deps:
-              - golang.org/x/sys@v0.44.0
+            deps: []
         - uses: go/hermetic@v1
         - name: test
           runs: |
@@ -67,14 +66,14 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X k8s.io/git-sync/pkg/version.VERSION=4.7.1
+              - -X k8s.io/git-sync/pkg/version.VERSION=4.8.0
             output: ${target.dir}/usr/bin/git-sync
         - name: build dev
           uses: go/build@v1
           with:
             fips: false
             ldflags:
-              - -X k8s.io/git-sync/pkg/version.VERSION=4.7.1
+              - -X k8s.io/git-sync/pkg/version.VERSION=4.8.0
             output: ${target.dir}/usr/bin/git-sync-dev
             strip: false
         - uses: dhi/build-pkg:0
@@ -84,14 +83,14 @@ contents:
               - usr/bin/git-sync
             license: Apache-2.0
             name: git-sync
-            rel: 7
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/git-sync
                     source: usr/bin/git-sync-dev
                 name: git-sync-dev
             url: https://github.com/kubernetes/git-sync
-            version: 4.7.1
+            version: 4.8.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
