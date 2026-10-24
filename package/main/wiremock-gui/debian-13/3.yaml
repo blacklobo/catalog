@@ -4,9 +4,9 @@ image: dhi.io/pkg-wiremock-gui
 variant: runtime
 tags:
   - 3.13.217
-  - 3.13.217-r0
+  - 3.13.217-r1
   - 3.13.217-debian13
-  - 3.13.217-r0-debian13
+  - 3.13.217-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   COMMIT_SHA: b788db35f518ec29d66f691745f95404aaef9dd7
   GRADLE_REFERENCE: dhi/gradle:8.14.6-jdk17-debian13-dev@sha256:01bd054d35c6391d6c7515fb974647284e8c0ad1088e00286116d2f751943729
   PACKAGE_NAME: wiremock-gui
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "3.13"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.13.217
@@ -108,7 +108,7 @@ contents:
               - deb
             license: Apache-2.0
             name: wiremock-gui
-            rel: 0
+            rel: 1
             url: https://github.com/holomekc/wiremock
             version: 3.13.217
       paths:
