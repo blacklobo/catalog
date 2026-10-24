@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: b9c17924adb533d3617ec7de97a7b0f4acc07b39
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
-  KUSTOMIZE_REFERENCE: dhi/kustomize:5.8.3-debian13@sha256:45b346837b65dc2724bf5f40f20e8a3d404749560fbc0ca2b66d08cf91535d4c
+  KUSTOMIZE_REFERENCE: dhi/kustomize:5.8.3-debian13@sha256:9db64ab5e92c7d8ac27a87a4c6e2b864ffc69fc18e0429367c0344741e503ce1
   PACKAGE_NAME: flux-cli
   REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "2.9"
@@ -59,7 +59,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/kustomize:5.8.3-debian13@sha256:45b346837b65dc2724bf5f40f20e8a3d404749560fbc0ca2b66d08cf91535d4c
+          - name: dhi.io/kustomize:5.8.3-debian13@sha256:9db64ab5e92c7d8ac27a87a4c6e2b864ffc69fc18e0429367c0344741e503ce1
             includes:
               - opt/**
               - usr/bin/kustomize
