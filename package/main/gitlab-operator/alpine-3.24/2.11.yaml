@@ -1,0 +1,187 @@
+# syntax=dhi.io/build:2-alpine3.24
+
+image: dhi.io/pkg-gitlab-operator
+variant: runtime
+tags:
+  - 2.11.3-r0-alpine3.24
+platforms:
+  - linux/amd64
+  - linux/arm64
+dates:
+  release: "2026-04-16"
+vars:
+  CHART_DIGEST_1: aeb95a29a76d9fbcab887a01ff71e17bc45a5ee35dede9ec33c113822ae72e77
+  CHART_DIGEST_2: 888c5ec65d707ae70e0565ec0c4ea3a97a1cb0b70f6702dc8fbad4a53035a5b0
+  CHART_DIGEST_3: 8e7fec5716549e1e5923d1cd937d764dbeacab5bee81240bcfeed7a32fd9d5a3
+  CHART_VERSION_1: 9.11.4
+  CHART_VERSION_2: 9.10.6
+  CHART_VERSION_3: 9.9.8
+  COMMIT_SHA: 2c11cac8b8b47c086431d17fdaa8589fadcb6951
+  GOLANG_MAJOR_MINOR_VERSION: "1.26"
+  GOLANG_VERSION: 1.26.10-r0
+  PACKAGE_NAME: gitlab-operator-2.11
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "2.11"
+  SEMVER_MAJOR_VERSION: "2"
+  SEMVER_VERSION: 2.11.3
+  VERSION: 2.11.3
+contents:
+  repositories:
+    - https://dhi.io/apk/alpine/v3.24/main
+    - https://dhi.io/apk/alpine/v3.23/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.24/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.24/community
+  keyring:
+    - https://dhi.io/keyring/dhi-apk@docker-0F81AD7700D99184.rsa.pub
+  packages:
+    - alpine-baselayout-data
+  builds:
+    - name: gitlab-operator-2.11
+      work-dir: /go/src/gitlab.com/gitlab-org/cloud-native/gitlab-operator
+      contents:
+        packages:
+          - busybox
+          - bash
+          - ca-certificates-bundle
+          - golang-1.26=1.26.10-r0
+          - golang-1.26-oci-config=1.26.10-r0
+        files:
+          - url: git+https://gitlab.com/gitlab-org/cloud-native/gitlab-operator.git#2.11.3
+            checksum: 2c11cac8b8b47c086431d17fdaa8589fadcb6951
+            path: /go/src/gitlab.com/gitlab-org/cloud-native/gitlab-operator
+            spdx:
+              name: gitlab-operator
+              version: 2.11.3
+              packages:
+                - name: gitlab-operator
+                  purl: pkg:golang/gitlab.com/gitlab-org/cloud-native/gitlab-operator@2.11.3
+                  license: Apache-2.0
+            uid: 0
+            gid: 0
+          - url: https://gitlab-charts.s3.amazonaws.com/gitlab-9.11.4.tgz
+            checksum: sha256:aeb95a29a76d9fbcab887a01ff71e17bc45a5ee35dede9ec33c113822ae72e77
+            path: ${source.dir}/charts/gitlab-9.11.4.tgz
+            spdx:
+              name: gitlab-chart-9.11.4
+              version: 9.11.4
+              packages:
+                - name: gitlab-chart
+                  purl: pkg:generic/gitlab-chart@9.11.4
+                  license: MIT
+            uid: 0
+            gid: 0
+          - url: https://gitlab-charts.s3.amazonaws.com/gitlab-9.10.6.tgz
+            checksum: sha256:888c5ec65d707ae70e0565ec0c4ea3a97a1cb0b70f6702dc8fbad4a53035a5b0
+            path: ${source.dir}/charts/gitlab-9.10.6.tgz
+            spdx:
+              name: gitlab-chart-9.10.6
+              version: 9.10.6
+              packages:
+                - name: gitlab-chart
+                  purl: pkg:generic/gitlab-chart@9.10.6
+                  license: MIT
+            uid: 0
+            gid: 0
+          - url: https://gitlab-charts.s3.amazonaws.com/gitlab-9.9.8.tgz
+            checksum: sha256:8e7fec5716549e1e5923d1cd937d764dbeacab5bee81240bcfeed7a32fd9d5a3
+            path: ${source.dir}/charts/gitlab-9.9.8.tgz
+            spdx:
+              name: gitlab-chart-9.9.8
+              version: 9.9.8
+              packages:
+                - name: gitlab-chart
+                  purl: pkg:generic/gitlab-chart@9.9.8
+                  license: MIT
+            uid: 0
+            gid: 0
+      pipeline:
+        - name: update go dependencies
+          uses: go/bump@v2
+          with:
+            deps:
+              - golang.org/x/crypto@v0.57.0
+              - golang.org/x/net@v0.60.0
+              - golang.org/x/mod@v0.41.0
+              - golang.org/x/sys@v0.48.0
+              - golang.org/x/text@v0.42.0
+              - oras.land/oras-go/v2@v2.6.2
+              - google.golang.org/grpc@v1.83.2
+              - go.opentelemetry.io/otel@v1.45.0
+              - go.opentelemetry.io/otel/sdk@v1.45.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlptrace@v1.45.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0
+              - github.com/google/cel-go@v0.30.0
+            download: true
+        - name: update envoy gateway and helm (2.11)
+          uses: go/bump@v2
+          with:
+            deps:
+              - github.com/envoyproxy/gateway@v1.7.4
+              - helm.sh/helm/v4@v4.1.4
+            download: true
+        - uses: go/hermetic@v1
+        - name: verify bundled chart versions
+          runs: |
+            set -eux -o pipefail
+
+            printf '%s\n' "9.11.4" "9.10.6" "9.9.8" > /tmp/expected-charts
+            awk 'NF { print $1 }' CHART_VERSIONS > /tmp/upstream-charts
+            diff -u /tmp/expected-charts /tmp/upstream-charts
+        - name: test
+          environment:
+            CHART_VERSION: 9.11.4
+            GODEBUG: ""
+            SKIP_ENVTEST: "yes"
+          runs: |
+            set -eux -o pipefail
+
+            export HELM_CHARTS=${source.dir}/charts
+            CGO_ENABLED=0 go test -count=1 -timeout 30m ./...
+        - name: build gitlab-operator
+          uses: go/build@v1
+          with:
+            cgo_enabled: 0
+            fips: false
+            output: ${target.dir}/usr/bin/gitlab-operator
+            packages: .
+        - name: stage bundled charts
+          runs: |
+            set -eux -o pipefail
+
+            install -d -m 0755 ${target.dir}/usr/share/gitlab-operator/charts
+            install -m 0644 \
+              ${source.dir}/charts/gitlab-9.11.4.tgz \
+              ${source.dir}/charts/gitlab-9.10.6.tgz \
+              ${source.dir}/charts/gitlab-9.9.8.tgz \
+              ${target.dir}/usr/share/gitlab-operator/charts/
+        - name: stage sbom documents
+          runs: |
+            set -eux -o pipefail
+
+            install -d "${target.dir}/opt/docker/sbom"
+            for d in gitlab-operator gitlab-chart-9.11.4 gitlab-chart-9.10.6 gitlab-chart-9.9.8; do
+              test -d "/opt/docker/sbom/$d"
+              cp -a "/opt/docker/sbom/$d" "${target.dir}/opt/docker/sbom/"
+            done
+        - uses: dhi/build-pkg:0
+          with:
+            description: Kubernetes operator that deploys and manages GitLab instances from the bundled GitLab Helm charts
+            files:
+              - usr/bin/gitlab-operator
+              - usr/share/gitlab-operator/charts
+              - opt/docker/sbom/gitlab-operator
+              - opt/docker/sbom/gitlab-chart-9.11.4
+              - opt/docker/sbom/gitlab-chart-9.10.6
+              - opt/docker/sbom/gitlab-chart-9.9.8
+            license: Apache-2.0
+            name: gitlab-operator-2.11
+            rel: 0
+            url: https://gitlab.com/gitlab-org/cloud-native/gitlab-operator
+            version: 2.11.3
+os-release:
+  name: Docker Hardened Images (Alpine)
+  id: alpine
+  version-id: "3.24"
+  pretty-name: Docker Hardened Images/Alpine Linux v3.24
+  home-url: https://docker.com/products/hardened-images/
+  bug-report-url: https://docker.com/support/
