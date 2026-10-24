@@ -7,13 +7,13 @@ flavor: emulators
 tags:
   - 590-emulators
   - 590.0-emulators
-  - 590.0.0-emulators
+  - 590.0.1-emulators
   - 590-debian-emulators
   - 590-debian13-emulators
   - 590.0-debian-emulators
   - 590.0-debian13-emulators
-  - 590.0.0-debian-emulators
-  - 590.0.0-debian13-emulators
+  - 590.0.1-debian-emulators
+  - 590.0.1-debian13-emulators
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,8 +22,8 @@ dates:
 vars:
   SEMVER_MAJOR_MINOR_VERSION: "590.0"
   SEMVER_MAJOR_VERSION: "590"
-  SEMVER_VERSION: 590.0.0
-  VERSION: 590.0.0-0
+  SEMVER_VERSION: 590.0.1
+  VERSION: 590.0.1-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -33,7 +33,7 @@ contents:
     - base-files
     - bash
     - ca-certificates-bundle
-    - cloud-sdk-emulators=590.0.0-0
+    - cloud-sdk-emulators=590.0.1-0
     - coreutils
     - eclipse-temurin-21-jre
     - eclipse-temurin-21-jre-oci-config
