@@ -3,20 +3,20 @@
 image: dhi.io/pkg-blackbox-exporter
 variant: runtime
 tags:
-  - 0.29.0-alpine3.23
-  - 0.29.0-r3-alpine3.23
+  - 0.29.1-alpine3.23
+  - 0.29.1-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 0e64fec9b041487cc3b62245a8ed5afb0d22819c
+  COMMIT_SHA: ad91668339ca265f460c23fc422a27ba6d788db9
   GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: blackbox-exporter
-  REL: "3"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "0.29"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.29.0
-  VERSION: 0.29.0
+  SEMVER_VERSION: 0.29.1
+  VERSION: 0.29.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -37,8 +37,8 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/prometheus/blackbox_exporter.git#v0.29.0
-            checksum: 0e64fec9b041487cc3b62245a8ed5afb0d22819c
+          - url: git+https://github.com/prometheus/blackbox_exporter.git#v0.29.1
+            checksum: ad91668339ca265f460c23fc422a27ba6d788db9
             path: /go/src/github.com/prometheus/blackbox_exporter
             uid: 0
             gid: 0
@@ -46,9 +46,7 @@ contents:
         - name: update go dependencies
           uses: go/bump@v1
           with:
-            deps:
-              - golang.org/x/net@v0.60.0
-              - github.com/google/cel-go@v0.30.0
+            deps: []
             tidy: true
         - uses: go/hermetic@v1
         - name: build
@@ -56,8 +54,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/prometheus/common/version.Version=0.29.0
-              - -X github.com/prometheus/common/version.Revision=0e64fec9b041487cc3b62245a8ed5afb0d22819c
+              - -X github.com/prometheus/common/version.Version=0.29.1
+              - -X github.com/prometheus/common/version.Revision=ad91668339ca265f460c23fc422a27ba6d788db9
               - -X github.com/prometheus/common/version.Branch=HEAD
               - -X github.com/prometheus/common/version.BuildUser=dhi
               - -X github.com/prometheus/common/version.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y%m%d-%H:%M:%S')
@@ -68,8 +66,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/prometheus/common/version.Version=0.29.0
-              - -X github.com/prometheus/common/version.Revision=0e64fec9b041487cc3b62245a8ed5afb0d22819c
+              - -X github.com/prometheus/common/version.Version=0.29.1
+              - -X github.com/prometheus/common/version.Revision=ad91668339ca265f460c23fc422a27ba6d788db9
               - -X github.com/prometheus/common/version.Branch=HEAD
               - -X github.com/prometheus/common/version.BuildUser=dhi
               - -X github.com/prometheus/common/version.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y%m%d-%H:%M:%S')
@@ -83,14 +81,14 @@ contents:
               - usr/bin/blackbox_exporter
             license: Apache-2.0
             name: blackbox-exporter
-            rel: 3
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/blackbox_exporter
                     source: usr/bin/blackbox_exporter-dev
                 name: blackbox-exporter-dev
             url: https://github.com/prometheus/blackbox_exporter
-            version: 0.29.0
+            version: 0.29.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
