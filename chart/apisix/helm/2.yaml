@@ -8,9 +8,9 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  APISIX_INGRESS_CONTROLLER_CHART_REFERENCE: dhi/apisix-ingress-controller-chart:1.4.0@sha256:aac4d4b2329a7bdfb743d9e83f194c9e42d09e26a94b56ba790231ca9ec14579
-  APISIX_REFERENCE: dhi/apisix:3.19.0-debian13@sha256:f52a83b31acca33e0173b0531d108fd4dcf8b2f993af2bfd2ff490f4f35add40
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:bb67e1b1d351fa4cb5cdb459dbb580ff0202d40ea8feb23660936defd7af5a74
+  APISIX_INGRESS_CONTROLLER_CHART_REFERENCE: dhi/apisix-ingress-controller-chart:1.4.0@sha256:4ddf33d81ebcf18f1076939e79828a55efbb57a277727f23551bd87659cac3d3
+  APISIX_REFERENCE: dhi/apisix:3.19.0-debian13@sha256:1ea7efc41394157561b880ff5beae118226ef1385d056d55da6dea9cebcbc7e3
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:4fe54cacdd9136802256d04883f16081ee71b4cd984b63e94192cbaec7d5dd3d
   CHART_COMMIT_SHA: 53115d6ab51e14eec55d0689ad7e70c28b6ce11f
   CHART_HELM_NAME: apisix-chart
   DHI_NAMESPACE: dhi
@@ -54,13 +54,13 @@ contents:
                 - alias: ingress-controller
                   condition: ingress-controller.enabled
                   name: apisix-ingress-controller-chart
-                  ref: dhi/apisix-ingress-controller-chart:1.4.0@sha256:aac4d4b2329a7bdfb743d9e83f194c9e42d09e26a94b56ba790231ca9ec14579
+                  ref: dhi/apisix-ingress-controller-chart:1.4.0@sha256:4ddf33d81ebcf18f1076939e79828a55efbb57a277727f23551bd87659cac3d3
               description: Docker Hardened Images Helm chart for APISIX
               images:
                 - name: apisix
-                  ref: dhi/apisix:3.19.0-debian13@sha256:f52a83b31acca33e0173b0531d108fd4dcf8b2f993af2bfd2ff490f4f35add40
+                  ref: dhi/apisix:3.19.0-debian13@sha256:1ea7efc41394157561b880ff5beae118226ef1385d056d55da6dea9cebcbc7e3
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-debian13@sha256:bb67e1b1d351fa4cb5cdb459dbb580ff0202d40ea8feb23660936defd7af5a74
+                  ref: dhi/busybox:1.37.0-debian13@sha256:4fe54cacdd9136802256d04883f16081ee71b4cd984b63e94192cbaec7d5dd3d
               name: apisix-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/apache/apisix
