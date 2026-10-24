@@ -4,7 +4,7 @@ image: dhi.io/pkg-forklift-validation
 variant: runtime
 tags:
   - 2.12.10-alpine3.24
-  - 2.12.10-r4-alpine3.24
+  - 2.12.10-r5-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,9 +14,9 @@ vars:
   COMMIT_SHA: 6939c3813668932229048be13305846dafd9ff3d
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
-  OPA_COMMIT_SHA: fa9da828ec764aed7ff0ddb0ea12316edde9a8c9
-  OPA_VERSION: 1.21.3
-  REL: "4"
+  OPA_COMMIT_SHA: 05c845177c80747a2aabb607f9318f981993cc76
+  OPA_VERSION: 1.21.4
+  REL: "5"
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.12.10
@@ -42,15 +42,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/open-policy-agent/opa.git#v1.21.3
-            checksum: fa9da828ec764aed7ff0ddb0ea12316edde9a8c9
+          - url: git+https://github.com/open-policy-agent/opa.git#v1.21.4
+            checksum: 05c845177c80747a2aabb607f9318f981993cc76
             path: /go/src/github.com/open-policy-agent/opa
             spdx:
               name: open-policy-agent
-              version: 1.21.3
+              version: 1.21.4
               packages:
                 - name: open-policy-agent
-                  purl: pkg:golang/github.com/open-policy-agent/opa@v1.21.3
+                  purl: pkg:golang/github.com/open-policy-agent/opa@v1.21.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -79,7 +79,7 @@ contents:
             fips: false
             ldflags:
               - -X github.com/open-policy-agent/opa/version.Hostname=dhi
-              - -X github.com/open-policy-agent/opa/version.Version=1.21.3
+              - -X github.com/open-policy-agent/opa/version.Version=1.21.4
             output: ${target.dir}/usr/bin/opa
             packages: .
         - name: build opa dev
@@ -88,7 +88,7 @@ contents:
             fips: false
             ldflags:
               - -X github.com/open-policy-agent/opa/version.Hostname=dhi
-              - -X github.com/open-policy-agent/opa/version.Version=1.21.3
+              - -X github.com/open-policy-agent/opa/version.Version=1.21.4
             output: ${target.dir}/usr/bin/opa-dev
             packages: .
             strip: false
@@ -117,7 +117,7 @@ contents:
               - usr/bin/entrypoint.sh
             license: Apache-2.0
             name: forklift-validation
-            rel: 4
+            rel: 5
             subpackages:
               - files:
                   - path: usr/bin/opa
