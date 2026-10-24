@@ -17,8 +17,8 @@ dates:
   release: "2025-12-10"
 vars:
   COMMIT_SHA: 31a3138ab25343a619fc3734a503a48affe236d1
-  JRE_REFERENCE: dhi/eclipse-temurin:21.0.12.8-alpine3.23@sha256:b73217a9b633bef41626fef5532b79c3eb8089cdeb33951bc887575d3a51e24c
-  JRE_VERSION: 21.0.12.8
+  JRE_REFERENCE: dhi/eclipse-temurin:21.0.13.9-alpine3.23@sha256:66d49ce27ddbdb845ba946719a522e118bd316658780d72af448fa5c868a8173
+  JRE_VERSION: 21.0.13.9
   LEIN_COMMIT_SHA: d35aef298829ef8191331ed8f9dc3c2d3aef77de
   LEIN_VERSION: 2.13.0
   MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-alpine3.22-dev@sha256:230cac6b6ddd6e785ef6350eadf0f2c4f89f168f64623a01c1eb3a0f450ef110
@@ -329,7 +329,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/eclipse-temurin:21.0.12.8-alpine3.23@sha256:b73217a9b633bef41626fef5532b79c3eb8089cdeb33951bc887575d3a51e24c
+    - name: dhi.io/eclipse-temurin:21.0.13.9-alpine3.23@sha256:66d49ce27ddbdb845ba946719a522e118bd316658780d72af448fa5c868a8173
       includes:
         - opt/**
         - usr/bin/java
