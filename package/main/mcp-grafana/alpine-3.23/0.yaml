@@ -4,7 +4,7 @@ image: dhi.io/pkg-mcp-grafana
 variant: runtime
 tags:
   - 0.17.2-alpine3.23
-  - 0.17.2-r15-alpine3.23
+  - 0.17.2-r16-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,8 +12,9 @@ vars:
   COMMIT_SHA: fac7c8a312c6f6aee8330de72182dcf45bf4ae26
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
+  MCP_GRAFANA_MODULE_BASE: github.com/grafana/mcp-grafana
   PACKAGE_NAME: mcp-grafana-0
-  REL: "15"
+  REL: "16"
   SEMVER_MAJOR_MINOR_VERSION: "0.17"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.17.2
@@ -121,6 +122,8 @@ contents:
           work-dir: /go/src/github.com/grafana/mcp-grafana
           with:
             fips: false
+            ldflags:
+              - -X github.com/grafana/mcp-grafana.version=0.17.2
             output: ${target.dir}/usr/bin/mcp-grafana-dev
             packages: ./cmd/mcp-grafana
             strip: false
@@ -131,7 +134,7 @@ contents:
               - usr/bin/mcp-grafana
             license: AGPL-3.0
             name: mcp-grafana-0
-            rel: 15
+            rel: 16
             subpackages:
               - files:
                   - path: usr/bin/mcp-grafana
