@@ -3,23 +3,23 @@
 image: dhi.io/pkg-beyla
 variant: runtime
 tags:
-  - 3.39.0-alpine3.23
-  - 3.39.0-r1-alpine3.23
+  - 3.39.1-alpine3.23
+  - 3.39.1-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-02-11"
 vars:
-  COMMIT_SHA: 00901385b38f0affce8595f4cc8dd8910b65e8f2
+  COMMIT_SHA: 032a04cc6e10a4637ddb5c56d1fd9148b2b1b3d0
   GOLANG_VERSION: 1.26.10-r0
   OBI_COMMIT_SHA: 1059f93580cccd2da719862460428b3a66b27fb0
   PACKAGE_NAME: beyla-3
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "3.39"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.39.0
-  VERSION: 3.39.0
+  SEMVER_VERSION: 3.39.1
+  VERSION: 3.39.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -40,15 +40,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/grafana/beyla.git#v3.39.0
-            checksum: 00901385b38f0affce8595f4cc8dd8910b65e8f2
+          - url: git+https://github.com/grafana/beyla.git#v3.39.1
+            checksum: 032a04cc6e10a4637ddb5c56d1fd9148b2b1b3d0
             path: /go/src/github.com/grafana/beyla
             spdx:
               name: beyla
-              version: 3.39.0
+              version: 3.39.1
               packages:
                 - name: beyla
-                  purl: pkg:golang/github.com/grafana/beyla/v2@3.39.0
+                  purl: pkg:golang/github.com/grafana/beyla/v2@3.39.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -94,10 +94,10 @@ contents:
             extra-args: -mod=vendor
             fips: false
             ldflags:
-              - -X github.com/grafana/beyla/v2/pkg/buildinfo.Version=v3.39.0
-              - -X github.com/grafana/beyla/v2/pkg/buildinfo.Revision=00901385b38f0affce8595f4cc8dd8910b65e8f2
-              - -X github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkg/buildinfo.Version=3.39.0
-              - -X github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkg/buildinfo.Revision=00901385b38f0affce8595f4cc8dd8910b65e8f2
+              - -X github.com/grafana/beyla/v2/pkg/buildinfo.Version=v3.39.1
+              - -X github.com/grafana/beyla/v2/pkg/buildinfo.Revision=032a04cc6e10a4637ddb5c56d1fd9148b2b1b3d0
+              - -X github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkg/buildinfo.Version=3.39.1
+              - -X github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkg/buildinfo.Revision=032a04cc6e10a4637ddb5c56d1fd9148b2b1b3d0
             output: ${target.dir}/usr/bin/beyla
             packages: ./cmd/beyla
         - name: build beyla dev
@@ -107,10 +107,10 @@ contents:
             extra-args: -mod=vendor
             fips: false
             ldflags:
-              - -X github.com/grafana/beyla/v2/pkg/buildinfo.Version=v3.39.0
-              - -X github.com/grafana/beyla/v2/pkg/buildinfo.Revision=00901385b38f0affce8595f4cc8dd8910b65e8f2
-              - -X github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkg/buildinfo.Version=3.39.0
-              - -X github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkg/buildinfo.Revision=00901385b38f0affce8595f4cc8dd8910b65e8f2
+              - -X github.com/grafana/beyla/v2/pkg/buildinfo.Version=v3.39.1
+              - -X github.com/grafana/beyla/v2/pkg/buildinfo.Revision=032a04cc6e10a4637ddb5c56d1fd9148b2b1b3d0
+              - -X github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkg/buildinfo.Version=3.39.1
+              - -X github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkg/buildinfo.Revision=032a04cc6e10a4637ddb5c56d1fd9148b2b1b3d0
             output: ${target.dir}/usr/bin/beyla-dev
             packages: ./cmd/beyla
             strip: false
@@ -121,14 +121,14 @@ contents:
               - usr/bin/beyla
             license: Apache-2.0
             name: beyla-3
-            rel: 1
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/beyla
                     source: usr/bin/beyla-dev
                 name: beyla-3-dev
             url: https://github.com/grafana/beyla
-            version: 3.39.0
+            version: 3.39.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
