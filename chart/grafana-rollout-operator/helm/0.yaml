@@ -14,7 +14,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_ROLLOUT_OPERATOR_REFERENCE: dhi/grafana-rollout-operator:0.41.0-debian13@sha256:3f0b1e87748561fee1e4bdeb9a12be6760255cad5e52c341673067067cb01d34
+  GRAFANA_ROLLOUT_OPERATOR_REFERENCE: dhi/grafana-rollout-operator:0.41.1-debian13@sha256:9253cc00edeafe290ab834c16e8809c037c0dde717105f132e8a7d89cc72d301
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "0.53"
   SEMVER_MAJOR_VERSION: "0"
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Grafana Rollout Operator
               images:
                 - name: grafana-rollout-operator
-                  ref: dhi/grafana-rollout-operator:0.41.0-debian13@sha256:3f0b1e87748561fee1e4bdeb9a12be6760255cad5e52c341673067067cb01d34
+                  ref: dhi/grafana-rollout-operator:0.41.1-debian13@sha256:9253cc00edeafe290ab834c16e8809c037c0dde717105f132e8a7d89cc72d301
               name: grafana-rollout-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana/helm-charts
