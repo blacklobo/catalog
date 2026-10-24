@@ -8,8 +8,8 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  CERT_MANAGER_ACMESOLVER_REFERENCE: dhi/cert-manager-acmesolver:1.20.4-debian13@sha256:3d1b9c2a5dfa7985c35c6870c7f7a45084ce8eead395c146d28294ea35326696
-  CERT_MANAGER_CAINJECTOR_REFERENCE: dhi/cert-manager-cainjector:1.20.4-debian13@sha256:9b0e2987d9b9228ebfae3d46524cb8ba18d4232297fbda66bb30ac2a327e4697
+  CERT_MANAGER_ACMESOLVER_REFERENCE: dhi/cert-manager-acmesolver:1.20.4-debian13@sha256:529f288f7a8feac4f8e04ad63570beae1aced82c89235e471bed68e47c3fc664
+  CERT_MANAGER_CAINJECTOR_REFERENCE: dhi/cert-manager-cainjector:1.20.4-debian13@sha256:fa92d9520557b1396ee2406ed04ee138e406a186f489d968ed864655ed9e4fc1
   CERT_MANAGER_COMMIT_SHA: 0b9448974868c5669d4f3e7499f5afd393889e22
   CERT_MANAGER_CONTROLLER_REFERENCE: dhi/cert-manager-controller:1.20.4-debian13@sha256:a1a4216ce6ed2d0e7609236d56e7dd4082b224e297de9c979c311f960b77dfa3
   CERT_MANAGER_MAJOR_MINOR_VERSION: "1.20"
@@ -68,9 +68,9 @@ contents:
                 - name: cert-manager-controller
                   ref: dhi/cert-manager-controller:1.20.4-debian13@sha256:a1a4216ce6ed2d0e7609236d56e7dd4082b224e297de9c979c311f960b77dfa3
                 - name: cert-manager-cainjector
-                  ref: dhi/cert-manager-cainjector:1.20.4-debian13@sha256:9b0e2987d9b9228ebfae3d46524cb8ba18d4232297fbda66bb30ac2a327e4697
+                  ref: dhi/cert-manager-cainjector:1.20.4-debian13@sha256:fa92d9520557b1396ee2406ed04ee138e406a186f489d968ed864655ed9e4fc1
                 - name: cert-manager-acmesolver
-                  ref: dhi/cert-manager-acmesolver:1.20.4-debian13@sha256:3d1b9c2a5dfa7985c35c6870c7f7a45084ce8eead395c146d28294ea35326696
+                  ref: dhi/cert-manager-acmesolver:1.20.4-debian13@sha256:529f288f7a8feac4f8e04ad63570beae1aced82c89235e471bed68e47c3fc664
                 - name: cert-manager-startupapicheck
                   ref: dhi/cert-manager-startupapicheck:1.20.4-debian13@sha256:2e74f0b9797c70efd8c3e3564059d733be3db2c44d3cfed53f01523d55e928d9
                 - name: cert-manager-webhook
