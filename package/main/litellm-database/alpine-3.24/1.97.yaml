@@ -4,7 +4,7 @@ image: dhi.io/pkg-litellm-database
 variant: runtime
 tags:
   - 1.97.1-alpine3.24
-  - 1.97.1-r5-alpine3.24
+  - 1.97.1-r6-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,10 +13,10 @@ dates:
 vars:
   CARGO_VERSION: 1.96.1-r0
   COMMIT_SHA: 474d7e50f09de2cbfe1c141ac29aca5246e0c0d7
-  NODEJS_VERSION: 24.22.1-r0
+  NODEJS_VERSION: 24.22.1-r1
   PACKAGE_NAME: litellm-database-1.97
   PRISMA_MUSL_BINARY_TARGET: '#{ target.arch == "amd64" ? "linux-musl-openssl-3.0.x" : "linux-musl-arm64-openssl-3.0.x" }'
-  REL: "5"
+  REL: "6"
   RUST_VERSION: 1.96.1-r0
   SEMVER_MAJOR_MINOR_VERSION: "1.97"
   SEMVER_MAJOR_VERSION: "1"
@@ -61,7 +61,7 @@ contents:
           - py3.13-pip
           - py3.13-setuptools
           - libstdc++
-          - nodejs-24=24.22.1-r0
+          - nodejs-24=24.22.1-r1
           - npm
           - diffutils
           - sed
@@ -246,7 +246,7 @@ contents:
               - apk
             license: MIT AND LicenseRef-Proprietary
             name: litellm-database-1.97
-            rel: 5
+            rel: 6
             url: https://github.com/BerriAI/litellm
             version: 1.97.1
 os-release:
