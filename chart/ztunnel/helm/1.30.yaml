@@ -4,11 +4,11 @@ name: Istio ZTunnel Helm chart 1.30.x
 image: dhi.io/ztunnel-chart
 variant: helm
 tags:
-  - 1.30.5
+  - 1.30.7
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 55b832fad2bc55f47e658b68cd1a7abf9540dbc9
+  CHART_COMMIT_SHA: 7209fe474ce6229c303170be35e76d21619e302a
   CHART_HELM_NAME: ztunnel-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -17,9 +17,9 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.5
-  VERSION: 1.30.5
-  ZTUNNEL_REFERENCE: dhi/ztunnel:1.30.5-debian13@sha256:64232f9823d7979a82e9262723d61a49106ecc52f46182787ef57a9a3e83aff5
+  SEMVER_VERSION: 1.30.7
+  VERSION: 1.30.7
+  ZTUNNEL_REFERENCE: dhi/ztunnel:1.30.7-debian13@sha256:db6c0b13424c4998c519766ee2f962da5d04081fac5e7f52f63e930e0cb10774
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -34,8 +34,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/istio/istio.git#1.30.5
-            checksum: 55b832fad2bc55f47e658b68cd1a7abf9540dbc9
+          - url: git+https://github.com/istio/istio.git#1.30.7
+            checksum: 7209fe474ce6229c303170be35e76d21619e302a
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for ZTunnel
               images:
                 - name: ztunnel
-                  ref: dhi/ztunnel:1.30.5-debian13@sha256:64232f9823d7979a82e9262723d61a49106ecc52f46182787ef57a9a3e83aff5
+                  ref: dhi/ztunnel:1.30.7-debian13@sha256:db6c0b13424c4998c519766ee2f962da5d04081fac5e7f52f63e930e0cb10774
               name: ztunnel-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/istio/istio
