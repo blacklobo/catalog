@@ -15,8 +15,8 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  K6_OPERATOR_REFERENCE: dhi/k6-operator:1.7.0-debian13@sha256:32ce291b40511512a95f404d4fcd4cc18d392cef7d1273684f194b7f0cd088e6
-  K6_REFERENCE: dhi/k6:1.8.2-debian13-compat@sha256:5a8937f90f79d71dad6d8910996eebd6b4cd83913aff65b890368666ad8b6d0d
+  K6_OPERATOR_REFERENCE: dhi/k6-operator:1.7.0-debian13@sha256:076f0e8c8a407f888bafff5866b034a65fc15135f2492331df329a2a6bb95abb
+  K6_REFERENCE: dhi/k6:1.8.2-debian13-compat@sha256:57c4e5000d8cafb8a16634b69029bc30585972e08a6be7299a39a2ffc6e70ca1
   SEMVER_MAJOR_MINOR_VERSION: "4.7"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.7.0
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Grafana k6 Kubernetes operator
               images:
                 - name: k6-operator
-                  ref: dhi/k6-operator:1.7.0-debian13@sha256:32ce291b40511512a95f404d4fcd4cc18d392cef7d1273684f194b7f0cd088e6
+                  ref: dhi/k6-operator:1.7.0-debian13@sha256:076f0e8c8a407f888bafff5866b034a65fc15135f2492331df329a2a6bb95abb
                 - name: k6
-                  ref: dhi/k6:1.8.2-debian13-compat@sha256:5a8937f90f79d71dad6d8910996eebd6b4cd83913aff65b890368666ad8b6d0d
+                  ref: dhi/k6:1.8.2-debian13-compat@sha256:57c4e5000d8cafb8a16634b69029bc30585972e08a6be7299a39a2ffc6e70ca1
               name: k6-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana/k6-operator
