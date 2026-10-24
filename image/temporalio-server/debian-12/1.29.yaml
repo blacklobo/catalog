@@ -17,9 +17,9 @@ vars:
   CLI_VERSION: 1.9.1
   COMMIT_SHA: 1f74f0c8e9935980d92a39069185671bbbba7c7e
   DOCKERIZE_COMMIT_SHA: 935294144541a4648d5ce29342eec32a405c2143
-  DOCKERIZE_GOLANG_REFERENCE: dhi/golang:1.26.9-debian12-dev@sha256:454897baffeca27d3fcf2b162cb30e38d78b641181c3ad25c4d8301028b7292a
+  DOCKERIZE_GOLANG_REFERENCE: dhi/golang:1.26.10-debian12-dev@sha256:a7c158166be1ca7192f3c132c7acf19c6b0d7443f60fdaad511d0aed25ebc288
   DOCKERIZE_VERSION: 0.14.0
-  GOLANG_REFERENCE: dhi/golang:1.26.9-debian12-dev@sha256:454897baffeca27d3fcf2b162cb30e38d78b641181c3ad25c4d8301028b7292a
+  GOLANG_REFERENCE: dhi/golang:1.26.10-debian12-dev@sha256:a7c158166be1ca7192f3c132c7acf19c6b0d7443f60fdaad511d0aed25ebc288
   SEMVER_MAJOR_MINOR_VERSION: "1.29"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.29.7
@@ -56,7 +56,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/golang:1.26.9-debian12-dev@sha256:454897baffeca27d3fcf2b162cb30e38d78b641181c3ad25c4d8301028b7292a
+          - name: dhi.io/golang:1.26.10-debian12-dev@sha256:a7c158166be1ca7192f3c132c7acf19c6b0d7443f60fdaad511d0aed25ebc288
             excludes:
               - etc
               - usr/lib/ssl
@@ -108,7 +108,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/golang:1.26.9-debian12-dev@sha256:454897baffeca27d3fcf2b162cb30e38d78b641181c3ad25c4d8301028b7292a
+          - name: dhi.io/golang:1.26.10-debian12-dev@sha256:a7c158166be1ca7192f3c132c7acf19c6b0d7443f60fdaad511d0aed25ebc288
             excludes:
               - etc
               - usr/lib/ssl
@@ -207,7 +207,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/golang:1.26.9-debian12-dev@sha256:454897baffeca27d3fcf2b162cb30e38d78b641181c3ad25c4d8301028b7292a
+          - name: dhi.io/golang:1.26.10-debian12-dev@sha256:a7c158166be1ca7192f3c132c7acf19c6b0d7443f60fdaad511d0aed25ebc288
             excludes:
               - etc
               - usr/lib/ssl
