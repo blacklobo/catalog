@@ -3,23 +3,23 @@
 image: dhi.io/pkg-policy-reporter
 variant: runtime
 tags:
-  - 3.11.1-alpine3.24
-  - 3.11.1-r1-alpine3.24
+  - 3.11.2-alpine3.24
+  - 3.11.2-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-07-31"
 vars:
-  COMMIT_SHA: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
+  COMMIT_SHA: 8bb91357fd7326a21e3370c2edf839a15d0a6774
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.3-r0
   PACKAGE_NAME: policy-reporter-3
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "3.11"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.11.1
-  VERSION: 3.11.1
+  SEMVER_VERSION: 3.11.2
+  VERSION: 3.11.2
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -41,15 +41,15 @@ contents:
           - golang-1.27=1.27.3-r0
           - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/kyverno/policy-reporter.git#v3.11.1
-            checksum: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
+          - url: git+https://github.com/kyverno/policy-reporter.git#v3.11.2
+            checksum: 8bb91357fd7326a21e3370c2edf839a15d0a6774
             path: /go/src/github.com/kyverno/policy-reporter
             spdx:
               name: kyverno-policy-reporter
-              version: 3.11.1
+              version: 3.11.2
               packages:
                 - name: kyverno-policy-reporter
-                  purl: pkg:golang/github.com/kyverno/policy-reporter@3.11.1
+                  purl: pkg:golang/github.com/kyverno/policy-reporter@3.11.2
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -59,10 +59,7 @@ contents:
           work-dir: /go/src/github.com/kyverno/policy-reporter
           with:
             deps:
-              - golang.org/x/crypto@v0.56.0
-              - golang.org/x/net@v0.60.0
               - filippo.io/edwards25519@v1.2.0
-              - github.com/go-jose/go-jose/v4@v4.1.4
             replaces:
               - github.com/sigstore/timestamp-authority=github.com/docker-hardened-images/sigstore-timestamp-authority@v1.2.10-0.20251207163215-621a8cc1532f
             tidy: true
@@ -82,7 +79,7 @@ contents:
             ldflags:
               - -linkmode=external
               - -extldflags=-static
-              - -X main.Version=3.11.1
+              - -X main.Version=3.11.2
             output: ${target.dir}/usr/bin/kyverno-policy-reporter
             packages: .
             tags: sqlite_unlock_notify
@@ -95,7 +92,7 @@ contents:
             ldflags:
               - -linkmode=external
               - -extldflags=-static
-              - -X main.Version=3.11.1
+              - -X main.Version=3.11.2
             output: ${target.dir}/usr/bin/kyverno-policy-reporter-dev
             packages: .
             strip: false
@@ -107,14 +104,14 @@ contents:
               - usr/bin/kyverno-policy-reporter
             license: Apache-2.0
             name: policy-reporter-3
-            rel: 1
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/kyverno-policy-reporter
                     source: usr/bin/kyverno-policy-reporter-dev
                 name: policy-reporter-3-dev
             url: https://github.com/kyverno/policy-reporter
-            version: 3.11.1
+            version: 3.11.2
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
