@@ -16,7 +16,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   ISTIO_PILOT_REFERENCE: dhi/istio-pilot:1.29.9-debian13@sha256:ef7dfe01cf3367bba1e907c16a2f9f024b78062f3ae0f27370c22a8f5e0441e1
-  ISTIO_PROXYV2_REFERENCE: dhi/istio-proxyv2:1.29.10-debian13@sha256:11126c4bca6b49fc80346a2bb28528d36d0db2b23fc518c834960354f6451228
+  ISTIO_PROXYV2_REFERENCE: dhi/istio-proxyv2:1.29.10-debian13@sha256:ae671195353d39eecd6f19f54d76eb3ab2139dc65ed9e9bdf8c67adb0da3023c
   SEMVER_MAJOR_MINOR_VERSION: "1.29"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.29.10
@@ -52,7 +52,7 @@ contents:
                 - name: pilot
                   ref: dhi/istio-pilot:1.29.9-debian13@sha256:ef7dfe01cf3367bba1e907c16a2f9f024b78062f3ae0f27370c22a8f5e0441e1
                 - name: proxyv2
-                  ref: dhi/istio-proxyv2:1.29.10-debian13@sha256:11126c4bca6b49fc80346a2bb28528d36d0db2b23fc518c834960354f6451228
+                  ref: dhi/istio-proxyv2:1.29.10-debian13@sha256:ae671195353d39eecd6f19f54d76eb3ab2139dc65ed9e9bdf8c67adb0da3023c
               name: istio-discovery-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/istio/istio
