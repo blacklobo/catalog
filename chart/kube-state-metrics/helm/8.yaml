@@ -15,8 +15,8 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBE_RBAC_PROXY_REFERENCE: dhi/kube-rbac-proxy:0.22.1-debian13@sha256:48101a5d042182bdc2138e031c8094a090e2214d1c2d26ffd79291e2bacbf9df
-  KUBE_STATE_METRICS_REFERENCE: dhi/kube-state-metrics:2.20.0-debian13@sha256:2e38c4477b3b8cd8b666d04814e05579dac29fadffcfeec309ef1fe911abd6c3
+  KUBE_RBAC_PROXY_REFERENCE: dhi/kube-rbac-proxy:0.22.1-debian13@sha256:783f115c60118757dd6dc51a6e128a92811b5faafb603d573d67ab1bf85c958e
+  KUBE_STATE_METRICS_REFERENCE: dhi/kube-state-metrics:2.20.0-debian13@sha256:8d2c314c5725a89b90713afa1611c33c7c1ad48bee6498d3c46ef4e66710c6a8
   SEMVER_MAJOR_MINOR_VERSION: "8.6"
   SEMVER_MAJOR_VERSION: "8"
   SEMVER_VERSION: 8.6.0
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Kube State Metrics
               images:
                 - name: kube-state-metrics
-                  ref: dhi/kube-state-metrics:2.20.0-debian13@sha256:2e38c4477b3b8cd8b666d04814e05579dac29fadffcfeec309ef1fe911abd6c3
+                  ref: dhi/kube-state-metrics:2.20.0-debian13@sha256:8d2c314c5725a89b90713afa1611c33c7c1ad48bee6498d3c46ef4e66710c6a8
                 - name: kube-rbac-proxy
-                  ref: dhi/kube-rbac-proxy:0.22.1-debian13@sha256:48101a5d042182bdc2138e031c8094a090e2214d1c2d26ffd79291e2bacbf9df
+                  ref: dhi/kube-rbac-proxy:0.22.1-debian13@sha256:783f115c60118757dd6dc51a6e128a92811b5faafb603d573d67ab1bf85c958e
               name: kube-state-metrics-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/prometheus-community/helm-charts
