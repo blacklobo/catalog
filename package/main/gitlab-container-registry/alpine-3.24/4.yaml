@@ -3,19 +3,19 @@
 image: dhi.io/pkg-gitlab-container-registry
 variant: runtime
 tags:
-  - 4.42.0-alpine3.24
-  - 4.42.0-r4-alpine3.24
+  - 4.43.0-alpine3.24
+  - 4.43.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 64ce589791cc48123d09ab80711c91875ca1ab9c
+  COMMIT_SHA: 99204596bea93b2c134060113ad1de62b0325566
   GOLANG_VERSION: 1.26.10-r0
-  REL: "4"
-  SEMVER_MAJOR_MINOR_VERSION: "4.42"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "4.43"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.42.0
-  VERSION: 4.42.0
+  SEMVER_VERSION: 4.43.0
+  VERSION: 4.43.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -37,15 +37,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://gitlab.com/gitlab-org/container-registry.git#v4.42.0-gitlab
-            checksum: 64ce589791cc48123d09ab80711c91875ca1ab9c
+          - url: git+https://gitlab.com/gitlab-org/container-registry.git#v4.43.0-gitlab
+            checksum: 99204596bea93b2c134060113ad1de62b0325566
             path: /go/src/github.com/docker/distribution
             spdx:
               name: gitlab-container-registry
-              version: 4.42.0-gitlab
+              version: 4.43.0-gitlab
               packages:
                 - name: gitlab-container-registry
-                  purl: pkg:golang/github.com/docker/distribution@4.42.0-gitlab
+                  purl: pkg:golang/github.com/docker/distribution@4.43.0-gitlab
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -69,8 +69,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/docker/distribution/version.Version=v4.42.0-gitlab
-              - -X github.com/docker/distribution/version.Revision=64ce589791cc48123d09ab80711c91875ca1ab9c
+              - -X github.com/docker/distribution/version.Version=v4.43.0-gitlab
+              - -X github.com/docker/distribution/version.Revision=99204596bea93b2c134060113ad1de62b0325566
               - -X github.com/docker/distribution/version.Package=github.com/docker/distribution
             output: ${target.dir}/usr/bin/registry
             packages: ./cmd/registry
@@ -81,8 +81,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/docker/distribution/version.Version=v4.42.0-gitlab
-              - -X github.com/docker/distribution/version.Revision=64ce589791cc48123d09ab80711c91875ca1ab9c
+              - -X github.com/docker/distribution/version.Version=v4.43.0-gitlab
+              - -X github.com/docker/distribution/version.Revision=99204596bea93b2c134060113ad1de62b0325566
               - -X github.com/docker/distribution/version.Package=github.com/docker/distribution
             output: ${target.dir}/usr/bin/registry-dev
             packages: ./cmd/registry
@@ -94,14 +94,14 @@ contents:
               - usr/bin/registry
             license: Apache-2.0
             name: gitlab-container-registry
-            rel: 4
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/registry
                     source: usr/bin/registry-dev
                 name: gitlab-container-registry-dev
             url: https://gitlab.com/gitlab-org/container-registry
-            version: 4.42.0
+            version: 4.43.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
