@@ -4,17 +4,17 @@ name: Cert-Manager Helm chart 1.21.x
 image: dhi.io/cert-manager-chart
 variant: helm
 tags:
-  - 1.21.2
+  - 1.21.3
 platforms:
   - linux/amd64
 vars:
-  CERT_MANAGER_ACMESOLVER_REFERENCE: dhi/cert-manager-acmesolver:1.21.2-debian13@sha256:4a501b85567d5820f666eafb56c11ba9ae3c92b0351f9dbddd909d3525833390
+  CERT_MANAGER_ACMESOLVER_REFERENCE: dhi/cert-manager-acmesolver:1.21.2-debian13@sha256:6a67671a6d54ab24d80e63a25bff6b1f7e930e39513ce16b6845432d02171bec
   CERT_MANAGER_CAINJECTOR_REFERENCE: dhi/cert-manager-cainjector:1.21.2-debian13@sha256:23339f8d394e51ed79c049b9b6462512986921858d59a1f10e3f3d18efa4bd49
-  CERT_MANAGER_COMMIT_SHA: 922a06aa49ee4bb802db268ef72a174af70edd32
+  CERT_MANAGER_COMMIT_SHA: 925c22283de556172d48d96a165dc2fa27f7a6ff
   CERT_MANAGER_CONTROLLER_REFERENCE: dhi/cert-manager-controller:1.21.2-debian13@sha256:1a4310f5f910006e876c01b7acda8f862a7412326d3076dbd8d15d2b9c7aab7b
   CERT_MANAGER_MAJOR_MINOR_VERSION: "1.21"
   CERT_MANAGER_STARTUPAPICHECK_REFERENCE: dhi/cert-manager-startupapicheck:1.21.2-debian13@sha256:b10c44f99bad3b85df81e9ebdb43ec5ec86912c8e036ca3ddbe81f27d54a33b6
-  CERT_MANAGER_VERSION: 1.21.2
+  CERT_MANAGER_VERSION: 1.21.3
   CERT_MANAGER_WEBHOOK_REFERENCE: dhi/cert-manager-webhook:1.21.2-debian13@sha256:f8c2f8d6f4781d696dea6e0c1c4c13931637a55b52389cdc8f2762f4651bf63d
   CHART_HELM_NAME: cert-manager-chart
   DHI_NAMESPACE: dhi
@@ -42,8 +42,8 @@ contents:
           - findutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/cert-manager/cert-manager.git#v1.21.2
-            checksum: 922a06aa49ee4bb802db268ef72a174af70edd32
+          - url: git+https://github.com/cert-manager/cert-manager.git#v1.21.3
+            checksum: 925c22283de556172d48d96a165dc2fa27f7a6ff
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -54,7 +54,7 @@ contents:
           with:
             chart:
               appRef: cert-manager-controller
-              chartVersion: 1.21.2
+              chartVersion: 1.21.3
               description: Docker Hardened Images Helm chart for Cert-Manager
               images:
                 - name: cert-manager-controller
@@ -62,7 +62,7 @@ contents:
                 - name: cert-manager-cainjector
                   ref: dhi/cert-manager-cainjector:1.21.2-debian13@sha256:23339f8d394e51ed79c049b9b6462512986921858d59a1f10e3f3d18efa4bd49
                 - name: cert-manager-acmesolver
-                  ref: dhi/cert-manager-acmesolver:1.21.2-debian13@sha256:4a501b85567d5820f666eafb56c11ba9ae3c92b0351f9dbddd909d3525833390
+                  ref: dhi/cert-manager-acmesolver:1.21.2-debian13@sha256:6a67671a6d54ab24d80e63a25bff6b1f7e930e39513ce16b6845432d02171bec
                 - name: cert-manager-startupapicheck
                   ref: dhi/cert-manager-startupapicheck:1.21.2-debian13@sha256:b10c44f99bad3b85df81e9ebdb43ec5ec86912c8e036ca3ddbe81f27d54a33b6
                 - name: cert-manager-webhook
