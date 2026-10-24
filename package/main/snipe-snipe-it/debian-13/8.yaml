@@ -3,27 +3,27 @@
 image: dhi.io/pkg-snipe-snipe-it
 variant: runtime
 tags:
-  - 8.8.1
-  - 8.8.1-r0
-  - 8.8.1-debian13
-  - 8.8.1-r0-debian13
+  - 8.8.3
+  - 8.8.3-r0
+  - 8.8.3-debian13
+  - 8.8.3-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-02-24"
 vars:
-  COMMIT_SHA: 21ab6d4ed2b5fd4d385078cb95d1498facbca481
+  COMMIT_SHA: 621e30486a59304f2a5288fb62c4aa91b08e0a84
   COMPOSER_PHAR_SHA256: 7a2d379d5b8ffdaa028580ef26494c36d2feef4b178d3dd1473a4dbc5e17c8d6
   COMPOSER_VERSION: 2.10.3
   PACKAGE_HOME: /usr/share/snipe-it
   PACKAGE_NAME: snipe-it-8
-  PHP_VERSION: 8.3.35-0
+  PHP_VERSION: 8.3.36-0
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "8.8"
   SEMVER_MAJOR_VERSION: "8"
-  SEMVER_VERSION: 8.8.1
-  VERSION: 8.8.1
+  SEMVER_VERSION: 8.8.3
+  VERSION: 8.8.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -47,7 +47,7 @@ contents:
           - grep
           - sed
           - unzip
-          - php-8.3=8.3.35-0
+          - php-8.3=8.3.36-0
           - libargon2-1
           - libcurl4t64
           - libicu76
@@ -60,15 +60,15 @@ contents:
           - libxml2
           - zlib1g
         files:
-          - url: git+https://github.com/grokability/snipe-it.git#v8.8.1
-            checksum: 21ab6d4ed2b5fd4d385078cb95d1498facbca481
+          - url: git+https://github.com/grokability/snipe-it.git#v8.8.3
+            checksum: 621e30486a59304f2a5288fb62c4aa91b08e0a84
             path: ${source.dir}/snipe-it
             spdx:
               name: snipe-it
-              version: 8.8.1
+              version: 8.8.3
               packages:
                 - name: snipe-it
-                  purl: pkg:composer/grokability/snipe-it@8.8.1
+                  purl: pkg:composer/grokability/snipe-it@8.8.3
                   license: AGPL-3.0-or-later
             uid: 0
             gid: 0
@@ -168,7 +168,7 @@ contents:
             cp -a vendor/laravel/framework/src/Illuminate/Session/Console/stubs/database.stub \
               database/migrations/2021_05_06_0000_create_sessions_table.php
             test -s database/migrations/2021_05_06_0000_create_sessions_table.php
-            grep -q "'app_version' => 'v8.8.1'" config/version.php
+            grep -q "'app_version' => 'v8.8.3'" config/version.php
         - name: stage application
           runs: |
             set -eux -o pipefail
@@ -200,7 +200,7 @@ contents:
             test -s "${target.dir}/usr/share/snipe-it/public/js/dist/all.js"
             test -s "${target.dir}/usr/share/snipe-it/public/css/dist/all.css"
             test -s "${target.dir}/usr/share/snipe-it/LICENSE"
-            grep -q "'app_version' => 'v8.8.1'" "${target.dir}/usr/share/snipe-it/config/version.php"
+            grep -q "'app_version' => 'v8.8.3'" "${target.dir}/usr/share/snipe-it/config/version.php"
         - name: composer dependencies sbom
           uses: sbom@v1
           with:
@@ -212,7 +212,7 @@ contents:
             set -eux -o pipefail
 
             test -s /opt/docker/sbom/snipe-it/.spdx.snipe-it.json
-            grep -q 'pkg:composer/grokability/snipe-it@8.8.1' /opt/docker/sbom/snipe-it/.spdx.snipe-it.json
+            grep -q 'pkg:composer/grokability/snipe-it@8.8.3' /opt/docker/sbom/snipe-it/.spdx.snipe-it.json
             test -s /opt/docker/sbom/snipe-it-composer/.spdx.snipe-it-composer.json
             mkdir -p "${target.dir}/opt/docker/sbom"
             cp -a /opt/docker/sbom/snipe-it /opt/docker/sbom/snipe-it-composer "${target.dir}/opt/docker/sbom/"
@@ -229,7 +229,7 @@ contents:
             name: snipe-it-8
             rel: 0
             url: https://snipeitapp.com
-            version: 8.8.1
+            version: 8.8.3
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
