@@ -12,13 +12,13 @@ vars:
   CHART_HELM_NAME: clickhouse-operator-chart
   CLICKHOUSE_METRICS_EXPORTER_REFERENCE: dhi/clickhouse-metrics-exporter:0.25.6-debian13@sha256:aaa9366a81b09146be6476df22c25fcacb86a4ae97b79dcfb3251d23b136812f
   CLICKHOUSE_OPERATOR_REFERENCE: dhi/clickhouse-operator:0.25.6-debian13@sha256:a24eef05c8d58ec419d405fc942ee066a30202433656edbbc2756fb631891996
-  CLICKHOUSE_SERVER_REFERENCE: dhi/clickhouse-server:25.8.33-debian13@sha256:2ee1a75a3445a5cdcd8a747b7d109073b7c77d33e5adfbfad048fa559411e194
+  CLICKHOUSE_SERVER_REFERENCE: dhi/clickhouse-server:25.8.33-debian13@sha256:4aeca29e10bf1c2fc4e9ba0285340ed3b691dd275f242e229abd7d9c6fe94a30
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:7735e98475077e6be4617897c53d37e2b3a5cea48a2ce2820529c15ca65b9e6a
+  KUBECTL_REFERENCE: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:5ef54ebb26dd17b6925404882fe867a28a7812d53a53ce5495408bef42b1689c
   SEMVER_MAJOR_MINOR_VERSION: "0.27"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.27.4
@@ -56,9 +56,9 @@ contents:
                 - name: clickhouse-metrics-exporter
                   ref: dhi/clickhouse-metrics-exporter:0.25.6-debian13@sha256:aaa9366a81b09146be6476df22c25fcacb86a4ae97b79dcfb3251d23b136812f
                 - name: clickhouse-server
-                  ref: dhi/clickhouse-server:25.8.33-debian13@sha256:2ee1a75a3445a5cdcd8a747b7d109073b7c77d33e5adfbfad048fa559411e194
+                  ref: dhi/clickhouse-server:25.8.33-debian13@sha256:4aeca29e10bf1c2fc4e9ba0285340ed3b691dd275f242e229abd7d9c6fe94a30
                 - name: kubectl
-                  ref: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:7735e98475077e6be4617897c53d37e2b3a5cea48a2ce2820529c15ca65b9e6a
+                  ref: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:5ef54ebb26dd17b6925404882fe867a28a7812d53a53ce5495408bef42b1689c
               name: clickhouse-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/Altinity/clickhouse-operator
