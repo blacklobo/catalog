@@ -25,7 +25,7 @@ vars:
   SEMVER_PATCH_VERSION: "9"
   SEMVER_VERSION: 1.19.9
   SUFFIX: ""
-  VERSION: 1.19.9-1
+  VERSION: 1.19.9-2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -37,8 +37,8 @@ contents:
     - bpftool
     - ca-certificates
     - ca-certificates-bundle
-    - cilium-1.19-libs=1.19.9-1
-    - cilium-1.19=1.19.9-1
+    - cilium-1.19-libs=1.19.9-2
+    - cilium-1.19=1.19.9-2
     - cilium-envoy-1.19=1.19.8-3
     - coreutils
     - grep
