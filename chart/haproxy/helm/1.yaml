@@ -14,7 +14,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  HAPROXY_REFERENCE: dhi/haproxy:3.4.7-debian13@sha256:9243df7bdf09c86703be9aa917a352ddaecea258ea3c70c656c02c35af84e034
+  HAPROXY_REFERENCE: dhi/haproxy:3.4.7-debian13@sha256:c76f1cebc42da1800ca939ea50b2a49fb5869168f62b47f9e4739372c4ef17e0
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for HAProxy
               images:
                 - name: haproxy
-                  ref: dhi/haproxy:3.4.7-debian13@sha256:9243df7bdf09c86703be9aa917a352ddaecea258ea3c70c656c02c35af84e034
+                  ref: dhi/haproxy:3.4.7-debian13@sha256:c76f1cebc42da1800ca939ea50b2a49fb5869168f62b47f9e4739372c4ef17e0
               name: haproxy-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/haproxytech/helm-charts
