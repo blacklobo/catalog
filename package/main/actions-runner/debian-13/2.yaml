@@ -3,17 +3,17 @@
 image: dhi.io/pkg-actions-runner
 variant: runtime
 tags:
-  - 2.338.0-0
-  - 2.338.0-0-debian13
+  - 2.338.1-0
+  - 2.338.1-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 197ca027b90de199464dee3bb9ff198a1db60967
-  DHI_VERSION: 2.338.0-0
+  COMMIT_SHA: e78522a9a7b01c3bcd7ac0da6e3a9bb6cd513a76
+  DHI_VERSION: 2.338.1-0
   REL: "0"
   RUNTIME_ID: '#{ target.arch == "amd64" ? "linux-x64" : "linux-arm64" }'
-  VERSION: 2.338.0
+  VERSION: 2.338.1
 contents:
   packages:
     - '!base-files'
@@ -41,15 +41,15 @@ contents:
           - nodejs-24
           - npm
         files:
-          - url: git+https://github.com/actions/runner.git#v2.338.0
-            checksum: 197ca027b90de199464dee3bb9ff198a1db60967
+          - url: git+https://github.com/actions/runner.git#v2.338.1
+            checksum: e78522a9a7b01c3bcd7ac0da6e3a9bb6cd513a76
             path: ${source.dir}/actions-runner
             spdx:
               name: actions-runner
-              version: 2.338.0
+              version: 2.338.1
               packages:
                 - name: actions-runner
-                  purl: pkg:github/actions/runner@2.338.0
+                  purl: pkg:github/actions/runner@2.338.1
                   license: MIT
             uid: 0
             gid: 0
@@ -65,7 +65,7 @@ contents:
             dotnet msbuild -t:layout \
               -p:PackageRuntime=${RUNTIME_ID} \
               -p:BUILDCONFIG=Release \
-              -p:RunnerVersion=2.338.0 \
+              -p:RunnerVersion=2.338.1 \
               ./dir.proj
 
             chmod +x ../_layout/bin/Runner.Listener ../_layout/bin/Runner.Worker \
@@ -94,7 +94,7 @@ contents:
           with:
             changelog:
               - DHI Build
-            version: 2.338.0-0
+            version: 2.338.1-0
         - uses: dpkg/build@v1
           with:
             args: -b -uc -us -d
