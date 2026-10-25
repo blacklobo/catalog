@@ -23,7 +23,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.33"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.33.0
-  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.44.0-debian13@sha256:84d9978a0433e602797496c5a3d339478a461858d78ddaed76f253644e64063c
+  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.44.0-debian13@sha256:043214c2d74e32a6824834f2abf998d2f8118cfcd53276f8549fd52d0d87a063
   VERSION: 3.33.0
 contents:
   repositories:
@@ -55,7 +55,7 @@ contents:
               description: Docker Hardened Images Helm chart for the Tigera operator (installs Calico)
               images:
                 - name: tigera-operator
-                  ref: dhi/tigera-operator:1.44.0-debian13@sha256:84d9978a0433e602797496c5a3d339478a461858d78ddaed76f253644e64063c
+                  ref: dhi/tigera-operator:1.44.0-debian13@sha256:043214c2d74e32a6824834f2abf998d2f8118cfcd53276f8549fd52d0d87a063
                 - name: calico-calico
                   ref: dhi/calico-calico:3.33.0-debian13@sha256:8d93c9b7f8c530bf29208c51da5d79e3bc38d059fe2f7a360e439d95ce9babef
                 - name: calico-node
