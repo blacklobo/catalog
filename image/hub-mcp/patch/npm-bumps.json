@@ -39,14 +39,18 @@
   },
   {
     "package": "undici",
-    "version": "6.28.1"
+    "version": "6.29.1"
   },
   {
     "package": "undici",
-    "version": "6.28.1",
+    "version": "6.29.1",
     "overridePath": [
       "@genql/cli"
     ]
+  },
+  {
+    "package": "zod",
+    "version": "4.6.6"
   },
   {
     "package": "lodash",
@@ -66,11 +70,11 @@
   },
   {
     "package": "fast-uri",
-    "version": "3.1.8"
+    "version": "3.1.9"
   },
   {
     "package": "body-parser",
-    "version": "2.3.0"
+    "version": "2.4.0"
   },
   {
     "package": "@hono/node-server",

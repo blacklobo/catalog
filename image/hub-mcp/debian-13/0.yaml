@@ -86,6 +86,12 @@ contents:
           with:
             bumps: ${source.dir}/patch/npm-bumps.json
             npm-root: ${source.dir}/hub-mcp-68f4c79223f3ac2a5b6732de58ce7ba22aa8f1a8
+        - name: zod 4 toolsList typings
+          uses: patch@v1
+          work-dir: ${source.dir}/hub-mcp-68f4c79223f3ac2a5b6732de58ce7ba22aa8f1a8
+          with:
+            options: -p1
+            patch: ${source.dir}/patch/zod4-toolsList.patch
         - name: install and build
           work-dir: ${source.dir}/hub-mcp-68f4c79223f3ac2a5b6732de58ce7ba22aa8f1a8
           privileged: true
@@ -135,6 +141,11 @@ contents:
           uid: 0
           gid: 0
           source: image/hub-mcp/patch/npm-bumps.json
+        - type: file
+          path: ${source.dir}/patch/zod4-toolsList.patch
+          uid: 0
+          gid: 0
+          source: image/hub-mcp/patch/zod4-toolsList.patch
       outputs:
         - source: ${source.dir}/hub-mcp-68f4c79223f3ac2a5b6732de58ce7ba22aa8f1a8/node_modules
           target: /app/node_modules
