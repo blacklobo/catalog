@@ -5,27 +5,27 @@ image: dhi.io/harbor-trivy-adapter
 variant: runtime
 tags:
   - "2.14"
-  - 2.14.5
+  - 2.14.6
   - 2.14-debian
   - 2.14-debian13
-  - 2.14.5-debian
-  - 2.14.5-debian13
+  - 2.14.6-debian
+  - 2.14.6-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-01-15"
 vars:
-  COMMIT_SHA: c83198c6a10c040370df997660eda989965d5a25
+  COMMIT_SHA: f435c95078d017ec48cd185e393a47d1ba4c6e65
   FLAVORED_SUFFIX: ""
   PACKAGE_NAME: harbor-trivy-adapter-2.14
-  SCANNER_TRIVY_ADAPTER_SEMVER: 0.36.0
-  SCANNER_TRIVY_ADAPTER_VERSION: v0.36.0
+  SCANNER_TRIVY_ADAPTER_SEMVER: 0.39.1
+  SCANNER_TRIVY_ADAPTER_VERSION: v0.39.1
   SEMVER_MAJOR_MINOR_VERSION: "2.14"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.14.5
+  SEMVER_VERSION: 2.14.6
   SUFFIX: ""
-  VERSION: 2.14.5-2
+  VERSION: 2.14.6-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,7 +35,7 @@ contents:
     - base-files
     - ca-certificates
     - ca-certificates-bundle
-    - harbor-trivy-adapter-2.14=2.14.5-2
+    - harbor-trivy-adapter-2.14=2.14.6-0
     - trivy
     - tzdata
 accounts:
