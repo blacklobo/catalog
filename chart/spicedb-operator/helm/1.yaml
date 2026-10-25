@@ -18,10 +18,10 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "1.0"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.0.0
-  SPICEDB_OPERATOR_REFERENCE: dhi/spicedb-operator:1.27.0-debian13@sha256:ff43a033e302dc850d49502adabcfbcdd0b8408c69bae6166d63b7637323b555
+  SPICEDB_OPERATOR_REFERENCE: dhi/spicedb-operator:1.27.0-debian13@sha256:a906ba91affa0c423806ac0105b4a30abd8d3a35db2b08b8f9828cf976acbd6e
   SPICEDB_OPERATOR_UPSTREAM_COMMIT_SHA: 7a4292b85f17cc3da531643dd4fe9d2c434efd3a
   SPICEDB_OPERATOR_VERSION: 1.27.0
-  SPICEDB_REFERENCE: dhi/spicedb:1.56.2-debian13@sha256:2eff05083da5bf943fc66aac6f3edfe42cf31b7d22e6392dce964f52e7d96148
+  SPICEDB_REFERENCE: dhi/spicedb:1.56.2-debian13@sha256:b12d9f3780b3963932950e4fc3f015bc679010ecdf73efde9b31896f21851c3f
   VERSION: 1.0.0
 contents:
   repositories:
@@ -69,9 +69,9 @@ contents:
               description: Docker Hardened Images Helm chart for SpiceDB Operator
               images:
                 - name: spicedb-operator
-                  ref: dhi/spicedb-operator:1.27.0-debian13@sha256:ff43a033e302dc850d49502adabcfbcdd0b8408c69bae6166d63b7637323b555
+                  ref: dhi/spicedb-operator:1.27.0-debian13@sha256:a906ba91affa0c423806ac0105b4a30abd8d3a35db2b08b8f9828cf976acbd6e
                 - name: spicedb
-                  ref: dhi/spicedb:1.56.2-debian13@sha256:2eff05083da5bf943fc66aac6f3edfe42cf31b7d22e6392dce964f52e7d96148
+                  ref: dhi/spicedb:1.56.2-debian13@sha256:b12d9f3780b3963932950e4fc3f015bc679010ecdf73efde9b31896f21851c3f
               name: spicedb-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/docker-hardened-images/helm-charts
