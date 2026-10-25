@@ -13,9 +13,9 @@ dates:
   release: "2026-05-20"
 vars:
   COMMIT_SHA: b16cd68ea199838d8f9daf0ff7e3f35042ba0ad0
-  IMAGEMAGICK_COMMIT_SHA: 211e5b975a0019a88dcef5f84c1193f46738d815
+  IMAGEMAGICK_COMMIT_SHA: a0c4bf729a26a5c2feb28b0365b47a8db736078a
   IMAGEMAGICK_PREFIX: /opt/imagemagick
-  IMAGEMAGICK_VERSION: 7.1.2-33
+  IMAGEMAGICK_VERSION: 7.1.2-34
   IMAGICK_COMMIT_SHA: 70087bab33eab913e99ac77d64d04d1a2fd0b7b0
   IMAGICK_VERSION: 3.8.1
   PHP_DEV_REFERENCE: dhi/php:8.3.36-alpine3.22-dev@sha256:f79d690d0f6c59adfd9bd47712a2bdb46f5d66f5167489aa94d0d731c7387015
@@ -110,15 +110,15 @@ contents:
           - tiff-dev
           - zlib-dev
         files:
-          - url: git+https://github.com/ImageMagick/ImageMagick.git#7.1.2-33
-            checksum: 211e5b975a0019a88dcef5f84c1193f46738d815
+          - url: git+https://github.com/ImageMagick/ImageMagick.git#7.1.2-34
+            checksum: a0c4bf729a26a5c2feb28b0365b47a8db736078a
             path: ${source.dir}/imagemagick
             spdx:
               name: imagemagick
-              version: 7.1.2-33
+              version: 7.1.2-34
               packages:
                 - name: imagemagick
-                  purl: pkg:github/ImageMagick/ImageMagick@7.1.2-33
+                  purl: pkg:github/ImageMagick/ImageMagick@7.1.2-34
                   license: ImageMagick
             uid: 0
             gid: 0
