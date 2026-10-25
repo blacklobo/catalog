@@ -6,13 +6,13 @@ variant: runtime
 tags:
   - "0"
   - "0.94"
-  - 0.94.1
+  - 0.94.2
   - 0-debian
   - 0-debian13
   - 0.94-debian
   - 0.94-debian13
-  - 0.94.1-debian
-  - 0.94.1-debian13
+  - 0.94.2-debian
+  - 0.94.2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,16 +21,16 @@ vars:
   FLAVORED_SUFFIX: ""
   SEMVER_MAJOR_MINOR_VERSION: "0.94"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.94.1
+  SEMVER_VERSION: 0.94.2
   SUFFIX: ""
-  VERSION: 0.94.1-3
+  VERSION: 0.94.2-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
   keyring:
     - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
-    - admission-webhook=0.94.1-3
+    - admission-webhook=0.94.2-0
     - base-files
     - ca-certificates-bundle
     - tzdata
