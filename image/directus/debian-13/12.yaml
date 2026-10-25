@@ -6,13 +6,13 @@ variant: runtime
 tags:
   - "12"
   - "12.5"
-  - 12.5.0
+  - 12.5.1
   - 12-debian
   - 12-debian13
   - 12.5-debian
   - 12.5-debian13
-  - 12.5.0-debian
-  - 12.5.0-debian13
+  - 12.5.1-debian
+  - 12.5.1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,8 +21,8 @@ dates:
 vars:
   SEMVER_MAJOR_MINOR_VERSION: "12.5"
   SEMVER_MAJOR_VERSION: "12"
-  SEMVER_VERSION: 12.5.0
-  VERSION: 12.5.0-2
+  SEMVER_VERSION: 12.5.1
+  VERSION: 12.5.1-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -31,7 +31,7 @@ contents:
   packages:
     - base-files
     - ca-certificates-bundle
-    - directus-12=12.5.0-2
+    - directus-12=12.5.1-0
     - nodejs-22
     - tzdata
 accounts:
