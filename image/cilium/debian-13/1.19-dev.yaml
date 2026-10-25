@@ -5,11 +5,11 @@ image: dhi.io/cilium
 variant: dev
 tags:
   - 1.19-dev
-  - 1.19.9-dev
+  - 1.19.10-dev
   - 1.19-debian-dev
   - 1.19-debian13-dev
-  - 1.19.9-debian-dev
-  - 1.19.9-debian13-dev
+  - 1.19.10-debian-dev
+  - 1.19.10-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,15 +17,15 @@ dates:
   release: "2026-02-03"
 vars:
   CILIUM_ENVOY_SUFFIX: ""
-  CILIUM_ENVOY_VERSION: 1.19.8-3
+  CILIUM_ENVOY_VERSION: 1.19.10-0
   CLANG_VERSION: "18"
   FLAVORED_SUFFIX: -dev
   SEMVER_MAJOR_MINOR_VERSION: "1.19"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_PATCH_VERSION: "9"
-  SEMVER_VERSION: 1.19.9
+  SEMVER_PATCH_VERSION: "10"
+  SEMVER_VERSION: 1.19.10
   SUFFIX: -dev
-  VERSION: 1.19.9-2
+  VERSION: 1.19.10-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -41,9 +41,9 @@ contents:
     - bpftool
     - ca-certificates
     - ca-certificates-bundle
-    - cilium-1.19-dev=1.19.9-2
-    - cilium-1.19-libs=1.19.9-2
-    - cilium-envoy-1.19=1.19.8-3
+    - cilium-1.19-dev=1.19.10-0
+    - cilium-1.19-libs=1.19.10-0
+    - cilium-envoy-1.19=1.19.10-0
     - coreutils
     - diffutils
     - dpkg
