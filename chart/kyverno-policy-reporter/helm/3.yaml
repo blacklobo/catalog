@@ -4,27 +4,27 @@ name: Kyverno Policy Reporter Helm chart 3.x
 image: dhi.io/kyverno-policy-reporter-chart
 variant: helm
 tags:
-  - 3.11.1
+  - 3.11.2
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
+  CHART_COMMIT_SHA: 8bb91357fd7326a21e3370c2edf839a15d0a6774
   CHART_HELM_NAME: kyverno-policy-reporter-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KYVERNO_POLICY_REPORTER_REFERENCE: dhi/kyverno-policy-reporter:3.11.2-debian13@sha256:85b2f4b9d0754598dec3614ee801a9477248648ea04096ef1b3b6843c69158dc
+  KYVERNO_POLICY_REPORTER_REFERENCE: dhi/kyverno-policy-reporter:3.11.2-debian13@sha256:f3445c5690c55b823f514f8a4dea888858d839f51f3fdcac394d6f2298cf81a9
   KYVERNO_POLICY_REPORTER_UI_REFERENCE: dhi/kyverno-policy-reporter-ui:2.9.1-debian13@sha256:f43602074ee7779e45c231a8e247940bc906daff333f03877fc0ee5c58da1d7e
   POLICY_REPORTER_IMAGE_TAG: 3.11.2
   POLICY_REPORTER_UI_IMAGE_TAG: 2.9.1
   SEMVER_MAJOR_MINOR_VERSION: "3.11"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.11.1
+  SEMVER_VERSION: 3.11.2
   TRIVY_IMAGE_TAG: 0.74.0
   TRIVY_REFERENCE: dhi/trivy:0.74.0-debian13@sha256:317c8a18ab568aa738a3caf587b5a0a448962ca09a093ad04e51c09f955d5f54
-  VERSION: 3.11.1
+  VERSION: 3.11.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -40,8 +40,8 @@ contents:
           - sed
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/kyverno/policy-reporter.git#policy-reporter-3.11.1
-            checksum: 3599edf6a501c7f13ecd5565fd07b1bc851c07a5
+          - url: git+https://github.com/kyverno/policy-reporter.git#policy-reporter-3.11.2
+            checksum: 8bb91357fd7326a21e3370c2edf839a15d0a6774
             path: ${source.dir}/policy-reporter
             uid: 0
             gid: 0
@@ -55,7 +55,7 @@ contents:
               description: Docker Hardened Images Helm chart for Kyverno Policy Reporter
               images:
                 - name: kyverno-policy-reporter
-                  ref: dhi/kyverno-policy-reporter:3.11.2-debian13@sha256:85b2f4b9d0754598dec3614ee801a9477248648ea04096ef1b3b6843c69158dc
+                  ref: dhi/kyverno-policy-reporter:3.11.2-debian13@sha256:f3445c5690c55b823f514f8a4dea888858d839f51f3fdcac394d6f2298cf81a9
                 - name: kyverno-policy-reporter-ui
                   ref: dhi/kyverno-policy-reporter-ui:2.9.1-debian13@sha256:f43602074ee7779e45c231a8e247940bc906daff333f03877fc0ee5c58da1d7e
                 - name: trivy
