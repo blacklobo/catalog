@@ -21,11 +21,11 @@ dates:
 vars:
   COMMIT_SHA: 2d0b6ad97cf3a8b8436a00a1f4b07b3a56b92ca0
   FLAVORED_SUFFIX: -dev
-  KUBECTL_VERSION: 1.36.5-4
+  KUBECTL_VERSION: 1.36.5-5
   SEMVER_MAJOR_MINOR_VERSION: "3.23"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.23.1
-  STATIC_REFERENCE: dhi/static:20250419-debian13@sha256:c60b3fcad8bfbe3f056c3214057ddf562ef3d6d080dee033532261ce50c37e55
+  STATIC_REFERENCE: dhi/static:20250419-debian13@sha256:66e3dac42874997512a34ac68b59fa424a261394618b6ba0642454522aef4565
   SUFFIX: -dev
   VERSION: 3.23.1
 contents:
@@ -46,7 +46,7 @@ contents:
     - dpkg
     - findutils
     - grep
-    - kubectl-1.36-dev=1.36.5-4
+    - kubectl-1.36-dev=1.36.5-5
     - libc-bin
     - mawk
     - perl-base
@@ -88,7 +88,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/static:20250419-debian13@sha256:c60b3fcad8bfbe3f056c3214057ddf562ef3d6d080dee033532261ce50c37e55
+    - name: dhi.io/static:20250419-debian13@sha256:66e3dac42874997512a34ac68b59fa424a261394618b6ba0642454522aef4565
       includes:
         - bin
         - etc
