@@ -17,9 +17,9 @@ vars:
   GRADLE_MAJOR_MINOR_VERSION: "8.14"
   GRADLE_MAJOR_VERSION: "8"
   GRADLE_VERSION: 8.14.6
-  JAVA_DIGEST: sha256:e50b1393b9a59f467bd64b588bfe773d19772c4b6dda83997e5e83ef4cb1a671
+  JAVA_DIGEST: sha256:9800c921a19baf39766546754a37caf163259e2e52369efdbac336bb963b8ec5
   JAVA_MAJOR_VERSION: "21"
-  JAVA_VERSION: 21.0.12.8
+  JAVA_VERSION: 21.0.13.9
 contents:
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/v3.22/main
@@ -33,7 +33,7 @@ contents:
     - musl
     - tzdata
   artifacts:
-    - name: dhi.io/eclipse-temurin:21.0.12.8-jdk-alpine3.22-dev@sha256:e50b1393b9a59f467bd64b588bfe773d19772c4b6dda83997e5e83ef4cb1a671
+    - name: dhi.io/eclipse-temurin:21.0.13.9-jdk-alpine3.22-dev@sha256:9800c921a19baf39766546754a37caf163259e2e52369efdbac336bb963b8ec5
       includes:
         - opt/**
       uid: 0
