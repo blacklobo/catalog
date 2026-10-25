@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  CALICO_CNI_REFERENCE: dhi/calico-cni:3.32.2-debian13@sha256:5055322bf1913ce96bd87e2774db259a8eea392247d1635c0f65415e3e67d8ca
+  CALICO_CNI_REFERENCE: dhi/calico-cni:3.32.2-debian13@sha256:b4c85a095c4854ddd502e377409ce349c4a32b125230a29a6835694f1899c138
   CALICO_CSI_REFERENCE: dhi/calico-csi:3.32.2-debian13@sha256:eab64ae38d7843780cf0ff5560fdd345b08613dc7ed37f62aca0a3e51aeeae04
   CALICO_CTL_REFERENCE: dhi/calico-ctl:3.32.2-debian13@sha256:ee98135d82d102f478cedf1296be12af0cad371725b6f2fb267b8db55816e609
   CALICO_GOLDMANE_REFERENCE: dhi/calico-goldmane:3.32.2-debian13@sha256:9b5b2f44d8d24da6c97037e896036459139c7498e7c81f274b8680ffe764ad97
@@ -16,7 +16,7 @@ vars:
   CALICO_NODE_DRIVER_REGISTRAR_REFERENCE: dhi/calico-node-driver-registrar:3.32.2-debian13@sha256:7f421f247f6ac0517e941fba9feb20c6364bd089b1e16a8398e1c5b8a9fcee38
   CALICO_NODE_REFERENCE: dhi/calico-node:3.32.2-debian13@sha256:5d029b447ce58d8c188e5d3bfb3b42ac4db29f118b62aefdce303fa2902f677c
   CALICO_POD2DAEMON_FLEXVOL_REFERENCE: dhi/calico-pod2daemon-flexvol:3.32.2-debian13@sha256:19e0dfb8148e0f6dd73e0dc39bfc5ae1ce702e0080dc750e9eeea764c410c1c5
-  CALICO_TYPHA_REFERENCE: dhi/calico-typha:3.32.2-debian13@sha256:b5a6a4ccf002c813c695410ae3655cda4ec269aa1564a838f9e09bfa7e8ace3a
+  CALICO_TYPHA_REFERENCE: dhi/calico-typha:3.32.2-debian13@sha256:8a783f4c1c505ea7a29d93604651c85d288b376304fba43ba73360a0f986dd01
   CALICO_WEBHOOKS_REFERENCE: dhi/calico-webhooks:3.32.2-debian13@sha256:40d2d71cedc461a20950a5873341a13f012f032ba3fab464293ece1d8747c651
   CALICO_WHISKER_BACKEND_REFERENCE: dhi/calico-whisker-backend:3.32.2-debian13@sha256:a2c58baff8132b388ca7e095525e6093cda10d48badc1755bf1d6eff9be60a68
   CALICO_WHISKER_REFERENCE: dhi/calico-whisker:3.32.2-debian13@sha256:58f3938abff406456e943b592bc0e0902c330cb06971ffac84c84ba14e252520
@@ -31,7 +31,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.32"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.32.2
-  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.42.6-debian13@sha256:c35c3c52b6af70ac56a7d8f0a93ae9f42e749f46dac03d25d984d9013fdbeb16
+  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.42.6-debian13@sha256:641e37598d8e1628c1ca421a891ccab60dd5be1d6e672ba17ffd3df34afc66a6
   VERSION: 3.32.2
 contents:
   repositories:
@@ -63,7 +63,7 @@ contents:
               description: Docker Hardened Images Helm chart for the Tigera operator (installs Calico)
               images:
                 - name: tigera-operator
-                  ref: dhi/tigera-operator:1.42.6-debian13@sha256:c35c3c52b6af70ac56a7d8f0a93ae9f42e749f46dac03d25d984d9013fdbeb16
+                  ref: dhi/tigera-operator:1.42.6-debian13@sha256:641e37598d8e1628c1ca421a891ccab60dd5be1d6e672ba17ffd3df34afc66a6
                 - name: calico-whisker
                   ref: dhi/calico-whisker:3.32.2-debian13@sha256:58f3938abff406456e943b592bc0e0902c330cb06971ffac84c84ba14e252520
                 - name: calico-whisker-backend
@@ -71,7 +71,7 @@ contents:
                 - name: calico-ctl
                   ref: dhi/calico-ctl:3.32.2-debian13@sha256:ee98135d82d102f478cedf1296be12af0cad371725b6f2fb267b8db55816e609
                 - name: calico-cni
-                  ref: dhi/calico-cni:3.32.2-debian13@sha256:5055322bf1913ce96bd87e2774db259a8eea392247d1635c0f65415e3e67d8ca
+                  ref: dhi/calico-cni:3.32.2-debian13@sha256:b4c85a095c4854ddd502e377409ce349c4a32b125230a29a6835694f1899c138
                 - name: calico-csi
                   ref: dhi/calico-csi:3.32.2-debian13@sha256:eab64ae38d7843780cf0ff5560fdd345b08613dc7ed37f62aca0a3e51aeeae04
                 - name: calico-goldmane
@@ -85,7 +85,7 @@ contents:
                 - name: calico-pod2daemon-flexvol
                   ref: dhi/calico-pod2daemon-flexvol:3.32.2-debian13@sha256:19e0dfb8148e0f6dd73e0dc39bfc5ae1ce702e0080dc750e9eeea764c410c1c5
                 - name: calico-typha
-                  ref: dhi/calico-typha:3.32.2-debian13@sha256:b5a6a4ccf002c813c695410ae3655cda4ec269aa1564a838f9e09bfa7e8ace3a
+                  ref: dhi/calico-typha:3.32.2-debian13@sha256:8a783f4c1c505ea7a29d93604651c85d288b376304fba43ba73360a0f986dd01
                 - name: calico-webhooks
                   ref: dhi/calico-webhooks:3.32.2-debian13@sha256:40d2d71cedc461a20950a5873341a13f012f032ba3fab464293ece1d8747c651
               name: tigera-operator-chart
