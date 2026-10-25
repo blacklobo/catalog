@@ -3,8 +3,8 @@
 image: dhi.io/pkg-qdrant
 variant: runtime
 tags:
-  - 1.19.2-1
-  - 1.19.2-1-debian13
+  - 1.19.2-2
+  - 1.19.2-2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,8 +13,8 @@ dates:
 vars:
   CARGO_VERSION: 1.98.1-0
   COMMIT_SHA: 016542aa5deb6c66380bb137badf73d54f742bde
-  DHI_REL: "1"
-  DHI_VERSION: 1.19.2-1
+  DHI_REL: "2"
+  DHI_VERSION: 1.19.2-2
   GCC_VERSION: 14.2.0-19+dhi5
   NODEJS_VERSION: 24.22.0-0
   RUSTC_VERSION: 1.98.1-0
@@ -102,7 +102,7 @@ contents:
             npm pkg set \
               'overrides[tar]=7.5.19' \
               'overrides[js-yaml]=4.3.2' \
-              'overrides[undici]=7.29.1' \
+              'overrides[undici]=7.30.1' \
               'overrides[source-map-js]=1.2.2'
             rm -f package-lock.json
             npm install --ignore-scripts
@@ -129,6 +129,7 @@ contents:
             cargo update --package rustls-webpki@0.103.15 --precise 0.103.16
             cargo update --package xxhash-rust@0.8.15 --precise 0.8.16
             cargo update --package quinn-proto@0.11.16 --precise 0.11.18
+            cargo update --package tokio@1.53.1 --precise 1.53.3
 
             cargo fetch
             pyroscope_src="$(find "${CARGO_HOME:-/root/.cargo}/registry/src" -type d -name pyroscope-2.1.1 | head -1)"
@@ -169,8 +170,9 @@ contents:
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Bump Cargo rustls-webpki to 0.103.16 for CVE-2026-111943.
-            version: 1.19.2-1
+              - Bump Cargo tokio to 1.53.3 for RUSTSEC-2026-0386.
+              - Bump npm undici override to 7.30.1 for CVE-2026-109841, CVE-2026-109869, and CVE-2026-109924.
+            version: 1.19.2-2
         - uses: dpkg/build@v1
           privileged: true
           with:
