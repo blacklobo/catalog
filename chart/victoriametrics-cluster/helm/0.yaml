@@ -20,9 +20,9 @@ vars:
   SEMVER_VERSION: 0.53.0
   VERSION: 0.53.0
   VICTORIAMETRICS_VMAUTH_REFERENCE: dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:4cb217d670888f2a066cf2dc5bafbdfd4afc896e9ac3c62e13d7da3dfedf16f4
-  VICTORIAMETRICS_VMINSERT_REFERENCE: dhi/victoriametrics-vminsert:1.154.1-debian13@sha256:8c94cee09293d8966263a7ec8153843cbb7a1558178ea43de4885929cb5af060
-  VICTORIAMETRICS_VMSELECT_REFERENCE: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:5753d7a7ae8d6b0050f64eeec90291025106c6e71510f9e07967334d2fcfcd75
-  VICTORIAMETRICS_VMSTORAGE_REFERENCE: dhi/victoriametrics-vmstorage:1.154.1-debian13@sha256:aee3fc4db7a060a5a0bd899b937e2594055cd73fc90fe1b124bf34da83ab577f
+  VICTORIAMETRICS_VMINSERT_REFERENCE: dhi/victoriametrics-vminsert:1.154.1-debian13@sha256:e86acb07f0331ece9200582aa8308352ba2d646ad8ca5cd20f2022373e047339
+  VICTORIAMETRICS_VMSELECT_REFERENCE: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:a8ea007fa5ddc51541cd07578cc323877e9b397cd548e5fe5c769c6622d4ffc6
+  VICTORIAMETRICS_VMSTORAGE_REFERENCE: dhi/victoriametrics-vmstorage:1.154.1-debian13@sha256:302dacbe2c07973fdf221efddd53a2f9a914dcdbee969baca2020b4a0afd6a53
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -54,11 +54,11 @@ contents:
               description: Docker Hardened Images Helm chart for VictoriaMetrics Cluster
               images:
                 - name: victoriametrics-vmselect
-                  ref: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:5753d7a7ae8d6b0050f64eeec90291025106c6e71510f9e07967334d2fcfcd75
+                  ref: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:a8ea007fa5ddc51541cd07578cc323877e9b397cd548e5fe5c769c6622d4ffc6
                 - name: victoriametrics-vmstorage
-                  ref: dhi/victoriametrics-vmstorage:1.154.1-debian13@sha256:aee3fc4db7a060a5a0bd899b937e2594055cd73fc90fe1b124bf34da83ab577f
+                  ref: dhi/victoriametrics-vmstorage:1.154.1-debian13@sha256:302dacbe2c07973fdf221efddd53a2f9a914dcdbee969baca2020b4a0afd6a53
                 - name: victoriametrics-vminsert
-                  ref: dhi/victoriametrics-vminsert:1.154.1-debian13@sha256:8c94cee09293d8966263a7ec8153843cbb7a1558178ea43de4885929cb5af060
+                  ref: dhi/victoriametrics-vminsert:1.154.1-debian13@sha256:e86acb07f0331ece9200582aa8308352ba2d646ad8ca5cd20f2022373e047339
                 - name: victoriametrics-vmauth
                   ref: dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:4cb217d670888f2a066cf2dc5bafbdfd4afc896e9ac3c62e13d7da3dfedf16f4
               name: victoriametrics-cluster-chart
