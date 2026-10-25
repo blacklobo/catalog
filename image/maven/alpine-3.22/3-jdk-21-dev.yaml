@@ -13,9 +13,9 @@ platforms:
 dates:
   release: "2013-10-22"
 vars:
-  JAVA_DIGEST: sha256:e50b1393b9a59f467bd64b588bfe773d19772c4b6dda83997e5e83ef4cb1a671
+  JAVA_DIGEST: sha256:9800c921a19baf39766546754a37caf163259e2e52369efdbac336bb963b8ec5
   JAVA_MAJOR_VERSION: "21"
-  JAVA_VERSION: 21.0.12
+  JAVA_VERSION: 21.0.13
   MAVEN_MAJOR_MINOR_VERSION: "3.10"
   MAVEN_MAJOR_VERSION: "3"
   MAVEN_VERSION: 3.10.0
@@ -77,7 +77,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/eclipse-temurin:21.0.12-jdk-alpine3.22-dev@sha256:e50b1393b9a59f467bd64b588bfe773d19772c4b6dda83997e5e83ef4cb1a671
+    - name: dhi.io/eclipse-temurin:21.0.13-jdk-alpine3.22-dev@sha256:9800c921a19baf39766546754a37caf163259e2e52369efdbac336bb963b8ec5
       includes:
         - opt/**
         - usr/local/bin/**
