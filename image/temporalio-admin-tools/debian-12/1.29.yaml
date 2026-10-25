@@ -16,8 +16,8 @@ vars:
   DEBIAN_EPOCH_MAJOR_VERSION: "1"
   DEBIAN_EPOCH_VERSION: 1.29.7
   DEBIAN_VERSION: "12"
-  PYTHON_BUILD_REFERENCE: dhi/python:3.13.16-debian12-dev@sha256:8562353d35d625c6030d9417ffd4a753bf17e04975dbf9492ea14210f6681b58
-  PYTHON_REFERENCE: dhi/python:3.13.16-debian12@sha256:bf7d3d2070c36fb445b7a2d1f5f1a6bc573a8ce0f417aaa3b6410d3840615be2
+  PYTHON_BUILD_REFERENCE: dhi/python:3.13.17-debian12-dev@sha256:3a32fb7e28c79452a1754f4b702a138f146ae6eff3b96b18b879834646ce0095
+  PYTHON_REFERENCE: dhi/python:3.13.17-debian12@sha256:bca1b47c711042ceaa16a5efbc1a3981c6ead608ec1fb015cd2d5e780bd03b7e
   SEMVER_MAJOR_MINOR_VERSION: "1.29"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.29.7
@@ -62,7 +62,7 @@ contents:
           uid: 0
           gid: 0
     - name: add cqlsh
-      uses: dhi.io/python:3.13.16-debian12-dev@sha256:8562353d35d625c6030d9417ffd4a753bf17e04975dbf9492ea14210f6681b58
+      uses: dhi.io/python:3.13.17-debian12-dev@sha256:3a32fb7e28c79452a1754f4b702a138f146ae6eff3b96b18b879834646ce0095
       contents:
         packages:
           - bash
@@ -97,7 +97,7 @@ contents:
           uid: 0
           gid: 0
     - name: add yq
-      uses: dhi.io/python:3.13.16-debian12-dev@sha256:8562353d35d625c6030d9417ffd4a753bf17e04975dbf9492ea14210f6681b58
+      uses: dhi.io/python:3.13.17-debian12-dev@sha256:3a32fb7e28c79452a1754f4b702a138f146ae6eff3b96b18b879834646ce0095
       contents:
         packages:
           - bash
@@ -141,7 +141,7 @@ contents:
         - usr/local/bin/temporal-sql-tool
       uid: 0
       gid: 0
-    - name: dhi.io/python:3.13.16-debian12@sha256:bf7d3d2070c36fb445b7a2d1f5f1a6bc573a8ce0f417aaa3b6410d3840615be2
+    - name: dhi.io/python:3.13.17-debian12@sha256:bca1b47c711042ceaa16a5efbc1a3981c6ead608ec1fb015cd2d5e780bd03b7e
       includes:
         - opt/**
         - usr/**
