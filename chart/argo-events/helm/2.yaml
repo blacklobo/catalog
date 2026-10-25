@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ARGO_EVENTS_REFERENCE: dhi/argo-events:1.9.11-debian13@sha256:8b10b88b3e225f2f24b034990f355d3eb93e45f51ecd7b38210742a6c2039454
+  ARGO_EVENTS_REFERENCE: dhi/argo-events:1.9.11-debian13@sha256:3713cc720d4e2218c638e45b512e74cb3a61ff62ba6c1d154a447ac4f6ea052e
   CHART_COMMIT_SHA: f60d55861d0ed6052f807d981343bd84b9a5de06
   CHART_HELM_NAME: argo-events-chart
   DHI_NAMESPACE: dhi
@@ -16,9 +16,9 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  NATS_REFERENCE: dhi/nats:2.15.1-debian13@sha256:329f41927ebb813a6ec6359077ec615520449c199a2e50362a35d7a6cb668bfd
-  NATS_SERVER_CONFIG_RELOADER_REFERENCE: dhi/nats-server-config-reloader:0.25.0-debian13@sha256:08727a4ecc6d5ff40f8166eff55e6da56699e114ce9f4ed137df3aad41d9fc5f
-  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.3-debian13@sha256:a9a507e05f6645ce2cec78bb59ddc35b7ef83bc1629c6f641c1bb2605f56598a
+  NATS_REFERENCE: dhi/nats:2.15.1-debian13@sha256:12337ee1d80d6168027197c392fa2c7d028f2d2c999765db6c346a5ea5516721
+  NATS_SERVER_CONFIG_RELOADER_REFERENCE: dhi/nats-server-config-reloader:0.25.0-debian13@sha256:0f5872a47258ee368fa7dabe8791fc908e4dfc8d2c644b9616edc5ae62a80701
+  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.3-debian13@sha256:408377519996e1399d848376ae008fa1924b3a8bea18071898e6c9688e95be12
   SEMVER_MAJOR_MINOR_VERSION: "2.4"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.4.27
@@ -53,13 +53,13 @@ contents:
               description: Docker Hardened Images Helm chart for Argo Events
               images:
                 - name: argo-events
-                  ref: dhi/argo-events:1.9.11-debian13@sha256:8b10b88b3e225f2f24b034990f355d3eb93e45f51ecd7b38210742a6c2039454
+                  ref: dhi/argo-events:1.9.11-debian13@sha256:3713cc720d4e2218c638e45b512e74cb3a61ff62ba6c1d154a447ac4f6ea052e
                 - name: nats
-                  ref: dhi/nats:2.15.1-debian13@sha256:329f41927ebb813a6ec6359077ec615520449c199a2e50362a35d7a6cb668bfd
+                  ref: dhi/nats:2.15.1-debian13@sha256:12337ee1d80d6168027197c392fa2c7d028f2d2c999765db6c346a5ea5516721
                 - name: prometheus-nats-exporter
-                  ref: dhi/prometheus-nats-exporter:0.20.3-debian13@sha256:a9a507e05f6645ce2cec78bb59ddc35b7ef83bc1629c6f641c1bb2605f56598a
+                  ref: dhi/prometheus-nats-exporter:0.20.3-debian13@sha256:408377519996e1399d848376ae008fa1924b3a8bea18071898e6c9688e95be12
                 - name: nats-server-config-reloader
-                  ref: dhi/nats-server-config-reloader:0.25.0-debian13@sha256:08727a4ecc6d5ff40f8166eff55e6da56699e114ce9f4ed137df3aad41d9fc5f
+                  ref: dhi/nats-server-config-reloader:0.25.0-debian13@sha256:0f5872a47258ee368fa7dabe8791fc908e4dfc8d2c644b9616edc5ae62a80701
               name: argo-events-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/argoproj/argo-helm
