@@ -18,8 +18,8 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HAPROXY_CHART_REFERENCE: dhi/haproxy-chart:1.30.2@sha256:c5be4157e75e461fdeed02cc0d1ce1b6b8492450d4ea006c3053648b30eeb162
   HELM_VERSION: 4.1.4-2
-  REDIS_CHART_REFERENCE: dhi/redis-chart:23.0.7@sha256:f51d946e50ebca5333fd9eb8ad1db21ab35bbe430be0489d66933658ebb5bd3c
-  REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.95.0-debian13@sha256:2cfd5eb735d1c6a1759ae87436088b45af3506a715d2e0a6f7c89839d0c1b6d3
+  REDIS_CHART_REFERENCE: dhi/redis-chart:23.0.7@sha256:e33a49ffe64b51fc5ccda2dd2cc80960cc603e7b227afeb36f758d7394e03efb
+  REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.96.0-debian13@sha256:2dbb1f3ab55ce1d070fcd6810d2ffb72935d94c4648aa88346f63b86744828b2
   REDIS_REFERENCE: dhi/redis:8.10.2-debian13-compat@sha256:62f0464bb3a48bccf2064c0b793d98e08d2ad763ee60d6913ba18842fec5ce3d
   SEMVER_MAJOR_MINOR_VERSION: "10.11"
   SEMVER_MAJOR_VERSION: "10"
@@ -57,7 +57,7 @@ contents:
                 - alias: redis-ha
                   condition: redis-ha.enabled
                   name: redis-ha
-                  ref: dhi/redis-chart:23.0.7@sha256:f51d946e50ebca5333fd9eb8ad1db21ab35bbe430be0489d66933658ebb5bd3c
+                  ref: dhi/redis-chart:23.0.7@sha256:e33a49ffe64b51fc5ccda2dd2cc80960cc603e7b227afeb36f758d7394e03efb
                 - alias: haproxy
                   condition: haproxy.enabled
                   name: haproxy
@@ -71,7 +71,7 @@ contents:
                 - name: redis
                   ref: dhi/redis:8.10.2-debian13-compat@sha256:62f0464bb3a48bccf2064c0b793d98e08d2ad763ee60d6913ba18842fec5ce3d
                 - name: redis-exporter
-                  ref: dhi/redis-exporter:1.95.0-debian13@sha256:2cfd5eb735d1c6a1759ae87436088b45af3506a715d2e0a6f7c89839d0c1b6d3
+                  ref: dhi/redis-exporter:1.96.0-debian13@sha256:2dbb1f3ab55ce1d070fcd6810d2ffb72935d94c4648aa88346f63b86744828b2
               name: argocd-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/argoproj/argo-helm
