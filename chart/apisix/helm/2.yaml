@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  APISIX_INGRESS_CONTROLLER_CHART_REFERENCE: dhi/apisix-ingress-controller-chart:1.4.0@sha256:83fc7be6dd37684beff00833698bc4ee43f3d6531dc0dd69d6d0952b45c0b8b8
+  APISIX_INGRESS_CONTROLLER_CHART_REFERENCE: dhi/apisix-ingress-controller-chart:1.4.0@sha256:11e48c0b609ae0673fc9d8a5d12073b30c778ba5b67ceae4bd79b79a8d2b6b30
   APISIX_REFERENCE: dhi/apisix:3.19.0-debian13@sha256:4e2bf0a0c923ef0faf592e47d670e4a09e24c0c076a11f4bd2b8c34c47925798
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:6078a01e551030474be65ac98b9c5dc2b4a3d15ffc3c369172ecf17a41994a74
   CHART_COMMIT_SHA: 53115d6ab51e14eec55d0689ad7e70c28b6ce11f
@@ -54,7 +54,7 @@ contents:
                 - alias: ingress-controller
                   condition: ingress-controller.enabled
                   name: apisix-ingress-controller-chart
-                  ref: dhi/apisix-ingress-controller-chart:1.4.0@sha256:83fc7be6dd37684beff00833698bc4ee43f3d6531dc0dd69d6d0952b45c0b8b8
+                  ref: dhi/apisix-ingress-controller-chart:1.4.0@sha256:11e48c0b609ae0673fc9d8a5d12073b30c778ba5b67ceae4bd79b79a8d2b6b30
               description: Docker Hardened Images Helm chart for APISIX
               images:
                 - name: apisix
