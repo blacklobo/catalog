@@ -23,8 +23,8 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "0.33"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.33.1
-  TRIVY_IMAGE_REFERENCE: dhi/trivy:0.74.0-debian13-compat@sha256:17797a7ba012b60891406becd7aebd6ea467fc0f726f3ef3e4503a2d3cffbbb3
-  TRIVY_OPERATOR_IMAGE_REFERENCE: dhi/trivy-operator:0.31.1-debian13@sha256:d6562d21566d233f140f1386cb92ef1fd467ae82e42b825cf177472b3eac733b
+  TRIVY_IMAGE_REFERENCE: dhi/trivy:0.74.0-debian13-compat@sha256:ac78ee5e7d3a66b245b1364c31d3e37328791aff76dd7ac09f84a9540f0b2542
+  TRIVY_OPERATOR_IMAGE_REFERENCE: dhi/trivy-operator:0.31.1-debian13@sha256:71e1a840cf772f7607c37fd62ce7ff1b37bfb96984d616f44f36abcb4b863e4d
   VERSION: 0.33.1
 contents:
   repositories:
@@ -55,9 +55,9 @@ contents:
               description: Docker Hardened Images Helm chart for trivy-operator
               images:
                 - name: trivy-operator
-                  ref: dhi/trivy-operator:0.31.1-debian13@sha256:d6562d21566d233f140f1386cb92ef1fd467ae82e42b825cf177472b3eac733b
+                  ref: dhi/trivy-operator:0.31.1-debian13@sha256:71e1a840cf772f7607c37fd62ce7ff1b37bfb96984d616f44f36abcb4b863e4d
                 - name: trivy
-                  ref: dhi/trivy:0.74.0-debian13-compat@sha256:17797a7ba012b60891406becd7aebd6ea467fc0f726f3ef3e4503a2d3cffbbb3
+                  ref: dhi/trivy:0.74.0-debian13-compat@sha256:ac78ee5e7d3a66b245b1364c31d3e37328791aff76dd7ac09f84a9540f0b2542
                 - name: node-collector
                   ref: dhi/node-collector:0.3.1-debian13@sha256:8367177c47ca497fb3dd4412ef232fbc027c477b7f511fd8d8a0ac0ba3c7e3d5
               name: trivy-operator-chart
