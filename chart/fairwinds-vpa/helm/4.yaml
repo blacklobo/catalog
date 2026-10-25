@@ -23,8 +23,8 @@ vars:
   SEMVER_VERSION: 5.1.0
   VERSION: 5.1.0
   VPA_ADMISSION_CONTROLLER_REFERENCE: dhi/vpa-admission-controller:1.8.1-debian13@sha256:45be1100e4b490cb26aaf0d31d7005261ab990f815aac888c789a26b73c03575
-  VPA_RECOMMENDER_REFERENCE: dhi/vpa-recommender:1.8.1-debian13@sha256:4cda4f0fa45eb3d3fa47634772b6526adbd62113a6e8b3a32137544c7345e628
-  VPA_UPDATER_REFERENCE: dhi/vpa-updater:1.8.1-debian13@sha256:56738e62983d122dd679c4d5ca1347edc5e6b4e1101265c85b6d5ccc0ddd8e29
+  VPA_RECOMMENDER_REFERENCE: dhi/vpa-recommender:1.8.1-debian13@sha256:df16f022d38f05463d641e0cf83bb8e03daba56534c13fb32ae68e67d18a68d5
+  VPA_UPDATER_REFERENCE: dhi/vpa-updater:1.8.1-debian13@sha256:8cbb8f9029d9450ead71b9872624106fedd19c318efbe9183d10f94c8ba33b82
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -61,9 +61,9 @@ contents:
                 - name: vpa-admission-controller
                   ref: dhi/vpa-admission-controller:1.8.1-debian13@sha256:45be1100e4b490cb26aaf0d31d7005261ab990f815aac888c789a26b73c03575
                 - name: vpa-recommender
-                  ref: dhi/vpa-recommender:1.8.1-debian13@sha256:4cda4f0fa45eb3d3fa47634772b6526adbd62113a6e8b3a32137544c7345e628
+                  ref: dhi/vpa-recommender:1.8.1-debian13@sha256:df16f022d38f05463d641e0cf83bb8e03daba56534c13fb32ae68e67d18a68d5
                 - name: vpa-updater
-                  ref: dhi/vpa-updater:1.8.1-debian13@sha256:56738e62983d122dd679c4d5ca1347edc5e6b4e1101265c85b6d5ccc0ddd8e29
+                  ref: dhi/vpa-updater:1.8.1-debian13@sha256:8cbb8f9029d9450ead71b9872624106fedd19c318efbe9183d10f94c8ba33b82
                 - name: kube-webhook-certgen
                   ref: dhi/kube-webhook-certgen:1.11.0-debian13@sha256:d19dc67b261a29bb3925a5d01d356047e40936d5609cd841b63eb86112d42a5f
                 - name: kubectl
