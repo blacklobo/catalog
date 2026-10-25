@@ -14,15 +14,15 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  HARBOR_CORE_REFERENCE: dhi/harbor-core:2.15.4-debian13@sha256:5bbfca451ae2b44cd8b7ad9cd1190568640128c54bc81ee994b24c7f29cbd7d4
-  HARBOR_DB_REFERENCE: dhi/harbor-db:2.15.4-debian13@sha256:4c4b60a2bef74a113e69a8363003502d8b944e5967f81ec0de38ea10f43ab5c7
-  HARBOR_EXPORTER_REFERENCE: dhi/harbor-exporter:2.15.4-debian13@sha256:45f39f227594550d1e79cf6bc6ea26cfb9cc79543430edae8c11580092b341c2
-  HARBOR_JOBSERVICE_REFERENCE: dhi/harbor-jobservice:2.15.4-debian13@sha256:1dd6cd350854056c2c509847a20dbd145d8e063a37666e338af6d44a3ea8981c
-  HARBOR_PORTAL_REFERENCE: dhi/harbor-portal:2.15.4-debian13@sha256:1597f4f6dafc5ce7b51bc8ea0bc655140423661fda5ce9d7aec4632e0003f8cf
-  HARBOR_REDIS_REFERENCE: dhi/harbor-redis:2.15.4-debian13@sha256:e2688b1cab11952bf3dc2d0134ebbadf01327f291956ddfd9d81cc90e463364c
-  HARBOR_REGISTRY_REFERENCE: dhi/harbor-registry:2.15.4-debian13@sha256:f0c11540db032ca1d9c558e310225d3ed7965e86792bec92cb573cc20dda949b
-  HARBOR_REGISTRYCTL_REFERENCE: dhi/harbor-registryctl:2.15.4-debian13@sha256:c221e6c1e63bd0f806e3f70b6a7fe2afe95fa1a714f86eff0c8179c1828414a2
-  HARBOR_TRIVY_ADAPTER_REFERENCE: dhi/harbor-trivy-adapter:2.15.4-debian13@sha256:48e365b933d82800d29946460b27561321aa6a06ce6bf840b21e2150ac3030bb
+  HARBOR_CORE_REFERENCE: dhi/harbor-core:2.15.4-debian13@sha256:b4ebaf38638879a01b52fd6f76780b29cafa2633395ffa16317d576ea7fb2ff0
+  HARBOR_DB_REFERENCE: dhi/harbor-db:2.15.4-debian13@sha256:a64477be273d20e3d836c36d6abd6c426c6fb90d28df7f9de805ac37f3938150
+  HARBOR_EXPORTER_REFERENCE: dhi/harbor-exporter:2.15.4-debian13@sha256:3da6a882a4432bd2410a44f612b32ea8075bb48557ec0a0139f839197d40906b
+  HARBOR_JOBSERVICE_REFERENCE: dhi/harbor-jobservice:2.15.4-debian13@sha256:06fc69622c5b0adb4988e3efe1bc0494e038c8989a4d20f36af0acbe133f2f0b
+  HARBOR_PORTAL_REFERENCE: dhi/harbor-portal:2.15.4-debian13@sha256:fa0e9ac6c6b466c5c298d3b0e980b0a7ca78546ecc0c2418a112e8fac9e8c582
+  HARBOR_REDIS_REFERENCE: dhi/harbor-redis:2.15.4-debian13@sha256:0cb86b3348affd1eedf41cdb6b861f493b7f99c91cb65bf35dcf9b2fc7545760
+  HARBOR_REGISTRY_REFERENCE: dhi/harbor-registry:2.15.4-debian13@sha256:339da928c50e6327a2e806bc20e08b0a93e94e30ada50c3238bb58877317e13e
+  HARBOR_REGISTRYCTL_REFERENCE: dhi/harbor-registryctl:2.15.4-debian13@sha256:20809b0c9c20497eb699b8a3b8221f3a4e25cbbd45a1861e747c7af5cb449e57
+  HARBOR_TRIVY_ADAPTER_REFERENCE: dhi/harbor-trivy-adapter:2.15.4-debian13@sha256:d909da599483642375ddc088639e86c1db562f9718b21ccf9cec89bee547d9f3
   HELM_VERSION: 4.1.4-2
   NGINX_REFERENCE: dhi/nginx:1.31.8-debian13@sha256:753fe3647bae409f190946cb223a94a6b409ea7ff2ada224b1f0d53d76b4b264
   SEMVER_MAJOR_MINOR_VERSION: "1.19"
@@ -59,23 +59,23 @@ contents:
               description: Docker Hardened Images Helm chart for Harbor
               images:
                 - name: harbor-core
-                  ref: dhi/harbor-core:2.15.4-debian13@sha256:5bbfca451ae2b44cd8b7ad9cd1190568640128c54bc81ee994b24c7f29cbd7d4
+                  ref: dhi/harbor-core:2.15.4-debian13@sha256:b4ebaf38638879a01b52fd6f76780b29cafa2633395ffa16317d576ea7fb2ff0
                 - name: harbor-jobservice
-                  ref: dhi/harbor-jobservice:2.15.4-debian13@sha256:1dd6cd350854056c2c509847a20dbd145d8e063a37666e338af6d44a3ea8981c
+                  ref: dhi/harbor-jobservice:2.15.4-debian13@sha256:06fc69622c5b0adb4988e3efe1bc0494e038c8989a4d20f36af0acbe133f2f0b
                 - name: harbor-registry
-                  ref: dhi/harbor-registry:2.15.4-debian13@sha256:f0c11540db032ca1d9c558e310225d3ed7965e86792bec92cb573cc20dda949b
+                  ref: dhi/harbor-registry:2.15.4-debian13@sha256:339da928c50e6327a2e806bc20e08b0a93e94e30ada50c3238bb58877317e13e
                 - name: harbor-registryctl
-                  ref: dhi/harbor-registryctl:2.15.4-debian13@sha256:c221e6c1e63bd0f806e3f70b6a7fe2afe95fa1a714f86eff0c8179c1828414a2
+                  ref: dhi/harbor-registryctl:2.15.4-debian13@sha256:20809b0c9c20497eb699b8a3b8221f3a4e25cbbd45a1861e747c7af5cb449e57
                 - name: harbor-trivy-adapter
-                  ref: dhi/harbor-trivy-adapter:2.15.4-debian13@sha256:48e365b933d82800d29946460b27561321aa6a06ce6bf840b21e2150ac3030bb
+                  ref: dhi/harbor-trivy-adapter:2.15.4-debian13@sha256:d909da599483642375ddc088639e86c1db562f9718b21ccf9cec89bee547d9f3
                 - name: harbor-exporter
-                  ref: dhi/harbor-exporter:2.15.4-debian13@sha256:45f39f227594550d1e79cf6bc6ea26cfb9cc79543430edae8c11580092b341c2
+                  ref: dhi/harbor-exporter:2.15.4-debian13@sha256:3da6a882a4432bd2410a44f612b32ea8075bb48557ec0a0139f839197d40906b
                 - name: harbor-portal
-                  ref: dhi/harbor-portal:2.15.4-debian13@sha256:1597f4f6dafc5ce7b51bc8ea0bc655140423661fda5ce9d7aec4632e0003f8cf
+                  ref: dhi/harbor-portal:2.15.4-debian13@sha256:fa0e9ac6c6b466c5c298d3b0e980b0a7ca78546ecc0c2418a112e8fac9e8c582
                 - name: harbor-db
-                  ref: dhi/harbor-db:2.15.4-debian13@sha256:4c4b60a2bef74a113e69a8363003502d8b944e5967f81ec0de38ea10f43ab5c7
+                  ref: dhi/harbor-db:2.15.4-debian13@sha256:a64477be273d20e3d836c36d6abd6c426c6fb90d28df7f9de805ac37f3938150
                 - name: harbor-redis
-                  ref: dhi/harbor-redis:2.15.4-debian13@sha256:e2688b1cab11952bf3dc2d0134ebbadf01327f291956ddfd9d81cc90e463364c
+                  ref: dhi/harbor-redis:2.15.4-debian13@sha256:0cb86b3348affd1eedf41cdb6b861f493b7f99c91cb65bf35dcf9b2fc7545760
                 - name: nginx
                   ref: dhi/nginx:1.31.8-debian13@sha256:753fe3647bae409f190946cb223a94a6b409ea7ff2ada224b1f0d53d76b4b264
               name: harbor-chart
