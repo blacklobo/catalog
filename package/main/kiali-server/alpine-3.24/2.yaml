@@ -3,21 +3,21 @@
 image: dhi.io/pkg-kiali-server
 variant: runtime
 tags:
-  - 2.33.0-alpine3.24
-  - 2.33.0-r6-alpine3.24
+  - 2.34.0-alpine3.24
+  - 2.34.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 0e8be887b8217bbcac5e3ae0bfcd258073949cca
+  COMMIT_SHA: f74abbb75e4ddbc014b874561df26ec49cbaec2e
   GOLANG_VERSION: 1.26.10-r0
   NODEJS_VERSION: 24.22.1-r1
   PACKAGE_NAME: kiali-server
-  REL: "6"
-  SEMVER_MAJOR_MINOR_VERSION: "2.33"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "2.34"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.33.0
-  VERSION: 2.33.0
+  SEMVER_VERSION: 2.34.0
+  VERSION: 2.34.0
   YARN_VERSION: 4.12.0-r0
 contents:
   repositories:
@@ -51,15 +51,15 @@ contents:
           - npm
           - yarn-berry=4.12.0-r0
         files:
-          - url: git+https://github.com/kiali/kiali.git#v2.33.0
-            checksum: 0e8be887b8217bbcac5e3ae0bfcd258073949cca
+          - url: git+https://github.com/kiali/kiali.git#v2.34.0
+            checksum: f74abbb75e4ddbc014b874561df26ec49cbaec2e
             path: /go/src/github.com/kiali/kiali
             spdx:
               name: kiali
-              version: 2.33.0
+              version: 2.34.0
               packages:
                 - name: kiali
-                  purl: pkg:golang/github.com/kiali/kiali@2.33.0
+                  purl: pkg:golang/github.com/kiali/kiali@2.34.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -166,7 +166,7 @@ contents:
             cd /go/src/dhi-kiali-build
             go mod init dhi.build.kiali
             go mod edit -go="$(grep '^go ' /go/src/github.com/kiali/kiali/go.mod | awk '{print $2}')"
-            go mod edit -require=github.com/kiali/kiali@v2.33.0+incompatible
+            go mod edit -require=github.com/kiali/kiali@v2.34.0+incompatible
             go mod edit -replace=github.com/kiali/kiali=/go/src/github.com/kiali/kiali
             cp /go/src/github.com/kiali/kiali/go.sum go.sum
         - name: build kiali
@@ -176,8 +176,8 @@ contents:
             extra-env: GOPROXY=off GOSUMDB=off GOFLAGS=-mod=mod
             fips: false
             ldflags:
-              - -X github.com/kiali/kiali/cmd.version=v2.33.0
-              - -X github.com/kiali/kiali/cmd.commitHash=0e8be887b8217bbcac5e3ae0bfcd258073949cca
+              - -X github.com/kiali/kiali/cmd.version=v2.34.0
+              - -X github.com/kiali/kiali/cmd.commitHash=f74abbb75e4ddbc014b874561df26ec49cbaec2e
               - -X github.com/kiali/kiali/cmd.goVersion=$(go version | awk '{print $3}')
             output: ${target.dir}/usr/bin/kiali
             packages: github.com/kiali/kiali
@@ -188,8 +188,8 @@ contents:
             extra-env: GOPROXY=off GOSUMDB=off GOFLAGS=-mod=mod
             fips: false
             ldflags:
-              - -X github.com/kiali/kiali/cmd.version=v2.33.0
-              - -X github.com/kiali/kiali/cmd.commitHash=0e8be887b8217bbcac5e3ae0bfcd258073949cca
+              - -X github.com/kiali/kiali/cmd.version=v2.34.0
+              - -X github.com/kiali/kiali/cmd.commitHash=f74abbb75e4ddbc014b874561df26ec49cbaec2e
               - -X github.com/kiali/kiali/cmd.goVersion=$(go version | awk '{print $3}')
             output: ${target.dir}/usr/bin/kiali-dev
             packages: github.com/kiali/kiali
@@ -198,7 +198,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            go version -m "${target.dir}/usr/bin/kiali" | grep -F $'mod\tgithub.com/kiali/kiali\tv2.33.0+incompatible'
+            go version -m "${target.dir}/usr/bin/kiali" | grep -F $'mod\tgithub.com/kiali/kiali\tv2.34.0+incompatible'
         - uses: dhi/build-pkg:0
           with:
             description: Kiali console for Istio service mesh
@@ -206,14 +206,14 @@ contents:
               - usr/bin/kiali
             license: Apache-2.0
             name: kiali-server
-            rel: 6
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/kiali
                     source: usr/bin/kiali-dev
                 name: kiali-server-dev
             url: https://github.com/kiali/kiali
-            version: 2.33.0
+            version: 2.34.0
       paths:
         - type: file
           path: ${source.dir}/patch/yarn-bumps.json
