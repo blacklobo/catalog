@@ -9,7 +9,7 @@ platforms:
   - linux/amd64
 vars:
   AWS_LOAD_BALANCER_CONTROLLER_REFERENCE: dhi/aws-load-balancer-controller:3.6.1-debian13@sha256:e331d92455915dd93d1ea354c3597c961b176e6d55b2e988dc9a6a1fd8916bb9
-  CHART_COMMIT_SHA: 6ac4298e0914603f25540dccd0c6e56f0ee81bcc
+  CHART_COMMIT_SHA: ab312b0418cbd62d647439cae5a54ba0962f297c
   CHART_HELM_NAME: aws-load-balancer-controller-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/aws/eks-charts.git#6ac4298e0914603f25540dccd0c6e56f0ee81bcc
-            checksum: 6ac4298e0914603f25540dccd0c6e56f0ee81bcc
+          - url: git+https://github.com/aws/eks-charts.git#ab312b0418cbd62d647439cae5a54ba0962f297c
+            checksum: ab312b0418cbd62d647439cae5a54ba0962f297c
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
