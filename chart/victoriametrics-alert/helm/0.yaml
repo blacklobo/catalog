@@ -20,7 +20,7 @@ vars:
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.51.0
   VERSION: 0.51.0
-  VICTORIAMETRICS_VMALERT_REFERENCE: dhi/victoriametrics-vmalert:1.153.0-debian13@sha256:9f16fd9b424cf3107be8b3e463cb65e2c563b94c1bc9a59c7c2d31094802b158
+  VICTORIAMETRICS_VMALERT_REFERENCE: dhi/victoriametrics-vmalert:1.153.0-debian13@sha256:e830eb12037df8da017e1d31c8f545547e2bc88ccb6dbb905d2675350d0629a4
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for VictoriaMetrics Alert
               images:
                 - name: victoriametrics-vmalert
-                  ref: dhi/victoriametrics-vmalert:1.153.0-debian13@sha256:9f16fd9b424cf3107be8b3e463cb65e2c563b94c1bc9a59c7c2d31094802b158
+                  ref: dhi/victoriametrics-vmalert:1.153.0-debian13@sha256:e830eb12037df8da017e1d31c8f545547e2bc88ccb6dbb905d2675350d0629a4
                 - name: alertmanager
                   ref: dhi/alertmanager:0.34.1-debian13@sha256:247b87ce1e0247e8623063e2dca9c9133eda12f0d1f6bc810191ef7c9dcc9276
               name: victoriametrics-alert-chart
