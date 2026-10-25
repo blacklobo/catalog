@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   FAIRWINDS_VPA_CHART_REFERENCE: dhi/fairwinds-vpa-chart:4.12.5@sha256:ed57595b5158827471a45e70d6dda80f7f26262729b16866c2c5e417c1292e7b
-  GOLDILOCKS_REFERENCE: dhi/goldilocks:4.16.2-debian13@sha256:93c08ccbe7d7c722e91620301d794eb663186f39dc5eb750740e99e1f9b302fe
+  GOLDILOCKS_REFERENCE: dhi/goldilocks:4.16.2-debian13@sha256:0aec7ff7855160eec486829577845a548ce46dd1517f9d6913179ece531fa154
   HELM_VERSION: 4.1.4-2
   METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:27e5f4427cd9e65d43b4fd513eac4c6918118b5729c88dd52b2fb56ebe8f865c
   SEMVER_MAJOR_MINOR_VERSION: "11.2"
@@ -60,7 +60,7 @@ contents:
               description: Docker Hardened Images Helm chart for Goldilocks
               images:
                 - name: goldilocks
-                  ref: dhi/goldilocks:4.16.2-debian13@sha256:93c08ccbe7d7c722e91620301d794eb663186f39dc5eb750740e99e1f9b302fe
+                  ref: dhi/goldilocks:4.16.2-debian13@sha256:0aec7ff7855160eec486829577845a548ce46dd1517f9d6913179ece531fa154
               name: goldilocks-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/FairwindsOps/charts
