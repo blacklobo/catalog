@@ -22,11 +22,11 @@ vars:
   COUCHDB_DOCKER_ENTRYPOINT_CHECKSUM: sha256:d3042b6e100bfe2b9f124f654afc6bdbcad9e9e870511c60e9010da759b60962
   COUCHDB_DOCKER_VERSION: 3.4.3
   COUCHDB_DOCKER_VM_ARGS_CHECKSUM: sha256:5f84c4bfc47f16f404443dc1437829372ab9ee126d30fc819a2927a4cd333da7
-  ERLANG_DEV_REFERENCE: dhi/erlang-otp:27.3-debian13-dev@sha256:fd9cce15e3318fd56597ab3c60999ab717b126e38e0b9d385bc1427059caca64
-  ERLANG_REFERENCE: dhi/erlang-otp:27.3-debian13@sha256:3fc7112a2fde85fc1de0cc105d43448af74b213d9ede93d9a44e207a917f5c54
-  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:aeaabfe590d0e03bc4046023387c0a8e29f7b897e63b9ffb5fd9fdfe82c9f17a
-  REBAR_COMMIT_SHA: 8723cb44fddb7ed66809d4dfbfc1da1ba6841456
-  REBAR_VERSION: 3.27.3
+  ERLANG_DEV_REFERENCE: dhi/erlang-otp:27.3-debian13-dev@sha256:aa07aff359339cb5174a442813b8923cac345cb245dd22533101d0543cd93904
+  ERLANG_REFERENCE: dhi/erlang-otp:27.3-debian13@sha256:17869b3c18281ecce9fcc3388cd688c054015c8a266f60c0b896649f90164dba
+  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:1921874ddc4e70eaa1f172785fd5749d0f0c64401d5ae3682186c5cfba3a69e3
+  REBAR_COMMIT_SHA: 183065cc3f7ec5a9d9d4936f7e1df6246178df40
+  REBAR_VERSION: 3.28.0
   SEMVER_MAJOR_MINOR_VERSION: "3.4"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.4.3
@@ -146,15 +146,15 @@ contents:
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: git+https://github.com/erlang/rebar3.git#3.27.3
-            checksum: 8723cb44fddb7ed66809d4dfbfc1da1ba6841456
+          - url: git+https://github.com/erlang/rebar3.git#3.28.0
+            checksum: 183065cc3f7ec5a9d9d4936f7e1df6246178df40
             path: /usr/src/rebar3
             spdx:
               name: rebar3
-              version: 3.27.3
+              version: 3.28.0
               packages:
                 - name: rebar3
-                  purl: pkg:erlang/github.com/erlang/rebar3@3.27.3
+                  purl: pkg:erlang/github.com/erlang/rebar3@3.28.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -177,7 +177,7 @@ contents:
             gid: 65532
             mode: "0644"
         artifacts:
-          - name: dhi.io/erlang-otp:27.3-debian13-dev@sha256:fd9cce15e3318fd56597ab3c60999ab717b126e38e0b9d385bc1427059caca64
+          - name: dhi.io/erlang-otp:27.3-debian13-dev@sha256:aa07aff359339cb5174a442813b8923cac345cb245dd22533101d0543cd93904
             includes:
               - usr/local/bin/erl
               - usr/local/bin/erlc
@@ -185,7 +185,7 @@ contents:
               - usr/local/lib/erlang
             uid: 0
             gid: 0
-          - name: dhi.io/pkg-gosu:1.19-debian13@sha256:aeaabfe590d0e03bc4046023387c0a8e29f7b897e63b9ffb5fd9fdfe82c9f17a
+          - name: dhi.io/pkg-gosu:1.19-debian13@sha256:1921874ddc4e70eaa1f172785fd5749d0f0c64401d5ae3682186c5cfba3a69e3
             includes:
               - usr/local/sbin/gosu
             uid: 0
@@ -285,7 +285,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/erlang-otp:27.3-debian13@sha256:3fc7112a2fde85fc1de0cc105d43448af74b213d9ede93d9a44e207a917f5c54
+    - name: dhi.io/erlang-otp:27.3-debian13@sha256:17869b3c18281ecce9fcc3388cd688c054015c8a266f60c0b896649f90164dba
       includes:
         - /usr/local/**
       uid: 0
