@@ -22,7 +22,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   LIVENESSPROBE_MAJOR: "2"
-  LIVENESSPROBE_REFERENCE: dhi/livenessprobe:2.20.0-debian13@sha256:8810aada4fec0f084d1798b4f450e29a242bd6ee228ca0fc4925544fe3c3724a
+  LIVENESSPROBE_REFERENCE: dhi/livenessprobe:2.20.0-debian13@sha256:cac63fc32d4729ae2c66954154068b8bce46e01f7bd77067d9ee8e7c54d619e2
   SEMVER_MAJOR_MINOR_VERSION: "4.5"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.5.2
@@ -58,7 +58,7 @@ contents:
                 - name: aws-efs-csi-driver
                   ref: dhi/aws-efs-csi-driver:3.5.2-debian13@sha256:3ca7081be8a99ec8de95a48a0fd444dd8320a8ab27bd5750208dd53b43937a66
                 - name: livenessprobe
-                  ref: dhi/livenessprobe:2.20.0-debian13@sha256:8810aada4fec0f084d1798b4f450e29a242bd6ee228ca0fc4925544fe3c3724a
+                  ref: dhi/livenessprobe:2.20.0-debian13@sha256:cac63fc32d4729ae2c66954154068b8bce46e01f7bd77067d9ee8e7c54d619e2
                 - name: csi-node-driver-registrar
                   ref: dhi/csi-node-driver-registrar:2.18.0-debian13@sha256:47edee33e94f8dbd2a932484285a7c6e10ccb955ddf4f4f8eb9caa83a47fd218
                 - name: csi-provisioner
