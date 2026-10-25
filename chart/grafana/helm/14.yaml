@@ -20,7 +20,7 @@ vars:
   GRAFANA_IMAGE_RENDERER_REFERENCE: dhi/grafana-image-renderer:5.12.8-debian13@sha256:d9a8c69dc2d8e7c598bf9bc75cc8552e02f6adff9fefa5fd9c60fb1e43550812
   GRAFANA_REFERENCE: dhi/grafana:13.2.3-debian13@sha256:d376393efefe486393f52e090aa570fa96bceaadf430082e38679a386987e577
   HELM_VERSION: 4.1.4-2
-  K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:cd7f69bdbba264134f766f244760b96983931117f5aa7034f7595552356c9b1e
+  K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:2c7807cfb3d3a9e9de6dd885a2c1b03c7e9fc692ae9dca30da9cff4bdc3f760f
   SEMVER_MAJOR_MINOR_VERSION: "14.0"
   SEMVER_MAJOR_VERSION: "14"
   SEMVER_VERSION: 14.0.1
@@ -64,7 +64,7 @@ contents:
                 - name: curl
                   ref: dhi/curl:8.14.1-debian13@sha256:229a580c4b21bffe98970883ae1c11248e82390454e5fec79109132f4b774862
                 - name: k8s-sidecar
-                  ref: dhi/k8s-sidecar:2.14.1-debian13@sha256:cd7f69bdbba264134f766f244760b96983931117f5aa7034f7595552356c9b1e
+                  ref: dhi/k8s-sidecar:2.14.1-debian13@sha256:2c7807cfb3d3a9e9de6dd885a2c1b03c7e9fc692ae9dca30da9cff4bdc3f760f
               name: grafana-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana-community/helm-charts
