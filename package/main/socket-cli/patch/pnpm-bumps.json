@@ -1,0 +1,8 @@
+[
+  {
+    "package": "zod",
+    "version": "4.6.6",
+    "comment": "CVE-2023-54404",
+    "overrides": ["zod"]
+  }
+]
