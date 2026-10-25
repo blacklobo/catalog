@@ -25,10 +25,10 @@ vars:
   POSTGRES_14_VERSION: "14.24"
   POSTGRES_15_REFERENCE: dhi/postgres:15.19-debian13@sha256:87cf2480c8343715913118b10927ececdde0114785e800da629c0894dd289803
   POSTGRES_15_VERSION: "15.19"
-  POSTGRES_18_REFERENCE: dhi/postgres:18.6-debian13@sha256:876afc8de37548fa24114cf3f4dcdbf4d540229673f5667ca6db9b140d5eb56b
+  POSTGRES_18_REFERENCE: dhi/postgres:18.6-debian13@sha256:126da26bb47c9f0e91b87bf1cda07bb3e2058822a19816054b26eb272e2e9f8c
   POSTGRES_18_VERSION: "18.6"
   POSTGRES_NEW_MAJOR: "18"
-  POSTGRES_NEW_REFERENCE: dhi/postgres:18.6-debian13@sha256:876afc8de37548fa24114cf3f4dcdbf4d540229673f5667ca6db9b140d5eb56b
+  POSTGRES_NEW_REFERENCE: dhi/postgres:18.6-debian13@sha256:126da26bb47c9f0e91b87bf1cda07bb3e2058822a19816054b26eb272e2e9f8c
   POSTGRES_NEW_VERSION: "18.6"
   POSTGRES_OLD_MAJOR: "15"
   POSTGRES_OLD_REFERENCE: dhi/postgres:15.19-debian13@sha256:87cf2480c8343715913118b10927ececdde0114785e800da629c0894dd289803
@@ -141,7 +141,7 @@ contents:
           - bash
           - coreutils
         artifacts:
-          - name: dhi.io/postgres:18.6-debian13@sha256:876afc8de37548fa24114cf3f4dcdbf4d540229673f5667ca6db9b140d5eb56b
+          - name: dhi.io/postgres:18.6-debian13@sha256:126da26bb47c9f0e91b87bf1cda07bb3e2058822a19816054b26eb272e2e9f8c
             includes:
               - opt/postgresql/18/**
               - usr/bin/**
