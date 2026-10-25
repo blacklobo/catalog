@@ -6,13 +6,13 @@ variant: runtime
 tags:
   - "1"
   - "1.31"
-  - 1.31.1
+  - 1.31.3
   - 1-debian
   - 1-debian13
   - 1.31-debian
   - 1.31-debian13
-  - 1.31.1-debian
-  - 1.31.1-debian13
+  - 1.31.3-debian
+  - 1.31.3-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,12 +22,12 @@ dates:
 vars:
   BAZEL_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
   BAZEL_VERSION: 8.7.0
-  COMMIT_SHA: 190ae921b848ec010b8be4457533837ed8fce258
-  ISTIO_PROXY_SHA: 3bb16354647d089b9a79020c9fc86cbbc5fcf84b
+  COMMIT_SHA: edd80bca5f71bd564711ef43ccd085acb545a6b4
+  ISTIO_PROXY_SHA: 3b372ff1205df86043a749370657453b4cf82ea7
   SEMVER_MAJOR_MINOR_VERSION: "1.31"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.31.1
-  VERSION: 1.31.1
+  SEMVER_VERSION: 1.31.3
+  VERSION: 1.31.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -81,27 +81,27 @@ contents:
           - findutils
           - gawk
         files:
-          - url: git+https://github.com/istio/istio.git#1.31.1
-            checksum: 190ae921b848ec010b8be4457533837ed8fce258
+          - url: git+https://github.com/istio/istio.git#1.31.3
+            checksum: edd80bca5f71bd564711ef43ccd085acb545a6b4
             path: /go/src/istio.io/istio
             spdx:
               name: istio
-              version: 1.31.1
+              version: 1.31.3
               packages:
                 - name: istio
-                  purl: pkg:golang/istio.io/istio@1.31.1
+                  purl: pkg:golang/istio.io/istio@1.31.3
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: git+https://github.com/istio/proxy.git#1.31.1
-            checksum: 3bb16354647d089b9a79020c9fc86cbbc5fcf84b
+          - url: git+https://github.com/istio/proxy.git#1.31.3
+            checksum: 3b372ff1205df86043a749370657453b4cf82ea7
             path: ${source.dir}/istio-proxy
             spdx:
               name: istio-proxy
-              version: 1.31.1
+              version: 1.31.3
               packages:
                 - name: istio-proxy
-                  purl: pkg:golang/github.com/istio/proxy@1.31.1
+                  purl: pkg:golang/github.com/istio/proxy@1.31.3
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -119,16 +119,14 @@ contents:
             # Extract proxy SHA from istio.deps and validate against tracking
             proxy_sha=$(jq -r '.[] | select(.name == "PROXY_REPO_SHA") | .lastStableSHA' "/go/src/istio.io/istio/istio.deps")
 
-            if [ "$proxy_sha" != '3bb16354647d089b9a79020c9fc86cbbc5fcf84b' ]; then
-              echo "ERROR: ISTIO_PROXY_SHA mismatch: 3bb16354647d089b9a79020c9fc86cbbc5fcf84b (def) / $proxy_sha (istio.deps)" >&2
+            if [ "$proxy_sha" != '3b372ff1205df86043a749370657453b4cf82ea7' ]; then
+              echo "ERROR: ISTIO_PROXY_SHA mismatch: 3b372ff1205df86043a749370657453b4cf82ea7 (def) / $proxy_sha (istio.deps)" >&2
               exit 1
             fi
         - name: update go dependencies (1.31 only)
           uses: go/bump@v1
           with:
-            deps:
-              - golang.org/x/crypto@v0.56.0
-              - google.golang.org/grpc@v1.83.2
+            deps: []
             dir: /go/src/istio.io/istio
             download: true
         - name: patch-afero-bazel-deps
@@ -449,16 +447,16 @@ contents:
               --override_repository=intel_dlb=/src/dlb-stub
               --@envoy//contrib/dlb/source:enabled=false
             "
-            python ${source.dir}/bin/envoy-bazel-to-spdx.py istio-proxyv2-envoy 1.31.1 > /opt/docker/sbom/envoy/.spdx.envoy.json
+            python ${source.dir}/bin/envoy-bazel-to-spdx.py istio-proxyv2-envoy 1.31.3 > /opt/docker/sbom/envoy/.spdx.envoy.json
         - name: build-pilot-agent
           privileged: true
           runs: |
             set -eux -o pipefail
 
-            GOLDFLAGS="-X istio.io/istio/pkg/version.buildVersion=1.31.1
-                       -X istio.io/istio/pkg/version.buildGitRevision=190ae921b848ec010b8be4457533837ed8fce258
+            GOLDFLAGS="-X istio.io/istio/pkg/version.buildVersion=1.31.3
+                       -X istio.io/istio/pkg/version.buildGitRevision=edd80bca5f71bd564711ef43ccd085acb545a6b4
                        -X istio.io/istio/pkg/version.buildStatus=Clean
-                       -X istio.io/istio/pkg/version.buildTag=1.31.1
+                       -X istio.io/istio/pkg/version.buildTag=1.31.3
                        -X istio.io/istio/pkg/version.buildHub=docker.io/dhi
                        -X istio.io/istio/pkg/version.buildOS=$(go env GOOS)
                        -X istio.io/istio/pkg/version.buildArch=$(go env GOARCH)"
@@ -526,7 +524,7 @@ os-release:
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
 environment:
-  ISTIO_META_ISTIO_PROXY_SHA: 3bb16354647d089b9a79020c9fc86cbbc5fcf84b
+  ISTIO_META_ISTIO_PROXY_SHA: 3b372ff1205df86043a749370657453b4cf82ea7
 paths:
   - type: delete
     path: /usr/sbin/iptables
