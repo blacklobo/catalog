@@ -6,24 +6,24 @@ variant: runtime
 tags:
   - "1"
   - "1.67"
-  - 1.67.1
+  - 1.67.2
   - 1-debian
   - 1-debian13
   - 1.67-debian
   - 1.67-debian13
-  - 1.67.1-debian
-  - 1.67.1-debian13
+  - 1.67.2-debian
+  - 1.67.2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2021-04-29"
 vars:
-  COMMIT_SHA: 58ccac2da7bdc04019a8852c4b2f9c4f6029b0a4
+  COMMIT_SHA: a93ecc7680ec5b5bb953995f3f0dc262eecd7f92
   SEMVER_MAJOR_MINOR_VERSION: "1.67"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.67.1
-  VERSION: 1.67.1
+  SEMVER_VERSION: 1.67.2
+  VERSION: 1.67.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -61,15 +61,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/kubernetes-sigs/aws-ebs-csi-driver.git#v1.67.1
-            checksum: 58ccac2da7bdc04019a8852c4b2f9c4f6029b0a4
+          - url: git+https://github.com/kubernetes-sigs/aws-ebs-csi-driver.git#v1.67.2
+            checksum: a93ecc7680ec5b5bb953995f3f0dc262eecd7f92
             path: /go/src/github.com/kubernetes-sigs/aws-ebs-csi-driver
             spdx:
               name: aws-ebs-csi-driver
-              version: 1.67.1
+              version: 1.67.2
               packages:
                 - name: aws-ebs-csi-driver
-                  purl: pkg:golang/github.com/kubernetes-sigs/aws-ebs-csi-driver@1.67.1
+                  purl: pkg:golang/github.com/kubernetes-sigs/aws-ebs-csi-driver@1.67.2
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -88,9 +88,9 @@ contents:
           uses: go/build@v1
           with:
             ldflags:
-              - -X github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/driver.driverVersion=1.67.1
-              - -X github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/cloud.driverVersion=1.67.1
-              - -X github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/driver.gitCommit=58ccac2da7bdc04019a8852c4b2f9c4f6029b0a4
+              - -X github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/driver.driverVersion=1.67.2
+              - -X github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/cloud.driverVersion=1.67.2
+              - -X github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/driver.gitCommit=a93ecc7680ec5b5bb953995f3f0dc262eecd7f92
               - -X github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/driver.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/local/bin/aws-ebs-csi-driver
             packages: ./cmd
