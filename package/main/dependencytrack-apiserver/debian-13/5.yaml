@@ -3,17 +3,17 @@
 image: dhi.io/pkg-dependencytrack-apiserver
 variant: runtime
 tags:
-  - 5.2.0
-  - 5.2.0-r0
-  - 5.2.0-debian13
-  - 5.2.0-r0-debian13
+  - 5.2.1
+  - 5.2.1-r0
+  - 5.2.1-debian13
+  - 5.2.1-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-06-07"
 vars:
-  COMMIT_SHA: d67a6a3a28006e95dcc7611553469bf89c6c9e0a
+  COMMIT_SHA: e6c887c0207baeec1f1346e28bf90000b4b45eda
   DHI_TEST_DEB_EXPECTED_FILES: /usr/share/dependencytrack-apiserver-5/dependency-track-apiserver.jar /usr/share/dependencytrack-apiserver-5/lib /usr/share/dependencytrack-apiserver-5/logback-json.xml
   LINE_DEP_NAME: freemarker
   LINE_DEP_PURL: pkg:maven/org.freemarker/freemarker@2.3.35
@@ -24,11 +24,11 @@ vars:
   PACKAGE_NAME: dependencytrack-apiserver-5
   REL: "0"
   RELEASE_ASSET: dependency-track-apiserver-dist.tar.gz
-  RELEASE_SHA256: dd0d4bdb3639be8ae72c0715cd33f5476b6f1d2ffb153236873c4fe7e1cb1441
+  RELEASE_SHA256: a39242248034f4e372fcb11092b69752070cd342a57bd00ef2936fe8b76f8ff9
   SEMVER_MAJOR_MINOR_VERSION: "5.2"
   SEMVER_MAJOR_VERSION: "5"
-  SEMVER_VERSION: 5.2.0
-  VERSION: 5.2.0
+  SEMVER_VERSION: 5.2.1
+  VERSION: 5.2.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -51,20 +51,20 @@ contents:
           - unzip
           - zip
         files:
-          - url: git+https://github.com/DependencyTrack/dependency-track.git#5.2.0
-            checksum: d67a6a3a28006e95dcc7611553469bf89c6c9e0a
+          - url: git+https://github.com/DependencyTrack/dependency-track.git#5.2.1
+            checksum: e6c887c0207baeec1f1346e28bf90000b4b45eda
             path: ${source.dir}/dependency-track
             spdx:
               name: dependency-track-apiserver
-              version: 5.2.0
+              version: 5.2.1
               packages:
                 - name: dependency-track-apiserver
-                  purl: pkg:maven/org.dependencytrack/apiserver@5.2.0
+                  purl: pkg:maven/org.dependencytrack/apiserver@5.2.1
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: https://github.com/DependencyTrack/dependency-track/releases/download/5.2.0/dependency-track-apiserver-dist.tar.gz
-            checksum: sha256:dd0d4bdb3639be8ae72c0715cd33f5476b6f1d2ffb153236873c4fe7e1cb1441
+          - url: https://github.com/DependencyTrack/dependency-track/releases/download/5.2.1/dependency-track-apiserver-dist.tar.gz
+            checksum: sha256:a39242248034f4e372fcb11092b69752070cd342a57bd00ef2936fe8b76f8ff9
             path: ${source.dir}/release/dependency-track-apiserver-dist.tar.gz
             uid: 0
             gid: 0
@@ -158,7 +158,7 @@ contents:
             name: dependencytrack-apiserver-5
             rel: 0
             url: https://github.com/DependencyTrack/dependency-track
-            version: 5.2.0
+            version: 5.2.1
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
