@@ -18,15 +18,15 @@ dates:
 vars:
   GOSU_VERSION: 1.19-13
   PACKAGE_NAME: harbor-db-2.13
-  POSTGRES_14_REFERENCE: dhi/postgres:14.24-debian13@sha256:7bd54531f55863f2db9659000b66ea0ce7cefef5e091f015d80fed478085df39
+  POSTGRES_14_REFERENCE: dhi/postgres:14.24-debian13@sha256:3d561825f6d37c15cf726d21d82f3fbe204152d3a30f57d24511b8ec7c4211a7
   POSTGRES_14_VERSION: "14.24"
-  POSTGRES_15_REFERENCE: dhi/postgres:15.19-debian13@sha256:87cf2480c8343715913118b10927ececdde0114785e800da629c0894dd289803
+  POSTGRES_15_REFERENCE: dhi/postgres:15.19-debian13@sha256:eb70982c19e1e040f662e439f52e777007ae2db635f2c80048563bd8453774b9
   POSTGRES_15_VERSION: "15.19"
   POSTGRES_NEW_MAJOR: "15"
-  POSTGRES_NEW_REFERENCE: dhi/postgres:15.19-debian13@sha256:87cf2480c8343715913118b10927ececdde0114785e800da629c0894dd289803
+  POSTGRES_NEW_REFERENCE: dhi/postgres:15.19-debian13@sha256:eb70982c19e1e040f662e439f52e777007ae2db635f2c80048563bd8453774b9
   POSTGRES_NEW_VERSION: "15.19"
   POSTGRES_OLD_MAJOR: "14"
-  POSTGRES_OLD_REFERENCE: dhi/postgres:14.24-debian13@sha256:7bd54531f55863f2db9659000b66ea0ce7cefef5e091f015d80fed478085df39
+  POSTGRES_OLD_REFERENCE: dhi/postgres:14.24-debian13@sha256:3d561825f6d37c15cf726d21d82f3fbe204152d3a30f57d24511b8ec7c4211a7
   POSTGRES_OLD_VERSION: "14.24"
   SEMVER_MAJOR_MINOR_VERSION: "2.13"
   SEMVER_MAJOR_VERSION: "2"
@@ -78,7 +78,7 @@ contents:
           - bash
           - coreutils
         artifacts:
-          - name: dhi.io/postgres:14.24-debian13@sha256:7bd54531f55863f2db9659000b66ea0ce7cefef5e091f015d80fed478085df39
+          - name: dhi.io/postgres:14.24-debian13@sha256:3d561825f6d37c15cf726d21d82f3fbe204152d3a30f57d24511b8ec7c4211a7
             includes:
               - opt/postgresql/14/**
               - usr/bin/**
@@ -134,7 +134,7 @@ contents:
           - bash
           - coreutils
         artifacts:
-          - name: dhi.io/postgres:15.19-debian13@sha256:87cf2480c8343715913118b10927ececdde0114785e800da629c0894dd289803
+          - name: dhi.io/postgres:15.19-debian13@sha256:eb70982c19e1e040f662e439f52e777007ae2db635f2c80048563bd8453774b9
             includes:
               - opt/postgresql/15/**
               - usr/bin/**
