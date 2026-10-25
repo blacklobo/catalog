@@ -15,8 +15,8 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBE_RBAC_PROXY_REFERENCE: dhi/kube-rbac-proxy:0.22.1-debian13@sha256:783f115c60118757dd6dc51a6e128a92811b5faafb603d573d67ab1bf85c958e
-  NODE_EXPORTER_REFERENCE: dhi/node-exporter:1.12.1-debian13@sha256:317fa0dc03eba8f5672917e2a10c8aae4bb2a2321767ae4cb1fae39f50feb95f
+  KUBE_RBAC_PROXY_REFERENCE: dhi/kube-rbac-proxy:0.22.1-debian13@sha256:272793794d087901ce86922f25e4934feb8b8384b6c9b03a9789ad7eb677236d
+  NODE_EXPORTER_REFERENCE: dhi/node-exporter:1.12.1-debian13@sha256:276d5e6069902b1dfa1db81aa1d09fe5e4b9de919c39e6d36d685d2e28b7ca37
   SEMVER_MAJOR_MINOR_VERSION: "4.60"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.60.0
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus Node Exporter
               images:
                 - name: node-exporter
-                  ref: dhi/node-exporter:1.12.1-debian13@sha256:317fa0dc03eba8f5672917e2a10c8aae4bb2a2321767ae4cb1fae39f50feb95f
+                  ref: dhi/node-exporter:1.12.1-debian13@sha256:276d5e6069902b1dfa1db81aa1d09fe5e4b9de919c39e6d36d685d2e28b7ca37
                 - name: kube-rbac-proxy
-                  ref: dhi/kube-rbac-proxy:0.22.1-debian13@sha256:783f115c60118757dd6dc51a6e128a92811b5faafb603d573d67ab1bf85c958e
+                  ref: dhi/kube-rbac-proxy:0.22.1-debian13@sha256:272793794d087901ce86922f25e4934feb8b8384b6c9b03a9789ad7eb677236d
               name: node-exporter-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/prometheus-community/helm-charts
