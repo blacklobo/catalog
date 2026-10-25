@@ -13,7 +13,7 @@ dates:
   release: "2024-09-26"
   end-of-life: "2029-11-08"
 vars:
-  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:6b10a69bee8dee98d355880316de35aad43948e5a67dd29a54f5d6f79cbb516a
+  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:536f3ad7faa4e1dd9a087e5c1917fd724b0b55ee3d21a31493f6096f6035042f
   MAJOR_VERSION: "17"
   MINOR_VERSION: "11"
   PGDATA: /var/lib/postgresql/17/data
@@ -171,7 +171,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:6b10a69bee8dee98d355880316de35aad43948e5a67dd29a54f5d6f79cbb516a
+    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:536f3ad7faa4e1dd9a087e5c1917fd724b0b55ee3d21a31493f6096f6035042f
       includes:
         - opt/docker/sbom/gosu
         - usr/local/sbin/gosu
