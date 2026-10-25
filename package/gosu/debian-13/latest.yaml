@@ -4,19 +4,19 @@ image: dhi.io/pkg-gosu
 variant: runtime
 tags:
   - "1"
-  - "1.19"
+  - "1.20"
   - 1-debian13
-  - 1.19-debian13
+  - 1.20-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 6456aaa0f3c854d199d0f037f068eb97515b7513
+  COMMIT_SHA: 29b939aa5bd4dc588af765b8248f6e39150d2565
   GOLANG_DIGEST: sha256:8ed824986fee2f3dce19e89412d9731764cc7e892c1cf279074919ef3c69dd7b
   GOLANG_VERSION: 1.27.3
-  GOSU_MAJOR_MINOR_VERSION: "1.19"
+  GOSU_MAJOR_MINOR_VERSION: "1.20"
   GOSU_MAJOR_VERSION: "1"
-  VERSION: "1.19"
+  VERSION: "1.20"
 contents:
   packages:
     - '!base-files'
@@ -40,14 +40,14 @@ contents:
           - git
           - grep
         files:
-          - url: git+https://github.com/tianon/gosu.git#1.19
+          - url: git+https://github.com/tianon/gosu.git#1.20
             path: /go/src/github.com/tianon/gosu
             spdx:
               name: gosu
-              version: "1.19"
+              version: "1.20"
               packages:
                 - name: gosu
-                  purl: pkg:golang/github.com/tianon/gosu@1.19
+                  purl: pkg:golang/github.com/tianon/gosu@1.20
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -62,7 +62,7 @@ contents:
           uses: git/checkout@v1
           work-dir: /go/src/github.com/tianon/gosu
           with:
-            expected-commit: 6456aaa0f3c854d199d0f037f068eb97515b7513
+            expected-commit: 29b939aa5bd4dc588af765b8248f6e39150d2565
         - name: update go dependencies
           uses: go/bump@v2
           work-dir: /go/src/github.com/tianon/gosu
