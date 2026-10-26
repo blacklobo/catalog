@@ -4,13 +4,13 @@ name: APISIX Ingress Controller Helm chart 1.x
 image: dhi.io/apisix-ingress-controller-chart
 variant: helm
 tags:
-  - 1.4.0
+  - 1.4.1
 platforms:
   - linux/amd64
 vars:
   ADC_REFERENCE: dhi/adc:0.31.0-debian13@sha256:a1206fceadbe768a340344540815f8ddec022f8797a0414cf72b7d2f7d366c60
   APISIX_INGRESS_CONTROLLER_REFERENCE: dhi/apisix-ingress-controller:2.2.0-debian13@sha256:d5f4ed777c9cb394c5614628df4c785ec2fd3f626da5cd6ae2c78353d4412348
-  CHART_COMMIT_SHA: 43ed5e315b6bbb171d1dd46d8cf51ed75a6f50e3
+  CHART_COMMIT_SHA: e1f8bf6c6d8c9fbdc6a283d903419d020d0edabd
   CHART_HELM_NAME: apisix-ingress-controller-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -19,8 +19,8 @@ vars:
   HELM_VERSION: 3.20.2-2
   SEMVER_MAJOR_MINOR_VERSION: "1.4"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.4.0
-  VERSION: 1.4.0
+  SEMVER_VERSION: 1.4.1
+  VERSION: 1.4.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - sed
           - helm=3.20.2-2
         files:
-          - url: git+https://github.com/apache/apisix-helm-chart.git#apisix-ingress-controller-1.4.0
-            checksum: 43ed5e315b6bbb171d1dd46d8cf51ed75a6f50e3
+          - url: git+https://github.com/apache/apisix-helm-chart.git#apisix-ingress-controller-1.4.1
+            checksum: e1f8bf6c6d8c9fbdc6a283d903419d020d0edabd
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
