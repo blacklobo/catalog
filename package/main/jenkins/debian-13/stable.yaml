@@ -3,28 +3,28 @@
 image: dhi.io/pkg-jenkins
 variant: runtime
 tags:
-  - 2.568.3
-  - 2.568.3-r6
-  - 2.568.3-debian13
-  - 2.568.3-r6-debian13
+  - 2.580.1
+  - 2.580.1-r0
+  - 2.580.1-debian13
+  - 2.580.1-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-06-10"
 vars:
-  COMMIT_SHA: 01174bc4afa56c25ebb1a92eaa7bd62595044442
-  DOCKER_REPO_COMMIT_SHA: bb25c48ab0fef2900e85339b00a0bef333b94854
-  DOCKER_REPO_VERSION: 2.568.3
+  COMMIT_SHA: 500c80a425077d987b97f62be32887d4f32e9ffb
+  DOCKER_REPO_COMMIT_SHA: 457b9316d71b43cdf3e2ba6ec7c27efc40f5dc60
+  DOCKER_REPO_VERSION: 2.580.1
   JDK_MAJOR_VERSION: "21"
   JDK_VERSION: 1:21.0.12.1+1-4
-  MAVEN_VERSION: 3.9.16
+  MAVEN_VERSION: 3.10.0
   PACKAGE_NAME: jenkins
-  REL: "6"
-  SEMVER_MAJOR_MINOR_VERSION: "2.568"
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "2.580"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.568.3
-  VERSION: 2.568.3
+  SEMVER_VERSION: 2.580.1
+  VERSION: 2.580.1
 contents:
   packages:
     - base-files
@@ -33,7 +33,7 @@ contents:
       work-dir: ${source.dir}/jenkins
       environment:
         JAVA_HOME: /usr/lib/jvm/temurin-21
-        MAVEN_HOME: /opt/java/apache-maven-3.9.16
+        MAVEN_HOME: /opt/java/apache-maven-3.10.0
       caches:
         - path: /root/.m2/repository
       contents:
@@ -57,80 +57,32 @@ contents:
           - xmlstarlet
           - eclipse-temurin-21-jdk=1:21.0.12.1+1-4
         files:
-          - url: git+https://github.com/jenkinsci/jenkins.git#jenkins-2.568.3
-            checksum: 01174bc4afa56c25ebb1a92eaa7bd62595044442
+          - url: git+https://github.com/jenkinsci/jenkins.git#jenkins-2.580.1
+            checksum: 500c80a425077d987b97f62be32887d4f32e9ffb
             path: ${source.dir}/jenkins
             spdx:
               name: jenkins
-              version: 2.568.3
+              version: 2.580.1
               packages:
                 - name: jenkins
-                  purl: pkg:dhi/jenkins@2.568.3
+                  purl: pkg:dhi/jenkins@2.580.1
                   license: MIT
             uid: 0
             gid: 0
-          - url: git+https://github.com/jenkinsci/docker.git#bb25c48ab0fef2900e85339b00a0bef333b94854
-            checksum: bb25c48ab0fef2900e85339b00a0bef333b94854
+          - url: git+https://github.com/jenkinsci/docker.git#457b9316d71b43cdf3e2ba6ec7c27efc40f5dc60
+            checksum: 457b9316d71b43cdf3e2ba6ec7c27efc40f5dc60
             path: ${source.dir}/docker-builds
             uid: 0
             gid: 0
-          - url: https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz
-            path: ${source.dir}/maven/apache-maven-3.9.16-bin.tar.gz
+          - url: https://dlcdn.apache.org/maven/maven-3/3.10.0/binaries/apache-maven-3.10.0-bin.tar.gz
+            path: ${source.dir}/maven/apache-maven-3.10.0-bin.tar.gz
             spdx:
               name: maven
-              version: 3.9.16
+              version: 3.10.0
               packages:
                 - name: maven
-                  purl: pkg:generic/apache-maven@3.9.16
+                  purl: pkg:generic/apache-maven@3.10.0
                   license: Apache-2.0
-            uid: 0
-            gid: 0
-          - url: https://repo1.maven.org/maven2/org/apache/mina/mina-core/2.2.8/mina-core-2.2.8.jar
-            checksum: sha256:07a62c5b2fae3a61da693f7a5c6d6711a7ea09f318972d3e76ae8a5f032329f3
-            path: ${source.dir}/patch/deps/mina-core-2.2.8.jar
-            spdx:
-              name: mina-core
-              version: 2.2.8
-              packages:
-                - name: mina-core
-                  purl: pkg:maven/org.apache.mina/mina-core@2.2.8
-                  license: Apache-2.0
-            uid: 0
-            gid: 0
-          - url: https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.7/jackson-databind-2.21.7.jar
-            checksum: sha256:1290c2795e93e8a6861a6c4d9ff0d844d32f5ea178362cb2721edf5561e828b1
-            path: ${source.dir}/patch/deps/jackson-databind-2.21.7.jar
-            spdx:
-              name: jackson-databind
-              version: 2.21.7
-              packages:
-                - name: jackson-databind
-                  purl: pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.7
-                  license: Apache-2.0
-            uid: 0
-            gid: 0
-          - url: https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.21.7/jackson-core-2.21.7.jar
-            checksum: sha256:8c5623b98f32d5f7e1287ff61ed50e08ab7b11381e991fff89327faabba42261
-            path: ${source.dir}/patch/deps/jackson-core-2.21.7.jar
-            spdx:
-              name: jackson-core
-              version: 2.21.7
-              packages:
-                - name: jackson-core
-                  purl: pkg:maven/com.fasterxml.jackson.core/jackson-core@2.21.7
-                  license: Apache-2.0
-            uid: 0
-            gid: 0
-          - url: https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk18on/1.85/bcprov-jdk18on-1.85.jar
-            checksum: sha256:20af26bf6060bb8005cc2389916812c1e0e998dc48d2ced7131b89461b54cff7
-            path: ${source.dir}/patch/deps/bcprov-jdk18on-1.85.jar
-            spdx:
-              name: bcprov-jdk18on
-              version: "1.85"
-              packages:
-                - name: bcprov-jdk18on
-                  purl: pkg:maven/org.bouncycastle/bcprov-jdk18on@1.85
-                  license: MIT
             uid: 0
             gid: 0
       pipeline:
@@ -139,12 +91,12 @@ contents:
             set -eux -o pipefail
 
             mkdir -p /opt/java
-            tar -xzf "${source.dir}/maven/apache-maven-3.9.16-bin.tar.gz" -C /opt/java
+            tar -xzf "${source.dir}/maven/apache-maven-3.10.0-bin.tar.gz" -C /opt/java
 
             mkdir -p /usr/local/bin
-            find "/opt/java/apache-maven-3.9.16/bin" -type f -executable -o -type l | while read -r file; do
+            find "/opt/java/apache-maven-3.10.0/bin" -type f -executable -o -type l | while read -r file; do
               filename=$(basename "$file")
-              ln -sf "/opt/java/apache-maven-3.9.16/bin/$filename" "/usr/local/bin/$filename"
+              ln -sf "/opt/java/apache-maven-3.10.0/bin/$filename" "/usr/local/bin/$filename"
             done
         - uses: mvn/mirror@v1
         - name: use maven central when mirror credentials are absent
@@ -172,13 +124,6 @@ contents:
                 -d "//*[local-name()='extension'][*[local-name()='artifactId']='git-changelist-maven-extension']" \
                 "${ext_xml}"
             fi
-        - name: patch stable detached jackson plugin
-          uses: patch@v1
-          work-dir: ${source.dir}/jenkins
-          with:
-            options: -p1
-            patches:
-              - ${source.dir}/patch/jackson3-api.patch
         - name: patch maven dependencies
           uses: mvn/patch@v1
           with:
@@ -206,158 +151,6 @@ contents:
             set -eux -o pipefail
 
             mvn clean install -DskipTests -Dmaven.test.skip=true -Dspotless.check.skip=true
-        - name: patch bundled jackson-databind in jackson2-api
-          work-dir: ${source.dir}/jenkins
-          runs: |
-            set -eux -o pipefail
-
-            patch_dir="$(mktemp -d)"
-            trap 'rm -rf "${patch_dir}"' EXIT
-
-            war_file="war/target/jenkins.war"
-            hpi_path="WEB-INF/detached-plugins/jackson2-api.hpi"
-            old_jackson_databind_path="WEB-INF/lib/jackson-databind-2.21.2.jar"
-            new_jackson_databind_path="WEB-INF/lib/jackson-databind-2.21.7.jar"
-            old_jackson_core_path="WEB-INF/lib/jackson-core-2.21.2.jar"
-            new_jackson_core_path="WEB-INF/lib/jackson-core-2.21.7.jar"
-
-            unzip -q "${war_file}" "${hpi_path}" -d "${patch_dir}"
-            hpi_file="${patch_dir}/${hpi_path}"
-
-            if jar tf "${hpi_file}" | grep -q "${old_jackson_databind_path}"; then
-              zip -q -d "${hpi_file}" "${old_jackson_databind_path}"
-            fi
-            if jar tf "${hpi_file}" | grep -q "WEB-INF/lib/jackson-databind-2.21.4.jar"; then
-              zip -q -d "${hpi_file}" "WEB-INF/lib/jackson-databind-2.21.4.jar"
-            fi
-            if jar tf "${hpi_file}" | grep -q "WEB-INF/lib/jackson-databind-2.21.6.jar"; then
-              zip -q -d "${hpi_file}" "WEB-INF/lib/jackson-databind-2.21.6.jar"
-            fi
-
-            if jar tf "${hpi_file}" | grep -q "${old_jackson_core_path}"; then
-              zip -q -d "${hpi_file}" "${old_jackson_core_path}"
-            fi
-            if jar tf "${hpi_file}" | grep -q "WEB-INF/lib/jackson-core-2.21.6.jar"; then
-              zip -q -d "${hpi_file}" "WEB-INF/lib/jackson-core-2.21.6.jar"
-            fi
-
-            mkdir -p "${patch_dir}/hpi-overlay/WEB-INF/lib"
-            cp "${source.dir}/patch/deps/jackson-databind-2.21.7.jar" "${patch_dir}/hpi-overlay/${new_jackson_databind_path}"
-            cp "${source.dir}/patch/deps/jackson-core-2.21.7.jar" "${patch_dir}/hpi-overlay/${new_jackson_core_path}"
-            (cd "${patch_dir}/hpi-overlay" && jar --update --file "${hpi_file}" "${new_jackson_databind_path}" "${new_jackson_core_path}")
-
-            if jar tf "${hpi_file}" | grep -q "${old_jackson_databind_path}"; then
-              echo "ERROR: ${old_jackson_databind_path} is still present in ${hpi_path}" >&2
-              exit 1
-            fi
-            if jar tf "${hpi_file}" | grep -q "${old_jackson_core_path}"; then
-              echo "ERROR: ${old_jackson_core_path} is still present in ${hpi_path}" >&2
-              exit 1
-            fi
-            jar tf "${hpi_file}" | grep -q "${new_jackson_databind_path}"
-            jar tf "${hpi_file}" | grep -q "${new_jackson_core_path}"
-
-            (cd "${patch_dir}" && jar --update --file "${source.dir}/jenkins/${war_file}" "${hpi_path}")
-
-            unzip -p "${war_file}" "${hpi_path}" > "${patch_dir}/verified-jackson2-api.hpi"
-            if jar tf "${patch_dir}/verified-jackson2-api.hpi" | grep -q "${old_jackson_databind_path}"; then
-              echo "ERROR: ${old_jackson_databind_path} is still present in repacked ${war_file}" >&2
-              exit 1
-            fi
-            if jar tf "${patch_dir}/verified-jackson2-api.hpi" | grep -q "${old_jackson_core_path}"; then
-              echo "ERROR: ${old_jackson_core_path} is still present in repacked ${war_file}" >&2
-              exit 1
-            fi
-            jar tf "${patch_dir}/verified-jackson2-api.hpi" | grep -q "${new_jackson_databind_path}"
-            jar tf "${patch_dir}/verified-jackson2-api.hpi" | grep -q "${new_jackson_core_path}"
-        - name: patch bundled mina-core
-          work-dir: ${source.dir}/jenkins
-          runs: |
-            set -eux -o pipefail
-
-            patch_dir="$(mktemp -d)"
-            trap 'rm -rf "${patch_dir}"' EXIT
-
-            war_file="war/target/jenkins.war"
-            hpi_path="WEB-INF/detached-plugins/mina-sshd-api-core.hpi"
-            old_mina_path="WEB-INF/lib/mina-core-2.2.4.jar"
-            new_mina_path="WEB-INF/lib/mina-core-2.2.8.jar"
-
-            unzip -q "${war_file}" "${hpi_path}" -d "${patch_dir}"
-            hpi_file="${patch_dir}/${hpi_path}"
-
-            if jar tf "${hpi_file}" | grep -q "${old_mina_path}"; then
-              zip -q -d "${hpi_file}" "${old_mina_path}"
-            fi
-
-            if jar tf "${hpi_file}" | grep -q "WEB-INF/lib/mina-core-2.2.7.jar"; then
-              zip -q -d "${hpi_file}" "WEB-INF/lib/mina-core-2.2.7.jar"
-            fi
-
-            mkdir -p "${patch_dir}/hpi-overlay/WEB-INF/lib"
-            cp "${source.dir}/patch/deps/mina-core-2.2.8.jar" "${patch_dir}/hpi-overlay/${new_mina_path}"
-            (cd "${patch_dir}/hpi-overlay" && jar --update --file "${hpi_file}" "${new_mina_path}")
-
-            if jar tf "${hpi_file}" | grep -q "${old_mina_path}"; then
-              echo "ERROR: ${old_mina_path} is still present in ${hpi_path}" >&2
-              exit 1
-            fi
-            if jar tf "${hpi_file}" | grep -q "WEB-INF/lib/mina-core-2.2.7.jar"; then
-              echo "ERROR: mina-core-2.2.7.jar is still present in ${hpi_path}" >&2
-              exit 1
-            fi
-            jar tf "${hpi_file}" | grep -q "${new_mina_path}"
-
-            (cd "${patch_dir}" && jar --update --file "${source.dir}/jenkins/${war_file}" "${hpi_path}")
-
-            unzip -p "${war_file}" "${hpi_path}" > "${patch_dir}/verified-mina-sshd-api-core.hpi"
-            if jar tf "${patch_dir}/verified-mina-sshd-api-core.hpi" | grep -q "${old_mina_path}"; then
-              echo "ERROR: ${old_mina_path} is still present in repacked ${war_file}" >&2
-              exit 1
-            fi
-            if jar tf "${patch_dir}/verified-mina-sshd-api-core.hpi" | grep -q "WEB-INF/lib/mina-core-2.2.7.jar"; then
-              echo "ERROR: mina-core-2.2.7.jar is still present in repacked ${war_file}" >&2
-              exit 1
-            fi
-            jar tf "${patch_dir}/verified-mina-sshd-api-core.hpi" | grep -q "${new_mina_path}"
-        - name: patch bundled bcprov-jdk18on in bouncycastle-api
-          work-dir: ${source.dir}/jenkins
-          runs: |
-            set -eux -o pipefail
-
-            patch_dir="$(mktemp -d)"
-            trap 'rm -rf "${patch_dir}"' EXIT
-
-            war_file="war/target/jenkins.war"
-            hpi_path="WEB-INF/detached-plugins/bouncycastle-api.hpi"
-            old_bcprov_path="WEB-INF/optional-lib/bcprov-jdk18on-1.84.jar"
-            new_bcprov_path="WEB-INF/optional-lib/bcprov-jdk18on-1.85.jar"
-
-            unzip -q "${war_file}" "${hpi_path}" -d "${patch_dir}"
-            hpi_file="${patch_dir}/${hpi_path}"
-
-            if jar tf "${hpi_file}" | grep -q "${old_bcprov_path}"; then
-              zip -q -d "${hpi_file}" "${old_bcprov_path}"
-            fi
-
-            mkdir -p "${patch_dir}/hpi-overlay/WEB-INF/optional-lib"
-            cp "${source.dir}/patch/deps/bcprov-jdk18on-1.85.jar" "${patch_dir}/hpi-overlay/${new_bcprov_path}"
-            (cd "${patch_dir}/hpi-overlay" && jar --update --file "${hpi_file}" "${new_bcprov_path}")
-
-            if jar tf "${hpi_file}" | grep -q "${old_bcprov_path}"; then
-              echo "ERROR: ${old_bcprov_path} is still present in ${hpi_path}" >&2
-              exit 1
-            fi
-            jar tf "${hpi_file}" | grep -q "${new_bcprov_path}"
-
-            (cd "${patch_dir}" && jar --update --file "${source.dir}/jenkins/${war_file}" "${hpi_path}")
-
-            unzip -p "${war_file}" "${hpi_path}" > "${patch_dir}/verified-bouncycastle-api.hpi"
-            if jar tf "${patch_dir}/verified-bouncycastle-api.hpi" | grep -q "${old_bcprov_path}"; then
-              echo "ERROR: ${old_bcprov_path} is still present in repacked ${war_file}" >&2
-              exit 1
-            fi
-            jar tf "${patch_dir}/verified-bouncycastle-api.hpi" | grep -q "${new_bcprov_path}"
         - name: install
           work-dir: ${source.dir}/jenkins
           runs: |
@@ -387,20 +180,15 @@ contents:
               - deb
             license: MIT
             name: jenkins
-            rel: 6
+            rel: 0
             url: https://www.jenkins.io/
-            version: 2.568.3
+            version: 2.580.1
       paths:
         - type: file
           path: ${source.dir}/patch/mvn-dependencies.json
           uid: 0
           gid: 0
           source: package/main/jenkins/patch/mvn-dependencies.json
-        - type: file
-          path: ${source.dir}/patch/jackson3-api.patch
-          uid: 0
-          gid: 0
-          source: package/main/jenkins/patch/jackson3-api.patch
         - type: file
           path: ${source.dir}/patch/mvn-properties.json
           uid: 0
