@@ -3,8 +3,8 @@
 image: dhi.io/pkg-raptor2
 variant: runtime
 tags:
-  - 2.0.16-6-dhi0
-  - 2.0.16-6-dhi0-debian13
+  - 2.0.16-6-dhi1
+  - 2.0.16-6-dhi1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,9 +20,9 @@ vars:
   DEBIAN_ORIG_FILENAME: raptor2_2.0.16.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/r/raptor2/raptor2_2.0.16.orig.tar.gz
   DEBIAN_VERSION: 2.0.16-6
-  DHI_REL: "0"
-  DHI_VERSION: 2.0.16-6+dhi0
-  TAG_VERSION: 2.0.16-6-dhi0
+  DHI_REL: "1"
+  DHI_VERSION: 2.0.16-6+dhi1
+  TAG_VERSION: 2.0.16-6-dhi1
   UPSTREAM_VERSION: 2.0.16
 contents:
   packages:
@@ -45,6 +45,8 @@ contents:
           - libxslt1-dev
           - libyajl-dev
           - pkgconf
+          - quilt
+          - util-linux
         files:
           - url: https://deb.debian.org/debian/pool/main/r/raptor2/raptor2_2.0.16-6.dsc
             checksum: sha256:7a3ce85ae6af1f6455c07341f4b8fbdeae29423c13327516c4856244c19f54b0
@@ -67,11 +69,16 @@ contents:
           with:
             file: raptor2_2.0.16-6.dsc
             path: raptor2
+        - uses: dpkg/patch@v1
+          with:
+            apply: true
+            patches:
+              - ${source.dir}/patch/dhi-cve-2025-71436-language-tag-length.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - DHI Rebuild
-            version: 2.0.16-6+dhi0
+              - Backport upstream language-tag length fixes for CVE-2025-71436
+            version: 2.0.16-6+dhi1
         - name: gtk-doc offline DocBook XSL (chunk.xsl)
           runs: |
             set -eux -o pipefail
@@ -85,6 +92,12 @@ contents:
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
+      paths:
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2025-71436-language-tag-length.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/raptor2/patch/dhi-cve-2025-71436-language-tag-length.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
