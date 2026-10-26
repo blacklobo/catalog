@@ -4,9 +4,9 @@ image: dhi.io/pkg-jenkins
 variant: runtime
 tags:
   - 2.580.1
-  - 2.580.1-r0
+  - 2.580.1-r1
   - 2.580.1-debian13
-  - 2.580.1-r0-debian13
+  - 2.580.1-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,10 +17,10 @@ vars:
   DOCKER_REPO_COMMIT_SHA: 457b9316d71b43cdf3e2ba6ec7c27efc40f5dc60
   DOCKER_REPO_VERSION: 2.580.1
   JDK_MAJOR_VERSION: "21"
-  JDK_VERSION: 1:21.0.12.1+1-4
+  JDK_VERSION: 1:21.0.13+9-0
   MAVEN_VERSION: 3.10.0
   PACKAGE_NAME: jenkins
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2.580"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.580.1
@@ -55,7 +55,7 @@ contents:
           - zip
           - curl
           - xmlstarlet
-          - eclipse-temurin-21-jdk=1:21.0.12.1+1-4
+          - eclipse-temurin-21-jdk=1:21.0.13+9-0
         files:
           - url: git+https://github.com/jenkinsci/jenkins.git#jenkins-2.580.1
             checksum: 500c80a425077d987b97f62be32887d4f32e9ffb
@@ -180,7 +180,7 @@ contents:
               - deb
             license: MIT
             name: jenkins
-            rel: 0
+            rel: 1
             url: https://www.jenkins.io/
             version: 2.580.1
       paths:
