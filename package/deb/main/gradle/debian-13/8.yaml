@@ -3,14 +3,14 @@
 image: dhi.io/pkg-gradle
 variant: runtime
 tags:
-  - 8.14.6-0
-  - 8.14.6-0-debian13
+  - 8.14.6-1
+  - 8.14.6-1-debian13
 platforms:
   - linux/amd64
 vars:
   COMMIT_SHA: 88c80c1459b75a6d077d24eebe7905ffa3e1293f
-  DHI_REL: "0"
-  DHI_VERSION: 8.14.6-0
+  DHI_REL: "1"
+  DHI_VERSION: 8.14.6-1
   JDK_MAJOR_VERSION: "17"
   JDK_VERSION: 17.0.19.10-0
   PACKAGE_NAME: gradle-8
@@ -63,7 +63,53 @@ contents:
           with:
             changelog:
               - DHI Build
-            version: 8.14.6-0
+            version: 8.14.6-1
+        - name: configure gradle maven central mirror
+          runs: |
+            set -eux -o pipefail
+
+            mkdir -p /root/.gradle/init.d
+            cat > /root/.gradle/init.d/maven-central-mirror.gradle << 'EOF'
+            def mavenCentralMirror = uri("https://maven-central.storage-download.googleapis.com/maven2/")
+
+            def mirrorMavenCentral = { repo ->
+                if (repo instanceof org.gradle.api.artifacts.repositories.MavenArtifactRepository
+                        && (repo.url.host == "repo.maven.apache.org"
+                            || repo.url.host == "repo1.maven.org")) {
+                    repo.setUrl(mavenCentralMirror)
+                }
+            }
+
+            beforeSettings { settings ->
+                def pluginRepositories = settings.pluginManagement.repositories
+                pluginRepositories.clear()
+                pluginRepositories.maven {
+                    name = "GCS Maven Central mirror"
+                    url = mavenCentralMirror
+                }
+                pluginRepositories.gradlePluginPortal()
+                pluginRepositories.configureEach(mirrorMavenCentral)
+                pluginRepositories.whenObjectAdded(mirrorMavenCentral)
+
+                def dependencyRepositories = settings.dependencyResolutionManagement.repositories
+                dependencyRepositories.maven {
+                    name = "GCS Maven Central mirror"
+                    url = mavenCentralMirror
+                }
+            }
+
+            settingsEvaluated { settings ->
+                settings.pluginManagement.repositories.configureEach(mirrorMavenCentral)
+                settings.dependencyResolutionManagement.repositories.configureEach(mirrorMavenCentral)
+            }
+
+            gradle.beforeProject { project ->
+                project.buildscript.repositories.configureEach(mirrorMavenCentral)
+                project.buildscript.repositories.whenObjectAdded(mirrorMavenCentral)
+                project.repositories.configureEach(mirrorMavenCentral)
+                project.repositories.whenObjectAdded(mirrorMavenCentral)
+            }
+            EOF
         - uses: dpkg/build@v1
           privileged: true
           with:
