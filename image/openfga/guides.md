@@ -222,36 +222,27 @@ $ docker run --rm -it --pid container:openfga \
 For operational visibility without attaching a debugger, OpenFGA exposes a Prometheus metrics server on port `2112` by
 default, which reports request latencies, error rates, and datastore performance.
 
-# Image variants
+## Image variants
 
-Docker Hardened Images come in different variants depending on their intended use.
+Docker Hardened Images come in different variants depending on their intended use. Image variants are identified by
+their tag.
 
-Runtime variants are designed to run your application in production. These images are intended to be used either
-directly or as the `FROM` image in the final stage of a multi-stage build. These images typically:
+- Runtime variants are designed to run your application in production. These images are intended to be used either
+  directly or as the FROM image in the final stage of a multi-stage build. These images typically:
 
-- Run as the nonroot user (UID 65532)
-- Do not include a shell or a package manager
-- Contain only the minimal set of libraries needed to run the app
+  - Run as a nonroot user
+  - Do not include a shell or a package manager
+  - Contain only the minimal set of libraries needed to run the app
 
-Build-time variants include `dev` in the variant name and are intended for use in the first stage of a multi-stage
-Dockerfile. These images typically:
+- Build-time variants typically include `dev` in the tag name and are intended for use in the first stage of a
+  multi-stage Dockerfile. These images typically:
 
-- Run as the root user
-- Include a shell (`bash` and `/bin/sh`) and a package manager (`apt`)
-- Are used to build or compile applications
+  - Run as the root user
+  - Include a shell and package manager
+  - Are used to build or compile applications
 
-The OpenFGA image is published in the following variants:
-
-| Variant          | Tag pattern                               | User    | Compliance | Availability |
-| ---------------- | ----------------------------------------- | ------- | ---------- | ------------ |
-| Runtime          | `<version>`, `<version>-debian13`         | nonroot | CIS        | Public       |
-| Build-time (dev) | `<version>-dev`, `<version>-debian13-dev` | root    | CIS        | Public       |
-
-DHI tags use the upstream version number directly with no `v` prefix (for example, `1.15`, not `v1.15.1`). Tags also
-include rolling major-version aliases — `1` always points to the latest 1.x release, and `1.15` to the latest 1.15.x
-patch.
-
-To view all published tags and get more information about each variant, select the **Tags** tab for this repository.
+To view the image variants and get more information about them, select the Tags tab for this repository, and then select
+a tag.
 
 ## Migrate to a Docker Hardened Image
 
