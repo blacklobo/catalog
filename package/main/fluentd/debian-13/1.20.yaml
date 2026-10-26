@@ -3,10 +3,10 @@
 image: dhi.io/pkg-fluentd
 variant: runtime
 tags:
-  - 1.20.0
-  - 1.20.0-r0
-  - 1.20.0-debian13
-  - 1.20.0-r0-debian13
+  - 1.20.1
+  - 1.20.1-r0
+  - 1.20.1-debian13
+  - 1.20.1-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,8 +18,8 @@ vars:
   RUBY_VERSION: 3.4.12-0
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.20.0
-  VERSION: 1.20.0
+  SEMVER_VERSION: 1.20.1
+  VERSION: 1.20.1
 contents:
   packages:
     - '!base-files'
@@ -100,7 +100,7 @@ contents:
             gem install rexml
             gem install async
             gem install async-http
-            gem install fluentd -v 1.20.0 --no-doc
+            gem install fluentd -v 1.20.1 --no-doc
 
             "${gem_home}/bin/fluentd" --version
         - name: prune native-extension build residue
@@ -201,7 +201,7 @@ contents:
                   - usr/bin/fluent-plugin-generate
                 name: fluentd-1.20-dev
             url: https://github.com/fluent/fluentd
-            version: 1.20.0
+            version: 1.20.1
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
