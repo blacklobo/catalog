@@ -4,13 +4,13 @@ name: Grafana Helm chart 14.x
 image: dhi.io/grafana-chart
 variant: helm
 tags:
-  - 14.0.1
+  - 14.1.0
 platforms:
   - linux/amd64
 vars:
   BATS_REFERENCE: dhi/bats:1.14.0-debian13@sha256:65a5321ebe7d6dd1fb42ce561b19a16d98bdb03e87a42b95ac3841a2dc469081
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:6078a01e551030474be65ac98b9c5dc2b4a3d15ffc3c369172ecf17a41994a74
-  CHART_COMMIT_SHA: e45de0a3396be1a3a9f9a1a94715808e68653849
+  CHART_COMMIT_SHA: 8cd3f3f773f16af43d4adf68cd9837e336bcb058
   CHART_HELM_NAME: grafana-chart
   CURL_REFERENCE: dhi/curl:8.14.1-debian13@sha256:229a580c4b21bffe98970883ae1c11248e82390454e5fec79109132f4b774862
   DHI_NAMESPACE: dhi
@@ -21,10 +21,10 @@ vars:
   GRAFANA_REFERENCE: dhi/grafana:13.2.4-debian13@sha256:008da57496e026ca66cda060eb447ebfe7eaa58da8c3fa73fc277ffcb177cbc1
   HELM_VERSION: 4.1.4-2
   K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:2c7807cfb3d3a9e9de6dd885a2c1b03c7e9fc692ae9dca30da9cff4bdc3f760f
-  SEMVER_MAJOR_MINOR_VERSION: "14.0"
+  SEMVER_MAJOR_MINOR_VERSION: "14.1"
   SEMVER_MAJOR_VERSION: "14"
-  SEMVER_VERSION: 14.0.1
-  VERSION: 14.0.1
+  SEMVER_VERSION: 14.1.0
+  VERSION: 14.1.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -39,8 +39,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/grafana-community/helm-charts.git#grafana-14.0.1
-            checksum: e45de0a3396be1a3a9f9a1a94715808e68653849
+          - url: git+https://github.com/grafana-community/helm-charts.git#grafana-14.1.0
+            checksum: 8cd3f3f773f16af43d4adf68cd9837e336bcb058
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
