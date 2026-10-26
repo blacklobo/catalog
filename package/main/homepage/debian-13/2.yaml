@@ -4,9 +4,9 @@ image: dhi.io/pkg-homepage
 variant: runtime
 tags:
   - 2.7.0
-  - 2.7.0-r1
+  - 2.7.0-r2
   - 2.7.0-debian13
-  - 2.7.0-r1-debian13
+  - 2.7.0-r2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   COMMIT_SHA: 2e5f10134ae3961bb936d3e7c441f9a1f4a4bf4f
   DHI_TEST_DEB_EXPECTED_FILES: /usr/lib/homepage/server.js
   NODEJS_VERSION: 24.22.1-1
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "2.7"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.7.0
@@ -115,10 +115,17 @@ contents:
             yq -Y -i '.overrides."source-map-js" = "1.2.2"' pnpm-workspace.yaml
             # CVE-2026-45819
             yq -Y -i '.overrides."baseline-browser-mapping@>=2.0.0 <2.11.0" = "2.11.0"' pnpm-workspace.yaml
+            # CVE-2026-111997
+            yq -Y -i '.overrides."ip-address" = "10.7.4"' pnpm-workspace.yaml
+            # CVE-2026-93748
+            yq -Y -i '.overrides."http-cache-semantics" = "4.3.0"' pnpm-workspace.yaml
+            # CVE-2026-109841, CVE-2026-109869, CVE-2026-109924
+            yq -Y -i '.overrides."undici" = "8.12.3"' pnpm-workspace.yaml
 
             # CVE-2026-75604, GHSA-2xp9-vwfh-vxw4, GHSA-vcvr-r3jv-pc5j, CVE-2026-94483, CVE-2026-94484,
-            # CVE-2026-94485, CVE-2026-94543, CVE-2026-94486
-            pnpm up next@16.3.8
+            # CVE-2026-94485, CVE-2026-94543, CVE-2026-94486, GHSA-2464-fhr4-w9xw, GHSA-673q-mjm6-r5xr,
+            # CVE-2026-94482
+            pnpm up next@16.4.1
         - name: build
           privileged: true
           runs: |
@@ -163,7 +170,7 @@ contents:
               - deb
             license: GPL-3.0
             name: homepage
-            rel: 1
+            rel: 2
             url: https://github.com/gethomepage/homepage
             version: 2.7.0
 os-release:
