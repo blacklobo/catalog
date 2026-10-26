@@ -3,22 +3,22 @@
 image: dhi.io/pkg-apollo-mcp-server
 variant: runtime
 tags:
-  - 2.0.0-1
-  - 2.0.0-1-debian13
+  - 2.1.0-0
+  - 2.1.0-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-10-06"
 vars:
-  COMMIT_SHA: 04cba3e3c5d2cb723aaa3c0d25fae8e7d349a926
-  DHI_REL: "1"
-  DHI_VERSION: 2.0.0-1
+  COMMIT_SHA: beba1c63e4be128ae8bc8d4ad24a931ae3e8194f
+  DHI_REL: "0"
+  DHI_VERSION: 2.1.0-0
   PACKAGE_NAME: apollo-mcp-server-2
-  SEMVER_MAJOR_MINOR_VERSION: "2.0"
+  SEMVER_MAJOR_MINOR_VERSION: "2.1"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.0.0
-  VERSION: 2.0.0
+  SEMVER_VERSION: 2.1.0
+  VERSION: 2.1.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -52,15 +52,15 @@ contents:
           - pkg-config
           - sed
         files:
-          - url: git+https://github.com/apollographql/apollo-mcp-server.git#v2.0.0
-            checksum: 04cba3e3c5d2cb723aaa3c0d25fae8e7d349a926
+          - url: git+https://github.com/apollographql/apollo-mcp-server.git#v2.1.0
+            checksum: beba1c63e4be128ae8bc8d4ad24a931ae3e8194f
             path: ${source.dir}/apollo-mcp-server-src
             spdx:
               name: apollo-mcp-server
-              version: 2.0.0
+              version: 2.1.0
               packages:
                 - name: apollo-mcp-server
-                  purl: pkg:cargo/apollo-mcp-server@2.0.0
+                  purl: pkg:cargo/apollo-mcp-server@2.1.0
                   license: MIT
             uid: 0
             gid: 0
@@ -155,7 +155,7 @@ contents:
               - Bump aws-lc-rs to 1.17.3, carrying aws-lc-sys past the advisories affecting 0.37.1, which its own dependency requirement pinned in place.
               - Link the system OpenSSL rather than upstream's vendored copy, so OpenSSL fixes reach consumers as a libssl3t64 update.
               - Raise axum-otel-metrics to 0.14.1 so the build no longer carries the opentelemetry_sdk 0.30 line affected by CVE-2026-48504.
-            version: 2.0.0-1
+            version: 2.1.0-0
         - uses: dpkg/build@v1
           with:
             args: -b -uc -us -d
