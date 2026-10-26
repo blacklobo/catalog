@@ -3,23 +3,23 @@
 image: dhi.io/pkg-kustomize-controller
 variant: runtime
 tags:
-  - 1.9.6-alpine3.23
-  - 1.9.6-r3-alpine3.23
+  - 1.10.0-alpine3.23
+  - 1.10.0-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2023-07-04"
 vars:
-  COMMIT_SHA: 060e0d8dbc257a11cf49b9e626b63284dc385870
-  GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.10-r0
-  PACKAGE_NAME: fluxcd-kustomize-controller-1.9
-  REL: "3"
-  SEMVER_MAJOR_MINOR_VERSION: "1.9"
+  COMMIT_SHA: bb44b7103d4d697303053a600037bb94b141a921
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.3-r0
+  PACKAGE_NAME: fluxcd-kustomize-controller-1.10
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "1.10"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.9.6
-  VERSION: 1.9.6
+  SEMVER_VERSION: 1.10.0
+  VERSION: 1.10.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -30,7 +30,7 @@ contents:
   packages:
     - alpine-baselayout-data
   builds:
-    - name: fluxcd-kustomize-controller-1.9
+    - name: fluxcd-kustomize-controller-1.10
       work-dir: /go/src/github.com/fluxcd/kustomize-controller
       contents:
         packages:
@@ -41,18 +41,18 @@ contents:
           - findutils
           - mawk
           - sed
-          - golang-1.26=1.26.10-r0
-          - golang-1.26-oci-config=1.26.10-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/fluxcd/kustomize-controller#v1.9.6
-            checksum: 060e0d8dbc257a11cf49b9e626b63284dc385870
+          - url: git+https://github.com/fluxcd/kustomize-controller#v1.10.0
+            checksum: bb44b7103d4d697303053a600037bb94b141a921
             path: /go/src/github.com/fluxcd/kustomize-controller
             spdx:
               name: fluxcd-kustomize-controller
-              version: 1.9.6
+              version: 1.10.0
               packages:
                 - name: fluxcd-kustomize-controller
-                  purl: pkg:golang/github.com/fluxcd/kustomize-controller@1.9.6
+                  purl: pkg:golang/github.com/fluxcd/kustomize-controller@1.10.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -60,12 +60,7 @@ contents:
         - name: patch (1 only)
           uses: go/bump@v2
           with:
-            deps:
-              - golang.org/x/text@v0.39.0
-              - golang.org/x/crypto@v0.56.0
-              - github.com/google/cel-go@v0.30.0
-              - go.opentelemetry.io/otel/sdk@v1.45.0
-              - google.golang.org/grpc@v1.83.2
+            deps: []
             download: true
         - name: test
           runs: |
@@ -95,17 +90,17 @@ contents:
             files:
               - usr/bin/kustomize-controller
             license: Apache-2.0
-            name: fluxcd-kustomize-controller-1.9
+            name: fluxcd-kustomize-controller-1.10
             provides: fluxcd-kustomize-controller=$pkg_full_version
-            rel: 3
+            rel: 0
             replaces: fluxcd-kustomize-controller
             subpackages:
               - files:
                   - path: usr/bin/kustomize-controller
                     source: usr/bin/kustomize-controller-dev
-                name: fluxcd-kustomize-controller-1.9-dev
+                name: fluxcd-kustomize-controller-1.10-dev
             url: https://github.com/fluxcd/kustomize-controller
-            version: 1.9.6
+            version: 1.10.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
