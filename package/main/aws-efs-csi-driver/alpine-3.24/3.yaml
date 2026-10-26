@@ -3,23 +3,23 @@
 image: dhi.io/pkg-aws-efs-csi-driver
 variant: runtime
 tags:
-  - 3.5.2-alpine3.24
-  - 3.5.2-r1-alpine3.24
+  - 3.5.3-alpine3.24
+  - 3.5.3-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-01-20"
 vars:
-  COMMIT_SHA: b0234626608813dd8f47e106c93be6d0032a00d7
+  COMMIT_SHA: a423224a26cc54e6c2129ab8434b568d68541fbe
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: aws-efs-csi-driver-3
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "3.5"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.5.2
-  VERSION: 3.5.2
+  SEMVER_VERSION: 3.5.3
+  VERSION: 3.5.3
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -45,15 +45,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/kubernetes-sigs/aws-efs-csi-driver.git#v3.5.2
-            checksum: b0234626608813dd8f47e106c93be6d0032a00d7
+          - url: git+https://github.com/kubernetes-sigs/aws-efs-csi-driver.git#v3.5.3
+            checksum: a423224a26cc54e6c2129ab8434b568d68541fbe
             path: /go/src/github.com/kubernetes-sigs/aws-efs-csi-driver
             spdx:
               name: aws-efs-csi-driver
-              version: 3.5.2
+              version: 3.5.3
               packages:
                 - name: aws-efs-csi-driver
-                  purl: pkg:golang/github.com/kubernetes-sigs/aws-efs-csi-driver@3.5.2
+                  purl: pkg:golang/github.com/kubernetes-sigs/aws-efs-csi-driver@3.5.3
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -77,8 +77,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.driverVersion=3.5.2
-              - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.gitCommit=b0234626608813dd8f47e106c93be6d0032a00d7
+              - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.driverVersion=3.5.3
+              - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.gitCommit=a423224a26cc54e6c2129ab8434b568d68541fbe
               - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
               - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.efsClientSource=k8s
             output: ${target.dir}/usr/bin/aws-efs-csi-driver
@@ -91,8 +91,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.driverVersion=3.5.2
-              - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.gitCommit=b0234626608813dd8f47e106c93be6d0032a00d7
+              - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.driverVersion=3.5.3
+              - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.gitCommit=a423224a26cc54e6c2129ab8434b568d68541fbe
               - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
               - -X github.com/kubernetes-sigs/aws-efs-csi-driver/pkg/driver.efsClientSource=k8s
             output: ${target.dir}/usr/bin/aws-efs-csi-driver-dev
@@ -105,14 +105,14 @@ contents:
               - usr/bin/aws-efs-csi-driver
             license: Apache-2.0
             name: aws-efs-csi-driver-3
-            rel: 1
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/aws-efs-csi-driver
                     source: usr/bin/aws-efs-csi-driver-dev
                 name: aws-efs-csi-driver-3-dev
             url: https://github.com/kubernetes-sigs/aws-efs-csi-driver
-            version: 3.5.2
+            version: 3.5.3
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
