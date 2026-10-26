@@ -4,11 +4,11 @@ name: Prometheus Node Exporter Helm chart 4.x
 image: dhi.io/node-exporter-chart
 variant: helm
 tags:
-  - 4.60.0
+  - 4.60.1
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 62669c198365d3cd3a0802396336946004808510
+  CHART_COMMIT_SHA: 06eb2a2c3950e7159ecd57f0fa51f2ac98ddcb07
   CHART_HELM_NAME: node-exporter-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -19,8 +19,8 @@ vars:
   NODE_EXPORTER_REFERENCE: dhi/node-exporter:1.12.1-debian13@sha256:276d5e6069902b1dfa1db81aa1d09fe5e4b9de919c39e6d36d685d2e28b7ca37
   SEMVER_MAJOR_MINOR_VERSION: "4.60"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.60.0
-  VERSION: 4.60.0
+  SEMVER_VERSION: 4.60.1
+  VERSION: 4.60.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-node-exporter-4.60.0
-            checksum: 62669c198365d3cd3a0802396336946004808510
+          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-node-exporter-4.60.1
+            checksum: 06eb2a2c3950e7159ecd57f0fa51f2ac98ddcb07
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
