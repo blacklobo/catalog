@@ -4,11 +4,11 @@ name: VictoriaMetrics Cluster Helm chart 0.x
 image: dhi.io/victoriametrics-cluster-chart
 variant: helm
 tags:
-  - 0.53.0
+  - 0.53.1
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 4ccbee8b0069b15b963491e80fc382ec28912436
+  CHART_COMMIT_SHA: 44444f3bc88e4120451151504491fc69b096e95e
   CHART_HELM_NAME: victoriametrics-cluster-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -17,11 +17,11 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "0.53"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.53.0
-  VERSION: 0.53.0
+  SEMVER_VERSION: 0.53.1
+  VERSION: 0.53.1
   VICTORIAMETRICS_VMAUTH_REFERENCE: dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:4cb217d670888f2a066cf2dc5bafbdfd4afc896e9ac3c62e13d7da3dfedf16f4
   VICTORIAMETRICS_VMINSERT_REFERENCE: dhi/victoriametrics-vminsert:1.154.1-debian13@sha256:e86acb07f0331ece9200582aa8308352ba2d646ad8ca5cd20f2022373e047339
-  VICTORIAMETRICS_VMSELECT_REFERENCE: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:a8ea007fa5ddc51541cd07578cc323877e9b397cd548e5fe5c769c6622d4ffc6
+  VICTORIAMETRICS_VMSELECT_REFERENCE: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:ead579ee304c455d1b44159ad6446bce25fdeb63a15e75459dcd03e3409ee690
   VICTORIAMETRICS_VMSTORAGE_REFERENCE: dhi/victoriametrics-vmstorage:1.154.1-debian13@sha256:302dacbe2c07973fdf221efddd53a2f9a914dcdbee969baca2020b4a0afd6a53
 contents:
   repositories:
@@ -39,8 +39,8 @@ contents:
           - yq-go
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/VictoriaMetrics/helm-charts.git#victoria-metrics-cluster-0.53.0
-            checksum: 4ccbee8b0069b15b963491e80fc382ec28912436
+          - url: git+https://github.com/VictoriaMetrics/helm-charts.git#victoria-metrics-cluster-0.53.1
+            checksum: 44444f3bc88e4120451151504491fc69b096e95e
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -54,7 +54,7 @@ contents:
               description: Docker Hardened Images Helm chart for VictoriaMetrics Cluster
               images:
                 - name: victoriametrics-vmselect
-                  ref: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:a8ea007fa5ddc51541cd07578cc323877e9b397cd548e5fe5c769c6622d4ffc6
+                  ref: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:ead579ee304c455d1b44159ad6446bce25fdeb63a15e75459dcd03e3409ee690
                 - name: victoriametrics-vmstorage
                   ref: dhi/victoriametrics-vmstorage:1.154.1-debian13@sha256:302dacbe2c07973fdf221efddd53a2f9a914dcdbee969baca2020b4a0afd6a53
                 - name: victoriametrics-vminsert
