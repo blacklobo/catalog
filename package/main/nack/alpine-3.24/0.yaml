@@ -3,22 +3,22 @@
 image: dhi.io/pkg-nack
 variant: runtime
 tags:
-  - 0.24.0-alpine3.24
-  - 0.24.0-r4-alpine3.24
+  - 0.25.0-alpine3.24
+  - 0.25.0-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-12-05"
 vars:
-  COMMIT_SHA: e700bc2f5b8a4a9429fdcea39be32c13390c22f3
-  GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.9-r0
-  REL: "4"
-  SEMVER_MAJOR_MINOR_VERSION: "0.24"
+  COMMIT_SHA: 4f08e6d39ae244c0236e791dc533f22bfe08003e
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.3-r0
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "0.25"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.24.0
-  VERSION: 0.24.0
+  SEMVER_VERSION: 0.25.0
+  VERSION: 0.25.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -41,18 +41,18 @@ contents:
           - findutils
           - mawk
           - sed
-          - golang-1.26=1.26.9-r0
-          - golang-1.26-oci-config=1.26.9-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/nats-io/nack.git#v0.24.0
-            checksum: e700bc2f5b8a4a9429fdcea39be32c13390c22f3
+          - url: git+https://github.com/nats-io/nack.git#v0.25.0
+            checksum: 4f08e6d39ae244c0236e791dc533f22bfe08003e
             path: /go/src/github.com/nats-io/nack
             spdx:
               name: nats-server-config-reloader
-              version: 0.24.0
+              version: 0.25.0
               packages:
                 - name: nats-server-config-reloader
-                  purl: pkg:golang/nats-io/nack@0.24.0
+                  purl: pkg:golang/nats-io/nack@0.25.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -66,7 +66,6 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            # Also skips boot config and tests requiring etcd
             CGO_ENABLED=0 go test -v ./pkg/natsreloader/... ./controllers/... ./internal/... -skip 'TestControllers' --failfast -p=1
         - name: build
           uses: go/build@v1
@@ -74,8 +73,8 @@ contents:
             fips: false
             ldflags:
               - -s -w
-              - -X main.Version=0.24.0
-              - -X main.GitInfo=e700bc2f5b8a4a9429fdcea39be32c13390c22f3
+              - -X main.Version=0.25.0
+              - -X main.GitInfo=4f08e6d39ae244c0236e791dc533f22bfe08003e
               - -X main.BuildTime=${SOURCE_DATE_EPOCH}
             output: ${target.dir}/usr/bin/nats-server-config-reloader
             packages: ./cmd/nats-server-config-reloader/
@@ -86,8 +85,8 @@ contents:
             fips: false
             ldflags:
               - -s -w
-              - -X main.Version=0.24.0
-              - -X main.GitInfo=e700bc2f5b8a4a9429fdcea39be32c13390c22f3
+              - -X main.Version=0.25.0
+              - -X main.GitInfo=4f08e6d39ae244c0236e791dc533f22bfe08003e
               - -X main.BuildTime=${SOURCE_DATE_EPOCH}
             output: ${target.dir}/usr/bin/nats-server-config-reloader-dev
             packages: ./cmd/nats-server-config-reloader/
@@ -99,14 +98,14 @@ contents:
               - usr/bin/nats-server-config-reloader
             license: Apache-2.0
             name: nats-server-config-reloader
-            rel: 4
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/nats-server-config-reloader
                     source: usr/bin/nats-server-config-reloader-dev
                 name: nats-server-config-reloader-dev
             url: https://github.com/nats-io/nack
-            version: 0.24.0
+            version: 0.25.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
