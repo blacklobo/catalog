@@ -5,21 +5,21 @@ image: dhi.io/cassandra-reaper
 variant: dev
 tags:
   - 5-dev
-  - 5.0-dev
-  - 5.0.1-dev
+  - 5.1-dev
+  - 5.1.0-dev
   - 5-debian-dev
   - 5-debian13-dev
-  - 5.0-debian-dev
-  - 5.0-debian13-dev
-  - 5.0.1-debian-dev
-  - 5.0.1-debian13-dev
+  - 5.1-debian-dev
+  - 5.1-debian13-dev
+  - 5.1.0-debian-dev
+  - 5.1.0-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-07-08"
 vars:
-  COMMIT_SHA: 323015e3bbc1102943260bfbe12bfb7bc50824cd
+  COMMIT_SHA: a207a8595a52381255172726c5040d3162cbaf12
   JAVA_FIPS_SUFFIX: ""
   JAVA_HOME: /usr/lib/jvm/temurin-21
   JAVA_VARIANT: jdk
@@ -27,10 +27,10 @@ vars:
   MAVEN_JDK_MAJOR_VERSION: "21"
   MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:9e7ff68821ccddf0c5419409d6a8cbc93eefbf0e4e22a16e8dee1f9b89259908
   MAVEN_VERSION: 3.10.0
-  SEMVER_MAJOR_MINOR_VERSION: "5.0"
+  SEMVER_MAJOR_MINOR_VERSION: "5.1"
   SEMVER_MAJOR_VERSION: "5"
-  SEMVER_VERSION: 5.0.1
-  VERSION: 5.0.1
+  SEMVER_VERSION: 5.1.0
+  VERSION: 5.1.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -88,15 +88,15 @@ contents:
           - npm
           - yarn-classic
         files:
-          - url: git+https://github.com/thelastpickle/cassandra-reaper.git#5.0.1
-            checksum: 323015e3bbc1102943260bfbe12bfb7bc50824cd
+          - url: git+https://github.com/thelastpickle/cassandra-reaper.git#5.1.0
+            checksum: a207a8595a52381255172726c5040d3162cbaf12
             path: ${source.dir}/cassandra-reaper
             spdx:
               name: cassandra-reaper
-              version: 5.0.1
+              version: 5.1.0
               packages:
                 - name: cassandra-reaper
-                  purl: pkg:dhi/cassandra-reaper@5.0.1
+                  purl: pkg:dhi/cassandra-reaper@5.1.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -245,7 +245,7 @@ contents:
             set -eux -o pipefail
 
             install -D -m 0644 \
-              "${source.dir}/cassandra-reaper/src/server/target/cassandra-reaper-5.0.1.jar" \
+              "${source.dir}/cassandra-reaper/src/server/target/cassandra-reaper-5.1.0.jar" \
               "${target.dir}/usr/local/share/cassandra-reaper/cassandra-reaper.jar"
 
             # Config templates from the upstream source tree
