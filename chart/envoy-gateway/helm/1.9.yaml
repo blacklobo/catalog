@@ -4,11 +4,11 @@ name: Envoy Gateway Helm chart 1.9.x
 image: dhi.io/envoy-gateway-chart
 variant: helm
 tags:
-  - 1.9.2
+  - 1.9.3
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: f9f92a112a4033abed5c8d43a5f7e37da257403c
+  CHART_COMMIT_SHA: ec0171b20585a36de7124328c0ceaae72ad0f79f
   CHART_HELM_NAME: envoy-gateway-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -20,8 +20,8 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "1.9"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.9.2
-  VERSION: 1.9.2
+  SEMVER_VERSION: 1.9.3
+  VERSION: 1.9.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -38,8 +38,8 @@ contents:
           - yq-go
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/envoyproxy/gateway.git#v1.9.2
-            checksum: f9f92a112a4033abed5c8d43a5f7e37da257403c
+          - url: git+https://github.com/envoyproxy/gateway.git#v1.9.3
+            checksum: ec0171b20585a36de7124328c0ceaae72ad0f79f
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -67,7 +67,7 @@ contents:
           with:
             file: Chart.yaml
             patches:
-              - .version = "1.9.2"
+              - .version = "1.9.3"
         - name: rename values file
           runs: |
             set -eux -o pipefail
