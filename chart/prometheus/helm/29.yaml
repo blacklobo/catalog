@@ -4,27 +4,27 @@ name: Prometheus Helm chart 29.x
 image: dhi.io/prometheus-chart
 variant: helm
 tags:
-  - 29.38.0
+  - 29.38.2
 platforms:
   - linux/amd64
 vars:
   ALERTMANAGER_CHART_REFERENCE: dhi/alertmanager-chart:1.43.3@sha256:1bfd8cc6f450bab96cfde738496782370d2081f4e08e047076bb68a618a6967b
-  CHART_COMMIT_SHA: 54d7afc9f100a7e10f013e65667c5dbac2193cef
+  CHART_COMMIT_SHA: 16f3358ab7892227fb1f43a52c2db858430bd025
   CHART_HELM_NAME: prometheus-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:8.7.0@sha256:860056a2deb8ae4c1921bb72090e2718bdfbd99a931027e8cbd4db988205009e
-  NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.60.0@sha256:1526602336252d8565481fe06d3ea7de05f87570fd5c2e2d165a1c91140ab789
+  KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:8.7.1@sha256:a0742eb51bfbfd63ba473c75c6003a56d68bc4e9367b057bce7aa4d979c02b08
+  NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.60.0@sha256:44ee7624ed2db76c4cc0dc0894f9fa9d9f8af604cfbe1e339a119291ad654fbb
   PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.2-debian13@sha256:558bbc6be212e434201be390121b86ed182d6dcf2d0994e12a6ad3cf2722ccd4
   PROMETHEUS_REFERENCE: dhi/prometheus:3.15.1-debian13@sha256:ecd43d22d286703ff3aa92d6b72ece4db58a91366b6ddd5eee667b5320194a54
-  PUSHGATEWAY_CHART_REFERENCE: dhi/pushgateway-chart:3.9.1@sha256:dd997b03212a3f0ddd784006f8a58550c9dd3992e5abdf423b63077da99b1762
+  PUSHGATEWAY_CHART_REFERENCE: dhi/pushgateway-chart:3.9.1@sha256:ad00b2f8b4bbfc6ea037e096c51af9a1070035f9dbd537cc912ba99851173025
   SEMVER_MAJOR_MINOR_VERSION: "29.38"
   SEMVER_MAJOR_VERSION: "29"
-  SEMVER_VERSION: 29.38.0
-  VERSION: 29.38.0
+  SEMVER_VERSION: 29.38.2
+  VERSION: 29.38.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -39,8 +39,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-29.38.0
-            checksum: 54d7afc9f100a7e10f013e65667c5dbac2193cef
+          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-29.38.2
+            checksum: 16f3358ab7892227fb1f43a52c2db858430bd025
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -59,15 +59,15 @@ contents:
                 - alias: kube-state-metrics
                   condition: kube-state-metrics.enabled
                   name: kube-state-metrics
-                  ref: dhi/kube-state-metrics-chart:8.7.0@sha256:860056a2deb8ae4c1921bb72090e2718bdfbd99a931027e8cbd4db988205009e
+                  ref: dhi/kube-state-metrics-chart:8.7.1@sha256:a0742eb51bfbfd63ba473c75c6003a56d68bc4e9367b057bce7aa4d979c02b08
                 - alias: prometheus-node-exporter
                   condition: prometheus-node-exporter.enabled
                   name: prometheus-node-exporter
-                  ref: dhi/node-exporter-chart:4.60.0@sha256:1526602336252d8565481fe06d3ea7de05f87570fd5c2e2d165a1c91140ab789
+                  ref: dhi/node-exporter-chart:4.60.0@sha256:44ee7624ed2db76c4cc0dc0894f9fa9d9f8af604cfbe1e339a119291ad654fbb
                 - alias: prometheus-pushgateway
                   condition: prometheus-pushgateway.enabled
                   name: prometheus-pushgateway
-                  ref: dhi/pushgateway-chart:3.9.1@sha256:dd997b03212a3f0ddd784006f8a58550c9dd3992e5abdf423b63077da99b1762
+                  ref: dhi/pushgateway-chart:3.9.1@sha256:ad00b2f8b4bbfc6ea037e096c51af9a1070035f9dbd537cc912ba99851173025
               description: Docker Hardened Images Helm chart for Prometheus
               images:
                 - name: prometheus
