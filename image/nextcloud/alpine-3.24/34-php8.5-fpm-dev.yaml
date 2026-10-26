@@ -32,8 +32,8 @@ vars:
   NEXTCLOUD_DOCKER_ENTRYPOINT_CHECKSUM: sha256:c1c5ad59db5811b4e9fc656eb0bfae4b1418ddf3f5fd6492a02212532fbd259e
   PHP_INI_DIR: /etc/php-8.5
   PHP_MAJOR_MINOR: "8.5"
-  PHP_PKG_VERSION: 8.5.11-r0
-  PHP_SRC_VERSION: 8.5.11
+  PHP_PKG_VERSION: 8.5.12-r0
+  PHP_SRC_VERSION: 8.5.12
   REDIS_CHECKSUM: 0d5141f634bd1db6c1ddcda053d25ecf2c4fc1c395430d534fd3f8d51dd7f0b5
   REDIS_VERSION: 6.3.0
   SEMVER_MAJOR_MINOR_VERSION: "34.0"
@@ -81,8 +81,8 @@ contents:
     - oniguruma
     - openjpeg
     - pcre2
-    - php-8.5-fpm=8.5.11-r0
-    - php-8.5=8.5.11-r0
+    - php-8.5-fpm=8.5.12-r0
+    - php-8.5=8.5.12-r0
     - readline
     - rsync
     - sed
@@ -241,8 +241,8 @@ contents:
         packages:
           - bash
           - coreutils
-          - php-8.5=8.5.11-r0
-          - php-8.5-fpm=8.5.11-r0
+          - php-8.5=8.5.12-r0
+          - php-8.5-fpm=8.5.12-r0
           - sed
       pipeline:
         - name: activate
@@ -309,8 +309,8 @@ contents:
           - openjpeg-dev
           - openldap-dev
           - pcre2-dev
-          - php-8.5=8.5.11-r0
-          - php-8.5-dev=8.5.11-r0
+          - php-8.5=8.5.12-r0
+          - php-8.5-dev=8.5.12-r0
           - libpq-dev
           - pkgconf
           - re2c
@@ -320,12 +320,12 @@ contents:
           - xz
           - zlib-dev
         files:
-          - url: https://www.php.net/distributions/php-8.5.11.tar.xz
-            path: ${source.dir}/php-8.5.11.tar.xz
+          - url: https://www.php.net/distributions/php-8.5.12.tar.xz
+            path: ${source.dir}/php-8.5.12.tar.xz
             uid: 0
             gid: 0
-          - url: https://www.php.net/distributions/php-8.5.11.tar.xz.asc
-            path: ${source.dir}/php-8.5.11.tar.xz.asc
+          - url: https://www.php.net/distributions/php-8.5.12.tar.xz.asc
+            path: ${source.dir}/php-8.5.12.tar.xz.asc
             uid: 0
             gid: 0
           - url: git+https://github.com/ImageMagick/ImageMagick.git#7.1.2-34
@@ -404,17 +404,17 @@ contents:
         - name: verify php source GPG
           uses: gpg/verify@v1
           with:
-            file: ${source.dir}/php-8.5.11.tar.xz
+            file: ${source.dir}/php-8.5.12.tar.xz
             keys: ${source.dir}/php-keyring.asc
-            signature: ${source.dir}/php-8.5.11.tar.xz.asc
+            signature: ${source.dir}/php-8.5.12.tar.xz.asc
         - name: extract php source
           runs: |
             set -eux -o pipefail
 
             PHP_SRC_DIR="${source.dir}/php-src"
             mkdir -p "$PHP_SRC_DIR"
-            tar xf "${source.dir}/php-8.5.11.tar.xz" -C "${source.dir}"
-            cp -a "${source.dir}/php-8.5.11/." "$PHP_SRC_DIR"
+            tar xf "${source.dir}/php-8.5.12.tar.xz" -C "${source.dir}"
+            cp -a "${source.dir}/php-8.5.12/." "$PHP_SRC_DIR"
         - name: build imagemagick
           runs: |
             set -eux -o pipefail
