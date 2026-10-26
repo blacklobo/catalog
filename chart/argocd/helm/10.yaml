@@ -4,12 +4,12 @@ name: Argo CD Helm chart 10.x
 image: dhi.io/argocd-chart
 variant: helm
 tags:
-  - 10.11.1
+  - 10.11.3
 platforms:
   - linux/amd64
 vars:
   ARGOCD_REFERENCE: dhi/argocd:3.5.6-debian13@sha256:00f7c78769ab7c39e3da8835f31cb202c8b8ea7fd1586282441e0f06a4589e2d
-  CHART_COMMIT_SHA: 28d06e552135394ed7b7753703f2b4f5b89122e5
+  CHART_COMMIT_SHA: 7c3d9f27029959efcfaeb936574af7373f79af0f
   CHART_HELM_NAME: argocd-chart
   DEX_REFERENCE: dhi/dex:2.46.1-debian13@sha256:d0aa1687e10b53f4bbfd746f418c4c559ddd632dc812bdba1dc081df949d32be
   DHI_NAMESPACE: dhi
@@ -23,8 +23,8 @@ vars:
   REDIS_REFERENCE: dhi/redis:8.10.2-debian13-compat@sha256:62f0464bb3a48bccf2064c0b793d98e08d2ad763ee60d6913ba18842fec5ce3d
   SEMVER_MAJOR_MINOR_VERSION: "10.11"
   SEMVER_MAJOR_VERSION: "10"
-  SEMVER_VERSION: 10.11.1
-  VERSION: 10.11.1
+  SEMVER_VERSION: 10.11.3
+  VERSION: 10.11.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -41,8 +41,8 @@ contents:
           - yq-go
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/argoproj/argo-helm#argo-cd-10.11.1
-            checksum: 28d06e552135394ed7b7753703f2b4f5b89122e5
+          - url: git+https://github.com/argoproj/argo-helm#argo-cd-10.11.3
+            checksum: 7c3d9f27029959efcfaeb936574af7373f79af0f
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
