@@ -18,7 +18,7 @@ vars:
   HELM_VERSION: 4.1.4-2
   KUBECTL_REFERENCE: dhi/kubectl:1.34.12-debian13-compat@sha256:9652681223461cf4a47a9e074cfcc3db82a5ce2a701b9e216e0be968876beead
   MONGODB_EXPORTER_REFERENCE: dhi/mongodb-exporter:0.53.0-debian13-compat@sha256:c5f13b59a0cd72724226aa9fe67d7ec81b51aa6b56ab66cfe6cfc38a95303a44
-  MONGODB_REFERENCE: dhi/mongodb:8.3.13-debian13-compat@sha256:edfda1beb387f9f37758e6a4504947a3d5a0403e0825238daa5fe793364ea62a
+  MONGODB_REFERENCE: dhi/mongodb:8.3.13-debian13-compat@sha256:908ccf08db2540ac64b7d8947e4d302becf0d69d99cf21dc039ce40b600b16a7
   NGINX_REFERENCE: dhi/nginx:1.31.8-debian13-compat@sha256:49bf07d4eb85593dcb834943837456d916e71c1605e428253c5d7514cd469b05
   SEMVER_MAJOR_MINOR_VERSION: "18.0"
   SEMVER_MAJOR_VERSION: "18"
@@ -53,7 +53,7 @@ contents:
               description: Docker Hardened Images Helm chart for MongoDB
               images:
                 - name: mongodb
-                  ref: dhi/mongodb:8.3.13-debian13-compat@sha256:edfda1beb387f9f37758e6a4504947a3d5a0403e0825238daa5fe793364ea62a
+                  ref: dhi/mongodb:8.3.13-debian13-compat@sha256:908ccf08db2540ac64b7d8947e4d302becf0d69d99cf21dc039ce40b600b16a7
                 - name: mongodb-exporter
                   ref: dhi/mongodb-exporter:0.53.0-debian13-compat@sha256:c5f13b59a0cd72724226aa9fe67d7ec81b51aa6b56ab66cfe6cfc38a95303a44
                 - name: nginx
