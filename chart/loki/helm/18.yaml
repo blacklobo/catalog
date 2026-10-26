@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ACCESS_LOG_EXPORTER_REFERENCE: dhi/access-log-exporter:0.5.2-debian13@sha256:350a120707be56c460f4c03f939b545e5712cc630d6fa2b5cc8d97ef347e2b36
+  ACCESS_LOG_EXPORTER_REFERENCE: dhi/access-log-exporter:0.5.2-debian13@sha256:a9966c0a3fda4b9fd87a625cdadfe9e497ff16e8208fcf18ad464d7a7f721571
   APPVERSION: 3.7.8
   CHART_COMMIT_SHA: f98da75649cd9bab7c7777e8afe3038dec71b281
   CHART_HELM_NAME: loki-chart
@@ -80,7 +80,7 @@ contents:
                 - name: memcached-exporter
                   ref: dhi/memcached-exporter:0.17.0-debian13@sha256:9ba31de9d35682333bd7ff5d8aa3e104dfbfd4b87fba914cc7b61e801e4f2818
                 - name: access-log-exporter
-                  ref: dhi/access-log-exporter:0.5.2-debian13@sha256:350a120707be56c460f4c03f939b545e5712cc630d6fa2b5cc8d97ef347e2b36
+                  ref: dhi/access-log-exporter:0.5.2-debian13@sha256:a9966c0a3fda4b9fd87a625cdadfe9e497ff16e8208fcf18ad464d7a7f721571
                 - name: kubectl
                   ref: dhi/kubectl:1.37.1-debian13@sha256:05a8bfd374ee906a6748aae9506886fe33d1696e00c864929d9e3dff2785d5bd
               name: loki-chart
