@@ -1,6 +1,7 @@
 Origin: DHI-internal (Kubernetes client compatibility)
-Description: Set OpenAPI version metadata directly after k8s.io/apiserver
- removed Config.Version from the Kubernetes v0.35 server configuration.
+Description: Initialize the Kubernetes effective version and set OpenAPI version
+ metadata directly after k8s.io/apiserver removed Config.Version from the
+ Kubernetes v0.35 server configuration.
 Base-Tree: git https://github.com/kyverno/reports-server.git 7f1511eeb6b5f4a83bab914214b5dcd22d8d3e14
 Verify: test alpine-3.24/0.yaml
 Drop-When: upstream >= 0.1.8
@@ -11,12 +12,16 @@ Upstream source: https://github.com/kyverno/reports-server/blob/v0.1.7/pkg/app/o
 diff --git a/pkg/app/opts/options.go b/pkg/app/opts/options.go
 --- a/pkg/app/opts/options.go
 +++ b/pkg/app/opts/options.go
-@@ -147,13 +147,13 @@ func (o Options) Config() (*server.Config, error) {
+@@ -3 +3,2 @@
++import utilcompatibility "k8s.io/apiserver/pkg/util/compatibility"
+ import (
+@@ -147,13 +148,14 @@ func (o Options) Config() (*server.Config, error) {
  	}
  
  	versionGet := version.Get()
 -	serverConfig.Version = &versionGet
 +	versionString := strings.Split(versionGet.String(), "-")[0]
++	serverConfig.EffectiveVersion = utilcompatibility.DefaultBuildEffectiveVersion()
  	// enable OpenAPI schemas
  	serverConfig.OpenAPIConfig = genericapiserver.DefaultOpenAPIConfig(generatedopenapi.GetOpenAPIDefinitions, openapinamer.NewDefinitionNamer(api.Scheme))
  	serverConfig.OpenAPIV3Config = genericapiserver.DefaultOpenAPIV3Config(generatedopenapi.GetOpenAPIDefinitions, openapinamer.NewDefinitionNamer(api.Scheme))
