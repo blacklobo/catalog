@@ -5,9 +5,9 @@ image: dhi.io/redis
 variant: dev
 tags:
   - 8.6-alpine-dev
-  - 8.6.7-alpine-dev
+  - 8.6.8-alpine-dev
   - 8.6-alpine3.24-dev
-  - 8.6.7-alpine3.24-dev
+  - 8.6.8-alpine3.24-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,15 +15,15 @@ dates:
   release: "2026-02-11"
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
-  COMMIT_SHA: 3b450c3dcb075e59f50dbc0377151e25c8f375d4
+  COMMIT_SHA: c522e673494d1aba55ff07720b7b52e7dd5f747e
   HAS_MODULES: "true"
   REDIS_LICENSE: AGPL-3.0-only
   RUST_SHA: '#{ target.arch == "amd64" ? "sha256:e9b977ef480504d3beef0a095b470945af79e8496bcbb0e4a9d4601d6d72dd91" : "sha256:0c35fca319d01c3d55345d44dbe66c987858c45e262a77c4db679e9869b0af73" }'
   RUST_VERSION: 1.92.0
   SEMVER_MAJOR_MINOR_VERSION: "8.6"
   SEMVER_MAJOR_VERSION: "8"
-  SEMVER_VERSION: 8.6.7
-  VERSION: 8.6.7
+  SEMVER_VERSION: 8.6.8
+  VERSION: 8.6.8
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -95,15 +95,15 @@ contents:
           - xsimd
           - xz
         files:
-          - url: git+https://github.com/redis/redis.git#8.6.7
-            checksum: 3b450c3dcb075e59f50dbc0377151e25c8f375d4
+          - url: git+https://github.com/redis/redis.git#8.6.8
+            checksum: c522e673494d1aba55ff07720b7b52e7dd5f747e
             path: ${source.dir}/redis
             spdx:
               name: redis
-              version: 8.6.7
+              version: 8.6.8
               packages:
                 - name: redis
-                  purl: pkg:github/redis/redis@8.6.7
+                  purl: pkg:github/redis/redis@8.6.8
                   license: AGPL-3.0-only
             uid: 0
             gid: 0
@@ -219,7 +219,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /data
 environment:
-  REDIS_VERSION: 8.6.7
+  REDIS_VERSION: 8.6.8
 paths:
   - type: directory
     path: /usr/bin
