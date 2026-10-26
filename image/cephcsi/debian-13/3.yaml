@@ -116,6 +116,11 @@ paths:
     uid: 65532
     gid: 65532
     mode: "0755"
+  - type: directory
+    path: /run/ceph
+    uid: 65532
+    gid: 65532
+    mode: "0755"
   - type: symlink
     path: /etc/mtab
     uid: 0
