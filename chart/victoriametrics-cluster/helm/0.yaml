@@ -19,7 +19,7 @@ vars:
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.53.1
   VERSION: 0.53.1
-  VICTORIAMETRICS_VMAUTH_REFERENCE: dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:4cb217d670888f2a066cf2dc5bafbdfd4afc896e9ac3c62e13d7da3dfedf16f4
+  VICTORIAMETRICS_VMAUTH_REFERENCE: dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:0be922a7fa312bcd592f5f567e96c37c81c85147a1a2eb9bf1cf019ddc3ee8ec
   VICTORIAMETRICS_VMINSERT_REFERENCE: dhi/victoriametrics-vminsert:1.154.1-debian13@sha256:e86acb07f0331ece9200582aa8308352ba2d646ad8ca5cd20f2022373e047339
   VICTORIAMETRICS_VMSELECT_REFERENCE: dhi/victoriametrics-vmselect:1.154.1-debian13@sha256:ead579ee304c455d1b44159ad6446bce25fdeb63a15e75459dcd03e3409ee690
   VICTORIAMETRICS_VMSTORAGE_REFERENCE: dhi/victoriametrics-vmstorage:1.154.1-debian13@sha256:302dacbe2c07973fdf221efddd53a2f9a914dcdbee969baca2020b4a0afd6a53
@@ -60,7 +60,7 @@ contents:
                 - name: victoriametrics-vminsert
                   ref: dhi/victoriametrics-vminsert:1.154.1-debian13@sha256:e86acb07f0331ece9200582aa8308352ba2d646ad8ca5cd20f2022373e047339
                 - name: victoriametrics-vmauth
-                  ref: dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:4cb217d670888f2a066cf2dc5bafbdfd4afc896e9ac3c62e13d7da3dfedf16f4
+                  ref: dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:0be922a7fa312bcd592f5f567e96c37c81c85147a1a2eb9bf1cf019ddc3ee8ec
               name: victoriametrics-cluster-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/VictoriaMetrics/helm-charts
@@ -79,7 +79,7 @@ contents:
           with:
             file: ${source.dir}/helm-charts/charts/victoria-metrics-cluster/values-sidecar.yaml
             patches:
-              - .extraContainers[0].image = "dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:4cb217d670888f2a066cf2dc5bafbdfd4afc896e9ac3c62e13d7da3dfedf16f4"
+              - .extraContainers[0].image = "dhi/victoriametrics-vmauth:1.154.1-debian13@sha256:0be922a7fa312bcd592f5f567e96c37c81c85147a1a2eb9bf1cf019ddc3ee8ec"
               - .extraContainers[0].securityContext.enabled = true
               - .extraContainers[0].securityContext.runAsNonRoot = true
               - .extraContainers[0].securityContext.runAsUser = 65532
