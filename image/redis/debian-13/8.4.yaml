@@ -5,26 +5,26 @@ image: dhi.io/redis
 variant: runtime
 tags:
   - "8.4"
-  - 8.4.7
+  - 8.4.8
   - 8.4-debian
   - 8.4-debian13
-  - 8.4.7-debian
-  - 8.4.7-debian13
+  - 8.4.8-debian
+  - 8.4.8-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-02-22"
 vars:
-  COMMIT_SHA: 4039944d4f8817d7e15f184c0bbb29f946535364
+  COMMIT_SHA: 03fb1dc35de324f2b062bfa46ab58b95af779809
   HAS_MODULES: "true"
   LLVM_VERSION: "19"
   MODULE_BUILD_FLOW: legacy
   REDIS_LICENSE: AGPL-3.0-only
   SEMVER_MAJOR_MINOR_VERSION: "8.4"
   SEMVER_MAJOR_VERSION: "8"
-  SEMVER_VERSION: 8.4.7
-  VERSION: 8.4.7
+  SEMVER_VERSION: 8.4.8
+  VERSION: 8.4.8
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -78,15 +78,15 @@ contents:
           - wget
           - xz-utils
         files:
-          - url: git+https://github.com/redis/redis.git#8.4.7
-            checksum: 4039944d4f8817d7e15f184c0bbb29f946535364
+          - url: git+https://github.com/redis/redis.git#8.4.8
+            checksum: 03fb1dc35de324f2b062bfa46ab58b95af779809
             path: ${source.dir}/redis
             spdx:
               name: redis
-              version: 8.4.7
+              version: 8.4.8
               packages:
                 - name: redis
-                  purl: pkg:github/redis/redis@8.4.7
+                  purl: pkg:github/redis/redis@8.4.8
                   license: AGPL-3.0-only
             uid: 0
             gid: 0
@@ -168,7 +168,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /data
 environment:
-  REDIS_VERSION: 8.4.7
+  REDIS_VERSION: 8.4.8
 paths:
   - type: directory
     path: /var/lib/redis
