@@ -90,7 +90,8 @@ contents:
             bun pm pkg set overrides.tar="7.5.21"                    # GHSA-r292-9mhp-454m
             bun pm pkg set overrides.brace-expansion="5.0.12"        # CVE-2026-14257, CVE-2026-13149, CVE-2026-69152, CVE-2026-102276, CVE-2026-102277, CVE-2026-102278
             bun pm pkg set overrides.nanoid="3.3.18"                 # CVE-2026-67213
-            bun pm pkg set overrides.undici="8.10.2"                 # CVE-2026-85024
+            bun pm pkg set overrides.undici="8.12.2"                 # CVE-2026-85024, CVE-2026-109869, CVE-2026-109841, CVE-2026-109924
+            bun pm pkg set overrides.serialize-javascript="7.1.3"    # CVE-2026-115897
             bun pm pkg set overrides.devalue="5.9.3"                 # CVE-2026-92708, GHSA-x5rw-q4pp-hg5g, GHSA-r9w8-h9r3-54w4, GHSA-mcm9-63f2-9j32, GHSA-hx4r-w6wj-j8fg, GHSA-4q55-j62x-fr9h, GHSA-wf3x-273g-mvxv
             bun pm pkg set overrides.shell-quote="1.11.0"            # CVE-2026-102422
             bun pm pkg set overrides.source-map-js="1.2.2"           # CVE-2026-93749
