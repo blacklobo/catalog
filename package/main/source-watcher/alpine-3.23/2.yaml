@@ -3,22 +3,22 @@
 image: dhi.io/pkg-source-watcher
 variant: runtime
 tags:
-  - 2.2.4-alpine3.23
-  - 2.2.4-r6-alpine3.23
+  - 2.3.0-alpine3.23
+  - 2.3.0-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-03-12"
 vars:
-  COMMIT_SHA: 06cb1109bfa7834e8403e2b543d9838e1623f85a
-  GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.10-r0
-  REL: "6"
-  SEMVER_MAJOR_MINOR_VERSION: "2.2"
+  COMMIT_SHA: 60d842e2c810e4b669e4c7bce9af09b04c6958ac
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.3-r0
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "2.3"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.2.4
-  VERSION: 2.2.4
+  SEMVER_VERSION: 2.3.0
+  VERSION: 2.3.0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -40,18 +40,18 @@ contents:
           - findutils
           - mawk
           - sed
-          - golang-1.26=1.26.10-r0
-          - golang-1.26-oci-config=1.26.10-r0
+          - golang-1.27=1.27.3-r0
+          - golang-1.27-oci-config=1.27.3-r0
         files:
-          - url: git+https://github.com/fluxcd/source-watcher#v2.2.4
-            checksum: 06cb1109bfa7834e8403e2b543d9838e1623f85a
+          - url: git+https://github.com/fluxcd/source-watcher#v2.3.0
+            checksum: 60d842e2c810e4b669e4c7bce9af09b04c6958ac
             path: /go/src/github.com/fluxcd/source-watcher
             spdx:
               name: fluxcd-source-watcher
-              version: 2.2.4
+              version: 2.3.0
               packages:
                 - name: fluxcd-source-watcher
-                  purl: pkg:golang/github.com/fluxcd/source-watcher@2.2.4
+                  purl: pkg:golang/github.com/fluxcd/source-watcher@2.3.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -59,17 +59,12 @@ contents:
         - name: patch
           uses: go/bump@v2
           with:
-            deps:
-              - github.com/klauspost/compress@v1.18.7
-              - golang.org/x/mod@v0.40.0
-              - golang.org/x/net@v0.60.0
-              - golang.org/x/text@v0.42.0
+            deps: []
             download: true
         - name: patch with downgrade
           uses: go/bump@v2
           with:
-            deps:
-              - github.com/docker/cli@v29.2.0
+            deps: []
             downgrade: true
             download: true
         - name: test
@@ -100,14 +95,14 @@ contents:
               - usr/bin/fluxcd-source-watcher
             license: Apache-2.0
             name: fluxcd-source-watcher
-            rel: 6
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/fluxcd-source-watcher
                     source: usr/bin/fluxcd-source-watcher-dev
                 name: fluxcd-source-watcher-dev
             url: https://github.com/fluxcd/source-watcher
-            version: 2.2.4
+            version: 2.3.0
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
