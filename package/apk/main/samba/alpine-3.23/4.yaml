@@ -4,14 +4,15 @@ image: dhi.io/pkg-samba
 variant: runtime
 tags:
   - 4.22.10-alpine3.23
-  - 4.22.10-r0-alpine3.23
+  - 4.22.10-r1-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
+  _REL: "0"
   COMMIT_SHA: 0492819ba5c0d0da111c0499fb5903f0944b9599
   PACKAGE_NAME: main/samba
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "4.22"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.22.10
@@ -67,8 +68,8 @@ contents:
           - util-linux-dev
           - zlib-dev
           - py3-cryptography
-          - py3-dnspython
-          - py3-markdown
+          - py3.12-dnspython
+          - py3.12-markdown
           - py3-setproctitle
           - tdb
         files:
@@ -82,7 +83,37 @@ contents:
             gid: 0
       pipeline:
         - uses: abuild/setup@v1
+        - name: unpack samba source
+          runs: |
+            set -eux -o pipefail
+
+            rm -rf "${source.dir}/samba-4.22.10"
+            tar -xzf "/var/cache/distfiles/samba-4.22.10.tar.gz" -C "${source.dir}"
+        - name: apply samba security patch
+          uses: git/patch@v1
+          work-dir: ${source.dir}/samba-4.22.10
+          with:
+            patch: ${source.dir}/aports/main/samba/dhi-cve-2026-6949-security.patch
+        - name: repack patched samba source
+          runs: |
+            set -eux -o pipefail
+
+            tar -czf "/var/cache/distfiles/samba-4.22.10.tar.gz" -C "${source.dir}" "samba-4.22.10"
+        - uses: abuild/bump@v1
+          with:
+            rel: 1
+            version: 4.22.10
         - uses: abuild/build@v1
+          with:
+            command: checksum
+        - uses: abuild/build@v1
+      paths:
+        - type: file
+          path: ${source.dir}/aports/main/samba/dhi-cve-2026-6949-security.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/samba/patch/alpine-3.23/dhi-cve-2026-6949-security.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
