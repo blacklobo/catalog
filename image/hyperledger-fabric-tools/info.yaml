@@ -18,3 +18,5 @@ metadata:
       description: Utility for interacting with Fabric ledger data and performing maintenance operations
     - name: osnadmin
       description: CLI for managing channels on ordering service nodes via the participation API
+    - name: peer
+      description: CLI for operating peers and channels, including channel creation, join, fetch and chaincode lifecycle

@@ -1,15 +1,16 @@
 ## About Hyperledger Fabric Tools
 
 Hyperledger Fabric Tools is a hardened, minimal image that bundles the official CLI utilities for operating Hyperledger
-Fabric networks. It includes configtxgen, configtxlator, cryptogen, discover, ledgerutil, and osnadmin to support
-network bootstrapping, inspection, and administration workflows. Use it to generate channel artifacts and genesis blocks
-(configtxgen), translate and inspect configurations (configtxlator), and create or extend cryptographic material
-(cryptogen). The discover client queries peers for topology, configuration, and endorsement plans, while ledgerutil
-helps analyze and verify ledger snapshots. The osnadmin utility provides administration commands for ordering service
-nodes (OSNs), including channel join, list, update, and fetch operations.
+Fabric networks. It includes configtxgen, configtxlator, cryptogen, discover, ledgerutil, osnadmin, and the peer CLI to
+support network bootstrapping, inspection, and administration workflows. Use it to generate channel artifacts and
+genesis blocks (configtxgen), translate and inspect configurations (configtxlator), and create or extend cryptographic
+material (cryptogen). The discover client queries peers for topology, configuration, and endorsement plans, while
+ledgerutil helps analyze and verify ledger snapshots. The osnadmin utility provides administration commands for ordering
+service nodes (OSNs), including channel join, list, update, and fetch operations. The peer CLI drives channel and
+chaincode operations against a running network, such as fetching channel blocks and managing the chaincode lifecycle.
 
-This image targets operators and CI pipelines that need reliable, reproducible Fabric tooling without a full peer or
-orderer runtime. Binaries are built from upstream source with embedded version and commit metadata for precise
+This image targets operators and CI pipelines that need reliable, reproducible Fabric tooling without running a peer or
+orderer node. Binaries are built from upstream source with embedded version and commit metadata for precise
 traceability. For complete usage guidance and tutorials, see the Hyperledger Fabric documentation at
 https://hyperledger-fabric.readthedocs.io/.
 

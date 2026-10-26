@@ -13,11 +13,12 @@ For the examples, you must first use `docker login dhi.io` to authenticate to th
 ### What's included in this Hyperledger Fabric Tools Hardened image
 
 Hyperledger Fabric Tools is a collection of command-line utilities for managing and configuring Hyperledger Fabric
-blockchain networks. This hardened image includes six essential tools: `configtxgen` for generating channel
-configuration artifacts, `configtxlator` for translating configuration between binary and JSON formats, `cryptogen` for
-generating cryptographic key material, `discover` for service discovery, `ledgerutil` for ledger maintenance operations,
-and `osnadmin` for managing orderer channels. The hardened image provides the same functionality as upstream Hyperledger
-Fabric but runs with Docker Hardened Image security guarantees.
+blockchain networks. This hardened image includes seven tools: `configtxgen` for generating channel configuration
+artifacts, `configtxlator` for translating configuration between binary and JSON formats, `cryptogen` for generating
+cryptographic key material, `discover` for service discovery, `ledgerutil` for ledger maintenance operations, `osnadmin`
+for managing orderer channels, and the `peer` CLI for channel and chaincode operations against peers and orderers. The
+hardened image provides the same functionality as upstream Hyperledger Fabric but runs with Docker Hardened Image
+security guarantees.
 
 These tools are primarily used during network setup, configuration updates, and maintenance operations. They enable
 administrators to create genesis blocks, generate channel transaction configurations, manage cryptographic identities,
@@ -43,6 +44,7 @@ material with cryptogen:
 ```bash
 # Generate crypto material using the template
 docker run --rm \
+  --user "$(id -u):$(id -g)" \
   -v $(pwd):/work \
   dhi.io/hyperledger-fabric-tools:<tag> \
   cryptogen generate --config=/work/crypto-config.yaml --output=/work/crypto-config
@@ -53,22 +55,50 @@ specification. The output is written to the `crypto-config` directory on your ho
 use `FABRIC_CFG_PATH`, mount your config directory with `-v` and set the environment variable with
 `-e FABRIC_CFG_PATH=/config`.
 
+The image sets `FABRIC_CFG_PATH=/etc/hyperledger/fabric`, as the upstream image does, but ships no sample configuration
+in that directory. Mount the directory that holds your `core.yaml` and `configtx.yaml` at `/etc/hyperledger/fabric`, or
+mount it elsewhere and set `FABRIC_CFG_PATH` to match, before running `peer` channel or chaincode commands; without it
+they fail with `Config File "core" Not Found`. Commands that read no configuration run as is:
+
+```bash
+docker run --rm dhi.io/hyperledger-fabric-tools:<tag> peer version
+```
+
 ## Common Hyperledger Fabric Tools use cases
+
+### Package Go chaincode
+
+`peer lifecycle chaincode package --lang golang` runs the Go toolchain to resolve the chaincode module, and the image
+does not ship Go, so on runtime variants it fails with `exec: "go": executable file not found in $PATH`. Use a `dev`
+variant and install Go from the Docker Hardened Images repository first:
+
+```bash
+docker run --rm \
+  -v $(pwd)/config:/etc/hyperledger/fabric \
+  -v $(pwd)/chaincode:/chaincode \
+  -v $(pwd)/out:/out \
+  dhi.io/hyperledger-fabric-tools:<tag>-dev \
+  bash -c 'apt-get update && apt-get install -y golang-1.26 && \
+    peer lifecycle chaincode package /out/chaincode.tar.gz --path /chaincode --lang golang --label chaincode_1'
+```
 
 ## Non-hardened images vs Docker Hardened Images
 
 ### Key differences
 
-| Feature         | Non-hardened Hyperledger Fabric Tools | Docker Hardened Hyperledger Fabric Tools |
-| --------------- | ------------------------------------- | ---------------------------------------- |
-| Base image      | Ubuntu-based                          | Debian hardened base                     |
-| Security        | Standard utilities                    | Security patches + metadata              |
-| Shell access    | Shell available                       | No shell                                 |
-| Package manager | `apt`                                 | No package manager                       |
-| User            | Runs as root                          | Runs as dedicated non-root user          |
-| Build process   | Pre-compiled binaries                 | Built from source with verified commit   |
-| Debugging       | Shell + tools                         | Docker Debug or Image Mount              |
-| SBOM            | Not included                          | SBOM included                            |
+| Feature         | Non-hardened Hyperledger Fabric Tools                                           | Docker Hardened Hyperledger Fabric Tools                                       |
+| --------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Base image      | Ubuntu-based                                                                    | Debian hardened base                                                           |
+| Security        | Standard utilities                                                              | Security patches + metadata                                                    |
+| Shell access    | Shell available                                                                 | No shell                                                                       |
+| Package manager | `apt`                                                                           | No package manager                                                             |
+| User            | Runs as root                                                                    | Runs as dedicated non-root user                                                |
+| Build process   | Pre-compiled binaries                                                           | Built from source with verified commit                                         |
+| Binaries        | `/usr/local/bin`                                                                | `/usr/bin`, with `/usr/local/bin` symlinks for each tool                       |
+| Sample config   | `sampleconfig` in `/etc/hyperledger/fabric`, including a sample MSP signing key | Not included; mount your own config and set `FABRIC_CFG_PATH`                  |
+| Go toolchain    | Included                                                                        | Not included; install `golang-1.26` in a `dev` variant to package Go chaincode |
+| Debugging       | Shell + tools                                                                   | Docker Debug or Image Mount                                                    |
+| SBOM            | Not included                                                                    | SBOM included                                                                  |
 
 ## Hardened image debugging
 
@@ -111,7 +141,7 @@ Since the tools generate configuration files and cryptographic material, debug b
 
 ```bash
 # Generate crypto material
-docker run --rm -v $(pwd):/work \
+docker run --rm --user "$(id -u):$(id -g)" -v $(pwd):/work \
   dhi.io/hyperledger-fabric-tools:<tag> \
   cryptogen generate --config=/work/crypto-config.yaml --output=/work/crypto-config
 
@@ -137,6 +167,13 @@ Docker Hardened Images come in different variants depending on their intended us
   - Run as the root user
   - Include a shell and package manager
   - Are used to build or compile applications
+
+- FIPS variants include `fips` in the variant name and tag. They come in both runtime and build-time variants. These
+  variants use cryptographic modules that have been validated under FIPS 140, a U.S. government standard for secure
+  cryptographic operations. For example, usage of MD5 fails in FIPS variants.
+
+To view the image variants and get more information about them, select the Tags tab for this repository, and then select
+a tag.
 
 ## Migrate to a Docker Hardened Image
 
