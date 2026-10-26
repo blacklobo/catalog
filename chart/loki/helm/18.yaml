@@ -16,7 +16,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_ROLLOUT_OPERATOR_CHART_REFERENCE: dhi/grafana-rollout-operator-chart:0.53.1@sha256:b36f817abe9be2759937df9be71a9abbffad73be1c86d350d4863aab8c3939ed
+  GRAFANA_ROLLOUT_OPERATOR_CHART_REFERENCE: dhi/grafana-rollout-operator-chart:0.53.1@sha256:dc4eab15a152a08103e5637ad83cc0b534d298c7ca2c4c042885b027d0a694cb
   HELM_VERSION: 4.1.4-2
   K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:2c7807cfb3d3a9e9de6dd885a2c1b03c7e9fc692ae9dca30da9cff4bdc3f760f
   KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:05a8bfd374ee906a6748aae9506886fe33d1696e00c864929d9e3dff2785d5bd
@@ -62,7 +62,7 @@ contents:
                 - alias: rollout_operator
                   condition: rollout_operator.enabled
                   name: rollout-operator
-                  ref: dhi/grafana-rollout-operator-chart:0.53.1@sha256:b36f817abe9be2759937df9be71a9abbffad73be1c86d350d4863aab8c3939ed
+                  ref: dhi/grafana-rollout-operator-chart:0.53.1@sha256:dc4eab15a152a08103e5637ad83cc0b534d298c7ca2c4c042885b027d0a694cb
               description: Docker Hardened Images Helm chart for Grafana Loki
               images:
                 - name: loki
