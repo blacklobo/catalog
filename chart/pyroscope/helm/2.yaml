@@ -4,13 +4,13 @@ name: Pyroscope Helm chart 2.x
 image: dhi.io/pyroscope-chart
 variant: helm
 tags:
-  - 2.4.1
+  - 2.4.2
 platforms:
   - linux/amd64
 vars:
   CHART_COMMIT_SHA: d969f943947df3a22525418ac3f9f1ae86b5c13f
   CHART_HELM_NAME: pyroscope-chart
-  COMMIT_SHA: 36d558a4799e86ce9814a5348e6ecc300e4ed192
+  COMMIT_SHA: 10a78e5ef038f8b97d6966bc76f1cf21bb5616ac
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -19,8 +19,8 @@ vars:
   PYROSCOPE_REFERENCE: dhi/pyroscope:2.3.2-debian13@sha256:a4d7910a42ca635df09ed08cc8255cf922d66c02f37cfed4cfc88c9f5c2c4673
   SEMVER_MAJOR_MINOR_VERSION: "2.4"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.4.1
-  VERSION: 2.4.1
+  SEMVER_VERSION: 2.4.2
+  VERSION: 2.4.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
