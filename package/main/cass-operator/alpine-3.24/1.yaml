@@ -3,22 +3,22 @@
 image: dhi.io/pkg-cass-operator
 variant: runtime
 tags:
-  - 1.33.0-alpine3.24
-  - 1.33.0-r0-alpine3.24
+  - 1.33.1-alpine3.24
+  - 1.33.1-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-10-24"
 vars:
-  COMMIT_SHA: f88f577347336c300419a5567e258ba8eb5c5a07
+  COMMIT_SHA: c18a5d5e78ca672633dce1493426929c3396b24e
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.33"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.33.0
-  VERSION: 1.33.0
+  SEMVER_VERSION: 1.33.1
+  VERSION: 1.33.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -46,15 +46,15 @@ contents:
           - golang-1.26=1.26.10-r0
           - golang-1.26-oci-config=1.26.10-r0
         files:
-          - url: git+https://github.com/k8ssandra/cass-operator.git#v1.33.0
-            checksum: f88f577347336c300419a5567e258ba8eb5c5a07
+          - url: git+https://github.com/k8ssandra/cass-operator.git#v1.33.1
+            checksum: c18a5d5e78ca672633dce1493426929c3396b24e
             path: /go/src/github.com/k8ssandra/cass-operator
             spdx:
               name: k8ssandra-cass-operator
-              version: 1.33.0
+              version: 1.33.1
               packages:
                 - name: k8ssandra-cass-operator
-                  purl: pkg:golang/github.com/k8ssandra/cass-operator@1.33.0
+                  purl: pkg:golang/github.com/k8ssandra/cass-operator@1.33.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -104,7 +104,7 @@ contents:
                     source: usr/bin/manager-dev
                 name: cass-operator-dev
             url: https://github.com/k8ssandra/cass-operator
-            version: 1.33.0
+            version: 1.33.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
