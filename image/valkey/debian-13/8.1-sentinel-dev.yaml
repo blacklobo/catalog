@@ -7,13 +7,13 @@ flavor: sentinel
 tags:
   - 8-sentinel-dev
   - 8.1-sentinel-dev
-  - 8.1.10-sentinel-dev
+  - 8.1.11-sentinel-dev
   - 8-debian-sentinel-dev
   - 8-debian13-sentinel-dev
   - 8.1-debian-sentinel-dev
   - 8.1-debian13-sentinel-dev
-  - 8.1.10-debian-sentinel-dev
-  - 8.1.10-debian13-sentinel-dev
+  - 8.1.11-debian-sentinel-dev
+  - 8.1.11-debian13-sentinel-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,11 +21,11 @@ dates:
   release: "2025-03-31"
   end-of-life: "2030-03-31"
 vars:
-  COMMIT_SHA: 55a542671762eaddff979f78dc6a3d1414ce1d75
+  COMMIT_SHA: 5fb5bc4b13b22084b54c7db2a88d14ce2f6fa867
   DEBIAN_EPOCH_MAJOR_MINOR_VERSION: "8.1"
   DEBIAN_EPOCH_MAJOR_VERSION: "8"
-  DEBIAN_EPOCH_VERSION: 8.1.10
-  VERSION: 8.1.10
+  DEBIAN_EPOCH_VERSION: 8.1.11
+  VERSION: 8.1.11
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -69,15 +69,15 @@ contents:
           - python3
           - sed
         files:
-          - url: git+https://github.com/valkey-io/valkey.git#8.1.10
-            checksum: 55a542671762eaddff979f78dc6a3d1414ce1d75
+          - url: git+https://github.com/valkey-io/valkey.git#8.1.11
+            checksum: 5fb5bc4b13b22084b54c7db2a88d14ce2f6fa867
             path: ${source.dir}/valkey
             spdx:
               name: valkey
-              version: 8.1.10
+              version: 8.1.11
               packages:
                 - name: valkey
-                  purl: pkg:dhi/valkey@8.1.10
+                  purl: pkg:dhi/valkey@8.1.11
                   license: BSD-3-Clause
             uid: 0
             gid: 0
