@@ -98,6 +98,13 @@ contents:
             options: -p1
             patches:
               - ${source.dir}/patch/compactionworker-successful-compaction-sync.patch
+        - name: patch segmentwriter query batches
+          uses: patch@v1
+          work-dir: /go/src/github.com/grafana/pyroscope
+          with:
+            options: -p1
+            patches:
+              - ${source.dir}/patch/segmentwriter-query-all-batches.patch
         - name: test
           work-dir: /go/src/github.com/grafana/pyroscope
           privileged: true
@@ -133,6 +140,11 @@ contents:
           uid: 0
           gid: 0
           source: image/pyroscope/debian-13/patch/compactionworker-successful-compaction-sync.patch
+        - type: file
+          path: ${source.dir}/patch/segmentwriter-query-all-batches.patch
+          uid: 0
+          gid: 0
+          source: image/pyroscope/debian-13/patch/segmentwriter-query-all-batches.patch
       outputs:
         - source: ${target.dir}/usr/local/bin/pyroscope
           target: /usr/bin/pyroscope

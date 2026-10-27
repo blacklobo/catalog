@@ -1,29 +1,29 @@
 # syntax=dhi.io/build:2-debian13
 
-name: Pyroscope 2.3.x (dev)
+name: Pyroscope 2.4.x (dev)
 image: dhi.io/pyroscope
 variant: dev
 tags:
   - 2-dev
-  - 2.3-dev
-  - 2.3.2-dev
+  - 2.4-dev
+  - 2.4.0-dev
   - 2-debian-dev
   - 2-debian13-dev
-  - 2.3-debian-dev
-  - 2.3-debian13-dev
-  - 2.3.2-debian-dev
-  - 2.3.2-debian13-dev
+  - 2.4-debian-dev
+  - 2.4-debian13-dev
+  - 2.4.0-debian-dev
+  - 2.4.0-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-04-20"
 vars:
-  COMMIT_SHA: 3c4756f665e234f52f4f9c8e0a7ee80d212d4b5f
-  SEMVER_MAJOR_MINOR_VERSION: "2.3"
+  COMMIT_SHA: 1c9109674636cfd5c5e61ee3b01ed93c06bff8be
+  SEMVER_MAJOR_MINOR_VERSION: "2.4"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.3.2
-  VERSION: 2.3.2
+  SEMVER_VERSION: 2.4.0
+  VERSION: 2.4.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -63,15 +63,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/grafana/pyroscope.git#v2.3.2
-            checksum: 3c4756f665e234f52f4f9c8e0a7ee80d212d4b5f
+          - url: git+https://github.com/grafana/pyroscope.git#v2.4.0
+            checksum: 1c9109674636cfd5c5e61ee3b01ed93c06bff8be
             path: /go/src/github.com/grafana/pyroscope
             spdx:
               name: pyroscope
-              version: 2.3.2
+              version: 2.4.0
               packages:
                 - name: pyroscope
-                  purl: pkg:golang/github.com/grafana/pyroscope@2.3.2
+                  purl: pkg:golang/github.com/grafana/pyroscope@2.4.0
                   license: AGPL-3.0
             uid: 0
             gid: 0
@@ -102,13 +102,13 @@ contents:
               - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0
               - go.opentelemetry.io/otel/exporters/stdout/stdoutlog=go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0
             tidy: true
-        - name: patch compactionworker successful compaction sync
+        - name: patch segmentwriter query batches
           uses: patch@v1
           work-dir: /go/src/github.com/grafana/pyroscope
           with:
             options: -p1
             patches:
-              - ${source.dir}/patch/compactionworker-successful-compaction-sync.patch
+              - ${source.dir}/patch/segmentwriter-query-all-batches.patch
         - name: test (2 only)
           work-dir: /go/src/github.com/grafana/pyroscope
           privileged: true
@@ -130,10 +130,10 @@ contents:
             packages: ./cmd/profilecli
       paths:
         - type: file
-          path: ${source.dir}/patch/compactionworker-successful-compaction-sync.patch
+          path: ${source.dir}/patch/segmentwriter-query-all-batches.patch
           uid: 0
           gid: 0
-          source: image/pyroscope/debian-13/patch/compactionworker-successful-compaction-sync.patch
+          source: image/pyroscope/debian-13/patch/segmentwriter-query-all-batches.patch
       outputs:
         - source: ${target.dir}/usr/local/bin/pyroscope
           target: /usr/bin/pyroscope
