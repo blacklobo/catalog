@@ -4,11 +4,8 @@ name: LiteLLM Database 1.102.x
 image: dhi.io/litellm-database
 variant: runtime
 tags:
-  - "1"
   - "1.102"
   - 1.102.4
-  - 1-debian
-  - 1-debian13
   - 1.102-debian
   - 1.102-debian13
   - 1.102.4-debian
