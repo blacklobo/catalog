@@ -19,7 +19,7 @@ vars:
   CACHE_SERVER_BINARY: redis-server
   CACHE_SERVER_PRODUCT: Redis
   CACHE_SERVER_VERSION_PREFIX: 7.2.
-  REDIS_VERSION: 6:7.2.16-1rl1~trixie1
+  REDIS_VERSION: 6:7.2.17-1rl1~trixie1
   SEMVER_MAJOR_MINOR_VERSION: "2.13"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.13.6
@@ -58,16 +58,16 @@ contents:
     - lsb-base
     - mawk
     - perl-base
-    - redis-server=6:7.2.16-1rl1~trixie1
-    - redis-tools=6:7.2.16-1rl1~trixie1
-    - redis=6:7.2.16-1rl1~trixie1
+    - redis-server=6:7.2.17-1rl1~trixie1
+    - redis-tools=6:7.2.17-1rl1~trixie1
+    - redis=6:7.2.17-1rl1~trixie1
     - sed
     - tzdata
     - util-linux
   mappings:
-    redis: pkg:deb/redis/redis@6:7.2.16-1rl1~trixie1?os_name=debian&os_version=13
-    redis-server: pkg:deb/redis/redis-server@6:7.2.16-1rl1~trixie1?os_name=debian&os_version=13
-    redis-tools: pkg:deb/redis/redis-tools@6:7.2.16-1rl1~trixie1?os_name=debian&os_version=13
+    redis: pkg:deb/redis/redis@6:7.2.17-1rl1~trixie1?os_name=debian&os_version=13
+    redis-server: pkg:deb/redis/redis-server@6:7.2.17-1rl1~trixie1?os_name=debian&os_version=13
+    redis-tools: pkg:deb/redis/redis-tools@6:7.2.17-1rl1~trixie1?os_name=debian&os_version=13
 accounts:
   root: true
   run-as: root
