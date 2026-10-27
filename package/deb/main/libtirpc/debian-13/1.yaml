@@ -3,8 +3,8 @@
 image: dhi.io/pkg-libtirpc
 variant: runtime
 tags:
-  - 1.3.6-ds-1-deb13u0-dhi1
-  - 1.3.6-ds-1-deb13u0-dhi1-debian13
+  - 1.3.6-ds-1-dhi2
+  - 1.3.6-ds-1-dhi2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,9 +20,9 @@ vars:
   DEBIAN_ORIG_FILENAME: libtirpc_1.3.6+ds.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/libt/libtirpc/libtirpc_1.3.6+ds.orig.tar.gz
   DEBIAN_VERSION: 1.3.6+ds-1
-  DHI_REL: "1"
-  DHI_VERSION: 1.3.6+ds-1+deb13u0+dhi1
-  TAG_VERSION: 1.3.6-ds-1-deb13u0-dhi1
+  DHI_REL: "2"
+  DHI_VERSION: 1.3.6+ds-1+dhi2
+  TAG_VERSION: 1.3.6-ds-1-dhi2
   UPSTREAM_VERSION: 1.3.6+ds
 contents:
   packages:
@@ -60,12 +60,32 @@ contents:
           with:
             file: libtirpc_1.3.6+ds-1.dsc
             path: libtirpc
+        - uses: dpkg/patch@v1
+          with:
+            apply: true
+            patches:
+              - ${source.dir}/patch/dhi-cve-2026-85231-gss-unwrap-bound.patch
+              - ${source.dir}/patch/dhi-cve-2026-85977-xdr-list-bound.patch
         - uses: dpkg/bump@v1
           with:
-            version: 1.3.6+ds-1+deb13u0+dhi1
+            changelog:
+              - Backport upstream RPCSEC_GSS decode bound to fix CVE-2026-85231
+              - Backport upstream XDR list decode bounds to fix CVE-2026-85977
+            version: 1.3.6+ds-1+dhi2
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
+      paths:
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2026-85231-gss-unwrap-bound.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/libtirpc/patch/dhi-cve-2026-85231-gss-unwrap-bound.patch
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2026-85977-xdr-list-bound.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/libtirpc/patch/dhi-cve-2026-85977-xdr-list-bound.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
