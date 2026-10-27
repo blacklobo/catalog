@@ -1,6 +1,6 @@
 DHI packaging builds only run :nessie-quarkus:quarkusBuild and do not publish to Gradle Enterprise or Maven Central.
 Upstream settings.gradle.kts applies com.gradle.develocity and com.gradleup.nmcp.settings for CI workflows that need outbound access to plugins.gradle.org and Sonatype.
-Reference: https://github.com/projectnessie/nessie/blob/nessie-0.108.8/settings.gradle.kts
+Reference: https://github.com/projectnessie/nessie/blob/nessie-0.109.0/settings.gradle.kts
 diff --git a/build.gradle.kts b/build.gradle.kts
 index 46d49a8..fbee9f1 100644
 --- a/build.gradle.kts
@@ -227,7 +227,7 @@ index 656b1cc..2bf29a8 100644
  }
  
  plugins {
--  id("com.gradle.develocity") version ("4.5.1")
+-  id("com.gradle.develocity") version ("4.6.0")
 -  id("com.gradleup.nmcp.settings") version ("1.6.2")
    if (
      providers.environmentVariable("CI").isPresent ||
