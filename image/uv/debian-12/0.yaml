@@ -6,19 +6,19 @@ variant: runtime
 tags:
   - 0-debian12
   - 0.13-debian12
-  - 0.13.5-debian12
+  - 0.13.6-debian12
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   BASE_DIGEST: sha256:db6580f0ba81791a391635efe3931e9817cffbb8bfe3c6e37a8564c24b411705
   BASE_TAG: 20250419-glibc-debian12
-  COMMIT_SHA: 46776a95d6686ac0160c10611327ce491e6b202f
+  COMMIT_SHA: 329bf9448afd9f9088d14a4d57fbc61eb454f117
   RUST_REFERENCE: dhi/rust:1.99.1-debian12-sfw-dev@sha256:2e0b672d7845add6c78a1f557beab61ac7b05a720804f95804f71c1859af64b7
   SEMVER_MAJOR_MINOR_VERSION: "0.13"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.13.5
-  VERSION: 0.13.5
+  SEMVER_VERSION: 0.13.6
+  VERSION: 0.13.6
 contents:
   packages:
     - '!base-files'
@@ -34,15 +34,15 @@ contents:
           - libssl-dev
           - pkg-config
         files:
-          - url: git+https://github.com/astral-sh/uv.git#0.13.5
-            checksum: 46776a95d6686ac0160c10611327ce491e6b202f
-            path: ${source.dir}/uv-46776a95d6686ac0160c10611327ce491e6b202f
+          - url: git+https://github.com/astral-sh/uv.git#0.13.6
+            checksum: 329bf9448afd9f9088d14a4d57fbc61eb454f117
+            path: ${source.dir}/uv-329bf9448afd9f9088d14a4d57fbc61eb454f117
             spdx:
               name: uv
-              version: 0.13.5
+              version: 0.13.6
               packages:
                 - name: uv
-                  purl: pkg:dhi/uv@0.13.5
+                  purl: pkg:dhi/uv@0.13.6
                   license: MIT
             uid: 0
             gid: 0
@@ -54,12 +54,12 @@ contents:
 
             cargo install cargo-auditable cargo-audit
         - name: bump cargo dependencies
-          work-dir: ${source.dir}/uv-46776a95d6686ac0160c10611327ce491e6b202f
+          work-dir: ${source.dir}/uv-329bf9448afd9f9088d14a4d57fbc61eb454f117
           privileged: true
           runs: |
             set -eux -o pipefail
 
-            # quinn-proto: upstream Cargo.lock at 0.13.5 already pins 0.11.18 (removed prior --precise 0.11.15 pin that caused GHSA findings)
+            # quinn-proto: upstream Cargo.lock at 0.13.6 already pins 0.11.18 (removed prior --precise 0.11.15 pin that caused GHSA findings)
 
             # RUSTSEC-2026-0186 → memmap2 ≥0.9.11
             cargo update --package memmap2 --precise 0.9.11
@@ -74,7 +74,7 @@ contents:
             cargo update --package rustls-webpki --precise 0.103.16
             cargo update --package webpki-root-certs --precise 1.0.10
         - name: build
-          work-dir: ${source.dir}/uv-46776a95d6686ac0160c10611327ce491e6b202f
+          work-dir: ${source.dir}/uv-329bf9448afd9f9088d14a4d57fbc61eb454f117
           privileged: true
           runs: |
             set -eux -o pipefail
@@ -83,13 +83,13 @@ contents:
         - name: strip
           uses: strip@v1
           with:
-            dir: ${source.dir}/uv-46776a95d6686ac0160c10611327ce491e6b202f/target
+            dir: ${source.dir}/uv-329bf9448afd9f9088d14a4d57fbc61eb454f117/target
       outputs:
-        - source: ${source.dir}/uv-46776a95d6686ac0160c10611327ce491e6b202f/target/release/uv
+        - source: ${source.dir}/uv-329bf9448afd9f9088d14a4d57fbc61eb454f117/target/release/uv
           target: /usr/local/bin/uv
           uid: 0
           gid: 0
-        - source: ${source.dir}/uv-46776a95d6686ac0160c10611327ce491e6b202f/target/release/uvx
+        - source: ${source.dir}/uv-329bf9448afd9f9088d14a4d57fbc61eb454f117/target/release/uvx
           target: /usr/local/bin/uvx
           uid: 0
           gid: 0
@@ -136,7 +136,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /io
 environment:
-  UV_VERSION: 0.13.5
+  UV_VERSION: 0.13.6
 paths:
   - type: directory
     path: /io
