@@ -3,23 +3,23 @@
 image: dhi.io/pkg-k8ssandra-system-logger
 variant: runtime
 tags:
-  - 1.33.0
-  - 1.33.0-r0
-  - 1.33.0-debian13
-  - 1.33.0-r0-debian13
+  - 1.33.1
+  - 1.33.1-r0
+  - 1.33.1-debian13
+  - 1.33.1-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2024-06-17"
 vars:
-  COMMIT_SHA: f88f577347336c300419a5567e258ba8eb5c5a07
+  COMMIT_SHA: c18a5d5e78ca672633dce1493426929c3396b24e
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.33"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.33.0
+  SEMVER_VERSION: 1.33.1
   VECTOR_REFERENCE: dhi/vector:0.60.0-debian13@sha256:8b65fedd2f68409f50fcbd8391df62118b847f481b245861ad4f75810c490993
-  VERSION: 1.33.0
+  VERSION: 1.33.1
 contents:
   packages:
     - base-files
@@ -31,15 +31,15 @@ contents:
           - ca-certificates
           - coreutils
         files:
-          - url: git+https://github.com/k8ssandra/cass-operator.git#v1.33.0
-            checksum: f88f577347336c300419a5567e258ba8eb5c5a07
+          - url: git+https://github.com/k8ssandra/cass-operator.git#v1.33.1
+            checksum: c18a5d5e78ca672633dce1493426929c3396b24e
             path: ${source.dir}/cass-operator
             spdx:
               name: k8ssandra-cass-operator
-              version: 1.33.0
+              version: 1.33.1
               packages:
                 - name: k8ssandra-cass-operator
-                  purl: pkg:golang/github.com/k8ssandra/cass-operator@1.33.0
+                  purl: pkg:golang/github.com/k8ssandra/cass-operator@1.33.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -73,7 +73,7 @@ contents:
             name: k8ssandra-system-logger
             rel: 0
             url: https://github.com/k8ssandra/cass-operator
-            version: 1.33.0
+            version: 1.33.1
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
