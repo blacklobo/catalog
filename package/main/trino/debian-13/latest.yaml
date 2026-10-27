@@ -3,10 +3,10 @@
 image: dhi.io/pkg-trino
 variant: runtime
 tags:
-  - "483"
-  - 483-r12
-  - 483-debian13
-  - 483-r12-debian13
+  - "484"
+  - 484-r0
+  - 484-debian13
+  - 484-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ dates:
   release: "2025-10-29"
 vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
-  COMMIT_SHA: 50b0b50b75abd47f830b7805ee1b51716eb4065e
+  COMMIT_SHA: e2d50bb733e193607c44be84ad80ce2430ba1d01
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-0
   JDK_MAJOR_VERSION: "25"
@@ -22,13 +22,13 @@ vars:
   JVM_KILL_COMMIT_SHA: 8a6ae95b38905f98ce6b7b727efb2dc75da16e11
   LAUNCHER_COMMIT_SHA: 55cda05870182df2be6b7bb081989bbb4253611a
   LAUNCHER_VERSION: "321"
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk25-debian13-dev@sha256:64dde725c464b2c31e4d9c15395d67f624b3b9b62f39095971ebc9a95bf4eed7
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk25-debian13-dev@sha256:db4348212480ef89f4328b26742288dc84525b3de9e48342ed50be08f4622cf4
   MAVEN_VERSION: 3.10.0
-  NODEJS_VERSION: 24.21.0-1
+  NODEJS_VERSION: 24.22.0-0
   PACKAGE_HOME: /usr/share/trino
   PACKAGE_NAME: trino
-  REL: "12"
-  VERSION: "483"
+  REL: "0"
+  VERSION: "484"
 contents:
   packages:
     - base-files
