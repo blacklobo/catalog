@@ -3,25 +3,25 @@
 image: dhi.io/pkg-supabase-storage
 variant: runtime
 tags:
-  - 1.79.30
-  - 1.79.30-r2
-  - 1.79.30-debian13
-  - 1.79.30-r2-debian13
+  - 1.84.25
+  - 1.84.25-r0
+  - 1.84.25-debian13
+  - 1.84.25-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2024-04-11"
 vars:
-  COMMIT_SHA: 76b70ba80e7c171d6b534db3c65430467a82f4bd
+  COMMIT_SHA: 3a88e1f74b7082d83a456449806a222e3e6c3bfa
   DHI_TEST_DEB_EXPECTED_FILES: /usr/lib/supabase-storage/dist/start/server.js /usr/lib/supabase-storage/migrations/tenant /usr/lib/supabase-storage/migrations/multitenant /usr/lib/supabase-storage/migrations/vector_store /usr/lib/supabase-storage/package.json /usr/lib/supabase-storage/watt.json /usr/lib/supabase-storage/watt.storage.json /usr/lib/supabase-storage/node_modules/fs-xattr/build/Release/xattr.node
   NODE_ARCH: '#{ target.arch == "amd64" ? "x64" : "arm64" }'
-  NODEJS_VERSION: 24.21.0-1
-  REL: "2"
-  SEMVER_MAJOR_MINOR_VERSION: "1.79"
+  NODEJS_VERSION: 24.22.1-1
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "1.84"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.79.30
-  VERSION: 1.79.30
+  SEMVER_VERSION: 1.84.25
+  VERSION: 1.84.25
 contents:
   packages:
     - base-files
@@ -51,20 +51,20 @@ contents:
           - libstdc++6
           - make
           - mawk
-          - nodejs-24=24.21.0-1
+          - nodejs-24=24.22.1-1
           - npm
           - python-3.13
           - sed
         files:
-          - url: git+https://github.com/supabase/storage.git#v1.79.30
-            checksum: 76b70ba80e7c171d6b534db3c65430467a82f4bd
+          - url: git+https://github.com/supabase/storage.git#v1.84.25
+            checksum: 3a88e1f74b7082d83a456449806a222e3e6c3bfa
             path: ${source.dir}/supabase-storage
             spdx:
               name: supabase-storage
-              version: 1.79.30
+              version: 1.84.25
               packages:
                 - name: supabase-storage
-                  purl: pkg:github/supabase/storage@1.79.30
+                  purl: pkg:github/supabase/storage@1.84.25
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -208,9 +208,9 @@ contents:
               - deb
             license: Apache-2.0
             name: supabase-storage
-            rel: 2
+            rel: 0
             url: https://github.com/supabase/storage
-            version: 1.79.30
+            version: 1.84.25
       paths:
         - type: file
           path: ${source.dir}/patch/npm-bump.json

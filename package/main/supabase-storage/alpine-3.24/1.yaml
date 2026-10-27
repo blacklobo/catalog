@@ -3,23 +3,23 @@
 image: dhi.io/pkg-supabase-storage
 variant: runtime
 tags:
-  - 1.74.1-alpine3.24
-  - 1.74.1-r3-alpine3.24
+  - 1.84.25-alpine3.24
+  - 1.84.25-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2024-04-11"
 vars:
-  COMMIT_SHA: b41d14fa15547284b351ea024f8c83a201cdc83a
+  COMMIT_SHA: 3a88e1f74b7082d83a456449806a222e3e6c3bfa
   DHI_TEST_APK_EXPECTED_FILES: /usr/lib/supabase-storage/dist/start/server.js /usr/lib/supabase-storage/migrations/tenant /usr/lib/supabase-storage/migrations/multitenant /usr/lib/supabase-storage/migrations/vector_store /usr/lib/supabase-storage/package.json /usr/lib/supabase-storage/watt.json /usr/lib/supabase-storage/watt.storage.json /usr/lib/supabase-storage/node_modules/fs-xattr/build/Release/xattr.node
   NODE_ARCH: '#{ target.arch == "amd64" ? "x64" : "arm64" }'
-  NODEJS_VERSION: 24.21.0-r0
-  REL: "3"
-  SEMVER_MAJOR_MINOR_VERSION: "1.74"
+  NODEJS_VERSION: 24.22.1-r1
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "1.84"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.74.1
-  VERSION: 1.74.1
+  SEMVER_VERSION: 1.84.25
+  VERSION: 1.84.25
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -50,20 +50,20 @@ contents:
           - git
           - libstdc++
           - mawk
-          - nodejs-24=24.21.0-r0
+          - nodejs-24=24.22.1-r1
           - npm
           - python3
           - sed
         files:
-          - url: git+https://github.com/supabase/storage.git#v1.74.1
-            checksum: b41d14fa15547284b351ea024f8c83a201cdc83a
+          - url: git+https://github.com/supabase/storage.git#v1.84.25
+            checksum: 3a88e1f74b7082d83a456449806a222e3e6c3bfa
             path: ${source.dir}/supabase-storage
             spdx:
               name: supabase-storage
-              version: 1.74.1
+              version: 1.84.25
               packages:
                 - name: supabase-storage
-                  purl: pkg:github/supabase/storage@1.74.1
+                  purl: pkg:github/supabase/storage@1.84.25
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -208,9 +208,9 @@ contents:
               - apk
             license: Apache-2.0
             name: supabase-storage
-            rel: 3
+            rel: 0
             url: https://github.com/supabase/storage
-            version: 1.74.1
+            version: 1.84.25
       paths:
         - type: file
           path: ${source.dir}/patch/npm-bump.json

@@ -1,7 +1,7 @@
 [
     {
         "package": "undici",
-        "version": "7.29.1",
+        "version": "7.30.1",
         "cves": [
             "CVE-2026-13697",
             "CVE-2026-14643",
@@ -14,15 +14,22 @@
             "CVE-2026-84933",
             "CVE-2026-84961",
             "CVE-2026-85014",
-            "CVE-2026-85024"
+            "CVE-2026-85024",
+            "CVE-2026-109841",
+            "CVE-2026-109869",
+            "CVE-2026-109924"
         ]
     },
     {
-        "package": "js-yaml",
-        "version": "4.3.2",
+        "package": "undici",
+        "version": "8.12.2",
         "cves": [
-            "CVE-2026-84375",
-            "GHSA-5p4m-2wfm-xmqj"
+            "CVE-2026-109841",
+            "CVE-2026-109869",
+            "CVE-2026-109924"
+        ],
+        "overridePath": [
+            "undici@8"
         ]
     },
     {
@@ -71,7 +78,7 @@
     },
     {
         "package": "fast-uri",
-        "version": "3.1.8",
+        "version": "4.2.3",
         "cves": [
             "CVE-2026-18446",
             "CVE-2026-75899",
@@ -79,41 +86,14 @@
             "CVE-2026-75975",
             "CVE-2026-76172",
             "CVE-2026-84292",
-            "CVE-2026-84394",
-            "CVE-2026-86472"
-        ],
-        "overridePath": [
-            "fast-uri@3"
-        ]
-    },
-    {
-        "package": "fast-uri",
-        "version": "4.2.1",
-        "cves": [
-            "CVE-2026-18446",
-            "CVE-2026-75899",
-            "CVE-2026-75931",
-            "CVE-2026-75975",
-            "CVE-2026-76172",
-            "CVE-2026-84292",
-            "CVE-2026-86472"
+            "CVE-2026-86472",
+            "CVE-2026-110095",
+            "CVE-2026-110180",
+            "CVE-2026-110306",
+            "CVE-2026-110725"
         ],
         "overridePath": [
             "fast-uri@4"
-        ]
-    },
-    {
-        "package": "fastify",
-        "version": "5.12.6",
-        "cves": [
-            "CVE-2026-16732",
-            "CVE-2026-18504",
-            "CVE-2026-76169",
-            "CVE-2026-84428",
-            "CVE-2026-84469",
-            "CVE-2026-84504",
-            "CVE-2026-92081",
-            "CVE-2026-107832"
         ]
     },
     {
@@ -180,26 +160,6 @@
         ],
         "overridePath": [
             "fast-copy"
-        ]
-    },
-    {
-        "package": "protobufjs",
-        "version": "7.6.5",
-        "cves": [
-            "CVE-2026-45740",
-            "CVE-2026-48712",
-            "CVE-2026-54269",
-            "CVE-2026-59877"
-        ],
-        "overridePath": [
-            "protobufjs@7"
-        ]
-    },
-    {
-        "package": "undici",
-        "version": "$undici",
-        "overridePath": [
-            "undici"
         ]
     }
 ]
