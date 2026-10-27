@@ -24,8 +24,8 @@ vars:
   OVIRT_ENGINE_SDK_VERSION: 4.6.3
   OVIRT_IMAGEIO_SDIST_CHECKSUM: sha256:7dbb735728c5a80a7cc39165d54f7504c250842ef714a1a7f928c47b7a873cff
   OVIRT_IMAGEIO_VERSION: 2.5.1
-  PYCURL_SDIST_CHECKSUM: sha256:b70961a76c412cd34f9cc2c9558e63f89fb37045c59eee396c585b52973be280
-  PYCURL_VERSION: 7.48.0
+  PYCURL_SDIST_CHECKSUM: sha256:d4327da9dea72768f942f831bbaa5a64adca4d7c89f3141da7a833d3c600ab90
+  PYCURL_VERSION: 7.49.0
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
@@ -108,15 +108,15 @@ contents:
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: https://files.pythonhosted.org/packages/source/p/pycurl/pycurl-7.48.0.tar.gz
-            checksum: sha256:b70961a76c412cd34f9cc2c9558e63f89fb37045c59eee396c585b52973be280
-            path: ${source.dir}/pycurl-7.48.0.tar.gz
+          - url: https://files.pythonhosted.org/packages/source/p/pycurl/pycurl-7.49.0.tar.gz
+            checksum: sha256:d4327da9dea72768f942f831bbaa5a64adca4d7c89f3141da7a833d3c600ab90
+            path: ${source.dir}/pycurl-7.49.0.tar.gz
             spdx:
               name: pycurl
-              version: 7.48.0
+              version: 7.49.0
               packages:
                 - name: pycurl
-                  purl: pkg:pypi/pycurl@7.48.0
+                  purl: pkg:pypi/pycurl@7.49.0
                   license: LGPL-2.1-only OR MIT
             uid: 0
             gid: 0
@@ -131,7 +131,7 @@ contents:
             python3 -m pip install \
               --no-deps --no-index --no-build-isolation --no-compile \
               --target "${dist}" \
-              ${source.dir}/pycurl-7.48.0.tar.gz \
+              ${source.dir}/pycurl-7.49.0.tar.gz \
               ${source.dir}/ovirt_engine_sdk_python-4.6.3.tar.gz \
               ${source.dir}/ovirt_imageio-2.5.1.tar.gz
 
