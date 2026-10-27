@@ -1,7 +1,11 @@
 [
   {
     "package": "@modelcontextprotocol/sdk",
-    "version": "1.31.0"
+    "version": "1.32.0"
+  },
+  {
+    "package": "follow-redirects",
+    "version": "1.16.1"
   },
   {
     "package": "proxy-addr",
@@ -16,9 +20,14 @@
   },
   {
     "package": "body-parser",
-    "version": "2.3.0",
+    "version": "1.20.9"
+  },
+  {
+    "package": "body-parser",
+    "version": "2.4.0",
     "overridePath": [
-      "@modelcontextprotocol/sdk"
+      "@modelcontextprotocol/sdk",
+      "express"
     ]
   },
   {
@@ -30,17 +39,8 @@
   },
   {
     "package": "qs",
-    "version": "6.16.0",
-    "overridePath": [
-      "express"
-    ]
-  },
-  {
-    "package": "qs",
-    "version": "6.16.0",
-    "overridePath": [
-      "body-parser"
-    ]
+    "version": "6.16.1",
+    "overridePath": []
   },
   {
     "package": "axios",
@@ -48,11 +48,11 @@
   },
   {
     "package": "ip-address",
-    "version": "10.7.1"
+    "version": "10.7.4"
   },
   {
     "package": "fast-uri",
-    "version": "3.1.8"
+    "version": "3.1.9"
   },
   {
     "package": "hono",
