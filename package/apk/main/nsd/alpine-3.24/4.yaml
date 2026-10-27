@@ -4,16 +4,16 @@ image: dhi.io/pkg-nsd
 variant: runtime
 tags:
   - 4.15.1-alpine3.24
-  - 4.15.1-r1-alpine3.24
+  - 4.15.1-r3-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  _REL: "0"
+  _REL: "1"
   _VERSION: 4.14.3
-  COMMIT_SHA: a8878fcd2a68c121276acbe42e60155dd2cd8640
+  COMMIT_SHA: 7d6534b9e72795b3196240e123dec8936487f229
   PACKAGE_NAME: main/nsd
-  REL: "1"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "4.15"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.15.1
@@ -36,7 +36,7 @@ contents:
           - openssl-dev
           - libevent-dev
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#a8878fcd2a68c121276acbe42e60155dd2cd8640
+          - url: git+https://github.com/alpinelinux/aports.git#7d6534b9e72795b3196240e123dec8936487f229
             path: ${source.dir}/aports
             uid: 0
             gid: 0
@@ -49,12 +49,59 @@ contents:
         - uses: abuild/setup@v1
         - uses: abuild/bump@v1
           with:
-            rel: 1
+            rel: 3
             version: 4.15.1
+        - name: drop remote aports cve patch sources
+          runs: |
+            set -eux -o pipefail
+
+            sed -i '/CVE-2026-10133[789]\.patch/d; /CVE-2026-101341\.patch/d' APKBUILD
+        - name: normalize APKBUILD source closing for abuild/source
+          runs: |
+            set -eux -o pipefail
+
+            sed -i '/^[[:space:]]*"$/s/^[[:space:]]*"/"/' APKBUILD
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-101337.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-101338.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-101339.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-101341.patch
         - uses: abuild/build@v1
           with:
             command: checksum
         - uses: abuild/build@v1
+      paths:
+        - type: file
+          path: ${source.dir}/aports/main/nsd/dhi-cve-2026-101337.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/nsd/patch/dhi-cve-2026-101337.patch
+        - type: file
+          path: ${source.dir}/aports/main/nsd/dhi-cve-2026-101338.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/nsd/patch/dhi-cve-2026-101338.patch
+        - type: file
+          path: ${source.dir}/aports/main/nsd/dhi-cve-2026-101339.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/nsd/patch/dhi-cve-2026-101339.patch
+        - type: file
+          path: ${source.dir}/aports/main/nsd/dhi-cve-2026-101341.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/nsd/patch/dhi-cve-2026-101341.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
