@@ -3,20 +3,22 @@
 image: dhi.io/pkg-7zip
 variant: runtime
 tags:
-  - 26.01-alpine3.24
-  - 26.01-r0-alpine3.24
+  - 26.04-alpine3.24
+  - 26.04-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
+  _REL: "0"
+  _VERSION: "26.01"
   COMMIT_SHA: 95517ce1c51299aab27993a87b4d44f996ca1cba
   PACKAGE_NAME: main/7zip
   REL: "0"
-  SEMVER_MAJOR_MINOR_VERSION: "26.01"
+  SEMVER_MAJOR_MINOR_VERSION: "26.04"
   SEMVER_MAJOR_VERSION: "26"
-  SEMVER_VERSION: "26.01"
-  UPSTREAM_VERSION: "2601"
-  VERSION: "26.01"
+  SEMVER_VERSION: "26.04"
+  UPSTREAM_VERSION: "2604"
+  VERSION: "26.04"
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -38,12 +40,19 @@ contents:
             path: ${source.dir}/aports
             uid: 0
             gid: 0
-          - url: https://7-zip.org/a/7z2601-src.tar.xz
-            path: /var/cache/distfiles/7z2601-src.tar.xz
+          - url: https://7-zip.org/a/7z2604-src.tar.xz
+            path: /var/cache/distfiles/7z2604-src.tar.xz
             uid: 0
             gid: 0
       pipeline:
         - uses: abuild/setup@v1
+        - uses: abuild/bump@v1
+          with:
+            rel: 0
+            version: 26.04
+        - uses: abuild/build@v1
+          with:
+            command: checksum
         - uses: abuild/build@v1
 os-release:
   name: Docker Hardened Images (Alpine)
