@@ -18,7 +18,6 @@ dates:
 vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
   GO_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
-  NODE_MAJOR_VERSION: "24"
   SEMVER_MAJOR_MINOR_VERSION: "9.4"
   SEMVER_MAJOR_VERSION: "9"
   SEMVER_VERSION: 9.4.8
