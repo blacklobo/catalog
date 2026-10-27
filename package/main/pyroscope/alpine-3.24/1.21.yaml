@@ -4,7 +4,7 @@ image: dhi.io/pkg-pyroscope
 variant: runtime
 tags:
   - 1.21.1-alpine3.24
-  - 1.21.1-r5-alpine3.24
+  - 1.21.1-r6-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: pyroscope-1.21
-  REL: "5"
+  REL: "6"
   SEMVER_MAJOR_MINOR_VERSION: "1.21"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.21.1
@@ -76,6 +76,19 @@ contents:
             replaces:
               - go.etcd.io/etcd/client/pkg/v3=go.etcd.io/etcd/client/pkg/v3@v3.6.14
             tidy: true
+        - name: patch transporttrie string vet fix
+          uses: patch@v1
+          work-dir: /go/src/github.com/grafana/pyroscope
+          with:
+            options: -p1
+            patches:
+              - ${source.dir}/patch/transporttrie-string-vet-fix.patch
+        - name: verify transporttrie String format
+          work-dir: /go/src/github.com/grafana/pyroscope
+          runs: |
+            set -eux -o pipefail
+
+            grep -Fq 'fmt.Sprintf("%s %q %q %d\n", prefix, parentName, node.name, node.value)' pkg/og/structs/transporttrie/string.go
         - name: build pyroscope
           uses: go/build@v1
           work-dir: /go/src/github.com/grafana/pyroscope
@@ -145,7 +158,7 @@ contents:
               - etc/pyroscope/config.yaml
             license: AGPL-3.0
             name: pyroscope-1.21
-            rel: 5
+            rel: 6
             subpackages:
               - files:
                   - path: usr/bin/pyroscope
@@ -155,6 +168,12 @@ contents:
                 name: pyroscope-1.21-dev
             url: https://github.com/grafana/pyroscope
             version: 1.21.1
+      paths:
+        - type: file
+          path: ${source.dir}/patch/transporttrie-string-vet-fix.patch
+          uid: 0
+          gid: 0
+          source: package/main/pyroscope/patch/transporttrie-string-vet-fix.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine

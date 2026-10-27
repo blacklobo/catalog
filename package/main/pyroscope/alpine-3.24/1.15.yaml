@@ -5,7 +5,7 @@ variant: runtime
 tags:
   - 1.15-alpine3.24
   - 1.15.3-alpine3.24
-  - 1.15.3-r8-alpine3.24
+  - 1.15.3-r9-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.10-r0
   PACKAGE_NAME: pyroscope-1.15
-  REL: "8"
+  REL: "9"
   SEMVER_MAJOR_MINOR_VERSION: "1.15"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.15.3
@@ -110,6 +110,19 @@ contents:
             options: -p1
             patches:
               - ${source.dir}/patch/prometheus-relabel-validate-1.15-1.19.patch
+        - name: patch transporttrie string vet fix
+          uses: patch@v1
+          work-dir: /go/src/github.com/grafana/pyroscope
+          with:
+            options: -p1
+            patches:
+              - ${source.dir}/patch/transporttrie-string-vet-fix.patch
+        - name: verify transporttrie String format
+          work-dir: /go/src/github.com/grafana/pyroscope
+          runs: |
+            set -eux -o pipefail
+
+            grep -Fq 'fmt.Sprintf("%s %q %q %d\n", prefix, parentName, node.name, node.value)' pkg/og/structs/transporttrie/string.go
         - name: build pyroscope
           uses: go/build@v1
           work-dir: /go/src/github.com/grafana/pyroscope
@@ -179,7 +192,7 @@ contents:
               - etc/pyroscope/config.yaml
             license: AGPL-3.0
             name: pyroscope-1.15
-            rel: 8
+            rel: 9
             subpackages:
               - files:
                   - path: usr/bin/pyroscope
@@ -205,6 +218,11 @@ contents:
           uid: 0
           gid: 0
           source: package/main/pyroscope/patch/prometheus-relabel-validate-1.15-1.19.patch
+        - type: file
+          path: ${source.dir}/patch/transporttrie-string-vet-fix.patch
+          uid: 0
+          gid: 0
+          source: package/main/pyroscope/patch/transporttrie-string-vet-fix.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine

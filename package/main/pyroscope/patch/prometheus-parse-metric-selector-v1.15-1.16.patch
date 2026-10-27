@@ -1,7 +1,9 @@
-Backport ParseMetricSelector wrapper for prometheus v0.311.3 on Pyroscope 1.15-1.20.
-Upstream added pkg/model.ParseMetricSelector in grafana/pyroscope v1.21.1 (#5124).
-https://github.com/grafana/pyroscope/blob/v1.21.1/pkg/model/labels.go
-
+Subject: Use the Pyroscope metric-selector compatibility wrapper
+Description: Route selector parsing through the compatibility wrapper required by Prometheus version 0.311.3.
+Origin: backport, https://github.com/grafana/pyroscope/commit/ef8a801e2d4fa13d1fd31a3bf5ef66330a710e55
+Base-Tree: git https://github.com/grafana/pyroscope.git c7f6f34e8b697db6ae09771e983638cfcdb67c1a
+Adaptation: Rebased the wrapper and applicable call-site changes onto the v1.15 and v1.16 source layouts.
+Verify: test pkg/validation/usage_groups_test.go::TestUsageGroupConfig_UnmarshalJSON
 
 diff --git a/pkg/frontend/readpath/queryfrontend/compat.go b/pkg/frontend/readpath/queryfrontend/compat.go
 index 7e65030a8..ba8cf8c41 100644
