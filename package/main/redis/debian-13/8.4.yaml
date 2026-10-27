@@ -3,23 +3,23 @@
 image: dhi.io/pkg-redis-upstream
 variant: runtime
 tags:
-  - 8.4.7-0
-  - 8.4.7-0-debian13
+  - 8.4.8-0
+  - 8.4.8-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-02-22"
 vars:
-  COMMIT_SHA: 4039944d4f8817d7e15f184c0bbb29f946535364
+  COMMIT_SHA: 03fb1dc35de324f2b062bfa46ab58b95af779809
   DHI_REL: "0"
-  DHI_VERSION: 8.4.7-0
+  DHI_VERSION: 8.4.8-0
   HAS_MODULES: "true"
   LLVM_VERSION: "19"
   PACKAGE_NAME: redis-8.4
   REDIS_LICENSE: AGPL-3.0-only
   SEMVER_MAJOR_MINOR: "8.4"
-  VERSION: 8.4.7
+  VERSION: 8.4.8
 contents:
   packages:
     - '!base-files'
@@ -45,15 +45,15 @@ contents:
           - wget
           - xz-utils
         files:
-          - url: git+https://github.com/redis/redis.git#8.4.7
-            checksum: 4039944d4f8817d7e15f184c0bbb29f946535364
+          - url: git+https://github.com/redis/redis.git#8.4.8
+            checksum: 03fb1dc35de324f2b062bfa46ab58b95af779809
             path: ${source.dir}/redis
             spdx:
               name: redis
-              version: 8.4.7
+              version: 8.4.8
               packages:
                 - name: redis
-                  purl: pkg:github/redis/redis@8.4.7
+                  purl: pkg:github/redis/redis@8.4.8
                   license: AGPL-3.0-only
             uid: 0
             gid: 0
@@ -95,7 +95,7 @@ contents:
           with:
             changelog:
               - DHI Build
-            version: 8.4.7-0
+            version: 8.4.8-0
         - uses: dpkg/build@v1
           privileged: true
           with:
