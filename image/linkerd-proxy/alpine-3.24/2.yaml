@@ -19,12 +19,12 @@ dates:
   release: "2019-09-14"
 vars:
   AWAIT_PINNED_VERSION: 0.3.3
-  AWAIT_VERSION: 0.3.3-r0
+  AWAIT_VERSION: 0.3.3-r1
   EDGE_VERSION: 26.10.1
   FLAVORED_SUFFIX: ""
   IDENTITY_VERSION: 26.10.1-r0
   NETWORK_VALIDATOR_PINNED_VERSION: 0.1.9
-  NETWORK_VALIDATOR_VERSION: 0.1.9-r0
+  NETWORK_VALIDATOR_VERSION: 0.1.9-r1
   PINNED_VERSION: 2.370.0
   PROXY_INIT_PINNED_VERSION: 2.4.10
   PROXY_INIT_VERSION: 2.4.10-r0
@@ -45,8 +45,8 @@ contents:
     - iptables
     - iptables-legacy
     - libgcc
-    - linkerd-await-0=0.3.3-r0
-    - linkerd-network-validator-0=0.1.9-r0
+    - linkerd-await-0=0.3.3-r1
+    - linkerd-network-validator-0=0.1.9-r1
     - linkerd2-proxy-2=2.370.0-r0
     - linkerd2-proxy-identity=26.10.1-r0
     - linkerd2-proxy-init-2=2.4.10-r0
