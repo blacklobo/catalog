@@ -4,6 +4,10 @@
     "version": "7.6.6"
   },
   {
+    "package": "follow-redirects",
+    "version": "1.16.1"
+  },
+  {
     "package": "glob",
     "version": "11.1.0",
     "overridePath": [
@@ -23,14 +27,14 @@
   },
   {
     "package": "undici",
-    "version": "6.28.1",
+    "version": "6.29.1",
     "overridePath": [
       "@actions/http-client"
     ]
   },
   {
     "package": "undici",
-    "version": "6.28.1",
+    "version": "6.29.1",
     "overridePath": [
       "cheerio"
     ],
@@ -40,7 +44,7 @@
   },
   {
     "package": "undici",
-    "version": "6.28.1",
+    "version": "6.29.1",
     "overridePath": [
       "@testcontainers/hivemq",
       "testcontainers"
@@ -48,7 +52,7 @@
   },
   {
     "package": "undici",
-    "version": "6.28.1",
+    "version": "6.29.1",
     "overridePath": [
       "@testcontainers/mariadb",
       "testcontainers"
@@ -56,7 +60,7 @@
   },
   {
     "package": "undici",
-    "version": "6.28.1",
+    "version": "6.29.1",
     "overridePath": [
       "@testcontainers/mssqlserver",
       "testcontainers"
@@ -64,7 +68,7 @@
   },
   {
     "package": "undici",
-    "version": "6.28.1",
+    "version": "6.29.1",
     "overridePath": [
       "@testcontainers/rabbitmq",
       "testcontainers"
@@ -107,7 +111,7 @@
   },
   {
     "package": "nodemailer",
-    "version": "10.0.9"
+    "version": "10.1.4"
   },
   {
     "package": "engine.io",
@@ -183,13 +187,38 @@
   },
   {
     "package": "dompurify",
-    "version": "3.4.16"
+    "version": "3.4.17"
   },
   {
     "package": "postcss-selector-parser",
     "version": "7.1.6",
+    "overridePath": [
+      "eslint-plugin-vue-scoped-css"
+    ],
     "removeLockfileEntries": [
       "node_modules/postcss-selector-parser"
+    ]
+  },
+  {
+    "package": "ip-address",
+    "version": "10.7.4"
+  },
+  {
+    "package": "body-parser",
+    "version": "1.20.9"
+  },
+  {
+    "package": "@azure/msal-node",
+    "version": "7.1.0"
+  },
+  {
+    "package": "@azure/msal-node",
+    "version": "7.1.0",
+    "overridePath": [
+      "@azure/identity"
+    ],
+    "removeLockfileEntries": [
+      "node_modules/@azure/identity/node_modules/@azure/msal-node"
     ]
   }
 ]
