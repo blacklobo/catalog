@@ -17,6 +17,7 @@ platforms:
   - linux/amd64
   - linux/arm64
 vars:
+  ASM_VERSION: 9.7.1
   COMMIT_SHA: 55989c640a19aac3cb1c190f97464e59773035c5
   ELASTICSEARCH_AMD64_SHA512: e846908391081231a1a2ae4d1350dada9b7cc5cc1a3f5a6bb394ee6a83b94f07dc04d99919167f806db0a3b29b682d76dbb858b5bd6598af98abee97e291d3e3
   ELASTICSEARCH_ARM64_SHA512: 8b7b38b4b8d4049844d550024e58389c8953dfcbc46f6d2edc0def7a5883820b15bf8d73188ba88e4e74e34afbbee6b01bad00836b8da1ed9df0ceaefb556d80
@@ -33,12 +34,14 @@ vars:
   JACKSON_DATABIND_ES_VERSION: 2.18.11
   JAVA_HOME_PATH: /usr/lib/jvm/temurin-21
   JDK_MAJOR_VERSION: "21"
+  JLINE_VERSION: 3.30.15
   LOG4J_API_25_VERSION: 2.25.5
   LOG4J_API_26_VERSION: 2.26.1
   LZ4_JAVA_VERSION: 1.11.4
   MAVEN_REF: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:9e7ff68821ccddf0c5419409d6a8cbc93eefbf0e4e22a16e8dee1f9b89259908
   MAVEN_VERSION: 3.10.0
   NETTY_VERSION: 4.1.137.Final
+  OGNL_VERSION: 3.4.13
   REACTOR_NETTY_VERSION: 1.2.8
   SEMVER_MAJOR_MINOR_VERSION: "26.10"
   SEMVER_MAJOR_VERSION: "26"
@@ -182,6 +185,18 @@ contents:
             path: ${source.dir}/patch/deps/mssql-jdbc-13.2.1.jre11.jar
             uid: 0
             gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/ognl/ognl/3.4.13/ognl-3.4.13.jar
+            path: ${source.dir}/patch/deps/ognl-3.4.13.jar
+            uid: 0
+            gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar
+            path: ${source.dir}/patch/deps/asm-9.7.1.jar
+            uid: 0
+            gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.jar
+            path: ${source.dir}/patch/deps/asm-commons-9.7.1.jar
+            uid: 0
+            gid: 0
           - url: https://maven-central.storage-download.googleapis.com/maven2/at/yawk/lz4/lz4-java/1.11.4/lz4-java-1.11.4.jar
             path: ${source.dir}/patch/deps/lz4-java-1.11.4.jar
             uid: 0
@@ -250,6 +265,22 @@ contents:
             path: ${source.dir}/patch/deps/log4j-api-2.26.1.jar
             uid: 0
             gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/org/jline/jline-reader/3.30.15/jline-reader-3.30.15.jar
+            path: ${source.dir}/patch/deps/jline-reader-3.30.15.jar
+            uid: 0
+            gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/org/jline/jline-style/3.30.15/jline-style-3.30.15.jar
+            path: ${source.dir}/patch/deps/jline-style-3.30.15.jar
+            uid: 0
+            gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/org/jline/jline-terminal/3.30.15/jline-terminal-3.30.15.jar
+            path: ${source.dir}/patch/deps/jline-terminal-3.30.15.jar
+            uid: 0
+            gid: 0
+          - url: https://maven-central.storage-download.googleapis.com/maven2/org/jline/jline-terminal-jna/3.30.15/jline-terminal-jna-3.30.15.jar
+            path: ${source.dir}/patch/deps/jline-terminal-jna-3.30.15.jar
+            uid: 0
+            gid: 0
           - url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-26.10.0.133078.zip
             checksum: sha256:a23716457a73e44fff57c51d8999d97e59f4deee24cefb333918fe6c1ddb62c1
             path: ${source.dir}/sonarqube-26.10.0.133078.zip
@@ -281,6 +312,71 @@ contents:
               --app-root "${target.dir}/sonarqube" \
               --patch-dir "${source.dir}/patch/deps" \
               --config "${source.dir}/patch/dhi-patch-config.json"
+        - name: patch bundled jline in elasticsearch-sql-cli
+          runs: |
+            set -eux -o pipefail
+
+            sql_cli_jar=$(find "${target.dir}/sonarqube/elasticsearch/bin" -name 'elasticsearch-sql-cli-*.jar' -type f | head -1)
+            if [[ -z "${sql_cli_jar}" ]]; then
+              echo "ERROR: elasticsearch-sql-cli jar not found" >&2
+              exit 1
+            fi
+
+            patch_dir="$(mktemp -d)"
+            repack_dir="${patch_dir}/repack"
+            overlay_dir="${patch_dir}/overlay"
+            trap 'rm -rf "${patch_dir}"' EXIT
+            mkdir -p "${repack_dir}" "${overlay_dir}"
+
+            (cd "${repack_dir}" && jar xf "${sql_cli_jar}")
+            rm -rf "${repack_dir}/org/jline" "${repack_dir}/META-INF/maven/org.jline"
+            rm -f "${repack_dir}/META-INF/services/org.jline.terminal.spi.JnaSupport"
+
+            for dep in jline-reader jline-style jline-terminal jline-terminal-jna; do
+              (cd "${overlay_dir}" && jar xf "${source.dir}/patch/deps/${dep}-3.30.15.jar")
+            done
+
+            mkdir -p "${repack_dir}/META-INF/maven" "${repack_dir}/META-INF/jline" "${repack_dir}/META-INF/services"
+            cp -a "${overlay_dir}/org/jline" "${repack_dir}/org/jline"
+            cp -a "${overlay_dir}/META-INF/maven/org.jline" "${repack_dir}/META-INF/maven/org.jline"
+            cp -a "${overlay_dir}/META-INF/jline/." "${repack_dir}/META-INF/jline/"
+            if [[ -d "${overlay_dir}/META-INF/services/org" ]]; then
+              cp -a "${overlay_dir}/META-INF/services/org" "${repack_dir}/META-INF/services/org"
+            fi
+            if [[ -f "${overlay_dir}/META-INF/services/org.jline.terminal.spi.TerminalProvider" ]]; then
+              cp -a "${overlay_dir}/META-INF/services/org.jline.terminal.spi.TerminalProvider" \
+                "${repack_dir}/META-INF/services/org.jline.terminal.spi.TerminalProvider"
+            fi
+
+            jna_desc="${overlay_dir}/META-INF/services/org/jline/terminal/provider/jna"
+            jna_class=$(sed -n 's/^class[[:space:]]*=[[:space:]]*//p' "${jna_desc}")
+            if [[ -z "${jna_class}" ]]; then
+              echo "ERROR: jline-terminal-jna provider class not found" >&2
+              exit 1
+            fi
+            printf '%s\n' "${jna_class}" > "${repack_dir}/META-INF/jline/providers/jna"
+
+            for dep in jline-reader jline-style jline-terminal jline-terminal-jna; do
+              grep -q "version=3.30.15" "${repack_dir}/META-INF/maven/org.jline/${dep}/pom.properties"
+            done
+            grep -q 'org.jline.terminal.impl.DumbTerminalProvider' "${repack_dir}/META-INF/jline/providers/dumb"
+            grep -q 'org.jline.terminal.impl.exec.ExecTerminalProvider' "${repack_dir}/META-INF/jline/providers/exec"
+            grep -q 'org.jline.terminal.impl.jna.JnaTerminalProvider' "${repack_dir}/META-INF/jline/providers/jna"
+            grep -q 'org.jline.terminal.impl.jna.JnaTerminalProvider' "${repack_dir}/META-INF/services/org/jline/terminal/provider/jna"
+            if [[ -e "${repack_dir}/META-INF/services/org.jline.terminal.spi.JnaSupport" ]]; then
+              echo "ERROR: stale JnaSupport service file remains" >&2
+              exit 1
+            fi
+
+            sql_cli_new="${patch_dir}/sql-cli-repacked.jar"
+            (cd "${repack_dir}" && jar --create --file "${sql_cli_new}" --manifest META-INF/MANIFEST.MF .)
+            mv "${sql_cli_new}" "${sql_cli_jar}"
+
+            unzip -p "${sql_cli_jar}" META-INF/maven/org.jline/jline-reader/pom.properties | grep -q "version=3.30.15"
+            unzip -p "${sql_cli_jar}" META-INF/jline/providers/dumb | grep -q 'org.jline.terminal.impl.DumbTerminalProvider'
+            unzip -p "${sql_cli_jar}" META-INF/jline/providers/exec | grep -q 'org.jline.terminal.impl.exec.ExecTerminalProvider'
+            unzip -p "${sql_cli_jar}" META-INF/jline/providers/jna | grep -q 'org.jline.terminal.impl.jna.JnaTerminalProvider'
+            unzip -p "${sql_cli_jar}" META-INF/services/org/jline/terminal/provider/jna | grep -q 'org.jline.terminal.impl.jna.JnaTerminalProvider'
         - name: patch bundled sshd in scanner engine
           runs: |
             set -eux -o pipefail
@@ -637,6 +733,94 @@ contents:
             mv "${app_new}" "${app_jar}"
 
             unzip -p "${app_jar}" "${metadata_dir}/pom.properties" | grep -q "version=1.11.4"
+        - name: patch bundled ognl in sonar-application
+          runs: |
+            set -eux -o pipefail
+
+            app_jar=$(find "${target.dir}/sonarqube/lib" -maxdepth 1 -name 'sonar-application-*.jar' -type f -print -quit)
+            if [[ -z "${app_jar}" ]]; then
+              echo "ERROR: sonar-application jar not found" >&2
+              exit 1
+            fi
+
+            metadata_dir="META-INF/maven/ognl/ognl"
+            vulnerable_ognl_runtime_sha="e6d4ecfc7035d62e562091bf8480efea8c9c5affa753e3deee6b24fa0149cfc5"
+            patch_dir="$(mktemp -d)"
+            repack_dir="${patch_dir}/repack"
+            overlay_dir="${patch_dir}/overlay"
+            relocated_dir="${patch_dir}/relocated"
+            trap 'rm -rf "${patch_dir}"' EXIT
+            mkdir -p "${repack_dir}" "${overlay_dir}" "${relocated_dir}"
+
+            (cd "${repack_dir}" && jar xf "${app_jar}")
+
+            if [[ ! -f "${repack_dir}/${metadata_dir}/pom.properties" ]]; then
+              echo "ERROR: ognl:ognl not found in $(basename "${app_jar}")" >&2
+              exit 1
+            fi
+            active_class="${repack_dir}/org/apache/ibatis/ognl/OgnlRuntime.class"
+            if [[ ! -f "${active_class}" ]]; then
+              echo "ERROR: org/apache/ibatis/ognl/OgnlRuntime.class not found in $(basename "${app_jar}")" >&2
+              exit 1
+            fi
+
+            active_sha="$(sha256sum "${active_class}" | cut -d' ' -f1)"
+            if grep -q "version=3.4.13" "${repack_dir}/${metadata_dir}/pom.properties" \
+              && [[ ! -e "${repack_dir}/ognl/OgnlRuntime.class" ]] \
+              && grep -a -q isLikelyAccessible "${active_class}" \
+              && [[ "${active_sha}" != "${vulnerable_ognl_runtime_sha}" ]]; then
+              echo "ognl already relocated at 3.4.13 in $(basename "${app_jar}")"
+              exit 0
+            fi
+
+            reloc_cp="${source.dir}/patch/deps/asm-9.7.1.jar:${source.dir}/patch/deps/asm-commons-9.7.1.jar"
+            javac --release 17 -cp "${reloc_cp}" -d "${patch_dir}/reloc-classes" "${source.dir}/patch/RelocateOgnl.java"
+            java -cp "${patch_dir}/reloc-classes:${reloc_cp}" RelocateOgnl \
+              "${source.dir}/patch/deps/ognl-3.4.13.jar" \
+              "${relocated_dir}"
+            (cd "${overlay_dir}" && jar xf "${source.dir}/patch/deps/ognl-3.4.13.jar")
+
+            upstream_count="$(jar tf "${source.dir}/patch/deps/ognl-3.4.13.jar" | grep -c '\.class$' || true)"
+            relocated_count="$(find "${relocated_dir}" -type f -name '*.class' -printf x | wc -c | tr -d '[:space:]')"
+            if [[ "${upstream_count}" != "${relocated_count}" ]]; then
+              echo "ERROR: relocated class count ${relocated_count} != upstream ${upstream_count}" >&2
+              exit 1
+            fi
+
+            rm -rf "${repack_dir:?}/ognl" \
+              "${repack_dir:?}/org/apache/ibatis/ognl" \
+              "${repack_dir:?}/${metadata_dir}"
+            mkdir -p "${repack_dir}/org/apache/ibatis" "${repack_dir}/META-INF/maven/ognl"
+            cp -a "${relocated_dir}/org/apache/ibatis/ognl" "${repack_dir}/org/apache/ibatis/ognl"
+            cp -a "${overlay_dir}/${metadata_dir}" "${repack_dir}/${metadata_dir}"
+
+            test ! -e "${repack_dir}/ognl/OgnlRuntime.class"
+            test -f "${repack_dir}/org/apache/ibatis/ognl/OgnlRuntime.class"
+            test -f "${repack_dir}/org/apache/ibatis/ognl/enhance/ExpressionCompiler.class"
+            grep -q "version=3.4.13" "${repack_dir}/${metadata_dir}/pom.properties"
+            grep -a -q isLikelyAccessible "${repack_dir}/org/apache/ibatis/ognl/OgnlRuntime.class"
+            new_sha="$(sha256sum "${repack_dir}/org/apache/ibatis/ognl/OgnlRuntime.class" | cut -d' ' -f1)"
+            if [[ "${new_sha}" == "${vulnerable_ognl_runtime_sha}" ]]; then
+              echo "ERROR: relocated OgnlRuntime.class still matches the published vulnerable bytes" >&2
+              exit 1
+            fi
+            javap -p "${repack_dir}/org/apache/ibatis/ognl/OgnlRuntime.class" | grep -q 'class org.apache.ibatis.ognl.OgnlRuntime'
+            javap -v -p "${repack_dir}/org/apache/ibatis/ognl/enhance/ExpressionCompiler.class" | grep -q 'org/apache/ibatis/javassist/ClassPool'
+            if javap -v -p "${repack_dir}/org/apache/ibatis/ognl/enhance/ExpressionCompiler.class" | grep 'javassist/' | grep -v 'org/apache/ibatis/javassist/'; then
+              echo "ERROR: ExpressionCompiler still references unrelocated javassist" >&2
+              exit 1
+            fi
+
+            app_new="${patch_dir}/app-repacked.jar"
+            (cd "${repack_dir}" && jar --create --file "${app_new}" --manifest META-INF/MANIFEST.MF .)
+            mv "${app_new}" "${app_jar}"
+
+            unzip -p "${app_jar}" "${metadata_dir}/pom.properties" | grep -q "version=3.4.13"
+            unzip -p "${app_jar}" org/apache/ibatis/ognl/OgnlRuntime.class | grep -a -q isLikelyAccessible
+            if jar tf "${app_jar}" | grep -qx 'ognl/OgnlRuntime.class'; then
+              echo "ERROR: unrelocated ognl tree still in $(basename "${app_jar}")" >&2
+              exit 1
+            fi
         - name: patch bundled httpcore5 in sonar-application
           runs: |
             set -eux -o pipefail
@@ -854,6 +1038,11 @@ contents:
           uid: 0
           gid: 0
           source: image/sonarqube/patch/dhi-runtime-patch.sh
+        - type: file
+          path: ${source.dir}/patch/RelocateOgnl.java
+          uid: 0
+          gid: 0
+          source: image/sonarqube/patch/RelocateOgnl.java
       outputs:
         - source: ${target.dir}/sonarqube
           target: /opt/sonarqube
