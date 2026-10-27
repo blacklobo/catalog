@@ -6,13 +6,13 @@ variant: dev
 tags:
   - 2-dev
   - 2.15-dev
-  - 2.15.1-dev
+  - 2.15.2-dev
   - 2-debian-dev
   - 2-debian13-dev
   - 2.15-debian-dev
   - 2.15-debian13-dev
-  - 2.15.1-debian-dev
-  - 2.15.1-debian13-dev
+  - 2.15.2-debian-dev
+  - 2.15.2-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,11 +20,11 @@ dates:
   release: "2025-09-22"
   end-of-life: "2026-09-22"
 vars:
-  COMMIT_SHA: b2fd3efc7456b11b06a54877ad6f6ccfb911edb4
+  COMMIT_SHA: 5a815f11a911efa2c88fd1dbfb18ed89a449bfc1
   SEMVER_MAJOR_MINOR_VERSION: "2.15"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.15.1
-  VERSION: 2.15.1
+  SEMVER_VERSION: 2.15.2
+  VERSION: 2.15.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -64,15 +64,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/nats-io/nats-server.git#v2.15.1
-            checksum: b2fd3efc7456b11b06a54877ad6f6ccfb911edb4
+          - url: git+https://github.com/nats-io/nats-server.git#v2.15.2
+            checksum: 5a815f11a911efa2c88fd1dbfb18ed89a449bfc1
             path: /go/src/github.com/nats-io/nats-server/v2
             spdx:
               name: nats-server
-              version: 2.15.1
+              version: 2.15.2
               packages:
                 - name: nats-server
-                  purl: pkg:golang/github.com/nats-io/nats-server/v2@2.15.1
+                  purl: pkg:golang/github.com/nats-io/nats-server/v2@2.15.2
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -99,8 +99,8 @@ contents:
             GOFLAGS: -buildvcs=false
           with:
             ldflags:
-              - -X server.serverVersion=2.15.1
-              - -X server.gitCommit=b2fd3efc7456b11b06a54877ad6f6ccfb911edb4
+              - -X server.serverVersion=2.15.2
+              - -X server.gitCommit=5a815f11a911efa2c88fd1dbfb18ed89a449bfc1
             output: ${target.dir}/nats-server
             packages: .
       outputs:
