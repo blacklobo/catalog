@@ -4,9 +4,9 @@ image: dhi.io/pkg-spark
 variant: runtime
 tags:
   - 4.2.0
-  - 4.2.0-r10
+  - 4.2.0-r11
   - 4.2.0-debian13
-  - 4.2.0-r10-debian13
+  - 4.2.0-r11-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,7 +22,7 @@ vars:
   MAVEN_VERSION: 3.10.0
   PACKAGE_HOME: /usr/share/spark
   PACKAGE_NAME: spark-4.2
-  REL: "10"
+  REL: "11"
   SCALA_VERSION: "2.13"
   SEMVER_MAJOR_MINOR_VERSION: "4.2"
   SEMVER_MAJOR_VERSION: "4"
@@ -298,7 +298,7 @@ contents:
               - deb
             license: Apache-2.0
             name: spark-4.2
-            rel: 10
+            rel: 11
             url: https://spark.apache.org/
             version: 4.2.0
       paths:

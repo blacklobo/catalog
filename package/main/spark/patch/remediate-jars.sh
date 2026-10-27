@@ -73,9 +73,9 @@ relocate_tree() {
 
 # Hadoop's hadoop-client-runtime shade relocates pattern org/ to
 # org.apache.hadoop.shaded.org. and excludes slf4j. jarjar applies that
-# relocation to the packages these JLine classes reference, rewriting
-# this_class and constant-pool names. A path-only copy leaves org.jline.*
-# and the JVM rejects the shaded path.
+# relocation to commons-configuration2 and JLine bytecode, rewriting
+# this_class and constant-pool names. A path-only copy leaves unshaded
+# package names and the JVM rejects the shaded path.
 relocate_jline_jar() {
     local srcjar="$1"
     local outjar="$2"
@@ -178,6 +178,37 @@ install_shaded_jline() {
     rm -rf "$uber_dir" "$telnet_dir"
 }
 
+relocate_commons_configuration2_jar() {
+    local srcjar="$1"
+    local outjar="$2"
+    local rules
+    rules="$(mktemp)"
+    cat >"$rules" <<'EOF'
+rule org.apache.commons.configuration2.** org.apache.hadoop.shaded.org.apache.commons.configuration2.@1
+EOF
+    java -jar "$JARJAR_JAR" process "$rules" "$srcjar" "$outjar"
+    rm -f "$rules"
+}
+
+install_shaded_commons_configuration2() {
+    local work_dir prefix
+    work_dir="$(mktemp -d)"
+    relocate_commons_configuration2_jar "$COMMONS_CONFIGURATION2" "$work_dir/reloc.jar"
+    (cd "$work_dir" && jar xf reloc.jar)
+
+    prefix="org/apache/hadoop/shaded/org/apache/commons/configuration2"
+    copy_relocated_tree "$work_dir/$prefix" "$prefix"
+
+    assert_shaded_class_loads org.apache.hadoop.shaded.org.apache.commons.configuration2.AbstractConfiguration
+    if ! javap -verbose -classpath . org.apache.hadoop.shaded.org.apache.commons.configuration2.AbstractConfiguration \
+        | grep -q 'this_class:.*org/apache/hadoop/shaded/org/apache/commons/configuration2/AbstractConfiguration'; then
+        echo "AbstractConfiguration this_class is not the Hadoop shaded name" >&2
+        exit 1
+    fi
+
+    rm -rf "$work_dir"
+}
+
 write_pom_properties() {
     local workdir="$1"
     local group="$2"
@@ -211,7 +242,7 @@ patch_hadoop_jar() {
     relocate_tree "$PWD" "$JACKSON_CORE" com/fasterxml/jackson/core org/apache/hadoop/shaded/com/fasterxml/jackson/core
     relocate_tree "$PWD" "$JACKSON_DATABIND" com/fasterxml/jackson/databind org/apache/hadoop/shaded/com/fasterxml/jackson/databind
     relocate_tree "$PWD" "$JACKSON_ANNOTATIONS" com/fasterxml/jackson/annotation org/apache/hadoop/shaded/com/fasterxml/jackson/annotation
-    relocate_tree "$PWD" "$COMMONS_CONFIGURATION2" org/apache/commons/configuration2 org/apache/hadoop/shaded/org/apache/commons/configuration2
+    install_shaded_commons_configuration2
     install_shaded_jline
     relocate_tree "$PWD" "$COMMONS_LANG3" org/apache/commons/lang3 org/apache/hadoop/shaded/org/apache/commons/lang3
     relocate_tree "$PWD" "$NIMBUS_JOSE_JWT" com/nimbusds org/apache/hadoop/shaded/com/nimbusds
