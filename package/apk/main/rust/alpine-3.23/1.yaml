@@ -4,7 +4,7 @@ image: dhi.io/pkg-rust
 variant: runtime
 tags:
   - 1.91.1-alpine3.23
-  - 1.91.1-r3-alpine3.23
+  - 1.91.1-r4-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -12,7 +12,7 @@ vars:
   _REL: "2"
   COMMIT_SHA: f20e2685939216429125190ec33b5d6a2370e91a
   PACKAGE_NAME: main/rust
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "1.91"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.91.1
@@ -59,31 +59,12 @@ contents:
             gid: 0
       pipeline:
         - uses: abuild/setup@v1
-        - uses: abuild/source@v1
-          with:
-            source: thin-vec-0.2.18.patch
-        - uses: abuild/source@v1
-          with:
-            source: rust-1.91.1-additional-cves.patch
         - uses: abuild/bump@v1
           with:
-            rel: 3
+            rel: 4
             version: 1.91.1
         - uses: abuild/build@v1
           privileged: true
-      paths:
-        - type: file
-          path: ${source.dir}/aports/main/rust/thin-vec-0.2.18.patch
-          uid: 0
-          gid: 0
-          mode: "644"
-          source: package/apk/main/rust/patch/thin-vec-0.2.18.patch
-        - type: file
-          path: ${source.dir}/aports/main/rust/rust-1.91.1-additional-cves.patch
-          uid: 0
-          gid: 0
-          mode: "644"
-          source: package/apk/main/rust/alpine-3.23/patch/rust-1.91.1-additional-cves.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
