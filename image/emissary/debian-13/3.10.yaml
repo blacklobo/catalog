@@ -42,9 +42,6 @@ contents:
     - locales
     - python-3.11
     - python-3.11-dev
-    - python3-pip
-    - python3-setuptools
-    - python3-wheel
     - tzdata
   builds:
     - name: emissary
@@ -81,6 +78,7 @@ contents:
           - python-3.11-dev
           - python3-pip
           - python3-setuptools
+          - python3-pkg-resources
           - python3-wheel
           - libstdc++6
           - diffutils
@@ -128,7 +126,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            sed -i 's/setuptools==75\.8\.2/setuptools==79.0.1/' requirements.txt               # fix CVE-2025-47273 (high)
+            sed -i 's/setuptools==75\.8\.2/setuptools==84.1.0/' requirements.txt               # fix CVE-2025-47273 (high), GHSA-xmj3-9gf7-h52w (low)
             sed -i 's/python-json-logger==3\.2\.1/python-json-logger==3.3.0/' requirements.txt # fix CVE-2025-27607 (high)
             sed -i 's/urllib3==2\.3\.0/urllib3==2.7.0/' requirements.txt                       # fix CVE-2026-21441, CVE-2026-44431, CVE-2026-44432 (high)
             sed -i 's/requests==2\.32\.3/requests==2.33.0/' requirements.txt                   # fix CVE-2024-47081, CVE-2026-25645 (medium)
@@ -157,9 +155,22 @@ contents:
             ${target.dir}/opt/ambassador/bin/python3 -m pip install --upgrade 'wheel>=0.46.2'
             # GHSA-6v7p-g79w-8964: bump msgpack to 1.2.1
             ${target.dir}/opt/ambassador/bin/python3 -m pip install --upgrade 'msgpack>=1.2.1'
+            ${target.dir}/opt/ambassador/bin/python3 -m pip install --upgrade 'setuptools==84.1.0' # GHSA-xmj3-9gf7-h52w
             # Remove vendored wheel from setuptools to fix CVE-2026-24049
             find ${target.dir}/opt/ambassador/lib/python*/site-packages/setuptools/_vendor -name 'wheel-0.45.*' -type d -exec rm -rf {} + 2> /dev/null || true
             ${target.dir}/opt/ambassador/bin/python3 setup.py install
+            cp -a /usr/lib/python3/dist-packages/pkg_resources "${target.dir}/opt/ambassador/lib/python3.11/site-packages/"
+            amb_site="${target.dir}/opt/ambassador/lib/python3.11/site-packages"
+            cp -a templates "${amb_site}/"
+            if [ -d schemas ]; then cp -a schemas "${amb_site}/"; fi
+        - name: remove pip from 3.10 venv
+          work-dir: ${source.dir}/emissary/python
+          runs: |
+            set -eux -o pipefail
+
+            ${target.dir}/opt/ambassador/bin/python3 -m pip uninstall -y pip
+            rm -rf ${target.dir}/opt/ambassador/lib/python*/site-packages/pip ${target.dir}/opt/ambassador/lib/python*/site-packages/pip-*.dist-info
+            rm -f ${target.dir}/opt/ambassador/bin/pip ${target.dir}/opt/ambassador/bin/pip3 ${target.dir}/opt/ambassador/bin/pip3.11
 
             find '${target.dir}/opt/ambassador/bin' -type f -executable -exec sed -i '1s|^#!${target.dir}|#!|' {} +
         - name: golang build stage

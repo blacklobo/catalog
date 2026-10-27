@@ -44,9 +44,6 @@ contents:
     - locales
     - python-3.11
     - python-3.11-dev
-    - python3-pip
-    - python3-setuptools
-    - python3-wheel
     - tzdata
   builds:
     - name: emissary
@@ -83,6 +80,7 @@ contents:
           - python-3.11-dev
           - python3-pip
           - python3-setuptools
+          - python3-pkg-resources
           - python3-wheel
           - libstdc++6
           - diffutils
@@ -148,8 +146,18 @@ contents:
             # GHSA-6v7p-g79w-8964: bump msgpack to 1.2.1
             ${target.dir}/opt/ambassador/bin/python3 -m pip install --upgrade 'msgpack>=1.2.1'
             ${target.dir}/opt/ambassador/bin/python3 -m pip install --upgrade 'certifi>=2026.10.19' # GHSA-6q48-6c7w-9gw2
+            ${target.dir}/opt/ambassador/bin/python3 -m pip install --upgrade 'setuptools==84.1.0'  # GHSA-xmj3-9gf7-h52w
             # Remove vendored wheel from setuptools to fix CVE-2026-24049
             find ${target.dir}/opt/ambassador/lib/python*/site-packages/setuptools/_vendor -name 'wheel-0.45.*' -type d -exec rm -rf {} + 2> /dev/null || true
+        - name: remove pip from 4.x venv
+          work-dir: ${source.dir}/emissary/python
+          runs: |
+            set -eux -o pipefail
+
+            ${target.dir}/opt/ambassador/bin/python3 -m pip uninstall -y pip
+            rm -rf ${target.dir}/opt/ambassador/lib/python*/site-packages/pip ${target.dir}/opt/ambassador/lib/python*/site-packages/pip-*.dist-info
+            rm -f ${target.dir}/opt/ambassador/bin/pip ${target.dir}/opt/ambassador/bin/pip3 ${target.dir}/opt/ambassador/bin/pip3.11
+
             find '${target.dir}/opt/ambassador/bin' -type f -executable -exec sed -i '1s|^#!${target.dir}|#!|' {} +
         - name: golang build stage
           work-dir: ${source.dir}/emissary
