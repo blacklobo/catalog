@@ -3,10 +3,10 @@
 image: dhi.io/pkg-mediawiki
 variant: runtime
 tags:
-  - 1.46.0
-  - 1.46.0-r5
-  - 1.46.0-debian13
-  - 1.46.0-r5-debian13
+  - 1.46.2
+  - 1.46.2-r0
+  - 1.46.2-debian13
+  - 1.46.2-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,20 +15,20 @@ dates:
 vars:
   COMPOSER_PHAR_SHA256: c86ce603fe836bf0861a38c93ac566c8f1e69ac44b2445d9b7a6a17ea2e9972a
   COMPOSER_VERSION: 2.9.5
-  IMAGEMAGICK_COMMIT_SHA: fb965f1b54a65ddb633f8c2eac4452c782c66d7f
-  IMAGEMAGICK_SOURCE_CHECKSUM: sha256:34d9cc3acddc3e3c429d23af60eda5ceaac477a8b296ddb9469f773f44a80a5f
-  IMAGEMAGICK_VERSION: 7.1.2-31
+  IMAGEMAGICK_COMMIT_SHA: a0c4bf729a26a5c2feb28b0365b47a8db736078a
+  IMAGEMAGICK_SOURCE_CHECKSUM: sha256:f5163a573a1c1bff16358d0a592b2fb168ad0fd3b9dc5ff57dc7820eebc5cf79
+  IMAGEMAGICK_VERSION: 7.1.2-34
   PACKAGE_HOME: /usr/share/mediawiki-1.46
   PACKAGE_NAME: mediawiki-1.46
   PHP_MAJOR_MINOR_VERSION: "8.3"
-  PHP_SOURCE_CHECKSUM: e293ed620cec74651bb4a071317892a478aa6840fab22db45c72d77cd42f9676
-  PHP_UPSTREAM_VERSION: 8.3.33
-  PHP_VERSION: 8.3.33-0
-  REL: "5"
+  PHP_SOURCE_CHECKSUM: dd54693aa334c5c4d72e9aee96b082c2473750a18a6c1d105789c93a3b1692fd
+  PHP_UPSTREAM_VERSION: 8.3.36
+  PHP_VERSION: 8.3.36-0
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.46"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.46.0
-  VERSION: 1.46.0
+  SEMVER_VERSION: 1.46.2
+  VERSION: 1.46.2
 contents:
   packages:
     - '!base-files'
@@ -108,21 +108,21 @@ contents:
           - xz-utils
           - zlib1g
           - zlib1g-dev
-          - php-8.3=8.3.33-0
-          - php-8.3-dev=8.3.33-0
+          - php-8.3=8.3.36-0
+          - php-8.3-dev=8.3.36-0
         files:
-          - url: https://releases.wikimedia.org/mediawiki/1.46/mediawiki-1.46.0.tar.gz
+          - url: https://releases.wikimedia.org/mediawiki/1.46/mediawiki-1.46.2.tar.gz
             path: ${source.dir}/mediawiki.tar.gz
             spdx:
               name: mediawiki
-              version: 1.46.0
+              version: 1.46.2
               packages:
                 - name: mediawiki
-                  purl: pkg:composer/mediawiki/core@1.46.0
+                  purl: pkg:composer/mediawiki/core@1.46.2
                   license: GPL-2.0-or-later
             uid: 0
             gid: 0
-          - url: https://releases.wikimedia.org/mediawiki/1.46/mediawiki-1.46.0.tar.gz.sig
+          - url: https://releases.wikimedia.org/mediawiki/1.46/mediawiki-1.46.2.tar.gz.sig
             path: ${source.dir}/mediawiki.tar.gz.sig
             uid: 0
             gid: 0
@@ -130,27 +130,27 @@ contents:
             path: ${source.dir}/composer.phar
             uid: 0
             gid: 0
-          - url: https://www.php.net/distributions/php-8.3.33.tar.xz
-            checksum: sha256:e293ed620cec74651bb4a071317892a478aa6840fab22db45c72d77cd42f9676
-            path: ${source.dir}/php-8.3.33.tar.xz
+          - url: https://www.php.net/distributions/php-8.3.36.tar.xz
+            checksum: sha256:dd54693aa334c5c4d72e9aee96b082c2473750a18a6c1d105789c93a3b1692fd
+            path: ${source.dir}/php-8.3.36.tar.xz
             spdx:
               name: php
-              version: 8.3.33
+              version: 8.3.36
               packages:
                 - name: php
-                  purl: pkg:dhi/php@8.3.33
+                  purl: pkg:dhi/php@8.3.36
                   license: PHP-3.01
             uid: 0
             gid: 0
-          - url: https://github.com/ImageMagick/ImageMagick/archive/7.1.2-31.tar.gz
-            checksum: sha256:34d9cc3acddc3e3c429d23af60eda5ceaac477a8b296ddb9469f773f44a80a5f
+          - url: https://github.com/ImageMagick/ImageMagick/archive/7.1.2-34.tar.gz
+            checksum: sha256:f5163a573a1c1bff16358d0a592b2fb168ad0fd3b9dc5ff57dc7820eebc5cf79
             path: ${source.dir}/imagemagick.tar.gz
             spdx:
               name: imagemagick
-              version: 7.1.2-31
+              version: 7.1.2-34
               packages:
                 - name: imagemagick
-                  purl: pkg:dhi/imagemagick/imagemagick@7.1.2-31
+                  purl: pkg:dhi/imagemagick/imagemagick@7.1.2-34
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -178,7 +178,7 @@ contents:
             set -eux -o pipefail
 
             mkdir -p "${source.dir}/php-src"
-            tar -xaf "${source.dir}/php-8.3.33.tar.xz" -C "${source.dir}/php-src" --strip-components=1
+            tar -xaf "${source.dir}/php-8.3.36.tar.xz" -C "${source.dir}/php-src" --strip-components=1
         - name: install php extensions with pecl
           privileged: true
           runs: |
@@ -326,9 +326,9 @@ contents:
               - deb
             license: GPL-2.0-or-later
             name: mediawiki-1.46
-            rel: 5
+            rel: 0
             url: https://www.mediawiki.org
-            version: 1.46.0
+            version: 1.46.2
       paths:
         - type: file
           path: ${source.dir}/keys.txt
