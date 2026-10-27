@@ -13,11 +13,11 @@ dates:
   release: "2017-09-27"
 vars:
   JAVA_HOME: /opt/java/openjdk/17
-  JAVA_RUN_REFERENCE: dhi/eclipse-temurin:17.0.20.8-jdk-alpine3.22-dev@sha256:2b27a8600bf8c23f70def0d67da1ef4cca36243485f5afc7d7766c5fa2929207
-  JAVA_VERSION: 17.0.20.8
+  JAVA_RUN_REFERENCE: dhi/eclipse-temurin:17.0.21.9-jdk-alpine3.22-dev@sha256:0cef19777f715202b0d039e1285f4f82f7b3e5ea2de47c8654eb409984078f96
+  JAVA_VERSION: 17.0.21.9
   JDK_MAJOR_VERSION: "17"
   JDK_PATH: /opt/java/openjdk/17
-  JDK_REFERENCE: dhi/eclipse-temurin:17.0.20.8-jdk-alpine3.22-dev@sha256:2b27a8600bf8c23f70def0d67da1ef4cca36243485f5afc7d7766c5fa2929207
+  JDK_REFERENCE: dhi/eclipse-temurin:17.0.21.9-jdk-alpine3.22-dev@sha256:0cef19777f715202b0d039e1285f4f82f7b3e5ea2de47c8654eb409984078f96
   SEMVER_MAJOR_MINOR_VERSION: "9.0"
   SEMVER_MAJOR_VERSION: "9"
   SEMVER_VERSION: 9.0.123
@@ -69,7 +69,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/eclipse-temurin:17.0.20.8-jdk-alpine3.22-dev@sha256:2b27a8600bf8c23f70def0d67da1ef4cca36243485f5afc7d7766c5fa2929207
+          - name: dhi.io/eclipse-temurin:17.0.21.9-jdk-alpine3.22-dev@sha256:0cef19777f715202b0d039e1285f4f82f7b3e5ea2de47c8654eb409984078f96
             includes:
               - opt/**
             uid: 0
@@ -134,7 +134,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/eclipse-temurin:17.0.20.8-jdk-alpine3.22-dev@sha256:2b27a8600bf8c23f70def0d67da1ef4cca36243485f5afc7d7766c5fa2929207
+    - name: dhi.io/eclipse-temurin:17.0.21.9-jdk-alpine3.22-dev@sha256:0cef19777f715202b0d039e1285f4f82f7b3e5ea2de47c8654eb409984078f96
       includes:
         - opt/**
         - usr/local/bin/**
