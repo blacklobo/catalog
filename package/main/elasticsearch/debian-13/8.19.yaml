@@ -4,9 +4,9 @@ image: dhi.io/pkg-elasticsearch
 variant: runtime
 tags:
   - 8.19.23
-  - 8.19.23-r1
+  - 8.19.23-r2
   - 8.19.23-debian13
-  - 8.19.23-r1-debian13
+  - 8.19.23-r2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ dates:
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x64" : "aarch64" }'
   BUILD_JDK_MAJOR_VERSION: "17"
-  BUILD_JDK_VERSION: 1:17.0.20.1+1-4
+  BUILD_JDK_VERSION: 1:17.0.21+9-0
   COMMIT_SHA: 6940e499f8a38841809b8e295a20c6421c95d9e4
   ELASTICSEARCH_HOME: /usr/share/elasticsearch
   ELASTICSEARCH_OUTPUT_ARCHIVE_DIR: '#{ target.arch == "amd64" ? "linux-tar" : "linux-aarch64-tar" }'
@@ -55,7 +55,7 @@ vars:
   JDK_MAJOR_VERSION: "21"
   JDK_VERSION: 1:21.0.13+9-0
   PACKAGE_NAME: elasticsearch-8.19
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "8.19"
   SEMVER_MAJOR_VERSION: "8"
   SEMVER_VERSION: 8.19.23
@@ -85,7 +85,7 @@ contents:
           - sed
           - tar
           - tini
-          - eclipse-temurin-17-jdk=1:17.0.20.1+1-4
+          - eclipse-temurin-17-jdk=1:17.0.21+9-0
           - eclipse-temurin-21-jdk=1:21.0.13+9-0
           - eclipse-temurin-25-jdk=1:25.0.5+8-0
           - eclipse-temurin-26-jdk=1:26.0.2.1+1-4
@@ -227,7 +227,7 @@ contents:
               - deb
             license: Elastic-License-2.0
             name: elasticsearch-8.19
-            rel: 1
+            rel: 2
             url: https://www.elastic.co/elasticsearch/
             version: 8.19.23
       paths:
