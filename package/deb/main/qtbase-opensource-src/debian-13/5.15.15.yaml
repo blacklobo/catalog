@@ -3,8 +3,8 @@
 image: dhi.io/pkg-qtbase-opensource-src
 variant: runtime
 tags:
-  - 5.15.15-dfsg-6-deb13u1-dhi5
-  - 5.15.15-dfsg-6-deb13u1-dhi5-debian13
+  - 5.15.15-dfsg-6-deb13u1-dhi6
+  - 5.15.15-dfsg-6-deb13u1-dhi6-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,9 +20,9 @@ vars:
   DEBIAN_ORIG_FILENAME: qtbase-opensource-src_5.15.15+dfsg.orig.tar.xz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/q/qtbase-opensource-src/qtbase-opensource-src_5.15.15+dfsg.orig.tar.xz
   DEBIAN_VERSION: 5.15.15+dfsg-6+deb13u1
-  DHI_REL: "5"
-  DHI_VERSION: 5.15.15+dfsg-6+deb13u1+dhi5
-  TAG_VERSION: 5.15.15-dfsg-6-deb13u1-dhi5
+  DHI_REL: "6"
+  DHI_VERSION: 5.15.15+dfsg-6+deb13u1+dhi6
+  TAG_VERSION: 5.15.15-dfsg-6-deb13u1-dhi6
   UPSTREAM_VERSION: 5.15.15+dfsg
 contents:
   packages:
@@ -135,6 +135,7 @@ contents:
               - ${source.dir}/patch/CVE-2026-78253.patch
               - ${source.dir}/patch/CVE-2026-105923.patch
               - ${source.dir}/patch/CVE-2026-16762.patch
+              - ${source.dir}/patch/CVE-2026-101201.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
@@ -143,7 +144,8 @@ contents:
               - Backport iterative QXmlStreamReader::readElementText for CVE-2026-78253
               - Backport QTriangulator coordinate clamping for CVE-2026-105923
               - Backport QXmlStreamReader resolveTag duplicate-attribute tracking for CVE-2026-16762
-            version: 5.15.15+dfsg-6+deb13u1+dhi5
+              - Backport QJsonDocument::fromBinaryData overflow guard for CVE-2026-101201
+            version: 5.15.15+dfsg-6+deb13u1+dhi6
         - name: install qt configure wrapper for hermetic builder
           work-dir: ${source.dir}/qtbase-opensource-src
           runs: |
@@ -187,6 +189,11 @@ contents:
           uid: 0
           gid: 0
           source: package/deb/main/qtbase-opensource-src/patch/CVE-2026-16762.patch
+        - type: file
+          path: ${source.dir}/patch/CVE-2026-101201.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/qtbase-opensource-src/patch/CVE-2026-101201.patch
         - type: file
           path: ${source.dir}/configure-hsp.sh
           uid: 0
