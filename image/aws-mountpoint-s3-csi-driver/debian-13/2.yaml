@@ -6,26 +6,26 @@ variant: runtime
 tags:
   - "2"
   - "2.9"
-  - 2.9.1
+  - 2.9.2
   - 2-debian
   - 2-debian13
   - 2.9-debian
   - 2.9-debian13
-  - 2.9.1-debian
-  - 2.9.1-debian13
+  - 2.9.2-debian
+  - 2.9.2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-07-29"
 vars:
-  COMMIT_SHA: b55e47d6991d449d49337827a09a8d4ffe2e6a11
+  COMMIT_SHA: 753f4f6519504aef94cf6b205aa3ad62d2317af7
   MOUNTPOINT_VERSION: 1.22.0
   MP_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
   SEMVER_MAJOR_MINOR_VERSION: "2.9"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.9.1
-  VERSION: 2.9.1
+  SEMVER_VERSION: 2.9.2
+  VERSION: 2.9.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -109,15 +109,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/awslabs/mountpoint-s3-csi-driver.git#v2.9.1
-            checksum: b55e47d6991d449d49337827a09a8d4ffe2e6a11
+          - url: git+https://github.com/awslabs/mountpoint-s3-csi-driver.git#v2.9.2
+            checksum: 753f4f6519504aef94cf6b205aa3ad62d2317af7
             path: /go/src/github.com/awslabs/mountpoint-s3-csi-driver
             spdx:
               name: aws-mountpoint-s3-csi-driver
-              version: 2.9.1
+              version: 2.9.2
               packages:
                 - name: aws-mountpoint-s3-csi-driver
-                  purl: pkg:golang/github.com/awslabs/mountpoint-s3-csi-driver@2.9.1
+                  purl: pkg:golang/github.com/awslabs/mountpoint-s3-csi-driver@2.9.2
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -143,8 +143,8 @@ contents:
           uses: go/build@v1
           with:
             ldflags:
-              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.driverVersion=2.9.1
-              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.gitCommit=b55e47d6991d449d49337827a09a8d4ffe2e6a11
+              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.driverVersion=2.9.2
+              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.gitCommit=753f4f6519504aef94cf6b205aa3ad62d2317af7
               - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/local/bin/aws-s3-csi-driver
             packages: ./cmd/aws-s3-csi-driver
@@ -152,8 +152,8 @@ contents:
           uses: go/build@v1
           with:
             ldflags:
-              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.driverVersion=2.9.1
-              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.gitCommit=b55e47d6991d449d49337827a09a8d4ffe2e6a11
+              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.driverVersion=2.9.2
+              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.gitCommit=753f4f6519504aef94cf6b205aa3ad62d2317af7
               - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/local/bin/aws-s3-csi-controller
             packages: ./cmd/aws-s3-csi-controller
@@ -161,8 +161,8 @@ contents:
           uses: go/build@v1
           with:
             ldflags:
-              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.driverVersion=2.9.1
-              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.gitCommit=b55e47d6991d449d49337827a09a8d4ffe2e6a11
+              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.driverVersion=2.9.2
+              - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.gitCommit=753f4f6519504aef94cf6b205aa3ad62d2317af7
               - -X github.com/awslabs/mountpoint-s3-csi-driver/pkg/driver/version.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/local/bin/aws-s3-csi-mounter
             packages: ./cmd/aws-s3-csi-mounter
