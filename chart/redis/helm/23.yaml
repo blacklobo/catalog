@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BASH_REFERENCE: dhi/bash:5.2.37-debian13@sha256:9489f32836b67fac6ae1e8df4a17ed12e9eb9ce6d0d89e271a16eb5405357044
+  BASH_REFERENCE: dhi/bash:5.2.37-debian13@sha256:940d44e723e219ab37d7938b275c4600aaf4caedb26c44ea7649a04f1a351a69
   CHART_COMMIT_SHA: 4f7288e1b226ee2bfc150e507ffdca04a98a0952
   CHART_HELM_NAME: redis-chart
   DHI_NAMESPACE: dhi
@@ -18,7 +18,7 @@ vars:
   HELM_VERSION: 4.1.4-2
   KUBECTL_REFERENCE: dhi/kubectl:1.34.12-debian13-compat@sha256:9652681223461cf4a47a9e074cfcc3db82a5ce2a701b9e216e0be968876beead
   REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.96.0-debian13-compat@sha256:b25771ddcb9c4c9d407acd0a89bb5a9cfd3cce4fc9a285e1dcd9d1f7b7d5c5f6
-  REDIS_REFERENCE: dhi/redis:8.10.2-debian13-compat@sha256:62f0464bb3a48bccf2064c0b793d98e08d2ad763ee60d6913ba18842fec5ce3d
+  REDIS_REFERENCE: dhi/redis:8.10.3-debian13-compat@sha256:ddbabb0a7d26c1040699f5034229a1fe56a672c2874c775f80c140dc34f30777
   SEMVER_MAJOR_MINOR_VERSION: "23.0"
   SEMVER_MAJOR_VERSION: "23"
   SEMVER_VERSION: 23.0.7
@@ -52,11 +52,11 @@ contents:
               description: Docker Hardened Images Helm chart for Redis
               images:
                 - name: redis
-                  ref: dhi/redis:8.10.2-debian13-compat@sha256:62f0464bb3a48bccf2064c0b793d98e08d2ad763ee60d6913ba18842fec5ce3d
+                  ref: dhi/redis:8.10.3-debian13-compat@sha256:ddbabb0a7d26c1040699f5034229a1fe56a672c2874c775f80c140dc34f30777
                 - name: redis-exporter
                   ref: dhi/redis-exporter:1.96.0-debian13-compat@sha256:b25771ddcb9c4c9d407acd0a89bb5a9cfd3cce4fc9a285e1dcd9d1f7b7d5c5f6
                 - name: bash
-                  ref: dhi/bash:5.2.37-debian13@sha256:9489f32836b67fac6ae1e8df4a17ed12e9eb9ce6d0d89e271a16eb5405357044
+                  ref: dhi/bash:5.2.37-debian13@sha256:940d44e723e219ab37d7938b275c4600aaf4caedb26c44ea7649a04f1a351a69
                 - name: kubectl
                   ref: dhi/kubectl:1.34.12-debian13-compat@sha256:9652681223461cf4a47a9e074cfcc3db82a5ce2a701b9e216e0be968876beead
               name: redis-chart
