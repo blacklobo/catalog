@@ -7,13 +7,13 @@ flavor: sentinel
 tags:
   - 7-sentinel-dev
   - 7.2-sentinel-dev
-  - 7.2.14-sentinel-dev
+  - 7.2.15-sentinel-dev
   - 7-debian-sentinel-dev
   - 7-debian13-sentinel-dev
   - 7.2-debian-sentinel-dev
   - 7.2-debian13-sentinel-dev
-  - 7.2.14-debian-sentinel-dev
-  - 7.2.14-debian13-sentinel-dev
+  - 7.2.15-debian-sentinel-dev
+  - 7.2.15-debian13-sentinel-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,11 +21,11 @@ dates:
   release: "2023-08-15"
   end-of-life: "2029-04-16"
 vars:
-  COMMIT_SHA: 499cfb9431c7cebec4d91f81bb4932a742a8c8ae
+  COMMIT_SHA: 20e068cad6262e3fa01680b6c4ad9ae3483280d0
   DEBIAN_EPOCH_MAJOR_MINOR_VERSION: "7.2"
   DEBIAN_EPOCH_MAJOR_VERSION: "7"
-  DEBIAN_EPOCH_VERSION: 7.2.14
-  VERSION: 7.2.14
+  DEBIAN_EPOCH_VERSION: 7.2.15
+  VERSION: 7.2.15
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -69,15 +69,15 @@ contents:
           - python3
           - sed
         files:
-          - url: git+https://github.com/valkey-io/valkey.git#7.2.14
-            checksum: 499cfb9431c7cebec4d91f81bb4932a742a8c8ae
+          - url: git+https://github.com/valkey-io/valkey.git#7.2.15
+            checksum: 20e068cad6262e3fa01680b6c4ad9ae3483280d0
             path: ${source.dir}/valkey
             spdx:
               name: valkey
-              version: 7.2.14
+              version: 7.2.15
               packages:
                 - name: valkey
-                  purl: pkg:dhi/valkey@7.2.14
+                  purl: pkg:dhi/valkey@7.2.15
                   license: BSD-3-Clause
             uid: 0
             gid: 0
