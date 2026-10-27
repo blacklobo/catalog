@@ -4,11 +4,11 @@ name: Kiali Server Helm chart 2.x
 image: dhi.io/kiali-server-chart
 variant: helm
 tags:
-  - 2.33.0
+  - 2.34.0
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: b9514c79f1c770d6a65f9341c73576ac2f8277cf
+  CHART_COMMIT_SHA: 120272b115edfbf22152a04341a99d8fa4ec2cde
   CHART_HELM_NAME: kiali-server-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -16,10 +16,10 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   KIALI_REFERENCE: dhi/kiali:2.34.0-debian13@sha256:d379fcf4af656f30ad4491548c609426c3eb7642df328179de81b0b02b888b9f
-  SEMVER_MAJOR_MINOR_VERSION: "2.33"
+  SEMVER_MAJOR_MINOR_VERSION: "2.34"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.33.0
-  VERSION: 2.33.0
+  SEMVER_VERSION: 2.34.0
+  VERSION: 2.34.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/kiali/helm-charts.git#v2.33.0
-            checksum: b9514c79f1c770d6a65f9341c73576ac2f8277cf
+          - url: git+https://github.com/kiali/helm-charts.git#v2.34.0
+            checksum: 120272b115edfbf22152a04341a99d8fa4ec2cde
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
