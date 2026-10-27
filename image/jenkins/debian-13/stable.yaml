@@ -5,14 +5,14 @@ image: dhi.io/jenkins
 variant: runtime
 tags:
   - "2"
-  - "2.568"
-  - 2.568.3
+  - "2.580"
+  - 2.580.1
   - 2-debian
   - 2-debian13
-  - 2.568-debian
-  - 2.568-debian13
-  - 2.568.3-debian
-  - 2.568.3-debian13
+  - 2.580-debian
+  - 2.580-debian13
+  - 2.580.1-debian
+  - 2.580.1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -24,10 +24,10 @@ vars:
   JAVA_MAJOR_VERSION: "21"
   JAVA_VARIANT: jre
   JDK_MAJOR_VERSION: "21"
-  SEMVER_MAJOR_MINOR_VERSION: "2.568"
+  SEMVER_MAJOR_MINOR_VERSION: "2.580"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.568.3
-  VERSION: 2.568.3-6
+  SEMVER_VERSION: 2.580.1
+  VERSION: 2.580.1-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -47,7 +47,7 @@ contents:
     - fonts-dejavu-core
     - git
     - grep
-    - jenkins=2.568.3-6
+    - jenkins=2.580.1-0
     - libpng16-16t64
     - openssh-client
     - procps
@@ -109,7 +109,7 @@ environment:
   JENKINS_SLAVE_AGENT_PORT: "50000"
   JENKINS_UC: https://updates.jenkins.io
   JENKINS_UC_EXPERIMENTAL: https://updates.jenkins.io/experimental
-  JENKINS_VERSION: 2.568.3
+  JENKINS_VERSION: 2.580.1
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
