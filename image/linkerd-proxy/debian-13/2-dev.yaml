@@ -23,7 +23,7 @@ dates:
   release: "2019-09-14"
 vars:
   AWAIT_PINNED_VERSION: 0.3.3
-  AWAIT_VERSION: 0.3.3-0
+  AWAIT_VERSION: 0.3.3-1
   COREUTILS_DEBIAN_VERSION: 9.7-3
   COREUTILS_UPSTREAM_VERSION: "9.7"
   COREUTILS_VERSION: 9.7-3+dhi4
@@ -31,7 +31,7 @@ vars:
   FLAVORED_SUFFIX: -dev
   IDENTITY_VERSION: 26.10.1-0
   NETWORK_VALIDATOR_PINNED_VERSION: 0.1.9
-  NETWORK_VALIDATOR_VERSION: 0.1.9-0
+  NETWORK_VALIDATOR_VERSION: 0.1.9-1
   PINNED_VERSION: 2.370.0
   PROXY_INIT_PINNED_VERSION: 2.4.10
   PROXY_INIT_VERSION: 2.4.10-0
@@ -63,8 +63,8 @@ contents:
     - libc-bin
     - libc6
     - libgcc-s1
-    - linkerd-await-0-dev=0.3.3-0
-    - linkerd-network-validator-0-dev=0.1.9-0
+    - linkerd-await-0-dev=0.3.3-1
+    - linkerd-network-validator-0-dev=0.1.9-1
     - linkerd2-proxy-2-dev=2.370.0-0
     - linkerd2-proxy-identity-dev=26.10.1-0
     - linkerd2-proxy-init-2-dev=2.4.10-0
