@@ -26,7 +26,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   HUBBLE_RELAY_REFERENCE: dhi/hubble-relay:1.19.10-debian13@sha256:a4ffce114c76fcfd7862423d35d715abedf918a76bae666fc7a34de3b1d802c5
-  HUBBLE_UI_BACKEND_REFERENCE: dhi/hubble-ui-backend:0.13.6-debian13@sha256:31684c476221825f51e234643df8cd51631f9f6a0489cf20068210730c799c42
+  HUBBLE_UI_BACKEND_REFERENCE: dhi/hubble-ui-backend:0.13.6-debian13@sha256:5452dbe4e8be089a491247acdecfd396ef26dfec07923865d06fff103684a90e
   HUBBLE_UI_REFERENCE: dhi/hubble-ui:0.13.6-debian13@sha256:b240ebaff75b44f1e9f3ff7f4e43fc6eeb2b19902fa9797c962473c22bedea80
   SEMVER_MAJOR_MINOR_VERSION: "1.19"
   SEMVER_MAJOR_VERSION: "1"
@@ -73,7 +73,7 @@ contents:
                 - name: hubble-ui
                   ref: dhi/hubble-ui:0.13.6-debian13@sha256:b240ebaff75b44f1e9f3ff7f4e43fc6eeb2b19902fa9797c962473c22bedea80
                 - name: hubble-ui-backend
-                  ref: dhi/hubble-ui-backend:0.13.6-debian13@sha256:31684c476221825f51e234643df8cd51631f9f6a0489cf20068210730c799c42
+                  ref: dhi/hubble-ui-backend:0.13.6-debian13@sha256:5452dbe4e8be089a491247acdecfd396ef26dfec07923865d06fff103684a90e
                 - name: cilium-envoy
                   ref: dhi/cilium-envoy:1.19.10-debian13-compat@sha256:b4fc35c38b12cd795080976643cbf34b1efa88dd1d8115a765d4956958fee304
                 - name: cilium-certgen
